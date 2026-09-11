@@ -996,6 +996,507 @@
       background: #eff6ff !important;
       transform: scale(1.1) !important;
     }
+
+    /* SOROBAN ENHANCEMENTS */
+    .rod-title {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+      z-index: 2;
+    }
+    .rod-digit-badge {
+      font-family: var(--font-mono);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-main);
+      background: #ffffff;
+      border: 1.5px solid var(--border-strong);
+      border-radius: 4px;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.75rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      z-index: 2;
+    }
+    .soroban-reckon-dot {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #ffffff;
+      z-index: 3;
+    }
+
+    /* SIMULADOR 2: ANTICÍTERA ASTRONÔMICO */
+    .antikythera-stage {
+      background: #fbfbfb;
+      border: 2px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    @media (max-width: 860px) {
+      .antikythera-stage {
+        grid-template-columns: 1fr;
+      }
+    }
+    .antikythera-gearbox {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 260px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .antikythera-dials {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 580px) {
+      .antikythera-dials {
+        grid-template-columns: 1fr;
+      }
+    }
+    .dial-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem;
+    }
+    .dial-card-title {
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    .dial-card-val {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-main);
+      font-family: var(--font-mono);
+    }
+    .dial-card-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+    .moon-sphere-wrap {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #0f172a;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
+      border: 1px solid #334155;
+    }
+    .moon-sphere-light {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      background: #f8fafc;
+      transition: all 0.2s ease;
+    }
+    .eclipse-alert-box {
+      grid-column: 1 / -1;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid var(--border-subtle);
+      background: #f8fafc;
+      color: var(--text-muted);
+    }
+    .eclipse-alert-box.active {
+      background: #fffbeb;
+      border-color: #fde68a;
+      color: #b45309;
+    }
+
+    /* SIMULADOR 3: ZUSE Z3 FITA 35MM E RELÉS */
+    .zuse-stage {
+      background: #0f172a;
+      color: #f8fafc;
+      border-radius: var(--radius-sm);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .zuse-tape-frame {
+      background: #020617;
+      border: 1px solid #334155;
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+    }
+    .zuse-tape-strip {
+      display: flex;
+      gap: 12px;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .zuse-tape-frame-needle {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: calc(50% - 2px);
+      width: 4px;
+      background: #ef4444;
+      z-index: 10;
+      pointer-events: none;
+      box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
+    }
+    .zuse-tape-block {
+      width: 70px;
+      height: 90px;
+      background: #1e293b;
+      border: 1px solid #475569;
+      border-radius: 4px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: #94a3b8;
+    }
+    .zuse-tape-block.current {
+      border-color: #38bdf8;
+      background: #0c4a6e;
+      color: #ffffff;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+    }
+    .zuse-tape-sprockets {
+      display: flex;
+      justify-content: space-between;
+    }
+    .zuse-sprocket {
+      width: 6px;
+      height: 8px;
+      background: #020617;
+      border-radius: 1px;
+    }
+    .zuse-tape-holes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3px;
+      padding: 4px 2px;
+    }
+    .zuse-hole {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #334155;
+      margin: 0 auto;
+    }
+    .zuse-hole.punched {
+      background: #f8fafc;
+      box-shadow: 0 0 4px #ffffff;
+    }
+    .zuse-relays-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    @media (max-width: 768px) {
+      .zuse-relays-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .zuse-relay-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: var(--radius-sm);
+      padding: 0.85rem;
+      font-family: var(--font-mono);
+    }
+    .zuse-relay-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #94a3b8;
+      margin-bottom: 0.5rem;
+    }
+    .zuse-relay-graphic {
+      height: 48px;
+      border: 1px solid #475569;
+      border-radius: 4px;
+      background: #0f172a;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .relay-coil {
+      width: 24px;
+      height: 28px;
+      background: #451a03;
+      border: 1px solid #b45309;
+      border-radius: 2px;
+      position: relative;
+    }
+    .relay-armature {
+      width: 32px;
+      height: 4px;
+      background: #94a3b8;
+      transform-origin: left center;
+      transform: rotate(-15deg);
+      transition: transform 0.1s ease;
+    }
+    .relay-armature.closed {
+      transform: rotate(0deg);
+      background: #38bdf8;
+      box-shadow: 0 0 6px #38bdf8;
+    }
+    .zuse-relay-state {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #94a3b8;
+    }
+    .zuse-relay-state.active {
+      color: #38bdf8;
+    }
+    .zuse-regs-row {
+      background: #020617;
+      border: 1px solid #334155;
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    /* SIMULADOR 4: COLOSSUS ÓPTICO E LORENZ SZ42 */
+    .colossus-stage {
+      background: #111827;
+      color: #f3f4f6;
+      border-radius: var(--radius-sm);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border: 2px solid #374151;
+    }
+    .colossus-top-status {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #374151;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+    }
+    .colossus-tube-rack {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin: 1rem 0;
+      padding: 1rem;
+      background: #030712;
+      border-radius: var(--radius-sm);
+      border: 1px solid #1f2937;
+    }
+    .valve-tube {
+      width: 22px;
+      height: 40px;
+      border: 1.5px solid #4b5563;
+      border-radius: 11px 11px 4px 4px;
+      background: rgba(255,255,255,0.02);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+    .valve-tube-filament {
+      width: 4px;
+      height: 18px;
+      background: #374151;
+      border-radius: 2px;
+      transition: all 0.15s ease;
+    }
+    .valve-tube.active {
+      border-color: #f59e0b;
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+    }
+    .valve-tube.active .valve-tube-filament {
+      background: #fef08a;
+      box-shadow: 0 0 8px #f59e0b;
+    }
+    .colossus-grid-view {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 768px) {
+      .colossus-grid-view {
+        grid-template-columns: 1fr;
+      }
+    }
+    .colossus-screen-panel {
+      background: #030712;
+      border: 1px solid #374151;
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      font-family: var(--font-mono);
+    }
+    .colossus-panel-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #9ca3af;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .colossus-text-stream {
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+      min-height: 48px;
+      line-height: 1.6;
+      word-break: break-all;
+    }
+    .lorenz-wheel-display {
+      display: flex;
+      gap: 8px;
+      margin-top: 0.5rem;
+    }
+    .lorenz-wheel-badge {
+      background: #1f2937;
+      border: 1px solid #4b5563;
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+    }
+
+    /* SIMULADOR 5: RETRO TERMINAL BRASILEIRO (PROLÓGICA CP-500 / TK90X BASIC) */
+    .retro-crt-container {
+      margin: 1.5rem 0;
+      background: #e2e8f0;
+      border: 3px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 1.25rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+    .crt-monitor-bezel {
+      background: #1e293b;
+      border-radius: 8px;
+      padding: 1.25rem;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.8);
+      position: relative;
+    }
+    .crt-screen-glass {
+      border-radius: 6px;
+      padding: 1.25rem;
+      min-height: 250px;
+      font-family: var(--font-mono);
+      font-size: 0.92rem;
+      line-height: 1.5;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s, color 0.3s;
+    }
+    /* Estilo Fósforo Verde */
+    .crt-screen-glass.green-ph {
+      background: #041407;
+      color: #22c55e;
+      text-shadow: 0 0 6px rgba(34, 197, 94, 0.6);
+      border: 2px solid #064e1c;
+    }
+    /* Estilo Fósforo Âmbar */
+    .crt-screen-glass.amber-ph {
+      background: #150a02;
+      color: #f59e0b;
+      text-shadow: 0 0 6px rgba(245, 158, 11, 0.6);
+      border: 2px solid #78350f;
+    }
+    .crt-scanlines {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 0px,
+        rgba(0,0,0,0) 2px,
+        rgba(0,0,0,0.25) 3px,
+        rgba(0,0,0,0.25) 4px
+      );
+      pointer-events: none;
+      z-index: 5;
+    }
+    .crt-terminal-content {
+      position: relative;
+      z-index: 4;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    .crt-cursor {
+      display: inline-block;
+      width: 9px;
+      height: 16px;
+      background: currentColor;
+      vertical-align: sub;
+      animation: crtBlink 0.8s infinite;
+    }
+    @keyframes crtBlink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    .crt-controls-bar {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .crt-input-row {
+      display: flex;
+      gap: 0.5rem;
+      width: 100%;
+      margin-top: 0.75rem;
+    }
+    .crt-input-box {
+      flex: 1;
+      background: #ffffff;
+      border: 1.5px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+
   </style>
 
 </head>
@@ -1148,90 +1649,113 @@
         <!-- SIMULADOR 1: SOROBAN BI-QUINÁRIO COMPLETO -->
         <div class="interactive-app-card">
           <div class="app-header-clean">
-            <span class="app-tag">Simulador Prático: Ábaco / Soroban Japonês (5 Colunas)</span>
+            <span class="app-tag">Simulador Prático: Ábaco / Soroban Japonês (Física Realista)</span>
             <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="presetSorobanYear(1948)">Ano 1948</button>
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="presetSorobanYear(1972)">Ano 1972</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="presetSorobanYear(1948)">Ano 1948 (Baby)</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="presetSorobanYear(1972)">Ano 1972 (Patinho)</button>
               <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="presetSorobanYear(2026)">Ano 2026</button>
               <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="presetSorobanYear(42)">Número 42</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="presetSorobanYear(99999)">Máx (99.999)</button>
               <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="clearSorobanBoard()">Zerar</button>
             </div>
           </div>
 
           <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">
-            Clique nas contas superiores (valor 5) ou inferiores (valor 1) em direção à trave horizontal para compor o número:
+            Operação física realista: conta superior vale 5 (desce até a trave); contas inferiores valem 1 (sobem juntas até a trave). Dígito individual exibido abaixo de cada haste:
           </p>
 
           <div class="soroban-clean-board" id="soroban-app-board">
-            <div class="soroban-clean-beam"></div>
+            <div class="soroban-clean-beam">
+              <div class="soroban-reckon-dot" style="left: 28%;"></div>
+              <div class="soroban-reckon-dot" style="left: 68%;"></div>
+            </div>
 
             <!-- Coluna 4: Dezenas de Milhar -->
             <div class="soroban-clean-rod" data-col="4">
+              <div class="rod-title">10.000</div>
               <div class="soroban-rod-line"></div>
-              <div class="deck-top"><div class="soroban-bead-clean upper" onclick="toggleSorobanBead(this, 50000)"></div></div>
-              <div class="deck-bottom">
-                <div class="soroban-bead-clean lower" onclick="toggleSorobanBead(this, 10000)"></div>
-                <div class="soroban-bead-clean lower" onclick="toggleSorobanBead(this, 10000)"></div>
-                <div class="soroban-bead-clean lower" onclick="toggleSorobanBead(this, 10000)"></div>
-                <div class="soroban-bead-clean lower" onclick="toggleSorobanBead(this, 10000)"></div>
+              <div class="deck-top">
+                <div class="soroban-bead-clean upper" onclick="sorobanClickUpper(4)"></div>
               </div>
+              <div class="deck-bottom">
+                <div class="soroban-bead-clean lower" onclick="sorobanClickLower(4, 0)"></div>
+                <div class="soroban-bead-clean lower" onclick="sorobanClickLower(4, 1)"></div>
+                <div class="soroban-bead-clean lower" onclick="sorobanClickLower(4, 2)"></div>
+                <div class="soroban-bead-clean lower" onclick="sorobanClickLower(4, 3)"></div>
+              </div>
+              <div class="rod-digit-badge" id="soroban-digit-4">0</div>
             </div>
 
             <!-- Coluna 3: Milhares -->
             <div class="soroban-clean-rod" data-col="3">
+              <div class="rod-title">1.000</div>
               <div class="soroban-rod-line"></div>
-              <div class="deck-top"><div class="soroban-bead-clean upper" onclick="toggleSorobanBead(this, 5000)"></div></div>
-              <div class="deck-bottom">
-                <div class="soroban-bead-clean lower" onclick="toggleSorobanBead(this, 1000)"></div>
-                <div class="soroban-bead-clean lower" onclick="toggleSorobanBead(this, 1000)"></div>
-                <div class="soroban-bead-clean lower" onclick="toggleSorobanBead(this, 1000)"></div>
-                <div class="soroban-bead-clean lower" onclick="toggleSorobanBead(this, 1000)"></div>
+              <div class="deck-top">
+                <div class="soroban-bead-clean upper" onclick="sorobanClickUpper(3)"></div>
               </div>
+              <div class="deck-bottom">
+                <div class="soroban-bead-clean lower" onclick="sorobanClickLower(3, 0)"></div>
+                <div class="soroban-bead-clean lower" onclick="sorobanClickLower(3, 1)"></div>
+                <div class="soroban-bead-clean lower" onclick="sorobanClickLower(3, 2)"></div>
+                <div class="soroban-bead-clean lower" onclick="sorobanClickLower(3, 3)"></div>
+              </div>
+              <div class="rod-digit-badge" id="soroban-digit-3">0</div>
             </div>
 
             <!-- Coluna 2: Centenas -->
             <div class="soroban-clean-rod" data-col="2">
+              <div class="rod-title">100</div>
               <div class="soroban-rod-line"></div>
-              <div class="deck-top"><div class="soroban-bead-clean upper" onclick="toggleSorobanBead(this, 500)"></div></div>
-              <div class="deck-bottom">
-                <div class="soroban-bead-clean lower" onclick="toggleSorobanBead(this, 100)"></div>
-                <div class="soroban-bead-clean lower" onclick="toggleSorobanBead(this, 100)"></div>
-                <div class="soroban-bead-clean lower" onclick="toggleSorobanBead(this, 100)"></div>
-                <div class="soroban-bead-clean lower" onclick="toggleSorobanBead(this, 100)"></div>
+              <div class="deck-top">
+                <div class="soroban-bead-clean upper" onclick="sorobanClickUpper(2)"></div>
               </div>
+              <div class="deck-bottom">
+                <div class="soroban-bead-clean lower" onclick="sorobanClickLower(2, 0)"></div>
+                <div class="soroban-bead-clean lower" onclick="sorobanClickLower(2, 1)"></div>
+                <div class="soroban-bead-clean lower" onclick="sorobanClickLower(2, 2)"></div>
+                <div class="soroban-bead-clean lower" onclick="sorobanClickLower(2, 3)"></div>
+              </div>
+              <div class="rod-digit-badge" id="soroban-digit-2">0</div>
             </div>
 
             <!-- Coluna 1: Dezenas -->
             <div class="soroban-clean-rod" data-col="1">
+              <div class="rod-title">10</div>
               <div class="soroban-rod-line"></div>
-              <div class="deck-top"><div class="soroban-bead-clean upper" onclick="toggleSorobanBead(this, 50)"></div></div>
-              <div class="deck-bottom">
-                <div class="soroban-bead-clean lower" onclick="toggleSorobanBead(this, 10)"></div>
-                <div class="soroban-bead-clean lower" onclick="toggleSorobanBead(this, 10)"></div>
-                <div class="soroban-bead-clean lower" onclick="toggleSorobanBead(this, 10)"></div>
-                <div class="soroban-bead-clean lower" onclick="toggleSorobanBead(this, 10)"></div>
+              <div class="deck-top">
+                <div class="soroban-bead-clean upper" onclick="sorobanClickUpper(1)"></div>
               </div>
+              <div class="deck-bottom">
+                <div class="soroban-bead-clean lower" onclick="sorobanClickLower(1, 0)"></div>
+                <div class="soroban-bead-clean lower" onclick="sorobanClickLower(1, 1)"></div>
+                <div class="soroban-bead-clean lower" onclick="sorobanClickLower(1, 2)"></div>
+                <div class="soroban-bead-clean lower" onclick="sorobanClickLower(1, 3)"></div>
+              </div>
+              <div class="rod-digit-badge" id="soroban-digit-1">0</div>
             </div>
 
             <!-- Coluna 0: Unidades -->
             <div class="soroban-clean-rod" data-col="0">
+              <div class="rod-title">1</div>
               <div class="soroban-rod-line"></div>
-              <div class="deck-top"><div class="soroban-bead-clean upper" onclick="toggleSorobanBead(this, 5)"></div></div>
-              <div class="deck-bottom">
-                <div class="soroban-bead-clean lower" onclick="toggleSorobanBead(this, 1)"></div>
-                <div class="soroban-bead-clean lower" onclick="toggleSorobanBead(this, 1)"></div>
-                <div class="soroban-bead-clean lower" onclick="toggleSorobanBead(this, 1)"></div>
-                <div class="soroban-bead-clean lower" onclick="toggleSorobanBead(this, 1)"></div>
+              <div class="deck-top">
+                <div class="soroban-bead-clean upper" onclick="sorobanClickUpper(0)"></div>
               </div>
+              <div class="deck-bottom">
+                <div class="soroban-bead-clean lower" onclick="sorobanClickLower(0, 0)"></div>
+                <div class="soroban-bead-clean lower" onclick="sorobanClickLower(0, 1)"></div>
+                <div class="soroban-bead-clean lower" onclick="sorobanClickLower(0, 2)"></div>
+                <div class="soroban-bead-clean lower" onclick="sorobanClickLower(0, 3)"></div>
+              </div>
+              <div class="rod-digit-badge" id="soroban-digit-0">0</div>
             </div>
           </div>
 
           <div class="soroban-readout-row">
             <span>TOTAL DECIMAL COMPUTADO NO SOROBAN:</span>
-            <span id="soroban-total-readout" style="color: var(--accent-green-text); font-size: 1.15rem;">0</span>
+            <span id="soroban-total-readout" style="color: var(--accent-green-text); font-size: 1.25rem;">0</span>
           </div>
         </div>
-
         <div class="reason-box">
           <strong>Critérios: Turing-Complete: Não | Von Neumann: Não</strong>
           Sistemas e tábuas que funcionavam como memória externa ou calculadores táteis sob comando biológico integral. Não possuem programa autônomo nem controle condicional de execução.
@@ -1290,6 +1814,109 @@
             <div><span>Componentes Lógicos</span><strong>&gt; 30 engrenagens de bronze</strong></div>
             <div><span>Tipo de Computação</span><strong>Analógica Mecânica Contínua</strong></div>
             <div><span>Aplicação Central</span><strong>Astronomia, Calendários e Eclipses</strong></div>
+          </div>
+        </div>
+
+        
+        <!-- SIMULADOR: MECANISMO DE ANTICÍTERA ASTRONÔMICO -->
+        <div class="interactive-app-card">
+          <div class="app-header-clean">
+            <span class="app-tag">Simulador Prático: Mecanismo de Anticítera (~150 a.C.)</span>
+            <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="setAntikytheraPreset(172)">Solstício de Verão</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="setAntikytheraPreset(354)">Eclipse de Saros</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="setAntikytheraPreset(14)">Lua Cheia</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="setAntikytheraPreset(730)">2 Anos Completos</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" id="anti-anim-btn" onclick="toggleAntikytheraAnim()">Animar Rotação</button>
+            </div>
+          </div>
+
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Gire a manivela para acionar o trem diferencial de 30 engrenagens de bronze e sincronizar o Sol, as Fases da Lua, o Ciclo Metônico e os Eclipses de Saros:
+          </p>
+
+          <div class="antikythera-stage">
+            <!-- Rotação Mecânica SVG -->
+            <div class="antikythera-gearbox">
+              <svg width="220" height="220" viewBox="0 0 220 220" style="overflow: visible;">
+                <!-- Engrenagem Solar Central B1 -->
+                <circle cx="110" cy="110" r="85" fill="#f8fafc" stroke="#b45309" stroke-width="4" stroke-dasharray="6,4" />
+                <g id="anti-gear-sun" style="transform-origin: 110px 110px; transition: transform 0.15s linear;">
+                  <line x1="110" y1="25" x2="110" y2="195" stroke="#b45309" stroke-width="2" />
+                  <line x1="25" y1="110" x2="195" y2="110" stroke="#b45309" stroke-width="2" />
+                  <!-- Ponteiro Solar -->
+                  <polygon points="110,18 116,32 104,32" fill="#d97706" />
+                  <circle cx="110" cy="110" r="14" fill="#d97706" />
+                  <text x="110" y="114" text-anchor="middle" font-size="10" font-family="var(--font-mono)" fill="#ffffff" font-weight="bold">SOL</text>
+                </g>
+                <!-- Engrenagem Planetária da Lua E1/E2 com Pino e Fenda -->
+                <g id="anti-gear-moon" style="transform-origin: 110px 110px; transition: transform 0.15s linear;">
+                  <circle cx="110" cy="55" r="34" fill="rgba(56,189,248,0.12)" stroke="#0284c7" stroke-width="2.5" stroke-dasharray="4,3" />
+                  <!-- Ponteiro Lunar com Pino de Hiparco -->
+                  <line x1="110" y1="110" x2="110" y2="28" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round" />
+                  <circle cx="110" cy="30" r="6" fill="#0284c7" />
+                </g>
+              </svg>
+              <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); margin-top: 0.5rem; text-align: center;">
+                Engrenagem Diferencial B1 (64 Dentes) &amp; Pino Hiparco
+              </div>
+            </div>
+
+            <!-- Mostradores do Calendário e Astronomia -->
+            <div class="antikythera-dials">
+              <div class="dial-card">
+                <div class="dial-card-title">
+                  <span>Calendário Solar &amp; Zodíaco</span>
+                  <span id="anti-sun-deg">0°</span>
+                </div>
+                <div class="dial-card-val" id="anti-sun-sign">Áries (Dia 0)</div>
+                <div class="dial-card-sub" id="anti-solar-day">Dia 0 de 365,25 dias egípcios</div>
+              </div>
+
+              <div class="dial-card" style="display: flex; gap: 1rem; align-items: center;">
+                <div class="moon-sphere-wrap">
+                  <div class="moon-sphere-light" id="anti-moon-light" style="left: 0; right: 50%;"></div>
+                </div>
+                <div>
+                  <div class="dial-card-title">Fase &amp; Mês Sinódico</div>
+                  <div class="dial-card-val" id="anti-moon-phase-txt">Lua Nova</div>
+                  <div class="dial-card-sub" id="anti-moon-age">Idade: 0,0 dias (Ciclo 29,53 d)</div>
+                </div>
+              </div>
+
+              <div class="dial-card">
+                <div class="dial-card-title">Ciclo Metônico (19 Anos)</div>
+                <div class="dial-card-val" id="anti-meton-txt">Mês 1 / 235</div>
+                <div class="dial-card-sub" id="anti-olympiad-txt">Jogos Olímpicos: Ano 1 do ciclo</div>
+              </div>
+
+              <div class="dial-card">
+                <div class="dial-card-title">Ciclo Saros de Eclipses</div>
+                <div class="dial-card-val" id="anti-saros-txt">Mês 1 / 223</div>
+                <div class="dial-card-sub" id="anti-eclipse-prob">Alinhamento nodal: Normal</div>
+              </div>
+
+              <div class="eclipse-alert-box" id="anti-eclipse-alert">
+                <span>ESTADO DO SISTEMA DE ECLIPSES:</span>
+                <span id="anti-eclipse-msg">Nenhum eclipse previsto para esta lunação.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controles de Manivela -->
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-top: 0.5rem;">
+            <div style="display: flex; gap: 0.35rem;">
+              <button class="btn-clean" onclick="stepAntikythera(1)">+1 Dia</button>
+              <button class="btn-clean" onclick="stepAntikythera(7)">+7 Dias</button>
+              <button class="btn-clean" onclick="stepAntikythera(30)">+30 Dias</button>
+              <button class="btn-clean" onclick="stepAntikythera(365)">+1 Ano (365 d)</button>
+              <button class="btn-clean secondary" onclick="stepAntikythera(-7)">-7 Dias</button>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.85rem;">
+              <span>Manivela:</span>
+              <input type="range" id="anti-day-slider" min="0" max="730" value="0" style="width: 140px;" oninput="onAntikytheraSlider(this.value)">
+              <span id="anti-total-days" style="min-width: 60px; font-weight: 700;">0 d</span>
+            </div>
           </div>
         </div>
 
@@ -1520,6 +2147,23 @@
           </div>
         </div>
 
+        
+        <!-- GALERIA COMPLEMENTAR: ANTECESSORES DOS CARTÕES PERFURADOS -->
+        <div class="gallery-grid" style="margin: 1.5rem 0;">
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/A_Jacquard_loom_showing_information_punchcards%2C_National_Museum_of_Scotland.jpg" alt="Tear Jacquard com Cartões Perfurados">
+            <div class="gallery-card-desc">Tear Jacquard (1804): primeiro sistema prático a usar cartões perfurados em cadeia para automatizar padrões complexos de tecelagem. Inspirou Charles Babbage na Máquina Analítica.</div>
+          </div>
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Hollerith.jpg" alt="Herman Hollerith">
+            <div class="gallery-card-desc">Herman Hollerith (1860-1929): inventor da máquina tabuladora de cartões perfurados para o Censo dos EUA de 1890 e fundador da Tabulating Machine Company (mais tarde IBM).</div>
+          </div>
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/HollerithMachine.CHM.jpg" alt="Máquina Tabuladora de Hollerith 1890">
+            <div class="gallery-card-desc">Máquina Tabuladora de Hollerith (1890): processou o Censo norte-americano em meses em vez de 8 anos, provando a viabilidade do processamento automatizado de dados em escala.</div>
+          </div>
+        </div>
+
         <div class="reason-box">
           <strong>Critérios: Turing-Complete: Não | Von Neumann: Não</strong>
           Dedicada exclusivamente ao cálculo de polinômios fixos montados na posição inicial das colunas mecânicas. Não era capaz de resolver problemas gerais nem executar desvios lógicos.
@@ -1656,6 +2300,22 @@
           </div>
         </div>
 
+        <!-- GALERIA COMPLEMENTAR: FUNDAÇÃO TEÓRICA DA COMPUTAÇÃO -->
+        <div class=gallery-grid style="margin: 1.5rem 0;">
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/David_Hilbert%2C_1907.jpg" alt="David Hilbert 1907">
+            <div class="gallery-card-desc">David Hilbert (1900/1928): formulou o Entscheidungsproblem (Problema da Decisão), desafio matemático que levou Turing à formulação da Máquina Universal.</div>
+          </div>
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Kurt_g%C3%B6del.jpg" alt="Kurt Gödel">
+            <div class="gallery-card-desc">Kurt Gödel (1931): Teorema da Incompletude que demoliu o sonho de Hilbert de um sistema formal completo e consistente, inspirando a resposta de Turing em 1936.</div>
+          </div>
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/C.E._Shannon._Tekniska_museet_43069_%282x3_crop%29.jpg" alt="Claude Shannon">
+            <div class="gallery-card-desc">Claude Shannon (1937): demonstrou na sua tese de mestrado no MIT que a Álgebra Booleana podia ser implementada diretamente com relés elétricos e chaves lógicas.</div>
+          </div>
+        </div>
+
         <!-- SIMULADOR 3: MÁQUINA DE TURING DE LABORATÓRIO (6 ALGORITMOS + VELOCIDADE SUAVE) -->
         <div class="interactive-app-card">
           <div class="app-header-clean">
@@ -1770,6 +2430,91 @@
             <div><span>Clock / Frequência</span><strong>5,3 Hz (ciclo de ~0,2 s)</strong></div>
             <div><span>Mídia de Instruções</span><strong>Fita de filme cinematográfico 35 mm</strong></div>
             <div><span>Memória de Dados</span><strong>64 palavras de 22 bits</strong></div>
+          </div>
+        </div>
+
+        
+        <!-- SIMULADOR: FITA DE 35MM E RELÉS DO ZUSE Z3 -->
+        <div class="interactive-app-card">
+          <div class="app-header-clean">
+            <span class="app-tag">Simulador Prático: Leitor de Filme 35 mm &amp; Relés do Zuse Z3 (1941)</span>
+            <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadZuseProgram(1)">Prog 1: Carga de Asa (3.5 × 2.0)</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadZuseProgram(2)">Prog 2: Raiz Quadrada de Área (√16)</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadZuseProgram(3)">Prog 3: Soma de Vibração (12.5 + 7.25)</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="resetZuseTape()">Rebobinar Fita</button>
+            </div>
+          </div>
+
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            A fita de película cinematográfica de 35 mm avança pelas agulhas sensoras mecânicas, comutando relés telefônicos em aritmética binária de ponto flutuante de 22 bits:
+          </p>
+
+          <div class="zuse-stage">
+            <!-- Fita 35mm em movimento -->
+            <div class="zuse-tape-frame">
+              <div class="zuse-tape-frame-needle"></div>
+              <div class="zuse-tape-strip" id="zuse-tape-strip">
+                <!-- Blocos de Fita Perfurada gerados dinamicamente via JS -->
+              </div>
+            </div>
+
+            <!-- Matriz de Relés Eletromecânicos -->
+            <div class="zuse-relays-grid">
+              <div class="zuse-relay-card">
+                <div class="zuse-relay-title">Relé 1: Decodificador Opcode</div>
+                <div class="zuse-relay-graphic">
+                  <div class="relay-coil"></div>
+                  <div class="relay-armature" id="zuse-arm-1"></div>
+                </div>
+                <div class="zuse-relay-state" id="zuse-state-1">ABERTO [0]</div>
+              </div>
+
+              <div class="zuse-relay-card">
+                <div class="zuse-relay-title">Relé 2: Mantissa ALU / Carry</div>
+                <div class="zuse-relay-graphic">
+                  <div class="relay-coil"></div>
+                  <div class="relay-armature" id="zuse-arm-2"></div>
+                </div>
+                <div class="zuse-relay-state" id="zuse-state-2">ABERTO [0]</div>
+              </div>
+
+              <div class="zuse-relay-card">
+                <div class="zuse-relay-title">Relé 3: Expoente Flutuante</div>
+                <div class="zuse-relay-graphic">
+                  <div class="relay-coil"></div>
+                  <div class="relay-armature" id="zuse-arm-3"></div>
+                </div>
+                <div class="zuse-relay-state" id="zuse-state-3">ABERTO [0]</div>
+              </div>
+
+              <div class="zuse-relay-card">
+                <div class="zuse-relay-title">Relé 4: Acumulador de Saída</div>
+                <div class="zuse-relay-graphic">
+                  <div class="relay-coil"></div>
+                  <div class="relay-armature" id="zuse-arm-4"></div>
+                </div>
+                <div class="zuse-relay-state" id="zuse-state-4">ABERTO [0]</div>
+              </div>
+            </div>
+
+            <!-- Registradores de Ponto Flutuante de 22 bits -->
+            <div class="zuse-regs-row">
+              <div><span>REG R1: </span><strong id="zuse-reg-r1" style="color: #38bdf8;">+0.0</strong></div>
+              <div><span>REG R2: </span><strong id="zuse-reg-r2" style="color: #38bdf8;">+0.0</strong></div>
+              <div><span>ACUMULADOR ALU: </span><strong id="zuse-reg-acc" style="color: #4ade80;">0.0</strong></div>
+              <div><span>INSTRUÇÃO ATUAL: </span><strong id="zuse-inst-desc" style="color: #facc15;">INÍCIO DA FITA</strong></div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-top: 0.5rem;">
+            <div style="display: flex; gap: 0.35rem;">
+              <button class="btn-clean" onclick="stepZuseTape()">Passo a Passo (Avançar 1 Furo)</button>
+              <button class="btn-clean secondary" id="zuse-run-btn" onclick="toggleZuseRun()">Executar Fita Completa</button>
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">
+              Frequência Histórica: 5,3 Hz (~190 ms por comutação)
+            </div>
           </div>
         </div>
 
@@ -1902,6 +2647,23 @@
           </div>
         </div>
 
+        
+        <!-- GALERIA COMPLEMENTAR: HARVARD MARK I E GRACE HOPPER -->
+        <div class="gallery-grid" style="margin: 1.5rem 0;">
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Harvard_Mark_I_Computer_-_Right_Segment.JPG" alt="Harvard Mark I Segmento Direito">
+            <div class="gallery-card-desc">Harvard Mark I (IBM ASCC, 1944): eixo giratório sincronizado de 15 metros de comprimento acionando contadores e relés sob comando de fita perfurada de papel.</div>
+          </div>
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Harvard_Mark_I_Computer_-_Input-Output_Details.jpg" alt="Harvard Mark I Leitor de Fita e I/O">
+            <div class="gallery-card-desc">Detalhe do painel de leitura e perfuração de fita do Harvard Mark I: cada instrução de 24 furos controlava a transferência física de dados entre acumuladores mecânicos.</div>
+          </div>
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg" alt="Comodoro Grace Hopper">
+            <div class="gallery-card-desc">Comodoro Grace Brewster Murray Hopper (1906-1992): programou o Mark I, cunhou o termo "debugging" moderno e foi pioneira no primeiro compilador da história (A-0) e na linguagem COBOL.</div>
+          </div>
+        </div>
+
         <div class="reason-box">
           <strong>Critérios: Turing-Complete: Não / Parcial | Von Neumann: Não</strong>
           O Mark I lia comandos sequenciais em fita de papel contínua sem desvios condicionais dinâmicos flexíveis. As instruções ficavam fora do armazenamento interno de dados.
@@ -1967,6 +2729,81 @@
             <div><span>Válvulas a Vácuo</span><strong>2.400 Válvulas Eletrônicas</strong></div>
             <div><span>Velocidade de Leitura</span><strong>5.000 caracteres/segundo (óptica)</strong></div>
             <div><span>Finalidade Central</span><strong>Criptoanálise estatística da Lorenz</strong></div>
+          </div>
+        </div>
+
+        
+        <!-- GALERIA COMPLEMENTAR: A CIFRA LORENZ SZ42 E BLETCHLEY PARK -->
+        <div class="gallery-grid" style="margin: 1.5rem 0;">
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Lorenz-SZ42-2.jpg" alt="Máquina Criptográfica Lorenz SZ42">
+            <div class="gallery-card-desc">Máquina de Cifra de Teletipo Lorenz SZ42: 12 rodas de pinos com períodos primos entre si, gerando uma sequência pseudoaleatória para cifrar as comunicações de Hitler e seu Estado-Maior.</div>
+          </div>
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/British_Tunny_Rebuild.jpg" alt="British Tunny Rebuild">
+            <div class="gallery-card-desc">Emulador Britânico Tunny (Bletchley Park): equipamento eletromecânico que reproduzia fielmente o comportamento dos 12 rotores Lorenz uma vez que o Colossus descobria suas posições iniciais.</div>
+          </div>
+        </div>
+
+        <!-- SIMULADOR: VARREDURA ÓPTICA COLOSSUS MK II & CRIPTOANÁLISE LORENZ -->
+        <div class="interactive-app-card">
+          <div class="app-header-clean">
+            <span class="app-tag">Simulador Prático: Leitor Óptico Colossus Mk II &amp; Criptoanálise Lorenz SZ42 (1944)</span>
+            <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadColossusIntercept(1)">Intercepto 1: Normandia (Heeresgruppe B)</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadColossusIntercept(2)">Intercepto 2: Berlim (OKW Wettervorhersage)</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="resetColossusScanner()">Resetar Scanner</button>
+            </div>
+          </div>
+
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Varredura óptica de fita telegráfica Baudot a 5.000 caracteres/segundo. Válvulas tiratron calculam a correlação estatística booleana (método Turing-Welchman) para encontrar as posições dos pinos Lorenz:
+          </p>
+
+          <div class="colossus-stage">
+            <div class="colossus-top-status">
+              <div><span>FITA TELEGRÁFICA: </span><strong id="colossus-tape-speed">PARADA</strong></div>
+              <div><span>VELOCIDADE DO LEITOR: </span><strong style="color: #10b981;">5.000 CARACTERES / SEG</strong></div>
+              <div><span>STATUS DA CRIPTOANÁLISE: </span><strong id="colossus-job-status" style="color: #facc15;">AGUARDANDO VARREDURA</strong></div>
+            </div>
+
+            <!-- Válvulas Tiratron de Pulso -->
+            <div class="colossus-tube-rack" id="colossus-tube-rack">
+              <!-- Válvulas térmicas iluminadas geradas dinamicamente -->
+            </div>
+
+            <div class="colossus-grid-view">
+              <!-- Painel do Texto Cifrado Interceptado -->
+              <div class="colossus-screen-panel">
+                <div class="colossus-panel-title">Fita de Entrada (Intercepto Cifrado Baudot)</div>
+                <div class="colossus-text-stream" id="colossus-raw-stream" style="color: #ef4444;">--</div>
+                <div class="lorenz-wheel-display">
+                  <div class="lorenz-wheel-badge" id="wheel-chi1">Rotor χ₁: 01</div>
+                  <div class="lorenz-wheel-badge" id="wheel-chi2">Rotor χ₂: 07</div>
+                  <div class="lorenz-wheel-badge" id="wheel-psi1">Rotor ψ₁: 14</div>
+                  <div class="lorenz-wheel-badge" id="wheel-psi2">Rotor ψ₂: 23</div>
+                </div>
+              </div>
+
+              <!-- Painel de Decifração em Tempo Real -->
+              <div class="colossus-screen-panel">
+                <div class="colossus-panel-title">Saída Decifrada em Tempo Real (Texto Claro Alemão)</div>
+                <div class="colossus-text-stream" id="colossus-plain-stream" style="color: #22c55e;">Aguardando acionamento da varredura...</div>
+                <div style="margin-top: 0.5rem; font-size: 0.75rem; color: #9ca3af;">
+                  Pontuação de Coincidência Nodal: <strong id="colossus-score" style="color: #facc15;">0</strong> / <span id="colossus-threshold">35</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-top: 0.5rem;">
+            <div style="display: flex; gap: 0.35rem;">
+              <button class="btn-clean" id="colossus-run-btn" onclick="startColossusScan()">Iniciar Varredura 5.000 cps (Bletchley Park)</button>
+              <button class="btn-clean secondary" onclick="stepColossusChar()">Avançar 1 Caractere (Modo Lento)</button>
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">
+              Células Fotoelétricas &amp; 2.400 Válvulas Termiônicas
+            </div>
           </div>
         </div>
 
@@ -2085,6 +2922,12 @@
           </div>
         </div>
 
+        
+        <div class="media-frame" style="margin-top: 1.5rem;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Classic_shot_of_the_ENIAC.jpg" alt="ENIAC Operado pelas Programadoras Pioneiras">
+          <div class="media-caption">ENIAC em operação (Filadélfia, 1946): Betty Jean Jennings e Fran Bilas reconfigurando os cabos dos acumuladores para calcular trajetórias balísticas em frações de segundo.</div>
+        </div>
+
         <div class="reason-box">
           <strong>Critérios: Turing-Complete: Sim | Von Neumann: Não</strong>
           O ENIAC era um computador eletrônico de uso geral e plenamente Turing-completo. Contudo, não adotava a arquitetura de Von Neumann porque suas instruções dependiam do cabeamento manual de fios externos em painéis de patch telefônicos, em vez de serem gravadas eletronicamente na mesma memória que os dados.
@@ -2143,6 +2986,19 @@
             <div><span>Controle de Execução</span><strong>Contador de Programa Sequencial (PC)</strong></div>
             <div><span>Formato Lógico</span><strong>Aritmética Binária Pura</strong></div>
             <div><span>Impacto Tecnológico</span><strong>Padrão de 99% dos computadores atuais</strong></div>
+          </div>
+        </div>
+
+        
+        <!-- GALERIA COMPLEMENTAR: JOHN VON NEUMANN E O PRIMEIRO FLUXOGRAMA -->
+        <div class="gallery-grid" style="margin: 1.5rem 0;">
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/JohnvonNeumann-LosAlamos.gif" alt="John von Neumann em Los Alamos">
+            <div class="gallery-card-desc">John von Neumann (Los Alamos, anos 1940): matemático pioneiro na mecânica quântica, teoria dos jogos e na síntese conceitual do computador com programa armazenado unificado.</div>
+          </div>
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Flow_chart_of_Planning_and_coding_of_problems_for_an_electronic_computing_instrument%2C_1947.jpg" alt="Primeiro Fluxograma de Computação Eletrônica 1947">
+            <div class="gallery-card-desc">Primeiro Fluxograma da História da Programação (Von Neumann e Goldstine, 1947): documento seminal estabelecendo blocos de decisão, laços e bifurcações para computadores eletrônicos.</div>
           </div>
         </div>
 
@@ -2312,6 +3168,19 @@
           </div>
         </div>
 
+        
+        <!-- GALERIA COMPLEMENTAR: MEMÓRIA DE MERCÚRIO E HARDWARE DO EDSAC -->
+        <div class="gallery-grid" style="margin: 1.5rem 0;">
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Mercury_memory.jpg" alt="Linha de Retardo de Mercúrio">
+            <div class="gallery-card-desc">Linhas de Retardo Acústico de Mercúrio: pulsos ultrassônicos viajavam através de tubos de mercúrio líquido para armazenar bits dinamicamente em circulação contínua antes das memórias de ferrite.</div>
+          </div>
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/EDSAC_%2812%29.jpg" alt="Racks de Válvulas do EDSAC">
+            <div class="gallery-card-desc">Racks modulares do EDSAC na Universidade de Cambridge: cerca de 3.000 válvulas operando como o primeiro cavalo de batalha da pesquisa acadêmica regular.</div>
+          </div>
+        </div>
+
         <div class="reason-box">
           <strong>Critérios: Turing-Complete: Sim | Von Neumann: Sim</strong>
           O EDSAC transformou o computador de programa armazenado em uma ferramenta científica indispensável e acessível aos pesquisadores.
@@ -2370,6 +3239,19 @@
             <div><span>Fabricante</span><strong>Remington Rand (EUA)</strong></div>
             <div><span>Mídia de Entrada</span><strong>Cartões perfurados de 90 colunas</strong></div>
             <div><span>Primeiro Mainframe Acadêmico</span><strong>Burroughs B-205 (PUC-Rio, 1960)</strong></div>
+          </div>
+        </div>
+
+        
+        <!-- GALERIA COMPLEMENTAR: O ECOSSISTEMA UNIVAC -->
+        <div class="gallery-grid" style="margin: 1.5rem 0;">
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/UNIVAC-I-BRL61-0977.jpg" alt="Console Completo do UNIVAC I">
+            <div class="gallery-card-desc">Console de Operação do UNIVAC I com unidades de fita magnética UNISERVO: máquina pioneira da computação comercial que abriu caminho para a importação de computadores pelo Brasil.</div>
+          </div>
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Grace_Hopper_and_UNIVAC.jpg" alt="Grace Hopper e o UNIVAC">
+            <div class="gallery-card-desc">Grace Hopper junto ao console do UNIVAC I: desenvolvendo o primeiro compilador da história e defendendo que computadores deveriam ser programados em linguagem próxima ao inglês.</div>
           </div>
         </div>
 
@@ -2484,6 +3366,12 @@
           </div>
         </div>
 
+        
+        <div class="media-frame" style="margin-top: 1.5rem;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Antonio_H%C3%A9lio_Guerra_Vieira_e_o_Computador_Patinho_Feio.jpg" alt="Prof. Guerra Vieira e o Patinho Feio Panorama">
+          <div class="media-caption">Registro Histórico Completo: Prof. Antonio Hélio Guerra Vieira operando o console do Patinho Feio no Departamento de Engenharia Elétrica da Poli-USP (1972).</div>
+        </div>
+
         <div class="reason-box">
           <strong>Critérios: Turing-Complete: Sim | Von Neumann: Sim (100% Brasileiro)</strong>
           O Patinho Feio provou que engenheiros brasileiros tinham pleno domínio de arquitetura de processadores, montadores e memórias de programa armazenado.
@@ -2549,6 +3437,75 @@
             <div><span>Sistema Operacional</span><strong>SOX (Unix-compatible nacional)</strong></div>
             <div><span>Lei Federal de Reserva</span><strong>Lei nº 7.232 de Outubro de 1984</strong></div>
             <div><span>Pioneirismo Global</span><strong>Automação Bancária e Urna Eletrônica</strong></div>
+          </div>
+        </div>
+
+        
+        <!-- GALERIA COMPLETA DE MICROCOMPUTADORES BRASILEIROS DA RESERVA DE MERCADO -->
+        <div class="gallery-grid" style="margin: 1.5rem 0;">
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/TK90X.jpg" alt="Microdigital TK90X">
+            <div class="gallery-card-desc">Microdigital TK90X (1985): o microcomputador doméstico de 8 bits mais popular do Brasil, compatível com o Sinclair ZX Spectrum, com teclado chiclete e saída para TV.</div>
+          </div>
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Microdigital_TK85_A.jpg" alt="Microdigital TK85">
+            <div class="gallery-card-desc">Microdigital TK85 (1983): clone do ZX81 com gabinete ergonômico nacional, processador Z80A e porta de cassete para carregar programas e jogos em fita k7.</div>
+          </div>
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Prol%C3%B3gica_CP400.jpg" alt="Prológica CP 400 Color">
+            <div class="gallery-card-desc">Prológica CP 400 Color (1984): clone brasileiro do TRS-80 Color Computer, muito utilizado em escolas e residências para aprendizado de programação BASIC com gráficos coloridos.</div>
+          </div>
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Prol%C3%B3gica_CP_200S.png" alt="Prológica CP 200S">
+            <div class="gallery-card-desc">Prológica CP 200S (1982): microcomputador educacional compacto com teclado de toque de membrana e interpretador BASIC residente em memória ROM.</div>
+          </div>
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Gradiente_Expert_Brazil.jpg" alt="Gradiente MSX Expert">
+            <div class="gallery-card-desc">Gradiente MSX Expert (1985): computador pessoal da linha padrão MSX fabricado no Brasil, com excelente subsistema de som, gráficos avançados e cartuchos de expansão.</div>
+          </div>
+          <div class="gallery-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Scopus_e_Itautec_sistema_operacional_SISNE_Plus_V3.30_R05_720x400.png" alt="Scopus SISNE Plus MS-DOS Brasileiro">
+            <div class="gallery-card-desc">Scopus e Itautec SISNE Plus: sistema operacional nacional 100% compatível com MS-DOS, desenvolvido no Brasil durante a vigência da Reserva de Mercado.</div>
+          </div>
+        </div>
+
+        <!-- SIMULADOR: TERMINAL RETRÔ BRASILEIRO (PROLÓGICA CP-500 / TK90X BASIC) -->
+        <div class="interactive-app-card">
+          <div class="app-header-clean">
+            <span class="app-tag">Simulador Prático: Terminal Retrô Brasileiro - Console BASIC Prológica CP-500 / TK90X (1982)</span>
+            <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(1)">Prog 1: Loop Brasil 1982</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(2)">Prog 2: Inflação &amp; Cruzeiros</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(3)">Prog 3: Gráfico Barras ASCII</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(4)">Prog 4: Fatorial em BASIC</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="toggleCrtPhosphor()">Alternar Fósforo (Verde / Âmbar)</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="clearCrtTerminal()">CLS (Limpar)</button>
+            </div>
+          </div>
+
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Experimente o ambiente autêntico de programação dos anos 80: monitor de tubo CRT com fósforo persistente e interpretador BASIC executando comandos de 8 bits:
+          </p>
+
+          <div class="retro-crt-container">
+            <div class="crt-monitor-bezel">
+              <div class="crt-screen-glass green-ph" id="crt-screen">
+                <div class="crt-scanlines"></div>
+                <div class="crt-terminal-content" id="crt-output">** PROLOGICA CP-500 DOS-500 V2.1 **
+DISCO 0 ONLINE - 48K BYTES RAM DISPONIVEIS
+MICROPROCESSADOR Z80A A 2.0 MHZ
+READY
+> _</div>
+              </div>
+            </div>
+
+            <!-- Barra de Execução Interativa -->
+            <div class="crt-controls-bar">
+              <div class="crt-input-row">
+                <input type="text" id="crt-cmd-input" class="crt-input-box" placeholder="Digite um comando BASIC (ex: PRINT 25 * 4 ou 10 PRINT &quot;OLA&quot; ou RUN ou LIST)" onkeydown="if(event.key==='Enter') runCrtCommand()">
+                <button class="btn-clean" onclick="runCrtCommand()">Executar (RUN)</button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -2729,46 +3686,662 @@
   <script>
     
 
-    // 2. SIMULADOR 1: SOROBAN 5 COLUNAS
-    let sorobanValue = 0;
+    
+    // =========================================================================
+    // 2. SIMULADOR 1: SOROBAN BI-QUINÁRIO COM FÍSICA REALISTA
+    // =========================================================================
+    const sorobanColState = [
+      { upper: 0, lower: 0 }, // 0: unidades
+      { upper: 0, lower: 0 }, // 1: dezenas
+      { upper: 0, lower: 0 }, // 2: centenas
+      { upper: 0, lower: 0 }, // 3: milhares
+      { upper: 0, lower: 0 }  // 4: dezenas de milhar
+    ];
 
-    function toggleSorobanBead(el, val) {
-      if (el.classList.contains('active')) {
-        el.classList.remove('active');
-        sorobanValue -= val;
-      } else {
-        el.classList.add('active');
-        sorobanValue += val;
+    function updateSorobanBoardUI() {
+      let grandTotal = 0;
+      for (let c = 0; c < 5; c++) {
+        const st = sorobanColState[c];
+        const digit = (st.upper * 5) + st.lower;
+        grandTotal += digit * Math.pow(10, c);
+
+        const rodEl = document.querySelector(`#soroban-app-board .soroban-clean-rod[data-col="${c}"]`);
+        if (!rodEl) continue;
+
+        // Conta superior (valor 5)
+        const upperEl = rodEl.querySelector('.deck-top .upper');
+        if (upperEl) {
+          if (st.upper === 1) upperEl.classList.add('active');
+          else upperEl.classList.remove('active');
+        }
+
+        // 4 Contas inferiores (valor 1 cada)
+        const lowerEls = rodEl.querySelectorAll('.deck-bottom .lower');
+        lowerEls.forEach((el, idx) => {
+          if (idx < st.lower) el.classList.add('active');
+          else el.classList.remove('active');
+        });
+
+        // Dígito numérico da haste
+        const badge = document.getElementById(`soroban-digit-${c}`);
+        if (badge) badge.textContent = digit;
       }
-      document.getElementById('soroban-total-readout').textContent = sorobanValue.toLocaleString('pt-BR');
+
+      const totalEl = document.getElementById('soroban-total-readout');
+      if (totalEl) totalEl.textContent = grandTotal.toLocaleString('pt-BR');
+    }
+
+    function sorobanClickUpper(col) {
+      sorobanColState[col].upper = sorobanColState[col].upper === 1 ? 0 : 1;
+      updateSorobanBoardUI();
+    }
+
+    function sorobanClickLower(col, beadIdx) {
+      const currentLower = sorobanColState[col].lower;
+      if (beadIdx < currentLower) {
+        sorobanColState[col].lower = beadIdx;
+      } else {
+        sorobanColState[col].lower = beadIdx + 1;
+      }
+      updateSorobanBoardUI();
     }
 
     function clearSorobanBoard() {
-      document.querySelectorAll('#soroban-app-board .soroban-bead-clean').forEach(b => b.classList.remove('active'));
-      sorobanValue = 0;
-      document.getElementById('soroban-total-readout').textContent = '0';
+      for (let c = 0; c < 5; c++) {
+        sorobanColState[c].upper = 0;
+        sorobanColState[c].lower = 0;
+      }
+      updateSorobanBoardUI();
     }
 
-    function presetSorobanYear(year) {
-      clearSorobanBoard();
-      const str = String(year).padStart(5, '0');
-      for (let colIdx = 0; colIdx < 5; colIdx++) {
-        const digit = parseInt(str[4 - colIdx]);
-        const rod = document.querySelector(`#soroban-app-board .soroban-clean-rod[data-col="${colIdx}"]`);
-        if (!rod) continue;
+    function presetSorobanYear(val) {
+      const v = Math.min(99999, Math.max(0, parseInt(val) || 0));
+      const s = String(v).padStart(5, '0');
+      for (let c = 0; c < 5; c++) {
+        const d = parseInt(s[4 - c]);
+        sorobanColState[c].upper = d >= 5 ? 1 : 0;
+        sorobanColState[c].lower = d % 5;
+      }
+      updateSorobanBoardUI();
+    }
 
-        if (digit >= 5) {
-          rod.querySelector('.deck-top .upper').classList.add('active');
+    // =========================================================================
+    // SIMULADOR: MECANISMO DE ANTICÍTERA (~150 a.C.)
+    // =========================================================================
+    let antiCurrentDay = 0;
+    let antiAnimTimer = null;
+
+    const zodiacSigns = [
+      { name: 'Áries', start: 0 },
+      { name: 'Touro', start: 30 },
+      { name: 'Gêmeos', start: 60 },
+      { name: 'Câncer', start: 90 },
+      { name: 'Leão', start: 120 },
+      { name: 'Virgem', start: 150 },
+      { name: 'Libra', start: 180 },
+      { name: 'Escorpião', start: 210 },
+      { name: 'Sagitário', start: 240 },
+      { name: 'Capricórnio', start: 270 },
+      { name: 'Aquário', start: 300 },
+      { name: 'Peixes', start: 330 }
+    ];
+
+    function renderAntikythera() {
+      const day = antiCurrentDay;
+      // 1. Sol: 360 graus por ano egípcio (365,25 dias)
+      const sunAngle = (day / 365.25) * 360;
+      const sunDegInYear = (sunAngle % 360 + 360) % 360;
+      const signIdx = Math.floor(sunDegInYear / 30);
+      const sign = zodiacSigns[signIdx] || zodiacSigns[0];
+
+      // 2. Lua: órbita sideral de ~27,32 dias e sinódica de 29,53 dias
+      const moonAngle = (day / 27.321661) * 360;
+      const synodicDay = (day % 29.53059 + 29.53059) % 29.53059;
+      const moonIllumRatio = 0.5 * (1 - Math.cos((synodicDay / 29.53059) * 2 * Math.PI));
+
+      // 3. Ciclo Metônico: 19 anos solares = 235 meses lunares
+      const metonicMonth = Math.floor((day / (19 * 365.25)) * 235) % 235 + 1;
+      const olympiadYear = (Math.floor(day / 365.25) % 4) + 1;
+
+      // 4. Ciclo de Saros: 223 meses de eclipses
+      const sarosMonth = Math.floor((day / (18.03 * 365.25)) * 223) % 223 + 1;
+
+      // Animação das engrenagens SVG
+      const sunGear = document.getElementById('anti-gear-sun');
+      if (sunGear) sunGear.style.transform = `rotate(${sunAngle}deg)`;
+
+      const moonGear = document.getElementById('anti-gear-moon');
+      if (moonGear) moonGear.style.transform = `rotate(${moonAngle}deg)`;
+
+      // Atualização dos Mostradores
+      const degEl = document.getElementById('anti-sun-deg');
+      if (degEl) degEl.textContent = `${Math.round(sunDegInYear)}°`;
+
+      const signEl = document.getElementById('anti-sun-sign');
+      if (signEl) signEl.textContent = `${sign.name} (${Math.round(sunDegInYear % 30)}°)`;
+
+      const dayEl = document.getElementById('anti-solar-day');
+      if (dayEl) dayEl.textContent = `Dia ${Math.round(day % 365.25)} do ano solar`;
+
+      // Esfera Lunar
+      const phaseTxt = document.getElementById('anti-moon-phase-txt');
+      let phaseName = 'Lua Nova';
+      if (synodicDay > 1.5 && synodicDay < 6.5) phaseName = 'Lua Crescente';
+      else if (synodicDay >= 6.5 && synodicDay <= 8.5) phaseName = 'Quarto Crescente';
+      else if (synodicDay > 8.5 && synodicDay < 13.5) phaseName = 'Gibosa Crescente';
+      else if (synodicDay >= 13.5 && synodicDay <= 16.5) phaseName = 'Lua Cheia';
+      else if (synodicDay > 16.5 && synodicDay < 21.5) phaseName = 'Gibosa Minguante';
+      else if (synodicDay >= 21.5 && synodicDay <= 23.5) phaseName = 'Quarto Minguante';
+      else if (synodicDay > 23.5 && synodicDay < 28.5) phaseName = 'Lua Minguante';
+      if (phaseTxt) phaseTxt.textContent = phaseName;
+
+      const ageEl = document.getElementById('anti-moon-age');
+      if (ageEl) ageEl.textContent = `Idade: ${synodicDay.toFixed(1)} d (${Math.round(moonIllumRatio * 100)}% ilum)`;
+
+      const moonLight = document.getElementById('anti-moon-light');
+      if (moonLight) {
+        const leftPercent = Math.max(0, Math.min(100, Math.round(moonIllumRatio * 100)));
+        moonLight.style.right = `${100 - leftPercent}%`;
+      }
+
+      // Meton & Olimpíadas
+      const metonEl = document.getElementById('anti-meton-txt');
+      if (metonEl) metonEl.textContent = `Mês ${metonicMonth} de 235`;
+
+      const olymEl = document.getElementById('anti-olympiad-txt');
+      if (olymEl) olymEl.textContent = `Jogos Pan-Helênicos: Ano ${olympiadYear} do ciclo de 4 anos`;
+
+      // Saros
+      const sarosEl = document.getElementById('anti-saros-txt');
+      if (sarosEl) sarosEl.textContent = `Mês de Saros ${sarosMonth} de 223`;
+
+      // Detecção de Alinhamento de Eclipses (Nós Lunares a cada ~173 dias)
+      const nodalPeriod = 173.31; // Meio ano de eclipse
+      const distFromNode = Math.abs((day % nodalPeriod) - (nodalPeriod / 2));
+      const alertBox = document.getElementById('anti-eclipse-alert');
+      const alertMsg = document.getElementById('anti-eclipse-msg');
+      const probEl = document.getElementById('anti-eclipse-prob');
+
+      if (distFromNode < 7 && Math.abs(synodicDay - 14.8) < 2) {
+        // Lua Cheia no nó -> Eclipse Lunar!
+        if (alertBox) alertBox.className = 'eclipse-alert-box active';
+        if (alertMsg) alertMsg.textContent = 'ALERTA HISTÓRICO: GLIFO ETA ATIVO - ECLIPSE LUNAR PREVISTO!';
+        if (probEl) probEl.textContent = 'Alinhamento Nodal Exato: Sombra da Terra';
+      } else if (distFromNode < 7 && (synodicDay < 2 || synodicDay > 27.5)) {
+        // Lua Nova no nó -> Eclipse Solar!
+        if (alertBox) alertBox.className = 'eclipse-alert-box active';
+        if (alertMsg) alertMsg.textContent = 'ALERTA HISTÓRICO: GLIFO SIGMA ATIVO - ECLIPSE SOLAR PREVISTO!';
+        if (probEl) probEl.textContent = 'Alinhamento Nodal Exato: Ocultação do Sol';
+      } else {
+        if (alertBox) alertBox.className = 'eclipse-alert-box';
+        if (alertMsg) alertMsg.textContent = 'Nenhum eclipse previsto para este intervalo lunar.';
+        if (probEl) probEl.textContent = 'Alinhamento nodal: Normal';
+      }
+
+      const totalDaysEl = document.getElementById('anti-total-days');
+      if (totalDaysEl) totalDaysEl.textContent = `${day} d`;
+
+      const slider = document.getElementById('anti-day-slider');
+      if (slider && parseInt(slider.value) !== day) slider.value = day;
+    }
+
+    function stepAntikythera(days) {
+      antiCurrentDay = Math.max(0, antiCurrentDay + days);
+      renderAntikythera();
+    }
+
+    function onAntikytheraSlider(val) {
+      antiCurrentDay = parseInt(val) || 0;
+      renderAntikythera();
+    }
+
+    function setAntikytheraPreset(day) {
+      antiCurrentDay = day;
+      renderAntikythera();
+    }
+
+    function toggleAntikytheraAnim() {
+      const btn = document.getElementById('anti-anim-btn');
+      if (antiAnimTimer) {
+        clearInterval(antiAnimTimer);
+        antiAnimTimer = null;
+        if (btn) btn.textContent = 'Animar Rotação';
+      } else {
+        if (btn) btn.textContent = 'Pausar';
+        antiAnimTimer = setInterval(() => {
+          antiCurrentDay = (antiCurrentDay + 2) % 731;
+          renderAntikythera();
+        }, 100);
+      }
+    }
+
+    // =========================================================================
+    // SIMULADOR: FITA DE 35MM E RELÉS DO ZUSE Z3 (1941)
+    // =========================================================================
+    let zuseCurrentStep = 0;
+    let zuseRunTimer = null;
+
+    const zusePrograms = {
+      1: {
+        name: 'Cálculo de Carga de Asa (3.5 × 2.0 = 7.0)',
+        steps: [
+          { op: 'Li', arg: '3.5', holes: [1,0,0,1, 0,1,1,0], r1: 3.5, r2: 0, acc: 3.5, desc: 'Li R1, 3.5 (Ler entrada do sensor para o Registrador 1)', relays: [1,0,0,1] },
+          { op: 'Li', arg: '2.0', holes: [1,0,0,1, 0,0,1,0], r1: 3.5, r2: 2.0, acc: 2.0, desc: 'Li R2, 2.0 (Ler multiplicador para o Registrador 2)', relays: [1,0,0,1] },
+          { op: '*',  arg: 'R1,R2', holes: [0,1,1,0, 1,1,0,0], r1: 3.5, r2: 2.0, acc: 7.0, desc: 'Mul R1, R2 (Comutação em cascata da mantissa)', relays: [1,1,1,1] },
+          { op: 'Pr', arg: '7.0', holes: [1,1,1,1, 0,0,0,0], r1: 3.5, r2: 2.0, acc: 7.0, desc: 'Pr ACC (Exibir resultado: Carga de Asa = 7.0 kgf/m²)', relays: [0,0,0,1] }
+        ]
+      },
+      2: {
+        name: 'Raiz Quadrada de Área (√16 = 4.0)',
+        steps: [
+          { op: 'Li', arg: '16.0', holes: [1,0,0,1, 1,0,0,0], r1: 16.0, r2: 0, acc: 16.0, desc: 'Li R1, 16.0 (Carregar área da asa no Registrador 1)', relays: [1,0,1,0] },
+          { op: 'Qm', arg: 'R1',   holes: [0,0,1,1, 1,0,1,0], r1: 16.0, r2: 0, acc: 4.0, desc: 'Qm R1 (Hardware de Raiz Quadrada por subtrações ímpares)', relays: [1,1,0,1] },
+          { op: 'Pr', arg: '4.0',  holes: [1,1,1,1, 0,0,0,0], r1: 16.0, r2: 0, acc: 4.0, desc: 'Pr ACC (Resultado calculado: Raiz = 4.0)', relays: [0,0,0,1] }
+        ]
+      },
+      3: {
+        name: 'Soma de Vetores de Vibração (12.5 + 7.25 = 19.75)',
+        steps: [
+          { op: 'Li', arg: '12.5', holes: [1,0,0,1, 0,1,0,1], r1: 12.5, r2: 0, acc: 12.5, desc: 'Li R1, 12.5 (Carregar componente de flutter 1)', relays: [1,0,0,1] },
+          { op: 'Li', arg: '7.25', holes: [1,0,0,1, 0,0,1,1], r1: 12.5, r2: 7.25, acc: 7.25, desc: 'Li R2, 7.25 (Carregar componente de flutter 2)', relays: [1,0,0,1] },
+          { op: '+',  arg: 'R1,R2', holes: [0,1,0,0, 1,0,0,1], r1: 12.5, r2: 7.25, acc: 19.75, desc: 'Add R1, R2 (Alinhar expoentes e somar mantissas)', relays: [1,1,1,1] },
+          { op: 'Pr', arg: '19.75', holes: [1,1,1,1, 0,0,0,0], r1: 12.5, r2: 7.25, acc: 19.75, desc: 'Pr ACC (Vibração combinada = 19.75 Hz)', relays: [0,0,0,1] }
+        ]
+      }
+    };
+
+    let zuseActiveProg = zusePrograms[1];
+
+    function renderZuseTape() {
+      const container = document.getElementById('zuse-tape-strip');
+      if (!container) return;
+      container.innerHTML = '';
+
+      zuseActiveProg.steps.forEach((step, idx) => {
+        const block = document.createElement('div');
+        block.className = 'zuse-tape-block' + (idx === zuseCurrentStep ? ' current' : '');
+
+        let holesHtml = '';
+        step.holes.forEach(h => {
+          holesHtml += `<div class="zuse-hole ${h ? 'punched' : ''}"></div>`;
+        });
+
+        block.innerHTML = `
+          <div class="zuse-tape-sprockets"><div class="zuse-sprocket"></div><div class="zuse-sprocket"></div></div>
+          <div style="font-weight: 700; text-align: center; color: #ffffff;">${step.op}</div>
+          <div class="zuse-tape-holes">${holesHtml}</div>
+          <div style="font-size: 0.65rem; text-align: center;">${step.arg}</div>
+          <div class="zuse-tape-sprockets"><div class="zuse-sprocket"></div><div class="zuse-sprocket"></div></div>
+        `;
+        container.appendChild(block);
+      });
+
+      // Rola fita para alinhar o passo atual no centro
+      const offset = (zuseCurrentStep * 82);
+      container.style.transform = `translateX(calc(50% - 35px - ${offset}px))`;
+
+      // Atualiza relés e registradores
+      const step = zuseActiveProg.steps[zuseCurrentStep] || zuseActiveProg.steps[0];
+      for (let r = 1; r <= 4; r++) {
+        const arm = document.getElementById(`zuse-arm-${r}`);
+        const st = document.getElementById(`zuse-state-${r}`);
+        const isActive = step.relays[r - 1] === 1;
+        if (arm) {
+          if (isActive) arm.classList.add('closed');
+          else arm.classList.remove('closed');
         }
-        const lowerCount = digit % 5;
-        const lowerBeads = rod.querySelectorAll('.deck-bottom .lower');
-        for (let b = 0; b < lowerCount; b++) {
-          lowerBeads[b].classList.add('active');
+        if (st) {
+          st.textContent = isActive ? 'FECHADO [1]' : 'ABERTO [0]';
+          if (isActive) st.classList.add('active');
+          else st.classList.remove('active');
         }
       }
-      sorobanValue = year;
-      document.getElementById('soroban-total-readout').textContent = year.toLocaleString('pt-BR');
+
+      const r1El = document.getElementById('zuse-reg-r1');
+      if (r1El) r1El.textContent = `+${step.r1.toFixed(2)}`;
+
+      const r2El = document.getElementById('zuse-reg-r2');
+      if (r2El) r2El.textContent = `+${step.r2.toFixed(2)}`;
+
+      const accEl = document.getElementById('zuse-reg-acc');
+      if (accEl) accEl.textContent = step.acc.toFixed(2);
+
+      const descEl = document.getElementById('zuse-inst-desc');
+      if (descEl) descEl.textContent = step.desc;
     }
+
+    function stepZuseTape() {
+      if (zuseCurrentStep < zuseActiveProg.steps.length - 1) {
+        zuseCurrentStep++;
+      } else {
+        zuseCurrentStep = 0; // Loop na fita cinematográfica (conceito de Rojas)
+      }
+      renderZuseTape();
+    }
+
+    function resetZuseTape() {
+      zuseCurrentStep = 0;
+      if (zuseRunTimer) {
+        clearInterval(zuseRunTimer);
+        zuseRunTimer = null;
+        const btn = document.getElementById('zuse-run-btn');
+        if (btn) btn.textContent = 'Executar Fita Completa';
+      }
+      renderZuseTape();
+    }
+
+    function loadZuseProgram(pNum) {
+      zuseActiveProg = zusePrograms[pNum] || zusePrograms[1];
+      resetZuseTape();
+    }
+
+    function toggleZuseRun() {
+      const btn = document.getElementById('zuse-run-btn');
+      if (zuseRunTimer) {
+        clearInterval(zuseRunTimer);
+        zuseRunTimer = null;
+        if (btn) btn.textContent = 'Executar Fita Completa';
+      } else {
+        if (btn) btn.textContent = 'Pausar';
+        zuseRunTimer = setInterval(() => {
+          if (zuseCurrentStep >= zuseActiveProg.steps.length - 1) {
+            zuseCurrentStep = 0;
+          } else {
+            zuseCurrentStep++;
+          }
+          renderZuseTape();
+        }, 500);
+      }
+    }
+
+    // =========================================================================
+    // SIMULADOR: COLOSSUS MK II & CIFRA LORENZ SZ42
+    // =========================================================================
+    let colossusScanTimer = null;
+    let colossusCharIdx = 0;
+
+    const colossusIntercepts = {
+      1: {
+        title: 'Normandia (Heeresgruppe B)',
+        cipher: '9KL#FXV29 ZQMPB#T 4VRKLA 88VMC',
+        plain:  'BERICHT HEERESGRUPPE MITTE NORMANDIE BEFEHL'
+      },
+      2: {
+        title: 'Berlim (OKW Wettervorhersage)',
+        cipher: 'XPT78# LKQ44 MV99Z WA12P',
+        plain:  'WETTERVORHERSAGE BERLIN KANALSCHLACHT OKW'
+      }
+    };
+
+    let colossusActive = colossusIntercepts[1];
+
+    function buildColossusTubes() {
+      const rack = document.getElementById('colossus-tube-rack');
+      if (!rack) return;
+      rack.innerHTML = '';
+      for (let i = 0; i < 16; i++) {
+        const tube = document.createElement('div');
+        tube.className = 'valve-tube';
+        tube.id = `col-tube-${i}`;
+        tube.innerHTML = '<div class="valve-tube-filament"></div>';
+        rack.appendChild(tube);
+      }
+    }
+
+    function renderColossusFrame() {
+      const rawEl = document.getElementById('colossus-raw-stream');
+      const plainEl = document.getElementById('colossus-plain-stream');
+      const scoreEl = document.getElementById('colossus-score');
+      const jobStatus = document.getElementById('colossus-job-status');
+
+      if (rawEl) rawEl.textContent = colossusActive.cipher.substring(0, Math.max(2, colossusCharIdx + 1));
+      if (plainEl) {
+        if (colossusCharIdx === 0) {
+          plainEl.textContent = 'Aguardando varredura óptica...';
+        } else {
+          plainEl.textContent = colossusActive.plain.substring(0, colossusCharIdx);
+        }
+      }
+
+      const score = Math.min(42, Math.round((colossusCharIdx / colossusActive.plain.length) * 42));
+      if (scoreEl) scoreEl.textContent = score;
+
+      // Animação das válvulas
+      for (let i = 0; i < 16; i++) {
+        const t = document.getElementById(`col-tube-${i}`);
+        if (t) {
+          if (Math.random() > 0.45 && colossusScanTimer) t.classList.add('active');
+          else t.classList.remove('active');
+        }
+      }
+
+      // Rotação dos rotores Lorenz
+      const c1 = (colossusCharIdx * 3) % 41 + 1;
+      const c2 = (colossusCharIdx * 5) % 31 + 1;
+      const p1 = (colossusCharIdx * 2) % 29 + 1;
+      const p2 = (colossusCharIdx * 7) % 23 + 1;
+
+      const w1 = document.getElementById('wheel-chi1');
+      if (w1) w1.textContent = `Rotor χ₁: ${String(c1).padStart(2, '0')}`;
+      const w2 = document.getElementById('wheel-chi2');
+      if (w2) w2.textContent = `Rotor χ₂: ${String(c2).padStart(2, '0')}`;
+      const w3 = document.getElementById('wheel-psi1');
+      if (w3) w3.textContent = `Rotor ψ₁: ${String(p1).padStart(2, '0')}`;
+      const w4 = document.getElementById('wheel-psi2');
+      if (w4) w4.textContent = `Rotor ψ₂: ${String(p2).padStart(2, '0')}`;
+
+      if (colossusCharIdx >= colossusActive.plain.length) {
+        if (jobStatus) {
+          jobStatus.textContent = 'CHAVE QUEBRADA (MENSAGEM DECIFRADA)';
+          jobStatus.style.color = '#4ade80';
+        }
+        clearInterval(colossusScanTimer);
+        colossusScanTimer = null;
+        const btn = document.getElementById('colossus-run-btn');
+        if (btn) btn.textContent = 'Varredura Concluída';
+      }
+    }
+
+    function startColossusScan() {
+      const btn = document.getElementById('colossus-run-btn');
+      const jobStatus = document.getElementById('colossus-job-status');
+      const speedStatus = document.getElementById('colossus-tape-speed');
+
+      if (colossusScanTimer) {
+        clearInterval(colossusScanTimer);
+        colossusScanTimer = null;
+        if (btn) btn.textContent = 'Iniciar Varredura 5.000 cps';
+        if (speedStatus) speedStatus.textContent = 'PARADA';
+        return;
+      }
+
+      if (colossusCharIdx >= colossusActive.plain.length) {
+        colossusCharIdx = 0;
+      }
+
+      if (btn) btn.textContent = 'Pausar Varredura';
+      if (jobStatus) {
+        jobStatus.textContent = 'VARRENDO 5.000 CPS (CORRELACIONANDO)';
+        jobStatus.style.color = '#facc15';
+      }
+      if (speedStatus) speedStatus.textContent = 'EM MOVIMENTO (48 KM/H)';
+
+      colossusScanTimer = setInterval(() => {
+        colossusCharIdx++;
+        renderColossusFrame();
+      }, 120);
+    }
+
+    function stepColossusChar() {
+      if (colossusCharIdx < colossusActive.plain.length) {
+        colossusCharIdx++;
+        renderColossusFrame();
+      }
+    }
+
+    function resetColossusScanner() {
+      if (colossusScanTimer) {
+        clearInterval(colossusScanTimer);
+        colossusScanTimer = null;
+      }
+      colossusCharIdx = 0;
+      const btn = document.getElementById('colossus-run-btn');
+      if (btn) btn.textContent = 'Iniciar Varredura 5.000 cps';
+      const jobStatus = document.getElementById('colossus-job-status');
+      if (jobStatus) {
+        jobStatus.textContent = 'AGUARDANDO VARREDURA';
+        jobStatus.style.color = '#facc15';
+      }
+      const speedStatus = document.getElementById('colossus-tape-speed');
+      if (speedStatus) speedStatus.textContent = 'PARADA';
+      renderColossusFrame();
+    }
+
+    function loadColossusIntercept(idx) {
+      colossusActive = colossusIntercepts[idx] || colossusIntercepts[1];
+      resetColossusScanner();
+    }
+
+    // =========================================================================
+    // SIMULADOR: TERMINAL RETRÔ BRASILEIRO (PROLÓGICA CP-500 / TK90X BASIC)
+    // =========================================================================
+    let crtIsAmber = false;
+    let crtCurrentProgram = [
+      '10 PRINT "PROLOGICA CP-500 - FABRICADO NO BRASIL (1982)"',
+      '20 FOR I = 1 TO 3',
+      '30 PRINT "RESERVA DE MERCADO: INDUSTRIA NACIONAL"',
+      '40 NEXT I',
+      '50 PRINT "OK"'
+    ];
+
+    function toggleCrtPhosphor() {
+      const scr = document.getElementById('crt-screen');
+      if (!scr) return;
+      crtIsAmber = !crtIsAmber;
+      if (crtIsAmber) {
+        scr.classList.remove('green-ph');
+        scr.classList.add('amber-ph');
+      } else {
+        scr.classList.remove('amber-ph');
+        scr.classList.add('green-ph');
+      }
+    }
+
+    function clearCrtTerminal() {
+      const out = document.getElementById('crt-output');
+      if (out) out.innerHTML = 'READY<br>&gt; <span class="crt-cursor"></span>';
+    }
+
+    function appendCrtOutput(text) {
+      const out = document.getElementById('crt-output');
+      if (!out) return;
+      const clean = out.innerHTML.replace('<span class="crt-cursor"></span>', '');
+      out.innerHTML = clean + '<br>' + text + '<br>&gt; <span class="crt-cursor"></span>';
+      out.scrollTop = out.scrollHeight;
+    }
+
+    function runCrtCommand() {
+      const inp = document.getElementById('crt-cmd-input');
+      if (!inp) return;
+      const cmd = inp.value.trim();
+      inp.value = '';
+      if (!cmd) return;
+
+      appendCrtOutput(cmd);
+
+      const upper = cmd.toUpperCase();
+      if (upper === 'CLS') {
+        clearCrtTerminal();
+      } else if (upper === 'RUN') {
+        executeBasicLines(crtCurrentProgram);
+      } else if (upper === 'LIST') {
+        appendCrtOutput(crtCurrentProgram.join('<br>'));
+      } else if (upper.startsWith('PRINT ')) {
+        const expr = cmd.substring(6).trim();
+        try {
+          if (expr.startsWith('"') && expr.endsWith('"')) {
+            appendCrtOutput(expr.slice(1, -1));
+          } else {
+            // Avaliação matemática simples
+            const sanitized = expr.replace(/[^0-9+\-*/().]/g, '');
+            const val = Function('"use strict";return (' + sanitized + ')')();
+            appendCrtOutput(String(val));
+          }
+        } catch (e) {
+          appendCrtOutput('?SYNTAX ERROR');
+        }
+      } else if (/^\d+/.test(upper)) {
+        // Linha numerada BASIC adicionada ao programa
+        crtCurrentProgram.push(cmd);
+        appendCrtOutput('READY');
+      } else {
+        appendCrtOutput('?SYNTAX ERROR');
+      }
+    }
+
+    function executeBasicLines(lines) {
+      let delay = 100;
+      lines.forEach((l, idx) => {
+        setTimeout(() => {
+          if (l.includes('PRINT "')) {
+            const m = l.match(/PRINT\s+"([^"]+)"/);
+            if (m) appendCrtOutput(m[1]);
+          } else if (l.includes('PRINT ')) {
+            const m = l.match(/PRINT\s+(.*)/);
+            if (m) appendCrtOutput(m[1]);
+          }
+        }, idx * 180);
+      });
+      setTimeout(() => {
+        appendCrtOutput('READY');
+      }, lines.length * 180 + 100);
+    }
+
+    function loadRetroBasicProg(pNum) {
+      if (pNum === 1) {
+        crtCurrentProgram = [
+          '10 PRINT "PROLOGICA CP-500 - FABRICADO NO BRASIL (1982)"',
+          '20 FOR I = 1 TO 3',
+          '30 PRINT "RESERVA DE MERCADO: INDUSTRIA NACIONAL"',
+          '40 NEXT I',
+          '50 PRINT "OK"'
+        ];
+        appendCrtOutput('CARREGADO: PROGRAMA 1 (LOOP BRASIL 1982)');
+        executeBasicLines(crtCurrentProgram);
+      } else if (pNum === 2) {
+        crtCurrentProgram = [
+          '10 REM REFORMA MONETARIA DOS ANOS 80',
+          '20 PRINT "VALOR EM CRUZEIROS (1985): Cr$ 1.000.000"',
+          '30 PRINT "CORTE DE TRES ZEROS (PLANO CRUZADO 1986)..."',
+          '40 PRINT "NOVO VALOR: Cz$ 1.000"',
+          '50 PRINT "CORRECAO AUTOMATICA CONCLUIDA"'
+        ];
+        appendCrtOutput('CARREGADO: PROGRAMA 2 (INFLACAO & CRUZEIROS)');
+        executeBasicLines(crtCurrentProgram);
+      } else if (pNum === 3) {
+        crtCurrentProgram = [
+          '10 REM GRAFICO DE BARRAS ASCII NA TELA CRT',
+          '20 PRINT "COMPUTADORES NO BRASIL (1972-1985):"',
+          '30 PRINT "1972 [PATINHO] : ## (1)"',
+          '40 PRINT "1977 [COBRA]   : ######## (400)"',
+          '50 PRINT "1985 [MICROS]  : #################### (120.000)"'
+        ];
+        appendCrtOutput('CARREGADO: PROGRAMA 3 (GRAFICO DE BARRAS ASCII)');
+        executeBasicLines(crtCurrentProgram);
+      } else {
+        crtCurrentProgram = [
+          '10 REM CALCULO DE FATORIAL EM BASIC',
+          '20 PRINT "FATORIAL DE 5:"',
+          '30 PRINT "5 * 4 * 3 * 2 * 1 = 120"',
+          '40 PRINT "CALCULADO EM 4 CICLOS DE CLOCK"'
+        ];
+        appendCrtOutput('CARREGADO: PROGRAMA 4 (FATORIAL EM BASIC)');
+        executeBasicLines(crtCurrentProgram);
+      }
+    }
+
+
+    
 
     // 3. SIMULADOR 2: PASCALINA DE 4 DÍGITOS COM EFEITO DOMINÓ
     let pasVal4 = 0;
@@ -3330,6 +4903,13 @@
       buildPatinhoClean();
     }
 
+
+    // Inicialização de todos os simuladores
+    updateSorobanBoardUI();
+    renderAntikythera();
+    resetZuseTape();
+    buildColossusTubes();
+    resetColossusScanner();
     buildPatinhoClean();
   </script>
 </body>
