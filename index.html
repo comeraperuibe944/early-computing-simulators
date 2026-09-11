@@ -236,6 +236,44 @@
       border: 1px solid var(--accent-red-border);
     }
 
+        /* DISTINÇÃO HISTÓRICA: TEÓRICO VS. PRÁTICO EM VIDA */
+    .tag-status.impl-real {
+      background: #f0fdf4;
+      color: #166534;
+      border: 1px solid #86efac;
+    }
+    .tag-status.impl-future {
+      background: #fffbeb;
+      color: #b45309;
+      border: 1px solid #fde68a;
+    }
+    .tag-status.impl-abstract {
+      background: #f5f3ff;
+      color: #6b21a8;
+      border: 1px solid #d8b4fe;
+    }
+
+    .realization-box {
+      background: #f8fafc;
+      border-left: 4px solid #3b82f6;
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1.15rem;
+      margin: 1.1rem 0;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .realization-box.real {
+      border-left-color: #10b981;
+      background: #f0fdf4;
+    }
+    .realization-box.future {
+      border-left-color: #f59e0b;
+      background: #fffdfa;
+    }
+    .realization-box.abstract {
+      border-left-color: #8b5cf6;
+      background: #faf5ff;
+    }
     .tag-status.brazil {
       background: #ecfdf5;
       color: #047857;
@@ -1624,6 +1662,15 @@
               <strong>3. Máquinas Universais (Gerais):</strong> Dispositivos programáveis concebidos teoricamente por Alan Turing em 1936. Uma única máquina física capaz de executar qualquer algoritmo computável quando alimentada com o programa adequado. Nelas ocorre a unificação radical da Ciência da Computação: <strong>instruções de código e dados possuem a mesma natureza simbólica</strong> e podem ser manipulados, armazenados e transformados na mesma memória.
             </div>
           </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>4. Projetos Teóricos vs. Projetos Práticos em Vida:</strong> Distinção histórica essencial para a apresentação:<br>
+              &bull; <strong>Projetos Teóricos / Modelos Abstratos:</strong> Concepções geniais no papel que não existiram como máquinas físicas completas durante a vida do autor. Exemplos: a <em>Máquina Analítica</em> de Babbage &amp; Ada Lovelace (100% no papel), a <em>Máquina Diferencial Nº 2</em> de Babbage (da qual Babbage só montou um fragmento de 1/7 em vida; a máquina completa de 5 toneladas só foi construída em 1991 pelo Museu de Ciências de Londres) e a <em>Máquina de Turing de 1936</em> (modelo matemático formal e experimento mental, nunca planejado como aparelho de oficina).<br>
+              &bull; <strong>Projetos Práticos em Vida:</strong> Máquinas efetivamente construídas, testadas e que operaram enquanto o autor estava vivo. Exemplos: a <em>Pascalina</em> (Pascal montou cerca de 50 unidades funcionais entre 1642 e 1652), o <em>Zuse Z3</em> (Konrad Zuse construiu e operou em Berlim em 1941 com 2.600 relés), o <em>Colossus</em> (10 máquinas ativas na Segunda Guerra), o <em>ENIAC</em> (30 toneladas e 18.000 válvulas operando de 1945 a 1955), o <em>Manchester Baby</em> (primeiro programa em memória rodado em 1948 por Kilburn e Williams) e o <em>Patinho Feio</em> (projetado, soldado e inaugurado na USP em 1972).
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1637,6 +1684,7 @@
           <div class="status-badges-group">
             <span class="tag-status tc-no">Turing-Complete: Não</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
+            <span class="tag-status impl-real">Construção: Prático na Antiguidade</span>
           </div>
         </div>
         <h2 class="slide-title">Primeiros Instrumentos e Sistemas de Cálculo</h2>
@@ -1828,6 +1876,7 @@
           <div class="status-badges-group">
             <span class="tag-status tc-no">Turing-Complete: Não</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
+            <span class="tag-status impl-real">Construção: Prático na Antiguidade</span>
           </div>
         </div>
         <h2 class="slide-title">O Mecanismo de Anticítera</h2>
@@ -1995,6 +2044,7 @@
           <div class="status-badges-group">
             <span class="tag-status tc-no">Turing-Complete: Não</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
+            <span class="tag-status impl-real">Construção: Prático em Vida</span>
           </div>
         </div>
         <h2 class="slide-title">A Pascalina de Blaise Pascal</h2>
@@ -2021,6 +2071,12 @@
               <strong>A Invenção do <em>Sautoir</em>:</strong> O maior desafio nas calculadoras mecânicas era o acúmulo de atrito no transporte de vai-um (quando 999 recebe +1, três rodas precisam girar juntas). Pascal inventou o <em>sautoir</em>: uma alavanca com contrapeso que acumula energia potencial gravitacional conforme a roda vai de 0 a 9 e despenca no dígito 0, empurrando a engrenagem vizinha sem sobrecarregar as engrenagens anteriores.
             </div>
           </div>
+        </div>
+
+                <!-- BOX REALIZAÇÃO HISTÓRICA: PASCALINA -->
+        <div class="realization-box real">
+          <strong style="color: #166534; display: block; margin-bottom: 0.25rem;">Realização Histórica: Prático em Vida do Autor (50 Unidades Fabricadas)</strong>
+          Blaise Pascal não ficou apenas no plano teórico. Entre 1642 e 1652, ele supervisionou a construção de cerca de 50 unidades funcionais com mestres relojoeiros franceses, obteve Patente Real (Privilège) do Rei Luís XIV em 1649 e comercializou a máquina. Atualmente, cerca de 9 exemplares originais intactos de época sobrevivem em museus da Europa.
         </div>
 
         <!-- SIMULADOR 2: PASCALINA DE 4 DÍGITOS COM EFEITO DOMINÓ -->
@@ -2090,6 +2146,7 @@
           <div class="status-badges-group">
             <span class="tag-status tc-no">Turing-Complete: Não</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
+            <span class="tag-status impl-real">Construção: Prático em Vida</span>
           </div>
         </div>
         <h2 class="slide-title">Gottfried Wilhelm Leibniz &amp; a Aritmética Binária</h2>
@@ -2151,6 +2208,7 @@
           <div class="status-badges-group">
             <span class="tag-status tc-no">Turing-Complete: Não</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
+            <span class="tag-status impl-future">Construção: Teórico em Vida (Concluído em 1991)</span>
           </div>
         </div>
         <h2 class="slide-title">Charles Babbage: A Máquina Diferencial</h2>
@@ -2184,6 +2242,13 @@
               <strong>Impressora Integrada:</strong> A máquina possuía uma unidade de impressão mecânica acoplada que prensava os resultados em moldes de gesso, eliminando integralmente a possibilidade de erros tipográficos humanos durante a impressão das tabelas.
             </div>
           </div>
+        </div>
+
+                <!-- BOX REALIZAÇÃO HISTÓRICA: MÁQUINA DIFERENCIAL -->
+        <div class="realization-box future">
+          <strong style="color: #b45309; display: block; margin-bottom: 0.25rem;">Realização Histórica: Inacabado em Vida de Babbage &bull; Construído 144 Anos Depois</strong>
+          Charles Babbage conseguiu construir apenas um pequeno fragmento de demonstração (cerca de 1/7 da máquina, com cerca de 2.000 peças) em 1832 com o mecânico Joseph Clement. Devido ao cancelamento do financiamento pelo Parlamento Britânico e atritos com os engenheiros da época, a máquina completa <strong>nunca foi terminada enquanto Babbage viveu</strong>.<br>
+          <strong>A Reconstrução do Futuro:</strong> Em 1991, para comemorar o bicentenário de nascimento de Babbage, o Museu de Ciências de Londres (*Science Museum*) construiu a <em>Difference Engine No. 2</em> estritamente a partir dos desenhos originais de Babbage de 1847. A máquina pesa 5 toneladas, possui 8.000 peças de bronze e aço e funciona com precisão absoluta de 31 dígitos, provando que o projeto de Babbage era 100% realizável!
         </div>
 
         <!-- TEATRO CINEMA: MÁQUINA DIFERENCIAL DE BABBAGE EM MOVIMENTO REAL -->
@@ -2242,6 +2307,7 @@
           <div class="status-badges-group">
             <span class="tag-status tc-theory">Turing-Complete: Sim (Teoria)</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
+            <span class="tag-status impl-future">Construção: 100% Teórico (Nunca Montado)</span>
           </div>
         </div>
         <h2 class="slide-title">Máquina Analítica &amp; Ada Lovelace</h2>
@@ -2316,7 +2382,8 @@
           <span>1900 - 1936</span>
           <div class="status-badges-group">
             <span class="tag-status tc-yes">Turing-Complete: Sim</span>
-            <span class="tag-status vn-no">Von Neumann: Não (Conceito Teórico)</span>
+            <span class="tag-status vn-no">Von Neumann: Não</span>
+            <span class="tag-status impl-abstract">Construção: Abstração Matemática Formal</span>
           </div>
         </div>
         <h2 class="slide-title">David Hilbert &amp; Alan Turing</h2>
@@ -2439,6 +2506,7 @@
           <div class="status-badges-group">
             <span class="tag-status tc-yes">Turing-Complete: Sim (Provado em 1998)</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
+            <span class="tag-status impl-real">Construção: Prático em Vida</span>
           </div>
         </div>
         <h2 class="slide-title">Konrad Zuse &amp; o Z3</h2>
@@ -2492,6 +2560,12 @@
         </div>
 
         
+                <!-- BOX REALIZAÇÃO HISTÓRICA: ZUSE Z3 -->
+        <div class="realization-box real">
+          <strong style="color: #166534; display: block; margin-bottom: 0.25rem;">Realização Histórica: Prático em Vida do Autor (O 1º Funcional do Planeta)</strong>
+          Konrad Zuse construiu fisicamente o Z3 com as próprias mãos e recursos improvisados em seu apartamento/oficina em Berlim, finalizando-o em 12 de maio de 1941 com 2.600 relés telefônicos e fita de cinema de 35 mm. A máquina foi operada ativamente pela agência aeronáutica alemã (DVL) para cálculos reais de vibração e dinâmica de voo. Destruído em 1943 por bombas aliadas, o próprio Zuse reconstruiu uma réplica perfeita e funcional em 1961 (hoje no Deutsches Museum em Munique).
+        </div>
+
         <!-- SIMULADOR: FITA DE 35MM E RELÉS DO ZUSE Z3 -->
         <div class="interactive-app-card">
           <div class="app-header-clean">
@@ -2607,6 +2681,7 @@
           <div class="status-badges-group">
             <span class="tag-status tc-no">Turing-Complete: Não</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
+            <span class="tag-status impl-real">Construção: Prático em Vida</span>
           </div>
         </div>
         <h2 class="slide-title">Atanasoff-Berry Computer (ABC)</h2>
@@ -2675,6 +2750,7 @@
           <div class="status-badges-group">
             <span class="tag-status tc-no">Turing-Complete: Não / Parcial</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
+            <span class="tag-status impl-real">Construção: Prático em Vida (10 Máquinas Ativas)</span>
           </div>
         </div>
         <h2 class="slide-title">Harvard Mark I &amp; Grace Hopper</h2>
@@ -2753,6 +2829,7 @@
           <div class="status-badges-group">
             <span class="tag-status tc-no">Turing-Complete: Não</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
+            <span class="tag-status impl-real">Construção: Prático em Vida</span>
           </div>
         </div>
         <h2 class="slide-title">Colossus Mark I &amp; II: O Segredo de Bletchley Park</h2>
@@ -2898,6 +2975,7 @@
           <div class="status-badges-group">
             <span class="tag-status tc-yes">Turing-Complete: Sim</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
+            <span class="tag-status impl-real">Construção: Prático em Vida</span>
           </div>
         </div>
         <h2 class="slide-title">ENIAC: Computação Geral sem Programa Armazenado</h2>
@@ -3018,7 +3096,8 @@
           <span>1945</span>
           <div class="status-badges-group">
             <span class="tag-status tc-yes">Turing-Complete: Sim</span>
-            <span class="tag-status vn-yes">Von Neumann: Sim (Fundação Teórica)</span>
+            <span class="tag-status vn-yes">Von Neumann: Sim</span>
+            <span class="tag-status impl-abstract">Construção: Relatório Teórico (EDVAC em 1949)</span>
           </div>
         </div>
         <h2 class="slide-title">John von Neumann &amp; o Relatório do EDVAC</h2>
@@ -3093,6 +3172,7 @@
           <div class="status-badges-group">
             <span class="tag-status tc-yes">Turing-Complete: Sim</span>
             <span class="tag-status vn-yes">Von Neumann: Sim (1º do Mundo)</span>
+            <span class="tag-status impl-real">Construção: Prático em Vida</span>
           </div>
         </div>
         <h2 class="slide-title">Manchester Baby (SSEM): O Primeiro Programa Armazenado</h2>
@@ -3194,6 +3274,7 @@
           <div class="status-badges-group">
             <span class="tag-status tc-yes">Turing-Complete: Sim</span>
             <span class="tag-status vn-yes">Von Neumann: Sim</span>
+            <span class="tag-status impl-real">Construção: Prático em Vida</span>
           </div>
         </div>
         <h2 class="slide-title">EDSAC &amp; Pilot ACE: A Computação Prática</h2>
@@ -3275,6 +3356,7 @@
           <div class="status-badges-group">
             <span class="tag-status brazil">Pioneirismo Brasileiro</span>
             <span class="tag-status vn-yes">Von Neumann: Sim</span>
+            <span class="tag-status impl-real">Construção: Prático em Vida</span>
           </div>
         </div>
         <h2 class="slide-title">Brasil: A Chegada do UNIVAC 120 &amp; os Centros Universitários</h2>
@@ -3350,6 +3432,7 @@
             <span class="tag-status brazil">1º Computador 100% Brasileiro</span>
             <span class="tag-status tc-yes">Turing-Complete: Sim</span>
             <span class="tag-status vn-yes">Von Neumann: Sim</span>
+            <span class="tag-status impl-real">Construção: Prático em Vida</span>
           </div>
         </div>
         <h2 class="slide-title">O Patinho Feio: O Primeiro Computador Brasileiro</h2>
@@ -3473,6 +3556,7 @@
             <span class="tag-status brazil">Indústria Nacional</span>
             <span class="tag-status tc-yes">Turing-Complete: Sim</span>
             <span class="tag-status vn-yes">Von Neumann: Sim</span>
+            <span class="tag-status impl-real">Construção: Prático Comercial em Vida</span>
           </div>
         </div>
         <h2 class="slide-title">Brasil: Da COBRA à Reserva de Mercado</h2>
@@ -3761,6 +3845,139 @@ READY
         </table>
       </div>
     </section>
+
+      <!-- TABELA ANALÍTICA: PROJETOS TEÓRICOS VS. PRÁTICOS EM VIDA DO AUTOR -->
+      <div class="table-slide-card" style="margin-top: 2.5rem;">
+        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem;">Síntese Histórica: Projetos Teóricos vs. Práticos em Vida do Autor</h3>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.2rem;">
+          Esclarecimento fundamental para apresentação: quais computadores existiram de fato na época de seus criadores e quais eram projetos conceituais que só foram montados décadas depois.
+        </p>
+        <table class="clean-table">
+          <thead>
+            <tr>
+              <th>Máquina / Projeto</th>
+              <th>Ano Concepção</th>
+              <th>Criador(es)</th>
+              <th>Status em Vida do Autor</th>
+              <th>Quando e Como Foi Construído Fisicamente?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Mecanismo de Anticítera</strong></td>
+              <td>~150 a.C.</td>
+              <td>Astrônomos da Grécia Antiga</td>
+              <td><span class="tag-status impl-real">Prático na Antiguidade</span></td>
+              <td>Construído fisicamente no século II a.C. em bronze com 30 engrenagens; artefato recuperado do fundo do mar em 1901.</td>
+            </tr>
+            <tr>
+              <td><strong>Pascalina</strong></td>
+              <td>1642</td>
+              <td>Blaise Pascal</td>
+              <td><span class="tag-status impl-real">Prático em Vida</span></td>
+              <td>Pascal construiu pessoalmente cerca de 50 protótipos funcionais entre 1642 e 1652; obteve privilégio real e 9 exemplares sobrevivem em museus.</td>
+            </tr>
+            <tr>
+              <td><strong>Stepped Reckoner</strong></td>
+              <td>1673</td>
+              <td>Gottfried Wilhelm Leibniz</td>
+              <td><span class="tag-status impl-real">Prático em Vida</span></td>
+              <td>Dois exemplares mecânicos construídos com o cilindro dentado de Leibniz; uma unidade original preservada em Göttingen.</td>
+            </tr>
+            <tr style="background: #fffdfa;">
+              <td><strong>Máquina Diferencial Nº 2</strong></td>
+              <td>1822–1847</td>
+              <td>Charles Babbage</td>
+              <td><span class="tag-status impl-future">Teórico / Inacabado em Vida</span></td>
+              <td>Babbage montou apenas 1/7 em 1832. A máquina completa de 5 toneladas só foi <strong>construída em 1991 pelo Museu de Ciências de Londres</strong> para o bicentenário de Babbage.</td>
+            </tr>
+            <tr style="background: #fffdfa;">
+              <td><strong>Máquina Analítica</strong></td>
+              <td>1837–1843</td>
+              <td>Charles Babbage &amp; Ada Lovelace</td>
+              <td><span class="tag-status impl-future">100% Teórico no Papel</span></td>
+              <td><strong>Nunca foi construída integralmente</strong>. Ada Lovelace escreveu o primeiro programa da história (1843) para uma máquina que existia apenas em desenhos. O filho de Babbage montou uma fração do Moinho em 1910.</td>
+            </tr>
+            <tr style="background: #faf5ff;">
+              <td><strong>Máquina Universal de Turing</strong></td>
+              <td>1936</td>
+              <td>Alan Turing</td>
+              <td><span class="tag-status impl-abstract">Abstração Matemática</span></td>
+              <td><strong>Modelo conceitual formal</strong> (experimento de pensamento) para provar a indecidibilidade matemática. Não foi concebida como aparelho físico para ser construído em 1936.</td>
+            </tr>
+            <tr>
+              <td><strong>Konrad Zuse Z3</strong></td>
+              <td>1941</td>
+              <td>Konrad Zuse</td>
+              <td><span class="tag-status impl-real">Prático em Vida</span></td>
+              <td>Construído fisicamente por Zuse em Berlim com 2.600 relés e fita de filme de 35 mm; operou ativamente para a agência aeronáutica alemã (DVL).</td>
+            </tr>
+            <tr>
+              <td><strong>Atanasoff-Berry (ABC)</strong></td>
+              <td>1939–1942</td>
+              <td>John Atanasoff &amp; Clifford Berry</td>
+              <td><span class="tag-status impl-real">Prático em Vida</span></td>
+              <td>Protótipo funcional montado no porão de física da Iowa State University com 300 válvulas e tambor de capacitores.</td>
+            </tr>
+            <tr>
+              <td><strong>Colossus Mk I &amp; II</strong></td>
+              <td>1943–1944</td>
+              <td>Tommy Flowers &amp; Bletchley Park</td>
+              <td><span class="tag-status impl-real">Prático em Larga Escala</span></td>
+              <td>10 máquinas reais construídas com 2.400 válvulas cada operando diariamente para decifrar a cifra Lorenz nazista no Dia D.</td>
+            </tr>
+            <tr>
+              <td><strong>Harvard Mark I</strong></td>
+              <td>1944</td>
+              <td>Howard Aiken &amp; Grace Hopper (IBM)</td>
+              <td><span class="tag-status impl-real">Prático em Vida</span></td>
+              <td>Construído pela IBM com 16 metros de comprimento; operou ininterruptamente de 1944 a 1959 em Harvard.</td>
+            </tr>
+            <tr>
+              <td><strong>ENIAC</strong></td>
+              <td>1945</td>
+              <td>John Mauchly &amp; J. Presper Eckert</td>
+              <td><span class="tag-status impl-real">Prático em Vida</span></td>
+              <td>30 toneladas, 18.000 válvulas montadas na Universidade da Pensilvânia; operou de 1945 a 1955 calculando balística e física nuclear.</td>
+            </tr>
+            <tr style="background: #faf5ff;">
+              <td><strong>Relatório do EDVAC (Von Neumann)</strong></td>
+              <td>1945</td>
+              <td>John von Neumann</td>
+              <td><span class="tag-status impl-abstract">Relatório Teórico</span></td>
+              <td>O relatório seminal de 101 páginas descreveu a teoria do programa armazenado. A máquina física EDVAC só ficou operacional em 1949/1951.</td>
+            </tr>
+            <tr>
+              <td><strong>Manchester Baby (SSEM)</strong></td>
+              <td>1948</td>
+              <td>Tom Kilburn &amp; Freddie Williams</td>
+              <td><span class="tag-status impl-real">Prático em Vida</span></td>
+              <td>Construído fisicamente na Universidade de Manchester; <strong>rodou o primeiro programa em memória interna do mundo em 21 de junho de 1948</strong> na presença de seus autores.</td>
+            </tr>
+            <tr>
+              <td><strong>EDSAC</strong></td>
+              <td>1949</td>
+              <td>Maurice Wilkes (Cambridge)</td>
+              <td><span class="tag-status impl-real">Prático em Vida</span></td>
+              <td>Construído em Cambridge com linhas de retardo de mercúrio; tornou-se o primeiro computador prático de uso rotineiro por cientistas.</td>
+            </tr>
+            <tr>
+              <td><strong>Patinho Feio (USP)</strong></td>
+              <td>1972</td>
+              <td>Guerra Vieira, Edith Ranzini &amp; Poli-USP</td>
+              <td><span class="tag-status impl-real">Prático em Vida</span></td>
+              <td><strong>100% projetado, montado e soldado no Brasil</strong> com circuitos integrados TTL; operou programas reais diante de autoridades em 24 de julho de 1972.</td>
+            </tr>
+            <tr>
+              <td><strong>Prológica CP-500 / TK90X</strong></td>
+              <td>1982–1985</td>
+              <td>Prológica, Microdigital &amp; Indústria BR</td>
+              <td><span class="tag-status impl-real">Prático Comercial</span></td>
+              <td>Fabricação industrial em série no Brasil durante a Reserva de Mercado; centenas de milhares de unidades vendidas e utilizadas.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
     <!-- RODAPÉ DISCRETO -->
     <footer class="simple-footer">
