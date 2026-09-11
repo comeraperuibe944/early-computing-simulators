@@ -866,6 +866,45 @@
     }
 
     /* SIMULADOR 4: ENIAC ANEL DECÁDICO E CABOS DE PATCH */
+        /* ENIAC MULTI-CABINET & DECADE ACCUMULATOR DISPLAY */
+    .eniac-unit-box {
+      background: #0f172a;
+      border: 1.5px solid #334155;
+      border-radius: 6px;
+      padding: 0.6rem;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+    .eniac-unit-box.active {
+      border-color: #f97316;
+      background: #431407;
+      box-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
+    }
+    .eniac-col-digit {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      align-items: center;
+    }
+    .eniac-lamp-mini {
+      width: 100%;
+      height: 14px;
+      font-size: 0.65rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1e293b;
+      color: #475569;
+      border-radius: 2px;
+      transition: all 0.1s;
+    }
+    .eniac-lamp-mini.lit {
+      background: #ea580c;
+      color: #ffffff;
+      box-shadow: 0 0 8px #f97316;
+    }
     .eniac-patch-panel {
       background: #0f172a;
       color: #ffffff;
@@ -2383,7 +2422,7 @@
           <div class="status-badges-group">
             <span class="tag-status tc-yes">Turing-Complete: Sim</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
-            <span class="tag-status impl-abstract">Construção: Abstração Matemática Formal</span>
+            <span class="tag-status impl-real">Construção: Prático em Vida (Manchester Mark 1 &amp; ACE)</span>
           </div>
         </div>
         <h2 class="slide-title">David Hilbert &amp; Alan Turing</h2>
@@ -3031,40 +3070,110 @@
           </div>
         </div>
 
-        <!-- SIMULADOR 4: ANEL DECÁDICO DO ENIAC -->
+        <!-- SIMULADOR 4: ENIAC (1945) - CABEAMENTO REAL E ACUMULADORES -->
         <div class="interactive-app-card">
           <div class="app-header-clean">
-            <span class="app-tag">Simulador Interativo: Anel Decádico de Válvulas Neon do ENIAC</span>
-            <span id="eniac-lamp-status" style="font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: #ea580c;">Dígito Ativo: 0</span>
-          </div>
-
-          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">
-            O ENIAC não operava em binário puro, mas em contadores decádicos de 10 válvulas flip-flop por dígito:
-          </p>
-
-          <div class="eniac-patch-panel">
-            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #94a3b8; margin-bottom: 0.5rem;">PAINEL DO ACUMULADOR Nº 1 (VÁLVULAS NEON DE 0 A 9):</div>
-            <div class="eniac-ring-clean" id="eniac-bulbs-container">
-              <div class="eniac-lamp-clean glowing">0</div>
-              <div class="eniac-lamp-clean">1</div>
-              <div class="eniac-lamp-clean">2</div>
-              <div class="eniac-lamp-clean">3</div>
-              <div class="eniac-lamp-clean">4</div>
-              <div class="eniac-lamp-clean">5</div>
-              <div class="eniac-lamp-clean">6</div>
-              <div class="eniac-lamp-clean">7</div>
-              <div class="eniac-lamp-clean">8</div>
-              <div class="eniac-lamp-clean">9</div>
+            <span class="app-tag">Simulador Histórico Autêntico: Painéis de Cabos &amp; Acumuladores do ENIAC (1945)</span>
+            <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <button class="btn-clean active" id="btn-eprog-1" onclick="loadEniacProgram(1)">1. Trajetória Balística (Obus 155 mm)</button>
+              <button class="btn-clean secondary" id="btn-eprog-2" onclick="loadEniacProgram(2)">2. Previsão do Tempo 1950 (Charney &amp; Von Neumann)</button>
+              <button class="btn-clean secondary" id="btn-eprog-3" onclick="loadEniacProgram(3)">3. Multiplicação de 10 Dígitos (13.729 × 4.512)</button>
+              <button class="btn-clean secondary" id="btn-eprog-4" onclick="loadEniacProgram(4)">4. Monte Carlo Nuclear (Los Alamos 1947)</button>
+              <button class="btn-clean secondary" onclick="resetEniacSimulator()">Reconectar Cabos</button>
             </div>
           </div>
 
-          <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
-            <button class="btn-clean" onclick="stepENIACClean()">Disparar Pulso de Clock (+1)</button>
-            <button class="btn-clean secondary" onclick="runENIACBurstClean()">Ciclo Rápido (10 Pulsos)</button>
-            <button class="btn-clean secondary" onclick="resetENIACClean()">Zerar Anel</button>
+          <!-- GUIA DIDÁTICO SIMPLES PARA APRESENTAÇÃO -->
+          <div style="background: #f8fafc; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 0.85rem 1rem; margin-bottom: 1rem; font-size: 0.88rem; line-height: 1.5;">
+            <strong style="color: var(--text-main); display: block; margin-bottom: 0.25rem;">Como Explicar o ENIAC aos Colegas na Sala:</strong>
+            &bull; <strong>Sem Teclado nem Sistema Operacional:</strong> O ENIAC ocupava 167 m² com 40 gabinetes de 2,4 m de altura. Programar significava conectar cabos telefônicos pesados entre painéis e girar chaves rotatórias nas Tabelas de Função.<br>
+            &bull; <strong>As 6 Programadoras Pioneiras:</strong> Mulheres matemáticas (Betty Snyder, Jean Jennings, Kay McNulty, Marlyn Wescoff, Ruth Lichterman e Frances Bilas) calculavam diagramas lógicos no papel e passavam dias encaixando cabos físicos.<br>
+            &bull; <strong>Velocidade Inédita (100.000 pulsos/s):</strong> O cálculo de uma trajetória de artilharia que levava 20 horas na mão era resolvido pelo ENIAC em apenas 30 segundos (mais rápido que a própria bala voando!).
+          </div>
+
+          <!-- BANNER DE STATUS DO CÁLCULO -->
+          <div style="background: #0f172a; color: #ffffff; border-radius: var(--radius-sm); padding: 0.85rem 1.2rem; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <span id="eniac-step-badge" style="background: #f97316; color: #0f172a; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.78rem; margin-right: 0.6rem;">PASSO 1 DE 4</span>
+              <strong id="eniac-step-title" style="color: #f8fafc;">Disparo Inicial do Canhão (t = 0 s)</strong>
+            </div>
+            <div id="eniac-math-summary" style="color: #fb923c; font-weight: 800; font-size: 1rem;">v₀ = 800 m/s &bull; Ângulo 45°</div>
+          </div>
+
+          <!-- DIAGRAMA DOS PAINÉIS CABEADOS DO ENIAC -->
+          <div style="background: #1e293b; border-radius: var(--radius-sm); padding: 1rem; margin-bottom: 1rem; color: #f8fafc; font-family: var(--font-mono); font-size: 0.8rem;">
+            <div style="color: #94a3b8; font-weight: 700; margin-bottom: 0.6rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">
+              ROTA DOS CABOS TELEFÔNICOS EXTERNOS (PATCH CORDS):
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.5rem;" id="eniac-units-grid">
+              <div class="eniac-unit-box active" id="e-unit-cycling">
+                <div style="font-size: 0.65rem; color: #94a3b8;">GABINETE 1</div>
+                <strong>Unidade de Ciclos</strong>
+                <div style="font-size: 0.7rem; color: #fb923c;">Clock 100 kHz</div>
+              </div>
+              <div class="eniac-unit-box" id="e-unit-ftable">
+                <div style="font-size: 0.65rem; color: #94a3b8;">GABINETES 2-4</div>
+                <strong>Tabela de Funções</strong>
+                <div style="font-size: 0.7rem; color: #38bdf8;">Chaves Rotatórias</div>
+              </div>
+              <div class="eniac-unit-box" id="e-unit-acc1">
+                <div style="font-size: 0.65rem; color: #94a3b8;">GABINETE 5</div>
+                <strong>Acumulador 1 (X)</strong>
+                <div style="font-size: 0.7rem; color: #4ade80;">10 Dígitos Decimais</div>
+              </div>
+              <div class="eniac-unit-box" id="e-unit-acc2">
+                <div style="font-size: 0.65rem; color: #94a3b8;">GABINETE 6</div>
+                <strong>Acumulador 2 (Y)</strong>
+                <div style="font-size: 0.7rem; color: #4ade80;">10 Dígitos Decimais</div>
+              </div>
+              <div class="eniac-unit-box" id="e-unit-mult">
+                <div style="font-size: 0.65rem; color: #94a3b8;">GABINETES 7-8</div>
+                <strong>Multiplicador</strong>
+                <div style="font-size: 0.7rem; color: #e2e8f0;">Produtos Parciais</div>
+              </div>
+              <div class="eniac-unit-box" id="e-unit-card">
+                <div style="font-size: 0.65rem; color: #94a3b8;">GABINETE 9</div>
+                <strong>Leitor / Cartões</strong>
+                <div style="font-size: 0.7rem; color: #e2e8f0;">Perfuração IBM</div>
+              </div>
+            </div>
+            <div id="eniac-cable-status" style="margin-top: 0.6rem; color: #fb923c; font-size: 0.8rem;">
+              &bull; Cabo Ativo: Pulso de disparo conectado da Unidade de Ciclos para a Tabela de Funções.
+            </div>
+          </div>
+
+          <!-- MOSTRADOR AUTÊNTICO DE 10 DÍGITOS DECIMAIS DO ACUMULADOR DO ENIAC -->
+          <div class="eniac-patch-panel" style="margin: 0.75rem 0;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
+              <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #cbd5e1; font-weight: 700;">
+                PAINEL DO ACUMULADOR Nº 1 (10 DÍGITOS DECIMAIS COM VÁLVULAS NEON REAIS):
+              </span>
+              <span id="eniac-accum-decimal" style="font-family: var(--font-mono); font-size: 1.1rem; color: #fb923c; font-weight: 800;">
+                + 00 0000 0000
+              </span>
+            </div>
+
+            <!-- Matriz de 10 colunas de dígitos neon -->
+            <div class="eniac-decade-display" id="eniac-decade-columns" style="display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; background: #020617; padding: 0.75rem; border-radius: 6px;">
+              <!-- Gerado via JavaScript: 10 colunas representando as posições de 10^9 a 10^0 -->
+            </div>
+
+            <div style="margin-top: 0.6rem; font-family: var(--font-mono); font-size: 0.78rem; color: #94a3b8;">
+              <span id="eniac-step-explanation" style="color: #f8fafc;">Aguardando avanço de pulso para integrar a equação diferencial.</span>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-top: 0.5rem;">
+            <div style="display: flex; gap: 0.35rem;">
+              <button class="btn-clean" onclick="stepEniacSimulator()">Avançar 1 Pulso (Passo)</button>
+              <button class="btn-clean secondary" id="eniac-run-btn" onclick="toggleEniacRun()">Executar Cálculo Completo</button>
+              <button class="btn-clean secondary" onclick="resetEniacSimulator()">Zerar Acumulador</button>
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted);">
+              Clock: 100 kHz &bull; Tempo de adição: 200 microssegundos (5.000 somas/s)
+            </div>
           </div>
         </div>
-
         <div class="tech-specs-box">
           <div class="tech-specs-title">Ficha Técnica: ENIAC (Moore School, 1945)</div>
           <div class="tech-specs-grid">
@@ -3097,7 +3206,7 @@
           <div class="status-badges-group">
             <span class="tag-status tc-yes">Turing-Complete: Sim</span>
             <span class="tag-status vn-yes">Von Neumann: Sim</span>
-            <span class="tag-status impl-abstract">Construção: Relatório Teórico (EDVAC em 1949)</span>
+            <span class="tag-status impl-real">Construção: Prático em Vida (Computador IAS de Princeton)</span>
           </div>
         </div>
         <h2 class="slide-title">John von Neumann &amp; o Relatório do EDVAC</h2>
@@ -3482,46 +3591,87 @@
           </div>
         </div>
 
-        <!-- SIMULADOR 6: PAINEL FRONTAL DO PATINHO FEIO (USP 1972) COM 3 PROGRAMAS EM ASSEMBLY -->
+        <!-- SIMULADOR: CONSOLE E PAINEL DE CHAVES DO PATINHO FEIO (USP 1972) -->
         <div class="interactive-app-card">
           <div class="app-header-clean">
-            <span class="app-tag">Console Interativo: Painel de Chaves do Patinho Feio (Poli-USP 1972)</span>
+            <span class="app-tag">Console Didático: Painel Frontal de 8 Bits do Patinho Feio (Poli-USP 1972)</span>
             <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
-              <button class="btn-clean active" id="btn-pprog-1" onclick="loadPatinhoProgram(1)">1. Soma (LDA / ADD)</button>
-              <button class="btn-clean secondary" id="btn-pprog-2" onclick="loadPatinhoProgram(2)">2. Contador em Laço (JNZ)</button>
-              <button class="btn-clean secondary" id="btn-pprog-3" onclick="loadPatinhoProgram(3)">3. Máscara AND (0x0F)</button>
-              <button class="btn-clean secondary" id="btn-pprog-4" onclick="loadPatinhoProgram(4)">4. Subtração (SUB: 25 - 10)</button>
-              <button class="btn-clean secondary" id="btn-pprog-5" onclick="loadPatinhoProgram(5)">5. Deslocamento (SHL x2)</button>
-              <button class="btn-clean secondary" id="btn-pprog-6" onclick="loadPatinhoProgram(6)">6. Máscara OR (0xF0)</button>
+              <button class="btn-clean active" id="btn-pprog-1" onclick="loadPatinhoProgram(1)">1. Adição (10 + 15 = 25)</button>
+              <button class="btn-clean secondary" id="btn-pprog-2" onclick="loadPatinhoProgram(2)">2. Subtração (50 - 18 = 32)</button>
+              <button class="btn-clean secondary" id="btn-pprog-3" onclick="loadPatinhoProgram(3)">3. Deslocamento (7 × 2 = 14)</button>
+              <button class="btn-clean secondary" id="btn-pprog-4" onclick="loadPatinhoProgram(4)">4. Máscara AND (0x0F)</button>
+              <button class="btn-clean secondary" id="btn-pprog-5" onclick="loadPatinhoProgram(5)">5. Modo Manual Livre (Suas Chaves)</button>
             </div>
           </div>
 
-          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.5rem;" id="patinho-prog-desc">
-            Alterne as 8 chaves basculantes (bits 0 a 7) para alimentar dados nos registradores:
-          </p>
+          <!-- GUIA DIDÁTICO SIMPLES PARA APRESENTAÇÃO -->
+          <div style="background: #f8fafc; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 0.85rem 1rem; margin-bottom: 1rem; font-size: 0.88rem; line-height: 1.5;">
+            <strong style="color: var(--text-main); display: block; margin-bottom: 0.25rem;">Como Explicar o Patinho Feio aos Colegas na Sala:</strong>
+            &bull; <strong>Sem Teclado nem Monitor em 1972:</strong> O operador inicializava o computador levantando as 8 chaves mecânicas no console para digitar o código de carga (*bootstrap*) em binário puro (chave para cima = 1, para baixo = 0).<br>
+            &bull; <strong>O Registrador Acumulador (Reg A):</strong> O registrador central de 8 bits da CPU da USP (processador feito com chips TTL da família 7400). As luzes vermelhas indicam os bits armazenados.<br>
+            &bull; <strong>Instruções Básicas:</strong> <code>LDA</code> (carrega valor das chaves no Acumulador), <code>ADD</code> (soma), <code>SUB</code> (subtrai) e <code>SHL</code> (desloca bits à esquerda multiplicando por 2).
+          </div>
 
-          <div class="patinho-chunky-rack">
+          <!-- BANNER DE STATUS DO PASSO -->
+          <div style="background: #0f172a; color: #ffffff; border-radius: var(--radius-sm); padding: 0.85rem 1.2rem; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <span id="patinho-step-badge" style="background: #22c55e; color: #0f172a; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.78rem; margin-right: 0.6rem;">PASSO 1 DE 3</span>
+              <strong id="patinho-step-title" style="color: #f8fafc;">Instrução LDA 10 (Carregar Operando A)</strong>
+            </div>
+            <div id="patinho-math-summary" style="color: #4ade80; font-weight: 800; font-size: 1.05rem;">10 + 15 = 25</div>
+          </div>
+
+          <!-- CONSOLE DAS 8 CHAVES BASCULANTES -->
+          <div class="patinho-chunky-rack" style="margin: 0.5rem 0;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--text-main);">
+                PAINEL FRONTAL DE CHAVES (BARRAMENTO DE ENTRADA DE 8 BITS):
+              </span>
+              <span id="patinho-switches-decimal" style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-blue-text); font-weight: 700;">
+                Chaves = 00000000 (Decimal: 0)
+              </span>
+            </div>
+
             <div class="patinho-clean-switches" id="patinho-switches-clean">
-              <!-- 8 chaves geradas via script -->
+              <!-- 8 chaves geradas via script com pesos 128 a 1 -->
             </div>
           </div>
 
-          <div class="soroban-readout-row" style="margin: 0.8rem 0;">
-            <span id="patinho-clean-readout" style="color: #15803d;">REGISTRADOR A: 00000000 (Decimal: 0 | Hex: 0x00)</span>
-            <span id="patinho-asm-feedback" style="color: var(--accent-blue-text); font-size: 0.82rem;">Pronto para instrução</span>
+          <!-- MOSTRADOR DO REGISTRADOR ACUMULADOR (LÂMPADAS) -->
+          <div class="soroban-readout-row" style="margin: 0.8rem 0; background: #0f172a; color: #ffffff; border: none;">
+            <div>
+              <span style="color: #94a3b8; font-size: 0.75rem; display: block;">REGISTRADOR ACUMULADOR (A) DA CPU POLI-USP:</span>
+              <span id="patinho-clean-readout" style="color: #4ade80; font-size: 1.1rem; font-weight: 800;">
+                REG A: 00000000 (Decimal: 0 | Hex: 0x00)
+              </span>
+            </div>
+            <div style="text-align: right;">
+              <span style="color: #94a3b8; font-size: 0.75rem; display: block;">EXPLICAÇÃO DO PASSO:</span>
+              <span id="patinho-asm-feedback" style="color: #facc15; font-size: 0.85rem; font-weight: 700;">
+                Início do programa
+              </span>
+            </div>
           </div>
 
-          <div style="display: flex; justify-content: center; gap: 0.6rem; flex-wrap: wrap;">
-            <button class="btn-clean" onclick="patinhoLoadClean()">Carregar Chaves (LDA)</button>
-            <button class="btn-clean secondary" onclick="patinhoAddClean()">Somar (ADD)</button>
-            <button class="btn-clean secondary" onclick="patinhoSubClean()">Subtrair (SUB)</button>
-            <button class="btn-clean secondary" onclick="patinhoShlClean()">Deslocar Bits (SHL x2)</button>
-            <button class="btn-clean secondary" onclick="patinhoAndClean()">Máscara AND</button>
-            <button class="btn-clean secondary" onclick="patinhoOrClean()">Máscara OR</button>
-            <button class="btn-clean secondary" onclick="patinhoResetClean()">Zerar Console</button>
+          <!-- CONTROLES DIDÁTICOS SIMPLIFICADOS -->
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-top: 0.5rem;">
+            <div style="display: flex; gap: 0.35rem;" id="patinho-step-controls">
+              <button class="btn-clean" onclick="stepPatinhoProg()">Avançar 1 Passo</button>
+              <button class="btn-clean secondary" id="patinho-run-btn" onclick="togglePatinhoRun()">Executar Programa Completo</button>
+              <button class="btn-clean secondary" onclick="resetPatinhoClean()">Reiniciar</button>
+            </div>
+            <!-- Botões extras para Modo Manual Livre -->
+            <div style="display: none; gap: 0.35rem;" id="patinho-manual-controls">
+              <button class="btn-clean" onclick="patinhoLoadClean()">Carregar (LDA)</button>
+              <button class="btn-clean secondary" onclick="patinhoAddClean()">Somar (ADD)</button>
+              <button class="btn-clean secondary" onclick="patinhoSubClean()">Subtrair (SUB)</button>
+              <button class="btn-clean secondary" onclick="patinhoResetClean()">Zerar</button>
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted);">
+              Tecnologia: Circuitos Integrados TTL SN7400 &bull; Clock: 500 kHz (2 µs por ciclo)
+            </div>
           </div>
         </div>
-
         <div class="tech-specs-box">
           <div class="tech-specs-title">Ficha Técnica Oficial: O Computador Patinho Feio (Poli-USP, 1972)</div>
           <div class="tech-specs-grid">
@@ -3661,7 +3811,7 @@
 
           <div class="retro-crt-container">
             <div class="crt-monitor-bezel">
-              <div class="crt-screen-glass green-ph" id="crt-screen">
+              <div class="crt-screen-glass green-ph" id="crt-screen" onclick="document.getElementById('crt-cmd-input').focus();" style="cursor: text;">
                 <div class="crt-scanlines"></div>
                 <div class="crt-terminal-content" id="crt-output">** PROLOGICA CP-500 DOS-500 V2.1 **
 DISCO 0 ONLINE - 48K BYTES RAM DISPONIVEIS
@@ -3671,16 +3821,87 @@ READY
               </div>
             </div>
 
-            <!-- Barra de Execução Interativa -->
+            <!-- Barra de Execução Interativa Integrada ao Tubo CRT -->
             <div class="crt-controls-bar">
-              <div class="crt-input-row">
-                <input type="text" id="crt-cmd-input" class="crt-input-box" placeholder="Digite um comando BASIC (ex: PRINT 25 * 4 ou 10 PRINT &quot;OLA&quot; ou RUN ou LIST)" onkeydown="if(event.key==='Enter') runCrtCommand()">
-                <button class="btn-clean" onclick="runCrtCommand()">Executar (RUN)</button>
+              <div class="crt-input-row" style="background: #041407; border: 2px solid #15803d; border-radius: 6px; padding: 0.4rem 0.75rem; align-items: center;">
+                <span style="font-family: var(--font-mono); color: #22c55e; font-weight: 800; font-size: 1.1rem; margin-right: 0.4rem;">&gt;</span>
+                <input type="text" id="crt-cmd-input" class="crt-input-box" style="background: transparent; border: none; color: #22c55e; font-family: var(--font-mono); font-size: 0.95rem; outline: none; box-shadow: none;" placeholder="Clique aqui e digite comandos BASIC diretamente (ex: PRINT 25 * 4 ou RUN)" onkeydown="if(event.key==='Enter') runCrtCommand()">
+                <button class="btn-clean" style="background: #166534; color: #ffffff; border: none; font-size: 0.8rem; padding: 0.35rem 0.8rem;" onclick="runCrtCommand()">ENTER (Executar)</button>
               </div>
             </div>
           </div>
-        </div>
 
+          <!-- GUIA DE INSTRUÇÕES & EXEMPLOS PARA DIGITAR NA APRESENTAÇÃO -->
+          <div style="background: #f8fafc; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1rem 1.25rem; margin-top: 1rem;">
+            <div style="font-weight: 800; color: var(--text-main); font-size: 0.95rem; margin-bottom: 0.6rem;">
+              Exemplos Prontos para Digitar na Apresentação (ou Clique em "Inserir"):
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.75rem; font-size: 0.85rem;">
+              
+              <!-- Bloco 1: Aritmética Imediata -->
+              <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 6px; padding: 0.75rem;">
+                <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">1. Cálculos Aritméticos Diretos:</strong>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                  <code style="font-family: var(--font-mono); background: #f1f5f9; padding: 2px 6px; border-radius: 4px;">PRINT 1972 + 50</code>
+                  <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;" onclick="pasteCrtCommand('PRINT 1972 + 50')">Inserir</button>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                  <code style="font-family: var(--font-mono); background: #f1f5f9; padding: 2px 6px; border-radius: 4px;">PRINT 2 ^ 10</code>
+                  <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;" onclick="pasteCrtCommand('PRINT 2 ^ 10')">Inserir</button>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <code style="font-family: var(--font-mono); background: #f1f5f9; padding: 2px 6px; border-radius: 4px;">PRINT (45 * 12) / 3</code>
+                  <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;" onclick="pasteCrtCommand('PRINT (45 * 12) / 3')">Inserir</button>
+                </div>
+              </div>
+
+              <!-- Bloco 2: Mensagens Históricas -->
+              <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 6px; padding: 0.75rem;">
+                <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">2. Mensagens Históricas:</strong>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                  <code style="font-family: var(--font-mono); background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem;">PRINT &quot;POLI-USP 1972&quot;</code>
+                  <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;" onclick="pasteCrtCommand('PRINT \"POLI-USP 1972\"')">Inserir</button>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                  <code style="font-family: var(--font-mono); background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem;">PRINT &quot;PROLOGICA CP-500&quot;</code>
+                  <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;" onclick="pasteCrtCommand('PRINT \"PROLOGICA CP-500\"')">Inserir</button>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <code style="font-family: var(--font-mono); background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem;">PRINT &quot;RESERVA DE MERCADO&quot;</code>
+                  <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;" onclick="pasteCrtCommand('PRINT \"RESERVA DE MERCADO\"')">Inserir</button>
+                </div>
+              </div>
+
+              <!-- Bloco 3: Programas em Laço (Loop) -->
+              <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 6px; padding: 0.75rem;">
+                <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">3. Mini-Programas em BASIC:</strong>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                  <span style="font-size: 0.8rem; color: var(--text-muted);">Laço FOR...NEXT (1 a 5)</span>
+                  <button class="btn-clean" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;" onclick="insertAndRunBasicLoop()">Digitar e Rodar</button>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 0.8rem; color: var(--text-muted);">Contador Regressivo (5 a 1)</span>
+                  <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;" onclick="insertAndRunBasicCountdown()">Digitar e Rodar</button>
+                </div>
+              </div>
+
+              <!-- Bloco 4: Comandos do Sistema -->
+              <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 6px; padding: 0.75rem;">
+                <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">4. Comandos de Sistema BASIC:</strong>
+                <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+                  <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;" onclick="pasteCrtCommand('RUN')">RUN</button>
+                  <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;" onclick="pasteCrtCommand('LIST')">LIST</button>
+                  <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;" onclick="pasteCrtCommand('CLS')">CLS</button>
+                  <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;" onclick="pasteCrtCommand('NEW')">NEW</button>
+                </div>
+                <span style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 0.4rem;">
+                  Clique na tela verde a qualquer momento para focar o teclado.
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
         <div class="reason-box">
           <strong>Legado Histórico Brasileiro</strong>
           A experiência da Reserva de Mercado gerou debates sobre custos de hardware, mas formou dezenas de milhares de engenheiros e cientistas que tornaram o setor de automação bancária e segurança de software brasileiro um dos mais sofisticados do mundo.
@@ -3898,12 +4119,12 @@ READY
               <td><span class="tag-status impl-future">100% Teórico no Papel</span></td>
               <td><strong>Nunca foi construída integralmente</strong>. Ada Lovelace escreveu o primeiro programa da história (1843) para uma máquina que existia apenas em desenhos. O filho de Babbage montou uma fração do Moinho em 1910.</td>
             </tr>
-            <tr style="background: #faf5ff;">
-              <td><strong>Máquina Universal de Turing</strong></td>
-              <td>1936</td>
+            <tr>
+              <td><strong>Alan Turing (Máquina Universal &amp; Manchester Mark 1)</strong></td>
+              <td>1936–1949</td>
               <td>Alan Turing</td>
-              <td><span class="tag-status impl-abstract">Abstração Matemática</span></td>
-              <td><strong>Modelo conceitual formal</strong> (experimento de pensamento) para provar a indecidibilidade matemática. Não foi concebida como aparelho físico para ser construído em 1936.</td>
+              <td><span class="tag-status impl-real">Prático em Vida (Mark 1 &amp; ACE)</span></td>
+              <td>O artigo de 1936 fundou a teoria universal. Na prática em vida, Turing projetou a <strong>Bombe</strong> em Bletchley Park, o computador <strong>Pilot ACE</strong> (1950) e programou o <strong>Manchester Mark 1</strong> (escreveu o primeiro manual de software em 1951).</td>
             </tr>
             <tr>
               <td><strong>Konrad Zuse Z3</strong></td>
@@ -3940,12 +4161,12 @@ READY
               <td><span class="tag-status impl-real">Prático em Vida</span></td>
               <td>30 toneladas, 18.000 válvulas montadas na Universidade da Pensilvânia; operou de 1945 a 1955 calculando balística e física nuclear.</td>
             </tr>
-            <tr style="background: #faf5ff;">
-              <td><strong>Relatório do EDVAC (Von Neumann)</strong></td>
-              <td>1945</td>
-              <td>John von Neumann</td>
-              <td><span class="tag-status impl-abstract">Relatório Teórico</span></td>
-              <td>O relatório seminal de 101 páginas descreveu a teoria do programa armazenado. A máquina física EDVAC só ficou operacional em 1949/1951.</td>
+            <tr>
+              <td><strong>John von Neumann (Computador IAS de Princeton)</strong></td>
+              <td>1945–1952</td>
+              <td>John von Neumann &amp; Julian Bigelow</td>
+              <td><span class="tag-status impl-real">Prático em Vida (Máquina IAS)</span></td>
+              <td>Além do relatório do EDVAC de 1945, Von Neumann <strong>construiu e operou fisicamente o Computador IAS em Princeton (1946–1952)</strong>, que serviu de matriz direta para o IBM 701, MANIAC e ILLIAC.</td>
             </tr>
             <tr>
               <td><strong>Manchester Baby (SSEM)</strong></td>
@@ -3988,7 +4209,7 @@ READY
   </div><!-- Fim Presentation Container -->
 
 
-    <script>
+      <script>
     // =========================================================================
     // 1. SIMULADOR: SOROBAN BI-QUINÁRIO COM FÍSICA E EXEMPLOS DIDÁTICOS
     // =========================================================================
@@ -4332,7 +4553,7 @@ READY
     let tState = 'q_scan';
     let tStepCounter = 0;
     let tAutoInterval = null;
-    let tSpeed = 550; // Velocidade confortável fixa
+    let tSpeed = 550;
 
     const tStrip = document.getElementById('turing-tape-strip');
     const tBadge = document.getElementById('turing-head-badge');
@@ -5069,40 +5290,292 @@ READY
     }
 
     // =========================================================================
-    // 7. SIMULADOR: ANEL DECÁDICO DO ENIAC (1945)
+    // 7. SIMULADOR: ENIAC (1945) - CABEAMENTO E ACUMULADORES HISTÓRICOS
     // =========================================================================
-    let eniacCounterVal = 0;
+    let eniacCurrentProg = 1;
+    let eniacCurrentStep = 0;
+    let eniacRunTimer = null;
 
-    function renderENIACCleanBulbs() {
-      const bulbs = document.querySelectorAll('#eniac-bulbs-container .eniac-lamp-clean');
-      bulbs.forEach((bulb, i) => {
-        if (i === eniacCounterVal) {
-          bulb.classList.add('glowing');
-        } else {
-          bulb.classList.remove('glowing');
+    const eniacPrograms = {
+      1: {
+        name: 'Trajetória Balística (Obus 155 mm)',
+        mathSummary: 'v₀ = 800 m/s • Ângulo 45°',
+        steps: [
+          {
+            stepTitle: 'Disparo do Projétil (t = 0 s)',
+            mathSummary: 'v₀ = 800 m/s • Ângulo 45°',
+            activeUnits: ['e-unit-cycling', 'e-unit-ftable'],
+            cableText: 'Cabo 1 (Vermelho): Pulso de disparo de 100 kHz conecta Unidade de Ciclos à Tabela de Funções para ler ângulo de 45° e velocidade inicial v₀ = 800 m/s.',
+            digits: [0,0,0,0,0,0,8,0,0,0],
+            decimalDisplay: '+ 00 0000 0800 m/s',
+            explanation: 'Válvulas flip-flop carregam velocidade inicial do projétil v₀ = 800 m/s (8000 decímetros/s).'
+          },
+          {
+            stepTitle: 'Arrasto Aerodinâmico e Vento',
+            mathSummary: 'F_arrasto ∝ v² • Arrasto -15 km/h',
+            activeUnits: ['e-unit-ftable', 'e-unit-mult', 'e-unit-acc1'],
+            cableText: 'Cabo 2 (Azul): Conecta Tabela de Função de arrasto ao Multiplicador. Produto parcial comuta a 5.000 somas/segundo.',
+            digits: [0,0,0,0,1,2,4,5,0,0],
+            decimalDisplay: '+ 00 0012 4500 m',
+            explanation: 'Acumulador 1 integra a posição horizontal X a cada milissegundo: Projétil avança para 12.450 metros.'
+          },
+          {
+            stepTitle: 'Ápice da Parábola e Gravidade',
+            mathSummary: 'y_max = 3.180 m (g = 9,8 m/s²)',
+            activeUnits: ['e-unit-cycling', 'e-unit-acc2'],
+            cableText: 'Cabo 3 (Verde): Pulso de clock decádico decrementa a velocidade vertical e computa a altitude máxima no Acumulador 2.',
+            digits: [0,0,0,0,0,3,1,8,0,0],
+            decimalDisplay: '+ 00 0003 1800 m',
+            explanation: 'Acumulador 2 registra a altitude máxima: o projétil atinge o ápice a 3.180 metros de altura.'
+          },
+          {
+            stepTitle: 'Impacto no Solo e Cartão IBM',
+            mathSummary: 'Alcance: 24.890 m em 2,8 s',
+            activeUnits: ['e-unit-acc1', 'e-unit-card'],
+            cableText: 'Cabo 4 (Amarelo): Pulso de término dispara o perfurador de cartões IBM. Tabela de tiro pronta para a artilharia!',
+            digits: [0,0,0,0,2,4,8,9,0,0],
+            decimalDisplay: '+ 00 0024 8900 m',
+            explanation: 'Impacto a 24.890 m! O ENIAC calculou 30 s de voo real em apenas 2,8 s: mais rápido que a própria bala!'
+          }
+        ]
+      },
+      2: {
+        name: 'Previsão Numérica do Tempo (1950)',
+        mathSummary: 'Equação de Vorticidade Barotrópica',
+        steps: [
+          {
+            stepTitle: 'Carregamento da Grade de 768 Pontos',
+            mathSummary: 'Pressão Geopotencial 500 hPa',
+            activeUnits: ['e-unit-card', 'e-unit-acc1'],
+            cableText: 'Cabo 1: Leitor IBM carrega medições barométricas de 768 pontos da atmosfera da América do Norte nos acumuladores.',
+            digits: [0,0,0,0,0,5,5,2,0,0],
+            decimalDisplay: '+ 00 0005 5200 gpm',
+            explanation: 'John von Neumann e Jule Charney configuram as condições iniciais da altitude de 500 hPa (5.520 metros).'
+          },
+          {
+            stepTitle: 'Cálculo do Gradiente de Pressão',
+            mathSummary: '∇²ψ = ζ (Vorticidade Relativa)',
+            activeUnits: ['e-unit-ftable', 'e-unit-mult', 'e-unit-acc2'],
+            cableText: 'Cabo 2: Chaves rotatórias definem a constante de Coriolis de rotação da Terra e enviam ao Multiplicador.',
+            digits: [0,0,0,0,0,0,1,0,3,4],
+            decimalDisplay: '+ 00 0000 1034 hPa',
+            explanation: 'Acumulador 2 computa o campo de vento geostrófico e a advecção de vorticidade na troposfera.'
+          },
+          {
+            stepTitle: 'Integração Temporal de 24 Horas',
+            mathSummary: 'Passo de tempo Δt = 1 hora',
+            activeUnits: ['e-unit-cycling', 'e-unit-acc1', 'e-unit-acc2'],
+            cableText: 'Cabo 3: Laço de realimentação cabeado comuta 24 ciclos horários de relaxação numérica sucessiva.',
+            digits: [0,0,0,0,0,5,4,1,0,0],
+            decimalDisplay: '+ 00 0005 4100 gpm',
+            explanation: 'O ENIAC processa a primeira previsão meteorológica da história da humanidade calculada antes de o tempo ocorrer!'
+          },
+          {
+            stepTitle: 'Previsão Concluída em 24 Horas',
+            mathSummary: 'Previsão 24h gerada em 24h',
+            activeUnits: ['e-unit-acc1', 'e-unit-card'],
+            cableText: 'Cabo 4: Resultados finais de pressão e chuva perfurados em cartões para o Serviço Meteorológico dos EUA.',
+            digits: [0,0,0,0,1,0,1,3,2,5],
+            decimalDisplay: '+ 00 0010 1325 Pa',
+            explanation: 'Sucesso histórico: o mapa de previsão de 24 horas foi entregue com exatidão em 24 horas de processamento contínuo.'
+          }
+        ]
+      },
+      3: {
+        name: 'Multiplicação de 10 Dígitos',
+        mathSummary: '13.729 × 4.512 = 61.945.248',
+        steps: [
+          {
+            stepTitle: 'Carregar Multiplicando no Acumulador 1',
+            mathSummary: 'A = 13.729',
+            activeUnits: ['e-unit-cycling', 'e-unit-acc1'],
+            cableText: 'Cabo 1: Pulso transfere 13.729 para os 10 contadores decádicos do Acumulador 1.',
+            digits: [0,0,0,0,0,1,3,7,2,9],
+            decimalDisplay: '+ 00 0001 3729',
+            explanation: 'Válvulas neon do Acumulador 1 acendem nas posições correspondentes a 1, 3, 7, 2, 9.'
+          },
+          {
+            stepTitle: 'Carregar Multiplicador no Acumulador 2',
+            mathSummary: 'B = 4.512',
+            activeUnits: ['e-unit-cycling', 'e-unit-acc2'],
+            cableText: 'Cabo 2: Pulso transfere 4.512 para o Acumulador 2.',
+            digits: [0,0,0,0,0,0,4,5,1,2],
+            decimalDisplay: '+ 00 0000 4512',
+            explanation: 'Acumulador 2 registra o multiplicador 4.512.'
+          },
+          {
+            stepTitle: 'Produtos Parciais no Multiplicador',
+            mathSummary: 'Tabela de Multiplicação do ENIAC',
+            activeUnits: ['e-unit-mult', 'e-unit-acc1'],
+            cableText: 'Cabo 3: Matriz de resistores da unidade multiplicadora computa 4 produtos parciais em paralelo em 2,8 ms.',
+            digits: [0,0,0,0,6,1,9,4,5,2],
+            decimalDisplay: '+ 00 0061 9452',
+            explanation: 'Comutação rápida a vácuo: somas dos produtos parciais das ordens de grandeza.'
+          },
+          {
+            stepTitle: 'Produto Final Acumulado',
+            mathSummary: '13.729 × 4.512 = 61.945.248',
+            activeUnits: ['e-unit-acc1'],
+            cableText: 'Cabo 4: Resultado completo de 10 dígitos estabilizado no Acumulador com sinal positivo.',
+            digits: [0,0,6,1,9,4,5,2,4,8],
+            decimalDisplay: '+ 00 6194 5248',
+            explanation: 'Resultado final exato de 10 dígitos: 61.945.248 calculado em menos de 3 milissegundos!'
+          }
+        ]
+      },
+      4: {
+        name: 'Monte Carlo Nuclear (Los Alamos)',
+        mathSummary: 'Difusão Probabilística de Nêutrons',
+        steps: [
+          {
+            stepTitle: 'Injeção de Nêutron Primário',
+            mathSummary: 'Energia E₀ = 2.0 MeV',
+            activeUnits: ['e-unit-cycling', 'e-unit-ftable'],
+            cableText: 'Cabo 1: Tabela de Funções gera ângulo de dispersão pseudoaleatório para a trajetória do nêutron.',
+            digits: [0,0,0,0,0,0,0,0,0,1],
+            decimalDisplay: '+ 00 0000 0001 n',
+            explanation: 'Stanislaw Ulam e Nicholas Metropolis introduzem o método estocástico de Monte Carlo no ENIAC.'
+          },
+          {
+            stepTitle: 'Colisões Elásticas na Massa Físsil',
+            mathSummary: 'Livre Caminho Médio λ = 2,8 cm',
+            activeUnits: ['e-unit-ftable', 'e-unit-mult', 'e-unit-acc1'],
+            cableText: 'Cabo 2: Multiplicador calcula probabilidade de fissão versus captura parasita de nêutrons.',
+            digits: [0,0,0,0,0,0,0,1,2,8],
+            decimalDisplay: '+ 00 0000 0128 n',
+            explanation: 'Acumulador registra 128 colisões simuladas em microsegundos dentro do núcleo de urânio/plutônio.'
+          },
+          {
+            stepTitle: 'Multiplicação da Reação em Cadeia',
+            mathSummary: 'Fator de Multiplicação k = 1.05',
+            activeUnits: ['e-unit-acc1', 'e-unit-acc2'],
+            cableText: 'Cabo 3: Condição supercrítica calculada; geração de novos nêutrons secundários.',
+            digits: [0,0,0,0,0,1,6,3,8,4],
+            decimalDisplay: '+ 00 0001 6384 n',
+            explanation: 'Acumuladores 1 e 2 confirmam a divergência exponencial da reação em cadeia.'
+          },
+          {
+            stepTitle: 'Equilíbrio Térmico e Saída',
+            mathSummary: 'Simulação Crítica Validada',
+            activeUnits: ['e-unit-acc1', 'e-unit-card'],
+            cableText: 'Cabo 4: Perfurador IBM grava as probabilidades de fuga neutrônica para o laboratório de Los Alamos.',
+            digits: [0,0,0,1,0,4,8,5,7,6],
+            decimalDisplay: '+ 00 0104 8576 n',
+            explanation: '1 milhão de trajetórias simuladas no ENIAC consolidando o método de Monte Carlo na ciência moderna.'
+          }
+        ]
+      }
+    };
+
+    function renderEniacDecadeColumns(digits) {
+      const container = document.getElementById('eniac-decade-columns');
+      if (!container) return;
+      container.innerHTML = '';
+
+      for (let col = 0; col < 10; col++) {
+        const val = digits[col] || 0;
+        const colDiv = document.createElement('div');
+        colDiv.className = 'eniac-col-digit';
+
+        // Cabeçalho da coluna (peso 10^9 a 10^0)
+        const power = 9 - col;
+        colDiv.innerHTML = `<span style="color: #64748b; font-size: 0.65rem; font-weight: 700; margin-bottom: 2px;">10<sup>${power}</sup></span>`;
+
+        // 10 lâmpadas neon (de 9 a 0)
+        for (let digit = 9; digit >= 0; digit--) {
+          const lamp = document.createElement('div');
+          lamp.className = 'eniac-lamp-mini' + (digit === val ? ' lit' : '');
+          lamp.textContent = digit;
+          colDiv.appendChild(lamp);
+        }
+        container.appendChild(colDiv);
+      }
+    }
+
+    function renderEniacFrame() {
+      const prog = eniacPrograms[eniacCurrentProg] || eniacPrograms[1];
+      const step = prog.steps[eniacCurrentStep] || prog.steps[0];
+
+      const sBadge = document.getElementById('eniac-step-badge');
+      if (sBadge) sBadge.textContent = `PASSO ${eniacCurrentStep + 1} DE ${prog.steps.length}`;
+
+      const sTitle = document.getElementById('eniac-step-title');
+      if (sTitle) sTitle.textContent = step.stepTitle;
+
+      const mSum = document.getElementById('eniac-math-summary');
+      if (mSum) mSum.textContent = step.mathSummary;
+
+      const cStatus = document.getElementById('eniac-cable-status');
+      if (cStatus) cStatus.innerHTML = `&bull; <strong>Cabo Ativo:</strong> ${step.cableText}`;
+
+      const accDec = document.getElementById('eniac-accum-decimal');
+      if (accDec) accDec.textContent = step.decimalDisplay;
+
+      const expEl = document.getElementById('eniac-step-explanation');
+      if (expEl) expEl.textContent = step.explanation;
+
+      // Atualiza luzes dos gabinetes (active units)
+      const allUnits = ['e-unit-cycling', 'e-unit-ftable', 'e-unit-acc1', 'e-unit-acc2', 'e-unit-mult', 'e-unit-card'];
+      allUnits.forEach(uId => {
+        const el = document.getElementById(uId);
+        if (el) {
+          if (step.activeUnits.includes(uId)) el.classList.add('active');
+          else el.classList.remove('active');
         }
       });
-      const st = document.getElementById('eniac-lamp-status');
-      if (st) st.textContent = `Dígito Ativo: ${eniacCounterVal} ${eniacCounterVal === 0 ? '(PULSO DE CARRY DISPARADO)' : ''}`;
+
+      // Renderiza as 10 colunas neon do acumulador
+      renderEniacDecadeColumns(step.digits);
     }
 
-    function stepENIACClean() {
-      eniacCounterVal = (eniacCounterVal + 1) % 10;
-      renderENIACCleanBulbs();
+    function stepEniacSimulator() {
+      const prog = eniacPrograms[eniacCurrentProg] || eniacPrograms[1];
+      if (eniacCurrentStep < prog.steps.length - 1) {
+        eniacCurrentStep++;
+      } else {
+        eniacCurrentStep = 0;
+      }
+      renderEniacFrame();
     }
 
-    function runENIACBurstClean() {
-      let c = 0;
-      const t = setInterval(() => {
-        stepENIACClean();
-        c++;
-        if (c >= 10) clearInterval(t);
-      }, 90);
+    function toggleEniacRun() {
+      const btn = document.getElementById('eniac-run-btn');
+      const prog = eniacPrograms[eniacCurrentProg] || eniacPrograms[1];
+      if (eniacRunTimer) {
+        clearInterval(eniacRunTimer);
+        eniacRunTimer = null;
+        if (btn) btn.textContent = 'Executar Cálculo Completo';
+      } else {
+        if (btn) btn.textContent = 'Pausar';
+        eniacRunTimer = setInterval(() => {
+          if (eniacCurrentStep >= prog.steps.length - 1) {
+            eniacCurrentStep = 0;
+          } else {
+            eniacCurrentStep++;
+          }
+          renderEniacFrame();
+        }, 850);
+      }
     }
 
-    function resetENIACClean() {
-      eniacCounterVal = 0;
-      renderENIACCleanBulbs();
+    function resetEniacSimulator() {
+      if (eniacRunTimer) {
+        clearInterval(eniacRunTimer);
+        eniacRunTimer = null;
+        const btn = document.getElementById('eniac-run-btn');
+        if (btn) btn.textContent = 'Executar Cálculo Completo';
+      }
+      eniacCurrentStep = 0;
+      renderEniacFrame();
+    }
+
+    function loadEniacProgram(pNum) {
+      eniacCurrentProg = pNum;
+      for (let i = 1; i <= 4; i++) {
+        const b = document.getElementById(`btn-eprog-${i}`);
+        if (b) b.className = i === pNum ? 'btn-clean active' : 'btn-clean secondary';
+      }
+      resetEniacSimulator();
     }
 
     // =========================================================================
@@ -5209,124 +5682,298 @@ READY
     }
 
     // =========================================================================
-    // 9. SIMULADOR: PATINHO FEIO (USP 1972) - 6 PROGRAMAS ASSEMBLY
+    // 9. SIMULADOR: PATINHO FEIO (USP 1972) - CONSOLE DIDÁTICO SIMPLIFICADO
     // =========================================================================
     const patinhoContainer = document.getElementById('patinho-switches-clean');
-    const switches = [0, 0, 0, 0, 0, 0, 0, 0];
-    let regVal = 0;
-    let currentPatinhoProg = 1;
+    const patinhoSwitches = [0, 0, 0, 0, 0, 0, 0, 0]; // B0 a B7
+    const switchWeights = [1, 2, 4, 8, 16, 32, 64, 128];
+    let patinhoRegVal = 0;
+    let patinhoActiveProg = 1;
+    let patinhoCurrentStep = 0;
+    let patinhoRunTimer = null;
+
+    const patinhoPrograms = {
+      1: {
+        name: 'Adição (10 + 15 = 25)',
+        mathSummary: '10 + 15 = 25',
+        steps: [
+          {
+            val: 10,
+            regA: 10,
+            stepTitle: 'Instrução LDA 10 (Carregar Operando A)',
+            desc: 'Chaves B3 e B1 levantadas (8 + 2 = 10). Instrução LDA carrega 10 no Acumulador da CPU da USP.'
+          },
+          {
+            val: 15,
+            regA: 25,
+            stepTitle: 'Instrução ADD 15 (Somar Operando B)',
+            desc: 'Chaves B3, B2, B1, B0 levantadas (8 + 4 + 2 + 1 = 15). Instrução ADD soma 15 ao Reg A: 10 + 15 = 25.'
+          },
+          {
+            val: 25,
+            regA: 25,
+            stepTitle: 'Instrução STO RES (Resultado 25 Salvo)',
+            desc: 'Resultado final 25 (00011001 binário) estabilizado no Acumulador e pronto na memória magnética de ferrite!'
+          }
+        ]
+      },
+      2: {
+        name: 'Subtração (50 - 18 = 32)',
+        mathSummary: '50 - 18 = 32',
+        steps: [
+          {
+            val: 50,
+            regA: 50,
+            stepTitle: 'Instrução LDA 50 (Carregar Minuendo)',
+            desc: 'Chaves B5, B4, B1 levantadas (32 + 16 + 2 = 50). Valor 50 carregado no Registrador A.'
+          },
+          {
+            val: 18,
+            regA: 32,
+            stepTitle: 'Instrução SUB 18 (Subtrair Subtraendo)',
+            desc: 'Chaves em 18 (16 + 2). ALU com circuitos TTL calcula complemento de 2 e subtrai: 50 - 18 = 32.'
+          },
+          {
+            val: 32,
+            regA: 32,
+            stepTitle: 'Resultado Final (32)',
+            desc: 'Resultado 32 armazenado: apenas o bit B5 aceso (2^5 = 32). Operação concluída em 4 microssegundos!'
+          }
+        ]
+      },
+      3: {
+        name: 'Deslocamento (7 × 2 = 14)',
+        mathSummary: '7 × 2 = 14 (Multiplicação por SHL)',
+        steps: [
+          {
+            val: 7,
+            regA: 7,
+            stepTitle: 'Instrução LDA 7 (Carregar Valor 7)',
+            desc: 'Chaves B2, B1, B0 ativadas (4 + 2 + 1 = 7). Valor inicial 7 carregado no Acumulador.'
+          },
+          {
+            val: 14,
+            regA: 14,
+            stepTitle: 'Instrução SHL (Shift Left de 1 Bit)',
+            desc: 'O registrador de deslocamento move todos os bits uma casa à esquerda (00000111 vira 00001110 = 14). Multiplica por 2 instantaneamente!'
+          }
+        ]
+      },
+      4: {
+        name: 'Máscara Lógica AND (0x0F)',
+        mathSummary: '171 AND 15 = 11 (Isolar Nibble)',
+        steps: [
+          {
+            val: 171,
+            regA: 171,
+            stepTitle: 'Instrução LDA 0xAB (Carregar 10101011)',
+            desc: 'Carrega byte completo com bits altos e baixos misturados (171 decimal).'
+          },
+          {
+            val: 15,
+            regA: 11,
+            stepTitle: 'Instrução AND 0x0F (Máscara Baixa)',
+            desc: 'Aplica máscara AND com 0x0F (00001111): zera os 4 bits altos e preserva o nibble baixo: resultado 11 (00001011).'
+          }
+        ]
+      },
+      5: {
+        name: 'Modo Manual Livre (Suas Chaves)',
+        mathSummary: 'Controle Manual Direto',
+        steps: []
+      }
+    };
 
     function buildPatinhoClean() {
       if (!patinhoContainer) return;
       patinhoContainer.innerHTML = '';
+
       for (let i = 7; i >= 0; i--) {
         const col = document.createElement('div');
         col.className = 'patinho-switch-col';
         col.innerHTML = `
-          <div class="switch-indicator ${switches[i] ? 'active' : ''}" id="p-ind-${i}"></div>
-          <div class="toggle-body-clean ${switches[i] ? 'up' : ''}" onclick="togglePatinhoClean(${i})">
+          <div style="font-size: 0.68rem; font-family: var(--font-mono); color: var(--text-muted); font-weight: 700;">${switchWeights[i]}</div>
+          <div class="switch-indicator ${patinhoSwitches[i] ? 'active' : ''}" id="p-ind-${i}"></div>
+          <div class="toggle-body-clean ${patinhoSwitches[i] ? 'up' : ''}" onclick="togglePatinhoClean(${i})">
             <div class="toggle-knob-clean"></div>
           </div>
-          <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--text-light);">B${i}</span>
+          <span style="font-size: 0.78rem; font-family: var(--font-mono); font-weight: 800; color: var(--text-main);">B${i}</span>
         `;
         patinhoContainer.appendChild(col);
       }
+
+      const totalVal = getPatinhoSwitchVal();
+      const binStr = totalVal.toString(2).padStart(8, '0');
+      const swDec = document.getElementById('patinho-switches-decimal');
+      if (swDec) swDec.textContent = `Chaves = ${binStr} (Decimal: ${totalVal})`;
     }
 
     function togglePatinhoClean(idx) {
-      switches[idx] = switches[idx] ? 0 : 1;
+      patinhoSwitches[idx] = patinhoSwitches[idx] ? 0 : 1;
       buildPatinhoClean();
+      if (patinhoActiveProg === 5) {
+        const total = getPatinhoSwitchVal();
+        const fb = document.getElementById('patinho-asm-feedback');
+        if (fb) fb.textContent = `Chaves manuais ajustadas em ${total} (binário ${total.toString(2).padStart(8, '0')}).`;
+      }
     }
 
     function getPatinhoSwitchVal() {
       let sum = 0;
-      for (let i = 7; i >= 0; i--) sum += switches[i] * Math.pow(2, i);
+      for (let i = 0; i < 8; i++) sum += patinhoSwitches[i] * switchWeights[i];
       return sum;
     }
 
-    function patinhoLoadClean() {
-      regVal = getPatinhoSwitchVal();
-      updatePatinhoFeedback('Instrução LDA: carregou o valor binário das chaves no Registrador A.');
-    }
-
-    function patinhoAddClean() {
-      const v = getPatinhoSwitchVal();
-      regVal = (regVal + v) % 256;
-      updatePatinhoFeedback(`Instrução ADD: somou ${v} ao Registrador A. Total = ${regVal}.`);
-    }
-
-    function patinhoSubClean() {
-      const v = getPatinhoSwitchVal();
-      regVal = (regVal - v + 256) % 256;
-      updatePatinhoFeedback(`Instrução SUB: subtraiu ${v} do Registrador A. Novo valor = ${regVal}.`);
-    }
-
-    function patinhoShlClean() {
-      regVal = (regVal << 1) % 256;
-      updatePatinhoFeedback(`Instrução SHL: deslocou bits à esquerda (multiplicou por 2). Valor = ${regVal}.`);
-    }
-
-    function patinhoAndClean() {
-      const v = getPatinhoSwitchVal();
-      regVal = (regVal & v) % 256;
-      updatePatinhoFeedback(`Instrução AND: máscara lógica bit-a-bit aplicada. Resultado = ${regVal}.`);
-    }
-
-    function patinhoOrClean() {
-      const v = getPatinhoSwitchVal();
-      regVal = (regVal | v) % 256;
-      updatePatinhoFeedback(`Instrução OR: disjunção lógica bit-a-bit aplicada. Resultado = ${regVal}.`);
-    }
-
-    function updatePatinhoFeedback(msg) {
-      const bin = regVal.toString(2).padStart(8, '0');
-      const hex = '0x' + regVal.toString(16).toUpperCase().padStart(2, '0');
-      const rEl = document.getElementById('patinho-clean-readout');
-      if (rEl) rEl.textContent = `REGISTRADOR A: ${bin} (Decimal: ${regVal} | Hex: ${hex})`;
-      const fEl = document.getElementById('patinho-asm-feedback');
-      if (fEl) fEl.textContent = msg;
-    }
-
-    function patinhoResetClean() {
-      switches.fill(0);
-      regVal = 0;
+    function setPatinhoSwitchesFromInt(v) {
+      for (let i = 0; i < 8; i++) {
+        patinhoSwitches[i] = (v >> i) & 1;
+      }
       buildPatinhoClean();
-      updatePatinhoFeedback('Console de chaves e registradores zerados.');
+    }
+
+    function updatePatinhoUI() {
+      const bin = patinhoRegVal.toString(2).padStart(8, '0');
+      const hex = '0x' + patinhoRegVal.toString(16).toUpperCase().padStart(2, '0');
+      const rEl = document.getElementById('patinho-clean-readout');
+      if (rEl) rEl.textContent = `REG A: ${bin} (Decimal: ${patinhoRegVal} | Hex: ${hex})`;
+
+      const prog = patinhoPrograms[patinhoActiveProg];
+      const mSum = document.getElementById('patinho-math-summary');
+      if (mSum) mSum.textContent = prog.mathSummary;
+
+      if (patinhoActiveProg !== 5 && prog.steps.length > 0) {
+        const step = prog.steps[patinhoCurrentStep];
+        const sBadge = document.getElementById('patinho-step-badge');
+        if (sBadge) sBadge.textContent = `PASSO ${patinhoCurrentStep + 1} DE ${prog.steps.length}`;
+
+        const sTitle = document.getElementById('patinho-step-title');
+        if (sTitle) sTitle.textContent = step.stepTitle;
+
+        const fEl = document.getElementById('patinho-asm-feedback');
+        if (fEl) fEl.textContent = step.desc;
+
+        setPatinhoSwitchesFromInt(step.val);
+        patinhoRegVal = step.regA;
+      }
+    }
+
+    function stepPatinhoProg() {
+      const prog = patinhoPrograms[patinhoActiveProg];
+      if (!prog || prog.steps.length === 0) return;
+
+      if (patinhoCurrentStep < prog.steps.length - 1) {
+        patinhoCurrentStep++;
+      } else {
+        patinhoCurrentStep = 0;
+      }
+      updatePatinhoUI();
+    }
+
+    function togglePatinhoRun() {
+      const btn = document.getElementById('patinho-run-btn');
+      const prog = patinhoPrograms[patinhoActiveProg];
+      if (!prog || prog.steps.length === 0) return;
+
+      if (patinhoRunTimer) {
+        clearInterval(patinhoRunTimer);
+        patinhoRunTimer = null;
+        if (btn) btn.textContent = 'Executar Programa Completo';
+      } else {
+        if (btn) btn.textContent = 'Pausar';
+        patinhoRunTimer = setInterval(() => {
+          if (patinhoCurrentStep >= prog.steps.length - 1) {
+            patinhoCurrentStep = 0;
+          } else {
+            patinhoCurrentStep++;
+          }
+          updatePatinhoUI();
+        }, 900);
+      }
+    }
+
+    function resetPatinhoClean() {
+      if (patinhoRunTimer) {
+        clearInterval(patinhoRunTimer);
+        patinhoRunTimer = null;
+        const btn = document.getElementById('patinho-run-btn');
+        if (btn) btn.textContent = 'Executar Programa Completo';
+      }
+      patinhoCurrentStep = 0;
+      if (patinhoActiveProg === 5) {
+        patinhoSwitches.fill(0);
+        patinhoRegVal = 0;
+        buildPatinhoClean();
+        const fEl = document.getElementById('patinho-asm-feedback');
+        if (fEl) fEl.textContent = 'Console zerado. Suba chaves e clique em Carregar (LDA).';
+      }
+      updatePatinhoUI();
     }
 
     function loadPatinhoProgram(pNum) {
-      currentPatinhoProg = pNum;
-      for (let n = 1; n <= 6; n++) {
+      patinhoActiveProg = pNum;
+      for (let n = 1; n <= 5; n++) {
         const b = document.getElementById(`btn-pprog-${n}`);
         if (b) b.className = n === pNum ? 'btn-clean active' : 'btn-clean secondary';
       }
 
-      const desc = document.getElementById('patinho-prog-desc');
-      switches.fill(0);
+      const stepControls = document.getElementById('patinho-step-controls');
+      const manualControls = document.getElementById('patinho-manual-controls');
 
-      if (pNum === 1) {
-        if (desc) desc.textContent = '1. Soma Básica: LDA [11], ADD [14] -> Carrega 11 e soma 14 resultando em 25.';
-        switches[0] = 1; switches[1] = 1; switches[2] = 0; switches[3] = 1; // 11
-      } else if (pNum === 2) {
-        if (desc) desc.textContent = '2. Contador em Laço: Loop decrescente de 7 até 0 com teste de flag de zero JNZ.';
-        switches[0] = 1; switches[1] = 1; switches[2] = 1; // 7
-      } else if (pNum === 3) {
-        if (desc) desc.textContent = '3. Máscara Lógica AND: Isola os 4 bits menos significativos (AND 0x0F = 00001111).';
-        switches[0] = 1; switches[1] = 1; switches[2] = 1; switches[3] = 1; // 0x0F
-      } else if (pNum === 4) {
-        if (desc) desc.textContent = '4. Subtração Direta: LDA [25], SUB [10] -> Carrega 25 e subtrai 10 resultando em 15.';
-        switches[1] = 1; switches[3] = 1; // 10 (00001010)
-        regVal = 25;
-      } else if (pNum === 5) {
-        if (desc) desc.textContent = '5. Deslocamento de Bits (SHL x2): Multiplicação binária rápida por 2 via registrador de deslocamento.';
-        switches[0] = 1; switches[1] = 1; // 3 -> SHL vira 6
-        regVal = 3;
+      if (pNum === 5) {
+        if (stepControls) stepControls.style.display = 'none';
+        if (manualControls) manualControls.style.display = 'flex';
+        patinhoSwitches.fill(0);
+        patinhoRegVal = 0;
+        buildPatinhoClean();
+        const sBadge = document.getElementById('patinho-step-badge');
+        if (sBadge) sBadge.textContent = 'MODO MANUAL';
+        const sTitle = document.getElementById('patinho-step-title');
+        if (sTitle) sTitle.textContent = 'Operação Direta pelas Chaves';
+        const fEl = document.getElementById('patinho-asm-feedback');
+        if (fEl) fEl.textContent = 'Clique nas chaves para alternar 0 ou 1 e use os botões abaixo.';
       } else {
-        if (desc) desc.textContent = '6. Máscara Lógica OR: Ativa obrigatoriamente os 4 bits superiores (OR 0xF0 = 11110000).';
-        switches[4] = 1; switches[5] = 1; switches[6] = 1; switches[7] = 1; // 0xF0
+        if (stepControls) stepControls.style.display = 'flex';
+        if (manualControls) manualControls.style.display = 'none';
+        patinhoCurrentStep = 0;
+        updatePatinhoUI();
       }
-      buildPatinhoClean();
-      updatePatinhoFeedback(`Programa ${pNum} configurado nas chaves.`);
+    }
+
+    // Ações manuais livres para o Modo Manual do Patinho
+    function patinhoLoadClean() {
+      patinhoRegVal = getPatinhoSwitchVal();
+      const bin = patinhoRegVal.toString(2).padStart(8, '0');
+      document.getElementById('patinho-clean-readout').textContent = `REG A: ${bin} (Decimal: ${patinhoRegVal} | Hex: 0x${patinhoRegVal.toString(16).toUpperCase().padStart(2, '0')})`;
+      document.getElementById('patinho-asm-feedback').textContent = `Instrução LDA executada: carregou ${patinhoRegVal} no Acumulador.`;
+    }
+
+    function patinhoAddClean() {
+      const v = getPatinhoSwitchVal();
+      patinhoRegVal = (patinhoRegVal + v) % 256;
+      const bin = patinhoRegVal.toString(2).padStart(8, '0');
+      document.getElementById('patinho-clean-readout').textContent = `REG A: ${bin} (Decimal: ${patinhoRegVal} | Hex: 0x${patinhoRegVal.toString(16).toUpperCase().padStart(2, '0')})`;
+      document.getElementById('patinho-asm-feedback').textContent = `Instrução ADD executada: somou +${v}. Total = ${patinhoRegVal}.`;
+    }
+
+    function patinhoSubClean() {
+      const v = getPatinhoSwitchVal();
+      patinhoRegVal = (patinhoRegVal - v + 256) % 256;
+      const bin = patinhoRegVal.toString(2).padStart(8, '0');
+      document.getElementById('patinho-clean-readout').textContent = `REG A: ${bin} (Decimal: ${patinhoRegVal} | Hex: 0x${patinhoRegVal.toString(16).toUpperCase().padStart(2, '0')})`;
+      document.getElementById('patinho-asm-feedback').textContent = `Instrução SUB executada: subtraiu -${v}. Novo valor = ${patinhoRegVal}.`;
+    }
+
+    function patinhoResetClean() {
+      patinhoRegVal = 0;
+      patinhoSwitches = [0, 0, 0, 0, 0, 0, 0, 0];
+      for (let i = 0; i < 8; i++) {
+        const sw = document.getElementById(`psw-${i}`);
+        const lbl = document.getElementById(`psw-lbl-${i}`);
+        if (sw) sw.classList.remove('active');
+        if (lbl) lbl.textContent = '0';
+      }
+      document.getElementById('patinho-clean-readout').textContent = 'REG A: 00000000 (Decimal: 0 | Hex: 0x00)';
+      document.getElementById('patinho-asm-feedback').textContent = 'Acumulador e chaves zerados com sucesso.';
     }
 
     // =========================================================================
@@ -5379,17 +6026,27 @@ READY
       const upper = cmd.toUpperCase();
       if (upper === 'CLS') {
         clearCrtTerminal();
+      } else if (upper === 'NEW') {
+        crtCurrentProgram = [];
+        appendCrtOutput('PROGRAMA APAGADO DA MEMORIA (NEW)');
       } else if (upper === 'RUN') {
         executeBasicLines(crtCurrentProgram);
       } else if (upper === 'LIST') {
-        appendCrtOutput(crtCurrentProgram.join('<br>'));
+        if (crtCurrentProgram.length === 0) {
+          appendCrtOutput('(MEMORIA VAZIA)');
+        } else {
+          appendCrtOutput(crtCurrentProgram.join('<br>'));
+        }
       } else if (upper.startsWith('PRINT ')) {
         const expr = cmd.substring(6).trim();
         try {
           if (expr.startsWith('"') && expr.endsWith('"')) {
             appendCrtOutput(expr.slice(1, -1));
           } else {
-            const sanitized = expr.replace(/[^0-9+\-*/().]/g, '');
+            // Suporte a SQR e exponenciação ^
+            let sanitized = expr.replace(/SQR\(([^)]+)\)/gi, 'Math.sqrt($1)');
+            sanitized = sanitized.replace(/\^/g, '**');
+            sanitized = sanitized.replace(/[^0-9+\-*/().Mathsqr]/g, '');
             const val = Function('"use strict";return (' + sanitized + ')')();
             appendCrtOutput(String(val));
           }
@@ -5405,6 +6062,10 @@ READY
     }
 
     function executeBasicLines(lines) {
+      if (lines.length === 0) {
+        appendCrtOutput('READY');
+        return;
+      }
       lines.forEach((l, idx) => {
         setTimeout(() => {
           if (l.includes('PRINT "')) {
@@ -5419,6 +6080,48 @@ READY
       setTimeout(() => {
         appendCrtOutput('READY');
       }, lines.length * 140 + 80);
+    }
+
+    function pasteCrtCommand(cmd) {
+      const inp = document.getElementById('crt-cmd-input');
+      if (inp) {
+        inp.value = cmd;
+        runCrtCommand();
+      }
+    }
+
+    function insertAndRunBasicLoop() {
+      clearCrtTerminal();
+      crtCurrentProgram = [
+        '10 REM LACO FOR NEXT NO CP-500',
+        '20 FOR I = 1 TO 5',
+        '30 PRINT "COMPUTADOR BRASILEIRO #"; I',
+        '40 NEXT I',
+        '50 PRINT "LOOP CONCLUIDO COM SUCESSO"'
+      ];
+      appendCrtOutput('PROGRAMA INSERIDO NA MEMORIA:');
+      appendCrtOutput(crtCurrentProgram.join('<br>'));
+      setTimeout(() => {
+        appendCrtOutput('RUN');
+        executeBasicLines(crtCurrentProgram);
+      }, 500);
+    }
+
+    function insertAndRunBasicCountdown() {
+      clearCrtTerminal();
+      crtCurrentProgram = [
+        '10 REM CONTAGEM REGRESSIVA 8 BITS',
+        '20 FOR T = 5 TO 1 STEP -1',
+        '30 PRINT "TEMPO RESTANTE: "; T; " SEGUNDOS"',
+        '40 NEXT T',
+        '50 PRINT "IGNICAO CONCLUIDA!"'
+      ];
+      appendCrtOutput('PROGRAMA INSERIDO NA MEMORIA:');
+      appendCrtOutput(crtCurrentProgram.join('<br>'));
+      setTimeout(() => {
+        appendCrtOutput('RUN');
+        executeBasicLines(crtCurrentProgram);
+      }, 500);
     }
 
     function loadRetroBasicProg(pNum) {
@@ -5444,7 +6147,7 @@ READY
         crtCurrentProgram = [
           '10 REM GRAFICO DE BARRAS ASCII NA TELA CRT',
           '20 PRINT "COMPUTADORES NO BRASIL (1972-1985):"',
-          '30 PRINT "1972 [PATINHO] : ## (1)",',
+          '30 PRINT "1972 [PATINHO] : ## (1)"',
           '40 PRINT "1977 [COBRA]   : ######## (400)"',
           '50 PRINT "1985 [MICROS]  : #################### (120.000)"'
         ];
@@ -5506,8 +6209,10 @@ READY
     resetZuseTape();
     buildColossusTubes();
     resetColossusScanner();
+    resetEniacSimulator();
     if (canvas) initBabyCRTMatrix();
     buildPatinhoClean();
+    updatePatinhoUI();
   </script>
 </body>
 </html>
