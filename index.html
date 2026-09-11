@@ -128,7 +128,7 @@
       font-size: clamp(1.1rem, 2.2vw, 1.35rem);
       font-weight: 500;
       color: var(--text-muted);
-      max-width: 720px;
+      max-width: 740px;
       line-height: 1.55;
       margin-bottom: 2.5rem;
     }
@@ -172,11 +172,12 @@
       flex-wrap: wrap;
     }
 
-    /* BADGES DUPLAS: TURING-COMPLETE & VON NEUMANN */
+    /* BADGES COLORIDAS COM RIGOR SEMÂNTICO (VERDE = SIM, VERMELHO = NÃO) */
     .status-badges-group {
       display: inline-flex;
       gap: 0.5rem;
       flex-wrap: wrap;
+      align-items: center;
     }
 
     .tag-status {
@@ -185,20 +186,23 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.04em;
-      padding: 0.3rem 0.75rem;
+      padding: 0.35rem 0.85rem;
       border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
     }
 
+    /* Turing-Complete Cores */
     .tag-status.tc-yes {
       background: #dcfce7;
       color: #15803d;
-      border: 1px solid #bbf7d0;
+      border: 1px solid #86efac;
     }
 
     .tag-status.tc-no {
       background: #fee2e2;
       color: #b91c1c;
-      border: 1px solid #fecaca;
+      border: 1px solid #fca5a5;
     }
 
     .tag-status.tc-theory {
@@ -207,16 +211,17 @@
       border: 1px solid #fde68a;
     }
 
+    /* Von Neumann Cores (Agora idênticas em destaque e cor!) */
     .tag-status.vn-yes {
-      background: #e0e7ff;
-      color: #3730a3;
-      border: 1px solid #c7d2fe;
+      background: #dcfce7;
+      color: #15803d;
+      border: 1px solid #86efac;
     }
 
     .tag-status.vn-no {
-      background: #f1f5f9;
-      color: #475569;
-      border: 1px solid #cbd5e1;
+      background: #fee2e2;
+      color: #b91c1c;
+      border: 1px solid #fca5a5;
     }
 
     .tag-status.brazil {
@@ -266,10 +271,11 @@
     .media-frame {
       border-radius: var(--radius-md);
       overflow: hidden;
-      background: #e2e8f0;
+      background: #ffffff;
       border: 1px solid var(--border-subtle);
       display: flex;
       flex-direction: column;
+      box-shadow: var(--shadow-sm);
     }
 
     .media-frame img {
@@ -280,7 +286,7 @@
       background: #f8fafc;
     }
 
-    /* Centralização perfeita para o retrato de Alan Turing */
+    /* Centralização perfeita do retrato de Alan Turing */
     .media-frame img.turing-portrait {
       object-position: center 15%;
     }
@@ -293,6 +299,50 @@
       background: #ffffff;
       border-top: 1px solid var(--border-subtle);
       line-height: 1.4;
+    }
+
+    /* EMBED DE VÍDEO DO YOUTUBE ELEGANTE */
+    .video-embed-container {
+      margin: 2rem 0;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background: #000000;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .video-responsive-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* proporção 16:9 */
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-responsive-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-caption-bar {
+      padding: 0.65rem 1rem;
+      background: #ffffff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .video-caption-bar a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-weight: 700;
     }
 
     /* PONTOS DE APRESENTAÇÃO */
@@ -353,7 +403,7 @@
     }
 
     /* ==========================================================================
-       SIMULADORES INTUITIVOS E LIMPOS (1 BOTÃO DE CLIQUE DIRETO)
+       SIMULADORES INTUITIVOS E LIMPOS
        ========================================================================== */
     .minimal-sim {
       margin-top: 2rem;
@@ -371,6 +421,8 @@
       margin-bottom: 1.25rem;
       padding-bottom: 0.65rem;
       border-bottom: 1px solid var(--border-subtle);
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
     .sim-tag {
@@ -411,14 +463,19 @@
       background: #e2e8f0;
     }
 
-    /* FITA DE TURING SUPER INTUITIVA (INVERSOR DE BITS) */
+    .btn-clean.active {
+      background: #1d4ed8;
+      color: #ffffff;
+    }
+
+    /* FITA DE TURING SUPER PODEROSA E INTELIGENTE */
     .turing-minimal-ribbon {
       display: flex;
       justify-content: center;
       gap: 8px;
       margin: 1.75rem 0 1.25rem;
       position: relative;
-      padding-top: 26px;
+      padding-top: 28px;
     }
 
     .turing-head-pointer {
@@ -431,13 +488,13 @@
       font-weight: 700;
       background: var(--text-main);
       color: #ffffff;
-      padding: 0.15rem 0.55rem;
+      padding: 0.18rem 0.65rem;
       border-radius: var(--radius-pill);
     }
 
     .turing-tile {
-      width: 50px;
-      height: 52px;
+      width: 52px;
+      height: 54px;
       background: #ffffff;
       border: 2px solid var(--border-card);
       border-radius: var(--radius-sm);
@@ -445,28 +502,33 @@
       align-items: center;
       justify-content: center;
       font-family: var(--font-mono);
-      font-size: 1.5rem;
+      font-size: 1.55rem;
       font-weight: 800;
       color: var(--text-main);
       transition: all 0.2s ease;
     }
 
     .turing-tile.active {
-      border-color: var(--text-main);
-      background: #f1f5f9;
-      box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.12);
-      transform: scale(1.06);
+      border-color: #1d4ed8;
+      background: #eff6ff;
+      box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+      transform: scale(1.08);
+      color: #1d4ed8;
     }
 
-    .turing-clean-info {
-      text-align: center;
+    .turing-rule-box {
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1.1rem;
+      margin-bottom: 1.2rem;
       font-family: var(--font-mono);
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       color: var(--text-muted);
-      margin-bottom: 1.25rem;
+      line-height: 1.6;
     }
 
-    .turing-clean-info strong {
+    .turing-rule-box b {
       color: var(--text-main);
     }
 
@@ -505,6 +567,34 @@
     .dial-circle:hover {
       border-color: var(--text-main);
       transform: scale(1.05);
+    }
+
+    /* SIMULADOR DO ENIAC (ANEL DECÁDICO) */
+    .eniac-ring-clean {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 6px;
+      margin: 1.25rem 0;
+    }
+
+    .eniac-lamp-clean {
+      padding: 0.6rem 0.2rem;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 800;
+      background: #f1f5f9;
+      color: var(--text-muted);
+      border: 2px solid var(--border-card);
+      border-radius: var(--radius-sm);
+      transition: all 0.15s ease;
+    }
+
+    .eniac-lamp-clean.glowing {
+      background: #f97316;
+      color: #ffffff;
+      border-color: #ea580c;
+      box-shadow: 0 0 12px rgba(249, 115, 22, 0.5);
     }
 
     /* MANCHESTER BABY CRT CLEAN */
@@ -581,9 +671,7 @@
       background: var(--accent-green);
     }
 
-    /* ==========================================================================
-       TABELA COMPARATIVA ELEGANTE
-       ========================================================================== */
+    /* TABELA COMPARATIVA ELEGANTE */
     .table-slide-card {
       background: #ffffff;
       border: 1px solid var(--border-subtle);
@@ -646,7 +734,7 @@
       </h1>
 
       <p class="hero-lead-text">
-        Uma reconstituição cronológica e conceitual: do cálculo humano ancestral à Máquina Universal de Alan Turing, a revolução da arquitetura com programa armazenado e o pioneirismo no Brasil.
+        Uma reconstituição cronológica rigorosa: do cálculo manual e das máquinas de engrenagens à concepção universal de Turing, a consolidação da arquitetura Von Neumann e a história da computação no Brasil.
       </p>
 
       <div class="hero-meta-row">
@@ -658,7 +746,7 @@
 
     <!-- ==========================================================================
          CONCEITO FUNDAMENTAL: O QUE É UMA COMPUTADORA?
-         (Agora com numeração contínua 1, 2, 3 incluindo O Computador Humano)
+         (Numeração contínua 1, 2, 3 partindo do Computador Humano)
          ========================================================================== -->
     <section class="slide-block">
       <div class="slide-header">
@@ -672,21 +760,21 @@
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>1. O Computador Humano:</strong> A profissão original. Durante séculos, "computador" era um cargo profissional exercido por pessoas (na sua maioria mulheres matemáticas) que realizavam exaustivos cálculos de tábuas astronômicas, logaritmos e tabelas de tiro de artilharia à mão.
+              <strong>1. O Computador Humano:</strong> A profissão original. Durante séculos, "computador" era um cargo profissional exercido por seres humanos (na sua grande maioria mulheres matemáticas) que realizavam exaustivos cálculos manuais de tábuas de logaritmos, tabelas astronômicas e balística militar.
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>2. Máquinas de Computar (Especializadas):</strong> Instrumentos físicos como o ábaco, a régua de cálculo, a Pascalina e o Analisador Diferencial. O próprio arranjo físico dita e restringe a conta: realizam apenas operações aritméticas fixas e jamais podem executar algoritmos fora do seu propósito de fabricação.
+              <strong>2. Máquinas de Computar (Especializadas):</strong> Dispositivos físicos rígidos como o ábaco, a régua de cálculo, a Pascalina e o Analisador Diferencial. O próprio arranjo físico dita e restringe a conta: realizam apenas operações aritméticas fixas e jamais podem executar algoritmos gerais fora do seu propósito de fabricação.
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>3. Máquinas Universais (Gerais):</strong> Dispositivos programáveis capazes de simular o comportamento de qualquer outra máquina quando alimentados com as instruções adequadas. Nelas ocorre a unificação radical: <strong>as instruções do programa e os dados possuem a mesma natureza simbólica</strong>.
+              <strong>3. Máquinas Universais (Gerais):</strong> Dispositivos programáveis capazes de simular o comportamento de qualquer outro processo de cálculo quando alimentados com as instruções adequadas. Nelas ocorre a unificação radical: <strong>as instruções do programa e os dados possuem a mesma natureza simbólica</strong>.
             </div>
           </div>
         </div>
@@ -694,7 +782,7 @@
     </section>
 
     <!-- ==========================================================================
-         LINHA DO TEMPO CRONOLÓGICA (DA ANTIGUIDADE AO COMPUTADOR MODERNO)
+         LINHA DO TEMPO CRONOLÓGICA
          ========================================================================== -->
 
     <!-- ERA 1: PRIMEIROS INSTRUMENTOS ANCESTRAIS (~35.000 a.C. — Séc. XV) -->
@@ -708,19 +796,23 @@
           </div>
         </div>
         <h2 class="slide-title">Primeiros Instrumentos e Sistemas de Cálculo</h2>
-        <p class="slide-subtitle">A separação primordial entre o cálculo biológico e o armazenamento duradouro da informação.</p>
+        <p class="slide-subtitle">A separação primordial entre a mente biológica e o armazenamento duradouro da informação.</p>
       </div>
 
       <div class="clean-card">
-        <!-- Galeria Dupla: Ishango + Quipu Inca -->
-        <div class="media-gallery-grid">
+        <!-- Galeria de 3 Imagens: Ishango + Plimpton 322 + Quipu Inca -->
+        <div class="media-gallery-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
           <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Ishango_bone_%28cropped%29.jpg" alt="Osso de Ishango">
-            <div class="media-caption">Osso de Ishango (~20.000 a.C.): fíbula de babuíno com entalhes agrupando números primos.</div>
+            <div class="media-caption">Osso de Ishango (~20.000 a.C.): marcas numéricas agrupando duplicações e primos.</div>
+          </div>
+          <div class="media-frame">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Plimpton_322.jpg" alt="Tábua Babilônica Plimpton 322">
+            <div class="media-caption">Tábua Plimpton 322 (~1800 a.C., Babilônia): ternos pitagóricos em base sexagesimal.</div>
           </div>
           <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Inca_Quipu.jpg" alt="Quipu Inca">
-            <div class="media-caption">Quipu Inca (Andes): estrutura têxtil de dados posicional decimal em cordas de nós coloridos.</div>
+            <div class="media-caption">Quipu Inca (Andes): estrutura têxtil de dados posicional decimal em nós de algodão.</div>
           </div>
         </div>
 
@@ -728,21 +820,21 @@
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>Osso de Lebombo (~35.000 a.C.) &amp; Ishango (~20.000 a.C.):</strong> Os registros numéricos mais antigos conhecidos na África. O Lebombo traz 29 entalhes (ciclo lunar), enquanto o Ishango exibe colunas com multiplicações por 2 e a série dos primos entre 10 e 20 (11, 13, 17, 19).
+              <strong>Osso de Lebombo (~35.000 a.C.) &amp; Ishango (~20.000 a.C.):</strong> Os registros matemáticos mais antigos conhecidos na África. O Lebombo traz 29 incisões (calendário lunar), enquanto o Ishango exibe colunas com duplicações ($\times 2$) e a série de números primos entre 10 e 20 (11, 13, 17, 19).
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>Tábuas Babilônicas (Plimpton 322, ~1800 a.C.):</strong> Tabelas em argila na base sexagesimal com ternos pitagóricos mil anos antes de Pitágoras.
+              <strong>Tábuas Babilônicas &amp; Quipus Incas:</strong> As tábuas de argila babilônicas serviam como memórias de consulta para tabelas de cálculo. Os <strong>Quipus Incas</strong> formavam uma base de dados contábil posicional decimal sem escrita alfabética para gerir estoques e tributos.
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>Quipus Incas &amp; Soroban:</strong> Os Quipus constituíam uma base de dados contábil posicional sem escrita alfabética. O <strong>Soroban</strong> (ábaco japonês) introduziu o cálculo posicional bi-quinário manual que acelerava as quatro operações.
+              <strong>Soroban (Ábaco Japonês):</strong> Dispositivo bi-quinário posicional manual (uma conta superior = 5; quatro inferiores = 1) que acelerava a aritmética ao transferir o estado mental para contas de madeira.
             </div>
           </div>
         </div>
@@ -765,19 +857,23 @@
           </div>
         </div>
         <h2 class="slide-title">A Automação Mecânica do Cálculo</h2>
-        <p class="slide-subtitle">Engrenagens de bronze e ferro substituindo o erro do cálculo aritmético humano.</p>
+        <p class="slide-subtitle">Engrenagens de bronze e ferro substituindo o erro humano nas quatro operações e na astronomia.</p>
       </div>
 
       <div class="clean-card">
-        <!-- Galeria Dupla: Pascalina + Máquina Diferencial de Babbage -->
-        <div class="media-gallery-grid">
+        <!-- Galeria Tripla: Anticítera + Pascalina + Leibniz -->
+        <div class="media-gallery-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
           <div class="media-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Arts_et_Metiers_Pascaline_dsc03869.jpg" alt="Pascalina">
-            <div class="media-caption">Pascalina (Blaise Pascal, 1642): o revolucionário transporte gravitacional sautoir.</div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/NAMA_Machine_d%27Anticyth%C3%A8re_1.jpg" alt="Mecanismo de Anticítera">
+            <div class="media-caption">Mecanismo de Anticítera (~150 a.C.): engrenagens planetárias de bronze da Grécia Antiga.</div>
           </div>
           <div class="media-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Babbage_Difference_Engine.jpg" alt="Máquina Diferencial de Babbage">
-            <div class="media-caption">Máquina Diferencial Nº 2 de Charles Babbage: 8.000 peças calculando polinômios por diferenças finitas.</div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Arts_et_Metiers_Pascaline_dsc03869.jpg" alt="Pascalina">
+            <div class="media-caption">Pascalina (Blaise Pascal, 1642): o pioneiro mecanismo de transporte de dezenas sautoir.</div>
+          </div>
+          <div class="media-frame">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Leibniz_Stepped_Reckoner_mechanism.png" alt="Mecanismo de Leibniz">
+            <div class="media-caption">Tambor escalonado de Leibniz (1673): multiplicação direta e a fundação do sistema binário (1679).</div>
           </div>
         </div>
 
@@ -785,22 +881,33 @@
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>Mecanismo de Anticítera (~150 a.C.):</strong> Computador analógico com mais de 30 engrenagens planetárias de bronze da Grécia Antiga para prever posições planetárias e eclipses.
+              <strong>Mecanismo de Anticítera (~150 a.C.):</strong> O mais antigo computador analógico conhecido. Com mais de 30 engrenagens diferenciais de bronze, calculava posições do Sol, fases da Lua e ciclos de eclipses na Grécia helenística.
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>Pascalina (1642) &amp; Máquina de Leibniz (1673):</strong> Pascal criou o mecanismo <em>sautoir</em> de "vai-um" automático. Leibniz introduziu o tambor escalonado para multiplicação direta e formalizou o <strong>sistema binário moderno em 1679</strong>.
+              <strong>Pascalina (1642) &amp; Máquina de Leibniz (1673):</strong> Pascal inventou aos 19 anos o <em>sautoir</em> (transporte gravitacional automático de dezenas). Leibniz introduziu o tambor escalonado para multiplicação e divisão direta, e publicou a <strong>aritmética binária moderna em 1679</strong>.
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>Máquina Diferencial de Babbage (1822):</strong> Automação do cálculo de tabelas náuticas e logaritmos usando o método das diferenças finitas de Newton, executando polinômios apenas com adições sucessivas.
+              <strong>Máquina Diferencial de Charles Babbage (1822):</strong> Concebida para eliminar os frequentes erros humanos em tabelas de navegação marítima através do método das diferenças finitas de Newton, calculando polinômios exclusivamente com adições mecânicas.
             </div>
+          </div>
+        </div>
+
+        <!-- VÍDEO DA MÁQUINA DIFERENCIAL DE BABBAGE EM FUNCIONAMENTO REAL -->
+        <div class="video-embed-container">
+          <div class="video-responsive-wrapper">
+            <iframe src="https://www.youtube-nocookie.com/embed/0anIyVGe4PU" title="Máquina Diferencial de Babbage em Movimento no Museu de Ciências de Londres" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-caption-bar">
+            <span>Demonstração real da Máquina Diferencial Nº 2 construída pelo Science Museum de Londres</span>
+            <a href="https://www.youtube.com/watch?v=0anIyVGe4PU" target="_blank" rel="noopener">Assistir no YouTube</a>
           </div>
         </div>
 
@@ -827,14 +934,14 @@
           </div>
 
           <div style="display: flex; justify-content: center; gap: 1rem;">
-            <button class="btn-clean" onclick="stepPascaline(9)">Somar +9 (Testar o "Vai-Um")</button>
+            <button class="btn-clean" onclick="stepPascaline(9)">Somar +9 (Testar o "Vai-Um" Automático)</button>
             <button class="btn-clean secondary" onclick="resetCleanPascaline()">Zerar Discos</button>
           </div>
         </div>
 
         <div class="reason-box">
           <strong>Critérios: Turing-Complete: Não | Von Neumann: Não</strong>
-          Operações aritméticas mecânicas lineares e fixas. Sem qualquer desvio condicional, laço ou capacidade algorítmica geral.
+          Operações aritméticas mecânicas rígidas. Não executavam controle de fluxo condicional, laços programados nem possuíam memória de instruções.
         </div>
       </div>
     </section>
@@ -850,19 +957,19 @@
           </div>
         </div>
         <h2 class="slide-title">Máquina Analítica &amp; Ada Lovelace</h2>
-        <p class="slide-subtitle">A concepção do primeiro computador de propósito geral e a publicação do primeiro algoritmo da história.</p>
+        <p class="slide-subtitle">A concepção do primeiro computador de uso geral e do primeiro algoritmo publicado da história.</p>
       </div>
 
       <div class="clean-card">
-        <!-- Galeria Dupla: Ada Lovelace + Retrato em Pintura -->
+        <!-- Galeria Dupla: Ada Lovelace + Retrato Pintura -->
         <div class="media-gallery-grid">
           <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Ada_Lovelace_portrait.jpg" alt="Ada Lovelace">
-            <div class="media-caption">Ada Lovelace (1815–1852): escreveu o primeiro algoritmo para ser processado por máquina.</div>
+            <div class="media-caption">Ada Augusta King, Condessa de Lovelace (1815–1852): a primeira programadora do mundo.</div>
           </div>
           <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c0/Ada_Lovelace_Chalon_portrait.jpg" alt="Ada Lovelace Chalon portrait">
-            <div class="media-caption">Retrato por Alfred Edward Chalon: a mente pioneira da computação simbólica.</div>
+            <div class="media-caption">Retrato por Alfred Chalon: formulou o conceito de software e computação simbólica.</div>
           </div>
         </div>
 
@@ -870,34 +977,33 @@
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>A Arquitetura de Babbage (1837):</strong> Charles Babbage concebeu a separação essencial da computação: o <strong>Moinho</strong> (CPU/ALU para operações) e o <strong>Armazém</strong> (memória para 1.000 variáveis de 50 dígitos), controlados por cartões perfurados do tear de Jacquard.
+              <strong>A Arquitetura de Babbage (1837):</strong> Charles Babbage projetou a primeira máquina de computação geral: o <strong>Moinho</strong> (CPU/ALU para processar) e o <strong>Armazém</strong> (memória para 1.000 variáveis de 50 dígitos decimais).
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>Controle por Cartões de Jacquard:</strong> Cartões de Operação e Cartões de Variáveis permitiam que a máquina tomasse decisões: continha <strong>laços de repetição (loops) e desvio condicional</strong> (pular cartões com base no sinal de um valor).
+              <strong>Controle por Cartões Perfurados de Jacquard:</strong> Cartões de Operação e Cartões de Variáveis permitiam que a máquina tomasse decisões: continha <strong>laços de repetição (loops) e desvio condicional</strong> (pular cartões se uma conta resultasse em zero ou negativo).
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>O Primeiro Algoritmo &amp; Visão Profética (Ada Lovelace, 1843):</strong> Na célebre "Nota G", Ada detalhou o algoritmo para cálculo dos números de Bernoulli e declarou que a máquina poderia atuar sobre símbolos gerais, notas musicais e regras lógicas, antecipando em um século a computação moderna.
+              <strong>O Primeiro Algoritmo da História (Ada Lovelace, 1843):</strong> Na monumental "Nota G", Ada diagramou o cálculo completo dos números de Bernoulli e expressou a frase profética: <em>"A máquina analítica tece padrões algébricos assim como o tear de Jacquard tece flores e folhas"</em>, antecipando que se relacionamentos formais pudessem ser codificados, a máquina poderia compor música, gráficos e manipular símbolos.
             </div>
           </div>
         </div>
 
         <div class="reason-box">
           <strong>Critérios: Turing-Complete: Sim (Na Teoria) | Von Neumann: Não</strong>
-          Tinha CPU mecânica, memória, laços e saltos condicionais. <strong>Von Neumann: Não</strong>, pois as instruções ficavam em cartões perfurados externos de papelão, e não armazenadas internamente na mesma memória que os dados.
+          Possuía CPU mecânica, memória, laços e saltos condicionais. <strong>Von Neumann: Não</strong>, pois o programa residia em cartões perfurados de papelão externos, e não internamente na memória junto aos dados.
         </div>
       </div>
     </section>
 
     <!-- ERA 4: O SALTO TEÓRICO: HILBERT (1900) & ALAN TURING (1936) -->
-    <!-- (COLOCADO RIGOROSAMENTE NO SEU LUGAR CRONOLÓGICO: 1936!) -->
     <section class="slide-block">
       <div class="slide-header">
         <div class="year-display">
@@ -908,15 +1014,15 @@
           </div>
         </div>
         <h2 class="slide-title">David Hilbert &amp; Alan Turing</h2>
-        <p class="slide-subtitle">A formulação matemática da Máquina Universal que fundou a Ciência da Computação.</p>
+        <p class="slide-subtitle">A formulação matemática da Máquina Universal que fundou formalmente a Ciência da Computação.</p>
       </div>
 
       <div class="clean-card">
-        <!-- Foto de Alan Turing com enquadramento perfeito do rosto -->
+        <!-- Retrato de Alan Turing centralizado perfeitamente -->
         <div class="media-gallery-grid" style="grid-template-columns: 1fr;">
           <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/Alan_Turing_az_1930-as_%C3%A9vekben.jpg" alt="Alan Turing nos anos 1930" class="turing-portrait">
-            <div class="media-caption">Alan Mathison Turing (1912–1954) na década de 1930, época da publicação do artigo canônico de 1936.</div>
+            <div class="media-caption">Alan Mathison Turing (1912–1954) na década de 1930: aos 24 anos provou a indecidibilidade e inventou a Máquina Universal.</div>
           </div>
         </div>
 
@@ -924,84 +1030,101 @@
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>O Desafio de Hilbert (1900):</strong> David Hilbert lançou o <em>Entscheidungsproblem</em> (Problema da Decisão): existiria um algoritmo geral definitivo capaz de decidir se qualquer afirmação matemática formal é verdadeira ou falsa?
+              <strong>O Desafio de Hilbert (1900):</strong> David Hilbert propôs o <em>Entscheidungsproblem</em> (Problema da Decisão): existiria um algoritmo geral definitivo capaz de decidir se qualquer afirmação matemática formal é verdadeira ou falsa?
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>A Resposta Negativa de Turing (1936):</strong> No clássico artigo <em>"On Computable Numbers"</em>, Turing demonstrou que NÃO existe tal procedimento através do <strong>Problema da Parada (Halting Problem)</strong>: nenhum algoritmo consegue determinar se qualquer programa arbitrário irá parar ou executar indefinidamente.
+              <strong>A Resposta Negativa de Turing (1936):</strong> No artigo <em>"On Computable Numbers"</em>, Turing demonstrou que NÃO existe tal procedimento através do <strong>Problema da Parada (Halting Problem)</strong>: nenhum algoritmo universal pode saber se qualquer programa arbitrário irá parar ou travar em loop infinito.
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>A Máquina Universal de Turing (UTM):</strong> Como modelo de raciocínio, Turing inventou o computador universal: fita de células infinitas, cabeçote leitor/gravador e tabela de transição de estados. Ele unificou a teoria da computação ao provar que <strong>instruções de código e números são indistinguíveis e residem no mesmo meio</strong>.
+              <strong>A Máquina Universal de Turing (UTM):</strong> Como modelo de raciocínio, Turing inventou o computador universal: fita de células discretas, cabeçote leitor/gravador e tabela de estados. Provou que <strong>instruções de código e números são a mesma coisa</strong> e podem residir no mesmo meio.
             </div>
           </div>
         </div>
 
-        <!-- SIMULADOR TURING INTUITIVO: INVERSOR DE BITS (0 <-> 1) COM 1 BOTÃO -->
+        <!-- SIMULADOR TURING INTELIGENTE: SOMA BINÁRIA (+1 COM CARRY) E INVERSOR -->
         <div class="minimal-sim">
           <div class="sim-header-clean">
-            <span class="sim-tag">Exemplo Prático Intuitivo: Máquina de Turing Inversora de Bits (NOT)</span>
-            <span id="turing-state-readout" style="font-family: var(--font-mono); font-weight: 700; font-size: 0.82rem;">ESTADO: Invertendo</span>
-          </div>
-
-          <p style="font-size: 0.9rem; color: var(--text-muted); text-align: center;">
-            A cada clique, o cabeçote lê o bit atual, inverte (0 vira 1, 1 vira 0) e avança para a direita:
-          </p>
-
-          <div class="turing-minimal-ribbon">
-            <div class="turing-head-pointer" id="turing-pointer-tag">CABEÇOTE</div>
-            <div id="turing-tape-cells" style="display: flex; gap: 8px;">
-              <!-- 5 Células de Fita -->
+            <span class="sim-tag">Simulador Interativo: Máquina de Turing de Propósito Geral</span>
+            <div style="display: flex; gap: 0.5rem;">
+              <button class="btn-clean active" id="btn-algo-inc" onclick="selectTuringAlgo('inc')">Soma Binária (+1 com Carry)</button>
+              <button class="btn-clean secondary" id="btn-algo-not" onclick="selectTuringAlgo('not')">Inversão Lógica (NOT)</button>
             </div>
           </div>
 
-          <div class="turing-clean-info">
-            Operação Atual: <strong id="turing-explanation-step">Pronto para iniciar. Clique em Avançar.</strong>
+          <p style="font-size: 0.92rem; color: var(--text-muted); text-align: center; margin-bottom: 0.5rem;" id="turing-algo-desc">
+            A máquina varre a fita até o fim do número e propaga o "vai-um" aritmético para a esquerda:
+          </p>
+
+          <div class="turing-minimal-ribbon">
+            <div class="turing-head-pointer" id="turing-pointer-tag">CABEÇOTE (q_scan)</div>
+            <div id="turing-tape-cells" style="display: flex; gap: 8px;">
+              <!-- Células geradas via script -->
+            </div>
           </div>
 
-          <div style="display: flex; justify-content: center; gap: 1rem;">
-            <button class="btn-clean" id="btn-turing-next-step">Avançar 1 Passo</button>
-            <button class="btn-clean secondary" id="btn-turing-restart">Reiniciar Fita</button>
+          <!-- REGRA FORMAL DA TABELA DE TURING -->
+          <div class="turing-rule-box">
+            <div>Estado Interno: <b id="turing-state-name" style="color: #1d4ed8;">q_scan (buscando fim do número)</b></div>
+            <div>Regra Formal Aplicada: <b id="turing-rule-name">&delta;(q_scan, 1) &rarr; (q_scan, 1, R)</b></div>
+            <div>Ação Explicada: <b id="turing-action-explained" style="color: #000;">Lendo dígito 1, mantendo 1 e avançando cabeçote para a direita.</b></div>
+            <div>Valor Decimal da Fita: <b id="turing-decimal-val" style="color: #15803d;">11 (binário 1011)</b></div>
+          </div>
+
+          <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+            <button class="btn-clean" id="btn-turing-step" onclick="stepTuringSmart()">Avançar 1 Passo</button>
+            <button class="btn-clean secondary" id="btn-turing-run" onclick="runTuringSmart()">Executar Automático</button>
+            <button class="btn-clean secondary" onclick="resetTuringSmart()">Reiniciar Fita</button>
           </div>
         </div>
 
         <div class="reason-box">
           <strong>Critérios: Turing-Complete: Sim | Von Neumann: Não (Conceito Teórico)</strong>
-          É o modelo canônico de Turing-completude. <strong>Von Neumann: Não</strong>, pois a UTM de 1936 é uma formulação matemática abstrata de fita, concebida 9 anos antes da arquitetura de hardware eletrônico com barramentos e CPU proposta por John von Neumann em 1945.
+          É o padrão universal da computação. <strong>Von Neumann: Não</strong>, pois a UTM é uma formulação matemática de 1936, anterior à arquitetura eletrônica com CPU e barramentos de 1945.
         </div>
       </div>
     </section>
 
-    <!-- ERA 5: MÁQUINAS ELETROMECÂNICAS E DE GUERRA (1943 — 1944) -->
+    <!-- ERA 5: MÁQUINAS ELETROMECÂNICAS E GIGANTES DE GUERRA (1941 — 1944) -->
+    <!-- (Incluindo Konrad Zuse Z3, Atanasoff-Berry, Harvard Mark I/II e Colossus) -->
     <section class="slide-block">
       <div class="slide-header">
         <div class="year-display">
-          <span>1943 — 1944</span>
+          <span>1941 — 1944</span>
           <div class="status-badges-group">
-            <span class="tag-status tc-no">Turing-Complete: Não</span>
+            <span class="tag-status tc-no">Turing-Complete: Não / Parcial</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
           </div>
         </div>
-        <h2 class="slide-title">Harvard Mark I, Mark II &amp; Colossus</h2>
-        <p class="slide-subtitle">O esforço militar e o uso pioneiro de válvulas eletrônicas na Segunda Guerra Mundial.</p>
+        <h2 class="slide-title">Zuse Z3, Atanasoff ABC, Harvard &amp; Colossus</h2>
+        <p class="slide-subtitle">O esforço bélico acelerando os primeiros computadores com relés e válvulas.</p>
       </div>
 
       <div class="clean-card">
-        <!-- Galeria Dupla: Colossus + O Primeiro Bug de Grace Hopper -->
-        <div class="media-gallery-grid">
+        <!-- Galeria Quádrupla de Máquinas Históricas -->
+        <div class="media-gallery-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+          <div class="media-frame">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Z3_Deutsches_Museum.JPG" alt="Zuse Z3 Deutsches Museum">
+            <div class="media-caption">Konrad Zuse Z3 (Berlim, 1941): primeiro computador eletromecânico funcional do mundo.</div>
+          </div>
+          <div class="media-frame">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Atanasoff-Berry_Computer.jpg" alt="Atanasoff-Berry Computer">
+            <div class="media-caption">Atanasoff-Berry Computer (ABC, 1942): pioneiro no uso de válvulas e capacitores binários.</div>
+          </div>
           <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Colossus.jpg" alt="Colossus Bletchley Park">
-            <div class="media-caption">Colossus Mark II (1944): o primeiro computador eletrônico digital, dedicado a quebrar a cifra de Lorenz.</div>
+            <div class="media-caption">Colossus Mark II (1944): 2.400 válvulas dedicadas à criptoanálise da cifra nazista Lorenz.</div>
           </div>
           <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/First_Computer_Bug%2C_1947.jpg" alt="O Primeiro Bug Real de 1947">
-            <div class="media-caption">O primeiro bug da história documentado por Grace Hopper: mariposa real retirada do relé 70 do Mark II.</div>
+            <div class="media-caption">O primeiro bug da história: mariposa real retirada do relé 70 do Harvard Mark II por Grace Hopper.</div>
           </div>
         </div>
 
@@ -1009,22 +1132,35 @@
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>Harvard Mark I (IBM ASCC, 1944):</strong> Gigante eletromecânico construído por Howard Aiken com relés, 16 metros de comprimento e fitas perfuradas sequenciais. Foi no Mark II (1947) que <strong>Grace Hopper</strong> documentou o famoso termo <em>"debugging"</em> ao retirar uma mariposa presa em um relé.
+              <strong>Konrad Zuse e o Z3 (Berlim, 1941):</strong> Construído isoladamente na Alemanha com 2.000 relés telefônicos e alimentado por fitas de filme de cinema de 35 mm perfuradas. Em 1998, Raúl Rojas provou que ele era Turing-complete através de laços artificiais na fita.
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>Colossus (Bletchley Park, 1943–1944):</strong> Projetado por Tommy Flowers e Max Newman, utilizava mais de 2.400 válvulas termiônicas para quebrar a cifra Lorenz SZ40/42 do alto comando alemão, lendo teletipos a 5.000 caracteres por segundo.
+              <strong>Atanasoff-Berry Computer (ABC, 1942):</strong> Criado por John Atanasoff e Clifford Berry, foi o primeiro calculador eletrônico digital binário com válvulas e capacitores regenerativos (precursor da memória DRAM moderna), projetado para sistemas de equações lineares.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Harvard Mark I (1944) &amp; Grace Hopper:</strong> Gigante eletromecânico construído por Howard Aiken com relés, 16 metros de comprimento e fitas perfuradas sequenciais. No Mark II (1947), Grace Hopper retirou a famosa mariposa presa no relé nº 70, popularizando o termo <strong>"debugging"</strong>.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Colossus (Bletchley Park, 1943–1944):</strong> Tommy Flowers e Max Newman construíram o primeiro processador eletrônico digital de grande porte do mundo para quebrar a cifra teletipo Lorenz SZ40/42 de Hitler, lendo fitas a 5.000 caracteres por segundo.
             </div>
           </div>
         </div>
 
         <div class="reason-box">
-          <strong>Critérios: Turing-Complete: Não | Von Neumann: Não</strong>
-          • Harvard Mark I: Sequência estritamente linear em fita sem flexibilidade condicional.<br>
-          • Colossus: Eletrônico e digital, mas com circuito e fiação fixa dedicados exclusivamente à criptoanálise booleana.
+          <strong>Critérios: Turing-Complete: Não (ou com artifícios externos) | Von Neumann: Não</strong>
+          Nenhum deles possuía programa armazenado internamente na mesma memória que os dados. A programação era feita por fitas externas ou painéis rígidos com fio.
         </div>
       </div>
     </section>
@@ -1040,7 +1176,7 @@
           </div>
         </div>
         <h2 class="slide-title">ENIAC: Computação Geral sem Programa Armazenado</h2>
-        <p class="slide-subtitle">O gigante de 17.468 válvulas que calculava balística mais rápido que o voo de um projétil.</p>
+        <p class="slide-subtitle">O gigante de 17.468 válvulas que calculava balística militar na velocidade da luz.</p>
       </div>
 
       <div class="clean-card">
@@ -1053,21 +1189,59 @@
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>Eletrônica Geral em Larga Escala:</strong> Construído por John Mauchly e J. Presper Eckert na Universidade da Pensilvânia com consultoria de John von Neumann. Com 17.468 válvulas e 30 toneladas, realizava 5.000 adições por segundo.
+              <strong>Eletrônica Geral em Larga Escala:</strong> Construído por John Mauchly e J. Presper Eckert na Universidade da Pensilvânia com consultoria de John von Neumann. Com 17.468 válvulas e 30 toneladas, realizava 5.000 adições por segundo (mil vezes mais rápido que os relés mecânicos).
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>A Programação por Fiação Manual:</strong> O ENIAC não possuía programa armazenado em memória! Para reprogramar a máquina, as seis programadoras pioneiras (as "ENIAC Six") precisavam desconectar e reconectar centenas de cabos telefônicos e girar chaves em 40 painéis ao longo de dias.
+              <strong>A Programação por Fiação Manual:</strong> O ENIAC não possuía programa armazenado em memória! Para reprogramar a máquina, as seis programadoras pioneiras (as "ENIAC Six") precisavam desconectar e reconectar centenas de cabos telefônicos e girar chaves em 40 painéis ao longo de dias ou semanas.
             </div>
+          </div>
+        </div>
+
+        <!-- VÍDEO HISTÓRICO ORIGINAL DO ENIAC EM 1946 -->
+        <div class="video-embed-container">
+          <div class="video-responsive-wrapper">
+            <iframe src="https://www.youtube-nocookie.com/embed/k4oGI_dNaPc" title="ENIAC em Operação - Cinejornal Histórico de 1946" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-caption-bar">
+            <span>Registro histórico original de 1946 demonstrando os acumuladores a válvulas e cabos do ENIAC</span>
+            <a href="https://www.youtube.com/watch?v=k4oGI_dNaPc" target="_blank" rel="noopener">Assistir no YouTube</a>
+          </div>
+        </div>
+
+        <!-- SIMULADOR INTERATIVO DO ANEL DECÁDICO DO ENIAC -->
+        <div class="minimal-sim">
+          <div class="sim-header-clean">
+            <span class="sim-tag">Simulador Interativo: Anel Decádico de Válvulas Neon do ENIAC</span>
+            <span id="eniac-status-clean" style="font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700;">DÍGITO ATUAL: 0</span>
+          </div>
+
+          <div class="eniac-ring-clean" id="eniac-lamps-strip">
+            <div class="eniac-lamp-clean glowing">0</div>
+            <div class="eniac-lamp-clean">1</div>
+            <div class="eniac-lamp-clean">2</div>
+            <div class="eniac-lamp-clean">3</div>
+            <div class="eniac-lamp-clean">4</div>
+            <div class="eniac-lamp-clean">5</div>
+            <div class="eniac-lamp-clean">6</div>
+            <div class="eniac-lamp-clean">7</div>
+            <div class="eniac-lamp-clean">8</div>
+            <div class="eniac-lamp-clean">9</div>
+          </div>
+
+          <div style="display: flex; justify-content: center; gap: 0.75rem;">
+            <button class="btn-clean" onclick="stepENIACClean()">Disparar Pulso de Clock (+1)</button>
+            <button class="btn-clean secondary" onclick="runENIACLoopClean()">Ciclo de 10 Pulsos</button>
+            <button class="btn-clean secondary" onclick="resetENIACClean()">Zerar Anel</button>
           </div>
         </div>
 
         <div class="reason-box">
           <strong>Critérios: Turing-Complete: Sim | Von Neumann: Não</strong>
-          Era Turing-complete e de propósito geral. Porém, <strong>Von Neumann: Não</strong>, pois as instruções de programação residiam na fiação física externa de cabos, e não na memória interna junto com os dados.
+          O ENIAC podia computar qualquer função geral. Porém, <strong>Von Neumann: Não</strong>, pois as instruções de programação residiam na fiação física externa de cabos, e não na memória interna junto com os dados.
         </div>
       </div>
     </section>
@@ -1103,22 +1277,33 @@
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>O Manchester Baby (SSEM, 21 de junho de 1948):</strong> Construído por Frederic Williams e Tom Kilburn. Foi o <strong>primeiro computador eletrônico da história a rodar com sucesso um programa armazenado em memória interna</strong> (usando o Tubo Williams-Kilburn CRT com 32 palavras de 32 bits em cargas eletrostáticas).
+              <strong>O Manchester Baby (SSEM, 21 de junho de 1948):</strong> Construído por Frederic Williams e Tom Kilburn na Universidade de Manchester. Foi o <strong>primeiro computador eletrônico da história a rodar com sucesso um programa armazenado em memória interna</strong> (usando o Tubo Williams-Kilburn CRT com 32 palavras de 32 bits em cargas eletrostáticas).
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>Manchester Mark 1 &amp; Alan Turing (1949):</strong> Evolução do Baby para máquina de grande porte. Alan Turing ingressou na equipe, especificou o conjunto de instruções do processador e escreveu os primeiros manuais de programação.
+              <strong>Manchester Mark 1 &amp; Alan Turing (1949):</strong> Evolução direta do Baby. Alan Turing foi nomeado vice-diretor do laboratório de Manchester, especificou o conjunto de instruções do processador, desenhou o sistema de entrada e escreveu os primeiros manuais de programação.
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>EDVAC, EDSAC &amp; Pilot ACE:</strong> O relatório de Von Neumann de 1945 (EDVAC) formalizou a arquitetura unificada. O <strong>EDSAC</strong> (Cambridge, 1949) foi o primeiro computador prático de programa armazenado a prestar serviços científicos contínuos. O <strong>Pilot ACE</strong> (1950) foi a implementação física do projeto de Turing no NPL.
+              <strong>EDVAC, EDSAC &amp; Pilot ACE:</strong> O relatório de Von Neumann de 1945 formalizou a arquitetura CPU + Memória compartilhada. O <strong>EDSAC</strong> (Cambridge, maio de 1949) foi o primeiro a prestar serviços científicos contínuos. O <strong>Pilot ACE</strong> (1950) foi a implementação física do projeto de Turing no NPL britânico.
             </div>
+          </div>
+        </div>
+
+        <!-- VÍDEO DO MANCHESTER BABY PELA UNIVERSIDADE DE MANCHESTER -->
+        <div class="video-embed-container">
+          <div class="video-responsive-wrapper">
+            <iframe src="https://www.youtube-nocookie.com/embed/cojcPZ5N6YQ" title="Manchester Baby - Documentário do Jubileu de 50 Anos da Universidade de Manchester" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-caption-bar">
+            <span>Documentário da Universidade de Manchester sobre o nascimento do Manchester Baby em 1948</span>
+            <a href="https://www.youtube.com/watch?v=cojcPZ5N6YQ" target="_blank" rel="noopener">Assistir no YouTube</a>
           </div>
         </div>
 
@@ -1141,7 +1326,7 @@
 
         <div class="reason-box">
           <strong>Critérios: Turing-Complete: Sim | Von Neumann: Sim</strong>
-          O Manchester Baby e o EDSAC consolidaram a arquitetura moderna: <strong>computação de propósito geral</strong> com <strong>programa armazenado internamente junto aos dados</strong>.
+          O Manchester Baby e o EDSAC consolidaram a arquitetura moderna definitiva: <strong>computação de propósito geral</strong> com <strong>programa armazenado internamente junto aos dados na mesma memória</strong>.
         </div>
       </div>
     </section>
@@ -1161,15 +1346,19 @@
       </div>
 
       <div class="clean-card">
-        <!-- Galeria Dupla: Univac 120 + Patinho Feio com Prof. Guerra Vieira -->
-        <div class="media-gallery-grid">
+        <!-- Galeria Tripla: Univac 120 + Patinho Feio + Memória de Núcleos -->
+        <div class="media-gallery-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
           <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/UNIVAC_120_control_circuit.jpg" alt="Circuito do UNIVAC 120">
-            <div class="media-caption">Circuito a válvulas do UNIVAC 120: o primeiro computador instalado no Brasil (DAE de São Paulo, 1957).</div>
+            <div class="media-caption">Circuito a válvulas do UNIVAC 120: primeiro computador instalado no Brasil (DAE de São Paulo, 1957).</div>
           </div>
           <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Antonio_H%C3%A9lio_Guerra_Vieira_e_o_Computador_Patinho_Feio_%28cropped%29.jpg" alt="Prof. Guerra Vieira e o Patinho Feio">
-            <div class="media-caption">Prof. Antonio Hélio Guerra Vieira e o Patinho Feio (Poli-USP, 1972): o primeiro computador projetado no Brasil.</div>
+            <div class="media-caption">Prof. Antonio Hélio Guerra Vieira e o Patinho Feio (Poli-USP, 1972): primeiro computador projetado no Brasil.</div>
+          </div>
+          <div class="media-frame">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Core_memory.jpg" alt="Memória de Núcleos de Ferrite">
+            <div class="media-caption">Memória de núcleos magnéticos de ferrite trançada manualmente: a tecnologia de RAM do Patinho Feio.</div>
           </div>
         </div>
 
@@ -1177,14 +1366,14 @@
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>1957: O Primeiro Computador no Brasil (UNIVAC 120):</strong> Adquirido pelo Governo de São Paulo para o Departamento de Águas e Energia Elétrica (DAE), calculava tarifas e bacias hidrográficas. Quase simultaneamente, o IBGE instalou um computador francês <em>Bull Gamma 3/30</em> para a apuração do censo demográfico.
+              <strong>1957: O Primeiro Computador no Brasil (UNIVAC 120):</strong> Adquirido pelo Governo do Estado de São Paulo para o Departamento de Águas e Energia Elétrica (DAE), calculava tarifas e bacias hidrográficas. Quase simultaneamente, o IBGE instalou um computador francês <em>Bull Gamma 3/30</em> para apuração do censo demográfico nacional.
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>Anos 1960: A Entrada nas Universidades:</strong> Instalação de computadores IBM 1401 e IBM 1130 na <strong>PUC-Rio</strong> (criadora do primeiro Centro de Processamento de Dados universitário e do primeiro mestrado na área), <strong>USP</strong>, <strong>COPPE/UFRJ</strong> e <strong>ITA</strong>, formando os primeiros programadores e cientistas da computação brasileiros.
+              <strong>Anos 1960: A Entrada nas Universidades:</strong> A <strong>PUC-Rio</strong> instalou um Burroughs 205 em 1960, criando o primeiro Centro de Processamento de Dados (CPD) universitário e o primeiro programa de pós-graduação na área. Máquinas como o IBM 1401 e IBM 1130 foram instaladas na <strong>USP</strong>, <strong>COPPE/UFRJ</strong> e <strong>ITA</strong>.
             </div>
           </div>
 
@@ -1198,7 +1387,14 @@
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>1974: O Projeto G-10 e a Fundação da COBRA:</strong> A Marinha encomendou um computador naval desenvolvido em parceria pela USP e PUC-Rio (o G-10), impulsionando a criação da <strong>COBRA (Computadores e Sistemas Brasileiros)</strong>, a primeira fabricante nacional de computadores.
+              <strong>Por que o nome "Patinho Feio"?</strong> A equipe rival da Unicamp, com grande verba externa, chamou seu projeto de "Cisne Branco". A equipe da USP batizou bem-humoradamente seu protótipo de "Patinho Feio" — mas foi o Patinho Feio quem funcionou primeiro e encantou a comunidade científica brasileira!
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>1974: O Projeto G-10 e a Fundação da COBRA:</strong> A Marinha encomendou um computador naval desenvolvido em parceria pela USP e PUC-Rio (o G-10), impulsionando a criação da <strong>COBRA (Computadores e Sistemas Brasileiros S.A.)</strong>, a primeira fabricante nacional de hardware.
             </div>
           </div>
         </div>
@@ -1238,7 +1434,7 @@
         <p class="slide-subtitle">O panorama comparativo definitivo dos computadores históricos e seus paradigmas.</p>
       </div>
 
-      <!-- TABELA TURING-COMPLETE + VON NEUMANN -->
+      <!-- TABELA TURING-COMPLETE + VON NEUMANN COM CORES EQUALIZADAS -->
       <div class="table-slide-card">
         <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1.2rem;">Matriz Comparativa: Turing-Complete &amp; Von Neumann</h3>
         <table class="clean-table">
@@ -1247,7 +1443,7 @@
               <th>Máquina</th>
               <th>Ano</th>
               <th>Turing-Complete?</th>
-              <th>Von Neumann? (Prog + Info juntos)</th>
+              <th>Von Neumann? (Prog + Dados juntos)</th>
               <th>Critério Arquitetural</th>
             </tr>
           </thead>
@@ -1279,6 +1475,20 @@
               <td><span class="tag-status tc-theory">Sim (Teoria)</span></td>
               <td><span class="tag-status vn-no">Não</span></td>
               <td>Tinha CPU e memória, mas as instruções ficavam em cartões externos.</td>
+            </tr>
+            <tr>
+              <td><strong>Zuse Z3</strong></td>
+              <td>1941</td>
+              <td><span class="tag-status tc-theory">Sim (Artifícios)</span></td>
+              <td><span class="tag-status vn-no">Não</span></td>
+              <td>Relés programados por fita externa de filme de 35 mm.</td>
+            </tr>
+            <tr>
+              <td><strong>Atanasoff ABC</strong></td>
+              <td>1942</td>
+              <td><span class="tag-status tc-no">Não</span></td>
+              <td><span class="tag-status vn-no">Não</span></td>
+              <td>Eletrônico mas dedicado à resolução de equações lineares.</td>
             </tr>
             <tr>
               <td><strong>Harvard Mark I &amp; II</strong></td>
@@ -1391,7 +1601,7 @@
   </div><!-- Fim Presentation Container -->
 
   <!-- ==========================================================================
-       SCRIPTS JAVASCRIPT: SIMULADORES LIMPOS, INTUITIVOS E DE 1 BOTÃO
+       SCRIPTS JAVASCRIPT: SIMULADORES E ALGORITMOS INTELIGENTES
        ========================================================================== -->
   <script>
     // 1. Barra de progresso de leitura
@@ -1402,57 +1612,141 @@
       document.getElementById('progress-line').style.width = scrolled + '%';
     });
 
-    // 2. SIMULADOR TURING SUPER INTUITIVO (INVERSOR DE BITS: 0 vira 1, 1 vira 0)
-    // Fita inicial com 5 bits claros: [1, 0, 1, 1, 0]
-    let turingTapeBits = ['1', '0', '1', '1', '0'];
-    let turingTapeOriginal = ['1', '0', '1', '1', '0'];
-    let turingHeadIdx = 0;
+    // 2. SIMULADOR TURING INTELIGENTE: SOMA BINÁRIA (+1 COM CARRY) E INVERSÃO
+    let turingMode = 'inc'; // 'inc' ou 'not'
+    let turingTape = ['1', '0', '1', '1']; // 11 em binário
+    let turingHead = 0;
+    let turingState = 'q_scan'; // q_scan -> q_carry -> q_halt
+    let turingTimer = null;
 
-    const turingCellsContainer = document.getElementById('turing-tape-cells');
-    const turingExpText = document.getElementById('turing-explanation-step');
-    const turingStateReadout = document.getElementById('turing-state-readout');
+    const turingCells = document.getElementById('turing-tape-cells');
+    const pointerTag = document.getElementById('turing-pointer-tag');
+    const stateName = document.getElementById('turing-state-name');
+    const ruleName = document.getElementById('turing-rule-name');
+    const actionExp = document.getElementById('turing-action-explained');
+    const decVal = document.getElementById('turing-decimal-val');
 
-    function renderTuringTapeClean() {
-      turingCellsContainer.innerHTML = '';
-      turingTapeBits.forEach((bit, idx) => {
-        const tile = document.createElement('div');
-        tile.className = 'turing-tile' + (idx === turingHeadIdx ? ' active' : '');
-        tile.textContent = bit;
-        turingCellsContainer.appendChild(tile);
-      });
+    function selectTuringAlgo(mode) {
+      clearInterval(turingTimer);
+      turingMode = mode;
+      document.getElementById('btn-algo-inc').className = mode === 'inc' ? 'btn-clean active' : 'btn-clean secondary';
+      document.getElementById('btn-algo-not').className = mode === 'not' ? 'btn-clean active' : 'btn-clean secondary';
+      resetTuringSmart();
     }
 
-    document.getElementById('btn-turing-next-step').addEventListener('click', () => {
-      if (turingHeadIdx >= turingTapeBits.length) {
-        turingExpText.innerHTML = '<span style="color: #15803d; font-weight: 800;">Fim da fita! Toda a sequência 10110 foi invertida com sucesso para 01001!</span>';
-        turingStateReadout.textContent = 'ESTADO: Parada (HALT)';
-        return;
+    function resetTuringSmart() {
+      clearInterval(turingTimer);
+      if (turingMode === 'inc') {
+        turingTape = ['1', '0', '1', '1']; // 11
+        turingHead = 0;
+        turingState = 'q_scan';
+        document.getElementById('turing-algo-desc').textContent = 'A máquina varre a fita até o fim do número e propaga o "vai-um" aritmético para a esquerda:';
+        stateName.textContent = 'q_scan (buscando fim do número)';
+        ruleName.textContent = 'δ(q_scan, 1) → (q_scan, 1, R)';
+        actionExp.textContent = 'Lendo dígito 1, mantendo 1 e avançando cabeçote para a direita.';
+        decVal.textContent = '11 (binário 1011)';
+      } else {
+        turingTape = ['1', '0', '1', '1', '0'];
+        turingHead = 0;
+        turingState = 'q_invert';
+        document.getElementById('turing-algo-desc').textContent = 'Inversor lógico: o cabeçote lê cada bit, inverte (0 ↔ 1) e avança para a direita:';
+        stateName.textContent = 'q_invert (invertendo bits)';
+        ruleName.textContent = 'δ(q_invert, 1) → (q_invert, 0, R)';
+        actionExp.textContent = 'Lendo 1, invertendo para 0 e avançando para a direita.';
+        decVal.textContent = '22 (binário 10110)';
+      }
+      renderTuringTapeSmart();
+    }
+
+    function renderTuringTapeSmart() {
+      turingCells.innerHTML = '';
+      turingTape.forEach((bit, i) => {
+        const t = document.createElement('div');
+        t.className = 'turing-tile' + (i === turingHead ? ' active' : '');
+        t.textContent = bit;
+        turingCells.appendChild(t);
+      });
+      pointerTag.textContent = `CABEÇOTE (${turingState})`;
+    }
+
+    function stepTuringSmart() {
+      if (turingState === 'q_halt') return;
+
+      if (turingMode === 'inc') {
+        // ALGORITMO DE SOMA BINÁRIA (+1) COM VAI-UM REAL
+        if (turingState === 'q_scan') {
+          if (turingHead < turingTape.length - 1) {
+            turingHead++;
+            const bit = turingTape[turingHead];
+            stateName.textContent = 'q_scan (buscando fim do número)';
+            ruleName.textContent = `δ(q_scan, ${bit}) → (q_scan, ${bit}, R)`;
+            actionExp.textContent = `Lendo dígito ${bit}, mantendo ${bit} e avançando à direita.`;
+          } else {
+            // Chegou ao fim do número, entra em modo de soma (q_carry)
+            turingState = 'q_carry';
+            const bit = turingTape[turingHead];
+            stateName.textContent = 'q_carry (aplicando +1)';
+            ruleName.textContent = `δ(q_scan, fim) → (q_carry, ${bit}, Stay)`;
+            actionExp.textContent = `Fim do número alcançado! Iniciando propagação de soma (+1) da direita para a esquerda.`;
+          }
+        } else if (turingState === 'q_carry') {
+          const bit = turingTape[turingHead];
+          if (bit === '1') {
+            turingTape[turingHead] = '0';
+            ruleName.textContent = `δ(q_carry, 1) → (q_carry, 0, L)`;
+            actionExp.textContent = `1 + 1 = 0 com "vai-um": escreve 0 e propaga o carry para a esquerda.`;
+            if (turingHead > 0) {
+              turingHead--;
+            } else {
+              // Estouro do número à esquerda: expandir fita
+              turingTape.unshift('1');
+              turingHead = 0;
+              turingState = 'q_halt';
+              stateName.textContent = 'q_halt (soma concluída)';
+              actionExp.innerHTML = '<span style="color: #15803d;">Carry propagado! Fita expandida à esquerda. Soma finalizada com sucesso!</span>';
+            }
+          } else {
+            // bit é '0'
+            turingTape[turingHead] = '1';
+            turingState = 'q_halt';
+            stateName.textContent = 'q_halt (soma concluída)';
+            ruleName.textContent = `δ(q_carry, 0) → (q_halt, 1, Stay)`;
+            actionExp.innerHTML = '<span style="color: #15803d;">0 + 1 = 1: grava 1 e encerra! Resultado obtido: 1011 (11) &rarr; 1100 (12).</span>';
+          }
+        }
+      } else {
+        // ALGORITMO NOT (INVERSÃO)
+        if (turingHead < turingTape.length) {
+          const bit = turingTape[turingHead];
+          const inv = bit === '1' ? '0' : '1';
+          turingTape[turingHead] = inv;
+          ruleName.textContent = `δ(q_invert, ${bit}) → (q_invert, ${inv}, R)`;
+          actionExp.textContent = `Leu ${bit}, inverteu para ${inv} e avançou o cabeçote.`;
+          turingHead++;
+          if (turingHead >= turingTape.length) {
+            turingState = 'q_halt';
+            stateName.textContent = 'q_halt (inversão concluída)';
+            actionExp.innerHTML = '<span style="color: #15803d;">Fim da palavra! Toda a fita foi invertida com sucesso.</span>';
+          }
+        }
       }
 
-      const currentBit = turingTapeBits[turingHeadIdx];
-      const invertedBit = currentBit === '1' ? '0' : '1';
-      turingTapeBits[turingHeadIdx] = invertedBit;
+      // Atualizar valor decimal
+      const binStr = turingTape.join('');
+      decVal.textContent = `${parseInt(binStr, 2)} (binário ${binStr})`;
+      renderTuringTapeSmart();
 
-      turingExpText.innerHTML = `Lendo posição ${turingHeadIdx + 1}: leu <b>${currentBit}</b> &rarr; inverteu para <b>${invertedBit}</b> &rarr; avançando cabeçote para a direita.`;
-      turingHeadIdx++;
-
-      renderTuringTapeClean();
-
-      if (turingHeadIdx >= turingTapeBits.length) {
-        turingStateReadout.textContent = 'ESTADO: Concluído (HALT)';
-        turingExpText.innerHTML = '<span style="color: #15803d; font-weight: 800;">Fim da fita! Toda a sequência foi invertida com sucesso: 10110 &rarr; 01001!</span>';
+      if (turingState === 'q_halt') {
+        clearInterval(turingTimer);
       }
-    });
+    }
 
-    document.getElementById('btn-turing-restart').addEventListener('click', () => {
-      turingTapeBits = ['1', '0', '1', '1', '0'];
-      turingHeadIdx = 0;
-      turingStateReadout.textContent = 'ESTADO: Invertendo';
-      turingExpText.textContent = 'Fita reiniciada com 10110. Clique em Avançar 1 Passo.';
-      renderTuringTapeClean();
-    });
+    function runTuringSmart() {
+      clearInterval(turingTimer);
+      turingTimer = setInterval(stepTuringSmart, 450);
+    }
 
-    renderTuringTapeClean();
+    resetTuringSmart();
 
     // 3. PASCALINA CLEAN
     let pasVal = 0;
@@ -1473,7 +1767,40 @@
       renderPascalineClean();
     }
 
-    // 4. MANCHESTER BABY CRT CLEAN
+    // 4. ENIAC ANEL DECÁDICO
+    let eniacCounter = 0;
+    function renderENIACClean() {
+      const lamps = document.querySelectorAll('#eniac-lamps-strip .eniac-lamp-clean');
+      lamps.forEach((lamp, idx) => {
+        if (idx === eniacCounter) {
+          lamp.classList.add('glowing');
+        } else {
+          lamp.classList.remove('glowing');
+        }
+      });
+      document.getElementById('eniac-status-clean').textContent = `DÍGITO ATUAL: ${eniacCounter} ${eniacCounter === 0 ? '(PULSO DE CARRY EMITIDO)' : ''}`;
+    }
+
+    function stepENIACClean() {
+      eniacCounter = (eniacCounter + 1) % 10;
+      renderENIACClean();
+    }
+
+    function runENIACLoopClean() {
+      let i = 0;
+      const t = setInterval(() => {
+        stepENIACClean();
+        i++;
+        if (i >= 10) clearInterval(t);
+      }, 100);
+    }
+
+    function resetENIACClean() {
+      eniacCounter = 0;
+      renderENIACClean();
+    }
+
+    // 5. MANCHESTER BABY CRT CLEAN
     const canvas = document.getElementById('crt-canvas-clean');
     const ctx = canvas ? canvas.getContext('2d') : null;
     let babyAccumVal = 0;
@@ -1513,7 +1840,7 @@
       });
     }
 
-    // 5. PATINHO FEIO CLEAN
+    // 6. PATINHO FEIO CLEAN
     const patinhoContainer = document.getElementById('patinho-switches-clean');
     const switches = [0, 0, 0, 0, 0, 0, 0, 0];
     let regVal = 0;
