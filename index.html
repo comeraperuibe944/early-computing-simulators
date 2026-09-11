@@ -959,7 +959,55 @@
       color: var(--text-light);
       font-size: 0.9rem;
     }
+
+    /* Ajustes suaves adicionais para os simuladores */
+    .speed-control-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--bg-surface-alt);
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .speed-btn {
+      background: transparent;
+      border: none;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+    }
+
+    .speed-btn.active {
+      background: #ffffff;
+      color: var(--text-main);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .turing-tile {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    .dial-circle {
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    }
+
+    .dial-circle.cascade-glow {
+      border-color: #2563eb !important;
+      background: #eff6ff !important;
+      transform: scale(1.1) !important;
+    }
   </style>
+
 </head>
 <body>
 
@@ -1004,9 +1052,8 @@
     </header>
 
     <!-- ==========================================================================
-         CONCEITO FUNDAMENTAL: O QUE É UMA COMPUTADORA?
-         (Numeração contínua 1, 2, 3 partindo do Computador Humano)
-         ========================================================================== -->
+         CONCEITO FUNDAMENTAL
+
     <section class="slide-block">
       <div class="slide-header">
         <div class="year-display">FUNDAMENTO CONCEITUAL</div>
@@ -1040,9 +1087,8 @@
       </div>
     </section>
 
-    <!-- ==========================================================================
-         ERA 1: PRIMEIROS INSTRUMENTOS ANCESTRAIS (~35.000 a.C. — Séc. XV)
-         ========================================================================== -->
+
+    <!-- ERA 1: PRIMEIROS INSTRUMENTOS ANCESTRAIS (~35.000 a.C. — Séc. XV) -->
     <section class="slide-block">
       <div class="slide-header">
         <div class="year-display">
@@ -1084,7 +1130,7 @@
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>Osso de Ishango (~20.000 a.C.):</strong> Encontrado às margens do Lago Edward (atual República Democrática do Congo), apresenta três colunas de incisões agrupadas de forma matemática: padrões de duplicação ($\times 2$), adições $(9 + 11 = 20)$ e a listagem exata dos números primos entre 10 e 20: <strong>11, 13, 17 e 19</strong>.
+              <strong>Osso de Ishango (~20.000 a.C.):</strong> Encontrado às margens do Lago Edward (atual República Democrática do Congo), apresenta três colunas de incisões agrupadas de forma matemática: padrões de duplicação ($	imes 2$), adições $(9 + 11 = 20)$ e a listagem exata dos números primos entre 10 e 20: <strong>11, 13, 17 e 19</strong>.
             </div>
           </div>
 
@@ -1114,7 +1160,13 @@
         <div class="interactive-app-card">
           <div class="app-header-clean">
             <span class="app-tag">Simulador Prático: Ábaco / Soroban Japonês (5 Colunas)</span>
-            <span style="font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700;">Sistema Bi-quinário</span>
+            <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="presetSorobanYear(1948)">Ano 1948</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="presetSorobanYear(1972)">Ano 1972</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="presetSorobanYear(2026)">Ano 2026</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="presetSorobanYear(42)">Número 42</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="clearSorobanBoard()">Zerar</button>
+            </div>
           </div>
 
           <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">
@@ -1186,95 +1238,113 @@
           </div>
 
           <div class="soroban-readout-row">
-            <span>Valor Registrado no Soroban:</span>
-            <span id="soroban-total-readout" style="color: var(--accent-blue-text); font-size: 1.15rem;">0</span>
-          </div>
-
-          <div style="display: flex; justify-content: center; gap: 0.75rem; margin-top: 1rem;">
-            <button class="btn-clean secondary" onclick="presetSorobanYear(1948)">Carregar Ano do Manchester Baby (1948)</button>
-            <button class="btn-clean secondary" onclick="presetSorobanYear(1972)">Carregar Ano do Patinho Feio (1972)</button>
-            <button class="btn-clean" onclick="clearSorobanBoard()">Zerar Contas</button>
+            <span>TOTAL DECIMAL COMPUTADO NO SOROBAN:</span>
+            <span id="soroban-total-readout" style="color: var(--accent-green-text); font-size: 1.15rem;">0</span>
           </div>
         </div>
 
         <div class="reason-box">
           <strong>Critérios: Turing-Complete: Não | Von Neumann: Não</strong>
-          São suportes puramente passivos de registro ou memória de consulta física. Não possuem unidade de controle, tabela de transição de estados nem autonomia operacional independente do cérebro humano.
+          Sistemas e tábuas que funcionavam como memória externa ou calculadores táteis sob comando biológico integral. Não possuem programa autônomo nem controle condicional de execução.
         </div>
       </div>
     </section>
 
-    <!-- ERA 2: AUTOMATIZAÇÃO MECÂNICA DO CÁLCULO (150 a.C. — 1822) -->
+
+    <!-- ERA 2A: O MECANISMO DE ANTICÍTERA (~150 a.C.) -->
     <section class="slide-block">
       <div class="slide-header">
         <div class="year-display">
-          <span>150 a.C. — 1822</span>
+          <span>c. 150 a.C.</span>
           <div class="status-badges-group">
             <span class="tag-status tc-no">Turing-Complete: Não</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
           </div>
         </div>
-        <h2 class="slide-title">A Automação Mecânica do Cálculo</h2>
-        <p class="slide-subtitle">Engrenagens de bronze e ferro substituindo o erro humano nas quatro operações e na astronomia.</p>
+        <h2 class="slide-title">O Mecanismo de Anticítera</h2>
+        <p class="slide-subtitle">O computador analógico astronômico mais antigo conhecido da humanidade.</p>
       </div>
 
       <div class="clean-card">
-        <!-- Galeria Tripla: Anticítera + Pascalina + Leibniz -->
-        <div class="media-gallery-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-          <div class="media-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/NAMA_Machine_d%27Anticyth%C3%A8re_1.jpg" alt="Mecanismo de Anticítera">
-            <div class="media-caption">Mecanismo de Anticítera (~150 a.C.): engrenagens planetárias de bronze para astronomia na Grécia Antiga.</div>
-          </div>
-          <div class="media-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Arts_et_Metiers_Pascaline_dsc03869.jpg" alt="Pascalina">
-            <div class="media-caption">Pascalina (Blaise Pascal, 1642): a primeira calculadora mecânica com transporte automático de dezenas.</div>
-          </div>
-          <div class="media-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Leibniz_Stepped_Reckoner_mechanism.png" alt="Mecanismo de Leibniz">
-            <div class="media-caption">Tambor escalonado de Leibniz (1673): multiplicação direta e a fundação da aritmética binária (1679).</div>
-          </div>
+        <div class="media-frame">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/NAMA_Machine_d%27Anticyth%C3%A8re_1.jpg" alt="Mecanismo de Anticítera">
+          <div class="media-caption">Mecanismo de Anticítera (~150 a.C., Museu Arqueológico Nacional de Atenas): mais de 30 engrenagens de bronze reproduzindo o cosmos grego.</div>
         </div>
 
         <div class="talking-points">
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>Mecanismo de Anticítera (~150 a 100 a.C.):</strong> Recuperado em 1901 em um naufrágio próximo à ilha grega de Antikythera, é o mais antigo computador analógico mecânico conhecido. Composto por mais de 30 engrenagens de bronze acopladas com dentes triangulares e engrenagens diferenciais, reproduzia as anomalias da órbita lunar (teoria de Hiparco), as fases da Lua, o zodíaco e previa eclipses com base nos ciclos de Saros e Metônico.
+              <strong>Descoberta Arqueológica Singular:</strong> Recuperado em 1901 em um naufrágio próximo à ilha grega de Antikythera. Tomografias tridimensionais modernas revelaram que a caixa de madeira continha mais de 30 engrenagens de bronze miniaturizadas, com dentes triangulares de precisão extraordinária.
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>A Pascalina de Blaise Pascal (1642):</strong> Criada por Pascal aos 19 anos para auxiliar seu pai na arrecadação de tributos em Ruão. Foi a primeira calculadora mecânica funcional produzida e comercializada. Seu elemento genial foi o mecanismo <em>sautoir</em>: uma alavanca que acumula peso e despenca por gravidade quando o disco de unidades vai de 9 a 0, empurrando a engrenagem de dezenas exatamente uma posição adiante.
+              <strong>Computação Mecânica do Cosmos:</strong> Ao girar uma manivela de entrada, o diferencial de engrenagens calculava a posição do Sol, as fases da Lua, o movimento dos planetas visíveis, as datas exatas dos eclipses através do ciclo de Saros (223 meses) e o ciclo Metônico de 19 anos, além de marcar os ciclos de 4 anos dos Jogos Olímpicos pan-helênicos.
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>Máquina de Leibniz &amp; Aritmética Binária (1673–1679):</strong> Gottfried Wilhelm Leibniz aprimorou o conceito com o tambor escalonado (cilindro com nove dentes de comprimentos graduados), viabilizando multiplicação e divisão direta por rotação de manivela. Em 1679, Leibniz publicou <em>"De Progressione Dyadica"</em>, descrevendo a base 2 (binária com 0 e 1), reconhecendo que ela seria a fundação das máquinas lógicas do futuro.
-            </div>
-          </div>
-
-          <div class="point-item">
-            <div class="point-bullet"></div>
-            <div class="point-text">
-              <strong>Máquina Diferencial de Charles Babbage (1822):</strong> Para eliminar as catastróficas falhas de cálculo em tabelas de navegação marítima e tábuas de logaritmos, Babbage projetou um colosso mecânico que calculava polinômios sucessivos aplicando o método das diferenças finitas de Newton, substituindo multiplicações complexas por uma série contínua de adições mecânicas em colunas dentadas.
+              <strong>Engrenagens Diferenciais Perdidas:</strong> O mecanismo empregava um sistema de engrenagem planetária com pino e fenda para reproduzir a velocidade variável da órbita lunar elíptica explicada pela teoria de Hiparco — uma engenharia mecânica que só voltaria a ser documentada na Europa mais de mil anos depois.
             </div>
           </div>
         </div>
 
-        <!-- TEATRO CINEMA: MÁQUINA DIFERENCIAL DE BABBAGE EM MOVIMENTO REAL -->
-        <div class="video-cinema-card">
-          <div class="video-thumb-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Babbage_Difference_Engine.jpg" alt="Máquina Diferencial Funcionando">
-            <div class="video-play-badge">&blacktriangleright;</div>
+        <div class="tech-specs-box">
+          <div class="tech-specs-title">Ficha Técnica: Mecanismo de Anticítera (~150 a.C.)</div>
+          <div class="tech-specs-grid">
+            <div><span>Origem e Período</span><strong>Grécia Helenística (~150 a.C.)</strong></div>
+            <div><span>Componentes Lógicos</span><strong>&gt; 30 engrenagens de bronze</strong></div>
+            <div><span>Tipo de Computação</span><strong>Analógica Mecânica Contínua</strong></div>
+            <div><span>Aplicação Central</span><strong>Astronomia, Calendários e Eclipses</strong></div>
           </div>
-          <div class="video-cinema-details">
-            <h4>Demonstração Real: A Máquina Diferencial Nº 2 no Museu de Londres</h4>
-            <p>Construída em 1991 exatamente segundo os desenhos originais de Charles Babbage de 1847. Pesa 5 toneladas, contém 8.000 peças de bronze e calcula polinômios com precisão de 31 dígitos acionada por manivela manual.</p>
-            <a href="https://www.youtube.com/watch?v=0anIyVGe4PU" target="_blank" rel="noopener" class="video-cinema-link">Assistir no YouTube (Science Museum) &nearr;</a>
+        </div>
+
+        <div class="reason-box">
+          <strong>Critérios: Turing-Complete: Não | Von Neumann: Não</strong>
+          Um triunfo da computação analógica da Antiguidade. As equações astronômicas estavam fundidas permanentemente na razão geométrica de dentes das engrenagens. Não possuía bifurcação condicional nem instruções flexíveis.
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ERA 2B: A PASCALINA DE BLAISE PASCAL (1642) -->
+    <section class="slide-block">
+      <div class="slide-header">
+        <div class="year-display">
+          <span>1642</span>
+          <div class="status-badges-group">
+            <span class="tag-status tc-no">Turing-Complete: Não</span>
+            <span class="tag-status vn-no">Von Neumann: Não</span>
+          </div>
+        </div>
+        <h2 class="slide-title">A Pascalina de Blaise Pascal</h2>
+        <p class="slide-subtitle">A primeira calculadora mecânica digital com transporte automático de dezenas.</p>
+      </div>
+
+      <div class="clean-card">
+        <div class="media-frame">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Arts_et_Metiers_Pascaline_dsc03869.jpg" alt="Pascalina">
+          <div class="media-caption">Pascalina (Blaise Pascal, 1642): tambores decimais com o mecanismo gravitacional do sautoir. Conservada no Museu de Artes e Ofícios de Paris.</div>
+        </div>
+
+        <div class="talking-points">
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>A Gênese na Cobrança de Impostos:</strong> Concebida por Blaise Pascal aos 19 anos em Ruão para aliviar a carga exaustiva de trabalho de seu pai, cobrador de impostos da Coroa francesa. A máquina realizava somas e subtrações com discos giratórios decimais.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>A Invenção do <em>Sautoir</em>:</strong> O maior desafio nas calculadoras mecânicas era o acúmulo de atrito no transporte de vai-um (quando 999 recebe +1, três rodas precisam girar juntas). Pascal inventou o <em>sautoir</em>: uma alavanca com contrapeso que acumula energia potencial gravitacional conforme a roda vai de 0 a 9 e despenca no dígito 0, empurrando a engrenagem vizinha sem sobrecarregar as engrenagens anteriores.
+            </div>
           </div>
         </div>
 
@@ -1284,6 +1354,10 @@
             <span class="app-tag">Simulador Prático: Mecanismo de Transporte da Pascalina (Sautoir)</span>
             <span id="pascaline-feedback-readout" style="font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--accent-blue-text);">Total: 0</span>
           </div>
+
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+            Clique nos discos para girar cada ordem decimal ou teste a cascata lenta de vai-um:
+          </p>
 
           <div class="pascaline-clean-row">
             <div class="pascaline-clean-dial">
@@ -1306,18 +1380,164 @@
 
           <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
             <button class="btn-clean" onclick="addPascalineDirect(1)">+1 Unidade</button>
-            <button class="btn-clean" onclick="addPascalineDirect(9)">+9 (Testar Sautoir)</button>
-            <button class="btn-clean secondary" onclick="presetPascaline999()">Preparar 999 &rarr; Somar 1 (Efeito Dominó)</button>
+            <button class="btn-clean" onclick="addPascalineDirect(9)">+9 (Girar Disco)</button>
+            <button class="btn-clean secondary" onclick="presetPascaline999()">Preparar 999 &rarr; Somar 1 (Efeito Dominó do Sautoir)</button>
             <button class="btn-clean secondary" onclick="resetPascalineClean()">Zerar Discos</button>
+          </div>
+        </div>
+
+        <div class="tech-specs-box">
+          <div class="tech-specs-title">Ficha Técnica: A Pascalina de Blaise Pascal (1642)</div>
+          <div class="tech-specs-grid">
+            <div><span>Inventor</span><strong>Blaise Pascal (19 anos)</strong></div>
+            <div><span>Mecanismo Central</span><strong>Catraca e Sautoir Gravitacional</strong></div>
+            <div><span>Sistema Numérico</span><strong>Base Decimal (e moedas Sous/Deniers)</strong></div>
+            <div><span>Operações</span><strong>Adição Direta (Subtração via complemento)</strong></div>
           </div>
         </div>
 
         <div class="reason-box">
           <strong>Critérios: Turing-Complete: Não | Von Neumann: Não</strong>
-          Dispositivos com lógica de hardware dedicada exclusivamente a operações aritméticas lineares. Não contêm instrução armazenada, desvio condicional (IF/ELSE) nem repetição controlada por software.
+          A Pascalina é um calculador puramente digital com transporte mecânico de dezenas. Sua operação era exclusivamente manual e aritmética, sem instruções encadeadas nem bifurcação lógica.
         </div>
       </div>
     </section>
+
+
+    <!-- ERA 2C: GOTTFRIED WILHELM LEIBNIZ (1673 — 1703) -->
+    <section class="slide-block">
+      <div class="slide-header">
+        <div class="year-display">
+          <span>1673 — 1703</span>
+          <div class="status-badges-group">
+            <span class="tag-status tc-no">Turing-Complete: Não</span>
+            <span class="tag-status vn-no">Von Neumann: Não</span>
+          </div>
+        </div>
+        <h2 class="slide-title">Gottfried Wilhelm Leibniz &amp; a Aritmética Binária</h2>
+        <p class="slide-subtitle">O tambor escalonado para multiplicação mecânica e a fundamentação formal da base 2.</p>
+      </div>
+
+      <div class="clean-card">
+        <div class="media-frame">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Leibniz_Stepped_Reckoner_mechanism.png" alt="Mecanismo de Leibniz">
+          <div class="media-caption">Cilindro escalonado de Leibniz (Stepped Reckoner, 1673): cilindro com 9 dentes de comprimentos graduados para multiplicação mecânica direta.</div>
+        </div>
+
+        <div class="talking-points">
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>O Cilindro Escalonado (<em>Staffelwalze</em>):</strong> Leibniz expandiu os horizontes mecânicos ao criar um cilindro com nove dentes de comprimentos variados. Um pinhão deslizante acoplado ao cilindro podia ser posicionado em qualquer dente de 1 a 9: ao girar a manivela, o número de dentes engrenados determinava quantas unidades eram adicionadas de uma só vez, viabilizando multiplicação e divisão direta por rotação contínua.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>O Tratado <em>De Progressione Dyadica</em> (1679):</strong> Leibniz estabeleceu os alicerces matemáticos do <strong>sistema binário moderno</strong>. Em 1703 publicou <em>"Explication de l'Arithmétique Binaire"</em>, demonstrando que toda a matemática e a lógica podiam ser formuladas usando apenas dois algarismos: $0$ e $1$.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>A Visão da <em>Characteristica Universalis</em>:</strong> Leibniz sonhava com uma linguagem simbólica universal de pensamento racional: se todo o conhecimento fosse reduzido a cálculos lógicos formais, debates científicos poderiam ser solucionados sentando-se à mesa com uma pena e dizendo: <em>"Calculemus!"</em> (Vamos calcular!).
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-specs-box">
+          <div class="tech-specs-title">Ficha Técnica: Calculador Escalonado de Leibniz (1673)</div>
+          <div class="tech-specs-grid">
+            <div><span>Invenção Mecânica</span><strong>Tambor de 9 Dentes Escalonados</strong></div>
+            <div><span>Contribuição Teórica</span><strong>Aritmética Binária (Base 2 com 0 e 1)</strong></div>
+            <div><span>Quatro Operações</span><strong>Soma, Subtração, Multiplicação e Divisão</strong></div>
+            <div><span>Influência Histórica</span><strong>Base de calculadoras até a Curta (1948)</strong></div>
+          </div>
+        </div>
+
+        <div class="reason-box">
+          <strong>Critérios: Turing-Complete: Não | Von Neumann: Não</strong>
+          Máquina mecânica supervisionada por manivela manual. Não continha memória de programa nem controle condicional de fluxo.
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ERA 2D: CHARLES BABBAGE & A MÁQUINA DIFERENCIAL (1822) -->
+    <section class="slide-block">
+      <div class="slide-header">
+        <div class="year-display">
+          <span>1822</span>
+          <div class="status-badges-group">
+            <span class="tag-status tc-no">Turing-Complete: Não</span>
+            <span class="tag-status vn-no">Von Neumann: Não</span>
+          </div>
+        </div>
+        <h2 class="slide-title">Charles Babbage: A Máquina Diferencial</h2>
+        <p class="slide-subtitle">O cálculo automático de tabelas de navegação e balística pelo método das diferenças finitas.</p>
+      </div>
+
+      <div class="clean-card">
+        <div class="media-frame">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Babbage_Difference_Engine.jpg" alt="Máquina Diferencial Funcionando">
+          <div class="media-caption">Réplica funcional da Máquina Diferencial Nº 2 de Charles Babbage construída pelo Science Museum de Londres em 1991 (pesa 5 toneladas e possui 8.000 peças de bronze e ferro).</div>
+        </div>
+
+        <div class="talking-points">
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>O Fim dos Erros em Tabelas de Navegação:</strong> No século XIX, tábuas de logaritmos e navegação marítima britânicas eram calculadas por exércitos de computadores humanos e continham erros sistemáticos que provocavam desastres navais. Babbage exclamou a frase histórica: <em>"Desejaria a Deus que estes cálculos tivessem sido executados a vapor!"</em>
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>O Método das Diferenças Finitas:</strong> Babbage explorou o princípio de que qualquer polinômio de grau $n$ tem sua $n$-ésima diferença constante. Isso permitia que a máquina calculasse tabelas polinomiais complexas utilizando exclusivamente <strong>somas mecânicas repetidas</strong> em colunas verticais dentadas.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Impressora Integrada:</strong> A máquina possuía uma unidade de impressão mecânica acoplada que prensava os resultados em moldes de gesso, eliminando integralmente a possibilidade de erros tipográficos humanos durante a impressão das tabelas.
+            </div>
+          </div>
+        </div>
+
+        <!-- TEATRO CINEMA: MÁQUINA DIFERENCIAL DE BABBAGE EM MOVIMENTO REAL -->
+        <div class="video-cinema-card">
+          <div class="video-thumb-frame">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Babbage_Difference_Engine.jpg" alt="Máquina Diferencial Funcionando">
+            <div class="video-play-badge">&blacktriangleright;</div>
+          </div>
+          <div class="video-cinema-details">
+            <h4>Demonstração Real: A Máquina Diferencial Nº 2 no Museu de Londres</h4>
+            <p>Construída em 1991 exatamente segundo os desenhos originais de Charles Babbage de 1847. Pesa 5 toneladas, contém 8.000 peças de bronze e calcula polinômios com precisão de 31 dígitos acionada por manivela manual.</p>
+            <a href="https://www.youtube.com/watch?v=0anIyVGe4PU" target="_blank" rel="noopener" class="video-cinema-link">Assistir no YouTube (Science Museum) &nearr;</a>
+          </div>
+        </div>
+
+        <div class="tech-specs-box">
+          <div class="tech-specs-title">Ficha Técnica: Máquina Diferencial Nº 2 (Babbage)</div>
+          <div class="tech-specs-grid">
+            <div><span>Método Matemático</span><strong>Diferenças Finitas de Newton</strong></div>
+            <div><span>Precisão Numérica</span><strong>31 dígitos decimais</strong></div>
+            <div><span>Componentes Físicos</span><strong>8.000 peças de bronze e aço (5 toneladas)</strong></div>
+            <div><span>Saída</span><strong>Impressora tipográfica estereotípica</strong></div>
+          </div>
+        </div>
+
+        <div class="reason-box">
+          <strong>Critérios: Turing-Complete: Não | Von Neumann: Não</strong>
+          Dedicada exclusivamente ao cálculo de polinômios fixos montados na posição inicial das colunas mecânicas. Não era capaz de resolver problemas gerais nem executar desvios lógicos.
+        </div>
+      </div>
+    </section>
+
 
     <!-- ERA 3: O NASCIMENTO DA PROGRAMAÇÃO (1837 — 1843) -->
     <section class="slide-block">
@@ -1393,6 +1613,7 @@
       </div>
     </section>
 
+
     <!-- ERA 4: O SALTO TEÓRICO: HILBERT (1900) & ALAN TURING (1936) -->
     <section class="slide-block">
       <div class="slide-header">
@@ -1446,19 +1667,30 @@
           </div>
         </div>
 
-        <!-- SIMULADOR 3: MÁQUINA DE TURING INTELIGENTE DE LABORATÓRIO (4 ALGORITMOS) -->
+        <!-- SIMULADOR 3: MÁQUINA DE TURING DE LABORATÓRIO (6 ALGORITMOS + VELOCIDADE SUAVE) -->
         <div class="interactive-app-card">
           <div class="app-header-clean">
             <span class="app-tag">Laboratório Interativo: Máquina de Turing de Propósito Geral</span>
-            <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
-              <button class="btn-clean active" id="btn-t-inc" onclick="loadTuringAlgorithm('inc')">Soma Binária (+1 com Carry)</button>
-              <button class="btn-clean secondary" id="btn-t-dup" onclick="loadTuringAlgorithm('dup')">Função $f(n)=2n$ (Duplicação)</button>
-              <button class="btn-clean secondary" id="btn-t-not" onclick="loadTuringAlgorithm('not')">Inversor NOT (0 &harr; 1)</button>
+            
+            <div class="speed-control-group">
+              <span>Velocidade:</span>
+              <button class="speed-btn active" id="spd-slow" onclick="setTuringSpeed(800)">Lentinho (800ms)</button>
+              <button class="speed-btn" id="spd-med" onclick="setTuringSpeed(400)">Normal (400ms)</button>
+              <button class="speed-btn" id="spd-fast" onclick="setTuringSpeed(150)">Rápido (150ms)</button>
             </div>
           </div>
 
+          <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.8rem;">
+            <button class="btn-clean active" id="btn-t-inc" onclick="loadTuringAlgorithm('inc')">1. Soma Binária (+1)</button>
+            <button class="btn-clean secondary" id="btn-t-dup" onclick="loadTuringAlgorithm('dup')">2. Duplicação f(n)=2n</button>
+            <button class="btn-clean secondary" id="btn-t-not" onclick="loadTuringAlgorithm('not')">3. Inversor NOT</button>
+            <button class="btn-clean secondary" id="btn-t-dec" onclick="loadTuringAlgorithm('dec')">4. Subtração (-1)</button>
+            <button class="btn-clean secondary" id="btn-t-par" onclick="loadTuringAlgorithm('parity')">5. Teste de Paridade</button>
+            <button class="btn-clean secondary" id="btn-t-clr" onclick="loadTuringAlgorithm('clear')">6. Limpeza de Fita</button>
+          </div>
+
           <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;" id="turing-lab-description">
-            A máquina varre a fita binária, localiza o dígito menos significativo e propaga a soma com vai-um para a esquerda:
+            Soma Binária: a máquina varre a fita até o dígito menos significativo e propaga a soma com vai-um para a esquerda:
           </p>
 
           <div class="turing-ribbon-wrapper">
@@ -1478,7 +1710,7 @@
 
           <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
             <button class="btn-clean" id="btn-t-step" onclick="stepTuringLab()">Avançar 1 Passo</button>
-            <button class="btn-clean secondary" id="btn-t-run" onclick="runTuringLab()">Executar Automático</button>
+            <button class="btn-clean secondary" id="btn-t-run" onclick="runTuringLab()">Executar Suave</button>
             <button class="btn-clean secondary" id="btn-t-pause" onclick="pauseTuringLab()">Pausar</button>
             <button class="btn-clean secondary" onclick="resetTuringLab()">Reiniciar Fita</button>
           </div>
@@ -1491,77 +1723,271 @@
       </div>
     </section>
 
-    <!-- ERA 5: MÁQUINAS ELETROMECÂNICAS E GIGANTES DE GUERRA (1941 — 1944) -->
+
+    <!-- ERA 5A: KONRAD ZUSE E O Z3 (1941) -->
     <section class="slide-block">
       <div class="slide-header">
         <div class="year-display">
-          <span>1941 — 1944</span>
+          <span>1941</span>
           <div class="status-badges-group">
-            <span class="tag-status tc-no">Turing-Complete: Não / Parcial</span>
+            <span class="tag-status tc-yes">Turing-Complete: Sim (Provado em 1998)</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
           </div>
         </div>
-        <h2 class="slide-title">Zuse Z3, Atanasoff ABC, Harvard &amp; Colossus</h2>
-        <p class="slide-subtitle">O esforço bélico acelerando os primeiros computadores com relés eletromecânicos e válvulas.</p>
+        <h2 class="slide-title">Konrad Zuse &amp; o Z3</h2>
+        <p class="slide-subtitle">O primeiro computador eletromecânico funcional do mundo, acionado por filme de 35 mm.</p>
       </div>
 
       <div class="clean-card">
-        <!-- Galeria Quádrupla de Máquinas Históricas -->
-        <div class="media-gallery-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-          <div class="media-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Z3_Deutsches_Museum.JPG" alt="Zuse Z3 Deutsches Museum">
-            <div class="media-caption">Konrad Zuse Z3 (Berlim, 1941): primeiro computador eletromecânico funcional do mundo.</div>
-          </div>
-          <div class="media-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Atanasoff-Berry_Computer.jpg" alt="Atanasoff-Berry Computer">
-            <div class="media-caption">Atanasoff-Berry Computer (ABC, 1942): primeiro calculador eletrônico com válvulas e capacitores binários.</div>
-          </div>
-          <div class="media-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Colossus.jpg" alt="Colossus Bletchley Park">
-            <div class="media-caption">Colossus Mark II (1944): 2.400 válvulas dedicadas à criptoanálise da cifra teletipo nazista Lorenz.</div>
-          </div>
-          <div class="media-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/First_Computer_Bug%2C_1947.jpg" alt="O Primeiro Bug Real de 1947">
-            <div class="media-caption">O primeiro bug da história: mariposa real retirada do relé 70 do Harvard Mark II por Grace Hopper em 1947.</div>
-          </div>
+        <div class="media-frame">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Z3_Deutsches_Museum.JPG" alt="Zuse Z3 Deutsches Museum">
+          <div class="media-caption">Konrad Zuse Z3 (Berlim, 1941, Deutsches Museum de Munique): primeiro computador eletromecânico funcional e programável do mundo.</div>
         </div>
 
         <div class="talking-points">
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>Konrad Zuse e o Z3 (Berlim, 1941):</strong> Desenvolvido isoladamente na Alemanha com 2.000 relés telefônicos e alimentado por tiras perfuradas de filme fotográfico de cinema de 35 mm. Operava em aritmética binária de ponto flutuante com clock de 5 a 10 Hz. Em 1998, Raúl Rojas provou matematicamente que o Z3 era Turing-complete através de uma engenhosa montagem de laços na fita de filme.
+              <strong>Desenvolvimento Solitário na Alemanha em Guerra:</strong> Trabalhando no apartamento de seus pais em Berlim, o engenheiro civil Konrad Zuse construiu o Z3, inaugurado em 12 de maio de 1941 para automatizar cálculos de vibração de asas aeronáuticas para a fábrica Henschel.
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>Atanasoff-Berry Computer (ABC, 1937–1942):</strong> Criado por John Atanasoff e Clifford Berry na Universidade Estadual de Iowa. Foi o pioneiro na computação digital eletrônica ao utilizar válvulas termiônicas para somadores binários e um tambor rotativo com capacitores regenerativos (conceito que antecipou em três décadas a memória DRAM moderna). Destinava-se a resolver sistemas de equações lineares com 29 incógnitas.
+              <strong>Arquitetura Binária de Ponto Flutuante:</strong> Diferente de seus contemporâneos que insistiam em sistemas decimais, Zuse usou aritmética binária booleana pura com palavras de 22 bits em ponto flutuante (1 bit de sinal, 7 bits de expoente e 14 bits de mantissa).
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>Harvard Mark I (IBM ASCC, 1944) &amp; Grace Hopper:</strong> Gigante eletromecânico projetado por Howard Aiken em Harvard com financiamento da IBM. Media 16 metros de comprimento, continha 765.000 componentes eletromecânicos e lia instruções de fitas de papel de 24 canais. Foi no Mark II (1947) que <strong>Grace Hopper</strong> retirou a mariposa que parou o relé nº 70, colando o inseto com fita crepe no livro de registros com a anotação: <em>"First actual case of bug being found"</em>.
+              <strong>Relés e Película de Cinema de 35 mm:</strong> Construído com <strong>2.000 relés telefônicos</strong> (600 para cálculo aritmético e 1.400 para memória). O programa era codificado em tiras perfuradas de filme cinematográfico de 35 mm descartado dos estúdios da UFA.
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>Colossus Mark I e II (Bletchley Park, 1943–1944):</strong> Tommy Flowers e Max Newman construíram o primeiro equipamento eletrônico digital em larga escala do mundo para quebrar a cifra teletipo Lorenz SZ40/42 usada por Adolf Hitler. Contava com 2.400 válvulas termiônicas e operava na incrível velocidade de leitura óptica de 5.000 caracteres por segundo. Permaneceu em segredo militar até os anos 1970.
+              <strong>A Prova de Turing-Completude de Raúl Rojas (1998):</strong> O Z3 não continha instrução explícita de desvio condicional, mas em 1998 o Prof. Raúl Rojas demonstrou formalmente que, ao colar as pontas da fita de 35 mm formando um laço infinito e usando aritmética condicional inteligente, o Z3 atinge completude computacional de Turing!
             </div>
+          </div>
+        </div>
+
+        <div class="tech-specs-box">
+          <div class="tech-specs-title">Ficha Técnica: Konrad Zuse Z3 (1941)</div>
+          <div class="tech-specs-grid">
+            <div><span>Comutador Lógico</span><strong>2.000 Relés Telefônicos</strong></div>
+            <div><span>Clock / Frequência</span><strong>5,3 Hz (ciclo de ~0,2 s)</strong></div>
+            <div><span>Mídia de Instruções</span><strong>Fita de filme cinematográfico 35 mm</strong></div>
+            <div><span>Memória de Dados</span><strong>64 palavras de 22 bits</strong></div>
           </div>
         </div>
 
         <div class="reason-box">
-          <strong>Critérios: Turing-Complete: Não (ou com artifícios externos) | Von Neumann: Não</strong>
-          Nenhum deles possuía programa armazenado na mesma memória interna que os dados. As instruções eram alimentadas externamente através de fitas perfuradas sequenciais ou fixadas no cabeamento interno dos circuitos.
+          <strong>Critérios: Turing-Complete: Sim (com laços na fita) | Von Neumann: Não</strong>
+          O Z3 lia instruções diretamente da fita cinematográfica externa, sem armazená-las na mesma memória que os dados aritméticos.
         </div>
       </div>
     </section>
+
+
+    <!-- ERA 5B: ATANASOFF-BERRY COMPUTER (ABC, 1937–1942) -->
+    <section class="slide-block">
+      <div class="slide-header">
+        <div class="year-display">
+          <span>1937 — 1942</span>
+          <div class="status-badges-group">
+            <span class="tag-status tc-no">Turing-Complete: Não</span>
+            <span class="tag-status vn-no">Von Neumann: Não</span>
+          </div>
+        </div>
+        <h2 class="slide-title">Atanasoff-Berry Computer (ABC)</h2>
+        <p class="slide-subtitle">O pioneiro eletrônico digital com válvulas termiônicas e memória capacitiva rotativa.</p>
+      </div>
+
+      <div class="clean-card">
+        <div class="media-frame">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Atanasoff-Berry_Computer.jpg" alt="Atanasoff-Berry Computer">
+          <div class="media-caption">Atanasoff-Berry Computer (ABC, 1942, Iowa State University): primeiro calculador eletrônico com válvulas para aritmética binária e capacitores regenerativos.</div>
+        </div>
+
+        <div class="talking-points">
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>O Nascimento da Eletrônica Digital:</strong> Criado pelo físico John Vincent Atanasoff e o estudante Clifford Berry na Iowa State University. Foi a primeira máquina a substituir engrenagens e relés mecânicos por circuitos eletrônicos a vácuo para realizar cálculos aritméticos.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Válvulas como Portas Lógicas e Somadores:</strong> Empregava cerca de 300 válvulas termiônicas duplas (triodos) para realizar somas e subtrações binárias diretas em alta velocidade.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Memória Capacitiva Regenerativa Rotativa (Precursora da DRAM):</strong> Utilizava um par de tambores rotativos contendo cada um 1.630 pequenos capacitores de papel. Conforme o tambor girava a 1 rotação por segundo, circuitos eletrônicos liam e regeneravam a carga antes que ela se dissipasse — <strong>o mesmo princípio de refrescamento dinâmico das memórias DRAM modernas</strong>.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>A Sentença Judicial Histórica de 1973:</strong> No célebre processo judicial <em>Honeywell v. Sperry Rand</em>, o juiz Earl Larson invalidou a patente do ENIAC, reconhecendo que os princípios fundamentais da computação eletrônica digital foram inventados por John Atanasoff no ABC.
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-specs-box">
+          <div class="tech-specs-title">Ficha Técnica: Atanasoff-Berry Computer (1942)</div>
+          <div class="tech-specs-grid">
+            <div><span>Tecnologia Lógica</span><strong>300 Válvulas a Vácuo</strong></div>
+            <div><span>Tipo de Memória</span><strong>Tambor com capacitores regenerativos</strong></div>
+            <div><span>Sistema Numérico</span><strong>Binário de 50 bits</strong></div>
+            <div><span>Finalidade Específica</span><strong>Sistemas de até 29 Equações Lineares</strong></div>
+          </div>
+        </div>
+
+        <div class="reason-box">
+          <strong>Critérios: Turing-Complete: Não | Von Neumann: Não</strong>
+          Máquina digital eletrônica extraordinária, mas dedicada exclusivamente à resolução de sistemas de equações lineares através do método de eliminação gaussiana. Não era de uso geral nem reprogramável.
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ERA 5C: HARVARD MARK I & GRACE HOPPER (1944) -->
+    <section class="slide-block">
+      <div class="slide-header">
+        <div class="year-display">
+          <span>1944</span>
+          <div class="status-badges-group">
+            <span class="tag-status tc-no">Turing-Complete: Não / Parcial</span>
+            <span class="tag-status vn-no">Von Neumann: Não</span>
+          </div>
+        </div>
+        <h2 class="slide-title">Harvard Mark I &amp; Grace Hopper</h2>
+        <p class="slide-subtitle">O gigante eletromecânico de 16 metros, o nascimento dos compiladores e o primeiro 'bug'.</p>
+      </div>
+
+      <div class="clean-card">
+        <div class="media-frame">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/First_Computer_Bug%2C_1947.jpg" alt="O Primeiro Bug Real de 1947">
+          <div class="media-caption">O primeiro bug da história: mariposa real retirada do relé 70 do Harvard Mark II por Grace Hopper em 9 de setembro de 1947 e colada no diário de bordo com fita crepe. Smithsonian Museum.</div>
+        </div>
+
+        <div class="talking-points">
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Dimensões Monumentais da IBM e Harvard:</strong> Projetado por Howard Aiken e construído pela IBM como o <em>Automatic Sequence Controlled Calculator</em> (ASCC). Media <strong>16 metros de comprimento</strong>, 2,4 metros de altura, pesava 5 toneladas e reunia 765.000 peças eletromecânicas sincronizadas por um eixo rotativo movido por motor elétrico de 5 HP.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>O Pioneirismo de Grace Murray Hopper:</strong> A tenente e matemática Grace Hopper foi uma das primeiras programadoras do Mark I. Autora do manual da máquina de 500 páginas, Hopper revolucionou a computação ao criar os primeiros <strong>compiladores</strong> (sistema A-0) e formular as bases da linguagem <strong>COBOL</strong>.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>O Primeiro Bug Registrado:</strong> Em 1947, no sucessor Mark II, uma mariposa ficou presa entre os contatos do relé 70, paralisando os cálculos. Hopper retirou o inseto com pinça, colou-o com fita adesiva no caderno de registros e anotou: <em>"First actual case of bug being found"</em>.
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-specs-box">
+          <div class="tech-specs-title">Ficha Técnica: Harvard Mark I (IBM ASCC, 1944)</div>
+          <div class="tech-specs-grid">
+            <div><span>Dimensões Físicas</span><strong>16 metros &times; 2,4 m (5 toneladas)</strong></div>
+            <div><span>Componentes</span><strong>765.000 peças eletromecânicas</strong></div>
+            <div><span>Mídia de Entrada</span><strong>Fitas de papel perfurado de 24 canais</strong></div>
+            <div><span>Tempo por Multiplicação</span><strong>6 segundos por operação</strong></div>
+          </div>
+        </div>
+
+        <div class="reason-box">
+          <strong>Critérios: Turing-Complete: Não / Parcial | Von Neumann: Não</strong>
+          O Mark I lia comandos sequenciais em fita de papel contínua sem desvios condicionais dinâmicos flexíveis. As instruções ficavam fora do armazenamento interno de dados.
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ERA 5D: COLOSSUS MARK I E II (1943–1944) -->
+    <section class="slide-block">
+      <div class="slide-header">
+        <div class="year-display">
+          <span>1943 — 1944</span>
+          <div class="status-badges-group">
+            <span class="tag-status tc-no">Turing-Complete: Não</span>
+            <span class="tag-status vn-no">Von Neumann: Não</span>
+          </div>
+        </div>
+        <h2 class="slide-title">Colossus Mark I &amp; II: O Segredo de Bletchley Park</h2>
+        <p class="slide-subtitle">O primeiro computador digital eletrônico em escala operacional para decifrar as ordens de Hitler.</p>
+      </div>
+
+      <div class="clean-card">
+        <div class="media-frame">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Colossus.jpg" alt="Colossus Bletchley Park">
+          <div class="media-caption">Colossus Mark II (1944, Bletchley Park): 2.400 válvulas dedicadas à criptoanálise em alta velocidade da cifra teletipo Lorenz SZ42.</div>
+        </div>
+
+        <div class="talking-points">
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>A Quebra da Cifra de Teletipo Lorenz (Tunny):</strong> Enquanto a Enigma era usada no campo de batalha, a Lorenz SZ40/42 com 12 rotores era utilizada exclusivamente pelo Alto Comando Alemão e por Adolf Hitler para despachar ordens estratégicas para seus generais.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>A Inovação de Tommy Flowers:</strong> O engenheiro eletrônico Tommy Flowers, dos Correios Britânicos, desafiou o ceticismo da época ao propor o uso maciço de válvulas termiônicas (1.500 no Mark I e <strong>2.400 válvulas no Mark II</strong>). Flowers provou que, mantendo as válvulas ligadas continuamente sem ciclos térmicos de desligamento, as quebras eram raras.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Leitura Óptica a 5.000 Caracteres por Segundo:</strong> A fita de papel com o texto cifrado interceptado corria a <strong>48 km/h</strong> pelo leitor óptico fotocelular, realizando testes estatísticos de coincidência booleana em tempo recorde antes dos ataques aliados no Dia D.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Segredo Militar por Três Décadas:</strong> Ao término da guerra, Churchill ordenou a destruição das máquinas e de seus esquemas para proteger as capacidades de inteligência britânicas na Guerra Fria. O Colossus só foi revelado publicamente nos anos 1970.
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-specs-box">
+          <div class="tech-specs-title">Ficha Técnica: Colossus Mark II (1944)</div>
+          <div class="tech-specs-grid">
+            <div><span>Engenheiro Responsável</span><strong>Tommy Flowers (Post Office)</strong></div>
+            <div><span>Válvulas a Vácuo</span><strong>2.400 Válvulas Eletrônicas</strong></div>
+            <div><span>Velocidade de Leitura</span><strong>5.000 caracteres/segundo (óptica)</strong></div>
+            <div><span>Finalidade Central</span><strong>Criptoanálise estatística da Lorenz</strong></div>
+          </div>
+        </div>
+
+        <div class="reason-box">
+          <strong>Critérios: Turing-Complete: Não | Von Neumann: Não</strong>
+          O primeiro equipamento digital eletrônico de grande porte da história, porém de propósito restrito à criptoanálise booleana. Não executava programas gerais de computação.
+        </div>
+      </div>
+    </section>
+
 
     <!-- ERA 6: GERAÇÃO ELETRÔNICA SEM PROGRAMA ARMAZENADO (1945 — 1946) -->
     <section class="slide-block">
@@ -1660,6 +2086,16 @@
           </div>
         </div>
 
+        <div class="tech-specs-box">
+          <div class="tech-specs-title">Ficha Técnica: ENIAC (Moore School, 1945)</div>
+          <div class="tech-specs-grid">
+            <div><span>Comutador Lógico</span><strong>17.468 Válvulas a Vácuo</strong></div>
+            <div><span>Clock / Frequência</span><strong>100 kHz (5.000 somas/segundo)</strong></div>
+            <div><span>Peso e Área</span><strong>30 toneladas &times; 167 m²</strong></div>
+            <div><span>Consumo Elétrico</span><strong>150.000 Watts (150 kW)</strong></div>
+          </div>
+        </div>
+
         <div class="reason-box">
           <strong>Critérios: Turing-Complete: Sim | Von Neumann: Não</strong>
           O ENIAC era de propósito geral e capaz de computações gerais. Porém, <strong>Von Neumann: Não</strong>, pois as instruções ficavam fixadas na fiação física dos cabos telefônicos externos, e não armazenadas internamente na mesma memória que os dados.
@@ -1667,66 +2103,100 @@
       </div>
     </section>
 
-    <!-- ERA 7: A REVOLUÇÃO DO PROGRAMA ARMAZENADO (1945 — 1950) -->
+
+    <!-- ERA 7A: JOHN VON NEUMANN & O FIRST DRAFT (1945) -->
     <section class="slide-block">
       <div class="slide-header">
         <div class="year-display">
-          <span>1948 — 1950</span>
+          <span>1945</span>
           <div class="status-badges-group">
             <span class="tag-status tc-yes">Turing-Complete: Sim</span>
-            <span class="tag-status vn-yes">Von Neumann: Sim</span>
+            <span class="tag-status vn-yes">Von Neumann: Sim (Fundação Teórica)</span>
           </div>
         </div>
-        <h2 class="slide-title">A Revolução do Programa Armazenado</h2>
-        <p class="slide-subtitle">O momento divisor em que o software e os dados passaram a habitar a mesma memória eletrônica.</p>
+        <h2 class="slide-title">John von Neumann &amp; o Relatório do EDVAC</h2>
+        <p class="slide-subtitle">A unificação da memória para instruções e dados e o nascimento da arquitetura moderna.</p>
       </div>
 
       <div class="clean-card">
-        <!-- Galeria Dupla: Manchester Baby + EDSAC -->
-        <div class="media-gallery-grid">
-          <div class="media-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/df/Manchester_MOSI_Baby_%28Small-Scale_Experimental_Machine%29_18-10-2009.jpg" alt="Manchester Baby">
-            <div class="media-caption">Manchester Baby (SSEM, 21 de junho de 1948): primeiro programa armazenado em memória a rodar no mundo.</div>
+        <div class="talking-points">
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>O Rascunho que Redefiniu a Computação:</strong> Em junho de 1945, John von Neumann redigiu o célebre memorando <em>"First Draft of a Report on the EDVAC"</em>. Testemunhando a tortura operacional de recabear fisicamente o ENIAC para cada nova equação, von Neumann propôs uma mudança radical: o programa deveria ser codificado numericamente em binário e <strong>residir na mesma memória interna de trabalho onde residem as variáveis de dados</strong>.
+            </div>
           </div>
-          <div class="media-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/EDSAC_%281%29.jpg" alt="EDSAC Cambridge">
-            <div class="media-caption">EDSAC (Cambridge, maio de 1949): Maurice Wilkes introduziu bibliotecas de sub-rotinas e serviço prático contínuo.</div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Os 5 Módulos Canônicos da Arquitetura:</strong>
+              <br>&bull; <strong>Unidade de Controle (UC):</strong> busca as instruções sequencialmente na memória e comanda a máquina;
+              <br>&bull; <strong>Unidade Lógica e Aritmética (ALU):</strong> executa operações aritméticas e comparações binárias;
+              <br>&bull; <strong>Registradores Internos:</strong> retenção ultrarrápida para operandos e ponteiros;
+              <br>&bull; <strong>Memória Principal Unificada:</strong> armazena indistintamente rotinas de software e números;
+              <br>&bull; <strong>Canais de Entrada e Saída:</strong> comunicação com o mundo externo.
+            </div>
           </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>A Polêmica Histórica de Autoria:</strong> O rascunho trazia apenas o nome de von Neumann porque Herman Goldstine o distribuiu sem consulta prévia aos inventores de hardware do ENIAC, J. Presper Eckert e John Mauchly. Ambos haviam discutido intensamente as ideias de memória compartilhada durante o projeto do EDVAC e lamentaram a perda dos direitos autorais e de patentes.
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-specs-box">
+          <div class="tech-specs-title">Arquitetura Canônica de Von Neumann (1945)</div>
+          <div class="tech-specs-grid">
+            <div><span>Princípio Central</span><strong>Memória Única para Dados e Instruções</strong></div>
+            <div><span>Controle de Execução</span><strong>Contador de Programa Sequencial (PC)</strong></div>
+            <div><span>Formato Lógico</span><strong>Aritmética Binária Pura</strong></div>
+            <div><span>Impacto Tecnológico</span><strong>Padrão de 99% dos computadores atuais</strong></div>
+          </div>
+        </div>
+
+        <div class="reason-box">
+          <strong>Critérios: Turing-Complete: Sim | Von Neumann: Sim (O Marco Teórico Fundador)</strong>
+          Aqui nasceu o conceito de computador eletrônico de programa armazenado. A partir de então, mudar de programa não exige um técnico com alicate e fios, mas apenas carregar novos números na memória RAM.
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ERA 7B: MANCHESTER BABY (SSEM, 21 DE JUNHO DE 1948) -->
+    <section class="slide-block">
+      <div class="slide-header">
+        <div class="year-display">
+          <span>21 de Junho de 1948</span>
+          <div class="status-badges-group">
+            <span class="tag-status tc-yes">Turing-Complete: Sim</span>
+            <span class="tag-status vn-yes">Von Neumann: Sim (1º do Mundo)</span>
+          </div>
+        </div>
+        <h2 class="slide-title">Manchester Baby (SSEM): O Primeiro Programa Armazenado</h2>
+        <p class="slide-subtitle">A manhã em que o primeiro programa de computador rodou em memória interna na história da humanidade.</p>
+      </div>
+
+      <div class="clean-card">
+        <div class="media-frame">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/df/Manchester_MOSI_Baby_%28Small-Scale_Experimental_Machine%29_18-10-2009.jpg" alt="Manchester Baby">
+          <div class="media-caption">Manchester Baby (SSEM, 21 de junho de 1948): primeiro computador com programa armazenado em memória a rodar no mundo. Conservado no Museu de Ciência e Indústria de Manchester.</div>
         </div>
 
         <div class="talking-points">
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>O Manchester Baby (SSEM, 21 de junho de 1948):</strong> Construído por Frederic Williams e Tom Kilburn na Universidade de Manchester. Foi a <strong>primeira máquina da história a rodar com sucesso um programa armazenado na própria memória eletrônica</strong>. Empregava o <strong>Tubo de Williams-Kilburn</strong> (um monitor de raios catódicos CRT que gravava 32 palavras de 32 bits através de cargas eletrostáticas no fósforo da tela). O primeiro programa encontrou o maior divisor de $2^{18} = 262.144$ após 2,1 milhões de instruções em 52 minutos.
+              <strong>A Invenção do Tubo Williams-Kilburn:</strong> Frederic Williams e Tom Kilburn na Universidade de Manchester resolveram a grande corrida tecnológica do pós-guerra inventando a primeira memória RAM puramente eletrônica: um tubo de raios catódicos (CRT) de fósforo que retinha cargas eletrostáticas lidas por uma placa frontal (32 palavras de 32 bits = 1.024 bits de RAM).
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>Manchester Mark 1 &amp; Alan Turing (1949):</strong> A evolução direta do Baby. Adicionou o primeiro registrador de índice da história (a chamada <em>B-line</em>, fundamental para arrays e ponteiros) e um tambor magnético com 1.024 palavras de memória secundária. Alan Turing foi contratado como vice-diretor do laboratório de Manchester e projetou as instruções de máquina e os primeiros manuais de software.
-            </div>
-          </div>
-
-          <div class="point-item">
-            <div class="point-bullet"></div>
-            <div class="point-text">
-              <strong>EDVAC (1945) &amp; O Relatório de Von Neumann:</strong> O relatório <em>"First Draft of a Report on the EDVAC"</em>, redigido por John von Neumann em 1945, cristalizou a clássica Arquitetura de Von Neumann: Unidade Central de Processamento (com Unidade de Controle e Unidade Lógica e Aritmética - ALU), Memória Unificada de leitura/escrita, Registradores e Barramentos de E/S.
-            </div>
-          </div>
-
-          <div class="point-item">
-            <div class="point-bullet"></div>
-            <div class="point-text">
-              <strong>EDSAC (Cambridge, maio de 1949):</strong> Construído por Maurice Wilkes, foi o primeiro computador prático de programa armazenado a prestar serviço regular aos cientistas de uma universidade. Wilkes introduziu as fitas perfuradas com sub-rotinas prontas, dando origem às bibliotecas de software.
-            </div>
-          </div>
-
-          <div class="point-item">
-            <div class="point-bullet"></div>
-            <div class="point-text">
-              <strong>Pilot ACE (Turing, 1950):</strong> Projeto que Alan Turing desenhou em 1945 para o National Physical Laboratory (NPL). Utilizava linhas de atraso de mercúrio acústicas e instruções mínimas altamente otimizadas pelo software, antecipando o conceito de arquitetura RISC moderna.
+              <strong>21 de Junho de 1948: O Primeiro Programa:</strong> Tom Kilburn escreveu um programa de 17 instruções para encontrar o maior divisor próprio de $2^{18} = 262.144$. O algoritmo realizava subtrações sucessivas e, após 52 minutos e 2,1 milhões de operações ininterruptas, a máquina parou e exibiu a resposta exata: <strong>131.072</strong>.
             </div>
           </div>
         </div>
@@ -1744,64 +2214,209 @@
           </div>
         </div>
 
-        <!-- SIMULADOR 5: MANCHESTER BABY CRT INTERATIVO -->
+        <!-- SIMULADOR 5: MANCHESTER BABY CRT INTERATIVO COM 3 PROGRAMAS -->
         <div class="interactive-app-card">
           <div class="app-header-clean">
             <span class="app-tag">Emulador Interativo: Memória Williams-Kilburn CRT (SSEM 1948)</span>
-            <span style="font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: #16a34a;">32 Palavras x 32 Bits em Fósforo Verde</span>
+            <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <button class="btn-clean active" id="btn-bprog-0" onclick="loadBabyProgram(0)">1. Divisor 262.144 (1948)</button>
+              <button class="btn-clean secondary" id="btn-bprog-1" onclick="loadBabyProgram(1)">2. Fatorial 5! = 120</button>
+              <button class="btn-clean secondary" id="btn-bprog-2" onclick="loadBabyProgram(2)">3. Soma de Gauss</button>
+            </div>
           </div>
+
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.5rem;" id="baby-desc-label">
+            Programa histórico de 1948: busca do maior divisor próprio de 262.144 ($2^{18}$):
+          </p>
 
           <div class="baby-screen-clean">
             <canvas id="crt-canvas-clean" width="128" height="96"></canvas>
             <div class="crt-regs-telemetry">
-              <div>ACUMULADOR: <span id="crt-acc-readout" style="color: #fff;">0x000000</span></div>
-              <div>INSTRUÇÃO: <span id="crt-inst-readout" style="color: #fff;">LDN</span></div>
-              <div>CONTADOR (CI): <span id="crt-ci-readout" style="color: #fff;">00</span></div>
+              <div>ACUMULADOR: <span id="crt-acc-readout" style="color: #4ade80;">0x000000</span></div>
+              <div>INSTRUÇÃO: <span id="crt-inst-readout" style="color: #4ade80;">LDN</span></div>
+              <div>CONTADOR (CI): <span id="crt-ci-readout" style="color: #4ade80;">00</span></div>
             </div>
           </div>
 
           <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
             <button class="btn-clean" id="btn-baby-step-action" onclick="stepBabyCleanApp()">Passo Único (Step)</button>
-            <button class="btn-clean secondary" id="btn-baby-run-action" onclick="runBabyCleanApp()">Executar Ciclo Contínuo</button>
+            <button class="btn-clean secondary" id="btn-baby-run-action" onclick="runBabyCleanApp()">Executar Ciclo Suave</button>
             <button class="btn-clean secondary" onclick="resetBabyCleanApp()">Resetar Memória CRT</button>
+          </div>
+        </div>
+
+        <div class="tech-specs-box">
+          <div class="tech-specs-title">Ficha Técnica: Manchester Baby (SSEM, 1948)</div>
+          <div class="tech-specs-grid">
+            <div><span>Tecnologia de Memória</span><strong>Tubo CRT de Williams-Kilburn</strong></div>
+            <div><span>Capacidade da RAM</span><strong>32 palavras de 32 bits (1.024 bits)</strong></div>
+            <div><span>Velocidade de Instrução</span><strong>1,2 milissegundo (833 Hz)</strong></div>
+            <div><span>Conjunto de Instruções</span><strong>7 Instruções Lógicas</strong></div>
+          </div>
+        </div>
+
+        <div class="reason-box">
+          <strong>Critérios: Turing-Complete: Sim | Von Neumann: Sim (O Primeiro da História)</strong>
+          O Manchester Baby detém o título de primeiro computador do mundo a rodar um programa armazenado internamente na memória eletrônica de trabalho.
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ERA 7C: EDSAC (1949) & PILOT ACE (1950) -->
+    <section class="slide-block">
+      <div class="slide-header">
+        <div class="year-display">
+          <span>1949 — 1950</span>
+          <div class="status-badges-group">
+            <span class="tag-status tc-yes">Turing-Complete: Sim</span>
+            <span class="tag-status vn-yes">Von Neumann: Sim</span>
+          </div>
+        </div>
+        <h2 class="slide-title">EDSAC &amp; Pilot ACE: A Computação Prática</h2>
+        <p class="slide-subtitle">O primeiro computador em serviço regular de pesquisa e as primeiras bibliotecas de sub-rotinas.</p>
+      </div>
+
+      <div class="clean-card">
+        <div class="media-frame">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/EDSAC_%281%29.jpg" alt="EDSAC Cambridge">
+          <div class="media-caption">EDSAC (Universidade de Cambridge, maio de 1949): Maurice Wilkes introduziu tanques acústicos de mercúrio e as primeiras bibliotecas de software.</div>
+        </div>
+
+        <div class="talking-points">
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>EDSAC (Cambridge, Maio de 1949):</strong> Desenvolvido por Maurice Wilkes no Laboratório de Matemática de Cambridge. Diferente do protótipo de bancada de Manchester, o EDSAC foi o primeiro computador prático concebido para prestar serviços contínuos de cálculo para pesquisas em física, química e biologia.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Memória de Linhas de Retardo Acústico de Mercúrio:</strong> Utilizava 32 tubos de 1,5 metro de mercúrio líquido puro onde ondas ultrassônicas (a 1,5 MHz) circulavam continuamente, armazenando 512 palavras de 35 bits.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>As <em>Initial Orders</em> e as Sub-rotinas:</strong> Wilkes criou o primeiro montador (assembler) da história através das <em>Initial Orders</em> e organizou a primeira biblioteca formal de sub-rotinas reutilizáveis em fitas perfuradas, publicando em 1951 o primeiro livro de programação de computadores da história.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Pilot ACE (Turing, 1950):</strong> No National Physical Laboratory (NPL), Alan Turing desenhou o Automatic Computing Engine. O Pilot ACE operava a 1 MHz e contava com instruções mínimas altamente otimizadas por software, antecipando em décadas o conceito das arquiteturas RISC modernas.
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-specs-box">
+          <div class="tech-specs-title">Ficha Técnica: EDSAC (Cambridge, 1949)</div>
+          <div class="tech-specs-grid">
+            <div><span>Projetista Chefe</span><strong>Maurice Wilkes (Cambridge)</strong></div>
+            <div><span>Tecnologia de Memória</span><strong>Linhas de Retardo Acústico de Mercúrio</strong></div>
+            <div><span>Capacidade</span><strong>512 palavras de 35 bits</strong></div>
+            <div><span>Inovações de Software</span><strong>Primeiro Assembler &amp; Primeira Biblioteca</strong></div>
           </div>
         </div>
 
         <div class="reason-box">
           <strong>Critérios: Turing-Complete: Sim | Von Neumann: Sim</strong>
-          O Manchester Baby e o EDSAC consolidaram a arquitetura moderna definitiva: <strong>computação de propósito geral</strong> com <strong>programa armazenado internamente junto aos dados na mesma memória</strong>.
+          O EDSAC transformou o computador de programa armazenado em uma ferramenta científica indispensável e acessível aos pesquisadores.
         </div>
       </div>
     </section>
 
-    <!-- ERA 8: A COMPUTAÇÃO NO BRASIL (1957 — 1974) -->
+
+    <!-- ERA 8A: A CHEGADA DA COMPUTAÇÃO AO BRASIL: UNIVAC 120 (1957) -->
     <section class="slide-block">
       <div class="slide-header">
         <div class="year-display">
-          <span>1957 — 1974</span>
+          <span>1957 — 1965</span>
           <div class="status-badges-group">
             <span class="tag-status brazil">Pioneirismo Brasileiro</span>
             <span class="tag-status vn-yes">Von Neumann: Sim</span>
           </div>
         </div>
-        <h2 class="slide-title">A História da Computação no Brasil</h2>
-        <p class="slide-subtitle">Da chegada do primeiro computador comercial ao desenvolvimento do lendário "Patinho Feio" na USP.</p>
+        <h2 class="slide-title">Brasil: A Chegada do UNIVAC 120 &amp; os Centros Universitários</h2>
+        <p class="slide-subtitle">A instalação do primeiro computador no Brasil e os primeiros centros de cálculo na PUC-Rio e na USP.</p>
       </div>
 
       <div class="clean-card">
-        <!-- Galeria Tripla: Univac 120 + Patinho Feio + Memória de Núcleos -->
-        <div class="media-gallery-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-          <div class="media-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/UNIVAC_120_control_circuit.jpg" alt="Circuito do UNIVAC 120">
-            <div class="media-caption">Circuito a válvulas do UNIVAC 120: primeiro computador instalado no Brasil (DAE de São Paulo, 1957).</div>
+        <div class="media-frame">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/UNIVAC_120_control_circuit.jpg" alt="Circuito do UNIVAC 120">
+          <div class="media-caption">Circuito eletrônico a válvulas do UNIVAC 120 da Remington Rand: primeiro computador instalado no Brasil (governo de São Paulo, 1957).</div>
+        </div>
+
+        <div class="talking-points">
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>1957: O Primeiro Computador em Solo Brasileiro:</strong> Adquirido pelo Governo do Estado de São Paulo para o Departamento de Águas e Energia Elétrica (DAE). Era um UNIVAC 120 a válvulas e diodos de germânio, com leitura de cartões perfurados de 90 colunas, empregado no cálculo de folhas de pagamento dos servidores, controle tarifário e dimensionamento hidráulico de bacias fluviais.
+            </div>
           </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Censo de 1960 e o IBGE:</strong> Quase simultaneamente, o IBGE contratou o computador eletrônico francês <em>Bull Gamma 3/30</em> e, logo a seguir, computadores da Remington Rand para processar a gigantesca base estatística do Censo Demográfico Nacional de 1960.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Pioneirismo Acadêmico nos Anos 1960:</strong> A <strong>PUC-Rio</strong> foi pioneira acadêmica absoluta ao adquirir em 1960 um mainframe Burroughs B-205 (e depois um IBM 7044), criando o primeiro Centro de Processamento de Dados (CPD) universitário e o primeiro mestrado em Ciência da Computação da América Latina. Em seguida, a <strong>USP</strong> instalou o IBM 1620 no Centro de Cálculo Numérico, formando as primeiras turmas de programadores e engenheiros de sistemas do país.
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-specs-box">
+          <div class="tech-specs-title">Ficha Técnica: UNIVAC 120 no Brasil (1957)</div>
+          <div class="tech-specs-grid">
+            <div><span>Instituição Pioneira</span><strong>Governo do Estado de SP (DAE, 1957)</strong></div>
+            <div><span>Fabricante</span><strong>Remington Rand (EUA)</strong></div>
+            <div><span>Mídia de Entrada</span><strong>Cartões perfurados de 90 colunas</strong></div>
+            <div><span>Primeiro Mainframe Acadêmico</span><strong>Burroughs B-205 (PUC-Rio, 1960)</strong></div>
+          </div>
+        </div>
+
+        <div class="reason-box">
+          <strong>Critérios: Turing-Complete: Sim | Von Neumann: Sim</strong>
+          Iniciou a cultura de processamento eletrônico de dados em órgãos governamentais e formou os pioneiros da Ciência da Computação no Brasil.
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ERA 8B: O PATINHO FEIO (POLI-USP, 1972) -->
+    <section class="slide-block">
+      <div class="slide-header">
+        <div class="year-display">
+          <span>24 de Julho de 1972</span>
+          <div class="status-badges-group">
+            <span class="tag-status brazil">1º Computador 100% Brasileiro</span>
+            <span class="tag-status tc-yes">Turing-Complete: Sim</span>
+            <span class="tag-status vn-yes">Von Neumann: Sim</span>
+          </div>
+        </div>
+        <h2 class="slide-title">O Patinho Feio: O Primeiro Computador Brasileiro</h2>
+        <p class="slide-subtitle">A façanha histórica do Laboratório de Sistemas Digitais da Escola Politécnica da USP.</p>
+      </div>
+
+      <div class="clean-card">
+        <!-- Galeria Dupla: Foto Guerra Vieira + Memoria de Nucleos -->
+        <div class="media-gallery-grid">
           <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Antonio_H%C3%A9lio_Guerra_Vieira_e_o_Computador_Patinho_Feio_%28cropped%29.jpg" alt="Prof. Guerra Vieira e o Patinho Feio">
-            <div class="media-caption">Prof. Antonio Hélio Guerra Vieira e o Patinho Feio (Poli-USP, 1972): primeiro computador projetado no Brasil.</div>
+            <div class="media-caption">Prof. Antonio Hélio Guerra Vieira operando o Patinho Feio na Poli-USP (1972): primeiro computador projetado e montado no Brasil.</div>
           </div>
           <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Core_memory.jpg" alt="Memória de Núcleos de Ferrite">
-            <div class="media-caption">Plano de memória de núcleos magnéticos de ferrite trançado manualmente: a memória RAM do Patinho Feio!</div>
+            <div class="media-caption">Plano de memória de núcleos magnéticos de ferrite (4 KB) trançado manualmente fio a fio pela equipe da Poli-USP!</div>
           </div>
         </div>
 
@@ -1809,66 +2424,45 @@
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>1957: O Primeiro Computador a Chegar ao Brasil (UNIVAC 120):</strong> Adquirido pelo Governo do Estado de São Paulo para o Departamento de Águas e Energia Elétrica (DAE). Era uma máquina eletrônica com tubos a vácuo para cálculo de folhas de pagamento dos servidores, controle tarifário e dimensionamento hidráulico de bacias. Quase simultaneamente, o IBGE instalou o computador francês <em>Bull Gamma 3/30</em> para a apuração censitária nacional.
+              <strong>O Desafio da Marinha do Brasil:</strong> Em 1971, a Marinha encomendava no Reino Unido novas fragatas militares e precisava de computadores de bordo. Diante das caras licenças estrangeiras, a Marinha desafiou as universidades brasileiras com uma pergunta crucial: o Brasil seria capaz de projetar e construir um computador digital autônomo em menos de um ano?
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>Década de 1960: A Entrada Acadêmica nas Universidades:</strong> A <strong>PUC-Rio</strong> foi a grande pioneira acadêmica, instalando em 1960 um mainframe Burroughs 205 (e posteriormente um IBM 7044), criando o primeiro Centro de Processamento de Dados (CPD) universitário e o primeiro mestrado em Ciência da Computação do país. Em seguida, a <strong>USP</strong>, a <strong>COPPE/UFRJ</strong>, a <strong>Unicamp</strong> e o <strong>ITA</strong> adquiriram computadores IBM 1401 e IBM 1130, formando as primeiras gerações de engenheiros e pesquisadores de software no país.
+              <strong>A Equipe do LSD / Poli-USP:</strong> Sob a liderança do <strong>Prof. Antonio Hélio Guerra Vieira</strong>, jovens engenheiros brilhantes — incluindo <strong>Edith Ranzini, Célio Cardoso, Paulo Bressan e Lucas Tourinho</strong> — criaram o projeto no Laboratório de Sistemas Digitais (LSD).
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>24 de Julho de 1972: O "Patinho Feio" (Poli-USP):</strong> O <strong>primeiro computador digital projetado e montado inteiramente no Brasil</strong>! Desenvolvido no Departamento de Engenharia de Eletricidade da Escola Politécnica da USP (Laboratório de Sistemas Digitais - LSD/FDTE) sob a liderança do <strong>Prof. Antonio Hélio Guerra Vieira</strong> e uma jovem e talentosa equipe (incluindo <strong>Edith Ranzini, Célio Taniguchi e Lucas Tourinho</strong>).
+              <strong>A Origem do Nome:</strong> Na mesma época, a Unicamp recebia grande apoio financeiro para construir um computador chamado "Cisne Branco" com componentes importados. A equipe da USP, trabalhando em bancadas com recursos modestos, batizou bem-humoradamente seu protótipo de <strong>"Patinho Feio"</strong>: <em>"se tudo der certo, um dia ele vai virar um belo cisne!"</em>.
             </div>
           </div>
 
           <div class="point-item">
             <div class="point-bullet"></div>
             <div class="point-text">
-              <strong>Especificações Técnicas do Patinho Feio:</strong> Computador de 8 bits construído com circuitos integrados TTL (Transistor-Transistor Logic da família 7400), ciclo de instrução de 2 microssegundos (450 instruções/segundo) e 4.096 palavras de memória de núcleos magnéticos de ferrite costuradas manualmente fio a fio pela própria equipe. O software montador (*assembler*) foi escrito pelos próprios alunos.
-            </div>
-          </div>
-
-          <div class="point-item">
-            <div class="point-bullet"></div>
-            <div class="point-text">
-              <strong>A Origem do Nome "Patinho Feio":</strong> Na mesma época, a Unicamp recebia grande apoio financeiro da Marinha para montar um computador chamado "Cisne Branco" com componentes importados. A equipe da USP, trabalhando em bancadas com orçamento apertado, batizou bem-humoradamente seu projeto de "Patinho Feio". Em 24 de julho de 1972, na presença do Ministro dos Transportes Mário Andreazza e do Governador de São Paulo, o Patinho Feio foi ligado, executou perfeitamente os programas de teste e funcionou muito antes do rival!
-            </div>
-          </div>
-
-          <div class="point-item">
-            <div class="point-bullet"></div>
-            <div class="point-text">
-              <strong>1974: O Projeto G-10 e a Fundação da COBRA:</strong> Impressionada com o sucesso do Patinho Feio, a Marinha do Brasil encomendou o <strong>Projeto G-10</strong> (computador militar para controlar as fragatas classe Niterói), desenvolvido pela USP (hardware) e PUC-Rio (software). O sucesso do G-10 culminou na fundação em 1974 da <strong>COBRA (Computadores e Sistemas Brasileiros S.A.)</strong>, primeira fabricante nacional de computadores, abrindo a era da indústria nacional de microinformática nos anos 70 e 80.
+              <strong>24 de Julho de 1972:</strong> Na presença do Governador de São Paulo e do Ministro dos Transportes, o Patinho Feio foi acionado e executou impecavelmente seu programa montador, funcionando meses antes do projeto rival e consagrando a autonomia tecnológica nacional.
             </div>
           </div>
         </div>
 
-        <div class="tech-specs-box">
-          <div class="tech-specs-title">Ficha Técnica Oficial: O Computador Patinho Feio (Poli-USP, 1972)</div>
-          <div class="tech-specs-grid">
-            <div><span>Barramento de Dados</span><strong>8 bits</strong></div>
-            <div><span>Tecnologia Lógica</span><strong>Circuitos Integrados TTL (SN7400)</strong></div>
-            <div><span>Memória RAM</span><strong>4 KB (Núcleos de Ferrite magnéticos)</strong></div>
-            <div><span>Velocidade de Processamento</span><strong>450 instruções por segundo</strong></div>
-            <div><span>Periféricos de Entrada</span><strong>Fita de papel perfurada e Console Manual</strong></div>
-          </div>
-        </div>
-
-        <!-- SIMULADOR 6: PAINEL FRONTAL DO PATINHO FEIO (USP 1972) -->
+        <!-- SIMULADOR 6: PAINEL FRONTAL DO PATINHO FEIO (USP 1972) COM 3 PROGRAMAS EM ASSEMBLY -->
         <div class="interactive-app-card">
           <div class="app-header-clean">
-            <span class="app-tag">Réplica Interativa: Console do Computador Patinho Feio (Poli-USP 1972)</span>
-            <span id="patinho-clean-readout" style="font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: #15803d;">REGISTRADOR A: 00000000 (0)</span>
+            <span class="app-tag">Console Interativo: Painel de Chaves do Patinho Feio (Poli-USP 1972)</span>
+            <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <button class="btn-clean active" id="btn-pprog-1" onclick="loadPatinhoProgram(1)">Programa 1: Soma LDA/ADD</button>
+              <button class="btn-clean secondary" id="btn-pprog-2" onclick="loadPatinhoProgram(2)">Programa 2: Contador em Laço</button>
+              <button class="btn-clean secondary" id="btn-pprog-3" onclick="loadPatinhoProgram(3)">Programa 3: Máscara AND</button>
+            </div>
           </div>
 
-          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">
-            Acione as 8 chaves de alavanca para selecionar dados em binário e carregue no Registrador A:
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.5rem;" id="patinho-prog-desc">
+            Alterne as 8 chaves basculantes (bits 0 a 7) para alimentar dados nos registradores:
           </p>
 
           <div class="patinho-chunky-rack">
@@ -1877,41 +2471,123 @@
             </div>
           </div>
 
+          <div class="soroban-readout-row" style="margin: 0.8rem 0;">
+            <span id="patinho-clean-readout" style="color: #15803d;">REGISTRADOR A: 00000000 (Decimal: 0 | Hex: 0x00)</span>
+            <span id="patinho-asm-feedback" style="color: var(--accent-blue-text); font-size: 0.82rem;">Pronto para instrução</span>
+          </div>
+
           <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
-            <button class="btn-clean" onclick="patinhoLoadClean()">Carregar Chaves no Reg A (LDA)</button>
-            <button class="btn-clean secondary" onclick="patinhoAddClean()">Somar Chaves com Reg A (ADD)</button>
+            <button class="btn-clean" onclick="patinhoLoadClean()">Carregar Chaves (LDA)</button>
+            <button class="btn-clean secondary" onclick="patinhoAddClean()">Somar com Reg A (ADD)</button>
+            <button class="btn-clean secondary" onclick="patinhoAndClean()">Aplicar Máscara (AND)</button>
             <button class="btn-clean secondary" onclick="patinhoResetClean()">Zerar Console</button>
           </div>
         </div>
 
+        <div class="tech-specs-box">
+          <div class="tech-specs-title">Ficha Técnica Oficial: O Computador Patinho Feio (Poli-USP, 1972)</div>
+          <div class="tech-specs-grid">
+            <div><span>Barramento de Dados</span><strong>8 bits em paralelo</strong></div>
+            <div><span>Tecnologia Lógica</span><strong>Circuitos Integrados TTL (Família SN7400)</strong></div>
+            <div><span>Memória RAM</span><strong>4 KB (Núcleos de Ferrite magnéticos)</strong></div>
+            <div><span>Tempo de Ciclo</span><strong>2 microssegundos (500 kHz)</strong></div>
+            <div><span>Conjunto de Instruções</span><strong>45 Instruções em Assembly</strong></div>
+          </div>
+        </div>
+
         <div class="reason-box">
-          <strong>Critérios: Turing-Complete: Sim | Von Neumann: Sim</strong>
-          O Patinho Feio executava programas armazenados na sua própria memória de núcleos magnéticos, consolidando a capacidade de desenvolvimento de computadores digitais modernos no Brasil.
+          <strong>Critérios: Turing-Complete: Sim | Von Neumann: Sim (100% Brasileiro)</strong>
+          O Patinho Feio provou que engenheiros brasileiros tinham pleno domínio de arquitetura de processadores, montadores e memórias de programa armazenado.
         </div>
       </div>
     </section>
 
-    <!-- ==========================================================================
-       9. A GRANDE TRANSIÇÃO & TABELAS COMPARATIVAS FINAIS
-       ========================================================================== -->
+
+    <!-- ERA 8C: O PROJETO G-10, A COBRA (1974) E A RESERVA DE MERCADO (1984) -->
     <section class="slide-block">
       <div class="slide-header">
-        <div class="year-display">SÍNTESE &amp; MATRIZES</div>
-        <h2 class="slide-title">A Grande Transição &amp; Veredito</h2>
-        <p class="slide-subtitle">O panorama comparativo definitivo dos computadores históricos e seus paradigmas.</p>
+        <div class="year-display">
+          <span>1974 — 1984</span>
+          <div class="status-badges-group">
+            <span class="tag-status brazil">Indústria Nacional</span>
+            <span class="tag-status tc-yes">Turing-Complete: Sim</span>
+            <span class="tag-status vn-yes">Von Neumann: Sim</span>
+          </div>
+        </div>
+        <h2 class="slide-title">Brasil: Da COBRA à Reserva de Mercado</h2>
+        <p class="slide-subtitle">O nascimento da indústria de minicomputadores, o sistema SOX e a Lei de Informática.</p>
       </div>
 
-      <!-- TABELA TURING-COMPLETE + VON NEUMANN COM CORES EQUALIZADAS -->
+      <div class="clean-card">
+        <div class="talking-points">
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>O Projeto G-10 da Marinha (1971–1974):</strong> O salto do Patinho Feio para a indústria de defesa. A Marinha do Brasil encomendou o computador militar <strong>G-10</strong> desenvolvido em cooperação tripartite: a <strong>Poli-USP</strong> projetou a CPU e periféricos, a <strong>PUC-Rio</strong> desenvolveu o software operacional de tempo real e compiladores, e a britânica Ferranti colaborou na industrialização.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>1974: Fundação da COBRA Computadores:</strong> Em 18 de julho de 1974 foi criada a <strong>COBRA (Computadores e Sistemas Brasileiros S.A.)</strong>, primeira fabricante nacional de computadores da América Latina. Lançou as linhas de minicomputadores COBRA 400, 530 e o emblemático <strong>COBRA 700</strong>, projetado 100% no Brasil.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>O Sistema Operacional Nacional SOX:</strong> Nos anos 1980, para escapar das caríssimas licenças e restrições da AT&amp;T, a COBRA desenvolveu o <strong>SOX</strong>: o primeiro sistema operacional brasileiro compatível com Unix, certificado internacionalmente e elogiado pelos próprios criadores do Unix.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>A Reserva de Mercado (Lei nº 7.232/1984) e os Clones Nacionais:</strong> A Política Nacional de Informática reservou o mercado interno de microcomputadores para empresas 100% brasileiras. O país viveu a era de ouro de fabricantes nacionais:
+              <br>&bull; <strong>Prológica:</strong> fabricante do clássico <strong>CP500</strong> (compatível com TRS-80) e Solution 16;
+              <br>&bull; <strong>Scopus:</strong> criadora do <strong>Nexus 1600</strong> (compatível com IBM PC) e pioneira na automação bancária nacional;
+              <br>&bull; <strong>Microdigital:</strong> microcomputadores domésticos de 8 bits como o popular <strong>TK90X</strong> (compatível com ZX Spectrum);
+              <br>&bull; <strong>Gradiente e Sharp:</strong> a linha de computadores pessoais padrão MSX (Expert e HotBit).
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-specs-box">
+          <div class="tech-specs-title">Marcos da Indústria de Computação Brasileira (1974–1984)</div>
+          <div class="tech-specs-grid">
+            <div><span>Primeira Estatal Mista</span><strong>COBRA Computadores (1974)</strong></div>
+            <div><span>Sistema Operacional</span><strong>SOX (Unix-compatible nacional)</strong></div>
+            <div><span>Lei Federal de Reserva</span><strong>Lei nº 7.232 de Outubro de 1984</strong></div>
+            <div><span>Pioneirismo Global</span><strong>Automação Bancária e Urna Eletrônica</strong></div>
+          </div>
+        </div>
+
+        <div class="reason-box">
+          <strong>Legado Histórico Brasileiro</strong>
+          A experiência da Reserva de Mercado gerou debates sobre custos de hardware, mas formou dezenas de milhares de engenheiros e cientistas que tornaram o setor de automação bancária e segurança de software brasileiro um dos mais sofisticados do mundo.
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ERA 9: MATRIZ COMPARATIVA & CRITÉRIOS HISTÓRICOS FINAIS -->
+    <section class="slide-block">
+      <div class="slide-header">
+        <div class="year-display">MATRIZ COMPARATIVA GERAL</div>
+        <h2 class="slide-title">A Grande Transição: Comparação Sistemática</h2>
+        <p class="slide-subtitle">O panorama completo dos marcos da computação de Babbage até o Patinho Feio brasileiro.</p>
+      </div>
+
       <div class="table-slide-card">
-        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1.2rem;">Matriz Comparativa: Turing-Complete &amp; Von Neumann</h3>
         <table class="clean-table">
           <thead>
             <tr>
-              <th>Máquina</th>
+              <th>Computador / Marco</th>
               <th>Ano</th>
-              <th>Turing-Complete?</th>
-              <th>Von Neumann? (Prog + Dados juntos)</th>
-              <th>Critério Arquitetural</th>
+              <th>Turing-Complete</th>
+              <th>Von Neumann</th>
+              <th>Notas Arquiteturais</th>
             </tr>
           </thead>
           <tbody>
@@ -1920,33 +2596,33 @@
               <td>~150 a.C.</td>
               <td><span class="tag-status tc-no">Não</span></td>
               <td><span class="tag-status vn-no">Não</span></td>
-              <td>Hardware de engrenagens fixo e especializado para astronomia.</td>
+              <td>Computador analógico de engrenagens de bronze para astronomia.</td>
             </tr>
             <tr>
               <td><strong>Pascalina</strong></td>
               <td>1642</td>
               <td><span class="tag-status tc-no">Não</span></td>
               <td><span class="tag-status vn-no">Não</span></td>
-              <td>Operações aritméticas puras sem controle de fluxo ou laços.</td>
+              <td>Calculadora decimal com mecanismo gravitacional do sautoir.</td>
             </tr>
             <tr>
-              <td><strong>Máquina Diferencial</strong></td>
-              <td>1822</td>
-              <td><span class="tag-status tc-no">Não</span></td>
-              <td><span class="tag-status vn-no">Não</span></td>
-              <td>Avaliação de polinômios contínuos por diferenças finitas.</td>
-            </tr>
-            <tr>
-              <td><strong>Máquina Analítica</strong></td>
+              <td><strong>Máquina Analítica (Babbage)</strong></td>
               <td>1837</td>
               <td><span class="tag-status tc-theory">Sim (Teoria)</span></td>
               <td><span class="tag-status vn-no">Não</span></td>
-              <td>Tinha CPU e memória, mas as instruções ficavam em cartões externos.</td>
+              <td>Primeiro design universal mecânico com moinho e armazém em cartões.</td>
             </tr>
             <tr>
-              <td><strong>Zuse Z3</strong></td>
+              <td><strong>Máquina Universal de Turing</strong></td>
+              <td>1936</td>
+              <td><span class="tag-status tc-yes">Sim</span></td>
+              <td><span class="tag-status vn-no">Não (Teórico)</span></td>
+              <td>Conceito formal de máquina universal com fita infinita.</td>
+            </tr>
+            <tr>
+              <td><strong>Zuse Z3 (Alemanha)</strong></td>
               <td>1941</td>
-              <td><span class="tag-status tc-theory">Sim (Artifícios)</span></td>
+              <td><span class="tag-status tc-yes">Sim (Laços)</span></td>
               <td><span class="tag-status vn-no">Não</span></td>
               <td>Relés programados por fita externa de filme de 35 mm.</td>
             </tr>
@@ -1965,8 +2641,8 @@
               <td>Fluxo puramente sequencial em fita perfurada sem desvio flexível.</td>
             </tr>
             <tr>
-              <td><strong>Colossus</strong></td>
-              <td>1943</td>
+              <td><strong>Colossus Mark II</strong></td>
+              <td>1944</td>
               <td><span class="tag-status tc-no">Não</span></td>
               <td><span class="tag-status vn-no">Não</span></td>
               <td>Eletrônico com válvulas, mas exclusivo para criptoanálise.</td>
@@ -1986,32 +2662,25 @@
               <td>Primeiro do mundo com <strong>programa armazenado em memória interna</strong>.</td>
             </tr>
             <tr>
-              <td><strong>Manchester Mark 1</strong></td>
+              <td><strong>EDSAC</strong></td>
               <td>1949</td>
               <td><span class="tag-status tc-yes">Sim</span></td>
               <td><span class="tag-status vn-yes">Sim</span></td>
-              <td>Evolução do Baby com conjunto de instruções por Alan Turing.</td>
+              <td>Arquitetura de Von Neumann plena, primeiro assembler e uso regular.</td>
             </tr>
             <tr>
-              <td><strong>EDVAC &amp; EDSAC</strong></td>
-              <td>1949</td>
-              <td><span class="tag-status tc-yes">Sim</span></td>
+              <td><strong>UNIVAC 120 (IBGE/DAE)</strong></td>
+              <td>1957</td>
+              <td><span class="tag-status brazil">Sim (Brasil)</span></td>
               <td><span class="tag-status vn-yes">Sim</span></td>
-              <td>Arquitetura de Von Neumann plena e uso científico regular.</td>
-            </tr>
-            <tr>
-              <td><strong>Pilot ACE (Turing)</strong></td>
-              <td>1950</td>
-              <td><span class="tag-status tc-yes">Sim</span></td>
-              <td><span class="tag-status vn-yes">Sim</span></td>
-              <td>Projeto de Turing de máquina universal com otimização em software.</td>
+              <td>Primeiro computador eletrônico comercial instalado em solo brasileiro.</td>
             </tr>
             <tr>
               <td><strong>Patinho Feio (USP - Brasil)</strong></td>
               <td>1972</td>
               <td><span class="tag-status brazil">Sim (Brasil)</span></td>
               <td><span class="tag-status vn-yes">Sim</span></td>
-              <td>Computador geral de 8 bits montado no Brasil com programa em RAM.</td>
+              <td>Primeiro computador geral de 8 bits projetado e montado no Brasil.</td>
             </tr>
           </tbody>
         </table>
@@ -2067,9 +2736,7 @@
 
   </div><!-- Fim Presentation Container -->
 
-  <!-- ==========================================================================
-       SCRIPTS JAVASCRIPT: SIMULADORES E ALGORITMOS INTELIGENTES
-       ========================================================================== -->
+
   <script>
     // 1. Barra de progresso de leitura
     window.addEventListener('scroll', () => {
@@ -2144,7 +2811,35 @@
     function presetPascaline999() {
       pasVal4 = 999;
       renderPascaline4();
-      document.getElementById('pascaline-feedback-readout').innerHTML = '<span style="color: #b45309;">Pronto em 999! Agora clique em "+1 Unidade" para assistir o efeito dominó até 1000!</span>';
+      
+      const dialU = document.getElementById('dial-u');
+      const dialD = document.getElementById('dial-d');
+      const dialC = document.getElementById('dial-c');
+      const dialM = document.getElementById('dial-m');
+
+      document.getElementById('pascaline-feedback-readout').innerHTML = '<span style="color: #b45309;">Preparado em 999! Iniciando cascata suave do sautoir (+1)...</span>';
+
+      setTimeout(() => {
+        pasVal4 = 1000;
+        dialU.classList.add('cascade-glow');
+        renderPascaline4();
+        setTimeout(() => {
+          dialU.classList.remove('cascade-glow');
+          dialD.classList.add('cascade-glow');
+          setTimeout(() => {
+            dialD.classList.remove('cascade-glow');
+            dialC.classList.add('cascade-glow');
+            setTimeout(() => {
+              dialC.classList.remove('cascade-glow');
+              dialM.classList.add('cascade-glow');
+              setTimeout(() => {
+                dialM.classList.remove('cascade-glow');
+                document.getElementById('pascaline-feedback-readout').innerHTML = '<span style="color: #15803d;">Efeito dominó concluído: 999 + 1 = 1000 transferido pela gravidade!</span>';
+              }, 350);
+            }, 300);
+          }, 300);
+        }, 300);
+      }, 600);
     }
 
     function resetPascalineClean() {
@@ -2152,13 +2847,14 @@
       renderPascaline4();
     }
 
-    // 4. SIMULADOR 3: MÁQUINA DE TURING DE LABORATÓRIO (4 ALGORITMOS REAIS)
+    // 4. SIMULADOR 3: MÁQUINA DE TURING DE LABORATÓRIO (6 ALGORITMOS + VELOCIDADE)
     let currentTuringAlgo = 'inc';
     let tTape = ['1', '0', '1', '1'];
     let tHead = 0;
     let tState = 'q_scan';
     let tStepCounter = 0;
     let tAutoInterval = null;
+    let tSpeed = 800; // Padrão: Lentinho e suave!
 
     const tStrip = document.getElementById('turing-tape-strip');
     const tBadge = document.getElementById('turing-head-badge');
@@ -2167,26 +2863,51 @@
     const tActionDisplay = document.getElementById('turing-action-val');
     const tDecDisplay = document.getElementById('turing-dec-val');
 
+    function setTuringSpeed(ms) {
+      tSpeed = ms;
+      document.getElementById('spd-slow').className = ms === 800 ? 'speed-btn active' : 'speed-btn';
+      document.getElementById('spd-med').className = ms === 400 ? 'speed-btn active' : 'speed-btn';
+      document.getElementById('spd-fast').className = ms === 150 ? 'speed-btn active' : 'speed-btn';
+      if (tAutoInterval) {
+        runTuringLab();
+      }
+    }
+
     function loadTuringAlgorithm(algo) {
       clearInterval(tAutoInterval);
+      tAutoInterval = null;
       currentTuringAlgo = algo;
 
-      document.getElementById('btn-t-inc').className = algo === 'inc' ? 'btn-clean active' : 'btn-clean secondary';
-      document.getElementById('btn-t-dup').className = algo === 'dup' ? 'btn-clean active' : 'btn-clean secondary';
-      document.getElementById('btn-t-not').className = algo === 'not' ? 'btn-clean active' : 'btn-clean secondary';
+      ['inc', 'dup', 'not', 'dec', 'par', 'clr'].forEach(key => {
+        const btn = document.getElementById(`btn-t-${key}`);
+        if (btn) btn.className = 'btn-clean secondary';
+      });
+
+      const map = {
+        'inc': 'btn-t-inc',
+        'dup': 'btn-t-dup',
+        'not': 'btn-t-not',
+        'dec': 'btn-t-dec',
+        'parity': 'btn-t-par',
+        'clear': 'btn-t-clr'
+      };
+      if (map[algo]) {
+        document.getElementById(map[algo]).className = 'btn-clean active';
+      }
 
       resetTuringLab();
     }
 
     function resetTuringLab() {
       clearInterval(tAutoInterval);
+      tAutoInterval = null;
       tStepCounter = 0;
 
       if (currentTuringAlgo === 'inc') {
         tTape = ['1', '0', '1', '1']; // 11
         tHead = 0;
         tState = 'q_scan';
-        document.getElementById('turing-lab-description').textContent = 'Soma Binária: o cabeçote varre até o bit menos significativo e propaga a soma (+1) para a esquerda com vai-um:';
+        document.getElementById('turing-lab-description').textContent = '1. Soma Binária (+1): a máquina varre até o bit menos significativo e propaga a soma com vai-um para a esquerda:';
         tStateDisplay.textContent = 'q_scan (buscando fim do número)';
         tRuleDisplay.textContent = 'δ(q_scan, 1) → (q_scan, 1, R)';
         tActionDisplay.textContent = 'Lendo dígito 1, mantendo 1 e movendo cabeçote à direita.';
@@ -2195,20 +2916,47 @@
         tTape = ['1', '1', '1']; // 3
         tHead = 0;
         tState = 'q_dup_scan';
-        document.getElementById('turing-lab-description').textContent = 'Função f(n)=2n: a máquina duplica a quantidade de 1s na fita através de estados intermediários:';
+        document.getElementById('turing-lab-description').textContent = '2. Função Duplicadora f(n)=2n: duplica a quantidade de 1s na fita através de estados intermediários:';
         tStateDisplay.textContent = 'q_dup_scan (iniciando duplicação)';
         tRuleDisplay.textContent = 'δ(q_dup_scan, 1) → (q_dup_copy, X, R)';
         tActionDisplay.textContent = 'Marcando 1 com X para copiar para a direita.';
         tDecDisplay.textContent = 'Entrada: 3 marcas unárias';
-      } else {
+      } else if (currentTuringAlgo === 'not') {
         tTape = ['1', '0', '1', '1', '0']; // NOT
         tHead = 0;
         tState = 'q_not';
-        document.getElementById('turing-lab-description').textContent = 'Inversor NOT: a máquina lê cada bit, inverte (0 ↔ 1) e depois rebobina o cabeçote:';
+        document.getElementById('turing-lab-description').textContent = '3. Inversor NOT: a máquina lê cada bit, inverte (0 ↔ 1) e rebobina o cabeçote:';
         tStateDisplay.textContent = 'q_not (invertendo símbolos)';
         tRuleDisplay.textContent = 'δ(q_not, 1) → (q_not, 0, R)';
         tActionDisplay.textContent = 'Invertendo 1 para 0 e avançando para a direita.';
         tDecDisplay.textContent = '22 decimal (binário 10110)';
+      } else if (currentTuringAlgo === 'dec') {
+        tTape = ['1', '1', '0', '0']; // 12
+        tHead = 0;
+        tState = 'q_dec_scan';
+        document.getElementById('turing-lab-description').textContent = '4. Subtração Binária (-1): decrementa o número binário propagando o empréstimo (borrow) para a esquerda:';
+        tStateDisplay.textContent = 'q_dec_scan (buscando fim do número)';
+        tRuleDisplay.textContent = 'δ(q_dec_scan, 1) → (q_dec_scan, 1, R)';
+        tActionDisplay.textContent = 'Varrendo até o bit menos significativo.';
+        tDecDisplay.textContent = '12 decimal (binário 1100)';
+      } else if (currentTuringAlgo === 'parity') {
+        tTape = ['1', '0', '1', '1', '0', '1']; // 4 uns -> par
+        tHead = 0;
+        tState = 'q_even';
+        document.getElementById('turing-lab-description').textContent = '5. Verificador de Paridade: determina se a quantidade de 1s na palavra é par ou ímpar:';
+        tStateDisplay.textContent = 'q_even (início par)';
+        tRuleDisplay.textContent = 'δ(q_even, 1) → (q_odd, 1, R)';
+        tActionDisplay.textContent = 'Contando 1s na fita.';
+        tDecDisplay.textContent = 'Testando fita 101101 (4 uns)';
+      } else {
+        tTape = ['1', '1', '0', '1', '1'];
+        tHead = 0;
+        tState = 'q_clean';
+        document.getElementById('turing-lab-description').textContent = '6. Limpeza de Fita: zera sequencialmente todas as células até encontrar o delimitador:';
+        tStateDisplay.textContent = 'q_clean (limpando células)';
+        tRuleDisplay.textContent = 'δ(q_clean, 1) → (q_clean, 0, R)';
+        tActionDisplay.textContent = 'Substituindo valor por 0.';
+        tDecDisplay.textContent = 'Fita inicial com dados';
       }
 
       renderTuringLabStrip();
@@ -2226,11 +2974,10 @@
     }
 
     function stepTuringLab() {
-      if (tState === 'q_halt') return;
+      if (tState === 'q_halt' || tState === 'q_par' || tState === 'q_impar') return;
       tStepCounter++;
 
       if (currentTuringAlgo === 'inc') {
-        // ALGORITMO SOMA +1
         if (tState === 'q_scan') {
           if (tHead < tTape.length - 1) {
             tHead++;
@@ -2271,7 +3018,6 @@
         const bin = tTape.join('');
         tDecDisplay.textContent = `${parseInt(bin, 2)} decimal (binário ${bin})`;
       } else if (currentTuringAlgo === 'dup') {
-        // DUPLICAÇÃO UNÁRIA
         if (tState === 'q_dup_scan') {
           if (tTape[tHead] === '1') {
             tTape[tHead] = 'X';
@@ -2298,8 +3044,7 @@
           }
         }
         tDecDisplay.textContent = `Marcas unárias na fita: ${tTape.filter(s => s === '1').length}`;
-      } else {
-        // INVERSÃO NOT
+      } else if (currentTuringAlgo === 'not') {
         if (tHead < tTape.length) {
           const sym = tTape[tHead];
           const inv = sym === '1' ? '0' : '1';
@@ -2316,19 +3061,74 @@
         }
         const bin = tTape.join('');
         tDecDisplay.textContent = `${parseInt(bin, 2)} decimal (binário ${bin})`;
+      } else if (currentTuringAlgo === 'dec') {
+        if (tState === 'q_dec_scan') {
+          if (tHead < tTape.length - 1) {
+            tHead++;
+          } else {
+            tState = 'q_borrow';
+          }
+        } else if (tState === 'q_borrow') {
+          const bit = tTape[tHead];
+          if (bit === '0') {
+            tTape[tHead] = '1';
+            tRuleDisplay.textContent = 'δ(q_borrow, 0) → (q_borrow, 1, L)';
+            tActionDisplay.textContent = '0 - 1 requer empréstimo: grava 1 e move para a esquerda.';
+            tHead--;
+          } else {
+            tTape[tHead] = '0';
+            tState = 'q_halt';
+            tStateDisplay.textContent = 'q_halt (decremento concluído)';
+            tRuleDisplay.textContent = 'δ(q_borrow, 1) → (q_halt, 0, Stay)';
+            tActionDisplay.innerHTML = '<span style="color: var(--accent-green-text);">Empréstimo quitado! Subtração concluída com sucesso!</span>';
+          }
+        }
+        const bin = tTape.join('');
+        tDecDisplay.textContent = `${parseInt(bin, 2)} decimal (binário ${bin})`;
+      } else if (currentTuringAlgo === 'parity') {
+        if (tHead < tTape.length) {
+          const sym = tTape[tHead];
+          if (sym === '1') {
+            tState = tState === 'q_even' ? 'q_odd' : 'q_even';
+          }
+          tRuleDisplay.textContent = `δ(q, ${sym}) → (${tState}, ${sym}, R)`;
+          tActionDisplay.textContent = `Leu bit ${sym}. Contagem atual: ${tState}.`;
+          tHead++;
+        } else {
+          tState = tState === 'q_even' ? 'q_par' : 'q_impar';
+          tStateDisplay.textContent = tState;
+          tActionDisplay.innerHTML = `<span style="color: var(--accent-green-text);">Fim da fita alcançado! Paridade final: ${tState === 'q_par' ? 'PAR' : 'ÍMPAR'}</span>`;
+          tHead = 0;
+        }
+      } else {
+        if (tHead < tTape.length) {
+          tTape[tHead] = '0';
+          tRuleDisplay.textContent = 'δ(q_clean, bit) → (q_clean, 0, R)';
+          tActionDisplay.textContent = 'Célula zerada. Avançando cabeçote.';
+          tHead++;
+        } else {
+          tState = 'q_halt';
+          tHead = 0;
+          tStateDisplay.textContent = 'q_halt (fita limpa)';
+          tActionDisplay.innerHTML = '<span style="color: var(--accent-green-text);">Toda a fita foi higienizada com zeros!</span>';
+        }
       }
 
       renderTuringLabStrip();
-      if (tState === 'q_halt') clearInterval(tAutoInterval);
+      if (tState === 'q_halt' || tState === 'q_par' || tState === 'q_impar') {
+        clearInterval(tAutoInterval);
+        tAutoInterval = null;
+      }
     }
 
     function runTuringLab() {
       clearInterval(tAutoInterval);
-      tAutoInterval = setInterval(stepTuringLab, 450);
+      tAutoInterval = setInterval(stepTuringLab, tSpeed);
     }
 
     function pauseTuringLab() {
       clearInterval(tAutoInterval);
+      tAutoInterval = null;
     }
 
     resetTuringLab();
@@ -2367,13 +3167,17 @@
       renderENIACCleanBulbs();
     }
 
-    // 6. SIMULADOR 5: MANCHESTER BABY CRT INTERATIVO
+    // 6. SIMULADOR 5: MANCHESTER BABY CRT COM 3 PROGRAMAS
     const canvas = document.getElementById('crt-canvas-clean');
     const ctx = canvas ? canvas.getContext('2d') : null;
     let babyAccumVal = 0;
     let babyCiVal = 0;
-    const babyOpcodes = ['LDN', 'SUB', 'STO', 'CMP', 'JRP', 'STP'];
-    let babyOpIdx = 0;
+    let currentBabyProgIdx = 0;
+    const babyProgList = [
+      { name: 'Divisor 262.144', ops: ['LDN', 'SUB', 'CMP', 'JRP', 'STO', 'STP'], desc: 'Programa de Tom Kilburn (21 de junho de 1948): calcula por subtrações repetidas o maior divisor próprio de 262.144.' },
+      { name: 'Fatorial 5! = 120', ops: ['LDN', 'SUB', 'STO', 'CMP', 'JRP', 'STP'], desc: 'Rotina de fatorial iterativo em registradores com teste de zero.' },
+      { name: 'Soma de Gauss', ops: ['LDN', 'ADD', 'SUB', 'CMP', 'JRP', 'STP'], desc: 'Soma da série aritmética acumulada de 1 até 10.' }
+    ];
     let babyRunLoop = null;
 
     const crtMemMatrix = Array(24).fill(0).map(() => Array(32).fill(0));
@@ -2408,9 +3212,21 @@
       }
     }
 
+    function loadBabyProgram(idx) {
+      clearInterval(babyRunLoop);
+      currentBabyProgIdx = idx;
+      [0, 1, 2].forEach(i => {
+        const b = document.getElementById(`btn-bprog-${i}`);
+        if (b) b.className = i === idx ? 'btn-clean active' : 'btn-clean secondary';
+      });
+      document.getElementById('baby-desc-label').textContent = babyProgList[idx].desc;
+      resetBabyCleanApp();
+    }
+
     function stepBabyCleanApp() {
+      const p = babyProgList[currentBabyProgIdx];
       babyCiVal = (babyCiVal + 1) % 32;
-      babyOpIdx = (babyOpIdx + 1) % babyOpcodes.length;
+      const op = p.ops[babyCiVal % p.ops.length];
       babyAccumVal = (babyAccumVal + 4096) % 262144;
 
       const row = babyCiVal % 24;
@@ -2420,20 +3236,19 @@
       drawCleanCRT();
 
       document.getElementById('crt-acc-readout').textContent = '0x' + babyAccumVal.toString(16).toUpperCase().padStart(6, '0');
-      document.getElementById('crt-inst-readout').textContent = babyOpcodes[babyOpIdx];
+      document.getElementById('crt-inst-readout').textContent = op;
       document.getElementById('crt-ci-readout').textContent = String(babyCiVal).padStart(2, '0');
     }
 
     function runBabyCleanApp() {
       clearInterval(babyRunLoop);
-      babyRunLoop = setInterval(stepBabyCleanApp, 130);
+      babyRunLoop = setInterval(stepBabyCleanApp, 180);
     }
 
     function resetBabyCleanApp() {
       clearInterval(babyRunLoop);
       babyAccumVal = 0;
       babyCiVal = 0;
-      babyOpIdx = 0;
       initBabyCRTMatrix();
       document.getElementById('crt-acc-readout').textContent = '0x000000';
       document.getElementById('crt-inst-readout').textContent = 'LDN';
@@ -2444,12 +3259,14 @@
       initBabyCRTMatrix();
     }
 
-    // 7. SIMULADOR 6: PATINHO FEIO CLEAN
+    // 7. SIMULADOR 6: PATINHO FEIO CLEAN COM 3 PROGRAMAS ASSEMBLY
     const patinhoContainer = document.getElementById('patinho-switches-clean');
     const switches = [0, 0, 0, 0, 0, 0, 0, 0];
     let regVal = 0;
+    let currentPatinhoProg = 1;
 
     function buildPatinhoClean() {
+      if (!patinhoContainer) return;
       patinhoContainer.innerHTML = '';
       for (let i = 7; i >= 0; i--) {
         const col = document.createElement('div');
@@ -2470,25 +3287,64 @@
       buildPatinhoClean();
     }
 
-    function patinhoLoadClean() {
+    function getPatinhoSwitchVal() {
       let sum = 0;
       for (let i = 7; i >= 0; i--) sum += switches[i] * Math.pow(2, i);
-      regVal = sum;
-      document.getElementById('patinho-clean-readout').textContent = `REGISTRADOR A: ${regVal.toString(2).padStart(8, '0')} (${regVal})`;
+      return sum;
+    }
+
+    function patinhoLoadClean() {
+      regVal = getPatinhoSwitchVal();
+      updatePatinhoFeedback('Instrução LDA executada: valor das chaves carregado no Reg A.');
     }
 
     function patinhoAddClean() {
-      let sum = 0;
-      for (let i = 7; i >= 0; i--) sum += switches[i] * Math.pow(2, i);
-      regVal = (regVal + sum) % 256;
-      document.getElementById('patinho-clean-readout').textContent = `REGISTRADOR A: ${regVal.toString(2).padStart(8, '0')} (${regVal})`;
+      const v = getPatinhoSwitchVal();
+      regVal = (regVal + v) % 256;
+      updatePatinhoFeedback(`Instrução ADD executada: somou ${v} ao Registrador A.`);
+    }
+
+    function patinhoAndClean() {
+      const v = getPatinhoSwitchVal();
+      regVal = (regVal & v) % 256;
+      updatePatinhoFeedback(`Instrução AND executada: máscara lógica aplicada com as chaves.`);
+    }
+
+    function updatePatinhoFeedback(msg) {
+      const bin = regVal.toString(2).padStart(8, '0');
+      const hex = '0x' + regVal.toString(16).toUpperCase().padStart(2, '0');
+      document.getElementById('patinho-clean-readout').textContent = `REGISTRADOR A: ${bin} (Decimal: ${regVal} | Hex: ${hex})`;
+      document.getElementById('patinho-asm-feedback').textContent = msg;
     }
 
     function patinhoResetClean() {
       switches.fill(0);
       regVal = 0;
       buildPatinhoClean();
-      document.getElementById('patinho-clean-readout').textContent = 'REGISTRADOR A: 00000000 (0)';
+      updatePatinhoFeedback('Console e registradores zerados.');
+    }
+
+    function loadPatinhoProgram(pNum) {
+      currentPatinhoProg = pNum;
+      [1, 2, 3].forEach(n => {
+        const b = document.getElementById(`btn-pprog-${n}`);
+        if (b) b.className = n === pNum ? 'btn-clean active' : 'btn-clean secondary';
+      });
+
+      if (pNum === 1) {
+        document.getElementById('patinho-prog-desc').textContent = 'Programa 1: Soma de Registradores (LDA [Dado], ADD [Dado], STO [Acumulador])';
+        switches[0] = 1; switches[1] = 1; switches[2] = 0; switches[3] = 1; // 11
+        switches[4] = 0; switches[5] = 0; switches[6] = 0; switches[7] = 0;
+      } else if (pNum === 2) {
+        document.getElementById('patinho-prog-desc').textContent = 'Programa 2: Contador em Laço (Loop decrescente de 7 até 0 com teste de flag de zero JNZ)';
+        switches[0] = 1; switches[1] = 1; switches[2] = 1; // 7
+        switches[3] = 0; switches[4] = 0; switches[5] = 0; switches[6] = 0; switches[7] = 0;
+      } else {
+        document.getElementById('patinho-prog-desc').textContent = 'Programa 3: Máscara Lógica AND (Isola os 4 bits menos significativos: AND 0x0F)';
+        switches[0] = 1; switches[1] = 1; switches[2] = 1; switches[3] = 1; // 0x0F
+        switches[4] = 0; switches[5] = 0; switches[6] = 0; switches[7] = 0;
+      }
+      buildPatinhoClean();
     }
 
     buildPatinhoClean();
