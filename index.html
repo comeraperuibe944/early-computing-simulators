@@ -273,15 +273,35 @@
       }
     }
 
-    /* GALERIA DE FOTOS RICA E NÍTIDA */
-    .media-gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2.25rem;
+    /* PREVENÇÃO GLOBAL DE TRANSBORDAMENTO */
+    img {
+      max-width: 100%;
+      height: auto;
     }
 
-    .media-frame {
+    html, body {
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
+
+    .presentation-scroll {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
+    /* GALERIA DE FOTOS E MÍDIA: CONTIDA, RESPONSIVA E ELEGANTE */
+    .media-gallery-grid,
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin: 1.5rem 0 2rem 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .media-frame,
+    .gallery-card {
       border-radius: var(--radius-md);
       overflow: hidden;
       background: #ffffff;
@@ -289,21 +309,51 @@
       display: flex;
       flex-direction: column;
       box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-sizing: border-box;
     }
 
-    .media-frame img {
+    .media-frame:hover,
+    .gallery-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Imagens dentro de grades de galeria */
+    .media-gallery-grid .media-frame img,
+    .media-gallery-grid .gallery-card img,
+    .gallery-grid .gallery-card img,
+    .gallery-grid .media-frame img {
       width: 100%;
-      height: 290px;
+      height: 220px;
       object-fit: cover;
       display: block;
       background: #f8fafc;
     }
 
+    /* Imagens herói individuais (filhas diretas do card limpo) */
+    .clean-card > .media-frame {
+      max-width: 680px;
+      margin: 1.5rem auto 2rem auto;
+      width: 100%;
+    }
+
+    .clean-card > .media-frame img {
+      width: 100%;
+      height: 340px;
+      max-height: 50vh;
+      object-fit: contain;
+      background: #f8fafc;
+      display: block;
+    }
+
     .media-frame img.turing-portrait {
+      object-fit: cover;
       object-position: center 15%;
     }
 
-    .media-caption {
+    .media-caption,
+    .gallery-card-desc {
       padding: 0.85rem 1.1rem;
       font-size: 0.85rem;
       font-weight: 600;
@@ -311,6 +361,7 @@
       background: #ffffff;
       border-top: 1px solid var(--border-subtle);
       line-height: 1.45;
+      flex-grow: 1;
     }
 
     /* CARD DE VÍDEO / CINEMA HISTÓRICO COM PLAY NATIVO E LINK DIRETO */
@@ -2149,18 +2200,18 @@
 
         
         <!-- GALERIA COMPLEMENTAR: ANTECESSORES DOS CARTÕES PERFURADOS -->
-        <div class="gallery-grid" style="margin: 1.5rem 0;">
-          <div class="gallery-card">
+        <div class="media-gallery-grid" style="margin: 1.5rem 0;">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/A_Jacquard_loom_showing_information_punchcards%2C_National_Museum_of_Scotland.jpg" alt="Tear Jacquard com Cartões Perfurados">
-            <div class="gallery-card-desc">Tear Jacquard (1804): primeiro sistema prático a usar cartões perfurados em cadeia para automatizar padrões complexos de tecelagem. Inspirou Charles Babbage na Máquina Analítica.</div>
+            <div class="media-caption">Tear Jacquard (1804): primeiro sistema prático a usar cartões perfurados em cadeia para automatizar padrões complexos de tecelagem. Inspirou Charles Babbage na Máquina Analítica.</div>
           </div>
-          <div class="gallery-card">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Hollerith.jpg" alt="Herman Hollerith">
-            <div class="gallery-card-desc">Herman Hollerith (1860-1929): inventor da máquina tabuladora de cartões perfurados para o Censo dos EUA de 1890 e fundador da Tabulating Machine Company (mais tarde IBM).</div>
+            <div class="media-caption">Herman Hollerith (1860-1929): inventor da máquina tabuladora de cartões perfurados para o Censo dos EUA de 1890 e fundador da Tabulating Machine Company (mais tarde IBM).</div>
           </div>
-          <div class="gallery-card">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/HollerithMachine.CHM.jpg" alt="Máquina Tabuladora de Hollerith 1890">
-            <div class="gallery-card-desc">Máquina Tabuladora de Hollerith (1890): processou o Censo norte-americano em meses em vez de 8 anos, provando a viabilidade do processamento automatizado de dados em escala.</div>
+            <div class="media-caption">Máquina Tabuladora de Hollerith (1890): processou o Censo norte-americano em meses em vez de 8 anos, provando a viabilidade do processamento automatizado de dados em escala.</div>
           </div>
         </div>
 
@@ -2263,11 +2314,9 @@
 
       <div class="clean-card">
         <!-- Retrato de Alan Turing centralizado perfeitamente -->
-        <div class="media-gallery-grid" style="grid-template-columns: 1fr;">
-          <div class="media-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/Alan_Turing_az_1930-as_%C3%A9vekben.jpg" alt="Alan Turing nos anos 1930" class="turing-portrait">
-            <div class="media-caption">Alan Mathison Turing (1912–1954) na década de 1930: aos 24 anos provou a indecidibilidade matemática e inventou a Máquina Universal.</div>
-          </div>
+        <div class="media-frame" style="max-width: 420px; margin: 0 auto 2.25rem auto;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/Alan_Turing_az_1930-as_%C3%A9vekben.jpg" alt="Alan Turing nos anos 1930" class="turing-portrait" style="height: 320px; object-fit: cover; object-position: center 15%;">
+          <div class="media-caption">Alan Mathison Turing (1912–1954) na década de 1930: aos 24 anos provou a indecidibilidade matemática e inventou a Máquina Universal.</div>
         </div>
 
         <div class="talking-points">
@@ -2301,18 +2350,18 @@
         </div>
 
         <!-- GALERIA COMPLEMENTAR: FUNDAÇÃO TEÓRICA DA COMPUTAÇÃO -->
-        <div class=gallery-grid style="margin: 1.5rem 0;">
-          <div class="gallery-card">
+        <div class="media-gallery-grid" style="margin: 1.5rem 0;">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/David_Hilbert%2C_1907.jpg" alt="David Hilbert 1907">
-            <div class="gallery-card-desc">David Hilbert (1900/1928): formulou o Entscheidungsproblem (Problema da Decisão), desafio matemático que levou Turing à formulação da Máquina Universal.</div>
+            <div class="media-caption">David Hilbert (1900/1928): formulou o Entscheidungsproblem (Problema da Decisão), desafio matemático que levou Turing à formulação da Máquina Universal.</div>
           </div>
-          <div class="gallery-card">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Kurt_g%C3%B6del.jpg" alt="Kurt Gödel">
-            <div class="gallery-card-desc">Kurt Gödel (1931): Teorema da Incompletude que demoliu o sonho de Hilbert de um sistema formal completo e consistente, inspirando a resposta de Turing em 1936.</div>
+            <div class="media-caption">Kurt Gödel (1931): Teorema da Incompletude que demoliu o sonho de Hilbert de um sistema formal completo e consistente, inspirando a resposta de Turing em 1936.</div>
           </div>
-          <div class="gallery-card">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/C.E._Shannon._Tekniska_museet_43069_%282x3_crop%29.jpg" alt="Claude Shannon">
-            <div class="gallery-card-desc">Claude Shannon (1937): demonstrou na sua tese de mestrado no MIT que a Álgebra Booleana podia ser implementada diretamente com relés elétricos e chaves lógicas.</div>
+            <div class="media-caption">Claude Shannon (1937): demonstrou na sua tese de mestrado no MIT que a Álgebra Booleana podia ser implementada diretamente com relés elétricos e chaves lógicas.</div>
           </div>
         </div>
 
@@ -2649,18 +2698,18 @@
 
         
         <!-- GALERIA COMPLEMENTAR: HARVARD MARK I E GRACE HOPPER -->
-        <div class="gallery-grid" style="margin: 1.5rem 0;">
-          <div class="gallery-card">
+        <div class="media-gallery-grid" style="margin: 1.5rem 0;">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Harvard_Mark_I_Computer_-_Right_Segment.JPG" alt="Harvard Mark I Segmento Direito">
-            <div class="gallery-card-desc">Harvard Mark I (IBM ASCC, 1944): eixo giratório sincronizado de 15 metros de comprimento acionando contadores e relés sob comando de fita perfurada de papel.</div>
+            <div class="media-caption">Harvard Mark I (IBM ASCC, 1944): eixo giratório sincronizado de 15 metros de comprimento acionando contadores e relés sob comando de fita perfurada de papel.</div>
           </div>
-          <div class="gallery-card">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Harvard_Mark_I_Computer_-_Input-Output_Details.jpg" alt="Harvard Mark I Leitor de Fita e I/O">
-            <div class="gallery-card-desc">Detalhe do painel de leitura e perfuração de fita do Harvard Mark I: cada instrução de 24 furos controlava a transferência física de dados entre acumuladores mecânicos.</div>
+            <div class="media-caption">Detalhe do painel de leitura e perfuração de fita do Harvard Mark I: cada instrução de 24 furos controlava a transferência física de dados entre acumuladores mecânicos.</div>
           </div>
-          <div class="gallery-card">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg" alt="Comodoro Grace Hopper">
-            <div class="gallery-card-desc">Comodoro Grace Brewster Murray Hopper (1906-1992): programou o Mark I, cunhou o termo "debugging" moderno e foi pioneira no primeiro compilador da história (A-0) e na linguagem COBOL.</div>
+            <div class="media-caption">Comodoro Grace Brewster Murray Hopper (1906-1992): programou o Mark I, cunhou o termo "debugging" moderno e foi pioneira no primeiro compilador da história (A-0) e na linguagem COBOL.</div>
           </div>
         </div>
 
@@ -2734,14 +2783,14 @@
 
         
         <!-- GALERIA COMPLEMENTAR: A CIFRA LORENZ SZ42 E BLETCHLEY PARK -->
-        <div class="gallery-grid" style="margin: 1.5rem 0;">
-          <div class="gallery-card">
+        <div class="media-gallery-grid" style="margin: 1.5rem 0;">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Lorenz-SZ42-2.jpg" alt="Máquina Criptográfica Lorenz SZ42">
-            <div class="gallery-card-desc">Máquina de Cifra de Teletipo Lorenz SZ42: 12 rodas de pinos com períodos primos entre si, gerando uma sequência pseudoaleatória para cifrar as comunicações de Hitler e seu Estado-Maior.</div>
+            <div class="media-caption">Máquina de Cifra de Teletipo Lorenz SZ42: 12 rodas de pinos com períodos primos entre si, gerando uma sequência pseudoaleatória para cifrar as comunicações de Hitler e seu Estado-Maior.</div>
           </div>
-          <div class="gallery-card">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/British_Tunny_Rebuild.jpg" alt="British Tunny Rebuild">
-            <div class="gallery-card-desc">Emulador Britânico Tunny (Bletchley Park): equipamento eletromecânico que reproduzia fielmente o comportamento dos 12 rotores Lorenz uma vez que o Colossus descobria suas posições iniciais.</div>
+            <div class="media-caption">Emulador Britânico Tunny (Bletchley Park): equipamento eletromecânico que reproduzia fielmente o comportamento dos 12 rotores Lorenz uma vez que o Colossus descobria suas posições iniciais.</div>
           </div>
         </div>
 
@@ -2923,7 +2972,7 @@
         </div>
 
         
-        <div class="media-frame" style="margin-top: 1.5rem;">
+        <div class="media-frame">
           <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Classic_shot_of_the_ENIAC.jpg" alt="ENIAC Operado pelas Programadoras Pioneiras">
           <div class="media-caption">ENIAC em operação (Filadélfia, 1946): Betty Jean Jennings e Fran Bilas reconfigurando os cabos dos acumuladores para calcular trajetórias balísticas em frações de segundo.</div>
         </div>
@@ -2991,14 +3040,14 @@
 
         
         <!-- GALERIA COMPLEMENTAR: JOHN VON NEUMANN E O PRIMEIRO FLUXOGRAMA -->
-        <div class="gallery-grid" style="margin: 1.5rem 0;">
-          <div class="gallery-card">
+        <div class="media-gallery-grid" style="margin: 1.5rem 0;">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/JohnvonNeumann-LosAlamos.gif" alt="John von Neumann em Los Alamos">
-            <div class="gallery-card-desc">John von Neumann (Los Alamos, anos 1940): matemático pioneiro na mecânica quântica, teoria dos jogos e na síntese conceitual do computador com programa armazenado unificado.</div>
+            <div class="media-caption">John von Neumann (Los Alamos, anos 1940): matemático pioneiro na mecânica quântica, teoria dos jogos e na síntese conceitual do computador com programa armazenado unificado.</div>
           </div>
-          <div class="gallery-card">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Flow_chart_of_Planning_and_coding_of_problems_for_an_electronic_computing_instrument%2C_1947.jpg" alt="Primeiro Fluxograma de Computação Eletrônica 1947">
-            <div class="gallery-card-desc">Primeiro Fluxograma da História da Programação (Von Neumann e Goldstine, 1947): documento seminal estabelecendo blocos de decisão, laços e bifurcações para computadores eletrônicos.</div>
+            <div class="media-caption">Primeiro Fluxograma da História da Programação (Von Neumann e Goldstine, 1947): documento seminal estabelecendo blocos de decisão, laços e bifurcações para computadores eletrônicos.</div>
           </div>
         </div>
 
@@ -3170,14 +3219,14 @@
 
         
         <!-- GALERIA COMPLEMENTAR: MEMÓRIA DE MERCÚRIO E HARDWARE DO EDSAC -->
-        <div class="gallery-grid" style="margin: 1.5rem 0;">
-          <div class="gallery-card">
+        <div class="media-gallery-grid" style="margin: 1.5rem 0;">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Mercury_memory.jpg" alt="Linha de Retardo de Mercúrio">
-            <div class="gallery-card-desc">Linhas de Retardo Acústico de Mercúrio: pulsos ultrassônicos viajavam através de tubos de mercúrio líquido para armazenar bits dinamicamente em circulação contínua antes das memórias de ferrite.</div>
+            <div class="media-caption">Linhas de Retardo Acústico de Mercúrio: pulsos ultrassônicos viajavam através de tubos de mercúrio líquido para armazenar bits dinamicamente em circulação contínua antes das memórias de ferrite.</div>
           </div>
-          <div class="gallery-card">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/EDSAC_%2812%29.jpg" alt="Racks de Válvulas do EDSAC">
-            <div class="gallery-card-desc">Racks modulares do EDSAC na Universidade de Cambridge: cerca de 3.000 válvulas operando como o primeiro cavalo de batalha da pesquisa acadêmica regular.</div>
+            <div class="media-caption">Racks modulares do EDSAC na Universidade de Cambridge: cerca de 3.000 válvulas operando como o primeiro cavalo de batalha da pesquisa acadêmica regular.</div>
           </div>
         </div>
 
@@ -3244,14 +3293,14 @@
 
         
         <!-- GALERIA COMPLEMENTAR: O ECOSSISTEMA UNIVAC -->
-        <div class="gallery-grid" style="margin: 1.5rem 0;">
-          <div class="gallery-card">
+        <div class="media-gallery-grid" style="margin: 1.5rem 0;">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/UNIVAC-I-BRL61-0977.jpg" alt="Console Completo do UNIVAC I">
-            <div class="gallery-card-desc">Console de Operação do UNIVAC I com unidades de fita magnética UNISERVO: máquina pioneira da computação comercial que abriu caminho para a importação de computadores pelo Brasil.</div>
+            <div class="media-caption">Console de Operação do UNIVAC I com unidades de fita magnética UNISERVO: máquina pioneira da computação comercial que abriu caminho para a importação de computadores pelo Brasil.</div>
           </div>
-          <div class="gallery-card">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Grace_Hopper_and_UNIVAC.jpg" alt="Grace Hopper e o UNIVAC">
-            <div class="gallery-card-desc">Grace Hopper junto ao console do UNIVAC I: desenvolvendo o primeiro compilador da história e defendendo que computadores deveriam ser programados em linguagem próxima ao inglês.</div>
+            <div class="media-caption">Grace Hopper junto ao console do UNIVAC I: desenvolvendo o primeiro compilador da história e defendendo que computadores deveriam ser programados em linguagem próxima ao inglês.</div>
           </div>
         </div>
 
@@ -3367,7 +3416,7 @@
         </div>
 
         
-        <div class="media-frame" style="margin-top: 1.5rem;">
+        <div class="media-frame">
           <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Antonio_H%C3%A9lio_Guerra_Vieira_e_o_Computador_Patinho_Feio.jpg" alt="Prof. Guerra Vieira e o Patinho Feio Panorama">
           <div class="media-caption">Registro Histórico Completo: Prof. Antonio Hélio Guerra Vieira operando o console do Patinho Feio no Departamento de Engenharia Elétrica da Poli-USP (1972).</div>
         </div>
@@ -3442,30 +3491,30 @@
 
         
         <!-- GALERIA COMPLETA DE MICROCOMPUTADORES BRASILEIROS DA RESERVA DE MERCADO -->
-        <div class="gallery-grid" style="margin: 1.5rem 0;">
-          <div class="gallery-card">
+        <div class="media-gallery-grid" style="margin: 1.5rem 0;">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/TK90X.jpg" alt="Microdigital TK90X">
-            <div class="gallery-card-desc">Microdigital TK90X (1985): o microcomputador doméstico de 8 bits mais popular do Brasil, compatível com o Sinclair ZX Spectrum, com teclado chiclete e saída para TV.</div>
+            <div class="media-caption">Microdigital TK90X (1985): o microcomputador doméstico de 8 bits mais popular do Brasil, compatível com o Sinclair ZX Spectrum, com teclado chiclete e saída para TV.</div>
           </div>
-          <div class="gallery-card">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Microdigital_TK85_A.jpg" alt="Microdigital TK85">
-            <div class="gallery-card-desc">Microdigital TK85 (1983): clone do ZX81 com gabinete ergonômico nacional, processador Z80A e porta de cassete para carregar programas e jogos em fita k7.</div>
+            <div class="media-caption">Microdigital TK85 (1983): clone do ZX81 com gabinete ergonômico nacional, processador Z80A e porta de cassete para carregar programas e jogos em fita k7.</div>
           </div>
-          <div class="gallery-card">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Prol%C3%B3gica_CP400.jpg" alt="Prológica CP 400 Color">
-            <div class="gallery-card-desc">Prológica CP 400 Color (1984): clone brasileiro do TRS-80 Color Computer, muito utilizado em escolas e residências para aprendizado de programação BASIC com gráficos coloridos.</div>
+            <div class="media-caption">Prológica CP 400 Color (1984): clone brasileiro do TRS-80 Color Computer, muito utilizado em escolas e residências para aprendizado de programação BASIC com gráficos coloridos.</div>
           </div>
-          <div class="gallery-card">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Prol%C3%B3gica_CP_200S.png" alt="Prológica CP 200S">
-            <div class="gallery-card-desc">Prológica CP 200S (1982): microcomputador educacional compacto com teclado de toque de membrana e interpretador BASIC residente em memória ROM.</div>
+            <div class="media-caption">Prológica CP 200S (1982): microcomputador educacional compacto com teclado de toque de membrana e interpretador BASIC residente em memória ROM.</div>
           </div>
-          <div class="gallery-card">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Gradiente_Expert_Brazil.jpg" alt="Gradiente MSX Expert">
-            <div class="gallery-card-desc">Gradiente MSX Expert (1985): computador pessoal da linha padrão MSX fabricado no Brasil, com excelente subsistema de som, gráficos avançados e cartuchos de expansão.</div>
+            <div class="media-caption">Gradiente MSX Expert (1985): computador pessoal da linha padrão MSX fabricado no Brasil, com excelente subsistema de som, gráficos avançados e cartuchos de expansão.</div>
           </div>
-          <div class="gallery-card">
+          <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Scopus_e_Itautec_sistema_operacional_SISNE_Plus_V3.30_R05_720x400.png" alt="Scopus SISNE Plus MS-DOS Brasileiro">
-            <div class="gallery-card-desc">Scopus e Itautec SISNE Plus: sistema operacional nacional 100% compatível com MS-DOS, desenvolvido no Brasil durante a vigência da Reserva de Mercado.</div>
+            <div class="media-caption">Scopus e Itautec SISNE Plus: sistema operacional nacional 100% compatível com MS-DOS, desenvolvido no Brasil durante a vigência da Reserva de Mercado.</div>
           </div>
         </div>
 
