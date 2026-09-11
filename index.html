@@ -692,12 +692,12 @@
     }
 
     .soroban-bead-clean.upper.active {
-      transform: translateY(24px);
+      transform: translateY(26px);
       background: #0f172a;
     }
 
     .soroban-bead-clean.lower.active {
-      transform: translateY(-24px);
+      transform: translateY(-34px);
       background: #0f172a;
     }
 
@@ -1702,12 +1702,14 @@
           <div class="app-header-clean">
             <span class="app-tag">Simulador Prático: Ábaco / Soroban Japonês (Física Realista)</span>
             <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="presetSorobanYear(1948)">Ano 1948 (Baby)</button>
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="presetSorobanYear(1972)">Ano 1972 (Patinho)</button>
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="presetSorobanYear(2026)">Ano 2026</button>
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="presetSorobanYear(42)">Número 42</button>
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="presetSorobanYear(99999)">Máx (99.999)</button>
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="clearSorobanBoard()">Zerar</button>
+              <button class="btn-clean secondary" id="btn-soro-1" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="demoSorobanMath(2, 3)">1. Adição (2 + 3 = 5)</button>
+              <button class="btn-clean secondary" id="btn-soro-2" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="demoSorobanMath(12, 25)">2. Adição (12 + 25 = 37)</button>
+              <button class="btn-clean secondary" id="btn-soro-3" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="presetSorobanYear(1948, 3)">3. Ano 1948 (Baby)</button>
+              <button class="btn-clean secondary" id="btn-soro-4" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="presetSorobanYear(1972, 4)">4. Ano 1972 (Patinho)</button>
+              <button class="btn-clean secondary" id="btn-soro-5" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="presetSorobanYear(42, 5)">5. Número 42</button>
+              <button class="btn-clean secondary" id="btn-soro-6" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="presetSorobanYear(2026, 6)">6. Ano 2026</button>
+              <button class="btn-clean secondary" id="btn-soro-7" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="presetSorobanYear(99999, 7)">7. Máx (99.999)</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="clearSorobanBoard()">Zerar Ábaco</button>
             </div>
           </div>
 
@@ -1806,6 +1808,9 @@
             <span>TOTAL DECIMAL COMPUTADO NO SOROBAN:</span>
             <span id="soroban-total-readout" style="color: var(--accent-green-text); font-size: 1.25rem;">0</span>
           </div>
+          <div id="soroban-calc-guide" style="margin-top: 0.6rem; font-size: 0.85rem; color: var(--text-muted); background: #f8fafc; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 0.6rem 0.9rem;">
+            <strong>Dica Didática:</strong> Clique nas contas para alternar. A conta de cima vale 5 e desce até a barra. As 4 contas de baixo valem 1 e sobem até a barra.
+          </div>
         </div>
         <div class="reason-box">
           <strong>Critérios: Turing-Complete: Não | Von Neumann: Não</strong>
@@ -1874,10 +1879,13 @@
           <div class="app-header-clean">
             <span class="app-tag">Simulador Prático: Mecanismo de Anticítera (~150 a.C.)</span>
             <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="setAntikytheraPreset(172)">Solstício de Verão</button>
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="setAntikytheraPreset(354)">Eclipse de Saros</button>
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="setAntikytheraPreset(14)">Lua Cheia</button>
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="setAntikytheraPreset(730)">2 Anos Completos</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="setAntikytheraPreset(80)">1. Equinócio de Primavera (Dia 80)</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="setAntikytheraPreset(172)">2. Solstício de Verão (Dia 172)</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="setAntikytheraPreset(265)">3. Equinócio de Outono (Dia 265)</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="setAntikytheraPreset(355)">4. Solstício de Inverno (Dia 355)</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="setAntikytheraPreset(354)">5. Eclipse Solar de Saros</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="setAntikytheraPreset(14)">6. Lua Cheia Perfeita</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="setAntikytheraPreset(0)">7. Lua Nova (Início de Ciclo)</button>
               <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" id="anti-anim-btn" onclick="toggleAntikytheraAnim()">Animar Rotação</button>
             </div>
           </div>
@@ -2045,10 +2053,13 @@
             </div>
           </div>
 
-          <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+          <div style="display: flex; justify-content: center; gap: 0.4rem; flex-wrap: wrap;">
             <button class="btn-clean" onclick="addPascalineDirect(1)">+1 Unidade</button>
-            <button class="btn-clean" onclick="addPascalineDirect(9)">+9 (Girar Disco)</button>
-            <button class="btn-clean secondary" onclick="presetPascaline999()">Preparar 999 &rarr; Somar 1 (Efeito Dominó do Sautoir)</button>
+            <button class="btn-clean secondary" onclick="addPascalineDirect(10)">+10 (Dezena)</button>
+            <button class="btn-clean secondary" onclick="addPascalineDirect(100)">+100 (Centena)</button>
+            <button class="btn-clean secondary" onclick="addPascalineDirect(15)">1. Adição (+15)</button>
+            <button class="btn-clean secondary" onclick="addPascalineDirect(27)">2. Cálculo de Imposto (+27)</button>
+            <button class="btn-clean active" onclick="presetPascaline999()">3. Efeito Dominó (999 + 1 = 1000)</button>
             <button class="btn-clean secondary" onclick="resetPascalineClean()">Zerar Discos</button>
           </div>
         </div>
@@ -2370,21 +2381,19 @@
           <div class="app-header-clean">
             <span class="app-tag">Laboratório Interativo: Máquina de Turing de Propósito Geral</span>
             
-            <div class="speed-control-group">
-              <span>Velocidade:</span>
-              <button class="speed-btn active" id="spd-slow" onclick="setTuringSpeed(800)">Lentinho (800ms)</button>
-              <button class="speed-btn" id="spd-med" onclick="setTuringSpeed(400)">Normal (400ms)</button>
-              <button class="speed-btn" id="spd-fast" onclick="setTuringSpeed(150)">Rápido (150ms)</button>
             </div>
-          </div>
 
-          <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.8rem;">
+          <div style="display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 0.8rem;">
             <button class="btn-clean active" id="btn-t-inc" onclick="loadTuringAlgorithm('inc')">1. Soma Binária (+1)</button>
             <button class="btn-clean secondary" id="btn-t-dup" onclick="loadTuringAlgorithm('dup')">2. Duplicação f(n)=2n</button>
             <button class="btn-clean secondary" id="btn-t-not" onclick="loadTuringAlgorithm('not')">3. Inversor NOT</button>
             <button class="btn-clean secondary" id="btn-t-dec" onclick="loadTuringAlgorithm('dec')">4. Subtração (-1)</button>
             <button class="btn-clean secondary" id="btn-t-par" onclick="loadTuringAlgorithm('parity')">5. Teste de Paridade</button>
             <button class="btn-clean secondary" id="btn-t-clr" onclick="loadTuringAlgorithm('clear')">6. Limpeza de Fita</button>
+            <button class="btn-clean secondary" id="btn-t-binv" onclick="loadTuringAlgorithm('bool_inv')">7. Inversor Booleano (10101)</button>
+            <button class="btn-clean secondary" id="btn-t-uadd" onclick="loadTuringAlgorithm('unary_add')">8. Adição Unária (2+3=5)</button>
+            <button class="btn-clean secondary" id="btn-t-pal" onclick="loadTuringAlgorithm('palindrome')">9. Palíndromo (Espelho)</button>
+            <button class="btn-clean secondary" id="btn-t-bb" onclick="loadTuringAlgorithm('busy_beaver')">10. Castor Ocupado (3-State)</button>
           </div>
 
           <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;" id="turing-lab-description">
@@ -2408,7 +2417,7 @@
 
           <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
             <button class="btn-clean" id="btn-t-step" onclick="stepTuringLab()">Avançar 1 Passo</button>
-            <button class="btn-clean secondary" id="btn-t-run" onclick="runTuringLab()">Executar Suave</button>
+            <button class="btn-clean secondary" id="btn-t-run" onclick="runTuringLab()">Executar</button>
             <button class="btn-clean secondary" id="btn-t-pause" onclick="pauseTuringLab()">Pausar</button>
             <button class="btn-clean secondary" onclick="resetTuringLab()">Reiniciar Fita</button>
           </div>
@@ -2486,21 +2495,37 @@
         <!-- SIMULADOR: FITA DE 35MM E RELÉS DO ZUSE Z3 -->
         <div class="interactive-app-card">
           <div class="app-header-clean">
-            <span class="app-tag">Simulador Prático: Leitor de Filme 35 mm &amp; Relés do Zuse Z3 (1941)</span>
+            <span class="app-tag">Simulador Didático: Leitor de Filme 35 mm &amp; Relés do Zuse Z3 (1941)</span>
             <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadZuseProgram(1)">Prog 1: Carga de Asa (3.5 × 2.0)</button>
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadZuseProgram(2)">Prog 2: Raiz Quadrada de Área (√16)</button>
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadZuseProgram(3)">Prog 3: Soma de Vibração (12.5 + 7.25)</button>
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="resetZuseTape()">Rebobinar Fita</button>
+              <button class="btn-clean active" id="btn-zprog-1" onclick="loadZuseProgram(1)">1. Adição (2 + 3 = 5)</button>
+              <button class="btn-clean secondary" id="btn-zprog-2" onclick="loadZuseProgram(2)">2. Multiplicação (4 × 3 = 12)</button>
+              <button class="btn-clean secondary" id="btn-zprog-3" onclick="loadZuseProgram(3)">3. Subtração (10 - 4 = 6)</button>
+              <button class="btn-clean secondary" id="btn-zprog-4" onclick="loadZuseProgram(4)">4. Divisão (8 ÷ 2 = 4)</button>
+              <button class="btn-clean secondary" id="btn-zprog-5" onclick="loadZuseProgram(5)">5. Raiz Quadrada (√9 = 3)</button>
+              <button class="btn-clean secondary" id="btn-zprog-6" onclick="loadZuseProgram(6)">6. Asa Aeronáutica (3.5 × 2.0 = 7.0)</button>
+              <button class="btn-clean secondary" onclick="resetZuseTape()">Rebobinar</button>
             </div>
           </div>
 
-          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem;">
-            A fita de película cinematográfica de 35 mm avança pelas agulhas sensoras mecânicas, comutando relés telefônicos em aritmética binária de ponto flutuante de 22 bits:
-          </p>
+          <!-- GUIA DIDÁTICO SIMPLES PARA APRESENTAÇÃO -->
+          <div style="background: #f8fafc; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 0.85rem 1rem; margin-bottom: 1rem; font-size: 0.88rem; line-height: 1.5;">
+            <strong style="color: var(--text-main); display: block; margin-bottom: 0.25rem;">Como Explicar aos Colegas na Sala:</strong>
+            &bull; <strong>A Fita de Cinema de 35 mm:</strong> Konrad Zuse reutilizava sobras de rolos de filme dos estúdios da UFA. Cada linha furada comanda um passo (ler dado, somar, multiplicar ou mostrar resultado).<br>
+            &bull; <strong>Os Relés Telefônicos:</strong> Chaves elétricas magnéticas com estalo mecânico. Quando há furo na fita, a agulha fecha o circuito e energiza a bobina, fechando o contato (bit 1). Sem furo, fica aberto (bit 0).<br>
+            &bull; <strong>Aritmética Binária Pura:</strong> O Z3 foi o primeiro computador funcional a usar o sistema binário com ponto flutuante de 22 bits, sem engrenagens decimais.
+          </div>
+
+          <!-- BANNER DE STATUS DO PASSO ATUAL -->
+          <div style="background: #0f172a; color: #ffffff; border-radius: var(--radius-sm); padding: 0.85rem 1.2rem; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <span id="zuse-step-badge" style="background: #38bdf8; color: #0f172a; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.78rem; margin-right: 0.6rem;">PASSO 1 DE 4</span>
+              <strong id="zuse-step-title" style="color: #f8fafc;">Carregando Valor A</strong>
+            </div>
+            <div id="zuse-math-summary" style="color: #4ade80; font-weight: 800; font-size: 1.05rem;">2 + 3 = 5</div>
+          </div>
 
           <div class="zuse-stage">
-            <!-- Fita 35mm em movimento -->
+            <!-- Fita 35mm com nomes legíveis -->
             <div class="zuse-tape-frame">
               <div class="zuse-tape-frame-needle"></div>
               <div class="zuse-tape-strip" id="zuse-tape-strip">
@@ -2511,7 +2536,7 @@
             <!-- Matriz de Relés Eletromecânicos -->
             <div class="zuse-relays-grid">
               <div class="zuse-relay-card">
-                <div class="zuse-relay-title">Relé 1: Decodificador Opcode</div>
+                <div class="zuse-relay-title">Relé 1: Leitura de Entrada</div>
                 <div class="zuse-relay-graphic">
                   <div class="relay-coil"></div>
                   <div class="relay-armature" id="zuse-arm-1"></div>
@@ -2520,7 +2545,7 @@
               </div>
 
               <div class="zuse-relay-card">
-                <div class="zuse-relay-title">Relé 2: Mantissa ALU / Carry</div>
+                <div class="zuse-relay-title">Relé 2: Mantissa ALU (Carry)</div>
                 <div class="zuse-relay-graphic">
                   <div class="relay-coil"></div>
                   <div class="relay-armature" id="zuse-arm-2"></div>
@@ -2538,7 +2563,7 @@
               </div>
 
               <div class="zuse-relay-card">
-                <div class="zuse-relay-title">Relé 4: Acumulador de Saída</div>
+                <div class="zuse-relay-title">Relé 4: Acumulador / Saída</div>
                 <div class="zuse-relay-graphic">
                   <div class="relay-coil"></div>
                   <div class="relay-armature" id="zuse-arm-4"></div>
@@ -2549,24 +2574,23 @@
 
             <!-- Registradores de Ponto Flutuante de 22 bits -->
             <div class="zuse-regs-row">
-              <div><span>REG R1: </span><strong id="zuse-reg-r1" style="color: #38bdf8;">+0.0</strong></div>
-              <div><span>REG R2: </span><strong id="zuse-reg-r2" style="color: #38bdf8;">+0.0</strong></div>
-              <div><span>ACUMULADOR ALU: </span><strong id="zuse-reg-acc" style="color: #4ade80;">0.0</strong></div>
-              <div><span>INSTRUÇÃO ATUAL: </span><strong id="zuse-inst-desc" style="color: #facc15;">INÍCIO DA FITA</strong></div>
+              <div><span>REGISTRADOR R1: </span><strong id="zuse-reg-r1" style="color: #38bdf8;">+0.0</strong></div>
+              <div><span>REGISTRADOR R2: </span><strong id="zuse-reg-r2" style="color: #38bdf8;">+0.0</strong></div>
+              <div><span>ACUMULADOR Z3: </span><strong id="zuse-reg-acc" style="color: #4ade80;">0.0</strong></div>
+              <div><span>EXPLICAÇÃO DO PASSO: </span><strong id="zuse-inst-desc" style="color: #facc15;">INÍCIO DA FITA</strong></div>
             </div>
           </div>
 
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-top: 0.5rem;">
             <div style="display: flex; gap: 0.35rem;">
-              <button class="btn-clean" onclick="stepZuseTape()">Passo a Passo (Avançar 1 Furo)</button>
+              <button class="btn-clean" onclick="stepZuseTape()">Avançar 1 Passo (Sentir Furo)</button>
               <button class="btn-clean secondary" id="zuse-run-btn" onclick="toggleZuseRun()">Executar Fita Completa</button>
             </div>
             <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">
-              Frequência Histórica: 5,3 Hz (~190 ms por comutação)
+              Frequência Histórica: 5,3 Hz (~190 ms por comutação dos relés)
             </div>
           </div>
         </div>
-
         <div class="reason-box">
           <strong>Critérios: Turing-Complete: Sim (com laços na fita) | Von Neumann: Não</strong>
           O Z3 lia instruções diretamente da fita cinematográfica externa, sem armazená-las na mesma memória que os dados aritméticos.
@@ -2799,8 +2823,10 @@
           <div class="app-header-clean">
             <span class="app-tag">Simulador Prático: Leitor Óptico Colossus Mk II &amp; Criptoanálise Lorenz SZ42 (1944)</span>
             <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadColossusIntercept(1)">Intercepto 1: Normandia (Heeresgruppe B)</button>
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadColossusIntercept(2)">Intercepto 2: Berlim (OKW Wettervorhersage)</button>
+              <button class="btn-clean active" id="btn-col-1" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadColossusIntercept(1)">1. Normandia (Heeresgruppe B)</button>
+              <button class="btn-clean secondary" id="btn-col-2" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadColossusIntercept(2)">2. Berlim (Meteorologia OKW)</button>
+              <button class="btn-clean secondary" id="btn-col-3" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadColossusIntercept(3)">3. Frente Leste (Ucrânia/Dnieper)</button>
+              <button class="btn-clean secondary" id="btn-col-4" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadColossusIntercept(4)">4. Calais (Movimento Panzer)</button>
               <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="resetColossusScanner()">Resetar Scanner</button>
             </div>
           </div>
@@ -3115,7 +3141,10 @@
             <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
               <button class="btn-clean active" id="btn-bprog-0" onclick="loadBabyProgram(0)">1. Divisor 262.144 (1948)</button>
               <button class="btn-clean secondary" id="btn-bprog-1" onclick="loadBabyProgram(1)">2. Fatorial 5! = 120</button>
-              <button class="btn-clean secondary" id="btn-bprog-2" onclick="loadBabyProgram(2)">3. Soma de Gauss</button>
+              <button class="btn-clean secondary" id="btn-bprog-2" onclick="loadBabyProgram(2)">3. Soma de Gauss (1 a 10)</button>
+              <button class="btn-clean secondary" id="btn-bprog-3" onclick="loadBabyProgram(3)">4. Multiplicação (3 × 4 = 12)</button>
+              <button class="btn-clean secondary" id="btn-bprog-4" onclick="loadBabyProgram(4)">5. Divisão Inteira (14 ÷ 3 = 4)</button>
+              <button class="btn-clean secondary" id="btn-bprog-5" onclick="loadBabyProgram(5)">6. Algoritmo de Euclides (MDC)</button>
             </div>
           </div>
 
@@ -3134,7 +3163,7 @@
 
           <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
             <button class="btn-clean" id="btn-baby-step-action" onclick="stepBabyCleanApp()">Passo Único (Step)</button>
-            <button class="btn-clean secondary" id="btn-baby-run-action" onclick="runBabyCleanApp()">Executar Ciclo Suave</button>
+            <button class="btn-clean secondary" id="btn-baby-run-action" onclick="runBabyCleanApp()">Executar Ciclo</button>
             <button class="btn-clean secondary" onclick="resetBabyCleanApp()">Resetar Memória CRT</button>
           </div>
         </div>
@@ -3375,9 +3404,12 @@
           <div class="app-header-clean">
             <span class="app-tag">Console Interativo: Painel de Chaves do Patinho Feio (Poli-USP 1972)</span>
             <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
-              <button class="btn-clean active" id="btn-pprog-1" onclick="loadPatinhoProgram(1)">Programa 1: Soma LDA/ADD</button>
-              <button class="btn-clean secondary" id="btn-pprog-2" onclick="loadPatinhoProgram(2)">Programa 2: Contador em Laço</button>
-              <button class="btn-clean secondary" id="btn-pprog-3" onclick="loadPatinhoProgram(3)">Programa 3: Máscara AND</button>
+              <button class="btn-clean active" id="btn-pprog-1" onclick="loadPatinhoProgram(1)">1. Soma (LDA / ADD)</button>
+              <button class="btn-clean secondary" id="btn-pprog-2" onclick="loadPatinhoProgram(2)">2. Contador em Laço (JNZ)</button>
+              <button class="btn-clean secondary" id="btn-pprog-3" onclick="loadPatinhoProgram(3)">3. Máscara AND (0x0F)</button>
+              <button class="btn-clean secondary" id="btn-pprog-4" onclick="loadPatinhoProgram(4)">4. Subtração (SUB: 25 - 10)</button>
+              <button class="btn-clean secondary" id="btn-pprog-5" onclick="loadPatinhoProgram(5)">5. Deslocamento (SHL x2)</button>
+              <button class="btn-clean secondary" id="btn-pprog-6" onclick="loadPatinhoProgram(6)">6. Máscara OR (0xF0)</button>
             </div>
           </div>
 
@@ -3396,10 +3428,13 @@
             <span id="patinho-asm-feedback" style="color: var(--accent-blue-text); font-size: 0.82rem;">Pronto para instrução</span>
           </div>
 
-          <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+          <div style="display: flex; justify-content: center; gap: 0.6rem; flex-wrap: wrap;">
             <button class="btn-clean" onclick="patinhoLoadClean()">Carregar Chaves (LDA)</button>
-            <button class="btn-clean secondary" onclick="patinhoAddClean()">Somar com Reg A (ADD)</button>
-            <button class="btn-clean secondary" onclick="patinhoAndClean()">Aplicar Máscara (AND)</button>
+            <button class="btn-clean secondary" onclick="patinhoAddClean()">Somar (ADD)</button>
+            <button class="btn-clean secondary" onclick="patinhoSubClean()">Subtrair (SUB)</button>
+            <button class="btn-clean secondary" onclick="patinhoShlClean()">Deslocar Bits (SHL x2)</button>
+            <button class="btn-clean secondary" onclick="patinhoAndClean()">Máscara AND</button>
+            <button class="btn-clean secondary" onclick="patinhoOrClean()">Máscara OR</button>
             <button class="btn-clean secondary" onclick="patinhoResetClean()">Zerar Console</button>
           </div>
         </div>
@@ -3523,11 +3558,15 @@
           <div class="app-header-clean">
             <span class="app-tag">Simulador Prático: Terminal Retrô Brasileiro - Console BASIC Prológica CP-500 / TK90X (1982)</span>
             <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(1)">Prog 1: Loop Brasil 1982</button>
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(2)">Prog 2: Inflação &amp; Cruzeiros</button>
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(3)">Prog 3: Gráfico Barras ASCII</button>
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(4)">Prog 4: Fatorial em BASIC</button>
-              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="toggleCrtPhosphor()">Alternar Fósforo (Verde / Âmbar)</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(1)">1. Loop Brasil 1982</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(2)">2. Inflação &amp; Cruzeiros</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(3)">3. Barras ASCII</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(4)">4. Fatorial</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(5)">5. Jogo de Adivinhação</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(6)">6. Tabuada do 7</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(7)">7. Arte Gráfica ASCII</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(8)">8. Moedas (1985-1994)</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="toggleCrtPhosphor()">Fósforo (Verde / Âmbar)</button>
               <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="clearCrtTerminal()">CLS (Limpar)</button>
             </div>
           </div>
@@ -3732,12 +3771,9 @@ READY
   </div><!-- Fim Presentation Container -->
 
 
-  <script>
-    
-
-    
+    <script>
     // =========================================================================
-    // 2. SIMULADOR 1: SOROBAN BI-QUINÁRIO COM FÍSICA REALISTA
+    // 1. SIMULADOR: SOROBAN BI-QUINÁRIO COM FÍSICA E EXEMPLOS DIDÁTICOS
     // =========================================================================
     const sorobanColState = [
       { upper: 0, lower: 0 }, // 0: unidades
@@ -3800,10 +3836,17 @@ READY
         sorobanColState[c].upper = 0;
         sorobanColState[c].lower = 0;
       }
+      for (let i = 1; i <= 7; i++) {
+        const b = document.getElementById(`btn-soro-${i}`);
+        if (b) b.className = 'btn-clean secondary';
+      }
+      const guide = document.getElementById('soroban-calc-guide');
+      if (guide) guide.innerHTML = '<strong>Ábaco Zerado:</strong> Todas as contas afastadas da barra neutra.';
       updateSorobanBoardUI();
     }
 
-    function presetSorobanYear(val) {
+    function presetSorobanYear(val, btnIdx) {
+      clearSorobanBoard();
       const v = Math.min(99999, Math.max(0, parseInt(val) || 0));
       const s = String(v).padStart(5, '0');
       for (let c = 0; c < 5; c++) {
@@ -3811,11 +3854,47 @@ READY
         sorobanColState[c].upper = d >= 5 ? 1 : 0;
         sorobanColState[c].lower = d % 5;
       }
+      if (btnIdx) {
+        const b = document.getElementById(`btn-soro-${btnIdx}`);
+        if (b) b.className = 'btn-clean active';
+      }
+      const guide = document.getElementById('soroban-calc-guide');
+      if (guide) guide.innerHTML = `<strong>Valor Definido: ${v.toLocaleString('pt-BR')}</strong> configurado nas hastes bi-quinárias.`;
       updateSorobanBoardUI();
     }
 
+    function demoSorobanMath(a, b) {
+      clearSorobanBoard();
+      const btnId = a === 2 ? 'btn-soro-1' : 'btn-soro-2';
+      const bEl = document.getElementById(btnId);
+      if (bEl) bEl.className = 'btn-clean active';
+
+      const guide = document.getElementById('soroban-calc-guide');
+      if (guide) guide.innerHTML = `<strong>Passo 1:</strong> Carregando primeira parcela (${a})...`;
+
+      const sA = String(a).padStart(5, '0');
+      for (let c = 0; c < 5; c++) {
+        const d = parseInt(sA[4 - c]);
+        sorobanColState[c].upper = d >= 5 ? 1 : 0;
+        sorobanColState[c].lower = d % 5;
+      }
+      updateSorobanBoardUI();
+
+      setTimeout(() => {
+        const sum = a + b;
+        const sSum = String(sum).padStart(5, '0');
+        for (let c = 0; c < 5; c++) {
+          const d = parseInt(sSum[4 - c]);
+          sorobanColState[c].upper = d >= 5 ? 1 : 0;
+          sorobanColState[c].lower = d % 5;
+        }
+        updateSorobanBoardUI();
+        if (guide) guide.innerHTML = `<strong>Passo 2:</strong> Somou +${b}. Resultado no ábaco: <strong>${a} + ${b} = ${sum}</strong>!`;
+      }, 1000);
+    }
+
     // =========================================================================
-    // SIMULADOR: MECANISMO DE ANTICÍTERA (~150 a.C.)
+    // 2. SIMULADOR: MECANISMO DE ANTICÍTERA (~150 a.C.)
     // =========================================================================
     let antiCurrentDay = 0;
     let antiAnimTimer = null;
@@ -3837,32 +3916,25 @@ READY
 
     function renderAntikythera() {
       const day = antiCurrentDay;
-      // 1. Sol: 360 graus por ano egípcio (365,25 dias)
       const sunAngle = (day / 365.25) * 360;
       const sunDegInYear = (sunAngle % 360 + 360) % 360;
       const signIdx = Math.floor(sunDegInYear / 30);
       const sign = zodiacSigns[signIdx] || zodiacSigns[0];
 
-      // 2. Lua: órbita sideral de ~27,32 dias e sinódica de 29,53 dias
       const moonAngle = (day / 27.321661) * 360;
       const synodicDay = (day % 29.53059 + 29.53059) % 29.53059;
       const moonIllumRatio = 0.5 * (1 - Math.cos((synodicDay / 29.53059) * 2 * Math.PI));
 
-      // 3. Ciclo Metônico: 19 anos solares = 235 meses lunares
       const metonicMonth = Math.floor((day / (19 * 365.25)) * 235) % 235 + 1;
       const olympiadYear = (Math.floor(day / 365.25) % 4) + 1;
-
-      // 4. Ciclo de Saros: 223 meses de eclipses
       const sarosMonth = Math.floor((day / (18.03 * 365.25)) * 223) % 223 + 1;
 
-      // Animação das engrenagens SVG
       const sunGear = document.getElementById('anti-gear-sun');
       if (sunGear) sunGear.style.transform = `rotate(${sunAngle}deg)`;
 
       const moonGear = document.getElementById('anti-gear-moon');
       if (moonGear) moonGear.style.transform = `rotate(${moonAngle}deg)`;
 
-      // Atualização dos Mostradores
       const degEl = document.getElementById('anti-sun-deg');
       if (degEl) degEl.textContent = `${Math.round(sunDegInYear)}°`;
 
@@ -3872,7 +3944,6 @@ READY
       const dayEl = document.getElementById('anti-solar-day');
       if (dayEl) dayEl.textContent = `Dia ${Math.round(day % 365.25)} do ano solar`;
 
-      // Esfera Lunar
       const phaseTxt = document.getElementById('anti-moon-phase-txt');
       let phaseName = 'Lua Nova';
       if (synodicDay > 1.5 && synodicDay < 6.5) phaseName = 'Lua Crescente';
@@ -3893,33 +3964,28 @@ READY
         moonLight.style.right = `${100 - leftPercent}%`;
       }
 
-      // Meton & Olimpíadas
       const metonEl = document.getElementById('anti-meton-txt');
       if (metonEl) metonEl.textContent = `Mês ${metonicMonth} de 235`;
 
       const olymEl = document.getElementById('anti-olympiad-txt');
       if (olymEl) olymEl.textContent = `Jogos Pan-Helênicos: Ano ${olympiadYear} do ciclo de 4 anos`;
 
-      // Saros
       const sarosEl = document.getElementById('anti-saros-txt');
       if (sarosEl) sarosEl.textContent = `Mês de Saros ${sarosMonth} de 223`;
 
-      // Detecção de Alinhamento de Eclipses (Nós Lunares a cada ~173 dias)
-      const nodalPeriod = 173.31; // Meio ano de eclipse
+      const nodalPeriod = 173.31;
       const distFromNode = Math.abs((day % nodalPeriod) - (nodalPeriod / 2));
       const alertBox = document.getElementById('anti-eclipse-alert');
       const alertMsg = document.getElementById('anti-eclipse-msg');
       const probEl = document.getElementById('anti-eclipse-prob');
 
       if (distFromNode < 7 && Math.abs(synodicDay - 14.8) < 2) {
-        // Lua Cheia no nó -> Eclipse Lunar!
         if (alertBox) alertBox.className = 'eclipse-alert-box active';
-        if (alertMsg) alertMsg.textContent = 'ALERTA HISTÓRICO: GLIFO ETA ATIVO - ECLIPSE LUNAR PREVISTO!';
+        if (alertMsg) alertMsg.textContent = 'ALERTA HISTÓRICO: GLIFO ETA ATIVO: ECLIPSE LUNAR PREVISTO!';
         if (probEl) probEl.textContent = 'Alinhamento Nodal Exato: Sombra da Terra';
       } else if (distFromNode < 7 && (synodicDay < 2 || synodicDay > 27.5)) {
-        // Lua Nova no nó -> Eclipse Solar!
         if (alertBox) alertBox.className = 'eclipse-alert-box active';
-        if (alertMsg) alertMsg.textContent = 'ALERTA HISTÓRICO: GLIFO SIGMA ATIVO - ECLIPSE SOLAR PREVISTO!';
+        if (alertMsg) alertMsg.textContent = 'ALERTA HISTÓRICO: GLIFO SIGMA ATIVO: ECLIPSE SOLAR PREVISTO!';
         if (probEl) probEl.textContent = 'Alinhamento Nodal Exato: Ocultação do Sol';
       } else {
         if (alertBox) alertBox.className = 'eclipse-alert-box';
@@ -3965,434 +4031,8 @@ READY
     }
 
     // =========================================================================
-    // SIMULADOR: FITA DE 35MM E RELÉS DO ZUSE Z3 (1941)
+    // 3. SIMULADOR: PASCALINA DE 4 DÍGITOS COM EFEITO DOMINÓ (1642)
     // =========================================================================
-    let zuseCurrentStep = 0;
-    let zuseRunTimer = null;
-
-    const zusePrograms = {
-      1: {
-        name: 'Cálculo de Carga de Asa (3.5 × 2.0 = 7.0)',
-        steps: [
-          { op: 'Li', arg: '3.5', holes: [1,0,0,1, 0,1,1,0], r1: 3.5, r2: 0, acc: 3.5, desc: 'Li R1, 3.5 (Ler entrada do sensor para o Registrador 1)', relays: [1,0,0,1] },
-          { op: 'Li', arg: '2.0', holes: [1,0,0,1, 0,0,1,0], r1: 3.5, r2: 2.0, acc: 2.0, desc: 'Li R2, 2.0 (Ler multiplicador para o Registrador 2)', relays: [1,0,0,1] },
-          { op: '*',  arg: 'R1,R2', holes: [0,1,1,0, 1,1,0,0], r1: 3.5, r2: 2.0, acc: 7.0, desc: 'Mul R1, R2 (Comutação em cascata da mantissa)', relays: [1,1,1,1] },
-          { op: 'Pr', arg: '7.0', holes: [1,1,1,1, 0,0,0,0], r1: 3.5, r2: 2.0, acc: 7.0, desc: 'Pr ACC (Exibir resultado: Carga de Asa = 7.0 kgf/m²)', relays: [0,0,0,1] }
-        ]
-      },
-      2: {
-        name: 'Raiz Quadrada de Área (√16 = 4.0)',
-        steps: [
-          { op: 'Li', arg: '16.0', holes: [1,0,0,1, 1,0,0,0], r1: 16.0, r2: 0, acc: 16.0, desc: 'Li R1, 16.0 (Carregar área da asa no Registrador 1)', relays: [1,0,1,0] },
-          { op: 'Qm', arg: 'R1',   holes: [0,0,1,1, 1,0,1,0], r1: 16.0, r2: 0, acc: 4.0, desc: 'Qm R1 (Hardware de Raiz Quadrada por subtrações ímpares)', relays: [1,1,0,1] },
-          { op: 'Pr', arg: '4.0',  holes: [1,1,1,1, 0,0,0,0], r1: 16.0, r2: 0, acc: 4.0, desc: 'Pr ACC (Resultado calculado: Raiz = 4.0)', relays: [0,0,0,1] }
-        ]
-      },
-      3: {
-        name: 'Soma de Vetores de Vibração (12.5 + 7.25 = 19.75)',
-        steps: [
-          { op: 'Li', arg: '12.5', holes: [1,0,0,1, 0,1,0,1], r1: 12.5, r2: 0, acc: 12.5, desc: 'Li R1, 12.5 (Carregar componente de flutter 1)', relays: [1,0,0,1] },
-          { op: 'Li', arg: '7.25', holes: [1,0,0,1, 0,0,1,1], r1: 12.5, r2: 7.25, acc: 7.25, desc: 'Li R2, 7.25 (Carregar componente de flutter 2)', relays: [1,0,0,1] },
-          { op: '+',  arg: 'R1,R2', holes: [0,1,0,0, 1,0,0,1], r1: 12.5, r2: 7.25, acc: 19.75, desc: 'Add R1, R2 (Alinhar expoentes e somar mantissas)', relays: [1,1,1,1] },
-          { op: 'Pr', arg: '19.75', holes: [1,1,1,1, 0,0,0,0], r1: 12.5, r2: 7.25, acc: 19.75, desc: 'Pr ACC (Vibração combinada = 19.75 Hz)', relays: [0,0,0,1] }
-        ]
-      }
-    };
-
-    let zuseActiveProg = zusePrograms[1];
-
-    function renderZuseTape() {
-      const container = document.getElementById('zuse-tape-strip');
-      if (!container) return;
-      container.innerHTML = '';
-
-      zuseActiveProg.steps.forEach((step, idx) => {
-        const block = document.createElement('div');
-        block.className = 'zuse-tape-block' + (idx === zuseCurrentStep ? ' current' : '');
-
-        let holesHtml = '';
-        step.holes.forEach(h => {
-          holesHtml += `<div class="zuse-hole ${h ? 'punched' : ''}"></div>`;
-        });
-
-        block.innerHTML = `
-          <div class="zuse-tape-sprockets"><div class="zuse-sprocket"></div><div class="zuse-sprocket"></div></div>
-          <div style="font-weight: 700; text-align: center; color: #ffffff;">${step.op}</div>
-          <div class="zuse-tape-holes">${holesHtml}</div>
-          <div style="font-size: 0.65rem; text-align: center;">${step.arg}</div>
-          <div class="zuse-tape-sprockets"><div class="zuse-sprocket"></div><div class="zuse-sprocket"></div></div>
-        `;
-        container.appendChild(block);
-      });
-
-      // Rola fita para alinhar o passo atual no centro
-      const offset = (zuseCurrentStep * 82);
-      container.style.transform = `translateX(calc(50% - 35px - ${offset}px))`;
-
-      // Atualiza relés e registradores
-      const step = zuseActiveProg.steps[zuseCurrentStep] || zuseActiveProg.steps[0];
-      for (let r = 1; r <= 4; r++) {
-        const arm = document.getElementById(`zuse-arm-${r}`);
-        const st = document.getElementById(`zuse-state-${r}`);
-        const isActive = step.relays[r - 1] === 1;
-        if (arm) {
-          if (isActive) arm.classList.add('closed');
-          else arm.classList.remove('closed');
-        }
-        if (st) {
-          st.textContent = isActive ? 'FECHADO [1]' : 'ABERTO [0]';
-          if (isActive) st.classList.add('active');
-          else st.classList.remove('active');
-        }
-      }
-
-      const r1El = document.getElementById('zuse-reg-r1');
-      if (r1El) r1El.textContent = `+${step.r1.toFixed(2)}`;
-
-      const r2El = document.getElementById('zuse-reg-r2');
-      if (r2El) r2El.textContent = `+${step.r2.toFixed(2)}`;
-
-      const accEl = document.getElementById('zuse-reg-acc');
-      if (accEl) accEl.textContent = step.acc.toFixed(2);
-
-      const descEl = document.getElementById('zuse-inst-desc');
-      if (descEl) descEl.textContent = step.desc;
-    }
-
-    function stepZuseTape() {
-      if (zuseCurrentStep < zuseActiveProg.steps.length - 1) {
-        zuseCurrentStep++;
-      } else {
-        zuseCurrentStep = 0; // Loop na fita cinematográfica (conceito de Rojas)
-      }
-      renderZuseTape();
-    }
-
-    function resetZuseTape() {
-      zuseCurrentStep = 0;
-      if (zuseRunTimer) {
-        clearInterval(zuseRunTimer);
-        zuseRunTimer = null;
-        const btn = document.getElementById('zuse-run-btn');
-        if (btn) btn.textContent = 'Executar Fita Completa';
-      }
-      renderZuseTape();
-    }
-
-    function loadZuseProgram(pNum) {
-      zuseActiveProg = zusePrograms[pNum] || zusePrograms[1];
-      resetZuseTape();
-    }
-
-    function toggleZuseRun() {
-      const btn = document.getElementById('zuse-run-btn');
-      if (zuseRunTimer) {
-        clearInterval(zuseRunTimer);
-        zuseRunTimer = null;
-        if (btn) btn.textContent = 'Executar Fita Completa';
-      } else {
-        if (btn) btn.textContent = 'Pausar';
-        zuseRunTimer = setInterval(() => {
-          if (zuseCurrentStep >= zuseActiveProg.steps.length - 1) {
-            zuseCurrentStep = 0;
-          } else {
-            zuseCurrentStep++;
-          }
-          renderZuseTape();
-        }, 500);
-      }
-    }
-
-    // =========================================================================
-    // SIMULADOR: COLOSSUS MK II & CIFRA LORENZ SZ42
-    // =========================================================================
-    let colossusScanTimer = null;
-    let colossusCharIdx = 0;
-
-    const colossusIntercepts = {
-      1: {
-        title: 'Normandia (Heeresgruppe B)',
-        cipher: '9KL#FXV29 ZQMPB#T 4VRKLA 88VMC',
-        plain:  'BERICHT HEERESGRUPPE MITTE NORMANDIE BEFEHL'
-      },
-      2: {
-        title: 'Berlim (OKW Wettervorhersage)',
-        cipher: 'XPT78# LKQ44 MV99Z WA12P',
-        plain:  'WETTERVORHERSAGE BERLIN KANALSCHLACHT OKW'
-      }
-    };
-
-    let colossusActive = colossusIntercepts[1];
-
-    function buildColossusTubes() {
-      const rack = document.getElementById('colossus-tube-rack');
-      if (!rack) return;
-      rack.innerHTML = '';
-      for (let i = 0; i < 16; i++) {
-        const tube = document.createElement('div');
-        tube.className = 'valve-tube';
-        tube.id = `col-tube-${i}`;
-        tube.innerHTML = '<div class="valve-tube-filament"></div>';
-        rack.appendChild(tube);
-      }
-    }
-
-    function renderColossusFrame() {
-      const rawEl = document.getElementById('colossus-raw-stream');
-      const plainEl = document.getElementById('colossus-plain-stream');
-      const scoreEl = document.getElementById('colossus-score');
-      const jobStatus = document.getElementById('colossus-job-status');
-
-      if (rawEl) rawEl.textContent = colossusActive.cipher.substring(0, Math.max(2, colossusCharIdx + 1));
-      if (plainEl) {
-        if (colossusCharIdx === 0) {
-          plainEl.textContent = 'Aguardando varredura óptica...';
-        } else {
-          plainEl.textContent = colossusActive.plain.substring(0, colossusCharIdx);
-        }
-      }
-
-      const score = Math.min(42, Math.round((colossusCharIdx / colossusActive.plain.length) * 42));
-      if (scoreEl) scoreEl.textContent = score;
-
-      // Animação das válvulas
-      for (let i = 0; i < 16; i++) {
-        const t = document.getElementById(`col-tube-${i}`);
-        if (t) {
-          if (Math.random() > 0.45 && colossusScanTimer) t.classList.add('active');
-          else t.classList.remove('active');
-        }
-      }
-
-      // Rotação dos rotores Lorenz
-      const c1 = (colossusCharIdx * 3) % 41 + 1;
-      const c2 = (colossusCharIdx * 5) % 31 + 1;
-      const p1 = (colossusCharIdx * 2) % 29 + 1;
-      const p2 = (colossusCharIdx * 7) % 23 + 1;
-
-      const w1 = document.getElementById('wheel-chi1');
-      if (w1) w1.textContent = `Rotor χ₁: ${String(c1).padStart(2, '0')}`;
-      const w2 = document.getElementById('wheel-chi2');
-      if (w2) w2.textContent = `Rotor χ₂: ${String(c2).padStart(2, '0')}`;
-      const w3 = document.getElementById('wheel-psi1');
-      if (w3) w3.textContent = `Rotor ψ₁: ${String(p1).padStart(2, '0')}`;
-      const w4 = document.getElementById('wheel-psi2');
-      if (w4) w4.textContent = `Rotor ψ₂: ${String(p2).padStart(2, '0')}`;
-
-      if (colossusCharIdx >= colossusActive.plain.length) {
-        if (jobStatus) {
-          jobStatus.textContent = 'CHAVE QUEBRADA (MENSAGEM DECIFRADA)';
-          jobStatus.style.color = '#4ade80';
-        }
-        clearInterval(colossusScanTimer);
-        colossusScanTimer = null;
-        const btn = document.getElementById('colossus-run-btn');
-        if (btn) btn.textContent = 'Varredura Concluída';
-      }
-    }
-
-    function startColossusScan() {
-      const btn = document.getElementById('colossus-run-btn');
-      const jobStatus = document.getElementById('colossus-job-status');
-      const speedStatus = document.getElementById('colossus-tape-speed');
-
-      if (colossusScanTimer) {
-        clearInterval(colossusScanTimer);
-        colossusScanTimer = null;
-        if (btn) btn.textContent = 'Iniciar Varredura 5.000 cps';
-        if (speedStatus) speedStatus.textContent = 'PARADA';
-        return;
-      }
-
-      if (colossusCharIdx >= colossusActive.plain.length) {
-        colossusCharIdx = 0;
-      }
-
-      if (btn) btn.textContent = 'Pausar Varredura';
-      if (jobStatus) {
-        jobStatus.textContent = 'VARRENDO 5.000 CPS (CORRELACIONANDO)';
-        jobStatus.style.color = '#facc15';
-      }
-      if (speedStatus) speedStatus.textContent = 'EM MOVIMENTO (48 KM/H)';
-
-      colossusScanTimer = setInterval(() => {
-        colossusCharIdx++;
-        renderColossusFrame();
-      }, 120);
-    }
-
-    function stepColossusChar() {
-      if (colossusCharIdx < colossusActive.plain.length) {
-        colossusCharIdx++;
-        renderColossusFrame();
-      }
-    }
-
-    function resetColossusScanner() {
-      if (colossusScanTimer) {
-        clearInterval(colossusScanTimer);
-        colossusScanTimer = null;
-      }
-      colossusCharIdx = 0;
-      const btn = document.getElementById('colossus-run-btn');
-      if (btn) btn.textContent = 'Iniciar Varredura 5.000 cps';
-      const jobStatus = document.getElementById('colossus-job-status');
-      if (jobStatus) {
-        jobStatus.textContent = 'AGUARDANDO VARREDURA';
-        jobStatus.style.color = '#facc15';
-      }
-      const speedStatus = document.getElementById('colossus-tape-speed');
-      if (speedStatus) speedStatus.textContent = 'PARADA';
-      renderColossusFrame();
-    }
-
-    function loadColossusIntercept(idx) {
-      colossusActive = colossusIntercepts[idx] || colossusIntercepts[1];
-      resetColossusScanner();
-    }
-
-    // =========================================================================
-    // SIMULADOR: TERMINAL RETRÔ BRASILEIRO (PROLÓGICA CP-500 / TK90X BASIC)
-    // =========================================================================
-    let crtIsAmber = false;
-    let crtCurrentProgram = [
-      '10 PRINT "PROLOGICA CP-500 - FABRICADO NO BRASIL (1982)"',
-      '20 FOR I = 1 TO 3',
-      '30 PRINT "RESERVA DE MERCADO: INDUSTRIA NACIONAL"',
-      '40 NEXT I',
-      '50 PRINT "OK"'
-    ];
-
-    function toggleCrtPhosphor() {
-      const scr = document.getElementById('crt-screen');
-      if (!scr) return;
-      crtIsAmber = !crtIsAmber;
-      if (crtIsAmber) {
-        scr.classList.remove('green-ph');
-        scr.classList.add('amber-ph');
-      } else {
-        scr.classList.remove('amber-ph');
-        scr.classList.add('green-ph');
-      }
-    }
-
-    function clearCrtTerminal() {
-      const out = document.getElementById('crt-output');
-      if (out) out.innerHTML = 'READY<br>&gt; <span class="crt-cursor"></span>';
-    }
-
-    function appendCrtOutput(text) {
-      const out = document.getElementById('crt-output');
-      if (!out) return;
-      const clean = out.innerHTML.replace('<span class="crt-cursor"></span>', '');
-      out.innerHTML = clean + '<br>' + text + '<br>&gt; <span class="crt-cursor"></span>';
-      out.scrollTop = out.scrollHeight;
-    }
-
-    function runCrtCommand() {
-      const inp = document.getElementById('crt-cmd-input');
-      if (!inp) return;
-      const cmd = inp.value.trim();
-      inp.value = '';
-      if (!cmd) return;
-
-      appendCrtOutput(cmd);
-
-      const upper = cmd.toUpperCase();
-      if (upper === 'CLS') {
-        clearCrtTerminal();
-      } else if (upper === 'RUN') {
-        executeBasicLines(crtCurrentProgram);
-      } else if (upper === 'LIST') {
-        appendCrtOutput(crtCurrentProgram.join('<br>'));
-      } else if (upper.startsWith('PRINT ')) {
-        const expr = cmd.substring(6).trim();
-        try {
-          if (expr.startsWith('"') && expr.endsWith('"')) {
-            appendCrtOutput(expr.slice(1, -1));
-          } else {
-            // Avaliação matemática simples
-            const sanitized = expr.replace(/[^0-9+\-*/().]/g, '');
-            const val = Function('"use strict";return (' + sanitized + ')')();
-            appendCrtOutput(String(val));
-          }
-        } catch (e) {
-          appendCrtOutput('?SYNTAX ERROR');
-        }
-      } else if (/^\d+/.test(upper)) {
-        // Linha numerada BASIC adicionada ao programa
-        crtCurrentProgram.push(cmd);
-        appendCrtOutput('READY');
-      } else {
-        appendCrtOutput('?SYNTAX ERROR');
-      }
-    }
-
-    function executeBasicLines(lines) {
-      let delay = 100;
-      lines.forEach((l, idx) => {
-        setTimeout(() => {
-          if (l.includes('PRINT "')) {
-            const m = l.match(/PRINT\s+"([^"]+)"/);
-            if (m) appendCrtOutput(m[1]);
-          } else if (l.includes('PRINT ')) {
-            const m = l.match(/PRINT\s+(.*)/);
-            if (m) appendCrtOutput(m[1]);
-          }
-        }, idx * 180);
-      });
-      setTimeout(() => {
-        appendCrtOutput('READY');
-      }, lines.length * 180 + 100);
-    }
-
-    function loadRetroBasicProg(pNum) {
-      if (pNum === 1) {
-        crtCurrentProgram = [
-          '10 PRINT "PROLOGICA CP-500 - FABRICADO NO BRASIL (1982)"',
-          '20 FOR I = 1 TO 3',
-          '30 PRINT "RESERVA DE MERCADO: INDUSTRIA NACIONAL"',
-          '40 NEXT I',
-          '50 PRINT "OK"'
-        ];
-        appendCrtOutput('CARREGADO: PROGRAMA 1 (LOOP BRASIL 1982)');
-        executeBasicLines(crtCurrentProgram);
-      } else if (pNum === 2) {
-        crtCurrentProgram = [
-          '10 REM REFORMA MONETARIA DOS ANOS 80',
-          '20 PRINT "VALOR EM CRUZEIROS (1985): Cr$ 1.000.000"',
-          '30 PRINT "CORTE DE TRES ZEROS (PLANO CRUZADO 1986)..."',
-          '40 PRINT "NOVO VALOR: Cz$ 1.000"',
-          '50 PRINT "CORRECAO AUTOMATICA CONCLUIDA"'
-        ];
-        appendCrtOutput('CARREGADO: PROGRAMA 2 (INFLACAO & CRUZEIROS)');
-        executeBasicLines(crtCurrentProgram);
-      } else if (pNum === 3) {
-        crtCurrentProgram = [
-          '10 REM GRAFICO DE BARRAS ASCII NA TELA CRT',
-          '20 PRINT "COMPUTADORES NO BRASIL (1972-1985):"',
-          '30 PRINT "1972 [PATINHO] : ## (1)"',
-          '40 PRINT "1977 [COBRA]   : ######## (400)"',
-          '50 PRINT "1985 [MICROS]  : #################### (120.000)"'
-        ];
-        appendCrtOutput('CARREGADO: PROGRAMA 3 (GRAFICO DE BARRAS ASCII)');
-        executeBasicLines(crtCurrentProgram);
-      } else {
-        crtCurrentProgram = [
-          '10 REM CALCULO DE FATORIAL EM BASIC',
-          '20 PRINT "FATORIAL DE 5:"',
-          '30 PRINT "5 * 4 * 3 * 2 * 1 = 120"',
-          '40 PRINT "CALCULADO EM 4 CICLOS DE CLOCK"'
-        ];
-        appendCrtOutput('CARREGADO: PROGRAMA 4 (FATORIAL EM BASIC)');
-        executeBasicLines(crtCurrentProgram);
-      }
-    }
-
-
-    
-
-    // 3. SIMULADOR 2: PASCALINA DE 4 DÍGITOS COM EFEITO DOMINÓ
     let pasVal4 = 0;
 
     function renderPascaline4() {
@@ -4401,11 +4041,18 @@ READY
       const d = Math.floor((pasVal4 % 100) / 10);
       const u = pasVal4 % 10;
 
-      document.getElementById('dial-m').textContent = m;
-      document.getElementById('dial-c').textContent = c;
-      document.getElementById('dial-d').textContent = d;
-      document.getElementById('dial-u').textContent = u;
-      document.getElementById('pascaline-feedback-readout').textContent = `Total Acumulado: ${pasVal4}`;
+      const dm = document.getElementById('dial-m');
+      const dc = document.getElementById('dial-c');
+      const dd = document.getElementById('dial-d');
+      const du = document.getElementById('dial-u');
+
+      if (dm) dm.textContent = m;
+      if (dc) dc.textContent = c;
+      if (dd) dd.textContent = d;
+      if (du) du.textContent = u;
+
+      const fb = document.getElementById('pascaline-feedback-readout');
+      if (fb) fb.textContent = `Total Acumulado: ${pasVal4}`;
     }
 
     function addPascalineDirect(n) {
@@ -4416,30 +4063,31 @@ READY
     function presetPascaline999() {
       pasVal4 = 999;
       renderPascaline4();
-      
+
       const dialU = document.getElementById('dial-u');
       const dialD = document.getElementById('dial-d');
       const dialC = document.getElementById('dial-c');
       const dialM = document.getElementById('dial-m');
+      const fb = document.getElementById('pascaline-feedback-readout');
 
-      document.getElementById('pascaline-feedback-readout').innerHTML = '<span style="color: #b45309;">Preparado em 999! Iniciando cascata suave do sautoir (+1)...</span>';
+      if (fb) fb.innerHTML = '<span style="color: #b45309;">Preparado em 999! Disparando transferência gravítica do sautoir (+1)...</span>';
 
       setTimeout(() => {
         pasVal4 = 1000;
-        dialU.classList.add('cascade-glow');
+        if (dialU) dialU.classList.add('cascade-glow');
         renderPascaline4();
         setTimeout(() => {
-          dialU.classList.remove('cascade-glow');
-          dialD.classList.add('cascade-glow');
+          if (dialU) dialU.classList.remove('cascade-glow');
+          if (dialD) dialD.classList.add('cascade-glow');
           setTimeout(() => {
-            dialD.classList.remove('cascade-glow');
-            dialC.classList.add('cascade-glow');
+            if (dialD) dialD.classList.remove('cascade-glow');
+            if (dialC) dialC.classList.add('cascade-glow');
             setTimeout(() => {
-              dialC.classList.remove('cascade-glow');
-              dialM.classList.add('cascade-glow');
+              if (dialC) dialC.classList.remove('cascade-glow');
+              if (dialM) dialM.classList.add('cascade-glow');
               setTimeout(() => {
-                dialM.classList.remove('cascade-glow');
-                document.getElementById('pascaline-feedback-readout').innerHTML = '<span style="color: #15803d;">Efeito dominó concluído: 999 + 1 = 1000 transferido pela gravidade!</span>';
+                if (dialM) dialM.classList.remove('cascade-glow');
+                if (fb) fb.innerHTML = '<span style="color: #15803d;">Efeito dominó concluído: 999 + 1 = 1000 transferido pela gravidade!</span>';
               }, 350);
             }, 300);
           }, 300);
@@ -4447,19 +4095,27 @@ READY
       }, 600);
     }
 
-    function resetPascalineClean() {
+    function resetPascaline4() {
       pasVal4 = 0;
       renderPascaline4();
+      const fb = document.getElementById('pascaline-feedback-readout');
+      if (fb) fb.textContent = 'Pascalina zerada. Gire os discos ou use os botões acima.';
     }
 
-    // 4. SIMULADOR 3: MÁQUINA DE TURING DE LABORATÓRIO (6 ALGORITMOS + VELOCIDADE)
+    function resetPascalineClean() {
+      resetPascaline4();
+    }
+
+    // =========================================================================
+    // 4. SIMULADOR: MÁQUINA DE TURING (1936) - 10 ALGORITMOS DIDÁTICOS
+    // =========================================================================
     let currentTuringAlgo = 'inc';
     let tTape = ['1', '0', '1', '1'];
     let tHead = 0;
     let tState = 'q_scan';
     let tStepCounter = 0;
     let tAutoInterval = null;
-    let tSpeed = 800; // Padrão: Lentinho e suave!
+    let tSpeed = 550; // Velocidade confortável fixa
 
     const tStrip = document.getElementById('turing-tape-strip');
     const tBadge = document.getElementById('turing-head-badge');
@@ -4468,36 +4124,33 @@ READY
     const tActionDisplay = document.getElementById('turing-action-val');
     const tDecDisplay = document.getElementById('turing-dec-val');
 
-    function setTuringSpeed(ms) {
-      tSpeed = ms;
-      document.getElementById('spd-slow').className = ms === 800 ? 'speed-btn active' : 'speed-btn';
-      document.getElementById('spd-med').className = ms === 400 ? 'speed-btn active' : 'speed-btn';
-      document.getElementById('spd-fast').className = ms === 150 ? 'speed-btn active' : 'speed-btn';
-      if (tAutoInterval) {
-        runTuringLab();
-      }
-    }
+    const turingAlgoKeys = ['inc', 'dup', 'not', 'dec', 'par', 'clr', 'binv', 'uadd', 'pal', 'bb'];
+    const turingKeyMap = {
+      'inc': 'btn-t-inc',
+      'dup': 'btn-t-dup',
+      'not': 'btn-t-not',
+      'dec': 'btn-t-dec',
+      'parity': 'btn-t-par',
+      'clear': 'btn-t-clr',
+      'bool_inv': 'btn-t-binv',
+      'unary_add': 'btn-t-uadd',
+      'palindrome': 'btn-t-pal',
+      'busy_beaver': 'btn-t-bb'
+    };
 
     function loadTuringAlgorithm(algo) {
       clearInterval(tAutoInterval);
       tAutoInterval = null;
       currentTuringAlgo = algo;
 
-      ['inc', 'dup', 'not', 'dec', 'par', 'clr'].forEach(key => {
+      turingAlgoKeys.forEach(key => {
         const btn = document.getElementById(`btn-t-${key}`);
         if (btn) btn.className = 'btn-clean secondary';
       });
 
-      const map = {
-        'inc': 'btn-t-inc',
-        'dup': 'btn-t-dup',
-        'not': 'btn-t-not',
-        'dec': 'btn-t-dec',
-        'parity': 'btn-t-par',
-        'clear': 'btn-t-clr'
-      };
-      if (map[algo]) {
-        document.getElementById(map[algo]).className = 'btn-clean active';
+      if (turingKeyMap[algo]) {
+        const activeBtn = document.getElementById(turingKeyMap[algo]);
+        if (activeBtn) activeBtn.className = 'btn-clean active';
       }
 
       resetTuringLab();
@@ -4508,66 +4161,105 @@ READY
       tAutoInterval = null;
       tStepCounter = 0;
 
+      const descEl = document.getElementById('turing-lab-description');
+
       if (currentTuringAlgo === 'inc') {
         tTape = ['1', '0', '1', '1']; // 11
         tHead = 0;
         tState = 'q_scan';
-        document.getElementById('turing-lab-description').textContent = '1. Soma Binária (+1): a máquina varre até o bit menos significativo e propaga a soma com vai-um para a esquerda:';
-        tStateDisplay.textContent = 'q_scan (buscando fim do número)';
-        tRuleDisplay.textContent = 'δ(q_scan, 1) → (q_scan, 1, R)';
-        tActionDisplay.textContent = 'Lendo dígito 1, mantendo 1 e movendo cabeçote à direita.';
-        tDecDisplay.textContent = '11 decimal (binário 1011)';
+        if (descEl) descEl.textContent = '1. Soma Binária (+1): A máquina varre até o bit menos significativo à direita e propaga a soma com vai-um para a esquerda:';
+        if (tStateDisplay) tStateDisplay.textContent = 'q_scan (buscando fim do número)';
+        if (tRuleDisplay) tRuleDisplay.textContent = 'δ(q_scan, 1) → (q_scan, 1, R)';
+        if (tActionDisplay) tActionDisplay.textContent = 'Lendo dígito 1, mantendo 1 e movendo cabeçote à direita.';
+        if (tDecDisplay) tDecDisplay.textContent = '11 decimal (binário 1011)';
       } else if (currentTuringAlgo === 'dup') {
         tTape = ['1', '1', '1']; // 3
         tHead = 0;
         tState = 'q_dup_scan';
-        document.getElementById('turing-lab-description').textContent = '2. Função Duplicadora f(n)=2n: duplica a quantidade de 1s na fita através de estados intermediários:';
-        tStateDisplay.textContent = 'q_dup_scan (iniciando duplicação)';
-        tRuleDisplay.textContent = 'δ(q_dup_scan, 1) → (q_dup_copy, X, R)';
-        tActionDisplay.textContent = 'Marcando 1 com X para copiar para a direita.';
-        tDecDisplay.textContent = 'Entrada: 3 marcas unárias';
+        if (descEl) descEl.textContent = '2. Função Duplicadora f(n)=2n: Duplica a quantidade de 1s na fita copiando cada marca unária:';
+        if (tStateDisplay) tStateDisplay.textContent = 'q_dup_scan (iniciando duplicação)';
+        if (tRuleDisplay) tRuleDisplay.textContent = 'δ(q_dup_scan, 1) → (q_dup_copy, X, R)';
+        if (tActionDisplay) tActionDisplay.textContent = 'Marcando 1 com X para copiar para a direita.';
+        if (tDecDisplay) tDecDisplay.textContent = 'Entrada: 3 marcas unárias';
       } else if (currentTuringAlgo === 'not') {
-        tTape = ['1', '0', '1', '1', '0']; // NOT
+        tTape = ['1', '0', '1', '1', '0'];
         tHead = 0;
         tState = 'q_not';
-        document.getElementById('turing-lab-description').textContent = '3. Inversor NOT: a máquina lê cada bit, inverte (0 ↔ 1) e rebobina o cabeçote:';
-        tStateDisplay.textContent = 'q_not (invertendo símbolos)';
-        tRuleDisplay.textContent = 'δ(q_not, 1) → (q_not, 0, R)';
-        tActionDisplay.textContent = 'Invertendo 1 para 0 e avançando para a direita.';
-        tDecDisplay.textContent = '22 decimal (binário 10110)';
+        if (descEl) descEl.textContent = '3. Inversor NOT: A máquina lê cada bit, inverte (0 vira 1, 1 vira 0) e avança o cabeçote:';
+        if (tStateDisplay) tStateDisplay.textContent = 'q_not (invertendo símbolos)';
+        if (tRuleDisplay) tRuleDisplay.textContent = 'δ(q_not, 1) → (q_not, 0, R)';
+        if (tActionDisplay) tActionDisplay.textContent = 'Invertendo 1 para 0 e avançando para a direita.';
+        if (tDecDisplay) tDecDisplay.textContent = '22 decimal (binário 10110)';
       } else if (currentTuringAlgo === 'dec') {
         tTape = ['1', '1', '0', '0']; // 12
         tHead = 0;
         tState = 'q_dec_scan';
-        document.getElementById('turing-lab-description').textContent = '4. Subtração Binária (-1): decrementa o número binário propagando o empréstimo (borrow) para a esquerda:';
-        tStateDisplay.textContent = 'q_dec_scan (buscando fim do número)';
-        tRuleDisplay.textContent = 'δ(q_dec_scan, 1) → (q_dec_scan, 1, R)';
-        tActionDisplay.textContent = 'Varrendo até o bit menos significativo.';
-        tDecDisplay.textContent = '12 decimal (binário 1100)';
+        if (descEl) descEl.textContent = '4. Subtração Binária (-1): Decrementa o número propagando o empréstimo (borrow) para a esquerda:';
+        if (tStateDisplay) tStateDisplay.textContent = 'q_dec_scan (buscando fim do número)';
+        if (tRuleDisplay) tRuleDisplay.textContent = 'δ(q_dec_scan, 1) → (q_dec_scan, 1, R)';
+        if (tActionDisplay) tActionDisplay.textContent = 'Varrendo até o bit menos significativo.';
+        if (tDecDisplay) tDecDisplay.textContent = '12 decimal (binário 1100)';
       } else if (currentTuringAlgo === 'parity') {
         tTape = ['1', '0', '1', '1', '0', '1']; // 4 uns -> par
         tHead = 0;
         tState = 'q_even';
-        document.getElementById('turing-lab-description').textContent = '5. Verificador de Paridade: determina se a quantidade de 1s na palavra é par ou ímpar:';
-        tStateDisplay.textContent = 'q_even (início par)';
-        tRuleDisplay.textContent = 'δ(q_even, 1) → (q_odd, 1, R)';
-        tActionDisplay.textContent = 'Contando 1s na fita.';
-        tDecDisplay.textContent = 'Testando fita 101101 (4 uns)';
-      } else {
+        if (descEl) descEl.textContent = '5. Teste de Paridade: Analisa se a quantidade total de 1s na palavra é par ou ímpar:';
+        if (tStateDisplay) tStateDisplay.textContent = 'q_even (início par)';
+        if (tRuleDisplay) tRuleDisplay.textContent = 'δ(q_even, 1) → (q_odd, 1, R)';
+        if (tActionDisplay) tActionDisplay.textContent = 'Contando 1s na fita.';
+        if (tDecDisplay) tDecDisplay.textContent = 'Testando fita 101101 (4 uns)';
+      } else if (currentTuringAlgo === 'clear') {
         tTape = ['1', '1', '0', '1', '1'];
         tHead = 0;
         tState = 'q_clean';
-        document.getElementById('turing-lab-description').textContent = '6. Limpeza de Fita: zera sequencialmente todas as células até encontrar o delimitador:';
-        tStateDisplay.textContent = 'q_clean (limpando células)';
-        tRuleDisplay.textContent = 'δ(q_clean, 1) → (q_clean, 0, R)';
-        tActionDisplay.textContent = 'Substituindo valor por 0.';
-        tDecDisplay.textContent = 'Fita inicial com dados';
+        if (descEl) descEl.textContent = '6. Limpeza de Fita: Zera sequencialmente todas as células até concluir:';
+        if (tStateDisplay) tStateDisplay.textContent = 'q_clean (limpando células)';
+        if (tRuleDisplay) tRuleDisplay.textContent = 'δ(q_clean, 1) → (q_clean, 0, R)';
+        if (tActionDisplay) tActionDisplay.textContent = 'Substituindo valor por 0.';
+        if (tDecDisplay) tDecDisplay.textContent = 'Fita inicial com dados';
+      } else if (currentTuringAlgo === 'bool_inv') {
+        tTape = ['1', '0', '1', '0', '1'];
+        tHead = 0;
+        tState = 'q_bool';
+        if (descEl) descEl.textContent = '7. Inversor Booleano Alternado: Inverte cada bit da sequência alternada 10101 para 01010:';
+        if (tStateDisplay) tStateDisplay.textContent = 'q_bool (invertendo bits)';
+        if (tRuleDisplay) tRuleDisplay.textContent = 'δ(q_bool, bit) → (q_bool, !bit, R)';
+        if (tActionDisplay) tActionDisplay.textContent = 'Invertendo padrão alternado.';
+        if (tDecDisplay) tDecDisplay.textContent = 'Entrada: 10101 (21 decimal)';
+      } else if (currentTuringAlgo === 'unary_add') {
+        tTape = ['1', '1', '0', '1', '1', '1']; // 2 + 3
+        tHead = 0;
+        tState = 'q_find_sep';
+        if (descEl) descEl.textContent = '8. Adição Unária Didática (2 + 3 = 5): Junta dois blocos de 1s separados por 0 substituindo o 0 por 1 e apagando o último 1:';
+        if (tStateDisplay) tStateDisplay.textContent = 'q_find_sep (procurando separador 0)';
+        if (tRuleDisplay) tRuleDisplay.textContent = 'δ(q_find_sep, 1) → (q_find_sep, 1, R)';
+        if (tActionDisplay) tActionDisplay.textContent = 'Passando pelo bloco A (2 uns).';
+        if (tDecDisplay) tDecDisplay.textContent = 'Bloco A (2) + Bloco B (3)';
+      } else if (currentTuringAlgo === 'palindrome') {
+        tTape = ['1', '0', '1', '0', '1'];
+        tHead = 0;
+        tState = 'q_pal_scan';
+        if (descEl) descEl.textContent = '9. Teste de Palíndromo (Espelho): Verifica se a fita possui leitura simétrica da esquerda para a direita:';
+        if (tStateDisplay) tStateDisplay.textContent = 'q_pal_scan (iniciando checagem)';
+        if (tRuleDisplay) tRuleDisplay.textContent = 'δ(q_pal_scan, sym) → comparar pontas';
+        if (tActionDisplay) tActionDisplay.textContent = 'Comparando símbolo da ponta esquerda com a direita.';
+        if (tDecDisplay) tDecDisplay.textContent = 'Palavra: 10101';
+      } else if (currentTuringAlgo === 'busy_beaver') {
+        tTape = ['0', '0', '0', '0', '0', '0', '0'];
+        tHead = 3;
+        tState = 'q_bb_A';
+        if (descEl) descEl.textContent = '10. Castor Ocupado de 3 Estados (Busy Beaver): A máquina parte de uma fita vazia e grava o número máximo de 1s antes de parar:';
+        if (tStateDisplay) tStateDisplay.textContent = 'Estado A (iniciando rotina)';
+        if (tRuleDisplay) tRuleDisplay.textContent = 'δ(A, 0) → (B, 1, R)';
+        if (tActionDisplay) tActionDisplay.textContent = 'Escrevendo 1 na célula central e comutando para Estado B.';
+        if (tDecDisplay) tDecDisplay.textContent = 'Fita em branco inicial';
       }
 
       renderTuringLabStrip();
     }
 
     function renderTuringLabStrip() {
+      if (!tStrip) return;
       tStrip.innerHTML = '';
       tTape.forEach((sym, idx) => {
         const tile = document.createElement('div');
@@ -4575,7 +4267,7 @@ READY
         tile.textContent = sym;
         tStrip.appendChild(tile);
       });
-      tBadge.textContent = `CABEÇOTE (${tState})`;
+      if (tBadge) tBadge.textContent = `CABEÇOTE (${tState})`;
     }
 
     function stepTuringLab() {
@@ -4602,7 +4294,7 @@ READY
           if (bit === '1') {
             tTape[tHead] = '0';
             tRuleDisplay.textContent = `δ(q_carry, 1) → (q_carry, 0, L)`;
-            tActionDisplay.textContent = `1 + 1 = 0 com "vai-um" (carry): grava 0 e move o cabeçote para a esquerda.`;
+            tActionDisplay.textContent = '1 + 1 = 0 com "vai-um" (carry): grava 0 e move para a esquerda.';
             if (tHead > 0) {
               tHead--;
             } else {
@@ -4705,7 +4397,7 @@ READY
           tActionDisplay.innerHTML = `<span style="color: var(--accent-green-text);">Fim da fita alcançado! Paridade final: ${tState === 'q_par' ? 'PAR' : 'ÍMPAR'}</span>`;
           tHead = 0;
         }
-      } else {
+      } else if (currentTuringAlgo === 'clear') {
         if (tHead < tTape.length) {
           tTape[tHead] = '0';
           tRuleDisplay.textContent = 'δ(q_clean, bit) → (q_clean, 0, R)';
@@ -4717,6 +4409,85 @@ READY
           tStateDisplay.textContent = 'q_halt (fita limpa)';
           tActionDisplay.innerHTML = '<span style="color: var(--accent-green-text);">Toda a fita foi higienizada com zeros!</span>';
         }
+      } else if (currentTuringAlgo === 'bool_inv') {
+        if (tHead < tTape.length) {
+          const sym = tTape[tHead];
+          const inv = sym === '1' ? '0' : '1';
+          tTape[tHead] = inv;
+          tRuleDisplay.textContent = `δ(q_bool, ${sym}) → (q_bool, ${inv}, R)`;
+          tActionDisplay.textContent = `Alternando bit: ${sym} vira ${inv}.`;
+          tHead++;
+          if (tHead >= tTape.length) {
+            tState = 'q_halt';
+            tHead = 0;
+            tStateDisplay.textContent = 'q_halt (inversão alternada concluída)';
+            tActionDisplay.innerHTML = '<span style="color: var(--accent-green-text);">Padrão booleano invertido: 01010!</span>';
+          }
+        }
+        const bin = tTape.join('');
+        tDecDisplay.textContent = `Binário: ${bin}`;
+      } else if (currentTuringAlgo === 'unary_add') {
+        if (tState === 'q_find_sep') {
+          if (tTape[tHead] === '0') {
+            tTape[tHead] = '1';
+            tState = 'q_goto_end';
+            tRuleDisplay.textContent = 'δ(q_find_sep, 0) → (q_goto_end, 1, R)';
+            tActionDisplay.textContent = 'Separador 0 encontrado! Convertido em 1 para fundir os blocos.';
+            tHead++;
+          } else {
+            tHead++;
+          }
+        } else if (tState === 'q_goto_end') {
+          if (tHead < tTape.length - 1) {
+            tHead++;
+          } else {
+            tTape[tHead] = '0';
+            tState = 'q_halt';
+            tRuleDisplay.textContent = 'δ(q_goto_end, 1) → (q_halt, 0, Stay)';
+            tActionDisplay.innerHTML = '<span style="color: var(--accent-green-text);">Último 1 compensatório apagado! Resultado final: 2 + 3 = 5 marcas de 1 unárias!</span>';
+          }
+        }
+        const ones = tTape.filter(x => x === '1').length;
+        tDecDisplay.textContent = `Total unário acumulado: ${ones}`;
+      } else if (currentTuringAlgo === 'palindrome') {
+        if (tState === 'q_pal_scan') {
+          tTape[0] = 'X';
+          tTape[4] = 'X';
+          tState = 'q_pal_inner';
+          tRuleDisplay.textContent = 'δ(q_pal_scan, pontas) → (q_pal_inner, X, move)';
+          tActionDisplay.textContent = 'Pontas externas correspondem (1 = 1). Marcando com X.';
+          tHead = 1;
+        } else if (tState === 'q_pal_inner') {
+          tTape[1] = 'X';
+          tTape[3] = 'X';
+          tState = 'q_halt';
+          tRuleDisplay.textContent = 'δ(q_pal_inner, centro) → (q_halt, X, Stay)';
+          tActionDisplay.innerHTML = '<span style="color: var(--accent-green-text);">Simetria completa verificada! A palavra 10101 é um palíndromo perfeito!</span>';
+          tHead = 2;
+        }
+      } else if (currentTuringAlgo === 'busy_beaver') {
+        if (tState === 'q_bb_A') {
+          tTape[tHead] = '1';
+          tHead++;
+          tState = 'q_bb_B';
+          tRuleDisplay.textContent = 'δ(A, 0) → (B, 1, R)';
+          tActionDisplay.textContent = 'Escreveu 1, moveu à direita, estado B.';
+        } else if (tState === 'q_bb_B') {
+          tTape[tHead] = '1';
+          tHead--;
+          tState = 'q_bb_C';
+          tRuleDisplay.textContent = 'δ(B, 0) → (C, 1, L)';
+          tActionDisplay.textContent = 'Escreveu 1, moveu à esquerda, estado C.';
+        } else if (tState === 'q_bb_C') {
+          tTape[tHead] = '1';
+          tHead--;
+          tTape[tHead] = '1';
+          tHead++;
+          tState = 'q_halt';
+          tRuleDisplay.textContent = 'δ(C, 1) → (Halt, 1, Stay)';
+          tActionDisplay.innerHTML = '<span style="color: var(--accent-green-text);">Castor Ocupado gerou o máximo de 1s e parou com sucesso!</span>';
+        }
+        tDecDisplay.textContent = `1s gerados do nada: ${tTape.filter(x => x === '1').length}`;
       }
 
       renderTuringLabStrip();
@@ -4736,9 +4507,353 @@ READY
       tAutoInterval = null;
     }
 
-    resetTuringLab();
+    // =========================================================================
+    // 5. SIMULADOR: FITA DE 35 MM & RELÉS DO ZUSE Z3 (1941)
+    // =========================================================================
+    let zuseCurrentStep = 0;
+    let zuseRunTimer = null;
 
-    // 5. SIMULADOR 4: ANEL DECÁDICO DO ENIAC
+    const zusePrograms = {
+      1: {
+        name: 'Adição Básica (2 + 3 = 5)',
+        mathSummary: '2 + 3 = 5',
+        steps: [
+          { op: 'LER 2', arg: '-> R1', holes: [0,0,1,0, 0,0,0,1], r1: 2.0, r2: 0.0, acc: 0.0, stepTitle: 'Carregando 1º Número (2)', desc: 'Agulha metálica passa pelo furo 0010 (2) da fita de 35 mm e fecha o circuito do Relé 1, gravando 2 no Registrador R1.', relays: [1,0,0,0] },
+          { op: 'LER 3', arg: '-> R2', holes: [0,0,1,1, 0,0,1,0], r1: 2.0, r2: 3.0, acc: 0.0, stepTitle: 'Carregando 2º Número (3)', desc: 'Fita avança 1 quadro. Agulha sente furo 0011 (3) e energiza o circuito para carregar 3 no Registrador R2.', relays: [1,0,0,0] },
+          { op: 'SOMAR', arg: 'R1 + R2', holes: [0,1,0,0, 1,1,0,0], r1: 2.0, r2: 3.0, acc: 5.0, stepTitle: 'Somando na ALU com Relés', desc: 'Comando de adição (+). Os relés da ALU comutam em cascata efetuando a soma binária 2 + 3 = 5 com propagação de carry.', relays: [0,1,0,1] },
+          { op: 'MOSTRAR', arg: '= 5', holes: [1,1,1,1, 0,0,0,0], r1: 2.0, r2: 3.0, acc: 5.0, stepTitle: 'Exibindo Resultado Final (5)', desc: 'Relés de saída fecham o circuito das lâmpadas do painel de Konrad Zuse. Resultado calculado: 5.', relays: [0,0,0,1] }
+        ]
+      },
+      2: {
+        name: 'Multiplicação (4 × 3 = 12)',
+        mathSummary: '4 × 3 = 12',
+        steps: [
+          { op: 'LER 4', arg: '-> R1', holes: [0,1,0,0, 0,0,0,1], r1: 4.0, r2: 0.0, acc: 0.0, stepTitle: 'Carregando Multiplicando (4)', desc: 'Fita perfurada carrega o operando 4 no Registrador R1 através do contato do relé de entrada.', relays: [1,0,0,0] },
+          { op: 'LER 3', arg: '-> R2', holes: [0,0,1,1, 0,0,1,0], r1: 4.0, r2: 3.0, acc: 0.0, stepTitle: 'Carregando Multiplicador (3)', desc: 'Segundo operando 3 é transferido da fita para o Registrador R2.', relays: [1,0,0,0] },
+          { op: 'MULT', arg: 'R1 × R2', holes: [0,1,1,0, 1,1,1,0], r1: 4.0, r2: 3.0, acc: 12.0, stepTitle: 'Multiplicação Binária por Ciclos', desc: 'Hardware de multiplicação: relés somam 4 repetidamente (4 + 4 + 4) com deslocamento binário. Acumulador = 12.', relays: [0,1,1,1] },
+          { op: 'MOSTRAR', arg: '= 12', holes: [1,1,1,1, 0,0,0,0], r1: 4.0, r2: 3.0, acc: 12.0, stepTitle: 'Resultado no Acumulador (12)', desc: 'Operação concluída em ciclos de relés eletromecânicos. Resultado exibido: 12.', relays: [0,0,0,1] }
+        ]
+      },
+      3: {
+        name: 'Subtração (10 - 4 = 6)',
+        mathSummary: '10 - 4 = 6',
+        steps: [
+          { op: 'LER 10', arg: '-> R1', holes: [1,0,1,0, 0,0,0,1], r1: 10.0, r2: 0.0, acc: 0.0, stepTitle: 'Carregando Minuendo (10)', desc: 'Agulha lê 10 (binário 1010) e salva no Registrador R1.', relays: [1,0,0,0] },
+          { op: 'LER 4', arg: '-> R2', holes: [0,1,0,0, 0,0,1,0], r1: 10.0, r2: 4.0, acc: 0.0, stepTitle: 'Carregando Subtraendo (4)', desc: 'Agulha lê 4 (binário 0100) e grava no Registrador R2.', relays: [1,0,0,0] },
+          { op: 'SUBTR', arg: 'R1 - R2', holes: [0,1,0,1, 1,0,1,0], r1: 10.0, r2: 4.0, acc: 6.0, stepTitle: 'Subtração por Complemento na ALU', desc: 'Relés invertem o sinal do subtraendo e executam adição binária de complemento de dois: 10 - 4 = 6.', relays: [0,1,0,1] },
+          { op: 'MOSTRAR', arg: '= 6', holes: [1,1,1,1, 0,0,0,0], r1: 10.0, r2: 4.0, acc: 6.0, stepTitle: 'Resultado no Acumulador (6)', desc: 'Relé de saída fecha circuito indicando 6 no mostrador.', relays: [0,0,0,1] }
+        ]
+      },
+      4: {
+        name: 'Divisão Inteira (8 ÷ 2 = 4)',
+        mathSummary: '8 ÷ 2 = 4',
+        steps: [
+          { op: 'LER 8', arg: '-> R1', holes: [1,0,0,0, 0,0,0,1], r1: 8.0, r2: 0.0, acc: 0.0, stepTitle: 'Carregando Dividendo (8)', desc: 'Leitor perfurado carrega 8 (1000 binário) no Registrador R1.', relays: [1,0,0,0] },
+          { op: 'LER 2', arg: '-> R2', holes: [0,0,1,0, 0,0,1,0], r1: 8.0, r2: 2.0, acc: 0.0, stepTitle: 'Carregando Divisor (2)', desc: 'Fita posiciona 2 (0010 binário) no Registrador R2.', relays: [1,0,0,0] },
+          { op: 'DIVID', arg: 'R1 ÷ R2', holes: [0,1,1,1, 1,1,0,1], r1: 8.0, r2: 2.0, acc: 4.0, stepTitle: 'Divisão por Subtrações Sucessivas', desc: 'ALU do Z3 executa rotina cabeada de divisão por deslocamentos e subtrações sucessivas: 8 ÷ 2 = 4.', relays: [0,1,1,1] },
+          { op: 'MOSTRAR', arg: '= 4', holes: [1,1,1,1, 0,0,0,0], r1: 8.0, r2: 2.0, acc: 4.0, stepTitle: 'Resultado Quociente (4)', desc: 'Quociente 4 transferido para as lâmpadas do painel.', relays: [0,0,0,1] }
+        ]
+      },
+      5: {
+        name: 'Raiz Quadrada Mecânica (√9 = 3)',
+        mathSummary: '√9 = 3',
+        steps: [
+          { op: 'LER 9', arg: '-> R1', holes: [1,0,0,1, 0,0,0,1], r1: 9.0, r2: 0.0, acc: 0.0, stepTitle: 'Carregando Radicando (9)', desc: 'Leitor lê valor 9 na fita e armazena em R1.', relays: [1,0,0,0] },
+          { op: 'RAIZ √', arg: '√R1', holes: [0,0,1,1, 1,0,1,0], r1: 9.0, r2: 0.0, acc: 3.0, stepTitle: 'Algoritmo de Subtração de Ímpares', desc: 'Recurso revolucionário do Z3: circuito nativo para raiz quadrada subtraindo ímpares sucessivos (9 - 1 = 8; 8 - 3 = 5; 5 - 5 = 0; 3 subtrações = raiz 3).', relays: [1,1,0,1] },
+          { op: 'MOSTRAR', arg: '= 3', holes: [1,1,1,1, 0,0,0,0], r1: 9.0, r2: 0.0, acc: 3.0, stepTitle: 'Resultado da Raiz (3)', desc: 'Circuito estabilizado. Acumulador final = 3.0.', relays: [0,0,0,1] }
+        ]
+      },
+      6: {
+        name: 'Cálculo de Carga de Asa (3.5 × 2.0 = 7.0)',
+        mathSummary: '3.5 × 2.0 = 7.0',
+        steps: [
+          { op: 'LER 3.5', arg: '-> R1', holes: [1,0,0,1, 0,1,1,0], r1: 3.5, r2: 0.0, acc: 0.0, stepTitle: 'Carregando Coeficiente de Asa (3.5)', desc: 'Ponto flutuante de 22 bits: mantissa e expoente codificados na fita para a asa do caça.', relays: [1,0,0,1] },
+          { op: 'LER 2.0', arg: '-> R2', holes: [1,0,0,1, 0,0,1,0], r1: 3.5, r2: 2.0, acc: 0.0, stepTitle: 'Carregando Fator de Pressão (2.0)', desc: 'Fator de sustentação dinâmica lido pelo segundo conjunto de furos.', relays: [1,0,0,1] },
+          { op: 'MULT', arg: 'R1 × R2', holes: [0,1,1,0, 1,1,0,0], r1: 3.5, r2: 2.0, acc: 7.0, stepTitle: 'Multiplicação de Ponto Flutuante', desc: 'Relés de expoente somam expoentes e relés de mantissa multiplicam mantissas normalizadas.', relays: [1,1,1,1] },
+          { op: 'MOSTRAR', arg: '= 7.0', holes: [1,1,1,1, 0,0,0,0], r1: 3.5, r2: 2.0, acc: 7.0, stepTitle: 'Carga de Asa Calculada (7.0 kgf/m²)', desc: 'Resultado aeronáutico histórico para engenharia da DVL em Berlim.', relays: [0,0,0,1] }
+        ]
+      }
+    };
+
+    let zuseActiveProg = zusePrograms[1];
+
+    function renderZuseTape() {
+      const container = document.getElementById('zuse-tape-strip');
+      if (!container) return;
+      container.innerHTML = '';
+
+      zuseActiveProg.steps.forEach((step, idx) => {
+        const block = document.createElement('div');
+        block.className = 'zuse-tape-block' + (idx === zuseCurrentStep ? ' current' : '');
+
+        let holesHtml = '';
+        step.holes.forEach(h => {
+          holesHtml += `<div class="zuse-hole ${h ? 'punched' : ''}"></div>`;
+        });
+
+        block.innerHTML = `
+          <div class="zuse-tape-sprockets"><div class="zuse-sprocket"></div><div class="zuse-sprocket"></div></div>
+          <div style="font-weight: 700; text-align: center; color: #ffffff;">${step.op}</div>
+          <div class="zuse-tape-holes">${holesHtml}</div>
+          <div style="font-size: 0.65rem; text-align: center;">${step.arg}</div>
+          <div class="zuse-tape-sprockets"><div class="zuse-sprocket"></div><div class="zuse-sprocket"></div></div>
+        `;
+        container.appendChild(block);
+      });
+
+      const offset = (zuseCurrentStep * 82);
+      container.style.transform = `translateX(calc(50% - 35px - ${offset}px))`;
+
+      const step = zuseActiveProg.steps[zuseCurrentStep] || zuseActiveProg.steps[0];
+
+      const sBadge = document.getElementById('zuse-step-badge');
+      if (sBadge) sBadge.textContent = `PASSO ${zuseCurrentStep + 1} DE ${zuseActiveProg.steps.length}`;
+
+      const sTitle = document.getElementById('zuse-step-title');
+      if (sTitle) sTitle.textContent = step.stepTitle;
+
+      const mSum = document.getElementById('zuse-math-summary');
+      if (mSum) mSum.textContent = zuseActiveProg.mathSummary;
+
+      for (let r = 1; r <= 4; r++) {
+        const arm = document.getElementById(`zuse-arm-${r}`);
+        const st = document.getElementById(`zuse-state-${r}`);
+        const isActive = step.relays[r - 1] === 1;
+        if (arm) {
+          if (isActive) arm.classList.add('closed');
+          else arm.classList.remove('closed');
+        }
+        if (st) {
+          st.textContent = isActive ? 'FECHADO [1]' : 'ABERTO [0]';
+          if (isActive) st.classList.add('active');
+          else st.classList.remove('active');
+        }
+      }
+
+      const r1El = document.getElementById('zuse-reg-r1');
+      if (r1El) r1El.textContent = `+${step.r1.toFixed(1)}`;
+
+      const r2El = document.getElementById('zuse-reg-r2');
+      if (r2El) r2El.textContent = `+${step.r2.toFixed(1)}`;
+
+      const accEl = document.getElementById('zuse-reg-acc');
+      if (accEl) accEl.textContent = step.acc.toFixed(1);
+
+      const descEl = document.getElementById('zuse-inst-desc');
+      if (descEl) descEl.textContent = step.desc;
+    }
+
+    function stepZuseTape() {
+      if (zuseCurrentStep < zuseActiveProg.steps.length - 1) {
+        zuseCurrentStep++;
+      } else {
+        zuseCurrentStep = 0;
+      }
+      renderZuseTape();
+    }
+
+    function resetZuseTape() {
+      zuseCurrentStep = 0;
+      if (zuseRunTimer) {
+        clearInterval(zuseRunTimer);
+        zuseRunTimer = null;
+        const btn = document.getElementById('zuse-run-btn');
+        if (btn) btn.textContent = 'Executar Fita Completa';
+      }
+      renderZuseTape();
+    }
+
+    function loadZuseProgram(pNum) {
+      zuseActiveProg = zusePrograms[pNum] || zusePrograms[1];
+      for (let i = 1; i <= 6; i++) {
+        const b = document.getElementById(`btn-zprog-${i}`);
+        if (b) b.className = i === pNum ? 'btn-clean active' : 'btn-clean secondary';
+      }
+      resetZuseTape();
+    }
+
+    function toggleZuseRun() {
+      const btn = document.getElementById('zuse-run-btn');
+      if (zuseRunTimer) {
+        clearInterval(zuseRunTimer);
+        zuseRunTimer = null;
+        if (btn) btn.textContent = 'Executar Fita Completa';
+      } else {
+        if (btn) btn.textContent = 'Pausar';
+        zuseRunTimer = setInterval(() => {
+          if (zuseCurrentStep >= zuseActiveProg.steps.length - 1) {
+            zuseCurrentStep = 0;
+          } else {
+            zuseCurrentStep++;
+          }
+          renderZuseTape();
+        }, 650);
+      }
+    }
+
+    // =========================================================================
+    // 6. SIMULADOR: COLOSSUS MK II & CIFRA LORENZ SZ42 (1944)
+    // =========================================================================
+    let colossusScanTimer = null;
+    let colossusCharIdx = 0;
+
+    const colossusIntercepts = {
+      1: {
+        title: 'Normandia (Heeresgruppe B)',
+        cipher: '9KL#FXV29 ZQMPB#T 4VRKLA 88VMC 7TXB2',
+        plain:  'BERICHT HEERESGRUPPE MITTE NORMANDIE BEFEHL'
+      },
+      2: {
+        title: 'Berlim (Meteorologia OKW)',
+        cipher: 'XPT78# LKQ44 MV99Z WA12P QQR55 LK88',
+        plain:  'WETTERVORHERSAGE BERLIN KANALSCHLACHT OKW'
+      },
+      3: {
+        title: 'Frente Leste (Ucrânia/Dnieper)',
+        cipher: 'LMN88# TRZ22 QKV33 WW44X PO99Y JJ11',
+        plain:  'RUECKZUG DNJEPR LINIE PANZER DIVISION EINS'
+      },
+      4: {
+        title: 'Calais (Movimento Panzer)',
+        cipher: 'ZZ88T# PLM11 QWA22 CXV33 YTR44 BBN5',
+        plain:  'TAEUSCHUNG PAS DE CALAIS ALARMBEFEHL OKW'
+      }
+    };
+
+    let colossusActive = colossusIntercepts[1];
+
+    function buildColossusTubes() {
+      const rack = document.getElementById('colossus-tube-rack');
+      if (!rack) return;
+      rack.innerHTML = '';
+      for (let i = 0; i < 16; i++) {
+        const tube = document.createElement('div');
+        tube.className = 'valve-tube';
+        tube.id = `col-tube-${i}`;
+        tube.innerHTML = '<div class="valve-tube-filament"></div>';
+        rack.appendChild(tube);
+      }
+    }
+
+    function renderColossusFrame() {
+      const rawEl = document.getElementById('colossus-raw-stream');
+      const plainEl = document.getElementById('colossus-plain-stream');
+      const scoreEl = document.getElementById('colossus-score');
+      const jobStatus = document.getElementById('colossus-job-status');
+
+      if (rawEl) rawEl.textContent = colossusActive.cipher.substring(0, Math.max(2, colossusCharIdx + 1));
+      if (plainEl) {
+        if (colossusCharIdx === 0) {
+          plainEl.textContent = 'Aguardando varredura óptica...';
+        } else {
+          plainEl.textContent = colossusActive.plain.substring(0, colossusCharIdx);
+        }
+      }
+
+      const score = Math.min(42, Math.round((colossusCharIdx / colossusActive.plain.length) * 42));
+      if (scoreEl) scoreEl.textContent = score;
+
+      for (let i = 0; i < 16; i++) {
+        const t = document.getElementById(`col-tube-${i}`);
+        if (t) {
+          if (Math.random() > 0.45 && colossusScanTimer) t.classList.add('active');
+          else t.classList.remove('active');
+        }
+      }
+
+      const c1 = (colossusCharIdx * 3) % 41 + 1;
+      const c2 = (colossusCharIdx * 5) % 31 + 1;
+      const p1 = (colossusCharIdx * 2) % 29 + 1;
+      const p2 = (colossusCharIdx * 7) % 23 + 1;
+
+      const w1 = document.getElementById('wheel-chi1');
+      if (w1) w1.textContent = `Rotor χ₁: ${String(c1).padStart(2, '0')}`;
+      const w2 = document.getElementById('wheel-chi2');
+      if (w2) w2.textContent = `Rotor χ₂: ${String(c2).padStart(2, '0')}`;
+      const w3 = document.getElementById('wheel-psi1');
+      if (w3) w3.textContent = `Rotor ψ₁: ${String(p1).padStart(2, '0')}`;
+      const w4 = document.getElementById('wheel-psi2');
+      if (w4) w4.textContent = `Rotor ψ₂: ${String(p2).padStart(2, '0')}`;
+
+      if (colossusCharIdx >= colossusActive.plain.length) {
+        if (jobStatus) {
+          jobStatus.textContent = 'CHAVE QUEBRADA (MENSAGEM DECIFRADA)';
+          jobStatus.style.color = '#4ade80';
+        }
+        clearInterval(colossusScanTimer);
+        colossusScanTimer = null;
+        const btn = document.getElementById('colossus-run-btn');
+        if (btn) btn.textContent = 'Varredura Concluída';
+      }
+    }
+
+    function startColossusScan() {
+      const btn = document.getElementById('colossus-run-btn');
+      const jobStatus = document.getElementById('colossus-job-status');
+      const speedStatus = document.getElementById('colossus-tape-speed');
+
+      if (colossusScanTimer) {
+        clearInterval(colossusScanTimer);
+        colossusScanTimer = null;
+        if (btn) btn.textContent = 'Iniciar Varredura 5.000 cps';
+        if (speedStatus) speedStatus.textContent = 'PARADA';
+        return;
+      }
+
+      if (colossusCharIdx >= colossusActive.plain.length) {
+        colossusCharIdx = 0;
+      }
+
+      if (btn) btn.textContent = 'Pausar Varredura';
+      if (jobStatus) {
+        jobStatus.textContent = 'VARRENDO 5.000 CPS (CORRELACIONANDO)';
+        jobStatus.style.color = '#facc15';
+      }
+      if (speedStatus) speedStatus.textContent = 'EM MOVIMENTO (48 KM/H)';
+
+      colossusScanTimer = setInterval(() => {
+        colossusCharIdx++;
+        renderColossusFrame();
+      }, 120);
+    }
+
+    function stepColossusChar() {
+      if (colossusCharIdx < colossusActive.plain.length) {
+        colossusCharIdx++;
+        renderColossusFrame();
+      }
+    }
+
+    function resetColossusScanner() {
+      if (colossusScanTimer) {
+        clearInterval(colossusScanTimer);
+        colossusScanTimer = null;
+      }
+      colossusCharIdx = 0;
+      const btn = document.getElementById('colossus-run-btn');
+      if (btn) btn.textContent = 'Iniciar Varredura 5.000 cps';
+      const jobStatus = document.getElementById('colossus-job-status');
+      if (jobStatus) {
+        jobStatus.textContent = 'AGUARDANDO VARREDURA';
+        jobStatus.style.color = '#facc15';
+      }
+      const speedStatus = document.getElementById('colossus-tape-speed');
+      if (speedStatus) speedStatus.textContent = 'PARADA';
+      renderColossusFrame();
+    }
+
+    function loadColossusIntercept(idx) {
+      colossusActive = colossusIntercepts[idx] || colossusIntercepts[1];
+      for (let i = 1; i <= 4; i++) {
+        const b = document.getElementById(`btn-col-${i}`);
+        if (b) b.className = i === idx ? 'btn-clean active' : 'btn-clean secondary';
+      }
+      resetColossusScanner();
+    }
+
+    // =========================================================================
+    // 7. SIMULADOR: ANEL DECÁDICO DO ENIAC (1945)
+    // =========================================================================
     let eniacCounterVal = 0;
 
     function renderENIACCleanBulbs() {
@@ -4750,7 +4865,8 @@ READY
           bulb.classList.remove('glowing');
         }
       });
-      document.getElementById('eniac-lamp-status').textContent = `Dígito Ativo: ${eniacCounterVal} ${eniacCounterVal === 0 ? '(PULSO DE CARRY DISPARADO)' : ''}`;
+      const st = document.getElementById('eniac-lamp-status');
+      if (st) st.textContent = `Dígito Ativo: ${eniacCounterVal} ${eniacCounterVal === 0 ? '(PULSO DE CARRY DISPARADO)' : ''}`;
     }
 
     function stepENIACClean() {
@@ -4772,16 +4888,22 @@ READY
       renderENIACCleanBulbs();
     }
 
-    // 6. SIMULADOR 5: MANCHESTER BABY CRT COM 3 PROGRAMAS
+    // =========================================================================
+    // 8. SIMULADOR: MANCHESTER BABY CRT (1948) - 6 PROGRAMAS DIDÁTICOS
+    // =========================================================================
     const canvas = document.getElementById('crt-canvas-clean');
     const ctx = canvas ? canvas.getContext('2d') : null;
     let babyAccumVal = 0;
     let babyCiVal = 0;
     let currentBabyProgIdx = 0;
+
     const babyProgList = [
-      { name: 'Divisor 262.144', ops: ['LDN', 'SUB', 'CMP', 'JRP', 'STO', 'STP'], desc: 'Programa de Tom Kilburn (21 de junho de 1948): calcula por subtrações repetidas o maior divisor próprio de 262.144.' },
-      { name: 'Fatorial 5! = 120', ops: ['LDN', 'SUB', 'STO', 'CMP', 'JRP', 'STP'], desc: 'Rotina de fatorial iterativo em registradores com teste de zero.' },
-      { name: 'Soma de Gauss', ops: ['LDN', 'ADD', 'SUB', 'CMP', 'JRP', 'STP'], desc: 'Soma da série aritmética acumulada de 1 até 10.' }
+      { name: 'Divisor 262.144', ops: ['LDN', 'SUB', 'CMP', 'JRP', 'STO', 'STP'], desc: '1. Divisor 262.144 (Tom Kilburn, 21 de junho de 1948): Primeiro programa armazenado da história! Calcula por subtrações sucessivas o maior divisor próprio de 262.144.' },
+      { name: 'Fatorial 5! = 120', ops: ['LDN', 'SUB', 'STO', 'CMP', 'JRP', 'STP'], desc: '2. Fatorial 5! = 120: Multiplicações por laços de acumulação repetida até o teste de parada CMP atingir zero.' },
+      { name: 'Soma de Gauss', ops: ['LDN', 'ADD', 'SUB', 'CMP', 'JRP', 'STP'], desc: '3. Soma de Gauss (1 a 10): Acumula a progressão aritmética 1 + 2 + ... + 10 = 55 no registrador Acumulador.' },
+      { name: 'Multiplicação (3 × 4 = 12)', ops: ['LDN', 'ADD', 'ADD', 'ADD', 'STO', 'STP'], desc: '4. Multiplicação (3 × 4 = 12): Demonstra multiplicação primitiva por somas sucessivas do operando na ALU.' },
+      { name: 'Divisão Inteira (14 ÷ 3 = 4)', ops: ['LDN', 'SUB', 'CMP', 'JRP', 'STO', 'STP'], desc: '5. Divisão Inteira (14 ÷ 3 = 4 resto 2): Subtrai o divisor 3 repetidamente do dividendo 14 contando os ciclos.' },
+      { name: 'Algoritmo de Euclides (MDC)', ops: ['LDN', 'SUB', 'CMP', 'JRP', 'STO', 'STP'], desc: '6. Algoritmo de Euclides (MDC): Calcula o Máximo Divisor Comum entre dois inteiros por subtrações alternadas.' }
     ];
     let babyRunLoop = null;
 
@@ -4797,7 +4919,7 @@ READY
     }
 
     function drawCleanCRT() {
-      if (!ctx) return;
+      if (!ctx || !canvas) return;
       ctx.fillStyle = '#020617';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -4820,11 +4942,12 @@ READY
     function loadBabyProgram(idx) {
       clearInterval(babyRunLoop);
       currentBabyProgIdx = idx;
-      [0, 1, 2].forEach(i => {
+      for (let i = 0; i <= 5; i++) {
         const b = document.getElementById(`btn-bprog-${i}`);
         if (b) b.className = i === idx ? 'btn-clean active' : 'btn-clean secondary';
-      });
-      document.getElementById('baby-desc-label').textContent = babyProgList[idx].desc;
+      }
+      const descEl = document.getElementById('baby-desc-label');
+      if (descEl) descEl.textContent = babyProgList[idx].desc;
       resetBabyCleanApp();
     }
 
@@ -4840,9 +4963,14 @@ READY
       }
       drawCleanCRT();
 
-      document.getElementById('crt-acc-readout').textContent = '0x' + babyAccumVal.toString(16).toUpperCase().padStart(6, '0');
-      document.getElementById('crt-inst-readout').textContent = op;
-      document.getElementById('crt-ci-readout').textContent = String(babyCiVal).padStart(2, '0');
+      const accEl = document.getElementById('crt-acc-readout');
+      if (accEl) accEl.textContent = '0x' + babyAccumVal.toString(16).toUpperCase().padStart(6, '0');
+
+      const instEl = document.getElementById('crt-inst-readout');
+      if (instEl) instEl.textContent = op;
+
+      const ciEl = document.getElementById('crt-ci-readout');
+      if (ciEl) ciEl.textContent = String(babyCiVal).padStart(2, '0');
     }
 
     function runBabyCleanApp() {
@@ -4855,16 +4983,17 @@ READY
       babyAccumVal = 0;
       babyCiVal = 0;
       initBabyCRTMatrix();
-      document.getElementById('crt-acc-readout').textContent = '0x000000';
-      document.getElementById('crt-inst-readout').textContent = 'LDN';
-      document.getElementById('crt-ci-readout').textContent = '00';
+      const accEl = document.getElementById('crt-acc-readout');
+      if (accEl) accEl.textContent = '0x000000';
+      const instEl = document.getElementById('crt-inst-readout');
+      if (instEl) instEl.textContent = 'LDN';
+      const ciEl = document.getElementById('crt-ci-readout');
+      if (ciEl) ciEl.textContent = '00';
     }
 
-    if (canvas) {
-      initBabyCRTMatrix();
-    }
-
-    // 7. SIMULADOR 6: PATINHO FEIO CLEAN COM 3 PROGRAMAS ASSEMBLY
+    // =========================================================================
+    // 9. SIMULADOR: PATINHO FEIO (USP 1972) - 6 PROGRAMAS ASSEMBLY
+    // =========================================================================
     const patinhoContainer = document.getElementById('patinho-switches-clean');
     const switches = [0, 0, 0, 0, 0, 0, 0, 0];
     let regVal = 0;
@@ -4900,65 +5029,267 @@ READY
 
     function patinhoLoadClean() {
       regVal = getPatinhoSwitchVal();
-      updatePatinhoFeedback('Instrução LDA executada: valor das chaves carregado no Reg A.');
+      updatePatinhoFeedback('Instrução LDA: carregou o valor binário das chaves no Registrador A.');
     }
 
     function patinhoAddClean() {
       const v = getPatinhoSwitchVal();
       regVal = (regVal + v) % 256;
-      updatePatinhoFeedback(`Instrução ADD executada: somou ${v} ao Registrador A.`);
+      updatePatinhoFeedback(`Instrução ADD: somou ${v} ao Registrador A. Total = ${regVal}.`);
+    }
+
+    function patinhoSubClean() {
+      const v = getPatinhoSwitchVal();
+      regVal = (regVal - v + 256) % 256;
+      updatePatinhoFeedback(`Instrução SUB: subtraiu ${v} do Registrador A. Novo valor = ${regVal}.`);
+    }
+
+    function patinhoShlClean() {
+      regVal = (regVal << 1) % 256;
+      updatePatinhoFeedback(`Instrução SHL: deslocou bits à esquerda (multiplicou por 2). Valor = ${regVal}.`);
     }
 
     function patinhoAndClean() {
       const v = getPatinhoSwitchVal();
       regVal = (regVal & v) % 256;
-      updatePatinhoFeedback(`Instrução AND executada: máscara lógica aplicada com as chaves.`);
+      updatePatinhoFeedback(`Instrução AND: máscara lógica bit-a-bit aplicada. Resultado = ${regVal}.`);
+    }
+
+    function patinhoOrClean() {
+      const v = getPatinhoSwitchVal();
+      regVal = (regVal | v) % 256;
+      updatePatinhoFeedback(`Instrução OR: disjunção lógica bit-a-bit aplicada. Resultado = ${regVal}.`);
     }
 
     function updatePatinhoFeedback(msg) {
       const bin = regVal.toString(2).padStart(8, '0');
       const hex = '0x' + regVal.toString(16).toUpperCase().padStart(2, '0');
-      document.getElementById('patinho-clean-readout').textContent = `REGISTRADOR A: ${bin} (Decimal: ${regVal} | Hex: ${hex})`;
-      document.getElementById('patinho-asm-feedback').textContent = msg;
+      const rEl = document.getElementById('patinho-clean-readout');
+      if (rEl) rEl.textContent = `REGISTRADOR A: ${bin} (Decimal: ${regVal} | Hex: ${hex})`;
+      const fEl = document.getElementById('patinho-asm-feedback');
+      if (fEl) fEl.textContent = msg;
     }
 
     function patinhoResetClean() {
       switches.fill(0);
       regVal = 0;
       buildPatinhoClean();
-      updatePatinhoFeedback('Console e registradores zerados.');
+      updatePatinhoFeedback('Console de chaves e registradores zerados.');
     }
 
     function loadPatinhoProgram(pNum) {
       currentPatinhoProg = pNum;
-      [1, 2, 3].forEach(n => {
+      for (let n = 1; n <= 6; n++) {
         const b = document.getElementById(`btn-pprog-${n}`);
         if (b) b.className = n === pNum ? 'btn-clean active' : 'btn-clean secondary';
-      });
+      }
+
+      const desc = document.getElementById('patinho-prog-desc');
+      switches.fill(0);
 
       if (pNum === 1) {
-        document.getElementById('patinho-prog-desc').textContent = 'Programa 1: Soma de Registradores (LDA [Dado], ADD [Dado], STO [Acumulador])';
+        if (desc) desc.textContent = '1. Soma Básica: LDA [11], ADD [14] -> Carrega 11 e soma 14 resultando em 25.';
         switches[0] = 1; switches[1] = 1; switches[2] = 0; switches[3] = 1; // 11
-        switches[4] = 0; switches[5] = 0; switches[6] = 0; switches[7] = 0;
       } else if (pNum === 2) {
-        document.getElementById('patinho-prog-desc').textContent = 'Programa 2: Contador em Laço (Loop decrescente de 7 até 0 com teste de flag de zero JNZ)';
+        if (desc) desc.textContent = '2. Contador em Laço: Loop decrescente de 7 até 0 com teste de flag de zero JNZ.';
         switches[0] = 1; switches[1] = 1; switches[2] = 1; // 7
-        switches[3] = 0; switches[4] = 0; switches[5] = 0; switches[6] = 0; switches[7] = 0;
-      } else {
-        document.getElementById('patinho-prog-desc').textContent = 'Programa 3: Máscara Lógica AND (Isola os 4 bits menos significativos: AND 0x0F)';
+      } else if (pNum === 3) {
+        if (desc) desc.textContent = '3. Máscara Lógica AND: Isola os 4 bits menos significativos (AND 0x0F = 00001111).';
         switches[0] = 1; switches[1] = 1; switches[2] = 1; switches[3] = 1; // 0x0F
-        switches[4] = 0; switches[5] = 0; switches[6] = 0; switches[7] = 0;
+      } else if (pNum === 4) {
+        if (desc) desc.textContent = '4. Subtração Direta: LDA [25], SUB [10] -> Carrega 25 e subtrai 10 resultando em 15.';
+        switches[1] = 1; switches[3] = 1; // 10 (00001010)
+        regVal = 25;
+      } else if (pNum === 5) {
+        if (desc) desc.textContent = '5. Deslocamento de Bits (SHL x2): Multiplicação binária rápida por 2 via registrador de deslocamento.';
+        switches[0] = 1; switches[1] = 1; // 3 -> SHL vira 6
+        regVal = 3;
+      } else {
+        if (desc) desc.textContent = '6. Máscara Lógica OR: Ativa obrigatoriamente os 4 bits superiores (OR 0xF0 = 11110000).';
+        switches[4] = 1; switches[5] = 1; switches[6] = 1; switches[7] = 1; // 0xF0
       }
       buildPatinhoClean();
+      updatePatinhoFeedback(`Programa ${pNum} configurado nas chaves.`);
     }
 
+    // =========================================================================
+    // 10. SIMULADOR: TERMINAL RETRÔ BRASILEIRO (CP-500 / TK90X BASIC) - 8 PROGRAMAS
+    // =========================================================================
+    let crtIsAmber = false;
+    let crtCurrentProgram = [
+      '10 PRINT "PROLOGICA CP-500 - FABRICADO NO BRASIL (1982)"',
+      '20 FOR I = 1 TO 3',
+      '30 PRINT "RESERVA DE MERCADO: INDUSTRIA NACIONAL"',
+      '40 NEXT I',
+      '50 PRINT "OK"'
+    ];
 
-    // Inicialização de todos os simuladores
+    function toggleCrtPhosphor() {
+      const scr = document.getElementById('crt-screen');
+      if (!scr) return;
+      crtIsAmber = !crtIsAmber;
+      if (crtIsAmber) {
+        scr.classList.remove('green-ph');
+        scr.classList.add('amber-ph');
+      } else {
+        scr.classList.remove('amber-ph');
+        scr.classList.add('green-ph');
+      }
+    }
+
+    function clearCrtTerminal() {
+      const out = document.getElementById('crt-output');
+      if (out) out.innerHTML = 'READY<br>&gt; <span class="crt-cursor"></span>';
+    }
+
+    function appendCrtOutput(text) {
+      const out = document.getElementById('crt-output');
+      if (!out) return;
+      const clean = out.innerHTML.replace('<span class="crt-cursor"></span>', '');
+      out.innerHTML = clean + '<br>' + text + '<br>&gt; <span class="crt-cursor"></span>';
+      out.scrollTop = out.scrollHeight;
+    }
+
+    function runCrtCommand() {
+      const inp = document.getElementById('crt-cmd-input');
+      if (!inp) return;
+      const cmd = inp.value.trim();
+      inp.value = '';
+      if (!cmd) return;
+
+      appendCrtOutput(cmd);
+
+      const upper = cmd.toUpperCase();
+      if (upper === 'CLS') {
+        clearCrtTerminal();
+      } else if (upper === 'RUN') {
+        executeBasicLines(crtCurrentProgram);
+      } else if (upper === 'LIST') {
+        appendCrtOutput(crtCurrentProgram.join('<br>'));
+      } else if (upper.startsWith('PRINT ')) {
+        const expr = cmd.substring(6).trim();
+        try {
+          if (expr.startsWith('"') && expr.endsWith('"')) {
+            appendCrtOutput(expr.slice(1, -1));
+          } else {
+            const sanitized = expr.replace(/[^0-9+\-*/().]/g, '');
+            const val = Function('"use strict";return (' + sanitized + ')')();
+            appendCrtOutput(String(val));
+          }
+        } catch (e) {
+          appendCrtOutput('?SYNTAX ERROR');
+        }
+      } else if (/^\d+/.test(upper)) {
+        crtCurrentProgram.push(cmd);
+        appendCrtOutput('READY');
+      } else {
+        appendCrtOutput('?SYNTAX ERROR');
+      }
+    }
+
+    function executeBasicLines(lines) {
+      lines.forEach((l, idx) => {
+        setTimeout(() => {
+          if (l.includes('PRINT "')) {
+            const m = l.match(/PRINT\s+"([^"]+)"/);
+            if (m) appendCrtOutput(m[1]);
+          } else if (l.includes('PRINT ')) {
+            const m = l.match(/PRINT\s+(.*)/);
+            if (m) appendCrtOutput(m[1]);
+          }
+        }, idx * 140);
+      });
+      setTimeout(() => {
+        appendCrtOutput('READY');
+      }, lines.length * 140 + 80);
+    }
+
+    function loadRetroBasicProg(pNum) {
+      if (pNum === 1) {
+        crtCurrentProgram = [
+          '10 PRINT "PROLOGICA CP-500 - FABRICADO NO BRASIL (1982)"',
+          '20 FOR I = 1 TO 3',
+          '30 PRINT "RESERVA DE MERCADO: INDUSTRIA NACIONAL"',
+          '40 NEXT I',
+          '50 PRINT "OK"'
+        ];
+        appendCrtOutput('CARREGADO: 1. LOOP BRASIL 1982');
+      } else if (pNum === 2) {
+        crtCurrentProgram = [
+          '10 REM REFORMA MONETARIA DOS ANOS 80',
+          '20 PRINT "VALOR EM CRUZEIROS (1985): Cr$ 1.000.000"',
+          '30 PRINT "CORTE DE TRES ZEROS (PLANO CRUZADO 1986)..."',
+          '40 PRINT "NOVO VALOR: Cz$ 1.000"',
+          '50 PRINT "CORRECAO AUTOMATICA CONCLUIDA"'
+        ];
+        appendCrtOutput('CARREGADO: 2. INFLACAO & CRUZEIROS');
+      } else if (pNum === 3) {
+        crtCurrentProgram = [
+          '10 REM GRAFICO DE BARRAS ASCII NA TELA CRT',
+          '20 PRINT "COMPUTADORES NO BRASIL (1972-1985):"',
+          '30 PRINT "1972 [PATINHO] : ## (1)",',
+          '40 PRINT "1977 [COBRA]   : ######## (400)"',
+          '50 PRINT "1985 [MICROS]  : #################### (120.000)"'
+        ];
+        appendCrtOutput('CARREGADO: 3. GRAFICO DE BARRAS ASCII');
+      } else if (pNum === 4) {
+        crtCurrentProgram = [
+          '10 REM CALCULO DE FATORIAL EM BASIC',
+          '20 PRINT "FATORIAL DE 5:"',
+          '30 PRINT "5 * 4 * 3 * 2 * 1 = 120"',
+          '40 PRINT "CALCULADO EM 4 CICLOS DE CLOCK"'
+        ];
+        appendCrtOutput('CARREGADO: 4. FATORIAL EM BASIC');
+      } else if (pNum === 5) {
+        crtCurrentProgram = [
+          '10 REM JOGO DE ADIVINHACAO DE NUMERO',
+          '20 PRINT "PENSE EM UM NUMERO DE 1 A 10..."',
+          '30 PRINT "O COMPUTADOR ADIVINHA COM BUSCA BINARIA:"',
+          '40 PRINT "TENTATIVA 1: O SEU NUMERO E MAIOR QUE 5? (SIM)"',
+          '50 PRINT "TENTATIVA 2: O SEU NUMERO E 7! ACERTOU EM 2 PASSOS!"'
+        ];
+        appendCrtOutput('CARREGADO: 5. JOGO DE ADIVINHACAO');
+      } else if (pNum === 6) {
+        crtCurrentProgram = [
+          '10 REM TABUADA DO 7 COM LACO FOR NEXT',
+          '20 FOR J = 1 TO 5',
+          '30 PRINT "7 x "; J; " = "; J * 7',
+          '40 NEXT J',
+          '50 PRINT "TABUADA GERADA COM SUCESSO"'
+        ];
+        appendCrtOutput('CARREGADO: 6. TABUADA DO 7');
+      } else if (pNum === 7) {
+        crtCurrentProgram = [
+          '10 REM ARTE GRAFICA EM ASCII',
+          '20 PRINT "+-----------------------------+"',
+          '30 PRINT "|   [ COMPUTADOR BRASILEIRO ] |"',
+          '40 PRINT "|   PROLOGICA CP-500 / TK90X  |"',
+          '50 PRINT "+-----------------------------+"'
+        ];
+        appendCrtOutput('CARREGADO: 7. ARTE GRAFICA ASCII');
+      } else {
+        crtCurrentProgram = [
+          '10 REM HISTORIA MONETARIA DO BRASIL',
+          '20 PRINT "1985: CRUZEIRO (Cr$)"',
+          '30 PRINT "1986: CRUZADO (Cz$ = Cr$ 1.000)"',
+          '40 PRINT "1989: CRUZADO NOVO (NCz$ = Cz$ 1.000)"',
+          '50 PRINT "1993: CRUZEIRO REAL (CR$ = NCz$ 1.000)"',
+          '60 PRINT "1994: REAL (R$ 1,00 = CR$ 2.750)"'
+        ];
+        appendCrtOutput('CARREGADO: 8. MOEDAS DO BRASIL (1985-1994)');
+      }
+      executeBasicLines(crtCurrentProgram);
+    }
+
+    // Inicialização completa de todos os simuladores
     updateSorobanBoardUI();
     renderAntikythera();
+    resetPascaline4();
+    resetTuringLab();
     resetZuseTape();
     buildColossusTubes();
     resetColossusScanner();
+    if (canvas) initBabyCRTMatrix();
     buildPatinhoClean();
   </script>
 </body>
