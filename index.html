@@ -3834,24 +3834,33 @@ READY
           <!-- GUIA DE INSTRUÇÕES & EXEMPLOS PARA DIGITAR NA APRESENTAÇÃO -->
           <div style="background: #f8fafc; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1rem 1.25rem; margin-top: 1rem;">
             <div style="font-weight: 800; color: var(--text-main); font-size: 0.95rem; margin-bottom: 0.6rem;">
-              Exemplos Prontos para Digitar na Apresentação (ou Clique em "Inserir"):
+              Exemplos Prontos para Digitar na Apresentação (ou Clique em "Inserir" / "Rodar"):
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.75rem; font-size: 0.85rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem; font-size: 0.85rem;">
               
               <!-- Bloco 1: Aritmética Imediata -->
               <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 6px; padding: 0.75rem;">
                 <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">1. Cálculos Aritméticos Diretos:</strong>
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
                   <code style="font-family: var(--font-mono); background: #f1f5f9; padding: 2px 6px; border-radius: 4px;">PRINT 1972 + 50</code>
-                  <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;" onclick="pasteCrtCommand('PRINT 1972 + 50')">Inserir</button>
+                  <div style="display: flex; gap: 0.25rem;">
+                    <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="pasteCrtCommand('PRINT 1972 + 50')">Inserir</button>
+                    <button class="btn-clean" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="runDirectCrtCommand('PRINT 1972 + 50')">Rodar</button>
+                  </div>
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
                   <code style="font-family: var(--font-mono); background: #f1f5f9; padding: 2px 6px; border-radius: 4px;">PRINT 2 ^ 10</code>
-                  <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;" onclick="pasteCrtCommand('PRINT 2 ^ 10')">Inserir</button>
+                  <div style="display: flex; gap: 0.25rem;">
+                    <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="pasteCrtCommand('PRINT 2 ^ 10')">Inserir</button>
+                    <button class="btn-clean" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="runDirectCrtCommand('PRINT 2 ^ 10')">Rodar</button>
+                  </div>
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                   <code style="font-family: var(--font-mono); background: #f1f5f9; padding: 2px 6px; border-radius: 4px;">PRINT (45 * 12) / 3</code>
-                  <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;" onclick="pasteCrtCommand('PRINT (45 * 12) / 3')">Inserir</button>
+                  <div style="display: flex; gap: 0.25rem;">
+                    <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="pasteCrtCommand('PRINT (45 * 12) / 3')">Inserir</button>
+                    <button class="btn-clean" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="runDirectCrtCommand('PRINT (45 * 12) / 3')">Rodar</button>
+                  </div>
                 </div>
               </div>
 
@@ -3859,16 +3868,25 @@ READY
               <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 6px; padding: 0.75rem;">
                 <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">2. Mensagens Históricas:</strong>
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
-                  <code style="font-family: var(--font-mono); background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem;">PRINT &quot;POLI-USP 1972&quot;</code>
-                  <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;" onclick="pasteCrtCommand('PRINT \"POLI-USP 1972\"')">Inserir</button>
+                  <code style="font-family: var(--font-mono); background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem;">PRINT "POLI-USP 1972"</code>
+                  <div style="display: flex; gap: 0.25rem;">
+                    <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="pasteCrtCommand('PRINT &quot;POLI-USP 1972&quot;')">Inserir</button>
+                    <button class="btn-clean" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="runDirectCrtCommand('PRINT &quot;POLI-USP 1972&quot;')">Rodar</button>
+                  </div>
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
-                  <code style="font-family: var(--font-mono); background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem;">PRINT &quot;PROLOGICA CP-500&quot;</code>
-                  <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;" onclick="pasteCrtCommand('PRINT \"PROLOGICA CP-500\"')">Inserir</button>
+                  <code style="font-family: var(--font-mono); background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem;">PRINT "PROLOGICA CP-500"</code>
+                  <div style="display: flex; gap: 0.25rem;">
+                    <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="pasteCrtCommand('PRINT &quot;PROLOGICA CP-500&quot;')">Inserir</button>
+                    <button class="btn-clean" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="runDirectCrtCommand('PRINT &quot;PROLOGICA CP-500&quot;')">Rodar</button>
+                  </div>
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                  <code style="font-family: var(--font-mono); background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem;">PRINT &quot;RESERVA DE MERCADO&quot;</code>
-                  <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;" onclick="pasteCrtCommand('PRINT \"RESERVA DE MERCADO\"')">Inserir</button>
+                  <code style="font-family: var(--font-mono); background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem;">PRINT "RESERVA MERCADO"</code>
+                  <div style="display: flex; gap: 0.25rem;">
+                    <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="pasteCrtCommand('PRINT &quot;RESERVA MERCADO&quot;')">Inserir</button>
+                    <button class="btn-clean" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="runDirectCrtCommand('PRINT &quot;RESERVA MERCADO&quot;')">Rodar</button>
+                  </div>
                 </div>
               </div>
 
@@ -3879,9 +3897,13 @@ READY
                   <span style="font-size: 0.8rem; color: var(--text-muted);">Laço FOR...NEXT (1 a 5)</span>
                   <button class="btn-clean" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;" onclick="insertAndRunBasicLoop()">Digitar e Rodar</button>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
                   <span style="font-size: 0.8rem; color: var(--text-muted);">Contador Regressivo (5 a 1)</span>
-                  <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;" onclick="insertAndRunBasicCountdown()">Digitar e Rodar</button>
+                  <button class="btn-clean" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;" onclick="insertAndRunBasicCountdown()">Digitar e Rodar</button>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 0.8rem; color: var(--text-muted);">Fatorial de 5 (5! = 120)</span>
+                  <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;" onclick="loadRetroBasicProg(4)">Digitar e Rodar</button>
                 </div>
               </div>
 
@@ -3889,10 +3911,11 @@ READY
               <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 6px; padding: 0.75rem;">
                 <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">4. Comandos de Sistema BASIC:</strong>
                 <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
-                  <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;" onclick="pasteCrtCommand('RUN')">RUN</button>
-                  <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;" onclick="pasteCrtCommand('LIST')">LIST</button>
-                  <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;" onclick="pasteCrtCommand('CLS')">CLS</button>
-                  <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;" onclick="pasteCrtCommand('NEW')">NEW</button>
+                  <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;" onclick="runDirectCrtCommand('RUN')">RUN</button>
+                  <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;" onclick="runDirectCrtCommand('LIST')">LIST</button>
+                  <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;" onclick="runDirectCrtCommand('CLS')">CLS</button>
+                  <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;" onclick="runDirectCrtCommand('NEW')">NEW</button>
+                  <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;" onclick="runDirectCrtCommand('HELP')">HELP</button>
                 </div>
                 <span style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 0.4rem;">
                   Clique na tela verde a qualquer momento para focar o teclado.
@@ -5977,16 +6000,17 @@ READY
     }
 
     // =========================================================================
-    // 10. SIMULADOR: TERMINAL RETRÔ BRASILEIRO (CP-500 / TK90X BASIC) - 8 PROGRAMAS
-    // =========================================================================
+    // 10. SIMULADOR: TERMINAL RETRÔ BRASILEIRO (CP-500 / TK90X BASIC) - INTERPRETADOR REAL
     let crtIsAmber = false;
-    let crtCurrentProgram = [
-      '10 PRINT "PROLOGICA CP-500 - FABRICADO NO BRASIL (1982)"',
-      '20 FOR I = 1 TO 3',
-      '30 PRINT "RESERVA DE MERCADO: INDUSTRIA NACIONAL"',
-      '40 NEXT I',
-      '50 PRINT "OK"'
-    ];
+    let basicProgram = {
+      10: 'PRINT "PROLOGICA CP-500 - FABRICADO NO BRASIL (1982)"',
+      20: 'FOR I = 1 TO 3',
+      30: 'PRINT "CICLO "; I; ": RESERVA DE MERCADO NACIONAL"',
+      40: 'NEXT I',
+      50: 'PRINT "SISTEMA OPERACIONAL DOS-500 OK"'
+    };
+    let basicVars = {};
+    let crtIsRunning = false;
 
     function toggleCrtPhosphor() {
       const scr = document.getElementById('crt-screen');
@@ -6002,6 +6026,7 @@ READY
     }
 
     function clearCrtTerminal() {
+      crtIsRunning = false;
       const out = document.getElementById('crt-output');
       if (out) out.innerHTML = 'READY<br>&gt; <span class="crt-cursor"></span>';
     }
@@ -6014,6 +6039,222 @@ READY
       out.scrollTop = out.scrollHeight;
     }
 
+    // Avaliador de expressões matemáticas e variáveis BASIC
+    function evalBasicExpression(expr, vars) {
+      expr = expr.trim();
+      if (!expr) return '';
+      if (expr.startsWith('"') && expr.endsWith('"')) {
+        return expr.slice(1, -1);
+      }
+
+      let s = expr;
+      s = s.replace(/\bSQR\(([^)]+)\)/gi, 'Math.sqrt($1)');
+      s = s.replace(/\bABS\(([^)]+)\)/gi, 'Math.abs($1)');
+      s = s.replace(/\^/g, '**');
+
+      const varNames = Object.keys(vars).sort((a, b) => b.length - a.length);
+      for (const v of varNames) {
+        const regex = new RegExp('\\b' + v + '\\b', 'g');
+        const val = vars[v];
+        if (typeof val === 'string') {
+          s = s.replace(regex, JSON.stringify(val));
+        } else {
+          s = s.replace(regex, '(' + val + ')');
+        }
+      }
+
+      try {
+        const sanitized = s.replace(/[^0-9+\-*/().%*<>=!Math.sqrbt ]/g, '');
+        const res = Function('"use strict"; return (' + sanitized + ')')();
+        if (typeof res === 'number' && Number.isInteger(res)) return res;
+        return res !== undefined ? res : '';
+      } catch (err) {
+        return expr;
+      }
+    }
+
+    // Avalia comando PRINT com suporte a múltiplos termos separados por ; ou ,
+    function evalBasicPrint(argsStr, vars) {
+      if (!argsStr || argsStr.trim() === '') return '';
+      argsStr = argsStr.trim();
+
+      const tokens = [];
+      let cur = '';
+      let inQuote = false;
+
+      for (let i = 0; i < argsStr.length; i++) {
+        const c = argsStr[i];
+        if (c === '"') {
+          inQuote = !inQuote;
+          cur += c;
+        } else if ((c === ';' || c === ',') && !inQuote) {
+          if (cur.trim()) tokens.push({ val: cur.trim(), sep: c });
+          cur = '';
+        } else {
+          cur += c;
+        }
+      }
+      if (cur.trim()) {
+        tokens.push({ val: cur.trim(), sep: '' });
+      }
+
+      let result = '';
+      for (const t of tokens) {
+        const raw = t.val;
+        if (raw.startsWith('"') && raw.endsWith('"')) {
+          result += raw.slice(1, -1);
+        } else {
+          const ev = evalBasicExpression(raw, vars);
+          result += (ev !== undefined ? ev : '');
+        }
+        if (t.sep === ',') {
+          result += '    ';
+        }
+      }
+      return result;
+    }
+
+    function evalBasicCondition(cond, vars) {
+      let op = '';
+      if (cond.includes('<=')) op = '<=';
+      else if (cond.includes('>=')) op = '>=';
+      else if (cond.includes('<>')) op = '<>';
+      else if (cond.includes('=')) op = '=';
+      else if (cond.includes('<')) op = '<';
+      else if (cond.includes('>')) op = '>';
+      else return false;
+
+      const parts = cond.split(op);
+      if (parts.length !== 2) return false;
+      const left = evalBasicExpression(parts[0], vars);
+      const right = evalBasicExpression(parts[1], vars);
+
+      if (op === '=') return left == right;
+      if (op === '<>') return left != right;
+      if (op === '<') return Number(left) < Number(right);
+      if (op === '>') return Number(left) > Number(right);
+      if (op === '<=') return Number(left) <= Number(right);
+      if (op === '>=') return Number(left) >= Number(right);
+      return false;
+    }
+
+    // Interpretador assíncrono que executa linha por linha com visual autêntico de fósforo
+    async function runBasicInterpreter() {
+      if (crtIsRunning) {
+        crtIsRunning = false;
+        await new Promise(r => setTimeout(r, 60));
+      }
+      crtIsRunning = true;
+
+      const lineNums = Object.keys(basicProgram).map(Number).sort((a, b) => a - b);
+      if (lineNums.length === 0) {
+        appendCrtOutput('(MEMORIA VAZIA - CARREGUE UM PROGRAMA OU DIGITE LINHAS)');
+        appendCrtOutput('READY');
+        crtIsRunning = false;
+        return;
+      }
+
+      basicVars = {};
+      const loopStack = [];
+      let pc = 0;
+      let ops = 0;
+      const maxOps = 2000;
+
+      while (pc < lineNums.length && ops < maxOps && crtIsRunning) {
+        ops++;
+        const lNum = lineNums[pc];
+        const rawLine = basicProgram[lNum].trim();
+        let nextPc = pc + 1;
+
+        if (/^REM\b/i.test(rawLine)) {
+          // Comentário
+        } else if (/^PRINT\b/i.test(rawLine)) {
+          const args = rawLine.substring(5).trim();
+          const outText = evalBasicPrint(args, basicVars);
+          appendCrtOutput(outText);
+          await new Promise(r => setTimeout(r, 80));
+        } else if (/^FOR\b/i.test(rawLine)) {
+          const match = rawLine.match(/^FOR\s+([A-Z0-9_$]+)\s*=\s*(.+?)\s+TO\s+(.+?)(?:\s+STEP\s+(.+))?$/i);
+          if (match) {
+            const varName = match[1].toUpperCase();
+            let startVal = Number(evalBasicExpression(match[2], basicVars));
+            let endVal = Number(evalBasicExpression(match[3], basicVars));
+            let stepVal = match[4] ? Number(evalBasicExpression(match[4], basicVars)) : 1;
+
+            basicVars[varName] = startVal;
+            if ((stepVal > 0 && startVal > endVal) || (stepVal < 0 && startVal < endVal)) {
+              let depth = 1;
+              for (let k = pc + 1; k < lineNums.length; k++) {
+                const kLine = basicProgram[lineNums[k]].trim();
+                if (/^FOR\b/i.test(kLine)) depth++;
+                if (/^NEXT\b/i.test(kLine)) {
+                  depth--;
+                  if (depth === 0) {
+                    nextPc = k + 1;
+                    break;
+                  }
+                }
+              }
+            } else {
+              loopStack.push({ varName, endVal, stepVal, loopStartPc: pc });
+            }
+          }
+        } else if (/^NEXT\b/i.test(rawLine)) {
+          if (loopStack.length > 0) {
+            const loop = loopStack[loopStack.length - 1];
+            basicVars[loop.varName] = (basicVars[loop.varName] || 0) + loop.stepVal;
+            const curVal = basicVars[loop.varName];
+            const continues = loop.stepVal > 0 ? (curVal <= loop.endVal) : (curVal >= loop.endVal);
+            if (continues) {
+              nextPc = loop.loopStartPc + 1;
+            } else {
+              loopStack.pop();
+            }
+          }
+        } else if (/^LET\b/i.test(rawLine) || /^[A-Z0-9_$]+\s*=/i.test(rawLine)) {
+          let assignment = rawLine;
+          if (/^LET\b/i.test(assignment)) assignment = assignment.substring(3).trim();
+          const eqIdx = assignment.indexOf('=');
+          if (eqIdx !== -1) {
+            const vName = assignment.substring(0, eqIdx).trim().toUpperCase();
+            const expr = assignment.substring(eqIdx + 1).trim();
+            basicVars[vName] = evalBasicExpression(expr, basicVars);
+          }
+        } else if (/^GOTO\b/i.test(rawLine)) {
+          const target = Number(rawLine.substring(4).trim());
+          const targetIdx = lineNums.indexOf(target);
+          if (targetIdx !== -1) {
+            nextPc = targetIdx;
+          }
+        } else if (/^IF\b/i.test(rawLine)) {
+          const m = rawLine.match(/^IF\s+(.+?)\s+THEN\s+(.+)$/i);
+          if (m) {
+            const isTrue = evalBasicCondition(m[1].trim(), basicVars);
+            if (isTrue) {
+              const thenClause = m[2].trim();
+              if (/^\d+$/.test(thenClause)) {
+                const targetIdx = lineNums.indexOf(Number(thenClause));
+                if (targetIdx !== -1) nextPc = targetIdx;
+              } else if (/^PRINT\b/i.test(thenClause)) {
+                appendCrtOutput(evalBasicPrint(thenClause.substring(5).trim(), basicVars));
+                await new Promise(r => setTimeout(r, 80));
+              }
+            }
+          }
+        } else if (/^(END|STOP)\b/i.test(rawLine)) {
+          break;
+        }
+
+        pc = nextPc;
+      }
+
+      if (ops >= maxOps) {
+        appendCrtOutput('?BREAK: LIMITE MAXIMO DE CICLOS');
+      }
+      appendCrtOutput('READY');
+      crtIsRunning = false;
+    }
+
     function runCrtCommand() {
       const inp = document.getElementById('crt-cmd-input');
       if (!inp) return;
@@ -6022,67 +6263,80 @@ READY
       if (!cmd) return;
 
       appendCrtOutput(cmd);
-
       const upper = cmd.toUpperCase();
+
       if (upper === 'CLS') {
         clearCrtTerminal();
       } else if (upper === 'NEW') {
-        crtCurrentProgram = [];
+        basicProgram = {};
+        basicVars = {};
         appendCrtOutput('PROGRAMA APAGADO DA MEMORIA (NEW)');
+        appendCrtOutput('READY');
       } else if (upper === 'RUN') {
-        executeBasicLines(crtCurrentProgram);
+        runBasicInterpreter();
       } else if (upper === 'LIST') {
-        if (crtCurrentProgram.length === 0) {
+        const lNums = Object.keys(basicProgram).map(Number).sort((a, b) => a - b);
+        if (lNums.length === 0) {
           appendCrtOutput('(MEMORIA VAZIA)');
         } else {
-          appendCrtOutput(crtCurrentProgram.join('<br>'));
-        }
-      } else if (upper.startsWith('PRINT ')) {
-        const expr = cmd.substring(6).trim();
-        try {
-          if (expr.startsWith('"') && expr.endsWith('"')) {
-            appendCrtOutput(expr.slice(1, -1));
-          } else {
-            // Suporte a SQR e exponenciação ^
-            let sanitized = expr.replace(/SQR\(([^)]+)\)/gi, 'Math.sqrt($1)');
-            sanitized = sanitized.replace(/\^/g, '**');
-            sanitized = sanitized.replace(/[^0-9+\-*/().Mathsqr]/g, '');
-            const val = Function('"use strict";return (' + sanitized + ')')();
-            appendCrtOutput(String(val));
+          for (const num of lNums) {
+            appendCrtOutput(`${num} ${basicProgram[num]}`);
           }
-        } catch (e) {
-          appendCrtOutput('?SYNTAX ERROR');
         }
-      } else if (/^\d+/.test(upper)) {
-        crtCurrentProgram.push(cmd);
         appendCrtOutput('READY');
+      } else if (upper === 'HELP') {
+        appendCrtOutput('COMANDOS BASIC DISPONIVEIS:');
+        appendCrtOutput('  RUN       - Executa o programa armazenado');
+        appendCrtOutput('  LIST      - Lista todas as linhas do programa');
+        appendCrtOutput('  NEW       - Limpa a memoria do interpretador');
+        appendCrtOutput('  CLS       - Limpa a tela do monitor CRT');
+        appendCrtOutput('  PRINT ... - Imprime strings, expressoes ou variaveis');
+        appendCrtOutput('  FOR/NEXT  - Laços de repeticao iterativos');
+        appendCrtOutput('Exemplo: 10 FOR I = 1 TO 5');
+        appendCrtOutput('Exemplo: 20 PRINT "VALOR: "; I');
+        appendCrtOutput('Exemplo: 30 NEXT I');
+        appendCrtOutput('READY');
+      } else if (/^PRINT\b/i.test(cmd)) {
+        const out = evalBasicPrint(cmd.substring(5).trim(), basicVars);
+        appendCrtOutput(out);
+        appendCrtOutput('READY');
+      } else if (/^LET\b/i.test(cmd) || /^[A-Z0-9_$]+\s*=/i.test(cmd)) {
+        let assign = cmd;
+        if (/^LET\b/i.test(assign)) assign = assign.substring(3).trim();
+        const eqIdx = assign.indexOf('=');
+        if (eqIdx !== -1) {
+          const v = assign.substring(0, eqIdx).trim().toUpperCase();
+          basicVars[v] = evalBasicExpression(assign.substring(eqIdx + 1).trim(), basicVars);
+          appendCrtOutput('READY');
+        }
+      } else if (/^\d+/.test(cmd)) {
+        // Linha com numero
+        const m = cmd.match(/^(\d+)\s*(.*)$/);
+        if (m) {
+          const num = parseInt(m[1], 10);
+          const body = m[2].trim();
+          if (body) {
+            basicProgram[num] = body;
+          } else {
+            delete basicProgram[num];
+          }
+          appendCrtOutput('READY');
+        }
       } else {
         appendCrtOutput('?SYNTAX ERROR');
-      }
-    }
-
-    function executeBasicLines(lines) {
-      if (lines.length === 0) {
         appendCrtOutput('READY');
-        return;
       }
-      lines.forEach((l, idx) => {
-        setTimeout(() => {
-          if (l.includes('PRINT "')) {
-            const m = l.match(/PRINT\s+"([^"]+)"/);
-            if (m) appendCrtOutput(m[1]);
-          } else if (l.includes('PRINT ')) {
-            const m = l.match(/PRINT\s+(.*)/);
-            if (m) appendCrtOutput(m[1]);
-          }
-        }, idx * 140);
-      });
-      setTimeout(() => {
-        appendCrtOutput('READY');
-      }, lines.length * 140 + 80);
     }
 
     function pasteCrtCommand(cmd) {
+      const inp = document.getElementById('crt-cmd-input');
+      if (inp) {
+        inp.value = cmd;
+        inp.focus();
+      }
+    }
+
+    function runDirectCrtCommand(cmd) {
       const inp = document.getElementById('crt-cmd-input');
       if (inp) {
         inp.value = cmd;
@@ -6092,113 +6346,134 @@ READY
 
     function insertAndRunBasicLoop() {
       clearCrtTerminal();
-      crtCurrentProgram = [
-        '10 REM LACO FOR NEXT NO CP-500',
-        '20 FOR I = 1 TO 5',
-        '30 PRINT "COMPUTADOR BRASILEIRO #"; I',
-        '40 NEXT I',
-        '50 PRINT "LOOP CONCLUIDO COM SUCESSO"'
-      ];
+      basicProgram = {
+        10: 'REM LACO FOR NEXT NO CP-500',
+        20: 'FOR I = 1 TO 5',
+        30: 'PRINT "COMPUTADOR BRASILEIRO #"; I',
+        40: 'NEXT I',
+        50: 'PRINT "LOOP CONCLUIDO COM SUCESSO"'
+      };
       appendCrtOutput('PROGRAMA INSERIDO NA MEMORIA:');
-      appendCrtOutput(crtCurrentProgram.join('<br>'));
+      const nums = Object.keys(basicProgram).map(Number).sort((a, b) => a - b);
+      for (const n of nums) {
+        appendCrtOutput(`${n} ${basicProgram[n]}`);
+      }
       setTimeout(() => {
         appendCrtOutput('RUN');
-        executeBasicLines(crtCurrentProgram);
-      }, 500);
+        runBasicInterpreter();
+      }, 400);
     }
 
     function insertAndRunBasicCountdown() {
       clearCrtTerminal();
-      crtCurrentProgram = [
-        '10 REM CONTAGEM REGRESSIVA 8 BITS',
-        '20 FOR T = 5 TO 1 STEP -1',
-        '30 PRINT "TEMPO RESTANTE: "; T; " SEGUNDOS"',
-        '40 NEXT T',
-        '50 PRINT "IGNICAO CONCLUIDA!"'
-      ];
+      basicProgram = {
+        10: 'REM CONTAGEM REGRESSIVA 8 BITS',
+        20: 'FOR T = 5 TO 1 STEP -1',
+        30: 'PRINT "TEMPO RESTANTE: "; T; " SEGUNDOS"',
+        40: 'NEXT T',
+        50: 'PRINT "IGNICAO CONCLUIDA!"'
+      };
       appendCrtOutput('PROGRAMA INSERIDO NA MEMORIA:');
-      appendCrtOutput(crtCurrentProgram.join('<br>'));
+      const nums = Object.keys(basicProgram).map(Number).sort((a, b) => a - b);
+      for (const n of nums) {
+        appendCrtOutput(`${n} ${basicProgram[n]}`);
+      }
       setTimeout(() => {
         appendCrtOutput('RUN');
-        executeBasicLines(crtCurrentProgram);
-      }, 500);
+        runBasicInterpreter();
+      }, 400);
     }
 
     function loadRetroBasicProg(pNum) {
+      clearCrtTerminal();
       if (pNum === 1) {
-        crtCurrentProgram = [
-          '10 PRINT "PROLOGICA CP-500 - FABRICADO NO BRASIL (1982)"',
-          '20 FOR I = 1 TO 3',
-          '30 PRINT "RESERVA DE MERCADO: INDUSTRIA NACIONAL"',
-          '40 NEXT I',
-          '50 PRINT "OK"'
-        ];
+        basicProgram = {
+          10: 'PRINT "PROLOGICA CP-500 - FABRICADO NO BRASIL (1982)"',
+          20: 'FOR I = 1 TO 3',
+          30: 'PRINT "CICLO "; I; ": RESERVA DE MERCADO NACIONAL"',
+          40: 'NEXT I',
+          50: 'PRINT "SISTEMA OPERACIONAL DOS-500 OK"'
+        };
         appendCrtOutput('CARREGADO: 1. LOOP BRASIL 1982');
       } else if (pNum === 2) {
-        crtCurrentProgram = [
-          '10 REM REFORMA MONETARIA DOS ANOS 80',
-          '20 PRINT "VALOR EM CRUZEIROS (1985): Cr$ 1.000.000"',
-          '30 PRINT "CORTE DE TRES ZEROS (PLANO CRUZADO 1986)..."',
-          '40 PRINT "NOVO VALOR: Cz$ 1.000"',
-          '50 PRINT "CORRECAO AUTOMATICA CONCLUIDA"'
-        ];
+        basicProgram = {
+          10: 'REM REFORMA MONETARIA DOS ANOS 80',
+          20: 'LET CRUZEIROS = 1000000',
+          30: 'PRINT "VALOR EM CRUZEIROS (1985): Cr$ "; CRUZEIROS',
+          40: 'PRINT "CORTE DE TRES ZEROS (PLANO CRUZADO 1986)..."',
+          50: 'LET CRUZADOS = CRUZEIROS / 1000',
+          60: 'PRINT "NOVO VALOR: Cz$ "; CRUZADOS',
+          70: 'PRINT "CORRECAO AUTOMATICA CONCLUIDA"'
+        };
         appendCrtOutput('CARREGADO: 2. INFLACAO & CRUZEIROS');
       } else if (pNum === 3) {
-        crtCurrentProgram = [
-          '10 REM GRAFICO DE BARRAS ASCII NA TELA CRT',
-          '20 PRINT "COMPUTADORES NO BRASIL (1972-1985):"',
-          '30 PRINT "1972 [PATINHO] : ## (1)"',
-          '40 PRINT "1977 [COBRA]   : ######## (400)"',
-          '50 PRINT "1985 [MICROS]  : #################### (120.000)"'
-        ];
+        basicProgram = {
+          10: 'REM GRAFICO DE BARRAS ASCII NA TELA CRT',
+          20: 'PRINT "COMPUTADORES NO BRASIL (1972-1985):"',
+          30: 'PRINT "1972 [PATINHO] : ## (1 UNIDADE)"',
+          40: 'PRINT "1977 [COBRA]   : ######## (400 UNIDADES)"',
+          50: 'PRINT "1985 [MICROS]  : #################### (120.000)"'
+        };
         appendCrtOutput('CARREGADO: 3. GRAFICO DE BARRAS ASCII');
       } else if (pNum === 4) {
-        crtCurrentProgram = [
-          '10 REM CALCULO DE FATORIAL EM BASIC',
-          '20 PRINT "FATORIAL DE 5:"',
-          '30 PRINT "5 * 4 * 3 * 2 * 1 = 120"',
-          '40 PRINT "CALCULADO EM 4 CICLOS DE CLOCK"'
-        ];
+        basicProgram = {
+          10: 'REM CALCULO DE FATORIAL EM BASIC',
+          20: 'LET FAT = 1',
+          30: 'FOR N = 1 TO 5',
+          40: 'LET FAT = FAT * N',
+          50: 'PRINT "N = "; N; " -> FATORIAL = "; FAT',
+          60: 'NEXT N',
+          70: 'PRINT "RESULTADO FINAL DE 5! = "; FAT'
+        };
         appendCrtOutput('CARREGADO: 4. FATORIAL EM BASIC');
       } else if (pNum === 5) {
-        crtCurrentProgram = [
-          '10 REM JOGO DE ADIVINHACAO DE NUMERO',
-          '20 PRINT "PENSE EM UM NUMERO DE 1 A 10..."',
-          '30 PRINT "O COMPUTADOR ADIVINHA COM BUSCA BINARIA:"',
-          '40 PRINT "TENTATIVA 1: O SEU NUMERO E MAIOR QUE 5? (SIM)"',
-          '50 PRINT "TENTATIVA 2: O SEU NUMERO E 7! ACERTOU EM 2 PASSOS!"'
-        ];
+        basicProgram = {
+          10: 'REM JOGO DE ADIVINHACAO COM BUSCA BINARIA',
+          20: 'PRINT "PENSE EM UM NUMERO DE 1 A 10..."',
+          30: 'PRINT "O COMPUTADOR ADIVINHA COM BUSCA BINARIA:"',
+          40: 'PRINT "TENTATIVA 1: O SEU NUMERO E MAIOR QUE 5? (SIM)"',
+          50: 'PRINT "TENTATIVA 2: O SEU NUMERO E 7! ACERTOU EM 2 PASSOS!"'
+        };
         appendCrtOutput('CARREGADO: 5. JOGO DE ADIVINHACAO');
       } else if (pNum === 6) {
-        crtCurrentProgram = [
-          '10 REM TABUADA DO 7 COM LACO FOR NEXT',
-          '20 FOR J = 1 TO 5',
-          '30 PRINT "7 x "; J; " = "; J * 7',
-          '40 NEXT J',
-          '50 PRINT "TABUADA GERADA COM SUCESSO"'
-        ];
+        basicProgram = {
+          10: 'REM TABUADA DO 7 COM LACO FOR NEXT',
+          20: 'FOR J = 1 TO 5',
+          30: 'PRINT "7 x "; J; " = "; J * 7',
+          40: 'NEXT J',
+          50: 'PRINT "TABUADA GERADA COM SUCESSO"'
+        };
         appendCrtOutput('CARREGADO: 6. TABUADA DO 7');
       } else if (pNum === 7) {
-        crtCurrentProgram = [
-          '10 REM ARTE GRAFICA EM ASCII',
-          '20 PRINT "+-----------------------------+"',
-          '30 PRINT "|   [ COMPUTADOR BRASILEIRO ] |"',
-          '40 PRINT "|   PROLOGICA CP-500 / TK90X  |"',
-          '50 PRINT "+-----------------------------+"'
-        ];
+        basicProgram = {
+          10: 'REM ARTE GRAFICA EM ASCII',
+          20: 'PRINT "+---------------------------------+"',
+          30: 'PRINT "|    [ COMPUTADOR BRASILEIRO ]    |"',
+          40: 'PRINT "|    PROLOGICA CP-500 / TK90X     |"',
+          50: 'PRINT "|    48K RAM - MICRO Z80A 2.0 MHZ |"',
+          60: 'PRINT "+---------------------------------+"'
+        };
         appendCrtOutput('CARREGADO: 7. ARTE GRAFICA ASCII');
       } else {
-        crtCurrentProgram = [
-          '10 REM HISTORIA MONETARIA DO BRASIL',
-          '20 PRINT "1985: CRUZEIRO (Cr$)"',
-          '30 PRINT "1986: CRUZADO (Cz$ = Cr$ 1.000)"',
-          '40 PRINT "1989: CRUZADO NOVO (NCz$ = Cz$ 1.000)"',
-          '50 PRINT "1993: CRUZEIRO REAL (CR$ = NCz$ 1.000)"',
-          '60 PRINT "1994: REAL (R$ 1,00 = CR$ 2.750)"'
-        ];
+        basicProgram = {
+          10: 'REM HISTORICO MONETARIO DO BRASIL',
+          20: 'PRINT "1985: CRUZEIRO (Cr$)"',
+          30: 'PRINT "1986: CRUZADO (Cz$ = Cr$ 1.000)"',
+          40: 'PRINT "1989: CRUZADO NOVO (NCz$ = Cz$ 1.000)"',
+          50: 'PRINT "1993: CRUZEIRO REAL (CR$ = NCz$ 1.000)"',
+          60: 'PRINT "1994: REAL (R$ 1,00 = CR$ 2.750)"'
+        };
         appendCrtOutput('CARREGADO: 8. MOEDAS DO BRASIL (1985-1994)');
       }
-      executeBasicLines(crtCurrentProgram);
+
+      const pNums = Object.keys(basicProgram).map(Number).sort((a, b) => a - b);
+      for (const n of pNums) {
+        appendCrtOutput(`${n} ${basicProgram[n]}`);
+      }
+      setTimeout(() => {
+        appendCrtOutput('RUN');
+        runBasicInterpreter();
+      }, 400);
     }
 
     // Inicialização completa de todos os simuladores
