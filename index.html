@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Primeiros Computadores & Início da Ciência da Computação | Brasil e Mundo</title>
+
+  <!-- Tipografia Moderna, Limpa e Elegante -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DESIGN MINIMALISTA, BASE BRANCA, LIMPO E MODERNO (ZERO EMOJIS, ZERO SIDEBAR)
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-body: #ffffff;
+      --bg-card: #f8fafc;
+      --bg-card-alt: #f1f5f9;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      
+      --border-subtle: #e2e8f0;
+      --border-card: #cbd5e1;
+      
+      --accent-black: #0f172a;
+      --accent-warm: #b45309;
+      --accent-blue: #2563eb;
+      --accent-green: #16a34a;
+      --accent-red: #dc2626;
+
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+      --shadow-card: 0 10px 30px -5px rgba(15, 23, 42, 0.06);
+      --shadow-hover: 0 20px 40px -10px rgba(15, 23, 42, 0.1);
+
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-pill: 999px;
+
+      --font-main: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Barra de progresso ultra-fina no topo */
+    #progress-line {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--text-main);
+      z-index: 10000;
+      transition: width 0.1s linear;
+    }
+
+    /* Container de Apresentação Centralizado */
+    .presentation-container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem 8rem;
+    }
+
+    /* ==========================================================================
+       HERO DE ABERTURA: LIMPO, IMPACTANTE, ESTILO KEYNOTE
+       ========================================================================== */
+    .hero-slide {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 4rem 1rem 6rem;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 5rem;
+    }
+
+    .hero-pill-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.4rem 1rem;
+      background: #f1f5f9;
+      color: var(--text-muted);
+      border-radius: var(--radius-pill);
+      margin-bottom: 2rem;
+    }
+
+    .hero-main-title {
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+      margin-bottom: 1.5rem;
+      max-width: 880px;
+    }
+
+    .hero-main-title span {
+      color: var(--accent-warm);
+    }
+
+    .hero-lead-text {
+      font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+      font-weight: 500;
+      color: var(--text-muted);
+      max-width: 720px;
+      line-height: 1.5;
+      margin-bottom: 3rem;
+    }
+
+    .hero-meta-row {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-meta-item strong {
+      color: var(--text-main);
+    }
+
+    /* ==========================================================================
+       BLOCO DE SLIDE / SEÇÃO (RESPIRAÇÃO, BRANCO, ESPAÇOSO)
+       ========================================================================== */
+    .slide-block {
+      margin-bottom: 6rem;
+      padding-top: 2rem;
+    }
+
+    .slide-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .year-display {
+      font-family: var(--font-mono);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .tag-status {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-pill);
+    }
+
+    .tag-status.yes {
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+    .tag-status.no {
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+
+    .tag-status.theory {
+      background: #fef3c7;
+      color: #b45309;
+    }
+
+    .tag-status.brazil {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+
+    .slide-title {
+      font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .slide-subtitle {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* CARD DE CONTEÚDO ELEGANTE */
+    .clean-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-card);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .clean-card:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    @media (max-width: 640px) {
+      .clean-card {
+        padding: 1.5rem;
+      }
+    }
+
+    /* FOTO LIMPA E GRANDE */
+    .media-frame {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #e2e8f0;
+      margin-bottom: 2rem;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .media-frame img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 640px) {
+      .media-frame img {
+        height: 240px;
+      }
+    }
+
+    .media-caption {
+      padding: 0.75rem 1.25rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: #ffffff;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    /* PONTOS DE FALA (BULLETS LIMPOS E DIRETOS) */
+    .talking-points {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .point-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .point-bullet {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--text-main);
+      margin-top: 0.65rem;
+      flex-shrink: 0;
+    }
+
+    .point-text {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text-main);
+      line-height: 1.55;
+    }
+
+    .point-text strong {
+      font-weight: 700;
+      color: #000000;
+    }
+
+    /* BOX EXPLICATIVO DE TURING-COMPLETENESS */
+    .reason-box {
+      margin-top: 2rem;
+      padding: 1.25rem 1.5rem;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-left: 4px solid var(--text-main);
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .reason-box strong {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-main);
+      margin-bottom: 0.35rem;
+    }
+
+    /* ==========================================================================
+       SIMULADORES ULTRA-MINIMALISTAS E LINDOS (1 OU 2 BOTÕES, SEM POLUIÇÃO)
+       ========================================================================== */
+    .minimal-sim {
+      margin-top: 2.5rem;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sim-header-clean {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .sim-tag {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* BOTÃO CLEAN */
+    .btn-clean {
+      background: var(--text-main);
+      color: #ffffff;
+      font-family: var(--font-main);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.6rem 1.4rem;
+      border-radius: var(--radius-pill);
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.15s ease;
+    }
+
+    .btn-clean:hover {
+      background: #334155;
+      transform: translateY(-1px);
+    }
+
+    .btn-clean.secondary {
+      background: #f1f5f9;
+      color: var(--text-main);
+    }
+
+    .btn-clean.secondary:hover {
+      background: #e2e8f0;
+    }
+
+    /* SIMULADOR TURING MINIMALISTA */
+    .turing-minimal-ribbon {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 2rem 0;
+      position: relative;
+      padding-top: 30px;
+    }
+
+    .turing-head-pointer {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: var(--text-main);
+      color: #ffffff;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-pill);
+    }
+
+    .turing-tile {
+      width: 52px;
+      height: 56px;
+      background: #ffffff;
+      border: 2px solid var(--border-card);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+
+    .turing-tile.active {
+      border-color: var(--text-main);
+      background: #f8fafc;
+      box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.1);
+      transform: scale(1.08);
+    }
+
+    .turing-clean-info {
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .turing-clean-info strong {
+      color: var(--text-main);
+    }
+
+    /* PASCALINA CLEAN */
+    .pascaline-clean-row {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .pascaline-clean-dial {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .dial-circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid var(--border-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      user-select: none;
+      transition: transform 0.1s ease;
+    }
+
+    .dial-circle:hover {
+      border-color: var(--text-main);
+      transform: scale(1.05);
+    }
+
+    /* MANCHESTER BABY CRT CLEAN */
+    .baby-screen-clean {
+      background: #020617;
+      border-radius: var(--radius-sm);
+      padding: 1.5rem;
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+
+    #crt-canvas-clean {
+      max-width: 320px;
+      width: 100%;
+      height: 180px;
+      background: #000000;
+      display: block;
+      margin: 0 auto;
+      border-radius: 4px;
+    }
+
+    /* PATINHO FEIO CLEAN */
+    .patinho-clean-switches {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .patinho-switch-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .switch-indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      transition: background 0.15s ease;
+    }
+
+    .switch-indicator.active {
+      background: var(--accent-red);
+      box-shadow: 0 0 8px rgba(220, 38, 38, 0.6);
+    }
+
+    .toggle-body-clean {
+      width: 24px;
+      height: 48px;
+      background: #f1f5f9;
+      border: 2px solid var(--border-card);
+      border-radius: var(--radius-pill);
+      position: relative;
+      cursor: pointer;
+    }
+
+    .toggle-knob-clean {
+      width: 16px;
+      height: 16px;
+      background: var(--text-main);
+      border-radius: 50%;
+      position: absolute;
+      top: 24px;
+      left: 2px;
+      transition: top 0.15s ease;
+    }
+
+    .toggle-body-clean.up .toggle-knob-clean {
+      top: 4px;
+      background: var(--accent-green);
+    }
+
+    /* ==========================================================================
+       TABELA COMPARATIVA ELEGANTE E LIMPA
+       ========================================================================== */
+    .table-slide-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-card);
+      overflow-x: auto;
+    }
+
+    .clean-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.98rem;
+      text-align: left;
+    }
+
+    .clean-table th, .clean-table td {
+      padding: 1.1rem 1.25rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .clean-table th {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 2px solid var(--text-main);
+    }
+
+    .clean-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .clean-table tr:hover td {
+      background: #f8fafc;
+    }
+
+    /* RODAPÉ DISCRETO */
+    .simple-footer {
+      padding: 4rem 1rem;
+      text-align: center;
+      border-top: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de Leitura Discreta -->
+  <div id="progress-line"></div>
+
+  <div class="presentation-container">
+
+    <!-- ==========================================================================
+         HERO / ABERTURA DO SEMINÁRIO
+         ========================================================================== -->
+    <header class="hero-slide">
+      <span class="hero-pill-badge">Seminário Acadêmico</span>
+
+      <h1 class="hero-main-title">
+        Primeiros Computadores &amp;<br>
+        <span>Início da Ciência da Computação</span>
+      </h1>
+
+      <p class="hero-lead-text">
+        A evolução conceitual, mecânica e eletrônica da humanidade: do cálculo manual à Máquina Universal de Alan Turing e o pioneirismo no Brasil.
+      </p>
+
+      <div class="hero-meta-row">
+        <div class="hero-meta-item"><span>Tema:</span> <strong>Mundo e Brasil</strong></div>
+        <div class="hero-meta-item"><span>Foco:</span> <strong>Turing-Completeness</strong></div>
+        <div class="hero-meta-item"><span>Marco:</span> <strong>Programa Armazenado</strong></div>
+      </div>
+    </header>
+
+    <!-- ==========================================================================
+         1. O QUE É UMA COMPUTADORA?
+         ========================================================================== -->
+    <section class="slide-block">
+      <div class="slide-header">
+        <div class="year-display">FUNDAMENTO CONCEITUAL</div>
+        <h2 class="slide-title">O que é uma "Computadora"?</h2>
+        <p class="slide-subtitle">A transição fundamental entre calcular e computar universalmente.</p>
+      </div>
+
+      <div class="clean-card">
+        <div class="talking-points">
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>O Computador Humano:</strong> Durante séculos, "computador" era um cargo profissional exercido por pessoas (na sua maioria matemáticas) que calculavam tabelas de artilharia, astronômicas e de navegação à mão.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>1. Máquinas de Computar (Especializadas):</strong> Dispositivos como o ábaco, a régua de cálculo ou a Pascalina. O próprio arranjo físico dita a conta: realizam apenas operações aritméticas fixas e não podem ser reprogramados.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>2. Máquinas Universais (Gerais):</strong> Conceito introduzido por Alan Turing em 1936. Uma única máquina capaz de simular qualquer outro processo mecânico de cálculo quando instruída por um algoritmo. Nelas, <strong>programa e dados possuem a mesma natureza</strong>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         2. HILBERT (1900) & ALAN TURING (1936)
+         ========================================================================== -->
+    <section class="slide-block">
+      <div class="slide-header">
+        <div class="year-display">
+          <span>1936</span>
+          <span class="tag-status yes">Turing-Complete: Sim</span>
+        </div>
+        <h2 class="slide-title">David Hilbert &amp; Alan Turing</h2>
+        <p class="slide-subtitle">O nascimento da Ciência da Computação Teórica a partir da lógica pura.</p>
+      </div>
+
+      <div class="clean-card">
+        <div class="media-frame">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Alan_Turing_Aged_16.jpg" alt="Alan Turing">
+          <div class="media-caption">Alan Mathison Turing (1912–1954): artigo de 1936 definiu os fundamentos de toda a computação digital.</div>
+        </div>
+
+        <div class="talking-points">
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>O Desafio de Hilbert (1900):</strong> David Hilbert propôs o <em>Entscheidungsproblem</em> (Problema da Decisão): existe um método mecânico capaz de determinar se qualquer afirmação matemática formal é verdadeira ou falsa?
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>A Resposta de Turing (1936):</strong> Turing provou que NÃO. Demonstrou o <strong>Problema da Parada (Halting Problem)</strong>: nenhum algoritmo universal pode saber antecipadamente se qualquer programa arbitrário irá parar ou travar em loop infinito.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>A Máquina Universal de Turing (UTM):</strong> Como ferramenta de prova matemática, inventou a abstração formal do computador moderno: fita de células discretas, cabeçote móvel, tabela de estados e a unificação entre código e informação.
+            </div>
+          </div>
+        </div>
+
+        <!-- SIMULADOR TURING ULTRA-MINIMALISTA (1 BOTÃO) -->
+        <div class="minimal-sim">
+          <div class="sim-header-clean">
+            <span class="sim-tag">Simulador Visual: Máquina de Turing Universal</span>
+            <span id="turing-clean-state" style="font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem;">ESTADO: q_start</span>
+          </div>
+
+          <div class="turing-minimal-ribbon">
+            <div class="turing-head-pointer">CABEÇOTE</div>
+            <div id="turing-cells-strip" style="display: flex; gap: 8px;">
+              <!-- Células geradas via script -->
+            </div>
+          </div>
+
+          <div class="turing-clean-info">
+            Operação: <strong id="turing-op-desc">Incremento binário (+1) no número 11 (1011 bin)</strong>
+          </div>
+
+          <div style="display: flex; justify-content: center; gap: 1rem;">
+            <button class="btn-clean" id="btn-step-turing">Avançar 1 Passo</button>
+            <button class="btn-clean secondary" id="btn-reset-turing">Reiniciar</button>
+          </div>
+        </div>
+
+        <div class="reason-box">
+          <strong>Veredito Turing-Complete: Sim</strong>
+          É a definição formal e canônica de completude computacional da qual todas as outras derivam.
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         3. PRIMEIROS INSTRUMENTOS (LEBOMBO, ISHANGO, BABILÔNIA, QUIPUS, SOROBAN)
+         ========================================================================== -->
+    <section class="slide-block">
+      <div class="slide-header">
+        <div class="year-display">
+          <span>~35.000 a.C. — Séc. XV</span>
+          <span class="tag-status no">Turing-Complete: Não</span>
+        </div>
+        <h2 class="slide-title">Primeiros Instrumentos de Cálculo</h2>
+        <p class="slide-subtitle">A necessidade primordial de registrar quantidades e ciclos naturais.</p>
+      </div>
+
+      <div class="clean-card">
+        <div class="media-frame">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Ishango_bone_%28cropped%29.jpg" alt="Osso de Ishango">
+          <div class="media-caption">Osso de Ishango (~20.000 a.C.): fíbula de babuíno com entalhes matemáticos de duplicação e números primos.</div>
+        </div>
+
+        <div class="talking-points">
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Osso de Lebombo (~35.000 a.C.):</strong> O artefato numérico mais antigo da história, contendo 29 incisões intencionais na África (Swazilândia), relacionado a calendários lunares.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Tábuas Babilônicas (Plimpton 322, ~1800 a.C.):</strong> Tabelas em argila na base sexagesimal contendo ternos pitagóricos mais de um milênio antes de Pitágoras.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Quipus Incas (Séc. XIII–XVI):</strong> Sistema contábil tridimensional feito de nós e cores em cordas de algodão na base 10 posicional, permitindo a gestão tributária de todo o império andino.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Ábaco e Soroban:</strong> Dispositivos bi-quinários posicionais manuais que aceleravam somas e multiplicações ao transferir o estado mental para contas de madeira.
+            </div>
+          </div>
+        </div>
+
+        <div class="reason-box">
+          <strong>Por que não são Turing-Complete?</strong>
+          São mídias passivas de registro e armazenamento (equivalentes a memórias estáticas). Não possuem unidade de processamento, programa nem capacidade de transição de estados.
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         4. ERA MECÂNICA (ANTICÍTERA, PASCALINA, LEIBNIZ, BABBAGE DIFERENCIAL)
+         ========================================================================== -->
+    <section class="slide-block">
+      <div class="slide-header">
+        <div class="year-display">
+          <span>1642 — 1822</span>
+          <span class="tag-status no">Turing-Complete: Não</span>
+        </div>
+        <h2 class="slide-title">A Automação Mecânica do Cálculo</h2>
+        <p class="slide-subtitle">Engrenagens substituindo o esforço físico e o erro do cálculo humano.</p>
+      </div>
+
+      <div class="clean-card">
+        <div class="media-frame">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Arts_et_Metiers_Pascaline_dsc03869.jpg" alt="Pascalina">
+          <div class="media-caption">Pascalina (1642): Blaise Pascal concebeu o mecanismo de transporte gravitacional sautoir.</div>
+        </div>
+
+        <div class="talking-points">
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Mecanismo de Anticítera (~150 a.C.):</strong> O mais antigo computador analógico mecânico, com mais de 30 engrenagens de bronze reproduzindo ciclos astronômicos e eclipses na Grécia helenística.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Pascalina (Blaise Pascal, 1642):</strong> Primeira calculadora mecânica funcional produzida. Criou o mecanismo <em>sautoir</em>: uma alavanca que acumula peso e despenca quando a roda vai de 9 a 0, avançando a dezena automaticamente.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Máquina de Leibniz (1673):</strong> Introduziu o tambor dentado escalonado, permitindo multiplicações e divisões diretas. Em 1679, Leibniz formulou os princípios da <strong>aritmética binária moderna</strong>.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Máquina Diferencial de Charles Babbage (1822):</strong> Projetada para eliminar os erros humanos nas tabelas de navegação marítima através do método das diferenças finitas de Newton, calculando polinômios exclusivamente com adições sucessivas.
+            </div>
+          </div>
+        </div>
+
+        <!-- SIMULADOR PASCALINA CLEAN -->
+        <div class="minimal-sim">
+          <div class="sim-header-clean">
+            <span class="sim-tag">Demonstração: Mecanismo de Transporte da Pascalina</span>
+            <span id="pascaline-clean-val" style="font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem;">Total: 0</span>
+          </div>
+
+          <div class="pascaline-clean-row">
+            <div class="pascaline-clean-dial">
+              <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted);">Centenas</span>
+              <div class="dial-circle" id="dial-c" onclick="stepPascaline(100)">0</div>
+            </div>
+            <div class="pascaline-clean-dial">
+              <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted);">Dezenas</span>
+              <div class="dial-circle" id="dial-d" onclick="stepPascaline(10)">0</div>
+            </div>
+            <div class="pascaline-clean-dial">
+              <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted);">Unidades</span>
+              <div class="dial-circle" id="dial-u" onclick="stepPascaline(1)" style="border-color: var(--text-main);">0</div>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: center; gap: 1rem;">
+            <button class="btn-clean" onclick="stepPascaline(9)">Somar +9 (Testar Sautoir)</button>
+            <button class="btn-clean secondary" onclick="resetCleanPascaline()">Zerar</button>
+          </div>
+        </div>
+
+        <div class="reason-box">
+          <strong>Por que não são Turing-Complete?</strong>
+          Hardware inteiramente dedicado a operações aritméticas lineares. Não contêm ramificação condicional nem capacidade de executar algoritmos genéricos.
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         5. MÁQUINA ANALÍTICA & ADA LOVELACE (O NASCIMENTO DA PROGRAMAÇÃO)
+         ========================================================================== -->
+    <section class="slide-block">
+      <div class="slide-header">
+        <div class="year-display">
+          <span>1837 — 1843</span>
+          <span class="tag-status theory">Turing-Complete: Sim (Na Teoria)</span>
+        </div>
+        <h2 class="slide-title">Máquina Analítica &amp; Ada Lovelace</h2>
+        <p class="slide-subtitle">A concepção pioneira do primeiro computador de uso geral e do primeiro algoritmo.</p>
+      </div>
+
+      <div class="clean-card">
+        <div class="media-frame">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Ada_Lovelace_portrait.jpg" alt="Ada Lovelace">
+          <div class="media-caption">Ada Augusta King, Condessa de Lovelace (1815–1852): a primeira programadora da história.</div>
+        </div>
+
+        <div class="talking-points">
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>A Arquitetura de Babbage (1837):</strong> Charles Babbage projetou o primeiro computador de uso geral, já separando fisicamente o <strong>Moinho</strong> (processador/ALU) e o <strong>Armazém</strong> (memória de 1.000 variáveis de 50 dígitos).
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Controle por Cartões de Tear de Jacquard:</strong> Cartões perfurados ditavam as instruções e os dados, permitindo <strong>laços de repetição (loops) e saltos condicionais</strong>.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>O Primeiro Algoritmo da História (Ada Lovelace, 1843):</strong> Na célebre "Nota G", Ada escreveu o algoritmo completo para cálculo dos números de Bernoulli e formulou a visão profética: <em>"A máquina analítica tece padrões algébricos assim como o tear de Jacquard tece flores e folhas"</em>, percebendo que símbolos gerais (música, lógica, linguagem) poderiam ser manipulados por algoritmos.
+            </div>
+          </div>
+        </div>
+
+        <div class="reason-box">
+          <strong>Veredito Turing-Complete: Sim (Na Teoria)</strong>
+          Possuía controle de fluxo completo, memória e desvios condicionais baseados no sinal do acumulador. Se fabricada na época, teria completude de Turing mecânica.
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         6. ELETRÔNICAS INICIAIS (HARVARD MARK I, COLOSSUS, ENIAC)
+         ========================================================================== -->
+    <section class="slide-block">
+      <div class="slide-header">
+        <div class="year-display">
+          <span>1943 — 1945</span>
+          <span class="tag-status yes">ENIAC: Turing-Complete</span>
+        </div>
+        <h2 class="slide-title">Harvard Mark I, Colossus &amp; ENIAC</h2>
+        <p class="slide-subtitle">A eletrônica entra em cena na Segunda Guerra Mundial.</p>
+      </div>
+
+      <div class="clean-card">
+        <div class="media-frame">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Glen_Beck_and_Betty_Snyder_program_the_ENIAC_in_building_328_at_the_Ballistic_Research_Laboratory.jpg" alt="ENIAC">
+          <div class="media-caption">Betty Snyder e Glen Beck cabeando os acumuladores do ENIAC no Laboratório Balístico em 1945.</div>
+        </div>
+
+        <div class="talking-points">
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Harvard Mark I (1944):</strong> Gigante eletromecânico construído por Howard Aiken com relés. Não era Turing-complete por ter leitura estritamente sequencial de fitas perfuradas. Foi no Mark II que Grace Hopper encontrou a famosa mariposa presa num relé (o primeiro bug literal).
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Colossus (1943, Bletchley Park):</strong> O primeiro computador eletrônico digital do mundo (Tommy Flowers e Max Newman), com milhares de válvulas dedicadas à quebra da cifra Lorenz de Hitler.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>ENIAC (Eckert &amp; Mauchly, 1945):</strong> 17.468 válvulas eletrônicas e 30 toneladas. Era Turing-complete e de propósito geral, mas <strong>não possuía programa armazenado na memória</strong>: para trocar de programa, era necessário reconectar fisicamente dezenas de cabos de patch e girar interruptores em 40 painéis (trabalho das seis matemáticas pioneiras).
+            </div>
+          </div>
+        </div>
+
+        <div class="reason-box">
+          <strong>Por que o ENIAC ainda não era o computador moderno?</strong>
+          Embora fosse eletrônico, rápido e de uso geral, o software não residia na memória. A programação era física e externa.
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         7. REVOLUÇÃO DO PROGRAMA ARMAZENADO (MANCHESTER BABY, MARK 1, EDVAC, EDSAC, ACE)
+         ========================================================================== -->
+    <section class="slide-block">
+      <div class="slide-header">
+        <div class="year-display">
+          <span>21 Junho 1948</span>
+          <span class="tag-status yes">1º Computador Real</span>
+        </div>
+        <h2 class="slide-title">A Revolução do Programa Armazenado</h2>
+        <p class="slide-subtitle">O momento histórico em que o software passou a residir na memória eletrônica.</p>
+      </div>
+
+      <div class="clean-card">
+        <div class="media-frame">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/df/Manchester_MOSI_Baby_%28Small-Scale_Experimental_Machine%29_18-10-2009.jpg" alt="Manchester Baby">
+          <div class="media-caption">Manchester Baby (SSEM, 1948): primeira máquina da história com programa armazenado em RAM executado com sucesso.</div>
+        </div>
+
+        <div class="talking-points">
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Manchester Baby (SSEM, 21 de junho de 1948):</strong> Criado por Frederic Williams e Tom Kilburn na Univ. de Manchester. Foi o <strong>primeiro computador da história a rodar um programa armazenado em memória eletrônica</strong> (usando o Tubo CRT de Williams-Kilburn com 32 palavras de 32 bits).
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Manchester Mark 1 (1949):</strong> Evolução direta do Baby. Alan Turing foi contratado como vice-diretor do laboratório e projetou o sistema de programação e as rotinas matemáticas.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>EDVAC (1945) &amp; EDSAC (1949):</strong> John von Neumann redigiu o clássico <em>First Draft of a Report on the EDVAC</em> formalizando a arquitetura moderna (CPU, ALU, Registradores e Memória Unificada). O <strong>EDSAC</strong> em Cambridge foi o primeiro a entrar em serviço científico regular em maio de 1949.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Pilot ACE (Turing, 1950):</strong> Versão construída da máquina universal eletrônica projetada por Alan Turing no NPL britânico.
+            </div>
+          </div>
+        </div>
+
+        <!-- SIMULADOR BABY CRT CLEAN -->
+        <div class="minimal-sim">
+          <div class="sim-header-clean">
+            <span class="sim-tag">Emulador do Tubo Williams-Kilburn (Memória CRT SSEM 1948)</span>
+            <span id="crt-clean-info" style="font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700;">ACUMULADOR: 0x000000</span>
+          </div>
+
+          <div class="baby-screen-clean">
+            <canvas id="crt-canvas-clean" width="128" height="96"></canvas>
+          </div>
+
+          <div style="display: flex; justify-content: center; gap: 1rem;">
+            <button class="btn-clean" id="btn-baby-run-clean">Executar Ciclo de Memória</button>
+            <button class="btn-clean secondary" id="btn-baby-reset-clean">Resetar Memória</button>
+          </div>
+        </div>
+
+        <div class="reason-box">
+          <strong>O Critério de Andrew Hodges:</strong>
+          Para a história canônica, um "Computador" no sentido pleno exige: computação de propósito geral + programa armazenado na mesma memória que os dados. O Manchester Baby foi o primeiro no mundo a cumprir ambos os requisitos!
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         8. A COMPUTAÇÃO NO BRASIL (1957 - 1974)
+         ========================================================================== -->
+    <section class="slide-block">
+      <div class="slide-header">
+        <div class="year-display">
+          <span>1957 — 1974</span>
+          <span class="tag-status brazil">Pioneirismo Brasileiro</span>
+        </div>
+        <h2 class="slide-title">História da Computação no Brasil</h2>
+        <p class="slide-subtitle">Do primeiro computador comercial ao desenvolvimento do "Patinho Feio" na Poli-USP.</p>
+      </div>
+
+      <div class="clean-card">
+        <div class="media-frame">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Antonio_H%C3%A9lio_Guerra_Vieira_e_o_Computador_Patinho_Feio_%28cropped%29.jpg" alt="Patinho Feio USP">
+          <div class="media-caption">Prof. Antonio Hélio Guerra Vieira e o computador Patinho Feio na Escola Politécnica da USP em 1972.</div>
+        </div>
+
+        <div class="talking-points">
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>1957: O Primeiro Computador no Brasil (UNIVAC 120):</strong> Adquirido pelo Governo de São Paulo para o Departamento de Águas e Energia Elétrica (DAE), utilizado para folhas de pagamento e cálculos hidráulicos. Simultaneamente, o IBGE comprou um <em>Bull Gamma 3</em> francês para apuração do censo.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Anos 1960: A Entrada nas Universidades:</strong> Instalação dos computadores IBM 1401 e IBM 1130 na <strong>PUC-Rio</strong> (pioneira com o primeiro Centro de Processamento de Dados universitário), <strong>USP</strong>, <strong>COPPE/UFRJ</strong> e <strong>ITA</strong>, criando os primeiros departamentos e cursos de Ciência da Computação.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>24 de Julho de 1972: O "Patinho Feio" (Poli-USP):</strong> O <strong>primeiro computador digital projetado e construído inteiramente no Brasil</strong>! Liderado pelo Prof. Antonio Hélio Guerra Vieira e jovens engenheiros (Edith Ranzini, Célio Taniguchi, Lucas Tourinho).
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>Características do Patinho Feio:</strong> Arquitetura de 8 bits, circuitos integrados TTL, ciclo de 2 microssegundos e memória de núcleos magnéticos de ferrite trançada manualmente. O nome foi uma bem-humorada provocação ao projeto rival da Unicamp chamado "Cisne Branco".
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>1974: O Projeto G-10 e a COBRA:</strong> A Marinha do Brasil contratou a USP e a PUC-Rio para criar o computador G-10 para suas fragatas, dando origem à <strong>COBRA (Computadores e Sistemas Brasileiros)</strong>, a primeira fabricante nacional de hardware.
+            </div>
+          </div>
+        </div>
+
+        <!-- SIMULADOR PATINHO FEIO CLEAN -->
+        <div class="minimal-sim">
+          <div class="sim-header-clean">
+            <span class="sim-tag">Console Frontal do Patinho Feio (Poli-USP, 1972)</span>
+            <span id="patinho-clean-readout" style="font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700;">REG A: 00000000 (0)</span>
+          </div>
+
+          <div class="patinho-clean-switches" id="patinho-switches-clean">
+            <!-- 8 chaves geradas via script -->
+          </div>
+
+          <div style="display: flex; justify-content: center; gap: 1rem;">
+            <button class="btn-clean" onclick="patinhoLoadClean()">Carregar Chaves (LDA)</button>
+            <button class="btn-clean secondary" onclick="patinhoAddClean()">Somar (+ ADD)</button>
+            <button class="btn-clean secondary" onclick="patinhoResetClean()">Zerar</button>
+          </div>
+        </div>
+
+        <div class="reason-box">
+          <strong>Veredito: Turing-Complete ✅ (Brasil)</strong>
+          Primeiro computador nacional com unidade lógica, registradores e programa armazenado em memória, provando a autonomia tecnológica brasileira em hardware e software.
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         9. A GRANDE TRANSIÇÃO & TABELAS COMPARATIVAS FINAIS
+         ========================================================================== -->
+    <section class="slide-block">
+      <div class="slide-header">
+        <div class="year-display">SÍNTESE HISTÓRICA</div>
+        <h2 class="slide-title">A Grande Transição</h2>
+        <p class="slide-subtitle">Os passos que levaram da pura aritmética ao computador contemporâneo.</p>
+      </div>
+
+      <div class="clean-card" style="margin-bottom: 3rem;">
+        <div class="talking-points">
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text"><strong>1. Calcular:</strong> Ossos, Ábaco, Pascalina (aritmética mecânica ou biológica).</div>
+          </div>
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text"><strong>2. Automatizar:</strong> Babbage Diferencial (eliminação de intervenção humana em tabelas).</div>
+          </div>
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text"><strong>3. Programar:</strong> Ada Lovelace e Máquina Analítica (o algoritmo como lógica externa).</div>
+          </div>
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text"><strong>4. Computar Universalmente:</strong> Turing 1936 e ENIAC 1945 (capacidade geral).</div>
+          </div>
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text"><strong>5. Programa Armazenado:</strong> Manchester Baby 1948 e Von Neumann (software e dados na RAM).</div>
+          </div>
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text"><strong>6. Autonomia e Expansão:</strong> Patinho Feio 1972 e os microprocessadores modernos.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABELA TURING-COMPLETE -->
+      <div class="table-slide-card">
+        <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 1.25rem;">Matriz de Turing-Completeness</h3>
+        <table class="clean-table">
+          <thead>
+            <tr>
+              <th>Máquina</th>
+              <th>Ano</th>
+              <th>Turing-Complete?</th>
+              <th>Critério Técnico</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Mecanismo de Anticítera</strong></td>
+              <td>~150 a.C.</td>
+              <td><span class="tag-status no">Não</span></td>
+              <td>Hardware fixo para cálculos astronômicos.</td>
+            </tr>
+            <tr>
+              <td><strong>Pascalina</strong></td>
+              <td>1642</td>
+              <td><span class="tag-status no">Não</span></td>
+              <td>Apenas adições/subtrações mecânicas sem loops ou desvios.</td>
+            </tr>
+            <tr>
+              <td><strong>Máquina Analítica</strong></td>
+              <td>1837</td>
+              <td><span class="tag-status theory">Sim (Teoria)</span></td>
+              <td>Tinha CPU (Moinho), memória, repetição e desvio condicional.</td>
+            </tr>
+            <tr>
+              <td><strong>Harvard Mark I &amp; II</strong></td>
+              <td>1944–47</td>
+              <td><span class="tag-status no">Não</span></td>
+              <td>Leitura sequencial em fita sem generalidade computacional.</td>
+            </tr>
+            <tr>
+              <td><strong>Colossus</strong></td>
+              <td>1943</td>
+              <td><span class="tag-status no">Não</span></td>
+              <td>Eletrônico mas dedicado exclusivamente à criptoanálise.</td>
+            </tr>
+            <tr>
+              <td><strong>ENIAC</strong></td>
+              <td>1945</td>
+              <td><span class="tag-status yes">Sim</span></td>
+              <td>Geral e universal, porém reconfigurado via cabos físicos.</td>
+            </tr>
+            <tr>
+              <td><strong>Manchester Baby (SSEM)</strong></td>
+              <td>1948</td>
+              <td><span class="tag-status yes">Sim</span></td>
+              <td>Primeiro com <strong>programa armazenado em memória</strong>.</td>
+            </tr>
+            <tr>
+              <td><strong>Manchester Mark 1</strong></td>
+              <td>1949</td>
+              <td><span class="tag-status yes">Sim</span></td>
+              <td>Evolução do Baby com conjunto de instruções por Alan Turing.</td>
+            </tr>
+            <tr>
+              <td><strong>EDVAC &amp; EDSAC</strong></td>
+              <td>1949</td>
+              <td><span class="tag-status yes">Sim</span></td>
+              <td>Arquitetura de programa em memória de uso geral.</td>
+            </tr>
+            <tr>
+              <td><strong>Pilot ACE (Turing)</strong></td>
+              <td>1950</td>
+              <td><span class="tag-status yes">Sim</span></td>
+              <td>Projeto da máquina universal com otimização em software.</td>
+            </tr>
+            <tr>
+              <td><strong>Patinho Feio (USP - Brasil)</strong></td>
+              <td>1972</td>
+              <td><span class="tag-status brazil">Sim (Brasil)</span></td>
+              <td>Primeiro computador de 8 bits projetado e montado no Brasil.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- TABELA HODGES -->
+      <div class="table-slide-card" style="margin-top: 3rem;">
+        <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 1.25rem;">Critério de Andrew Hodges (turing.org.uk)</h3>
+        <table class="clean-table">
+          <thead>
+            <tr>
+              <th>Máquina</th>
+              <th>Computação Geral</th>
+              <th>Programa em Memória</th>
+              <th>"Computador" Para Hodges</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Máquina Analítica (Babbage)</strong></td>
+              <td>Sim (Teoria)</td>
+              <td>Não</td>
+              <td><span class="tag-status no">Não</span></td>
+            </tr>
+            <tr>
+              <td><strong>ENIAC</strong></td>
+              <td>Sim</td>
+              <td>Não (Cabos)</td>
+              <td><span class="tag-status no">Não</span></td>
+            </tr>
+            <tr>
+              <td><strong>Manchester Baby (1948)</strong></td>
+              <td>Sim</td>
+              <td>Sim (CRT Williams)</td>
+              <td><span class="tag-status yes">Sim (1º da História)</span></td>
+            </tr>
+            <tr>
+              <td><strong>EDSAC (1949)</strong></td>
+              <td>Sim</td>
+              <td>Sim</td>
+              <td><span class="tag-status yes">Sim</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="simple-footer">
+      <p>Seminário: Primeiros Computadores &amp; Início da Ciência da Computação</p>
+      <p style="font-size: 0.8rem; margin-top: 4px;">Apresentação acadêmica estruturada para projeção em sala de aula.</p>
+    </footer>
+
+  </div><!-- Fim Presentation Container -->
+
+  <!-- ==========================================================================
+       SCRIPTS JAVASCRIPT MINIMALISTAS E ROBUSTOS
+       ========================================================================== -->
+  <script>
+    // 1. Barra de progresso discreta
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progress-line').style.width = scrolled + '%';
+    });
+
+    // 2. Simulador Turing Minimalista (1 Botão)
+    const turingTape = ['#', '1', '0', '1', '1', '#'];
+    let turingHead = 1;
+    let turingState = 'q_seek';
+    let turingSteps = 0;
+
+    const turingStrip = document.getElementById('turing-cells-strip');
+    const turingStateLabel = document.getElementById('turing-clean-state');
+
+    function renderTuringClean() {
+      turingStrip.innerHTML = '';
+      turingTape.forEach((val, idx) => {
+        const cell = document.createElement('div');
+        cell.className = 'turing-tile' + (idx === turingHead ? ' active' : '');
+        cell.textContent = val;
+        turingStrip.appendChild(cell);
+      });
+      turingStateLabel.textContent = 'ESTADO: ' + turingState;
+    }
+
+    document.getElementById('btn-step-turing').addEventListener('click', () => {
+      if (turingState === 'q_halt') return;
+      turingSteps++;
+      const sym = turingTape[turingHead] || '#';
+
+      if (turingState === 'q_seek') {
+        if (sym === '0' || sym === '1') {
+          turingHead++;
+          if (turingHead >= turingTape.length) turingTape.push('#');
+        } else {
+          turingState = 'q_add';
+          turingHead--;
+        }
+      } else if (turingState === 'q_add') {
+        if (sym === '1') {
+          turingTape[turingHead] = '0';
+          turingHead--;
+        } else {
+          turingTape[turingHead] = '1';
+          turingState = 'q_halt';
+          document.getElementById('turing-op-desc').textContent = 'Incremento concluído! Resultado: 12 (1100 binário)';
+        }
+      }
+      renderTuringClean();
+    });
+
+    document.getElementById('btn-reset-turing').addEventListener('click', () => {
+      turingTape.length = 0;
+      turingTape.push('#', '1', '0', '1', '1', '#');
+      turingHead = 1;
+      turingState = 'q_seek';
+      turingSteps = 0;
+      document.getElementById('turing-op-desc').textContent = 'Incremento binário (+1) no número 11 (1011 bin)';
+      renderTuringClean();
+    });
+
+    renderTuringClean();
+
+    // 3. Pascalina Clean
+    let pasVal = 0;
+    function renderPascalineClean() {
+      document.getElementById('dial-c').textContent = Math.floor((pasVal % 1000) / 100);
+      document.getElementById('dial-d').textContent = Math.floor((pasVal % 100) / 10);
+      document.getElementById('dial-u').textContent = pasVal % 10;
+      document.getElementById('pascaline-clean-val').textContent = `Total: ${pasVal}`;
+    }
+
+    function stepPascaline(n) {
+      pasVal += n;
+      renderPascalineClean();
+    }
+
+    function resetCleanPascaline() {
+      pasVal = 0;
+      renderPascalineClean();
+    }
+
+    // 4. Manchester Baby CRT Clean
+    const canvas = document.getElementById('crt-canvas-clean');
+    const ctx = canvas ? canvas.getContext('2d') : null;
+    let babyAccumVal = 0;
+
+    function drawCleanCRT() {
+      if (!ctx) return;
+      ctx.fillStyle = '#020617';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const cellW = canvas.width / 32;
+      const cellH = canvas.height / 24;
+
+      for (let r = 0; r < 24; r++) {
+        for (let c = 0; c < 32; c++) {
+          if (Math.random() > 0.6) {
+            ctx.fillStyle = '#22c55e';
+            ctx.fillRect(c * cellW + 1, r * cellH + 1, cellW - 2, cellH - 2);
+          } else {
+            ctx.fillStyle = '#0f2918';
+            ctx.fillRect(c * cellW + 1.5, r * cellH + 1.5, 1, 1);
+          }
+        }
+      }
+    }
+
+    if (canvas) {
+      drawCleanCRT();
+      document.getElementById('btn-baby-run-clean').addEventListener('click', () => {
+        babyAccumVal = (babyAccumVal + 4096) % 262144;
+        document.getElementById('crt-clean-info').textContent = 'ACUMULADOR: 0x' + babyAccumVal.toString(16).toUpperCase().padStart(6, '0');
+        drawCleanCRT();
+      });
+      document.getElementById('btn-baby-reset-clean').addEventListener('click', () => {
+        babyAccumVal = 0;
+        document.getElementById('crt-clean-info').textContent = 'ACUMULADOR: 0x000000';
+        drawCleanCRT();
+      });
+    }
+
+    // 5. Patinho Feio Clean
+    const patinhoContainer = document.getElementById('patinho-switches-clean');
+    const switches = [0, 0, 0, 0, 0, 0, 0, 0];
+    let regVal = 0;
+
+    function buildPatinhoClean() {
+      patinhoContainer.innerHTML = '';
+      for (let i = 7; i >= 0; i--) {
+        const col = document.createElement('div');
+        col.className = 'patinho-switch-col';
+        col.innerHTML = `
+          <div class="switch-indicator ${switches[i] ? 'active' : ''}" id="p-ind-${i}"></div>
+          <div class="toggle-body-clean ${switches[i] ? 'up' : ''}" onclick="togglePatinhoClean(${i})">
+            <div class="toggle-knob-clean"></div>
+          </div>
+          <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--text-muted);">B${i}</span>
+        `;
+        patinhoContainer.appendChild(col);
+      }
+    }
+
+    function togglePatinhoClean(idx) {
+      switches[idx] = switches[idx] ? 0 : 1;
+      buildPatinhoClean();
+    }
+
+    function patinhoLoadClean() {
+      let sum = 0;
+      for (let i = 7; i >= 0; i--) sum += switches[i] * Math.pow(2, i);
+      regVal = sum;
+      document.getElementById('patinho-clean-readout').textContent = `REG A: ${regVal.toString(2).padStart(8, '0')} (${regVal})`;
+    }
+
+    function patinhoAddClean() {
+      let sum = 0;
+      for (let i = 7; i >= 0; i--) sum += switches[i] * Math.pow(2, i);
+      regVal = (regVal + sum) % 256;
+      document.getElementById('patinho-clean-readout').textContent = `REG A: ${regVal.toString(2).padStart(8, '0')} (${regVal})`;
+    }
+
+    function patinhoResetClean() {
+      switches.fill(0);
+      regVal = 0;
+      buildPatinhoClean();
+      document.getElementById('patinho-clean-readout').textContent = 'REG A: 00000000 (0)';
+    }
+
+    buildPatinhoClean();
+  </script>
+</body>
+</html>
