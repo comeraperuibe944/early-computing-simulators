@@ -1057,6 +1057,170 @@
     }
 
     /* ==========================================================================
+       BARRA DE CONTROLE: SLIDER DE ORDEM CRONOLÓGICA VS. ORDEM DIDÁTICA
+       ========================================================================== */
+    .presentation-order-bar {
+      max-width: 820px;
+      margin: 1.75rem auto 2.5rem auto;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 40px;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.45rem;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+    }
+
+    .order-switch-control {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      user-select: none;
+    }
+
+    .order-switch-label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #64748b;
+      cursor: pointer;
+      transition: color 0.15s ease;
+    }
+
+    .order-switch-label.active {
+      color: #0f172a;
+    }
+
+    .slider-switch-box {
+      position: relative;
+      display: inline-block;
+      width: 52px;
+      height: 28px;
+    }
+
+    .slider-switch-box input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider-switch-track {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #e2e8f0;
+      border: 1px solid #cbd5e1;
+      transition: 0.25s;
+      border-radius: 28px;
+    }
+
+    .slider-switch-track:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 3px;
+      bottom: 3px;
+      background-color: #0f172a;
+      transition: 0.25s;
+      border-radius: 50%;
+    }
+
+    .slider-switch-box input:checked + .slider-switch-track {
+      background-color: #0f172a;
+      border-color: #0f172a;
+    }
+
+    .slider-switch-box input:checked + .slider-switch-track:before {
+      transform: translateX(24px);
+      background-color: #ffffff;
+    }
+
+    .order-caption-text {
+      font-size: 0.82rem;
+      color: #64748b;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .order-caption-text strong {
+      color: #0f172a;
+    }
+
+    /* BANNER DE TRANSIÇÃO DIDÁTICA */
+    .didactic-transition-banner {
+      max-width: 1040px;
+      margin: 3.5rem auto 3rem auto;
+      padding: 2.5rem 2rem;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      text-align: center;
+      position: relative;
+    }
+
+    .didactic-divider-line {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #0f172a, transparent);
+      margin: 1.25rem auto;
+      width: 80%;
+    }
+
+    .didactic-banner-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 0.35rem 0.85rem;
+      border-radius: 4px;
+      margin-bottom: 0.85rem;
+    }
+
+    .didactic-banner-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0.25rem 0 0.85rem 0;
+      line-height: 1.25;
+    }
+
+    .didactic-banner-desc {
+      font-size: 1.05rem;
+      color: #334155;
+      line-height: 1.6;
+      max-width: 840px;
+      margin: 0 auto 1.25rem auto;
+    }
+
+    .didactic-milestones-chain {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #475569;
+    }
+
+    .didactic-milestones-chain span {
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+      padding: 0.35rem 0.75rem;
+      border-radius: 4px;
+      color: #0f172a;
+    }
+
+    /* ==========================================================================
        DUO SPLIT-SCREEN: CHARLES BABBAGE & ADA LOVELACE
        ========================================================================== */
     .duo-split-stage {
@@ -2307,6 +2471,21 @@
       </div>
     </header>
 
+    <!-- BARRA DE CONTROLE: SELETOR DE MODO (ORDEM CRONOLÓGICA VS. ORDEM DIDÁTICA) -->
+    <div class="presentation-order-bar">
+      <div class="order-switch-control">
+        <span class="order-switch-label active" id="label-order-chrono" onclick="setPresentationOrder('cronologica')">Ordem Cronológica</span>
+        <label class="slider-switch-box" title="Alternar entre Ordem Cronológica e Ordem Didática">
+          <input type="checkbox" id="order-slider-checkbox" onchange="togglePresentationOrder(this.checked)">
+          <span class="slider-switch-track"></span>
+        </label>
+        <span class="order-switch-label" id="label-order-didactic" onclick="setPresentationOrder('didatica')">Ordem Didática</span>
+      </div>
+      <div class="order-caption-text" id="order-caption">
+        Modo Ativo: <strong>Ordem Cronológica Linear</strong> (35.000 a.C. até 1974).
+      </div>
+    </div>
+
     <!-- ==========================================================================
          CONCEITO FUNDAMENTAL
 
@@ -2878,6 +3057,28 @@
       </div>
     </section>
 
+    <!-- BANNER DE TRANSIÇÃO DIDÁTICA (EXIBIDO APENAS NO MODO DIDÁTICO) -->
+    <div class="didactic-transition-banner" id="didactic-transition-banner" style="display: none;">
+      <div class="didactic-divider-line"></div>
+      <div class="didactic-banner-badge">TRANSIÇÃO CONCEITUAL DIDÁTICA</div>
+      <h2 class="didactic-banner-title">História das Máquinas Universais &amp; Computadores Programáveis</h2>
+      <p class="didactic-banner-desc">
+        Aqui finaliza a linhagem das máquinas dedicadas e especializadas (Anticítera, Pascalina, Leibniz, ABC, Harvard Mark I e Colossus).
+        Inicia-se a grande revolução dos computadores universais programáveis (Turing-Completos): da Máquina Analítica de Babbage &amp; Ada Lovelace e a teoria universal de Alan Turing ao Zuse Z3, ENIAC, Von Neumann e a era dos microcomputadores.
+      </p>
+      <div class="didactic-milestones-chain">
+        <span>1. Babbage &amp; Lovelace</span> &rarr; 
+        <span>2. Turing (1936)</span> &rarr; 
+        <span>3. Zuse Z3</span> &rarr; 
+        <span>4. ENIAC</span> &rarr; 
+        <span>5. Von Neumann &amp; Baby</span> &rarr; 
+        <span>6. Microcomputadores</span>
+      </div>
+      <div class="didactic-divider-line"></div>
+    </div>
+
+    <!-- GRUPO 1: PRIMEIRAS MÁQUINAS UNIVERSAIS & FUNDAÇÃO TEÓRICA (BABBAGE, TURING, ZUSE Z3) -->
+    <div id="group-early-universal">
 
     <!-- ERA 3: CHARLES BABBAGE & ADA LOVELACE: A MÁQUINA ANALÍTICA (1837 - 1843) -->
     <section class="slide-block" id="slide-analitica">
@@ -3445,7 +3646,10 @@
         </div>
       </div>
     </section>
+    </div> <!-- FIM #group-early-universal -->
 
+    <!-- GRUPO 2: MÁQUINAS DIGITAIS ESPECIALIZADAS DA 2ª GUERRA (ABC, HARVARD MARK I, COLOSSUS) -->
+    <div id="group-specialized-ww2">
 
     <!-- ERA 5B: ATANASOFF-BERRY COMPUTER (ABC, 1937-1942) -->
     <section class="slide-block">
@@ -3741,7 +3945,7 @@
         </div>
       </div>
     </section>
-
+    </div> <!-- FIM #group-specialized-ww2 -->
 
     <!-- ERA 6: GERAÇÃO ELETRÔNICA SEM PROGRAMA ARMAZENADO (1945 - 1946) -->
     <section class="slide-block">
@@ -8013,6 +8217,53 @@ READY
 
     function resetAnalitica() {
       loadAnaliticaProgram(currentAnaliticaProgram);
+    }
+
+    // ==========================================================================
+    // CONTROLE DE FLUXO: ORDEM CRONOLÓGICA VS. ORDEM DIDÁTICA
+    // ==========================================================================
+    let currentPresentationOrder = 'cronologica';
+
+    function togglePresentationOrder(isDidactic) {
+      setPresentationOrder(isDidactic ? 'didatica' : 'cronologica');
+    }
+
+    function setPresentationOrder(mode) {
+      currentPresentationOrder = mode;
+      const groupUniversal = document.getElementById('group-early-universal');
+      const groupSpecialized = document.getElementById('group-specialized-ww2');
+      const banner = document.getElementById('didactic-transition-banner');
+      const checkbox = document.getElementById('order-slider-checkbox');
+      const caption = document.getElementById('order-caption');
+      const labelChrono = document.getElementById('label-order-chrono');
+      const labelDidactic = document.getElementById('label-order-didactic');
+
+      if (!groupUniversal || !groupSpecialized || !banner) return;
+
+      if (mode === 'didatica') {
+        // Didático: Agrupa máquinas especializadas primeiro (ABC, Mark I, Colossus), depois o banner de transição, depois as universais (Babbage, Turing, Z3)
+        groupUniversal.parentNode.insertBefore(groupSpecialized, banner);
+        banner.style.display = 'block';
+
+        if (checkbox) checkbox.checked = true;
+        if (labelChrono) labelChrono.classList.remove('active');
+        if (labelDidactic) labelDidactic.classList.add('active');
+        if (caption) {
+          caption.innerHTML = 'Modo Didático Ativo: <strong>Máquinas Especializadas</strong> (Anticítera, Pascalina, Leibniz, ABC, Harvard Mark I, Colossus) &rarr; <strong>Transição Didática</strong> &rarr; <strong>Máquinas Universais</strong> (Babbage, Turing, Z3, ENIAC, Von Neumann).';
+        }
+      } else {
+        // Cronológico: Babbage (1837), Turing (1936) e Z3 (1941) antes de ABC (1942), Mark I (1944) e Colossus (1944)
+        groupSpecialized.parentNode.insertBefore(groupUniversal, groupSpecialized);
+        groupUniversal.parentNode.insertBefore(banner, groupUniversal);
+        banner.style.display = 'none';
+
+        if (checkbox) checkbox.checked = false;
+        if (labelChrono) labelChrono.classList.add('active');
+        if (labelDidactic) labelDidactic.classList.remove('active');
+        if (caption) {
+          caption.innerHTML = 'Modo Cronológico Ativo: <strong>Linha do tempo linear</strong> estrita por anos de concepção (35.000 a.C. até 1974).';
+        }
+      }
     }
 
     // Inicialização completa de todos os simuladores
