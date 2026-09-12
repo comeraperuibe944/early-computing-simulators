@@ -585,7 +585,7 @@
       align-items: center;
       margin-bottom: 1.25rem;
       padding-bottom: 0.75rem;
-      border-bottom: 2px solid #0f172a;
+      border-bottom: 1px solid var(--border-subtle);
       flex-wrap: wrap;
       gap: 0.75rem;
     }
@@ -606,7 +606,7 @@
       font-weight: 700;
       padding: 0.55rem 1.25rem;
       border-radius: 4px;
-      border: 2px solid #0f172a;
+      border: 1px solid #0f172a;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -623,7 +623,7 @@
     .btn-clean.secondary {
       background: #ffffff;
       color: #0f172a;
-      border: 2px solid #0f172a;
+      border: 1px solid var(--border-subtle);
     }
 
     .btn-clean.secondary:hover {
@@ -634,7 +634,7 @@
     .btn-clean.active {
       background: #0f172a;
       color: #ffffff;
-      border: 2px solid #0f172a;
+      border: 1px solid #0f172a;
     }
 
     /* SIMULADOR 1: SOROBAN 5 HASTES COMPLETO */
@@ -642,7 +642,7 @@
       display: flex;
       justify-content: space-around;
       background: #f8fafc;
-      border: 2px solid var(--border-strong);
+      border: none;
       border-radius: var(--radius-sm);
       padding: 1.5rem 0.5rem;
       position: relative;
@@ -699,7 +699,7 @@
       width: 38px;
       height: 18px;
       background: #ffffff;
-      border: 2px solid var(--text-main);
+      border: 1.5px solid var(--text-main);
       border-radius: 9px;
       cursor: pointer;
       transition: transform 0.15s ease, background 0.15s ease;
@@ -724,7 +724,7 @@
       display: flex;
       justify-content: space-between;
       background: #ffffff;
-      border: 2px solid #0f172a;
+      border: 1px solid var(--border-subtle);
       border-radius: 4px;
       padding: 0.75rem 1.25rem;
       font-family: var(--font-mono);
@@ -754,7 +754,7 @@
       height: 74px;
       border-radius: 50%;
       background: #ffffff;
-      border: 2px solid #0f172a;
+      border: 1.5px solid #0f172a;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -782,7 +782,7 @@
     /* SIMULADOR 3: MÁQUINA DE TURING DE LABORATÓRIO */
     .turing-ribbon-wrapper {
       background: #f8fafc;
-      border: 2px solid #0f172a;
+      border: none;
       border-radius: 4px;
       padding: 2.2rem 1rem 1.2rem;
       position: relative;
@@ -800,7 +800,7 @@
       font-weight: 800;
       background: #0f172a;
       color: #ffffff;
-      border: 2px solid #0f172a;
+      border: 1px solid #0f172a;
       padding: 0.18rem 0.75rem;
       border-radius: 4px;
       white-space: nowrap;
@@ -817,7 +817,7 @@
       width: 48px;
       height: 52px;
       background: #ffffff;
-      border: 2px solid #0f172a;
+      border: 1.5px solid #0f172a;
       border-radius: 4px;
       display: flex;
       align-items: center;
@@ -839,7 +839,7 @@
 
     .turing-telemetry-panel {
       background: #ffffff;
-      border: 2px solid #0f172a;
+      border: 1px solid var(--border-subtle);
       border-radius: 4px;
       padding: 1rem 1.25rem;
       margin-bottom: 1.25rem;
@@ -861,7 +861,7 @@
     /* SIMULADOR 4: ENIAC ANEL DECÁDICO E CABOS DE PATCH */
     .eniac-unit-box {
       background: #ffffff;
-      border: 2px solid #0f172a;
+      border: 1px solid var(--border-subtle);
       border-radius: 4px;
       padding: 0.6rem;
       text-align: center;
@@ -893,7 +893,7 @@
       justify-content: center;
       background: #ffffff;
       color: #64748b;
-      border: 1.5px solid #0f172a;
+      border: 1px solid var(--border-subtle);
       border-radius: 2px;
       margin-bottom: 1px;
       transition: all 0.1s ease;
@@ -907,7 +907,7 @@
     .eniac-patch-panel {
       background: #ffffff;
       color: #0f172a;
-      border: 2px solid #0f172a;
+      border: 1px solid var(--border-subtle);
       border-radius: 4px;
       padding: 1.25rem;
       margin: 1rem 0;
@@ -928,7 +928,7 @@
       font-weight: 800;
       background: #ffffff;
       color: #64748b;
-      border: 2px solid #0f172a;
+      border: 1px solid var(--border-subtle);
       border-radius: 4px;
       transition: all 0.1s ease;
     }
@@ -947,7 +947,7 @@
       padding: 1.25rem;
       text-align: center;
       margin: 1.5rem 0;
-      border: 2px solid #0f172a;
+      border: none;
     }
 
     #crt-canvas-clean {
@@ -957,7 +957,7 @@
       background: #020617;
       display: block;
       margin: 0 auto;
-      border: 2px solid #0f172a;
+      border: 1px solid var(--border-subtle);
       border-radius: 4px;
       image-rendering: pixelated;
     }
@@ -977,7 +977,7 @@
     /* SIMULADOR 6: PATINHO FEIO (USP 1972) CONSOLE */
     .patinho-chunky-rack {
       background: #f8fafc;
-      border: 2px solid #0f172a;
+      border: none;
       border-radius: 4px;
       padding: 1.5rem;
       margin: 1.5rem 0;
@@ -1003,13 +1003,13 @@
       height: 12px;
       border-radius: 50%;
       background: #ffffff;
-      border: 2px solid #0f172a;
+      border: 1.5px solid #0f172a;
       transition: background 0.15s ease;
     }
 
     .switch-indicator.active {
       background: #0f172a !important;
-      border: 2px solid #0f172a !important;
+      border: 1.5px solid #0f172a !important;
       box-shadow: none !important;
     }
 
@@ -1017,7 +1017,7 @@
       width: 24px;
       height: 48px;
       background: #ffffff;
-      border: 2px solid #0f172a;
+      border: 1.5px solid #0f172a;
       border-radius: 12px;
       position: relative;
       cursor: pointer;
@@ -1027,7 +1027,7 @@
       width: 16px;
       height: 16px;
       background: #ffffff;
-      border: 2px solid #0f172a;
+      border: 1.5px solid #0f172a;
       border-radius: 50%;
       position: absolute;
       top: 24px;
@@ -1095,7 +1095,7 @@
       font-family: var(--font-mono);
       font-size: 0.75rem;
       color: #0f172a;
-      border: 2px solid #0f172a;
+      border: 1px solid var(--border-subtle);
     }
 
     .speed-btn {
@@ -1141,7 +1141,7 @@
       font-weight: 800;
       color: #0f172a;
       background: #ffffff;
-      border: 2px solid #0f172a;
+      border: 1px solid var(--border-subtle);
       border-radius: 4px;
       width: 34px;
       height: 34px;
@@ -1167,7 +1167,7 @@
     /* SIMULADOR 2: ANTICÍTERA ASTRONÔMICO */
     .antikythera-stage {
       background: #f8fafc;
-      border: 2px solid #0f172a;
+      border: none;
       border-radius: 4px;
       padding: 1.5rem;
       margin: 1.5rem 0;
@@ -1183,7 +1183,7 @@
     }
     .antikythera-gearbox {
       background: #ffffff;
-      border: 2px solid #0f172a;
+      border: 1px solid var(--border-subtle);
       border-radius: 4px;
       padding: 1rem;
       display: flex;
@@ -1204,7 +1204,7 @@
     }
     .dial-card {
       background: #ffffff;
-      border: 2px solid #0f172a;
+      border: 1px solid var(--border-subtle);
       border-radius: 4px;
       padding: 0.85rem 1rem;
     }
@@ -1236,7 +1236,7 @@
       background: #0f172a;
       position: relative;
       overflow: hidden;
-      border: 2px solid #0f172a;
+      border: 1px solid #0f172a;
     }
     .moon-sphere-light {
       position: absolute;
@@ -1255,7 +1255,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border: 2px solid #0f172a;
+      border: 1px solid var(--border-subtle);
       background: #f8fafc;
       color: #0f172a;
     }
@@ -1272,11 +1272,11 @@
       border-radius: 4px;
       padding: 1.5rem;
       margin: 1.5rem 0;
-      border: 2px solid #0f172a;
+      border: none;
     }
     .zuse-tape-frame {
       background: #f8fafc;
-      border: 2px solid #0f172a;
+      border: 1px solid var(--border-subtle);
       border-radius: 4px;
       padding: 0.75rem 1rem;
       position: relative;
@@ -1302,7 +1302,7 @@
       width: 70px;
       height: 90px;
       background: #ffffff;
-      border: 2px solid #0f172a;
+      border: 1px solid #0f172a;
       border-radius: 4px;
       flex-shrink: 0;
       display: flex;
@@ -1345,7 +1345,7 @@
       height: 8px;
       border-radius: 50%;
       background: #e2e8f0;
-      border: 1.5px solid #0f172a;
+      border: 1px solid #0f172a;
       margin: 0 auto;
     }
     .zuse-hole.punched {
@@ -1371,7 +1371,7 @@
     }
     .zuse-relay-card {
       background: #ffffff;
-      border: 2px solid #0f172a;
+      border: 1px solid var(--border-subtle);
       border-radius: 4px;
       padding: 0.85rem;
       font-family: var(--font-mono);
@@ -1385,7 +1385,7 @@
     }
     .zuse-relay-graphic {
       height: 48px;
-      border: 2px solid #0f172a;
+      border: 1px solid var(--border-subtle);
       border-radius: 4px;
       background: #f8fafc;
       position: relative;
@@ -1399,7 +1399,7 @@
       width: 24px;
       height: 28px;
       background: #0f172a;
-      border: 2px solid #0f172a;
+      border: 1px solid #0f172a;
       border-radius: 2px;
       position: relative;
     }
@@ -1426,7 +1426,7 @@
     }
     .zuse-regs-row {
       background: #f8fafc;
-      border: 2px solid #0f172a;
+      border: 1px solid var(--border-subtle);
       border-radius: 4px;
       padding: 0.85rem 1.25rem;
       display: flex;
@@ -1445,7 +1445,7 @@
       border-radius: 4px;
       padding: 1.5rem;
       margin: 1.5rem 0;
-      border: 2px solid #0f172a;
+      border: none;
     }
     .colossus-top-status {
       display: flex;
@@ -1453,7 +1453,7 @@
       align-items: center;
       margin-bottom: 1rem;
       padding-bottom: 0.75rem;
-      border-bottom: 2px solid #0f172a;
+      border-bottom: 1px solid var(--border-subtle);
       font-family: var(--font-mono);
       font-size: 0.85rem;
       color: #0f172a;
@@ -1466,12 +1466,12 @@
       padding: 1rem;
       background: #f8fafc;
       border-radius: 4px;
-      border: 2px solid #0f172a;
+      border: 1px solid var(--border-subtle);
     }
     .valve-tube {
       width: 22px;
       height: 40px;
-      border: 2px solid #0f172a;
+      border: 1px solid #0f172a;
       border-radius: 11px 11px 4px 4px;
       background: #ffffff;
       position: relative;
@@ -1507,7 +1507,7 @@
     }
     .colossus-screen-panel {
       background: #f8fafc;
-      border: 2px solid #0f172a;
+      border: 1px solid var(--border-subtle);
       border-radius: 4px;
       padding: 1rem;
       font-family: var(--font-mono);
@@ -1534,7 +1534,7 @@
     }
     .lorenz-wheel-badge {
       background: #ffffff;
-      border: 2px solid #0f172a;
+      border: 1px solid var(--border-subtle);
       border-radius: 4px;
       padding: 4px 8px;
       font-size: 0.75rem;
@@ -2734,7 +2734,7 @@
           </div>
 
           <!-- BANNER DE STATUS DO PASSO ATUAL -->
-          <div style="background: #f8fafc; color: #0f172a; border: 2px solid #0f172a; border-radius: 4px; padding: 0.85rem 1.2rem; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <div style="background: #f8fafc; color: #0f172a; border: 1px solid var(--border-subtle); border-radius: 4px; padding: 0.85rem 1.2rem; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
             <div>
               <span id="zuse-step-badge" style="background: #0f172a; color: #ffffff; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.78rem; margin-right: 0.6rem;">PASSO 1 DE 4</span>
               <strong id="zuse-step-title" style="color: #0f172a;">Carregando Valor A</strong>
@@ -3203,7 +3203,7 @@
           </div>
 
           <!-- BANNER DE STATUS DO CÁLCULO -->
-          <div style="background: #f8fafc; color: #0f172a; border: 2px solid #0f172a; border-radius: 4px; padding: 0.85rem 1.2rem; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <div style="background: #f8fafc; color: #0f172a; border: 1px solid var(--border-subtle); border-radius: 4px; padding: 0.85rem 1.2rem; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
             <div>
               <span id="eniac-step-badge" style="background: #0f172a; color: #ffffff; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.78rem; margin-right: 0.6rem;">PASSO 1 DE 4</span>
               <strong id="eniac-step-title" style="color: #0f172a;">Disparo Inicial do Canhão (t = 0 s)</strong>
@@ -3212,7 +3212,7 @@
           </div>
 
           <!-- DIAGRAMA DOS PAINÉIS CABEADOS DO ENIAC -->
-          <div style="background: #ffffff; border: 2px solid #0f172a; border-radius: 4px; padding: 1rem; margin-bottom: 1rem; color: #0f172a; font-family: var(--font-mono); font-size: 0.8rem;">
+          <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px; padding: 1rem; margin-bottom: 1rem; color: #0f172a; font-family: var(--font-mono); font-size: 0.8rem;">
             <div style="color: #0f172a; font-weight: 800; margin-bottom: 0.6rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">
               ROTA DOS CABOS TELEFÔNICOS EXTERNOS (PATCH CORDS):
             </div>
@@ -3265,7 +3265,7 @@
             </div>
 
             <!-- Matriz de 10 colunas de dígitos neon -->
-            <div class="eniac-decade-display" id="eniac-decade-columns" style="display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; background: #f8fafc; padding: 0.75rem; border: 2px solid #0f172a; border-radius: 4px;">
+            <div class="eniac-decade-display" id="eniac-decade-columns" style="display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; background: #f8fafc; padding: 0.75rem; border: 1px solid var(--border-subtle); border-radius: 4px;">
               <!-- Gerado via JavaScript: 10 colunas representando as posições de 10^9 a 10^0 -->
             </div>
 
@@ -3818,7 +3818,7 @@
           </div>
 
           <!-- BANNER DE STATUS DO PASSO -->
-          <div style="background: #f8fafc; color: #0f172a; border: 2px solid #0f172a; border-radius: 4px; padding: 0.85rem 1.2rem; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <div style="background: #f8fafc; color: #0f172a; border: 1px solid var(--border-subtle); border-radius: 4px; padding: 0.85rem 1.2rem; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
             <div>
               <span id="patinho-step-badge" style="background: #0f172a; color: #ffffff; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.78rem; margin-right: 0.6rem;">PASSO 1 DE 3</span>
               <strong id="patinho-step-title" style="color: #0f172a;">Instrução LDA 10 (Carregar Operando A)</strong>
@@ -3843,7 +3843,7 @@
           </div>
 
           <!-- MOSTRADOR DO REGISTRADOR ACUMULADOR (LÂMPADAS) -->
-          <div class="soroban-readout-row" style="margin: 0.8rem 0; background: #ffffff; color: #0f172a; border: 2px solid #0f172a; border-radius: 4px;">
+          <div class="soroban-readout-row" style="margin: 0.8rem 0; background: #ffffff; color: #0f172a; border: 1px solid var(--border-subtle); border-radius: 4px;">
             <div>
               <span style="color: #64748b; font-size: 0.75rem; display: block; font-weight: 700;">REGISTRADOR ACUMULADOR (A) DA CPU POLI-USP:</span>
               <span id="patinho-clean-readout" style="color: #0f172a; font-size: 1.1rem; font-weight: 800;">
