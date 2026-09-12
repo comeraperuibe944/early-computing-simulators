@@ -573,10 +573,10 @@
     .interactive-app-card {
       margin-top: 2.5rem;
       background: #ffffff;
-      border: 1px solid var(--border-strong);
-      border-radius: var(--radius-md);
+      border: 2px solid #0f172a;
+      border-radius: 4px;
       padding: 1.75rem;
-      box-shadow: var(--shadow-sm);
+      box-shadow: none;
     }
 
     .app-header-clean {
@@ -585,7 +585,7 @@
       align-items: center;
       margin-bottom: 1.25rem;
       padding-bottom: 0.75rem;
-      border-bottom: 1px solid var(--border-subtle);
+      border-bottom: 2px solid #0f172a;
       flex-wrap: wrap;
       gap: 0.75rem;
     }
@@ -593,20 +593,20 @@
     .app-tag {
       font-family: var(--font-mono);
       font-size: 0.82rem;
-      font-weight: 700;
+      font-weight: 800;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: #0f172a;
     }
 
     .btn-clean {
-      background: var(--text-main);
+      background: #0f172a;
       color: #ffffff;
       font-family: var(--font-main);
-      font-size: 0.88rem;
-      font-weight: 600;
+      font-size: 0.85rem;
+      font-weight: 700;
       padding: 0.55rem 1.25rem;
       border-radius: 4px;
-      border: none;
+      border: 2px solid #0f172a;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -615,22 +615,26 @@
     }
 
     .btn-clean:hover {
-      background: #334155;
+      background: #1e293b;
+      border-color: #1e293b;
       transform: translateY(-1px);
     }
 
     .btn-clean.secondary {
-      background: var(--bg-surface-alt);
-      color: var(--text-main);
+      background: #ffffff;
+      color: #0f172a;
+      border: 2px solid #0f172a;
     }
 
     .btn-clean.secondary:hover {
-      background: var(--border-subtle);
+      background: #f1f5f9;
+      border-color: #0f172a;
     }
 
     .btn-clean.active {
-      background: var(--accent-blue-text);
+      background: #0f172a;
       color: #ffffff;
+      border: 2px solid #0f172a;
     }
 
     /* SIMULADOR 1: SOROBAN 5 HASTES COMPLETO */
@@ -720,12 +724,13 @@
       display: flex;
       justify-content: space-between;
       background: #ffffff;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
+      border: 2px solid #0f172a;
+      border-radius: 4px;
       padding: 0.75rem 1.25rem;
       font-family: var(--font-mono);
       font-size: 0.95rem;
       font-weight: 700;
+      color: #0f172a;
     }
 
     /* SIMULADOR 2: PASCALINA DE 4 DÍGITOS COM VAI-UM DOMINÓ */
@@ -749,28 +754,36 @@
       height: 74px;
       border-radius: 50%;
       background: #ffffff;
-      border: 2px solid var(--border-card);
+      border: 2px solid #0f172a;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.9rem;
       font-weight: 800;
+      color: #0f172a;
       cursor: pointer;
-      box-shadow: var(--shadow-sm);
+      box-shadow: none;
       user-select: none;
-      transition: transform 0.1s ease, border-color 0.15s ease;
+      transition: transform 0.1s ease, background 0.15s ease, color 0.15s ease;
     }
 
     .dial-circle:hover {
-      border-color: var(--text-main);
+      background: #f1f5f9;
       transform: scale(1.05);
     }
 
-    /* SIMULADOR 3: MÁQUINA DE TURING DE LABORATÓRIO (4 ALGORITMOS REAIS) */
+    .dial-circle.cascade-glow {
+      border-color: #0f172a !important;
+      background: #0f172a !important;
+      color: #ffffff !important;
+      transform: scale(1.1) !important;
+    }
+
+    /* SIMULADOR 3: MÁQUINA DE TURING DE LABORATÓRIO */
     .turing-ribbon-wrapper {
       background: #f8fafc;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
+      border: 2px solid #0f172a;
+      border-radius: 4px;
       padding: 2.2rem 1rem 1.2rem;
       position: relative;
       overflow-x: auto;
@@ -784,9 +797,10 @@
       transform: translateX(-50%);
       font-family: var(--font-mono);
       font-size: 0.72rem;
-      font-weight: 700;
-      background: var(--text-main);
+      font-weight: 800;
+      background: #0f172a;
       color: #ffffff;
+      border: 2px solid #0f172a;
       padding: 0.18rem 0.75rem;
       border-radius: 4px;
       white-space: nowrap;
@@ -803,59 +817,64 @@
       width: 48px;
       height: 52px;
       background: #ffffff;
-      border: 2px solid var(--border-card);
-      border-radius: var(--radius-sm);
+      border: 2px solid #0f172a;
+      border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: var(--font-mono);
       font-size: 1.45rem;
       font-weight: 800;
-      color: var(--text-main);
+      color: #0f172a;
       transition: all 0.2s ease;
     }
 
     .turing-tile.active {
-      border-color: #1d4ed8;
-      background: #eff6ff;
-      box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+      border-color: #0f172a !important;
+      background: #0f172a !important;
+      color: #ffffff !important;
+      box-shadow: none !important;
       transform: scale(1.08);
-      color: #1d4ed8;
     }
 
     .turing-telemetry-panel {
       background: #ffffff;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
+      border: 2px solid #0f172a;
+      border-radius: 4px;
       padding: 1rem 1.25rem;
       margin-bottom: 1.25rem;
       font-family: var(--font-mono);
       font-size: 0.85rem;
       line-height: 1.6;
+      color: #0f172a;
     }
 
     .turing-telemetry-panel div span {
-      color: var(--text-light);
+      color: #64748b;
     }
 
     .turing-telemetry-panel div strong {
-      color: var(--text-main);
+      color: #0f172a;
+      font-weight: 800;
     }
 
     /* SIMULADOR 4: ENIAC ANEL DECÁDICO E CABOS DE PATCH */
-        /* ENIAC MULTI-CABINET & DECADE ACCUMULATOR DISPLAY */
     .eniac-unit-box {
-      background: #0f172a;
-      border: 1.5px solid #334155;
-      border-radius: 6px;
+      background: #ffffff;
+      border: 2px solid #0f172a;
+      border-radius: 4px;
       padding: 0.6rem;
       text-align: center;
-      transition: all 0.2s ease;
+      color: #0f172a;
     }
     .eniac-unit-box.active {
-      border-color: #f97316;
-      background: #431407;
-      box-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
+      border-color: #0f172a !important;
+      background: #0f172a !important;
+      color: #ffffff !important;
+      box-shadow: none !important;
+    }
+    .eniac-unit-box.active * {
+      color: #ffffff !important;
     }
     .eniac-col-digit {
       display: flex;
@@ -865,29 +884,33 @@
     }
     .eniac-lamp-mini {
       width: 100%;
-      height: 14px;
+      height: 15px;
       font-size: 0.65rem;
       font-weight: 800;
       font-family: var(--font-mono);
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #1e293b;
-      color: #475569;
+      background: #ffffff;
+      color: #64748b;
+      border: 1.5px solid #0f172a;
       border-radius: 2px;
-      transition: all 0.1s;
+      margin-bottom: 1px;
+      transition: all 0.1s ease;
     }
     .eniac-lamp-mini.lit {
-      background: #ea580c;
-      color: #ffffff;
-      box-shadow: 0 0 8px #f97316;
+      background: #0f172a !important;
+      color: #ffffff !important;
+      border-color: #0f172a !important;
+      box-shadow: none !important;
     }
     .eniac-patch-panel {
-      background: #0f172a;
-      color: #ffffff;
-      border-radius: var(--radius-sm);
-      padding: 1.5rem;
-      margin: 1.5rem 0;
+      background: #ffffff;
+      color: #0f172a;
+      border: 2px solid #0f172a;
+      border-radius: 4px;
+      padding: 1.25rem;
+      margin: 1rem 0;
     }
 
     .eniac-ring-clean {
@@ -903,28 +926,28 @@
       font-family: var(--font-mono);
       font-size: 0.9rem;
       font-weight: 800;
-      background: #1e293b;
+      background: #ffffff;
       color: #64748b;
-      border: 2px solid #334155;
-      border-radius: var(--radius-sm);
+      border: 2px solid #0f172a;
+      border-radius: 4px;
       transition: all 0.1s ease;
     }
 
     .eniac-lamp-clean.glowing {
-      background: #f97316;
+      background: #0f172a;
       color: #ffffff;
-      border-color: #fb923c;
-      box-shadow: 0 0 14px rgba(249, 115, 22, 0.7);
+      border-color: #0f172a;
+      box-shadow: none;
     }
 
-    /* SIMULADOR 5: MANCHESTER BABY CRT DE 32x32 BITS */
+    /* SIMULADOR 5: MANCHESTER BABY CRT */
     .baby-screen-clean {
-      background: #000000;
-      border-radius: var(--radius-sm);
+      background: #ffffff;
+      border-radius: 4px;
       padding: 1.25rem;
       text-align: center;
       margin: 1.5rem 0;
-      border: 2px solid #1e293b;
+      border: 2px solid #0f172a;
     }
 
     #crt-canvas-clean {
@@ -934,6 +957,7 @@
       background: #020617;
       display: block;
       margin: 0 auto;
+      border: 2px solid #0f172a;
       border-radius: 4px;
       image-rendering: pixelated;
     }
@@ -945,15 +969,16 @@
       margin-top: 0.85rem;
       font-family: var(--font-mono);
       font-size: 0.82rem;
-      color: #4ade80;
+      color: #0f172a;
+      font-weight: 800;
       text-align: left;
     }
 
-    /* SIMULADOR 6: PATINHO FEIO (USP 1972) CONSOLE COMPLETO */
+    /* SIMULADOR 6: PATINHO FEIO (USP 1972) CONSOLE */
     .patinho-chunky-rack {
       background: #f8fafc;
-      border: 2px solid var(--border-strong);
-      border-radius: var(--radius-md);
+      border: 2px solid #0f172a;
+      border-radius: 4px;
       padding: 1.5rem;
       margin: 1.5rem 0;
     }
@@ -961,8 +986,8 @@
     .patinho-clean-switches {
       display: flex;
       justify-content: center;
-      gap: 12px;
-      margin: 1.5rem 0;
+      gap: 14px;
+      margin: 1.25rem 0;
       flex-wrap: wrap;
     }
 
@@ -974,23 +999,25 @@
     }
 
     .switch-indicator {
-      width: 10px;
-      height: 10px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
-      background: #cbd5e1;
+      background: #ffffff;
+      border: 2px solid #0f172a;
       transition: background 0.15s ease;
     }
 
     .switch-indicator.active {
-      background: var(--accent-red-text);
-      box-shadow: 0 0 8px rgba(185, 28, 28, 0.7);
+      background: #0f172a !important;
+      border: 2px solid #0f172a !important;
+      box-shadow: none !important;
     }
 
     .toggle-body-clean {
       width: 24px;
       height: 48px;
       background: #ffffff;
-      border: 2px solid var(--border-card);
+      border: 2px solid #0f172a;
       border-radius: 12px;
       position: relative;
       cursor: pointer;
@@ -999,17 +1026,19 @@
     .toggle-knob-clean {
       width: 16px;
       height: 16px;
-      background: var(--text-main);
+      background: #ffffff;
+      border: 2px solid #0f172a;
       border-radius: 50%;
       position: absolute;
       top: 24px;
       left: 2px;
-      transition: top 0.15s ease;
+      transition: top 0.15s ease, background 0.15s ease;
     }
 
     .toggle-body-clean.up .toggle-knob-clean {
       top: 4px;
-      background: var(--accent-green-text);
+      background: #0f172a !important;
+      border-color: #0f172a !important;
     }
 
     /* TABELA COMPARATIVA AMPLA */
@@ -1060,13 +1089,13 @@
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      background: var(--bg-surface-alt);
+      background: #f8fafc;
       padding: 0.2rem 0.5rem;
       border-radius: 4px;
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      color: var(--text-muted);
-      border: 1px solid var(--border-subtle);
+      color: #0f172a;
+      border: 2px solid #0f172a;
     }
 
     .speed-btn {
@@ -1078,36 +1107,29 @@
       padding: 0.15rem 0.5rem;
       border-radius: 4px;
       cursor: pointer;
-      color: var(--text-muted);
-      transition: all 0.2s ease;
+      color: #64748b;
+      transition: all 0.15s ease;
     }
 
     .speed-btn.active {
-      background: #ffffff;
-      color: var(--text-main);
-      box-shadow: var(--shadow-sm);
+      background: #0f172a;
+      color: #ffffff;
     }
 
     .turing-tile {
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
 
     .dial-circle {
-      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-    }
-
-    .dial-circle.cascade-glow {
-      border-color: #2563eb !important;
-      background: #eff6ff !important;
-      transform: scale(1.1) !important;
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
     }
 
     /* SOROBAN ENHANCEMENTS */
     .rod-title {
       font-family: var(--font-mono);
       font-size: 0.68rem;
-      font-weight: 700;
-      color: var(--text-muted);
+      font-weight: 800;
+      color: #0f172a;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       margin-bottom: 0.4rem;
@@ -1117,9 +1139,9 @@
       font-family: var(--font-mono);
       font-size: 1.15rem;
       font-weight: 800;
-      color: var(--text-main);
+      color: #0f172a;
       background: #ffffff;
-      border: 1.5px solid var(--border-strong);
+      border: 2px solid #0f172a;
       border-radius: 4px;
       width: 34px;
       height: 34px;
@@ -1127,7 +1149,7 @@
       align-items: center;
       justify-content: center;
       margin-top: 0.75rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      box-shadow: none;
       z-index: 2;
     }
     .soroban-reckon-dot {
@@ -1138,14 +1160,15 @@
       height: 6px;
       border-radius: 50%;
       background: #ffffff;
+      border: 1px solid #0f172a;
       z-index: 3;
     }
 
     /* SIMULADOR 2: ANTICÍTERA ASTRONÔMICO */
     .antikythera-stage {
-      background: #fbfbfb;
-      border: 2px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
+      background: #f8fafc;
+      border: 2px solid #0f172a;
+      border-radius: 4px;
       padding: 1.5rem;
       margin: 1.5rem 0;
       display: grid;
@@ -1160,15 +1183,14 @@
     }
     .antikythera-gearbox {
       background: #ffffff;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
+      border: 2px solid #0f172a;
+      border-radius: 4px;
       padding: 1rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 260px;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
     }
     .antikythera-dials {
       display: grid;
@@ -1182,15 +1204,15 @@
     }
     .dial-card {
       background: #ffffff;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
+      border: 2px solid #0f172a;
+      border-radius: 4px;
       padding: 0.85rem 1rem;
     }
     .dial-card-title {
       font-size: 0.75rem;
       font-family: var(--font-mono);
-      font-weight: 700;
-      color: var(--text-muted);
+      font-weight: 800;
+      color: #0f172a;
       text-transform: uppercase;
       margin-bottom: 0.35rem;
       display: flex;
@@ -1199,12 +1221,12 @@
     .dial-card-val {
       font-size: 1.15rem;
       font-weight: 800;
-      color: var(--text-main);
+      color: #0f172a;
       font-family: var(--font-mono);
     }
     .dial-card-sub {
       font-size: 0.8rem;
-      color: var(--text-muted);
+      color: #64748b;
       margin-top: 0.2rem;
     }
     .moon-sphere-wrap {
@@ -1214,48 +1236,48 @@
       background: #0f172a;
       position: relative;
       overflow: hidden;
-      box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
-      border: 1px solid #334155;
+      border: 2px solid #0f172a;
     }
     .moon-sphere-light {
       position: absolute;
       top: 0;
       bottom: 0;
-      background: #f8fafc;
+      background: #ffffff;
       transition: all 0.2s ease;
     }
     .eclipse-alert-box {
       grid-column: 1 / -1;
       padding: 0.75rem 1rem;
-      border-radius: var(--radius-sm);
+      border-radius: 4px;
       font-family: var(--font-mono);
       font-size: 0.85rem;
       font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border: 1px solid var(--border-subtle);
+      border: 2px solid #0f172a;
       background: #f8fafc;
-      color: var(--text-muted);
+      color: #0f172a;
     }
     .eclipse-alert-box.active {
-      background: #fffbeb;
-      border-color: #fde68a;
-      color: #b45309;
+      background: #0f172a;
+      border-color: #0f172a;
+      color: #ffffff;
     }
 
     /* SIMULADOR 3: ZUSE Z3 FITA 35MM E RELÉS */
     .zuse-stage {
-      background: #0f172a;
-      color: #f8fafc;
-      border-radius: var(--radius-sm);
+      background: #ffffff;
+      color: #0f172a;
+      border-radius: 4px;
       padding: 1.5rem;
       margin: 1.5rem 0;
+      border: 2px solid #0f172a;
     }
     .zuse-tape-frame {
-      background: #020617;
-      border: 1px solid #334155;
-      border-radius: var(--radius-sm);
+      background: #f8fafc;
+      border: 2px solid #0f172a;
+      border-radius: 4px;
       padding: 0.75rem 1rem;
       position: relative;
       overflow: hidden;
@@ -1272,16 +1294,15 @@
       bottom: 0;
       left: calc(50% - 2px);
       width: 4px;
-      background: #ef4444;
+      background: #0f172a;
       z-index: 10;
       pointer-events: none;
-      box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
     }
     .zuse-tape-block {
       width: 70px;
       height: 90px;
-      background: #1e293b;
-      border: 1px solid #475569;
+      background: #ffffff;
+      border: 2px solid #0f172a;
       border-radius: 4px;
       flex-shrink: 0;
       display: flex;
@@ -1290,13 +1311,15 @@
       padding: 4px;
       font-family: var(--font-mono);
       font-size: 0.7rem;
-      color: #94a3b8;
+      color: #0f172a;
     }
     .zuse-tape-block.current {
-      border-color: #38bdf8;
-      background: #0c4a6e;
+      border-color: #0f172a;
+      background: #0f172a;
       color: #ffffff;
-      box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+    }
+    .zuse-tape-block.current * {
+      color: #ffffff;
     }
     .zuse-tape-sprockets {
       display: flex;
@@ -1305,8 +1328,11 @@
     .zuse-sprocket {
       width: 6px;
       height: 8px;
-      background: #020617;
+      background: #0f172a;
       border-radius: 1px;
+    }
+    .zuse-tape-block.current .zuse-sprocket {
+      background: #ffffff;
     }
     .zuse-tape-holes {
       display: grid;
@@ -1318,12 +1344,19 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #334155;
+      background: #e2e8f0;
+      border: 1.5px solid #0f172a;
       margin: 0 auto;
     }
     .zuse-hole.punched {
-      background: #f8fafc;
-      box-shadow: 0 0 4px #ffffff;
+      background: #0f172a;
+    }
+    .zuse-tape-block.current .zuse-hole {
+      border-color: #ffffff;
+      background: #334155;
+    }
+    .zuse-tape-block.current .zuse-hole.punched {
+      background: #ffffff;
     }
     .zuse-relays-grid {
       display: grid;
@@ -1337,23 +1370,24 @@
       }
     }
     .zuse-relay-card {
-      background: #1e293b;
-      border: 1px solid #334155;
-      border-radius: var(--radius-sm);
+      background: #ffffff;
+      border: 2px solid #0f172a;
+      border-radius: 4px;
       padding: 0.85rem;
       font-family: var(--font-mono);
+      color: #0f172a;
     }
     .zuse-relay-title {
       font-size: 0.75rem;
-      font-weight: 700;
-      color: #94a3b8;
+      font-weight: 800;
+      color: #0f172a;
       margin-bottom: 0.5rem;
     }
     .zuse-relay-graphic {
       height: 48px;
-      border: 1px solid #475569;
+      border: 2px solid #0f172a;
       border-radius: 4px;
-      background: #0f172a;
+      background: #f8fafc;
       position: relative;
       display: flex;
       align-items: center;
@@ -1364,53 +1398,54 @@
     .relay-coil {
       width: 24px;
       height: 28px;
-      background: #451a03;
-      border: 1px solid #b45309;
+      background: #0f172a;
+      border: 2px solid #0f172a;
       border-radius: 2px;
       position: relative;
     }
     .relay-armature {
       width: 32px;
       height: 4px;
-      background: #94a3b8;
+      background: #64748b;
       transform-origin: left center;
       transform: rotate(-15deg);
       transition: transform 0.1s ease;
     }
     .relay-armature.closed {
       transform: rotate(0deg);
-      background: #38bdf8;
-      box-shadow: 0 0 6px #38bdf8;
+      background: #0f172a;
     }
     .zuse-relay-state {
       font-size: 0.8rem;
       font-weight: 700;
-      color: #94a3b8;
+      color: #64748b;
     }
     .zuse-relay-state.active {
-      color: #38bdf8;
+      color: #0f172a;
+      font-weight: 800;
     }
     .zuse-regs-row {
-      background: #020617;
-      border: 1px solid #334155;
-      border-radius: var(--radius-sm);
+      background: #f8fafc;
+      border: 2px solid #0f172a;
+      border-radius: 4px;
       padding: 0.85rem 1.25rem;
       display: flex;
       justify-content: space-between;
       font-family: var(--font-mono);
       font-size: 0.9rem;
+      color: #0f172a;
       flex-wrap: wrap;
       gap: 0.75rem;
     }
 
     /* SIMULADOR 4: COLOSSUS ÓPTICO E LORENZ SZ42 */
     .colossus-stage {
-      background: #111827;
-      color: #f3f4f6;
-      border-radius: var(--radius-sm);
+      background: #ffffff;
+      color: #0f172a;
+      border-radius: 4px;
       padding: 1.5rem;
       margin: 1.5rem 0;
-      border: 2px solid #374151;
+      border: 2px solid #0f172a;
     }
     .colossus-top-status {
       display: flex;
@@ -1418,9 +1453,10 @@
       align-items: center;
       margin-bottom: 1rem;
       padding-bottom: 0.75rem;
-      border-bottom: 1px solid #374151;
+      border-bottom: 2px solid #0f172a;
       font-family: var(--font-mono);
       font-size: 0.85rem;
+      color: #0f172a;
     }
     .colossus-tube-rack {
       display: flex;
@@ -1428,16 +1464,16 @@
       justify-content: center;
       margin: 1rem 0;
       padding: 1rem;
-      background: #030712;
-      border-radius: var(--radius-sm);
-      border: 1px solid #1f2937;
+      background: #f8fafc;
+      border-radius: 4px;
+      border: 2px solid #0f172a;
     }
     .valve-tube {
       width: 22px;
       height: 40px;
-      border: 1.5px solid #4b5563;
+      border: 2px solid #0f172a;
       border-radius: 11px 11px 4px 4px;
-      background: rgba(255,255,255,0.02);
+      background: #ffffff;
       position: relative;
       display: flex;
       align-items: center;
@@ -1447,17 +1483,16 @@
     .valve-tube-filament {
       width: 4px;
       height: 18px;
-      background: #374151;
+      background: #cbd5e1;
       border-radius: 2px;
       transition: all 0.15s ease;
     }
     .valve-tube.active {
-      border-color: #f59e0b;
-      box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+      background: #0f172a;
+      border-color: #0f172a;
     }
     .valve-tube.active .valve-tube-filament {
-      background: #fef08a;
-      box-shadow: 0 0 8px #f59e0b;
+      background: #ffffff;
     }
     .colossus-grid-view {
       display: grid;
@@ -1471,16 +1506,17 @@
       }
     }
     .colossus-screen-panel {
-      background: #030712;
-      border: 1px solid #374151;
-      border-radius: var(--radius-sm);
+      background: #f8fafc;
+      border: 2px solid #0f172a;
+      border-radius: 4px;
       padding: 1rem;
       font-family: var(--font-mono);
+      color: #0f172a;
     }
     .colossus-panel-title {
       font-size: 0.75rem;
-      font-weight: 700;
-      color: #9ca3af;
+      font-weight: 800;
+      color: #0f172a;
       text-transform: uppercase;
       margin-bottom: 0.5rem;
     }
@@ -1497,12 +1533,14 @@
       margin-top: 0.5rem;
     }
     .lorenz-wheel-badge {
-      background: #1f2937;
-      border: 1px solid #4b5563;
+      background: #ffffff;
+      border: 2px solid #0f172a;
       border-radius: 4px;
       padding: 4px 8px;
       font-size: 0.75rem;
       font-family: var(--font-mono);
+      color: #0f172a;
+      font-weight: 700;
     }
 
     /* SIMULADOR 5: RETRO TERMINAL BRASILEIRO (PROLÓGICA CP-500 / TK90X BASIC) */
@@ -1696,7 +1734,8 @@
 
     .era-gray-zone .interactive-app-card {
       background: #ffffff !important;
-      border: 1px solid var(--border-subtle) !important;
+      border: 2px solid #0f172a !important;
+      border-radius: 4px !important;
     }
 
     .media-frame img.turing-portrait {
@@ -1972,7 +2011,7 @@
 
           <div class="soroban-readout-row">
             <span>TOTAL DECIMAL COMPUTADO NO SOROBAN:</span>
-            <span id="soroban-total-readout" style="color: var(--accent-green-text); font-size: 1.25rem;">0</span>
+            <span id="soroban-total-readout" style="color: #0f172a; font-weight: 800; font-size: 1.25rem;">0</span>
           </div>
           <div id="soroban-calc-guide" style="margin-top: 0.6rem; font-size: 0.85rem; color: var(--text-muted); background: #f8fafc; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 0.6rem 0.9rem;">
             <strong>Dica Didática:</strong> Clique nas contas para alternar. A conta de cima vale 5 e desce até a barra. As 4 contas de baixo valem 1 e sobem até a barra.
@@ -2066,21 +2105,21 @@
             <div class="antikythera-gearbox">
               <svg width="220" height="220" viewBox="0 0 220 220" style="overflow: visible;">
                 <!-- Engrenagem Solar Central B1 -->
-                <circle cx="110" cy="110" r="85" fill="#f8fafc" stroke="#b45309" stroke-width="4" stroke-dasharray="6,4" />
+                <circle cx="110" cy="110" r="85" fill="#f8fafc" stroke="#0f172a" stroke-width="3" stroke-dasharray="6,4" />
                 <g id="anti-gear-sun" style="transform-origin: 110px 110px; transition: transform 0.15s linear;">
-                  <line x1="110" y1="25" x2="110" y2="195" stroke="#b45309" stroke-width="2" />
-                  <line x1="25" y1="110" x2="195" y2="110" stroke="#b45309" stroke-width="2" />
+                  <line x1="110" y1="25" x2="110" y2="195" stroke="#0f172a" stroke-width="2" />
+                  <line x1="25" y1="110" x2="195" y2="110" stroke="#0f172a" stroke-width="2" />
                   <!-- Ponteiro Solar -->
-                  <polygon points="110,18 116,32 104,32" fill="#d97706" />
-                  <circle cx="110" cy="110" r="14" fill="#d97706" />
+                  <polygon points="110,18 116,32 104,32" fill="#0f172a" />
+                  <circle cx="110" cy="110" r="14" fill="#0f172a" />
                   <text x="110" y="114" text-anchor="middle" font-size="10" font-family="var(--font-mono)" fill="#ffffff" font-weight="bold">SOL</text>
                 </g>
                 <!-- Engrenagem Planetária da Lua E1/E2 com Pino e Fenda -->
                 <g id="anti-gear-moon" style="transform-origin: 110px 110px; transition: transform 0.15s linear;">
-                  <circle cx="110" cy="55" r="34" fill="rgba(56,189,248,0.12)" stroke="#0284c7" stroke-width="2.5" stroke-dasharray="4,3" />
+                  <circle cx="110" cy="55" r="34" fill="rgba(15,23,42,0.05)" stroke="#0f172a" stroke-width="2" stroke-dasharray="4,3" />
                   <!-- Ponteiro Lunar com Pino de Hiparco -->
-                  <line x1="110" y1="110" x2="110" y2="28" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round" />
-                  <circle cx="110" cy="30" r="6" fill="#0284c7" />
+                  <line x1="110" y1="110" x2="110" y2="28" stroke="#0f172a" stroke-width="2" stroke-linecap="round" />
+                  <circle cx="110" cy="30" r="6" fill="#0f172a" />
                 </g>
               </svg>
               <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); margin-top: 0.5rem; text-align: center;">
@@ -2201,7 +2240,7 @@
         <div class="interactive-app-card">
           <div class="app-header-clean">
             <span class="app-tag">Simulador Prático: Mecanismo de Transporte da Pascalina (Sautoir)</span>
-            <span id="pascaline-feedback-readout" style="font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--accent-blue-text);">Total: 0</span>
+            <span id="pascaline-feedback-readout" style="font-family: var(--font-mono); font-size: 0.85rem; font-weight: 800; color: #0f172a;">Total: 0</span>
           </div>
 
           <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">
@@ -2223,7 +2262,7 @@
             </div>
             <div class="pascaline-clean-dial">
               <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-light);">Unidades</span>
-              <div class="dial-circle" id="dial-u" onclick="addPascalineDirect(1)" style="border-color: var(--text-main);">0</div>
+              <div class="dial-circle" id="dial-u" onclick="addPascalineDirect(1)">0</div>
             </div>
           </div>
 
@@ -2614,10 +2653,10 @@
 
           <!-- TELEMETRIA FORMAL DA MÁQUINA -->
           <div class="turing-telemetry-panel">
-            <div><span>Estado Interno Atual:</span> <strong id="turing-state-val" style="color: var(--accent-blue-text);">q_scan (buscando fim do número)</strong></div>
+            <div><span>Estado Interno Atual:</span> <strong id="turing-state-val" style="color: #0f172a;">q_scan (buscando fim do número)</strong></div>
             <div><span>Regra Formal Aplicada:</span> <strong id="turing-rule-val">&delta;(q_scan, 1) &rarr; (q_scan, 1, R)</strong></div>
-            <div><span>Decisão Lógica:</span> <strong id="turing-action-val" style="color: #000;">Lendo dígito 1, mantendo 1 e movendo cabeçote à direita.</strong></div>
-            <div><span>Resultado Decodificado:</span> <strong id="turing-dec-val" style="color: var(--accent-green-text);">11 decimal (binário 1011)</strong></div>
+            <div><span>Decisão Lógica:</span> <strong id="turing-action-val" style="color: #0f172a;">Lendo dígito 1, mantendo 1 e movendo cabeçote à direita.</strong></div>
+            <div><span>Resultado Decodificado:</span> <strong id="turing-dec-val" style="color: #0f172a;">11 decimal (binário 1011)</strong></div>
           </div>
 
           <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
@@ -2746,12 +2785,12 @@
           </div>
 
           <!-- BANNER DE STATUS DO PASSO ATUAL -->
-          <div style="background: #0f172a; color: #ffffff; border-radius: var(--radius-sm); padding: 0.85rem 1.2rem; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <div style="background: #f8fafc; color: #0f172a; border: 2px solid #0f172a; border-radius: 4px; padding: 0.85rem 1.2rem; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
             <div>
-              <span id="zuse-step-badge" style="background: #38bdf8; color: #0f172a; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.78rem; margin-right: 0.6rem;">PASSO 1 DE 4</span>
-              <strong id="zuse-step-title" style="color: #f8fafc;">Carregando Valor A</strong>
+              <span id="zuse-step-badge" style="background: #0f172a; color: #ffffff; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.78rem; margin-right: 0.6rem;">PASSO 1 DE 4</span>
+              <strong id="zuse-step-title" style="color: #0f172a;">Carregando Valor A</strong>
             </div>
-            <div id="zuse-math-summary" style="color: #4ade80; font-weight: 800; font-size: 1.05rem;">2 + 3 = 5</div>
+            <div id="zuse-math-summary" style="color: #0f172a; font-weight: 800; font-size: 1.05rem;">2 + 3 = 5</div>
           </div>
 
           <div class="zuse-stage">
@@ -2804,10 +2843,10 @@
 
             <!-- Registradores de Ponto Flutuante de 22 bits -->
             <div class="zuse-regs-row">
-              <div><span>REGISTRADOR R1: </span><strong id="zuse-reg-r1" style="color: #38bdf8;">+0.0</strong></div>
-              <div><span>REGISTRADOR R2: </span><strong id="zuse-reg-r2" style="color: #38bdf8;">+0.0</strong></div>
-              <div><span>ACUMULADOR Z3: </span><strong id="zuse-reg-acc" style="color: #4ade80;">0.0</strong></div>
-              <div><span>EXPLICAÇÃO DO PASSO: </span><strong id="zuse-inst-desc" style="color: #facc15;">INÍCIO DA FITA</strong></div>
+              <div><span>REGISTRADOR R1: </span><strong id="zuse-reg-r1" style="color: #0f172a;">+0.0</strong></div>
+              <div><span>REGISTRADOR R2: </span><strong id="zuse-reg-r2" style="color: #0f172a;">+0.0</strong></div>
+              <div><span>ACUMULADOR Z3: </span><strong id="zuse-reg-acc" style="color: #0f172a;">0.0</strong></div>
+              <div><span>EXPLICAÇÃO DO PASSO: </span><strong id="zuse-inst-desc" style="color: #0f172a;">INÍCIO DA FITA</strong></div>
             </div>
           </div>
 
@@ -3073,8 +3112,8 @@
           <div class="colossus-stage">
             <div class="colossus-top-status">
               <div><span>FITA TELEGRÁFICA: </span><strong id="colossus-tape-speed">PARADA</strong></div>
-              <div><span>VELOCIDADE DO LEITOR: </span><strong style="color: #10b981;">5.000 CARACTERES / SEG</strong></div>
-              <div><span>STATUS DA CRIPTOANÁLISE: </span><strong id="colossus-job-status" style="color: #facc15;">AGUARDANDO VARREDURA</strong></div>
+              <div><span>VELOCIDADE DO LEITOR: </span><strong style="color: #0f172a;">5.000 CARACTERES / SEG</strong></div>
+              <div><span>STATUS DA CRIPTOANÁLISE: </span><strong id="colossus-job-status" style="color: #0f172a;">AGUARDANDO VARREDURA</strong></div>
             </div>
 
             <!-- Válvulas Tiratron de Pulso -->
@@ -3086,7 +3125,7 @@
               <!-- Painel do Texto Cifrado Interceptado -->
               <div class="colossus-screen-panel">
                 <div class="colossus-panel-title">Fita de Entrada (Intercepto Cifrado Baudot)</div>
-                <div class="colossus-text-stream" id="colossus-raw-stream" style="color: #ef4444;">--</div>
+                <div class="colossus-text-stream" id="colossus-raw-stream" style="color: #0f172a; font-weight: 700;">--</div>
                 <div class="lorenz-wheel-display">
                   <div class="lorenz-wheel-badge" id="wheel-chi1">Rotor χ₁: 01</div>
                   <div class="lorenz-wheel-badge" id="wheel-chi2">Rotor χ₂: 07</div>
@@ -3098,9 +3137,9 @@
               <!-- Painel de Decifração em Tempo Real -->
               <div class="colossus-screen-panel">
                 <div class="colossus-panel-title">Saída Decifrada em Tempo Real (Texto Claro Alemão)</div>
-                <div class="colossus-text-stream" id="colossus-plain-stream" style="color: #22c55e;">Aguardando acionamento da varredura...</div>
-                <div style="margin-top: 0.5rem; font-size: 0.75rem; color: #9ca3af;">
-                  Pontuação de Coincidência Nodal: <strong id="colossus-score" style="color: #facc15;">0</strong> / <span id="colossus-threshold">35</span>
+                <div class="colossus-text-stream" id="colossus-plain-stream" style="color: #0f172a; font-weight: 700;">Aguardando acionamento da varredura...</div>
+                <div style="margin-top: 0.5rem; font-size: 0.75rem; color: #64748b;">
+                  Pontuação de Coincidência Nodal: <strong id="colossus-score" style="color: #0f172a;">0</strong> / <span id="colossus-threshold">35</span>
                 </div>
               </div>
             </div>
@@ -3215,52 +3254,52 @@
           </div>
 
           <!-- BANNER DE STATUS DO CÁLCULO -->
-          <div style="background: #0f172a; color: #ffffff; border-radius: var(--radius-sm); padding: 0.85rem 1.2rem; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <div style="background: #f8fafc; color: #0f172a; border: 2px solid #0f172a; border-radius: 4px; padding: 0.85rem 1.2rem; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
             <div>
-              <span id="eniac-step-badge" style="background: #f97316; color: #0f172a; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.78rem; margin-right: 0.6rem;">PASSO 1 DE 4</span>
-              <strong id="eniac-step-title" style="color: #f8fafc;">Disparo Inicial do Canhão (t = 0 s)</strong>
+              <span id="eniac-step-badge" style="background: #0f172a; color: #ffffff; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.78rem; margin-right: 0.6rem;">PASSO 1 DE 4</span>
+              <strong id="eniac-step-title" style="color: #0f172a;">Disparo Inicial do Canhão (t = 0 s)</strong>
             </div>
-            <div id="eniac-math-summary" style="color: #fb923c; font-weight: 800; font-size: 1rem;">v₀ = 800 m/s &bull; Ângulo 45°</div>
+            <div id="eniac-math-summary" style="color: #0f172a; font-weight: 800; font-size: 1rem;">v₀ = 800 m/s &bull; Ângulo 45°</div>
           </div>
 
           <!-- DIAGRAMA DOS PAINÉIS CABEADOS DO ENIAC -->
-          <div style="background: #1e293b; border-radius: var(--radius-sm); padding: 1rem; margin-bottom: 1rem; color: #f8fafc; font-family: var(--font-mono); font-size: 0.8rem;">
-            <div style="color: #94a3b8; font-weight: 700; margin-bottom: 0.6rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">
+          <div style="background: #ffffff; border: 2px solid #0f172a; border-radius: 4px; padding: 1rem; margin-bottom: 1rem; color: #0f172a; font-family: var(--font-mono); font-size: 0.8rem;">
+            <div style="color: #0f172a; font-weight: 800; margin-bottom: 0.6rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">
               ROTA DOS CABOS TELEFÔNICOS EXTERNOS (PATCH CORDS):
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.5rem;" id="eniac-units-grid">
               <div class="eniac-unit-box active" id="e-unit-cycling">
-                <div style="font-size: 0.65rem; color: #94a3b8;">GABINETE 1</div>
+                <div style="font-size: 0.65rem; color: #64748b;">GABINETE 1</div>
                 <strong>Unidade de Ciclos</strong>
-                <div style="font-size: 0.7rem; color: #fb923c;">Clock 100 kHz</div>
+                <div style="font-size: 0.7rem; color: #64748b;">Clock 100 kHz</div>
               </div>
               <div class="eniac-unit-box" id="e-unit-ftable">
-                <div style="font-size: 0.65rem; color: #94a3b8;">GABINETES 2-4</div>
+                <div style="font-size: 0.65rem; color: #64748b;">GABINETES 2-4</div>
                 <strong>Tabela de Funções</strong>
-                <div style="font-size: 0.7rem; color: #38bdf8;">Chaves Rotatórias</div>
+                <div style="font-size: 0.7rem; color: #64748b;">Chaves Rotatórias</div>
               </div>
-              <div class="eniac-unit-box" id="e-unit-acc1">
-                <div style="font-size: 0.65rem; color: #94a3b8;">GABINETE 5</div>
+              <div class="eniac-unit-box active" id="e-unit-acc1">
+                <div style="font-size: 0.65rem; color: #64748b;">GABINETE 5</div>
                 <strong>Acumulador 1 (X)</strong>
-                <div style="font-size: 0.7rem; color: #4ade80;">10 Dígitos Decimais</div>
+                <div style="font-size: 0.7rem; color: #64748b;">10 Dígitos Decimais</div>
               </div>
               <div class="eniac-unit-box" id="e-unit-acc2">
-                <div style="font-size: 0.65rem; color: #94a3b8;">GABINETE 6</div>
+                <div style="font-size: 0.65rem; color: #64748b;">GABINETE 6</div>
                 <strong>Acumulador 2 (Y)</strong>
-                <div style="font-size: 0.7rem; color: #4ade80;">10 Dígitos Decimais</div>
+                <div style="font-size: 0.7rem; color: #64748b;">10 Dígitos Decimais</div>
               </div>
               <div class="eniac-unit-box" id="e-unit-mult">
-                <div style="font-size: 0.65rem; color: #94a3b8;">GABINETES 7-8</div>
+                <div style="font-size: 0.65rem; color: #64748b;">GABINETES 7-8</div>
                 <strong>Multiplicador</strong>
-                <div style="font-size: 0.7rem; color: #e2e8f0;">Produtos Parciais</div>
+                <div style="font-size: 0.7rem; color: #64748b;">Produtos Parciais</div>
               </div>
               <div class="eniac-unit-box" id="e-unit-card">
-                <div style="font-size: 0.65rem; color: #94a3b8;">GABINETE 9</div>
+                <div style="font-size: 0.65rem; color: #64748b;">GABINETE 9</div>
                 <strong>Leitor / Cartões</strong>
-                <div style="font-size: 0.7rem; color: #e2e8f0;">Perfuração IBM</div>
+                <div style="font-size: 0.7rem; color: #64748b;">Perfuração IBM</div>
               </div>
             </div>
-            <div id="eniac-cable-status" style="margin-top: 0.6rem; color: #fb923c; font-size: 0.8rem;">
+            <div id="eniac-cable-status" style="margin-top: 0.6rem; color: #0f172a; font-weight: 700; font-size: 0.8rem;">
               &bull; Cabo Ativo: Pulso de disparo conectado da Unidade de Ciclos para a Tabela de Funções.
             </div>
           </div>
@@ -3268,21 +3307,21 @@
           <!-- MOSTRADOR AUTÊNTICO DE 10 DÍGITOS DECIMAIS DO ACUMULADOR DO ENIAC -->
           <div class="eniac-patch-panel" style="margin: 0.75rem 0;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
-              <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #cbd5e1; font-weight: 700;">
+              <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #0f172a; font-weight: 800;">
                 PAINEL DO ACUMULADOR Nº 1 (10 DÍGITOS DECIMAIS COM VÁLVULAS NEON REAIS):
               </span>
-              <span id="eniac-accum-decimal" style="font-family: var(--font-mono); font-size: 1.1rem; color: #fb923c; font-weight: 800;">
+              <span id="eniac-accum-decimal" style="font-family: var(--font-mono); font-size: 1.1rem; color: #0f172a; font-weight: 800;">
                 + 00 0000 0000
               </span>
             </div>
 
             <!-- Matriz de 10 colunas de dígitos neon -->
-            <div class="eniac-decade-display" id="eniac-decade-columns" style="display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; background: #020617; padding: 0.75rem; border-radius: 6px;">
+            <div class="eniac-decade-display" id="eniac-decade-columns" style="display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; background: #f8fafc; padding: 0.75rem; border: 2px solid #0f172a; border-radius: 4px;">
               <!-- Gerado via JavaScript: 10 colunas representando as posições de 10^9 a 10^0 -->
             </div>
 
-            <div style="margin-top: 0.6rem; font-family: var(--font-mono); font-size: 0.78rem; color: #94a3b8;">
-              <span id="eniac-step-explanation" style="color: #f8fafc;">Aguardando avanço de pulso para integrar a equação diferencial.</span>
+            <div style="margin-top: 0.6rem; font-family: var(--font-mono); font-size: 0.78rem; color: #0f172a;">
+              <span id="eniac-step-explanation" style="color: #0f172a; font-weight: 700;">Aguardando avanço de pulso para integrar a equação diferencial.</span>
             </div>
           </div>
 
@@ -3503,9 +3542,9 @@
           <div class="baby-screen-clean">
             <canvas id="crt-canvas-clean" width="128" height="96"></canvas>
             <div class="crt-regs-telemetry">
-              <div>ACUMULADOR: <span id="crt-acc-readout" style="color: #4ade80;">0x000000</span></div>
-              <div>INSTRUÇÃO: <span id="crt-inst-readout" style="color: #4ade80;">LDN</span></div>
-              <div>CONTADOR (CI): <span id="crt-ci-readout" style="color: #4ade80;">00</span></div>
+              <div>ACUMULADOR: <span id="crt-acc-readout" style="color: #0f172a;">0x000000</span></div>
+              <div>INSTRUÇÃO: <span id="crt-inst-readout" style="color: #0f172a;">LDN</span></div>
+              <div>CONTADOR (CI): <span id="crt-ci-readout" style="color: #0f172a;">00</span></div>
             </div>
           </div>
 
@@ -3775,21 +3814,21 @@
           </div>
 
           <!-- BANNER DE STATUS DO PASSO -->
-          <div style="background: #0f172a; color: #ffffff; border-radius: var(--radius-sm); padding: 0.85rem 1.2rem; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <div style="background: #f8fafc; color: #0f172a; border: 2px solid #0f172a; border-radius: 4px; padding: 0.85rem 1.2rem; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
             <div>
-              <span id="patinho-step-badge" style="background: #22c55e; color: #0f172a; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.78rem; margin-right: 0.6rem;">PASSO 1 DE 3</span>
-              <strong id="patinho-step-title" style="color: #f8fafc;">Instrução LDA 10 (Carregar Operando A)</strong>
+              <span id="patinho-step-badge" style="background: #0f172a; color: #ffffff; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.78rem; margin-right: 0.6rem;">PASSO 1 DE 3</span>
+              <strong id="patinho-step-title" style="color: #0f172a;">Instrução LDA 10 (Carregar Operando A)</strong>
             </div>
-            <div id="patinho-math-summary" style="color: #4ade80; font-weight: 800; font-size: 1.05rem;">10 + 15 = 25</div>
+            <div id="patinho-math-summary" style="color: #0f172a; font-weight: 800; font-size: 1.05rem;">10 + 15 = 25</div>
           </div>
 
           <!-- CONSOLE DAS 8 CHAVES BASCULANTES -->
           <div class="patinho-chunky-rack" style="margin: 0.5rem 0;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-              <span style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--text-main);">
+              <span style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 800; color: #0f172a;">
                 PAINEL FRONTAL DE CHAVES (BARRAMENTO DE ENTRADA DE 8 BITS):
               </span>
-              <span id="patinho-switches-decimal" style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-blue-text); font-weight: 700;">
+              <span id="patinho-switches-decimal" style="font-family: var(--font-mono); font-size: 0.85rem; color: #0f172a; font-weight: 800;">
                 Chaves = 00000000 (Decimal: 0)
               </span>
             </div>
@@ -3800,16 +3839,16 @@
           </div>
 
           <!-- MOSTRADOR DO REGISTRADOR ACUMULADOR (LÂMPADAS) -->
-          <div class="soroban-readout-row" style="margin: 0.8rem 0; background: #0f172a; color: #ffffff; border: none;">
+          <div class="soroban-readout-row" style="margin: 0.8rem 0; background: #ffffff; color: #0f172a; border: 2px solid #0f172a; border-radius: 4px;">
             <div>
-              <span style="color: #94a3b8; font-size: 0.75rem; display: block;">REGISTRADOR ACUMULADOR (A) DA CPU POLI-USP:</span>
-              <span id="patinho-clean-readout" style="color: #4ade80; font-size: 1.1rem; font-weight: 800;">
+              <span style="color: #64748b; font-size: 0.75rem; display: block; font-weight: 700;">REGISTRADOR ACUMULADOR (A) DA CPU POLI-USP:</span>
+              <span id="patinho-clean-readout" style="color: #0f172a; font-size: 1.1rem; font-weight: 800;">
                 REG A: 00000000 (Decimal: 0 | Hex: 0x00)
               </span>
             </div>
             <div style="text-align: right;">
-              <span style="color: #94a3b8; font-size: 0.75rem; display: block;">EXPLICAÇÃO DO PASSO:</span>
-              <span id="patinho-asm-feedback" style="color: #facc15; font-size: 0.85rem; font-weight: 700;">
+              <span style="color: #64748b; font-size: 0.75rem; display: block; font-weight: 700;">EXPLICAÇÃO DO PASSO:</span>
+              <span id="patinho-asm-feedback" style="color: #0f172a; font-size: 0.85rem; font-weight: 800;">
                 Início do programa
               </span>
             </div>
@@ -4953,14 +4992,14 @@ READY
               tHead = 0;
               tState = 'q_halt';
               tStateDisplay.textContent = 'q_halt (finalizado)';
-              tActionDisplay.innerHTML = '<span style="color: var(--accent-green-text);">Carry transbordou! Nova célula criada à esquerda. Soma concluída com sucesso!</span>';
+              tActionDisplay.innerHTML = '<span style="color: #0f172a; font-weight: 800;">Carry transbordou! Nova célula criada à esquerda. Soma concluída com sucesso!</span>';
             }
           } else {
             tTape[tHead] = '1';
             tState = 'q_halt';
             tStateDisplay.textContent = 'q_halt (finalizado)';
             tRuleDisplay.textContent = `δ(q_carry, 0) → (q_halt, 1, Stay)`;
-            tActionDisplay.innerHTML = '<span style="color: var(--accent-green-text);">0 + 1 = 1: grava 1 e encerra a soma!</span>';
+            tActionDisplay.innerHTML = '<span style="color: #0f172a; font-weight: 800;">0 + 1 = 1: grava 1 e encerra a soma!</span>';
           }
         }
         const bin = tTape.join('');
@@ -4987,7 +5026,7 @@ READY
               tState = 'q_halt';
               tHead = 0;
               tStateDisplay.textContent = 'q_halt (duplicação completa)';
-              tActionDisplay.innerHTML = '<span style="color: var(--accent-green-text);">Sucesso: f(3) = 6 marcas unárias geradas na fita!</span>';
+              tActionDisplay.innerHTML = '<span style="color: #0f172a; font-weight: 800;">Sucesso: f(3) = 6 marcas unárias geradas na fita!</span>';
             }
           }
         }
@@ -5004,7 +5043,7 @@ READY
             tState = 'q_halt';
             tHead = 0;
             tStateDisplay.textContent = 'q_halt (inversão concluída)';
-            tActionDisplay.innerHTML = '<span style="color: var(--accent-green-text);">Toda a fita foi invertida com sucesso!</span>';
+            tActionDisplay.innerHTML = '<span style="color: #0f172a; font-weight: 800;">Toda a fita foi invertida com sucesso!</span>';
           }
         }
         const bin = tTape.join('');
@@ -5028,7 +5067,7 @@ READY
             tState = 'q_halt';
             tStateDisplay.textContent = 'q_halt (decremento concluído)';
             tRuleDisplay.textContent = 'δ(q_borrow, 1) → (q_halt, 0, Stay)';
-            tActionDisplay.innerHTML = '<span style="color: var(--accent-green-text);">Empréstimo quitado! Subtração concluída com sucesso!</span>';
+            tActionDisplay.innerHTML = '<span style="color: #0f172a; font-weight: 800;">Empréstimo quitado! Subtração concluída com sucesso!</span>';
           }
         }
         const bin = tTape.join('');
@@ -5045,7 +5084,7 @@ READY
         } else {
           tState = tState === 'q_even' ? 'q_par' : 'q_impar';
           tStateDisplay.textContent = tState;
-          tActionDisplay.innerHTML = `<span style="color: var(--accent-green-text);">Fim da fita alcançado! Paridade final: ${tState === 'q_par' ? 'PAR' : 'ÍMPAR'}</span>`;
+          tActionDisplay.innerHTML = `<span style="color: #0f172a; font-weight: 800;">Fim da fita alcançado! Paridade final: ${tState === 'q_par' ? 'PAR' : 'ÍMPAR'}</span>`;
           tHead = 0;
         }
       } else if (currentTuringAlgo === 'clear') {
@@ -5058,7 +5097,7 @@ READY
           tState = 'q_halt';
           tHead = 0;
           tStateDisplay.textContent = 'q_halt (fita limpa)';
-          tActionDisplay.innerHTML = '<span style="color: var(--accent-green-text);">Toda a fita foi higienizada com zeros!</span>';
+          tActionDisplay.innerHTML = '<span style="color: #0f172a; font-weight: 800;">Toda a fita foi higienizada com zeros!</span>';
         }
       } else if (currentTuringAlgo === 'bool_inv') {
         if (tHead < tTape.length) {
@@ -5072,7 +5111,7 @@ READY
             tState = 'q_halt';
             tHead = 0;
             tStateDisplay.textContent = 'q_halt (inversão alternada concluída)';
-            tActionDisplay.innerHTML = '<span style="color: var(--accent-green-text);">Padrão booleano invertido: 01010!</span>';
+            tActionDisplay.innerHTML = '<span style="color: #0f172a; font-weight: 800;">Padrão booleano invertido: 01010!</span>';
           }
         }
         const bin = tTape.join('');
@@ -5095,7 +5134,7 @@ READY
             tTape[tHead] = '0';
             tState = 'q_halt';
             tRuleDisplay.textContent = 'δ(q_goto_end, 1) → (q_halt, 0, Stay)';
-            tActionDisplay.innerHTML = '<span style="color: var(--accent-green-text);">Último 1 compensatório apagado! Resultado final: 2 + 3 = 5 marcas de 1 unárias!</span>';
+            tActionDisplay.innerHTML = '<span style="color: #0f172a; font-weight: 800;">Último 1 compensatório apagado! Resultado final: 2 + 3 = 5 marcas de 1 unárias!</span>';
           }
         }
         const ones = tTape.filter(x => x === '1').length;
@@ -5113,7 +5152,7 @@ READY
           tTape[3] = 'X';
           tState = 'q_halt';
           tRuleDisplay.textContent = 'δ(q_pal_inner, centro) → (q_halt, X, Stay)';
-          tActionDisplay.innerHTML = '<span style="color: var(--accent-green-text);">Simetria completa verificada! A palavra 10101 é um palíndromo perfeito!</span>';
+          tActionDisplay.innerHTML = '<span style="color: #0f172a; font-weight: 800;">Simetria completa verificada! A palavra 10101 é um palíndromo perfeito!</span>';
           tHead = 2;
         }
       } else if (currentTuringAlgo === 'busy_beaver') {
@@ -5136,7 +5175,7 @@ READY
           tHead++;
           tState = 'q_halt';
           tRuleDisplay.textContent = 'δ(C, 1) → (Halt, 1, Stay)';
-          tActionDisplay.innerHTML = '<span style="color: var(--accent-green-text);">Castor Ocupado gerou o máximo de 1s e parou com sucesso!</span>';
+          tActionDisplay.innerHTML = '<span style="color: #0f172a; font-weight: 800;">Castor Ocupado gerou o máximo de 1s e parou com sucesso!</span>';
         }
         tDecDisplay.textContent = `1s gerados do nada: ${tTape.filter(x => x === '1').length}`;
       }
@@ -5264,7 +5303,7 @@ READY
 
         block.innerHTML = `
           <div class="zuse-tape-sprockets"><div class="zuse-sprocket"></div><div class="zuse-sprocket"></div></div>
-          <div style="font-weight: 700; text-align: center; color: #ffffff;">${step.op}</div>
+          <div style="font-weight: 700; text-align: center;">${step.op}</div>
           <div class="zuse-tape-holes">${holesHtml}</div>
           <div style="font-size: 0.65rem; text-align: center;">${step.arg}</div>
           <div class="zuse-tape-sprockets"><div class="zuse-sprocket"></div><div class="zuse-sprocket"></div></div>
@@ -5459,7 +5498,7 @@ READY
       if (colossusCharIdx >= colossusActive.plain.length) {
         if (jobStatus) {
           jobStatus.textContent = 'CHAVE QUEBRADA (MENSAGEM DECIFRADA)';
-          jobStatus.style.color = '#4ade80';
+          jobStatus.style.color = '#0f172a';
         }
         clearInterval(colossusScanTimer);
         colossusScanTimer = null;
@@ -5488,7 +5527,7 @@ READY
       if (btn) btn.textContent = 'Pausar Varredura';
       if (jobStatus) {
         jobStatus.textContent = 'VARRENDO 5.000 CPS (CORRELACIONANDO)';
-        jobStatus.style.color = '#facc15';
+        jobStatus.style.color = '#0f172a';
       }
       if (speedStatus) speedStatus.textContent = 'EM MOVIMENTO (48 KM/H)';
 
@@ -5516,7 +5555,7 @@ READY
       const jobStatus = document.getElementById('colossus-job-status');
       if (jobStatus) {
         jobStatus.textContent = 'AGUARDANDO VARREDURA';
-        jobStatus.style.color = '#facc15';
+        jobStatus.style.color = '#0f172a';
       }
       const speedStatus = document.getElementById('colossus-tape-speed');
       if (speedStatus) speedStatus.textContent = 'PARADA';
@@ -6032,10 +6071,10 @@ READY
       for (let r = 0; r < 24; r++) {
         for (let c = 0; c < 32; c++) {
           if (crtMemMatrix[r][c] === 1) {
-            ctx.fillStyle = '#4ade80';
+            ctx.fillStyle = '#ffffff';
             ctx.fillRect(c * cellW + 1, r * cellH + 1, cellW - 2, cellH - 2);
           } else {
-            ctx.fillStyle = '#052b11';
+            ctx.fillStyle = '#1e293b';
             ctx.fillRect(c * cellW + 1.5, r * cellH + 1.5, 1, 1);
           }
         }
