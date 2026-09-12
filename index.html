@@ -66,6 +66,7 @@
     html {
       scroll-behavior: smooth;
       font-size: 16px;
+      overflow-x: hidden;
     }
 
     body {
@@ -74,6 +75,7 @@
       font-family: var(--font-main);
       line-height: 1.65;
       overflow-x: hidden;
+      width: 100%;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -206,41 +208,27 @@
       align-items: center;
     }
 
-    .tag-status.tc-yes {
-      background: var(--accent-green-bg);
-      color: var(--accent-green-text);
-      border: 1px solid var(--accent-green-border);
+    .tag-status.tc-yes,
+    .tag-status.vn-yes,
+    .tag-status.impl-real {
+      background: #dcfce7 !important;
+      color: #15803d !important;
+      border: 1px solid #86efac !important;
     }
 
-    .tag-status.tc-no {
-      background: var(--accent-red-bg);
-      color: var(--accent-red-text);
-      border: 1px solid var(--accent-red-border);
+    /* ETIQUETAS EM TONS DE CINZA (NEGATIVAS & ANTIGUIDADE) */
+    .tag-status.tc-no,
+    .tag-status.vn-no,
+    .tag-status.impl-ancient {
+      background: #f1f5f9 !important;
+      color: #475569 !important;
+      border: 1px solid #cbd5e1 !important;
     }
 
     .tag-status.tc-theory {
       background: var(--accent-amber-bg);
       color: var(--accent-amber-text);
       border: 1px solid var(--accent-amber-border);
-    }
-
-    .tag-status.vn-yes {
-      background: var(--accent-green-bg);
-      color: var(--accent-green-text);
-      border: 1px solid var(--accent-green-border);
-    }
-
-    .tag-status.vn-no {
-      background: var(--accent-red-bg);
-      color: var(--accent-red-text);
-      border: 1px solid var(--accent-red-border);
-    }
-
-        /* DISTINÇÃO HISTÓRICA: TEÓRICO VS. PRÁTICO EM VIDA */
-    .tag-status.impl-real {
-      background: #f0fdf4;
-      color: #166534;
-      border: 1px solid #86efac;
     }
     .tag-status.impl-future {
       background: #fffbeb;
@@ -1625,6 +1613,108 @@
       color: var(--text-main);
     }
 
+
+    /* =========================================================================
+       ONDAS CINZAS E ZONA CINZA SUAVE (EXCLUSIVO: TURING & VON NEUMANN)
+       ========================================================================= */
+    .era-wave-wrapper {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      overflow: hidden;
+      line-height: 0;
+      margin: 0;
+      padding: 0;
+      pointer-events: none;
+      box-sizing: border-box;
+    }
+
+    .waves {
+      position: relative;
+      width: 100%;
+      height: 60px;
+      margin-bottom: -1px;
+      min-height: 45px;
+      max-height: 75px;
+      display: block;
+    }
+
+    .parallax-waves > use {
+      animation: move-wave-forever 20s cubic-bezier(.55,.5,.45,.5) infinite;
+    }
+    .parallax-waves > use:nth-child(1) {
+      animation-delay: -2s;
+      animation-duration: 7s;
+    }
+    .parallax-waves > use:nth-child(2) {
+      animation-delay: -3s;
+      animation-duration: 10s;
+    }
+    .parallax-waves > use:nth-child(3) {
+      animation-delay: -4s;
+      animation-duration: 14s;
+    }
+    .parallax-waves > use:nth-child(4) {
+      animation-delay: -5s;
+      animation-duration: 20s;
+    }
+
+    @keyframes move-wave-forever {
+      0% {
+        transform: translate3d(-90px, 0, 0);
+      }
+      100% {
+        transform: translate3d(85px, 0, 0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .waves {
+        height: 40px;
+        min-height: 40px;
+      }
+    }
+
+    .era-gray-zone {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      background-color: #f8fafc;
+      padding: 2rem 0 3rem 0;
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    .era-gray-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      box-sizing: border-box;
+    }
+
+    .era-gray-zone .slide-block {
+      margin-bottom: 0 !important;
+      padding-top: 0 !important;
+    }
+
+    .era-gray-zone .clean-card {
+      background: #ffffff !important;
+      border: 1px solid var(--border-subtle) !important;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05) !important;
+    }
+
+    .era-gray-zone .interactive-app-card {
+      background: #ffffff !important;
+      border: 1px solid var(--border-subtle) !important;
+    }
+
+    .media-frame img.turing-portrait {
+      object-fit: cover;
+      object-position: center 20% !important;
+    }
+
   </style>
 
 </head>
@@ -1723,7 +1813,7 @@
           <div class="status-badges-group">
             <span class="tag-status tc-no">Turing-Complete: Não</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
-            <span class="tag-status impl-real">Construção: Prático na Antiguidade</span>
+            <span class="tag-status impl-ancient">Construção: Prático na Antiguidade</span>
           </div>
         </div>
         <h2 class="slide-title">Primeiros Instrumentos e Sistemas de Cálculo</h2>
@@ -1915,7 +2005,7 @@
           <div class="status-badges-group">
             <span class="tag-status tc-no">Turing-Complete: Não</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
-            <span class="tag-status impl-real">Construção: Prático na Antiguidade</span>
+            <span class="tag-status impl-ancient">Construção: Prático na Antiguidade</span>
           </div>
         </div>
         <h2 class="slide-title">O Mecanismo de Anticítera</h2>
@@ -2414,6 +2504,24 @@
     </section>
 
 
+    <!-- ONDA CINZA DE ENTRADA: ALAN TURING (BRANCO -> CINZA SUAVE) -->
+    <div class="era-wave-wrapper" style="background: #ffffff;">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave-turing-in" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax-waves">
+          <use href="#gentle-wave-turing-in" x="48" y="0" fill="rgba(226, 232, 240, 0.35)" />
+          <use href="#gentle-wave-turing-in" x="48" y="3" fill="rgba(203, 213, 225, 0.50)" />
+          <use href="#gentle-wave-turing-in" x="48" y="5" fill="rgba(226, 232, 240, 0.75)" />
+          <use href="#gentle-wave-turing-in" x="48" y="7" fill="#f8fafc" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- ZONA CINZA SUAVE: ALAN TURING -->
+    <div class="era-gray-zone">
+      <div class="era-gray-inner">
     <!-- ERA 4: O SALTO TEÓRICO: HILBERT (1900) & ALAN TURING (1936) -->
     <section class="slide-block">
       <div class="slide-header">
@@ -2421,7 +2529,7 @@
           <span>1900 - 1936</span>
           <div class="status-badges-group">
             <span class="tag-status tc-yes">Turing-Complete: Sim</span>
-            <span class="tag-status vn-no">Von Neumann: Não</span>
+            <span class="tag-status vn-yes">Von Neumann: Sim (Instrução e Dado na Mesma Memória)</span>
             <span class="tag-status impl-real">Construção: Prático em Vida (Manchester Mark 1 &amp; ACE)</span>
           </div>
         </div>
@@ -2430,10 +2538,10 @@
       </div>
 
       <div class="clean-card">
-        <!-- Retrato de Alan Turing centralizado perfeitamente -->
+        <!-- Retrato de Alan Turing centralizado perfeitamente com rosto nítido -->
         <div class="media-frame" style="max-width: 420px; margin: 0 auto 2.25rem auto;">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/Alan_Turing_az_1930-as_%C3%A9vekben.jpg" alt="Alan Turing nos anos 1930" class="turing-portrait" style="height: 320px; object-fit: cover; object-position: center 15%;">
-          <div class="media-caption">Alan Mathison Turing (1912–1954) na década de 1930: aos 24 anos provou a indecidibilidade matemática e inventou a Máquina Universal.</div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Alan_Turing_%281951%29_%28crop%29.jpg" alt="Alan Turing em 1951" class="turing-portrait" style="height: 320px; object-fit: cover; object-position: center 20%;">
+          <div class="media-caption">Alan Mathison Turing (1912–1954): concebeu a Máquina Universal aos 24 anos, provou a indecidibilidade matemática e estabeleceu as bases da Ciência da Computação.</div>
         </div>
 
         <div class="talking-points">
@@ -2530,11 +2638,27 @@
         </div>
 
         <div class="reason-box">
-          <strong>Critérios: Turing-Complete: Sim | Von Neumann: Não (Conceito Teórico)</strong>
-          A Máquina Universal de Turing estabeleceu a matriz formal de toda a Ciência da Computação. Quanto à arquitetura, não se trata de um sistema de Von Neumann porque a UTM de 1936 é um modelo matemático abstrato de fita infinita, concebido quase uma década antes da formulação física dos computadores eletrônicos com CPU e barramentos de 1945.
+          <strong>Critérios: Turing-Complete: Sim | Von Neumann: Sim (Princípio da Mesma Memória)</strong>
+          Na Máquina Universal de Turing (1936), tanto o programa quanto os dados residem no mesmíssimo meio de memória linear: a fita universal. Não há divisão de natureza entre código e dados: a instrução pode ser lida e transformada como dado. O próprio John von Neumann afirmava que a concepção central de computador com programa armazenado na mesma memória pertence a Alan Turing em 1936.
         </div>
       </div>
     </section>
+      </div>
+    </div>
+    <!-- ONDA CINZA DE SAÍDA: ALAN TURING (CINZA SUAVE -> BRANCO) -->
+    <div class="era-wave-wrapper" style="background: #f8fafc;">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave-turing-out" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax-waves">
+          <use href="#gentle-wave-turing-out" x="48" y="0" fill="rgba(241, 245, 249, 0.40)" />
+          <use href="#gentle-wave-turing-out" x="48" y="3" fill="rgba(226, 232, 240, 0.60)" />
+          <use href="#gentle-wave-turing-out" x="48" y="5" fill="rgba(248, 250, 252, 0.85)" />
+          <use href="#gentle-wave-turing-out" x="48" y="7" fill="#ffffff" />
+        </g>
+      </svg>
+    </div>
 
 
     <!-- ERA 5A: KONRAD ZUSE E O Z3 (1941) -->
@@ -3198,6 +3322,24 @@
     </section>
 
 
+    <!-- ONDA CINZA DE ENTRADA: JOHN VON NEUMANN (BRANCO -> CINZA SUAVE) -->
+    <div class="era-wave-wrapper" style="background: #ffffff;">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave-vn-in" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax-waves">
+          <use href="#gentle-wave-vn-in" x="48" y="0" fill="rgba(226, 232, 240, 0.35)" />
+          <use href="#gentle-wave-vn-in" x="48" y="3" fill="rgba(203, 213, 225, 0.50)" />
+          <use href="#gentle-wave-vn-in" x="48" y="5" fill="rgba(226, 232, 240, 0.75)" />
+          <use href="#gentle-wave-vn-in" x="48" y="7" fill="#f8fafc" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- ZONA CINZA SUAVE: JOHN VON NEUMANN -->
+    <div class="era-gray-zone">
+      <div class="era-gray-inner">
     <!-- ERA 7A: JOHN VON NEUMANN & O FIRST DRAFT (1945) -->
     <section class="slide-block">
       <div class="slide-header">
@@ -3206,10 +3348,10 @@
           <div class="status-badges-group">
             <span class="tag-status tc-yes">Turing-Complete: Sim</span>
             <span class="tag-status vn-yes">Von Neumann: Sim</span>
-            <span class="tag-status impl-real">Construção: Prático em Vida (Computador IAS de Princeton)</span>
+            <span class="tag-status impl-real">Construção: Prático em Vida (Computador IAS &amp; EDVAC)</span>
           </div>
         </div>
-        <h2 class="slide-title">John von Neumann &amp; o Relatório do EDVAC</h2>
+        <h2 class="slide-title">John von Neumann, o EDVAC &amp; o Computador IAS</h2>
         <p class="slide-subtitle">A unificação da memória para instruções e dados e o nascimento da arquitetura moderna.</p>
       </div>
 
@@ -3271,6 +3413,22 @@
         </div>
       </div>
     </section>
+      </div>
+    </div>
+    <!-- ONDA CINZA DE SAÍDA: JOHN VON NEUMANN (CINZA SUAVE -> BRANCO) -->
+    <div class="era-wave-wrapper" style="background: #f8fafc;">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave-vn-out" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax-waves">
+          <use href="#gentle-wave-vn-out" x="48" y="0" fill="rgba(241, 245, 249, 0.40)" />
+          <use href="#gentle-wave-vn-out" x="48" y="3" fill="rgba(226, 232, 240, 0.60)" />
+          <use href="#gentle-wave-vn-out" x="48" y="5" fill="rgba(248, 250, 252, 0.85)" />
+          <use href="#gentle-wave-vn-out" x="48" y="7" fill="#ffffff" />
+        </g>
+      </svg>
+    </div>
 
 
     <!-- ERA 7B: MANCHESTER BABY (SSEM, 21 DE JUNHO DE 1948) -->
@@ -4111,7 +4269,7 @@ READY
               <td><strong>Mecanismo de Anticítera</strong></td>
               <td>~150 a.C.</td>
               <td>Astrônomos da Grécia Antiga</td>
-              <td><span class="tag-status impl-real">Prático na Antiguidade</span></td>
+              <td><span class="tag-status impl-ancient">Prático na Antiguidade</span></td>
               <td>Construído fisicamente no século II a.C. em bronze com 30 engrenagens; artefato recuperado do fundo do mar em 1901.</td>
             </tr>
             <tr>
