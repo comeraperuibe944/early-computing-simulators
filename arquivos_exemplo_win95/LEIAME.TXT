@@ -1,0 +1,10 @@
+COMPUTADOR COBRA PC 486 DX4 100 MHz
+Banco do Brasil - 1995
+Windows 95 Real Emulado no CRT Cobra 14
+
+Arquivos presentes neste disco:
+- LEIAME.TXT : Texto em ASCII para Bloco de Notas
+- COBRA.DOC  : Documento formatado para WordPad
+- CUSTOS.XLS : Planilha de custos historica
+- SLIDES.PPT : Apresentacao de slides sobre a historia da computacao
+- COBRA.BMP  : Imagem bitmap retro para abrir no Paint
