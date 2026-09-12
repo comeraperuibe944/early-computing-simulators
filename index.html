@@ -2234,6 +2234,8 @@
             <button class="btn-clean secondary" onclick="addPascalineDirect(15)">1. Adição (+15)</button>
             <button class="btn-clean secondary" onclick="addPascalineDirect(27)">2. Cálculo de Imposto (+27)</button>
             <button class="btn-clean active" onclick="presetPascaline999()">3. Efeito Dominó (999 + 1 = 1000)</button>
+            <button class="btn-clean secondary" onclick="presetPascalineCommercial()">4. Soma Comercial (125 + 250 = 375)</button>
+            <button class="btn-clean secondary" onclick="presetPascalineOverflow()">5. Transbordo (9.999 + 1 = 0)</button>
             <button class="btn-clean secondary" onclick="resetPascalineClean()">Zerar Discos</button>
           </div>
         </div>
@@ -2729,6 +2731,8 @@
               <button class="btn-clean secondary" id="btn-zprog-4" onclick="loadZuseProgram(4)">4. Divisão (8 ÷ 2 = 4)</button>
               <button class="btn-clean secondary" id="btn-zprog-5" onclick="loadZuseProgram(5)">5. Raiz Quadrada (√9 = 3)</button>
               <button class="btn-clean secondary" id="btn-zprog-6" onclick="loadZuseProgram(6)">6. Asa Aeronáutica (3.5 × 2.0 = 7.0)</button>
+              <button class="btn-clean secondary" id="btn-zprog-7" onclick="loadZuseProgram(7)">7. Potenciação (2³ = 8)</button>
+              <button class="btn-clean secondary" id="btn-zprog-8" onclick="loadZuseProgram(8)">8. Média ((14 + 18) ÷ 2 = 16)</button>
               <button class="btn-clean secondary" onclick="resetZuseTape()">Rebobinar</button>
             </div>
           </div>
@@ -3056,6 +3060,8 @@
               <button class="btn-clean secondary" id="btn-col-2" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadColossusIntercept(2)">2. Berlim (Meteorologia OKW)</button>
               <button class="btn-clean secondary" id="btn-col-3" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadColossusIntercept(3)">3. Frente Leste (Ucrânia/Dnieper)</button>
               <button class="btn-clean secondary" id="btn-col-4" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadColossusIntercept(4)">4. Calais (Movimento Panzer)</button>
+              <button class="btn-clean secondary" id="btn-col-5" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadColossusIntercept(5)">5. Atlântico (U-Boote)</button>
+              <button class="btn-clean secondary" id="btn-col-6" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadColossusIntercept(6)">6. Ardenas (Batalha do Bulge)</button>
               <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="resetColossusScanner()">Resetar Scanner</button>
             </div>
           </div>
@@ -3188,10 +3194,14 @@
           <div class="app-header-clean">
             <span class="app-tag">Simulador Histórico Autêntico: Painéis de Cabos &amp; Acumuladores do ENIAC (1945)</span>
             <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
-              <button class="btn-clean active" id="btn-eprog-1" onclick="loadEniacProgram(1)">1. Trajetória Balística (Obus 155 mm)</button>
-              <button class="btn-clean secondary" id="btn-eprog-2" onclick="loadEniacProgram(2)">2. Previsão do Tempo 1950 (Charney &amp; Von Neumann)</button>
-              <button class="btn-clean secondary" id="btn-eprog-3" onclick="loadEniacProgram(3)">3. Multiplicação de 10 Dígitos (13.729 × 4.512)</button>
-              <button class="btn-clean secondary" id="btn-eprog-4" onclick="loadEniacProgram(4)">4. Monte Carlo Nuclear (Los Alamos 1947)</button>
+              <button class="btn-clean active" id="btn-eprog-1" onclick="loadEniacProgram(1)">1. Adição Básica (245 + 138 = 383)</button>
+              <button class="btn-clean secondary" id="btn-eprog-2" onclick="loadEniacProgram(2)">2. Subtração (500 - 175 = 325)</button>
+              <button class="btn-clean secondary" id="btn-eprog-3" onclick="loadEniacProgram(3)">3. Laço de Contagem (1 a 4 = 10)</button>
+              <button class="btn-clean secondary" id="btn-eprog-4" onclick="loadEniacProgram(4)">4. Dobro (64 × 2 = 128)</button>
+              <button class="btn-clean secondary" id="btn-eprog-5" onclick="loadEniacProgram(5)">5. Multiplicação (13.729 × 4.512)</button>
+              <button class="btn-clean secondary" id="btn-eprog-6" onclick="loadEniacProgram(6)">6. Trajetória Balística (Obus 155 mm)</button>
+              <button class="btn-clean secondary" id="btn-eprog-7" onclick="loadEniacProgram(7)">7. Previsão do Tempo 1950 (Von Neumann)</button>
+              <button class="btn-clean secondary" id="btn-eprog-8" onclick="loadEniacProgram(8)">8. Monte Carlo Nuclear (Los Alamos)</button>
               <button class="btn-clean secondary" onclick="resetEniacSimulator()">Reconectar Cabos</button>
             </div>
           </div>
@@ -3481,6 +3491,8 @@
               <button class="btn-clean secondary" id="btn-bprog-3" onclick="loadBabyProgram(3)">4. Multiplicação (3 × 4 = 12)</button>
               <button class="btn-clean secondary" id="btn-bprog-4" onclick="loadBabyProgram(4)">5. Divisão Inteira (14 ÷ 3 = 4)</button>
               <button class="btn-clean secondary" id="btn-bprog-5" onclick="loadBabyProgram(5)">6. Algoritmo de Euclides (MDC)</button>
+              <button class="btn-clean secondary" id="btn-bprog-6" onclick="loadBabyProgram(6)">7. Fibonacci (1, 1, 2, 3, 5, 8)</button>
+              <button class="btn-clean secondary" id="btn-bprog-7" onclick="loadBabyProgram(7)">8. Potência de 2 (2^7 = 128)</button>
             </div>
           </div>
 
@@ -3747,7 +3759,10 @@
               <button class="btn-clean secondary" id="btn-pprog-2" onclick="loadPatinhoProgram(2)">2. Subtração (50 - 18 = 32)</button>
               <button class="btn-clean secondary" id="btn-pprog-3" onclick="loadPatinhoProgram(3)">3. Deslocamento (7 × 2 = 14)</button>
               <button class="btn-clean secondary" id="btn-pprog-4" onclick="loadPatinhoProgram(4)">4. Máscara AND (0x0F)</button>
-              <button class="btn-clean secondary" id="btn-pprog-5" onclick="loadPatinhoProgram(5)">5. Modo Manual Livre (Suas Chaves)</button>
+              <button class="btn-clean secondary" id="btn-pprog-5" onclick="loadPatinhoProgram(5)">5. Incremento (1 + 1 = 2)</button>
+              <button class="btn-clean secondary" id="btn-pprog-6" onclick="loadPatinhoProgram(6)">6. Lógica OR (0x55 | 0xAA = 0xFF)</button>
+              <button class="btn-clean secondary" id="btn-pprog-7" onclick="loadPatinhoProgram(7)">7. Inversão NOT (NOT 0 = 255)</button>
+              <button class="btn-clean secondary" id="btn-pprog-8" onclick="loadPatinhoProgram(8)">8. Modo Manual Livre (Suas Chaves)</button>
             </div>
           </div>
 
@@ -3947,6 +3962,10 @@
               <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(6)">6. Tabuada do 7</button>
               <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(7)">7. Arte Gráfica ASCII</button>
               <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(8)">8. Moedas (1985-1994)</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(9)">9. Olá Mundo</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(10)">10. Contagem 10 a 1</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(11)">11. Par ou Ímpar</button>
+              <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(12)">12. Média Escolar</button>
               <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="toggleCrtPhosphor()">Fósforo (Verde / Âmbar)</button>
               <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="clearCrtTerminal()">CLS (Limpar)</button>
             </div>
@@ -4703,6 +4722,30 @@ READY
       }, 600);
     }
 
+    function presetPascalineCommercial() {
+      pasVal4 = 125;
+      renderPascaline4();
+      const fb = document.getElementById('pascaline-feedback-readout');
+      if (fb) fb.innerHTML = '<span>Carregando parcela inicial: 125 livres... Adicionando 250 livres...</span>';
+      setTimeout(() => {
+        pasVal4 = 375;
+        renderPascaline4();
+        if (fb) fb.innerHTML = '<span>Cálculo contábil finalizado: 125 + 250 = 375 livres.</span>';
+      }, 500);
+    }
+
+    function presetPascalineOverflow() {
+      pasVal4 = 9999;
+      renderPascaline4();
+      const fb = document.getElementById('pascaline-feedback-readout');
+      if (fb) fb.innerHTML = '<span>Capacidade máxima atingida: 9.999. Adicionando +1 para teste de transbordo...</span>';
+      setTimeout(() => {
+        pasVal4 = 0;
+        renderPascaline4();
+        if (fb) fb.innerHTML = '<span>Transbordo total: 9.999 + 1 = 0000 (todos os sautoirs giraram e retornaram ao marco zero).</span>';
+      }, 600);
+    }
+
     function resetPascaline4() {
       pasVal4 = 0;
       renderPascaline4();
@@ -5180,6 +5223,26 @@ READY
           { op: 'MULT', arg: 'R1 × R2', holes: [0,1,1,0, 1,1,0,0], r1: 3.5, r2: 2.0, acc: 7.0, stepTitle: 'Multiplicação de Ponto Flutuante', desc: 'Relés de expoente somam expoentes e relés de mantissa multiplicam mantissas normalizadas.', relays: [1,1,1,1] },
           { op: 'MOSTRAR', arg: '= 7.0', holes: [1,1,1,1, 0,0,0,0], r1: 3.5, r2: 2.0, acc: 7.0, stepTitle: 'Carga de Asa Calculada (7.0 kgf/m²)', desc: 'Resultado aeronáutico histórico para engenharia da DVL em Berlim.', relays: [0,0,0,1] }
         ]
+      },
+      7: {
+        name: 'Potenciação (2³ = 8)',
+        mathSummary: '2³ = 8 (2 × 2 × 2)',
+        steps: [
+          { op: 'LER 2', arg: '-> R1', holes: [0,0,1,0, 0,0,0,1], r1: 2.0, r2: 0.0, acc: 0.0, stepTitle: 'Carregando Base (2)', desc: 'Carrega base 2 no registrador R1 a partir dos furos da fita de 35 mm.', relays: [1,0,0,0] },
+          { op: 'MULT', arg: 'R1 × R1', holes: [0,1,1,0, 1,1,0,0], r1: 2.0, r2: 2.0, acc: 4.0, stepTitle: 'Primeiro Produto (2 × 2 = 4)', desc: 'Relés comutam multiplicando 2 por si mesmo: acumulador = 4.', relays: [0,1,1,0] },
+          { op: 'MULT', arg: 'Acc × R1', holes: [0,1,1,0, 1,1,0,0], r1: 2.0, r2: 4.0, acc: 8.0, stepTitle: 'Segundo Produto (4 × 2 = 8)', desc: 'Segundo ciclo de relés multiplica o produto parcial por 2: acumulador = 8.', relays: [0,1,1,1] },
+          { op: 'MOSTRAR', arg: '= 8', holes: [1,1,1,1, 0,0,0,0], r1: 2.0, r2: 4.0, acc: 8.0, stepTitle: 'Resultado da Potência (8)', desc: 'Resultado 8 exibido no painel de lâmpadas.', relays: [0,0,0,1] }
+        ]
+      },
+      8: {
+        name: 'Média Aritmética ((14 + 18) ÷ 2 = 16)',
+        mathSummary: '(14 + 18) ÷ 2 = 16',
+        steps: [
+          { op: 'LER 14', arg: '-> R1', holes: [1,1,1,0, 0,0,0,1], r1: 14.0, r2: 0.0, acc: 0.0, stepTitle: 'Carregando 1ª Medição (14)', desc: 'Primeira amostra de engenharia aeronáutica lida na fita.', relays: [1,0,0,0] },
+          { op: 'SOMAR 18', arg: 'R1 + 18', holes: [0,1,0,0, 1,1,0,0], r1: 14.0, r2: 18.0, acc: 32.0, stepTitle: 'Somando 2ª Medição (14 + 18 = 32)', desc: 'Soma as duas amostras na ALU: 14 + 18 = 32.', relays: [0,1,0,1] },
+          { op: 'DIVID 2', arg: 'Acc ÷ 2', holes: [0,1,1,1, 1,1,0,1], r1: 14.0, r2: 2.0, acc: 16.0, stepTitle: 'Divisão por 2 (32 ÷ 2 = 16)', desc: 'Rotina cabeada de divisão por deslocamento calcula a média exata: 16.', relays: [0,1,1,1] },
+          { op: 'MOSTRAR', arg: '= 16', holes: [1,1,1,1, 0,0,0,0], r1: 14.0, r2: 2.0, acc: 16.0, stepTitle: 'Média Calculada (16)', desc: 'Média aritmética final concluída com sucesso!', relays: [0,0,0,1] }
+        ]
       }
     };
 
@@ -5273,7 +5336,7 @@ READY
 
     function loadZuseProgram(pNum) {
       zuseActiveProg = zusePrograms[pNum] || zusePrograms[1];
-      for (let i = 1; i <= 6; i++) {
+      for (let i = 1; i <= 8; i++) {
         const b = document.getElementById(`btn-zprog-${i}`);
         if (b) b.className = i === pNum ? 'btn-clean active' : 'btn-clean secondary';
       }
@@ -5325,6 +5388,16 @@ READY
         title: 'Calais (Movimento Panzer)',
         cipher: 'ZZ88T# PLM11 QWA22 CXV33 YTR44 BBN5',
         plain:  'TAEUSCHUNG PAS DE CALAIS ALARMBEFEHL OKW'
+      },
+      5: {
+        title: 'Atlântico (Kriegsmarine & U-Boote)',
+        cipher: 'KB88# TRQ99 VVM22 PLK33 NN44',
+        plain:  'KRIEGSMARINE UBOOT POSITION ATLANTIK NORD'
+      },
+      6: {
+        title: 'Ardenas (Ofensiva von Rundstedt)',
+        cipher: 'WWT11# LK77 CX44 ZQ99 PO22',
+        plain:  'PANZER ANGRIFF ARDENNEN VORSTOSS RUNDSTEDT'
       }
     };
 
@@ -5452,7 +5525,7 @@ READY
 
     function loadColossusIntercept(idx) {
       colossusActive = colossusIntercepts[idx] || colossusIntercepts[1];
-      for (let i = 1; i <= 4; i++) {
+      for (let i = 1; i <= 6; i++) {
         const b = document.getElementById(`btn-col-${i}`);
         if (b) b.className = i === idx ? 'btn-clean active' : 'btn-clean secondary';
       }
@@ -5468,90 +5541,174 @@ READY
 
     const eniacPrograms = {
       1: {
-        name: 'Trajetória Balística (Obus 155 mm)',
-        mathSummary: 'v₀ = 800 m/s • Ângulo 45°',
+        name: 'Adição Básica (245 + 138 = 383)',
+        mathSummary: '245 + 138 = 383 (Ciclo Decádico)',
         steps: [
           {
-            stepTitle: 'Disparo do Projétil (t = 0 s)',
-            mathSummary: 'v₀ = 800 m/s • Ângulo 45°',
-            activeUnits: ['e-unit-cycling', 'e-unit-ftable'],
-            cableText: 'Cabo 1 (Vermelho): Pulso de disparo de 100 kHz conecta Unidade de Ciclos à Tabela de Funções para ler ângulo de 45° e velocidade inicial v₀ = 800 m/s.',
-            digits: [0,0,0,0,0,0,8,0,0,0],
-            decimalDisplay: '+ 00 0000 0800 m/s',
-            explanation: 'Válvulas flip-flop carregam velocidade inicial do projétil v₀ = 800 m/s (8000 decímetros/s).'
+            stepTitle: 'Carregar Parcela 245 no Acumulador 1',
+            mathSummary: 'Acumulador 1 = 245',
+            activeUnits: ['e-unit-cycling', 'e-unit-acc1'],
+            cableText: 'Cabo 1: Pulso de inicialização transmite 245 para os anéis de década do Acumulador 1.',
+            digits: [0,0,0,0,0,0,0,2,4,5],
+            decimalDisplay: '+ 00 0000 0245',
+            explanation: 'As lâmpadas neon dos 3 últimos dígitos acendem nos valores 2, 4 e 5.'
           },
           {
-            stepTitle: 'Arrasto Aerodinâmico e Vento',
-            mathSummary: 'F_arrasto ∝ v² • Arrasto -15 km/h',
-            activeUnits: ['e-unit-ftable', 'e-unit-mult', 'e-unit-acc1'],
-            cableText: 'Cabo 2 (Azul): Conecta Tabela de Função de arrasto ao Multiplicador. Produto parcial comuta a 5.000 somas/segundo.',
-            digits: [0,0,0,0,1,2,4,5,0,0],
-            decimalDisplay: '+ 00 0012 4500 m',
-            explanation: 'Acumulador 1 integra a posição horizontal X a cada milissegundo: Projétil avança para 12.450 metros.'
-          },
-          {
-            stepTitle: 'Ápice da Parábola e Gravidade',
-            mathSummary: 'y_max = 3.180 m (g = 9,8 m/s²)',
+            stepTitle: 'Carregar Parcela 138 no Acumulador 2',
+            mathSummary: 'Acumulador 2 = 138',
             activeUnits: ['e-unit-cycling', 'e-unit-acc2'],
-            cableText: 'Cabo 3 (Verde): Pulso de clock decádico decrementa a velocidade vertical e computa a altitude máxima no Acumulador 2.',
-            digits: [0,0,0,0,0,3,1,8,0,0],
-            decimalDisplay: '+ 00 0003 1800 m',
-            explanation: 'Acumulador 2 registra a altitude máxima: o projétil atinge o ápice a 3.180 metros de altura.'
+            cableText: 'Cabo 2: Segundo pulso transfere 138 para o Acumulador 2 (Gabinete 6).',
+            digits: [0,0,0,0,0,0,0,1,3,8],
+            decimalDisplay: '+ 00 0000 0138',
+            explanation: 'Acumulador 2 retém o segundo número nos anéis decádicos a vácuo.'
           },
           {
-            stepTitle: 'Impacto no Solo e Cartão IBM',
-            mathSummary: 'Alcance: 24.890 m em 2,8 s',
-            activeUnits: ['e-unit-acc1', 'e-unit-card'],
-            cableText: 'Cabo 4 (Amarelo): Pulso de término dispara o perfurador de cartões IBM. Tabela de tiro pronta para a artilharia!',
-            digits: [0,0,0,0,2,4,8,9,0,0],
-            decimalDisplay: '+ 00 0024 8900 m',
-            explanation: 'Impacto a 24.890 m! O ENIAC calculou 30 s de voo real em apenas 2,8 s: mais rápido que a própria bala!'
+            stepTitle: 'Transmissão do Pulso de Adição com Carry',
+            mathSummary: 'Carry: 5 + 8 = 13 (sobe 1)',
+            activeUnits: ['e-unit-acc1', 'e-unit-acc2'],
+            cableText: 'Cabo de Interconexão: Acumulador 2 transmite 138 pulsos ao Acumulador 1; o circuito de vai-um propaga o carry da unidade para a dezena.',
+            digits: [0,0,0,0,0,0,0,3,7,3],
+            decimalDisplay: '+ 00 0000 0373 (soma parcial)',
+            explanation: 'Válvulas duplas propagam o vai-um decimal: 5+8=13 (unidade 3, carry 1 na dezena).'
+          },
+          {
+            stepTitle: 'Resultado Final Estabilizado (383)',
+            mathSummary: '245 + 138 = 383 em 200 µs',
+            activeUnits: ['e-unit-acc1'],
+            cableText: 'Cabo de Término: Ciclo de adição de 200 microssegundos finalizado com sinal positivo.',
+            digits: [0,0,0,0,0,0,0,3,8,3],
+            decimalDisplay: '+ 00 0000 0383',
+            explanation: 'Resultado 383 pronto! Operação básica ideal para demonstrar o funcionamento dos anéis de década aos colegas.'
           }
         ]
       },
       2: {
-        name: 'Previsão Numérica do Tempo (1950)',
-        mathSummary: 'Equação de Vorticidade Barotrópica',
+        name: 'Subtração por Complemento de 10 (500 - 175 = 325)',
+        mathSummary: '500 - 175 = 325 (Complemento)',
         steps: [
           {
-            stepTitle: 'Carregamento da Grade de 768 Pontos',
-            mathSummary: 'Pressão Geopotencial 500 hPa',
-            activeUnits: ['e-unit-card', 'e-unit-acc1'],
-            cableText: 'Cabo 1: Leitor IBM carrega medições barométricas de 768 pontos da atmosfera da América do Norte nos acumuladores.',
-            digits: [0,0,0,0,0,5,5,2,0,0],
-            decimalDisplay: '+ 00 0005 5200 gpm',
-            explanation: 'John von Neumann e Jule Charney configuram as condições iniciais da altitude de 500 hPa (5.520 metros).'
+            stepTitle: 'Carregar Minuendo (500) no Acumulador 1',
+            mathSummary: 'Acumulador 1 = 500',
+            activeUnits: ['e-unit-cycling', 'e-unit-acc1'],
+            cableText: 'Cabo 1: Transfere o valor 500 para as décadas do Acumulador 1.',
+            digits: [0,0,0,0,0,0,0,5,0,0],
+            decimalDisplay: '+ 00 0000 0500',
+            explanation: 'O ENIAC não tem rotação reversa: para subtrair, ele soma o complemento de 10 do subtraendo!'
           },
           {
-            stepTitle: 'Cálculo do Gradiente de Pressão',
-            mathSummary: '∇²ψ = ζ (Vorticidade Relativa)',
-            activeUnits: ['e-unit-ftable', 'e-unit-mult', 'e-unit-acc2'],
-            cableText: 'Cabo 2: Chaves rotatórias definem a constante de Coriolis de rotação da Terra e enviam ao Multiplicador.',
-            digits: [0,0,0,0,0,0,1,0,3,4],
-            decimalDisplay: '+ 00 0000 1034 hPa',
-            explanation: 'Acumulador 2 computa o campo de vento geostrófico e a advecção de vorticidade na troposfera.'
+            stepTitle: 'Chave SUB Gera Complemento (9.999.999.825)',
+            mathSummary: 'Compl. 10 de 175 = 9.999.999.825',
+            activeUnits: ['e-unit-acc2'],
+            cableText: 'Chave Seletora SUB: O painel do Acumulador 2 inverte a transmissão gerando 10¹⁰ - 175 = 9.999.999.825.',
+            digits: [9,9,9,9,9,9,9,8,2,5],
+            decimalDisplay: '- 175 (Compl: 9999999825)',
+            explanation: 'Cada anel decádico envia pulsos complementares que matematicamente equivalem à negação.'
           },
           {
-            stepTitle: 'Integração Temporal de 24 Horas',
-            mathSummary: 'Passo de tempo Δt = 1 hora',
-            activeUnits: ['e-unit-cycling', 'e-unit-acc1', 'e-unit-acc2'],
-            cableText: 'Cabo 3: Laço de realimentação cabeado comuta 24 ciclos horários de relaxação numérica sucessiva.',
-            digits: [0,0,0,0,0,5,4,1,0,0],
-            decimalDisplay: '+ 00 0005 4100 gpm',
-            explanation: 'O ENIAC processa a primeira previsão meteorológica da história da humanidade calculada antes de o tempo ocorrer!'
+            stepTitle: 'Injeção de Pulsos e Descarte de Overflow',
+            mathSummary: '500 + 9.999.999.825 = (1)0000000325',
+            activeUnits: ['e-unit-acc1', 'e-unit-acc2'],
+            cableText: 'Cabo Transeunte: Pulsos de complemento entram no Acumulador 1; o vai-um do 10º dígito transborda e é descartado pelo circuito.',
+            digits: [0,0,0,0,0,0,0,3,2,5],
+            decimalDisplay: '+ 00 0000 0325',
+            explanation: 'O overflow do décimo dígito é ignorado, restando exatamente a diferença decimal correta.'
           },
           {
-            stepTitle: 'Previsão Concluída em 24 Horas',
-            mathSummary: 'Previsão 24h gerada em 24h',
-            activeUnits: ['e-unit-acc1', 'e-unit-card'],
-            cableText: 'Cabo 4: Resultados finais de pressão e chuva perfurados em cartões para o Serviço Meteorológico dos EUA.',
-            digits: [0,0,0,0,1,0,1,3,2,5],
-            decimalDisplay: '+ 00 0010 1325 Pa',
-            explanation: 'Sucesso histórico: o mapa de previsão de 24 horas foi entregue com exatidão em 24 horas de processamento contínuo.'
+            stepTitle: 'Resultado da Subtração: 325',
+            mathSummary: '500 - 175 = 325',
+            activeUnits: ['e-unit-acc1'],
+            cableText: 'Cabo de Saída: Diferença positiva estabilizada com exatidão no Acumulador 1.',
+            digits: [0,0,0,0,0,0,0,3,2,5],
+            decimalDisplay: '+ 00 0000 0325',
+            explanation: '500 - 175 = 325. Demonstração cristalina de aritmética de complemento sem peças mecânicas reversas!'
           }
         ]
       },
       3: {
+        name: 'Laço de Contagem Acumulada (1 a 4 = 10)',
+        mathSummary: '1 + 2 + 3 + 4 = 10 (Laço com Cabos)',
+        steps: [
+          {
+            stepTitle: 'Ciclo 1: Iniciar Acumulador e Injetar 1',
+            mathSummary: 'Total = 1 (i = 1)',
+            activeUnits: ['e-unit-cycling', 'e-unit-acc1'],
+            cableText: 'Cabo 1: Gerador de pulsos de clock injeta 1 no Acumulador 1.',
+            digits: [0,0,0,0,0,0,0,0,0,1],
+            decimalDisplay: '+ 00 0000 0001',
+            explanation: 'Demonstração do primeiro laço FOR físico da história: os cabos realimentavam pulsos automaticamente.'
+          },
+          {
+            stepTitle: 'Ciclo 2: Realimentação do Cabo e Somar 2',
+            mathSummary: 'Total = 3 (1 + 2)',
+            activeUnits: ['e-unit-acc1'],
+            cableText: 'Cabo de Realimentação: O pulso de término reinjeta o próximo valor (2) de volta na entrada.',
+            digits: [0,0,0,0,0,0,0,0,0,3],
+            decimalDisplay: '+ 00 0000 0003',
+            explanation: '1 + 2 = 3. O ENIAC acumula sem intervenção humana a cada 200 µs.'
+          },
+          {
+            stepTitle: 'Ciclo 3: Somar 3',
+            mathSummary: 'Total = 6 (3 + 3)',
+            activeUnits: ['e-unit-acc1'],
+            cableText: 'Cabo de Realimentação: Terceiro ciclo soma 3. Total atinge 6.',
+            digits: [0,0,0,0,0,0,0,0,0,6],
+            decimalDisplay: '+ 00 0000 0006',
+            explanation: '3 + 3 = 6. As lâmpadas neon acendem no valor 6.'
+          },
+          {
+            stepTitle: 'Ciclo 4: Somar 4 e Parar no Total 10',
+            mathSummary: 'Total = 10 (6 + 4)',
+            activeUnits: ['e-unit-acc1', 'e-unit-card'],
+            cableText: 'Cabo de Parada: Contador do Master Programmer atinge limite 4 e comuta o cabo de término.',
+            digits: [0,0,0,0,0,0,0,0,1,0],
+            decimalDisplay: '+ 00 0000 0010',
+            explanation: 'Soma de 1 a 4 = 10 concluída com sucesso! Mostra como o Master Programmer controlava loops físicos.'
+          }
+        ]
+      },
+      4: {
+        name: 'Dobro de um Número (64 × 2 = 128)',
+        mathSummary: '64 × 2 = 128 (Auto-adição)',
+        steps: [
+          {
+            stepTitle: 'Carregar 64 no Acumulador 1',
+            mathSummary: 'Acumulador 1 = 64',
+            activeUnits: ['e-unit-cycling', 'e-unit-acc1'],
+            cableText: 'Cabo 1: Valor inicial 64 carregado no Acumulador 1.',
+            digits: [0,0,0,0,0,0,0,0,6,4],
+            decimalDisplay: '+ 00 0000 0064',
+            explanation: 'Entrada inicial carregada: 64.'
+          },
+          {
+            stepTitle: 'Cabo de Retorno em Circuito Fechado',
+            mathSummary: 'Cabo Loop (64 + 64)',
+            activeUnits: ['e-unit-acc1'],
+            cableText: 'Cabo Transeunte: Saída de transmissão do Acumulador 1 conectada à sua própria entrada receptora.',
+            digits: [0,0,0,0,0,0,0,0,6,4],
+            decimalDisplay: '+ 00 0000 0064 (auto-soma)',
+            explanation: 'O ENIAC executava duplicações rápidas sem passar pelo multiplicador pesado.'
+          },
+          {
+            stepTitle: 'Disparar Ciclo de Pulso: 64 + 64',
+            mathSummary: 'Carry em 6 + 6 = 12',
+            activeUnits: ['e-unit-cycling', 'e-unit-acc1'],
+            cableText: 'Pulso de Adição: 4+4=8 nas unidades; 6+6=12 gera vai-um decimal para a centena.',
+            digits: [0,0,0,0,0,0,0,1,2,8],
+            decimalDisplay: '+ 00 0000 0128',
+            explanation: 'Anéis de década comutam a vácuo em microssegundos.'
+          },
+          {
+            stepTitle: 'Resultado Final Estabilizado: 128',
+            mathSummary: '64 × 2 = 128',
+            activeUnits: ['e-unit-acc1'],
+            cableText: 'Cabo de Término: 128 estabilizado e pronto para leitura no painel neon.',
+            digits: [0,0,0,0,0,0,0,1,2,8],
+            decimalDisplay: '+ 00 0000 0128',
+            explanation: '64 × 2 = 128. Exemplo simples, visual e de fácil assimilação na apresentação!'
+          }
+        ]
+      },
+      5: {
         name: 'Multiplicação de 10 Dígitos',
         mathSummary: '13.729 × 4.512 = 61.945.248',
         steps: [
@@ -5593,7 +5750,91 @@ READY
           }
         ]
       },
-      4: {
+      6: {
+        name: 'Trajetória Balística (Obus 155 mm)',
+        mathSummary: 'v₀ = 800 m/s • Ângulo 45°',
+        steps: [
+          {
+            stepTitle: 'Disparo do Projétil (t = 0 s)',
+            mathSummary: 'v₀ = 800 m/s • Ângulo 45°',
+            activeUnits: ['e-unit-cycling', 'e-unit-ftable'],
+            cableText: 'Cabo 1 (Vermelho): Pulso de disparo de 100 kHz conecta Unidade de Ciclos à Tabela de Funções para ler ângulo de 45° e velocidade inicial v₀ = 800 m/s.',
+            digits: [0,0,0,0,0,0,8,0,0,0],
+            decimalDisplay: '+ 00 0000 0800 m/s',
+            explanation: 'Válvulas flip-flop carregam velocidade inicial do projétil v₀ = 800 m/s (8000 decímetros/s).'
+          },
+          {
+            stepTitle: 'Arrasto Aerodinâmico e Vento',
+            mathSummary: 'F_arrasto ∝ v² • Arrasto -15 km/h',
+            activeUnits: ['e-unit-ftable', 'e-unit-mult', 'e-unit-acc1'],
+            cableText: 'Cabo 2 (Azul): Conecta Tabela de Função de arrasto ao Multiplicador. Produto parcial comuta a 5.000 somas/segundo.',
+            digits: [0,0,0,0,1,2,4,5,0,0],
+            decimalDisplay: '+ 00 0012 4500 m',
+            explanation: 'Acumulador 1 integra a posição horizontal X a cada milissegundo: Projétil avança para 12.450 metros.'
+          },
+          {
+            stepTitle: 'Ápice da Parábola e Gravidade',
+            mathSummary: 'y_max = 3.180 m (g = 9,8 m/s²)',
+            activeUnits: ['e-unit-cycling', 'e-unit-acc2'],
+            cableText: 'Cabo 3 (Verde): Pulso de clock decádico decrementa a velocidade vertical e computa a altitude máxima no Acumulador 2.',
+            digits: [0,0,0,0,0,3,1,8,0,0],
+            decimalDisplay: '+ 00 0003 1800 m',
+            explanation: 'Acumulador 2 registra a altitude máxima: o projétil atinge o ápice a 3.180 metros de altura.'
+          },
+          {
+            stepTitle: 'Impacto no Solo e Cartão IBM',
+            mathSummary: 'Alcance: 24.890 m em 2,8 s',
+            activeUnits: ['e-unit-acc1', 'e-unit-card'],
+            cableText: 'Cabo 4 (Amarelo): Pulso de término dispara o perfurador de cartões IBM. Tabela de tiro pronta para a artilharia!',
+            digits: [0,0,0,0,2,4,8,9,0,0],
+            decimalDisplay: '+ 00 0024 8900 m',
+            explanation: 'Impacto a 24.890 m! O ENIAC calculou 30 s de voo real em apenas 2,8 s: mais rápido que a própria bala!'
+          }
+        ]
+      },
+      7: {
+        name: 'Previsão Numérica do Tempo (1950)',
+        mathSummary: 'Equação de Vorticidade Barotrópica',
+        steps: [
+          {
+            stepTitle: 'Carregamento da Grade de 768 Pontos',
+            mathSummary: 'Pressão Geopotencial 500 hPa',
+            activeUnits: ['e-unit-card', 'e-unit-acc1'],
+            cableText: 'Cabo 1: Leitor IBM carrega medições barométricas de 768 pontos da atmosfera da América do Norte nos acumuladores.',
+            digits: [0,0,0,0,0,5,5,2,0,0],
+            decimalDisplay: '+ 00 0005 5200 gpm',
+            explanation: 'John von Neumann e Jule Charney configuram as condições iniciais da altitude de 500 hPa (5.520 metros).'
+          },
+          {
+            stepTitle: 'Cálculo do Gradiente de Pressão',
+            mathSummary: '∇²ψ = ζ (Vorticidade Relativa)',
+            activeUnits: ['e-unit-ftable', 'e-unit-mult', 'e-unit-acc2'],
+            cableText: 'Cabo 2: Chaves rotatórias definem a constante de Coriolis de rotação da Terra e enviam ao Multiplicador.',
+            digits: [0,0,0,0,0,0,1,0,3,4],
+            decimalDisplay: '+ 00 0000 1034 hPa',
+            explanation: 'Acumulador 2 computa o campo de vento geostrófico e a advecção de vorticidade na troposfera.'
+          },
+          {
+            stepTitle: 'Integração Temporal de 24 Horas',
+            mathSummary: 'Passo de tempo Δt = 1 hora',
+            activeUnits: ['e-unit-cycling', 'e-unit-acc1', 'e-unit-acc2'],
+            cableText: 'Cabo 3: Laço de realimentação cabeado comuta 24 ciclos horários de relaxação numérica sucessiva.',
+            digits: [0,0,0,0,0,5,4,1,0,0],
+            decimalDisplay: '+ 00 0005 4100 gpm',
+            explanation: 'O ENIAC processa a primeira previsão meteorológica da história da humanidade calculada antes de o tempo ocorrer!'
+          },
+          {
+            stepTitle: 'Previsão Concluída em 24 Horas',
+            mathSummary: 'Previsão 24h gerada em 24h',
+            activeUnits: ['e-unit-acc1', 'e-unit-card'],
+            cableText: 'Cabo 4: Resultados finais de pressão e chuva perfurados em cartões para o Serviço Meteorológico dos EUA.',
+            digits: [0,0,0,0,1,0,1,3,2,5],
+            decimalDisplay: '+ 00 0010 1325 Pa',
+            explanation: 'Sucesso histórico: o mapa de previsão de 24 horas foi entregue com exatidão em 24 horas de processamento contínuo.'
+          }
+        ]
+      },
+      8: {
         name: 'Monte Carlo Nuclear (Los Alamos)',
         mathSummary: 'Difusão Probabilística de Nêutrons',
         steps: [
@@ -5741,7 +5982,7 @@ READY
 
     function loadEniacProgram(pNum) {
       eniacCurrentProg = pNum;
-      for (let i = 1; i <= 4; i++) {
+      for (let i = 1; i <= 8; i++) {
         const b = document.getElementById(`btn-eprog-${i}`);
         if (b) b.className = i === pNum ? 'btn-clean active' : 'btn-clean secondary';
       }
@@ -5763,7 +6004,9 @@ READY
       { name: 'Soma de Gauss', ops: ['LDN', 'ADD', 'SUB', 'CMP', 'JRP', 'STP'], desc: '3. Soma de Gauss (1 a 10): Acumula a progressão aritmética 1 + 2 + ... + 10 = 55 no registrador Acumulador.' },
       { name: 'Multiplicação (3 × 4 = 12)', ops: ['LDN', 'ADD', 'ADD', 'ADD', 'STO', 'STP'], desc: '4. Multiplicação (3 × 4 = 12): Demonstra multiplicação primitiva por somas sucessivas do operando na ALU.' },
       { name: 'Divisão Inteira (14 ÷ 3 = 4)', ops: ['LDN', 'SUB', 'CMP', 'JRP', 'STO', 'STP'], desc: '5. Divisão Inteira (14 ÷ 3 = 4 resto 2): Subtrai o divisor 3 repetidamente do dividendo 14 contando os ciclos.' },
-      { name: 'Algoritmo de Euclides (MDC)', ops: ['LDN', 'SUB', 'CMP', 'JRP', 'STO', 'STP'], desc: '6. Algoritmo de Euclides (MDC): Calcula o Máximo Divisor Comum entre dois inteiros por subtrações alternadas.' }
+      { name: 'Algoritmo de Euclides (MDC)', ops: ['LDN', 'SUB', 'CMP', 'JRP', 'STO', 'STP'], desc: '6. Algoritmo de Euclides (MDC): Calcula o Máximo Divisor Comum entre dois inteiros por subtrações alternadas.' },
+      { name: 'Fibonacci (1..8)', ops: ['LDN', 'ADD', 'STO', 'LDN', 'ADD', 'STP'], desc: '7. Sequência de Fibonacci (1, 1, 2, 3, 5, 8): Soma os dois termos anteriores na memória Williams-Kilburn gerando o próximo valor.' },
+      { name: 'Potência 2^7 = 128', ops: ['LDN', 'ADD', 'STO', 'CMP', 'JRP', 'STP'], desc: '8. Potência de 2 (2^7 = 128): Duplicações binárias sucessivas até alcançar 128 no registrador acumulador.' }
     ];
     let babyRunLoop = null;
 
@@ -5802,7 +6045,7 @@ READY
     function loadBabyProgram(idx) {
       clearInterval(babyRunLoop);
       currentBabyProgIdx = idx;
-      for (let i = 0; i <= 5; i++) {
+      for (let i = 0; i <= 7; i++) {
         const b = document.getElementById(`btn-bprog-${i}`);
         if (b) b.className = i === idx ? 'btn-clean active' : 'btn-clean secondary';
       }
@@ -5948,6 +6191,60 @@ READY
         ]
       },
       5: {
+        name: 'Incremento Simples (1 + 1 = 2)',
+        mathSummary: '1 + 1 = 2 (Incremento)',
+        steps: [
+          {
+            val: 1,
+            regA: 1,
+            stepTitle: 'Instrução LDA 1 (Carregar Bit 0)',
+            desc: 'Chave B0 ativada (peso 1). Carrega 1 no registrador Acumulador.'
+          },
+          {
+            val: 1,
+            regA: 2,
+            stepTitle: 'Instrução ADD 1 (Soma na ALU)',
+            desc: 'ALU computa 1 + 1 = 2 (bit B1 aceso e B0 apagado). Operação elementar de incremento!'
+          }
+        ]
+      },
+      6: {
+        name: 'Lógica OR (0x55 OR 0xAA = 0xFF)',
+        mathSummary: '01010101 OR 10101010 = 11111111',
+        steps: [
+          {
+            val: 85,
+            regA: 85,
+            stepTitle: 'Instrução LDA 0x55 (Padrão Alternado 1)',
+            desc: 'Carrega padrão binário 01010101 (85 decimal): chaves pares ativadas.'
+          },
+          {
+            val: 170,
+            regA: 255,
+            stepTitle: 'Instrução OR 0xAA (Fusão Booleana)',
+            desc: 'Aplica OR com 10101010 (170 decimal): todos os 8 bits tornam-se 1 (255 decimal, todas as lâmpadas acesas!).'
+          }
+        ]
+      },
+      7: {
+        name: 'Inversão Lógica NOT (NOT 0x00 = 0xFF)',
+        mathSummary: 'NOT 00000000 = 11111111 (255)',
+        steps: [
+          {
+            val: 0,
+            regA: 0,
+            stepTitle: 'Instrução LDA 0 (Zerar Acumulador)',
+            desc: 'Todas as chaves desativadas. Acumulador = 00000000 (0 decimal).'
+          },
+          {
+            val: 0,
+            regA: 255,
+            stepTitle: 'Instrução NOT (Inversão de Bits)',
+            desc: 'Portas lógicas invertem os 8 bits de zero para 1. Acumulador = 11111111 (255 decimal / 0xFF).'
+          }
+        ]
+      },
+      8: {
         name: 'Modo Manual Livre (Suas Chaves)',
         mathSummary: 'Controle Manual Direto',
         steps: []
@@ -5981,7 +6278,7 @@ READY
     function togglePatinhoClean(idx) {
       patinhoSwitches[idx] = patinhoSwitches[idx] ? 0 : 1;
       buildPatinhoClean();
-      if (patinhoActiveProg === 5) {
+      if (patinhoActiveProg === 8) {
         const total = getPatinhoSwitchVal();
         const fb = document.getElementById('patinho-asm-feedback');
         if (fb) fb.textContent = `Chaves manuais ajustadas em ${total} (binário ${total.toString(2).padStart(8, '0')}).`;
@@ -6011,7 +6308,7 @@ READY
       const mSum = document.getElementById('patinho-math-summary');
       if (mSum) mSum.textContent = prog.mathSummary;
 
-      if (patinhoActiveProg !== 5 && prog.steps.length > 0) {
+      if (patinhoActiveProg !== 8 && prog.steps.length > 0) {
         const step = prog.steps[patinhoCurrentStep];
         const sBadge = document.getElementById('patinho-step-badge');
         if (sBadge) sBadge.textContent = `PASSO ${patinhoCurrentStep + 1} DE ${prog.steps.length}`;
@@ -6069,7 +6366,7 @@ READY
         if (btn) btn.textContent = 'Executar Programa Completo';
       }
       patinhoCurrentStep = 0;
-      if (patinhoActiveProg === 5) {
+      if (patinhoActiveProg === 8) {
         patinhoSwitches.fill(0);
         patinhoRegVal = 0;
         buildPatinhoClean();
@@ -6081,7 +6378,7 @@ READY
 
     function loadPatinhoProgram(pNum) {
       patinhoActiveProg = pNum;
-      for (let n = 1; n <= 5; n++) {
+      for (let n = 1; n <= 8; n++) {
         const b = document.getElementById(`btn-pprog-${n}`);
         if (b) b.className = n === pNum ? 'btn-clean active' : 'btn-clean secondary';
       }
@@ -6089,7 +6386,7 @@ READY
       const stepControls = document.getElementById('patinho-step-controls');
       const manualControls = document.getElementById('patinho-manual-controls');
 
-      if (pNum === 5) {
+      if (pNum === 8) {
         if (stepControls) stepControls.style.display = 'none';
         if (manualControls) manualControls.style.display = 'flex';
         patinhoSwitches.fill(0);
@@ -6573,7 +6870,7 @@ READY
           70: 'PRINT "RESULTADO FINAL DE 5! = "; FAT'
         };
         appendCrtOutput('CARREGADO: 4. FATORIAL EM BASIC');
-      } else if (pNum === 5) {
+      } else if (pNum === 8) {
         basicProgram = {
           10: 'REM JOGO DE ADIVINHACAO COM BUSCA BINARIA',
           20: 'PRINT "PENSE EM UM NUMERO DE 1 A 10..."',
@@ -6601,7 +6898,7 @@ READY
           60: 'PRINT "+---------------------------------+"'
         };
         appendCrtOutput('CARREGADO: 7. ARTE GRAFICA ASCII');
-      } else {
+      } else if (pNum === 8) {
         basicProgram = {
           10: 'REM HISTORICO MONETARIO DO BRASIL',
           20: 'PRINT "1985: CRUZEIRO (Cr$)"',
@@ -6611,6 +6908,43 @@ READY
           60: 'PRINT "1994: REAL (R$ 1,00 = CR$ 2.750)"'
         };
         appendCrtOutput('CARREGADO: 8. MOEDAS DO BRASIL (1985-1994)');
+      } else if (pNum === 9) {
+        basicProgram = {
+          10: 'REM PRIMEIRO PROGRAMA CLASSICO',
+          20: 'PRINT "================================="',
+          30: 'PRINT "OLA, MUNDO! BEM-VINDO AO CP-500!"',
+          40: 'PRINT "SEMINARIO HISTORIA DA COMPUTACAO"',
+          50: 'PRINT "================================="'
+        };
+        appendCrtOutput('CARREGADO: 9. OLA MUNDO');
+      } else if (pNum === 10) {
+        basicProgram = {
+          10: 'REM CONTAGEM REGRESSIVA RETRO',
+          20: 'FOR T = 10 TO 1 STEP -1',
+          30: 'PRINT "LANCAMENTO EM: "; T; " SEGUNDOS"',
+          40: 'NEXT T',
+          50: 'PRINT ">>> DECOLAR! FOGUETE EM ORBITA! <<<"'
+        };
+        appendCrtOutput('CARREGADO: 10. CONTAGEM REGRESSIVA');
+      } else if (pNum === 11) {
+        basicProgram = {
+          10: 'REM TESTE DE PARIDADE DE NUMEROS',
+          20: 'FOR N = 1 TO 6',
+          30: 'IF (N / 2) = INT(N / 2) THEN PRINT N; " EH PAR" ELSE PRINT N; " EH IMPAR"',
+          40: 'NEXT N',
+          50: 'PRINT "TESTE DE PARIDADE CONCLUIDO"'
+        };
+        appendCrtOutput('CARREGADO: 11. PAR OU IMPAR');
+      } else {
+        basicProgram = {
+          10: 'REM CALCULO DE MEDIA ESCOLAR',
+          20: 'LET N1 = 8.5 : LET N2 = 7.0 : LET N3 = 9.5',
+          30: 'LET MEDIA = (N1 + N2 + N3) / 3',
+          40: 'PRINT "NOTAS DAS PROVAS: "; N1; ", "; N2; ", "; N3',
+          50: 'PRINT "MEDIA FINAL CALCULADA: "; INT(MEDIA * 10) / 10',
+          60: 'IF MEDIA >= 7 THEN PRINT "STATUS DO ALUNO: APROVADO COM LOUVOR!"'
+        };
+        appendCrtOutput('CARREGADO: 12. MEDIA ESCOLAR');
       }
 
       const pNums = Object.keys(basicProgram).map(Number).sort((a, b) => a - b);
