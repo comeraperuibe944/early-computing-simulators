@@ -1056,6 +1056,510 @@
       border-color: #0f172a !important;
     }
 
+    /* ==========================================================================
+       DUO SPLIT-SCREEN: CHARLES BABBAGE & ADA LOVELACE
+       ========================================================================== */
+    .duo-split-stage {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 1.5rem 0 2rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .duo-split-stage {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .duo-split-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .duo-split-header {
+      padding: 1.1rem 1.25rem 0.85rem 1.25rem;
+      border-bottom: 1px solid var(--border-subtle);
+      background: #f8fafc;
+    }
+
+    .duo-role-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: #0f172a;
+      display: inline-block;
+      margin-bottom: 0.35rem;
+      text-transform: uppercase;
+    }
+
+    .duo-name {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .duo-dates {
+      font-size: 0.85rem;
+      color: #475569;
+      font-weight: 600;
+      margin: 0.25rem 0 0 0;
+    }
+
+    .duo-portrait-frame {
+      width: 100%;
+      height: 420px;
+      background: #0f172a;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .duo-portrait-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .duo-portrait-img.babbage {
+      object-position: center 18%;
+    }
+
+    .duo-portrait-img.lovelace {
+      object-position: center 12%;
+    }
+
+    .duo-portrait-frame:hover .duo-portrait-img {
+      transform: scale(1.02);
+    }
+
+    .duo-bio-summary {
+      padding: 1.25rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #1e293b;
+      flex-grow: 1;
+      background: #ffffff;
+    }
+
+    .duo-bio-summary p {
+      margin: 0;
+    }
+
+    .duo-bio-summary strong {
+      color: #0f172a;
+    }
+
+    /* ==========================================================================
+       SIMULADOR DA MÁQUINA ANALÍTICA (SOROBAN STYLE - MINIMALISTA PRETO E BRANCO)
+       ========================================================================== */
+    .analitica-card-inner {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 1.5rem;
+    }
+
+    .analitica-top-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .analitica-title-group h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0 0 0.25rem 0;
+    }
+
+    .analitica-title-group p {
+      font-size: 0.85rem;
+      color: #475569;
+      margin: 0;
+    }
+
+    .analitica-status-pill {
+      background: #0f172a;
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.35rem 0.75rem;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .analitica-presets-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .analitica-section-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #0f172a;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .analitica-chain-wrap {
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 0.85rem;
+      margin-bottom: 1.25rem;
+      overflow-x: auto;
+    }
+
+    .analitica-chain-track {
+      display: flex;
+      gap: 0.75rem;
+      min-width: max-content;
+      align-items: stretch;
+    }
+
+    .analitica-card-item {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 0.65rem 0.85rem;
+      width: 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      position: relative;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .analitica-card-item.active {
+      background: #0f172a;
+      color: #ffffff;
+      border-color: #0f172a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.2);
+    }
+
+    .analitica-card-item.executed {
+      border-color: #cbd5e1;
+      opacity: 0.7;
+    }
+
+    .analitica-card-item.skipped {
+      border-style: dashed;
+      opacity: 0.45;
+      text-decoration: line-through;
+    }
+
+    .card-idx-badge {
+      font-size: 0.68rem;
+      font-weight: 800;
+      margin-bottom: 0.25rem;
+    }
+
+    .card-op-label {
+      font-weight: 800;
+      font-size: 0.8rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .card-holes-preview {
+      display: flex;
+      gap: 3px;
+      margin: 0.35rem 0;
+    }
+
+    .hole-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      border: 1px solid #0f172a;
+    }
+
+    .analitica-card-item.active .hole-dot {
+      border-color: #ffffff;
+    }
+
+    .hole-dot.punched {
+      background: #0f172a;
+    }
+
+    .analitica-card-item.active .hole-dot.punched {
+      background: #ffffff;
+    }
+
+    .card-vars-label {
+      font-size: 0.72rem;
+      color: #64748b;
+    }
+
+    .analitica-card-item.active .card-vars-label {
+      color: #cbd5e1;
+    }
+
+    .analitica-mill-stage {
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .analitica-mill-stage {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .mill-shaft-box {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 0.75rem;
+      text-align: center;
+    }
+
+    .mill-shaft-title {
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #64748b;
+      margin-bottom: 0.25rem;
+    }
+
+    .mill-shaft-val {
+      font-family: var(--font-mono);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .mill-op-symbol {
+      font-family: var(--font-mono);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #0f172a;
+      text-align: center;
+    }
+
+    .mill-gear-core {
+      background: #0f172a;
+      color: #ffffff;
+      border-radius: 4px;
+      padding: 0.75rem 1.25rem;
+      text-align: center;
+    }
+
+    .mill-core-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #94a3b8;
+      text-transform: uppercase;
+    }
+
+    .mill-core-name {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 800;
+      margin: 0.15rem 0;
+    }
+
+    .analitica-store-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.65rem;
+      margin-bottom: 1.25rem;
+    }
+
+    @media (max-width: 768px) {
+      .analitica-store-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .analitica-store-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .analitica-col-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 0.75rem 0.5rem;
+      text-align: center;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .analitica-col-card.reading {
+      border-color: #0f172a;
+      background: #f1f5f9;
+    }
+
+    .analitica-col-card.writing {
+      border-color: #0f172a;
+      background: #0f172a;
+      color: #ffffff;
+    }
+
+    .col-var-id {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 0.2rem;
+    }
+
+    .analitica-col-card.writing .col-var-id {
+      color: #ffffff;
+    }
+
+    .col-var-role {
+      font-size: 0.68rem;
+      color: #64748b;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      height: 2.2em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.1;
+    }
+
+    .analitica-col-card.writing .col-var-role {
+      color: #cbd5e1;
+    }
+
+    .col-gears-cluster {
+      display: flex;
+      justify-content: center;
+      gap: 2px;
+      margin-bottom: 0.5rem;
+    }
+
+    .gear-dial {
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+      border-radius: 2px;
+      width: 18px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .analitica-col-card.writing .gear-dial {
+      background: #1e293b;
+      color: #ffffff;
+      border-color: #334155;
+    }
+
+    .col-dec-val {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 0.4rem;
+    }
+
+    .analitica-col-card.writing .col-dec-val {
+      color: #ffffff;
+    }
+
+    .col-adj-btns {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .btn-adj {
+      background: #f1f5f9;
+      border: 1px solid var(--border-subtle);
+      border-radius: 3px;
+      width: 22px;
+      height: 20px;
+      padding: 0;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 800;
+      cursor: pointer;
+      color: #0f172a;
+      line-height: 1;
+    }
+
+    .btn-adj:hover {
+      background: #0f172a;
+      color: #ffffff;
+    }
+
+    .analitica-col-card.writing .btn-adj {
+      background: #1e293b;
+      color: #ffffff;
+      border-color: #334155;
+    }
+
+    .analitica-controls-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .analitica-narrative-box {
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 0.85rem 1rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #0f172a;
+    }
+
+    .analitica-narrative-box strong {
+      color: #0f172a;
+    }
+
     /* TABELA COMPARATIVA AMPLA */
     .table-slide-card {
       background: #ffffff;
@@ -2391,19 +2895,44 @@
       </div>
 
       <div class="clean-card">
-        <!-- GALERIA HISTÓRICA: MOINHO DA MÁQUINA ANALÍTICA, BABBAGE, ADA LOVELACE E CARTÕES PERFURADOS -->
-        <div class="media-gallery-grid" style="margin: 1.5rem 0 2rem 0;">
+        <!-- VISUALIZAÇÃO SPLIT-SCREEN: CHARLES BABBAGE & ADA LOVELACE -->
+        <div class="duo-split-stage">
+          <!-- LADO ESQUERDO: CHARLES BABBAGE -->
+          <div class="duo-split-card">
+            <div class="duo-split-header">
+              <span class="duo-role-badge">ARQUITETURA &bull; HARDWARE MECÂNICO</span>
+              <h3 class="duo-name">Charles Babbage</h3>
+              <p class="duo-dates">1791 - 1871 &bull; Londres, Inglaterra</p>
+            </div>
+            <div class="duo-portrait-frame">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Charles_Babbage_-_1860.jpg" alt="Charles Babbage em 1860" class="duo-portrait-img babbage">
+            </div>
+            <div class="duo-bio-summary">
+              <p><strong>O Pai da Arquitetura de Computadores:</strong> Babbage separou fisicamente a computação entre o processador (<em>The Mill / O Moinho</em>) e a memória de dados (<em>The Store / O Armazém</em>). Projetou engrenagens de latão com capacidade para 1.000 variáveis de 50 dígitos decimais e adotou cartões perfurados de Jacquard em cadeia para controle sequencial e saltos condicionais mecânicos.</p>
+            </div>
+          </div>
+
+          <!-- LADO DIREITO: ADA LOVELACE -->
+          <div class="duo-split-card">
+            <div class="duo-split-header">
+              <span class="duo-role-badge">ALGORITMOS &bull; SOFTWARE SIMBÓLICO</span>
+              <h3 class="duo-name">Ada Lovelace</h3>
+              <p class="duo-dates">1815 - 1852 &bull; Londres, Inglaterra</p>
+            </div>
+            <div class="duo-portrait-frame">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Ada_Lovelace_portrait.jpg" alt="Ada Augusta Lovelace" class="duo-portrait-img lovelace">
+            </div>
+            <div class="duo-bio-summary">
+              <p><strong>A Primeira Programadora da História:</strong> Lovelace compreendeu a universalidade da Máquina Analítica e publicou em 1843 a célebre <em>Nota G</em> contendo o algoritmo para calcular os Números de Bernoulli com laços e desvios. Antecipou que a máquina agiria sobre qualquer símbolo abstrato: <em>"A máquina analítica tece padrões algébricos exatamente como o tear de Jacquard tece flores e folhas"</em>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- GALERIA COMPLEMENTAR: O MOINHO FÍSICO E O TEAR DE JACQUARD -->
+        <div class="media-gallery-grid" style="margin: 0 0 2rem 0; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
           <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Babbages_Analytical_Engine%2C_1834-1871._%289660574685%29.jpg" alt="Modelo do Moinho da Máquina Analítica">
             <div class="media-caption">Modelo de ensaio do Moinho da Máquina Analítica montado por Charles Babbage (preservado no Science Museum de Londres).</div>
-          </div>
-          <div class="media-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Charles_Babbage_-_1860.jpg" alt="Charles Babbage em 1860">
-            <div class="media-caption">Charles Babbage (1791-1871): pioneiro que concebeu a separação entre processador (Moinho) e memória (Armazém).</div>
-          </div>
-          <div class="media-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Ada_Lovelace_portrait.jpg" alt="Ada Lovelace">
-            <div class="media-caption">Ada Augusta King, Condessa de Lovelace (1815-1852): escreveu na célebre Nota G o primeiro algoritmo de computador do mundo.</div>
           </div>
           <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/A_Jacquard_loom_showing_information_punchcards%2C_National_Museum_of_Scotland.jpg" alt="Tear Jacquard com Cartões Perfurados">
@@ -2459,6 +2988,92 @@
         <div class="realization-box future">
           <strong style="display: block; margin-bottom: 0.25rem;">Realização Histórica: Teórico em Vida de Babbage &bull; Modelos Parciais no Science Museum</strong>
           A Máquina Analítica completa nunca chegou a ser montada em vida de Charles Babbage, pois exigiria dezenas de milhares de engrenagens de latão e precisão mecânica além dos limites da engenharia victoriana da época. Babbage construiu com sucesso seções de ensaio do Moinho (hoje preservadas no Museu de Ciências de Londres), e seu filho Henry Prevost Babbage concluiu um segmento operacional da unidade de cálculo em 1910, demonstrando a perfeita viabilidade lógica de seu projeto.
+        </div>
+
+        <!-- SIMULADOR INTERATIVO DA MÁQUINA ANALÍTICA & CARTÕES DE LOVELACE -->
+        <div class="interactive-app-card" id="analitica-app-board">
+          <div class="analitica-card-inner">
+            <div class="analitica-top-header">
+              <div class="analitica-title-group">
+                <h3>Simulador da Máquina Analítica (Babbage &amp; Ada Lovelace)</h3>
+                <p>Execução mecânica de cartões perfurados de Jacquard, Moinho aritmético (ALU) e Armazém de engrenagens decimais.</p>
+              </div>
+              <div class="analitica-status-pill" id="analitica-status-pill">
+                <span id="analitica-cycle-badge">MANIVELA: CICLO 0</span>
+                <span id="analitica-status-text">ESTADO: PRONTO</span>
+              </div>
+            </div>
+
+            <!-- PROGRAMAS DE DEMONSTRAÇÃO -->
+            <div class="analitica-presets-bar">
+              <button class="btn-clean active" id="btn-ana-p1" onclick="loadAnaliticaProgram(1)">1. Soma (V1 + V2 &rarr; V3)</button>
+              <button class="btn-clean secondary" id="btn-ana-p2" onclick="loadAnaliticaProgram(2)">2. Multiplicação no Moinho</button>
+              <button class="btn-clean secondary" id="btn-ana-p3" onclick="loadAnaliticaProgram(3)">3. Nota G de Lovelace (Bernoulli)</button>
+              <button class="btn-clean secondary" id="btn-ana-p4" onclick="loadAnaliticaProgram(4)">4. Salto Condicional Mecânico</button>
+              <button class="btn-clean secondary" id="btn-ana-p5" onclick="loadAnaliticaProgram(5)">5. Laço Fatorial (4! = 24)</button>
+              <button class="btn-clean secondary" id="btn-ana-p6" onclick="loadAnaliticaProgram(6)">6. Música Algébrica de Ada</button>
+              <button class="btn-clean secondary" id="btn-ana-p7" onclick="loadAnaliticaProgram(7)">7. Modo Livre</button>
+            </div>
+
+            <!-- CADEIA DE CARTÕES PERFURADOS -->
+            <div class="analitica-section-label">
+              <span>Cadeia de Cartões Perfurados de Jacquard (Fita Contínua de Instruções)</span>
+              <span id="analitica-card-count-label" style="font-weight: 500; text-transform: none;">Cartão 1 de 2</span>
+            </div>
+            <div class="analitica-chain-wrap">
+              <div class="analitica-chain-track" id="analitica-cards-track">
+                <!-- Renderizado via JavaScript -->
+              </div>
+            </div>
+
+            <!-- O MOINHO (THE MILL / ALU) -->
+            <div class="analitica-section-label">
+              <span>O Moinho (The Mill &bull; Unidade Central de Processamento Mecânico)</span>
+              <span id="analitica-mill-branch-flag" style="font-weight: 700; color: #64748b;">Alavanca de Zero: Inativa (&ge; 0)</span>
+            </div>
+            <div class="analitica-mill-stage">
+              <div class="mill-shaft-box">
+                <div class="mill-shaft-title">Eixo de Entrada A</div>
+                <div class="mill-shaft-val" id="mill-shaft-a">V1 = 45</div>
+              </div>
+              <div class="mill-op-symbol" id="mill-op-sign">+</div>
+              <div class="mill-gear-core">
+                <div class="mill-core-label">Mecanismo Central do Moinho</div>
+                <div class="mill-core-name" id="mill-core-action">SOMA ARITMÉTICA</div>
+                <div style="font-size: 0.72rem; color: #94a3b8;" id="mill-core-sub">Transporte decimal mecânico</div>
+              </div>
+              <div class="mill-op-symbol" id="mill-eq-sign">=</div>
+              <div class="mill-shaft-box">
+                <div class="mill-shaft-title">Eixo de Saída &rarr; Gravação</div>
+                <div class="mill-shaft-val" id="mill-shaft-out">V3 = 77</div>
+              </div>
+            </div>
+
+            <!-- O ARMAZÉM (THE STORE / MEMÓRIA DE ENGRENAGENS) -->
+            <div class="analitica-section-label">
+              <span>O Armazém (The Store &bull; Memória de Colunas de Engrenagens Decimais)</span>
+              <span style="font-weight: 500; text-transform: none;">Clique em + ou - para ajustar valores</span>
+            </div>
+            <div class="analitica-store-grid" id="analitica-store-grid">
+              <!-- 6 Colunas geradas via JS -->
+            </div>
+
+            <!-- CONTROLES E TELEMETRIA -->
+            <div class="analitica-controls-row">
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <button class="btn-clean" id="btn-ana-step" onclick="stepAnalitica()">Girar Manivela (Avançar 1 Cartão)</button>
+                <button class="btn-clean secondary" id="btn-ana-run" onclick="toggleAnaliticaRun()">Executar Cartões</button>
+                <button class="btn-clean secondary" onclick="resetAnalitica()">Rebobinar Cartões</button>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: #0f172a;" id="analitica-speed-label">
+                Velocidade: 1.2s / ciclo
+              </div>
+            </div>
+
+            <div class="analitica-narrative-box" id="analitica-narrative-text">
+              <strong>Aguardando início:</strong> Escolha um programa demonstrativo acima e gire a manivela para ver as agulhas de leitura de Jacquard decodificarem os cartões e acoplarem os eixos do Armazém ao Moinho.
+            </div>
+          </div>
         </div>
 
         <!-- TEATRO CINEMA: O MOINHO DA MÁQUINA ANALÍTICA NO SCIENCE MUSEUM -->
@@ -7008,10 +7623,403 @@ READY
       }, 400);
     }
 
+    // ==========================================================================
+    // SIMULADOR 3: MÁQUINA ANALÍTICA (CHARLES BABBAGE & ADA LOVELACE, 1837-1843)
+    // ==========================================================================
+    const analiticaPrograms = {
+      1: {
+        title: "Soma Aritmética no Moinho",
+        desc: "Soma direta de dois inteiros: V1 (45) + V2 (32) = 77 em V3.",
+        storeInit: [45, 32, 0, 0, 0, 0],
+        roles: ["Parcela A", "Parcela B", "Soma Total", "Auxiliar", "Auxiliar", "Auxiliar"],
+        cards: [
+          { op: "+", srcA: 0, srcB: 1, dest: 2, label: "+ V1 V2 -> V3", desc: "Moinho soma os valores de V1 (45) e V2 (32) e grava o resultado 77 na coluna V3 do Armazém." },
+          { op: "HALT", srcA: null, srcB: null, dest: null, label: "FIM DE CARTÕES", desc: "Cadeia concluída. O Armazém preserva o resultado 77 na coluna V3." }
+        ]
+      },
+      2: {
+        title: "Multiplicação Mecânica do Moinho",
+        desc: "Multiplicação de inteiros no Moinho: V1 (12) × V2 (7) = 84 em V3.",
+        storeInit: [12, 7, 0, 0, 0, 0],
+        roles: ["Fator 1", "Fator 2", "Produto", "Auxiliar", "Auxiliar", "Auxiliar"],
+        cards: [
+          { op: "×", srcA: 0, srcB: 1, dest: 2, label: "× V1 V2 -> V3", desc: "O Moinho engrena seus tambores de tabuada e adições sucessivas de alta velocidade, calculando 12 × 7 = 84 e gravando em V3." },
+          { op: "HALT", srcA: null, srcB: null, dest: null, label: "FIM DE CARTÕES", desc: "Operação multiplicativa finalizada. Produto 84 retido em V3." }
+        ]
+      },
+      3: {
+        title: "Nota G de Ada Lovelace (Termo de Bernoulli B1)",
+        desc: "Sequência histórica de Lovelace (1843) calculando a relação de recorrência para os Números de Bernoulli.",
+        storeInit: [1, 2, 0, 0, 6, 0],
+        roles: ["Índice n=1", "Constante 2", "Denominador", "Numerador", "Escala 6", "Termo B1"],
+        cards: [
+          { op: "+", srcA: 0, srcB: 1, dest: 2, label: "+ V1 V2 -> V3", desc: "Lovelace Passo 1: Calcula (2n + 1) -> 1 + 2 = 3, armazenando o denominador em V3." },
+          { op: "×", srcA: 0, srcB: 1, dest: 3, label: "× V1 V2 -> V4", desc: "Lovelace Passo 2: Calcula o numerador (2n) -> 1 × 2 = 2, armazenando em V4." },
+          { op: "×", srcA: 3, srcB: 4, dest: 5, label: "× V4 V5 -> V6", desc: "Lovelace Passo 3: Multiplica pela escala fracionária -> 2 × 6 = 12 em V6." },
+          { op: "÷", srcA: 5, srcB: 2, dest: 5, label: "÷ V6 V3 -> V6", desc: "Lovelace Passo 4: Divide pelo denominador V3 (3) -> 12 / 3 = 4 (representando a fração de Bernoulli B1 = 1/6 na base mecânica)." },
+          { op: "HALT", srcA: null, srcB: null, dest: null, label: "FIM DA NOTA G", desc: "Primeiro algoritmo de computador da história concluído com sucesso." }
+        ]
+      },
+      4: {
+        title: "Salto Condicional Mecânico (Branch se V1 - V2 < 0)",
+        desc: "Demonstração do salto mecânico de cartões quando a alavanca acusa valor negativo.",
+        storeInit: [15, 20, 0, 0, 0, 0],
+        roles: ["Minuendo", "Subtraendo", "Diferença", "Ramo A (Pulo)", "Ramo B (Salto)", "Auxiliar"],
+        cards: [
+          { op: "-", srcA: 0, srcB: 1, dest: 2, label: "- V1 V2 -> V3", desc: "Moinho subtrai: 15 - 20 = -5. A coluna V3 ultrapassa o zero mecânico." },
+          { op: "BRANCH_LT_0", srcA: 2, targetCard: 3, label: "SE V3 < 0 PULAR #3", desc: "A alavanca mecânica de passagem por zero detecta sinal negativo (-5) e dispara o avanço da cadeia, saltando o Cartão #3!" },
+          { op: "+", srcA: 0, srcB: 0, dest: 3, label: "+ V1 V1 -> V4", desc: "[CARTÃO SALTADO] Este cartão não deve ser executado pelo salto mecânico." },
+          { op: "+", srcA: 1, srcB: 1, dest: 4, label: "+ V2 V2 -> V5", desc: "Destino do Salto Mecânico: Executa Ramo B: 20 + 20 = 40 gravado na coluna V5." },
+          { op: "HALT", srcA: null, srcB: null, dest: null, label: "FIM DE CARTÕES", desc: "Fluxo de controle condicional demonstrado com precisão mecânica." }
+        ]
+      },
+      5: {
+        title: "Laço de Repetição Mecânico (Loop Fatorial: 4! = 24)",
+        desc: "Execução de laço com decremento do contador de cartões até atingir a condição de parada.",
+        storeInit: [4, 1, 1, 0, 0, 0],
+        roles: ["Contador (n)", "Acumulador", "Decremento (1)", "Auxiliar", "Fatorial Final", "Auxiliar"],
+        cards: [
+          { op: "×", srcA: 1, srcB: 0, dest: 1, label: "× V2 V1 -> V2", desc: "Moinho multiplica acumulador pelo contador V1." },
+          { op: "-", srcA: 0, srcB: 2, dest: 0, label: "- V1 V3 -> V1", desc: "Decrementa o contador V1 em 1 dente mecânico." },
+          { op: "LOOP_GT_1", srcA: 0, targetCard: 0, label: "SE V1 > 1 VOLTAR #1", desc: "Teste de parada do laço: enquanto o contador V1 for maior que 1, a fita recua para o Cartão #1." },
+          { op: "+", srcA: 1, srcB: 3, dest: 4, label: "+ V2 V4 -> V5", desc: "Fim do Laço: transfere o produto fatorial final (24) para a coluna V5 do Armazém." },
+          { op: "HALT", srcA: null, srcB: null, dest: null, label: "FIM DE CARTÕES", desc: "Cálculo de 4! = 24 concluído com sucesso por laço mecânico." }
+        ]
+      },
+      6: {
+        title: "Música Algébrica de Ada Lovelace",
+        desc: "Ada antecipou que a máquina comporia músicas: combina frequências harmônicas (Lá 440 Hz e Mi 330 Hz).",
+        storeInit: [440, 330, 0, 0, 0, 0],
+        roles: ["Lá 440 Hz", "Mi 330 Hz", "Soma Harmônica", "Razão Pitagórica", "Potência Acústica", "Auxiliar"],
+        cards: [
+          { op: "+", srcA: 0, srcB: 1, dest: 2, label: "+ V1 V2 -> V3", desc: "Acoplamento harmônico: soma das frequências fundamentais 440 + 330 = 770 Hz em V3." },
+          { op: "÷", srcA: 2, srcB: 0, dest: 3, label: "÷ V3 V1 -> V4", desc: "Cálculo do intervalo de quinta justa pitagórica (razão proporcional = 1 em inteiros mecânicos)." },
+          { op: "×", srcA: 1, srcB: 1, dest: 4, label: "× V2 V2 -> V5", desc: "Potência acústica ressonante gerada por padrões matemáticos de cordas." },
+          { op: "HALT", srcA: null, srcB: null, dest: null, label: "FIM DA PEÇA", desc: "Ada Lovelace: 'A máquina compõe ciência e harmonia expressas algebricamente'." }
+        ]
+      },
+      7: {
+        title: "Modo Manual / Livre",
+        desc: "Altere livremente as variáveis com os botões + e - e execute a operação entre V1 e V2.",
+        storeInit: [50, 25, 0, 0, 0, 0],
+        roles: ["Variável A", "Variável B", "Resultado (+)", "Resultado (-)", "Resultado (×)", "Auxiliar"],
+        cards: [
+          { op: "+", srcA: 0, srcB: 1, dest: 2, label: "+ V1 V2 -> V3", desc: "Soma manual de V1 com V2 gravada em V3." },
+          { op: "-", srcA: 0, srcB: 1, dest: 3, label: "- V1 V2 -> V4", desc: "Subtração manual de V1 com V2 gravada em V4." },
+          { op: "×", srcA: 0, srcB: 1, dest: 4, label: "× V1 V2 -> V5", desc: "Multiplicação manual de V1 com V2 gravada em V5." },
+          { op: "HALT", srcA: null, srcB: null, dest: null, label: "FIM DE CARTÕES", desc: "Operações manuais concluídas no Moinho e Armazém." }
+        ]
+      }
+    };
+
+    let currentAnaliticaProgram = 1;
+    let analiticaStore = [45, 32, 0, 0, 0, 0];
+    let analiticaCardIndex = 0;
+    let analiticaCycle = 0;
+    let analiticaRunning = false;
+    let analiticaTimer = null;
+
+    function renderAnaliticaCards() {
+      const prog = analiticaPrograms[currentAnaliticaProgram];
+      const track = document.getElementById('analitica-cards-track');
+      if (!track) return;
+      track.innerHTML = '';
+
+      prog.cards.forEach((card, idx) => {
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'analitica-card-item' + (idx === analiticaCardIndex ? ' active' : '') + (idx < analiticaCardIndex ? ' executed' : '');
+        cardDiv.id = `ana-card-${idx}`;
+
+        let holesHtml = '<div class="card-holes-preview">';
+        const pattern = [1, (idx % 2 === 0 ? 1 : 0), 1, (idx > 1 ? 1 : 0), 0, 1];
+        pattern.forEach(p => {
+          holesHtml += `<div class="hole-dot ${p ? 'punched' : ''}"></div>`;
+        });
+        holesHtml += '</div>';
+
+        cardDiv.innerHTML = `
+          <div>
+            <div class="card-idx-badge">CARTÃO #${idx + 1}</div>
+            <div class="card-op-label">${card.label}</div>
+          </div>
+          ${holesHtml}
+          <div class="card-vars-label">${card.op === 'HALT' ? 'FIM' : 'AGULHAS OK'}</div>
+        `;
+        cardDiv.onclick = () => {
+          if (!analiticaRunning) {
+            analiticaCardIndex = idx;
+            renderAnaliticaCards();
+            updateAnaliticaMillDisplay();
+          }
+        };
+        track.appendChild(cardDiv);
+      });
+
+      const countEl = document.getElementById('analitica-card-count-label');
+      if (countEl) countEl.textContent = `Cartão ${Math.min(analiticaCardIndex + 1, prog.cards.length)} de ${prog.cards.length}`;
+    }
+
+    function renderAnaliticaStore(readingCols = [], writingCol = null) {
+      const grid = document.getElementById('analitica-store-grid');
+      if (!grid) return;
+      const prog = analiticaPrograms[currentAnaliticaProgram];
+      grid.innerHTML = '';
+
+      analiticaStore.forEach((val, idx) => {
+        const colCard = document.createElement('div');
+        let stateClass = '';
+        if (writingCol === idx) stateClass = ' writing';
+        else if (readingCols.includes(idx)) stateClass = ' reading';
+
+        colCard.className = 'analitica-col-card' + stateClass;
+
+        // 4 mostradores decimais mecânicos
+        const strVal = Math.abs(val).toString().padStart(4, '0');
+        const d3 = strVal[strVal.length - 4] || '0';
+        const d2 = strVal[strVal.length - 3] || '0';
+        const d1 = strVal[strVal.length - 2] || '0';
+        const d0 = strVal[strVal.length - 1] || '0';
+
+        colCard.innerHTML = `
+          <div class="col-var-id">COLUNA V${idx + 1}</div>
+          <div class="col-var-role">${prog.roles[idx] || 'Variável'}</div>
+          <div class="col-gears-cluster">
+            <div class="gear-dial">${val < 0 ? '-' : d3}</div>
+            <div class="gear-dial">${d2}</div>
+            <div class="gear-dial">${d1}</div>
+            <div class="gear-dial">${d0}</div>
+          </div>
+          <div class="col-dec-val">${val}</div>
+          <div class="col-adj-btns">
+            <button class="btn-adj" onclick="adjustAnaliticaStore(${idx}, -1)" title="Diminuir 1">-</button>
+            <button class="btn-adj" onclick="adjustAnaliticaStore(${idx}, 1)" title="Aumentar 1">+</button>
+            <button class="btn-adj" onclick="adjustAnaliticaStore(${idx}, 10)" title="Aumentar 10">+10</button>
+          </div>
+        `;
+        grid.appendChild(colCard);
+      });
+    }
+
+    function adjustAnaliticaStore(colIdx, delta) {
+      if (analiticaRunning) return;
+      analiticaStore[colIdx] += delta;
+      renderAnaliticaStore();
+      updateAnaliticaMillDisplay();
+    }
+
+    function updateAnaliticaMillDisplay() {
+      const prog = analiticaPrograms[currentAnaliticaProgram];
+      const card = prog.cards[analiticaCardIndex];
+      const shaftA = document.getElementById('mill-shaft-a');
+      const shaftB = document.getElementById('mill-shaft-b');
+      const opSign = document.getElementById('mill-op-sign');
+      const coreAction = document.getElementById('mill-core-action');
+      const coreSub = document.getElementById('mill-core-sub');
+      const shaftOut = document.getElementById('mill-shaft-out');
+      const branchFlag = document.getElementById('analitica-mill-branch-flag');
+
+      if (!shaftA) return;
+
+      if (!card || card.op === 'HALT') {
+        shaftA.textContent = 'Livre';
+        if (shaftB) shaftB.textContent = 'Livre';
+        if (opSign) opSign.textContent = '·';
+        if (coreAction) coreAction.textContent = 'MOINHO EM REPOUSO';
+        if (coreSub) coreSub.textContent = 'Manivela desacoplada';
+        if (shaftOut) shaftOut.textContent = 'Neutro';
+        if (branchFlag) {
+          branchFlag.textContent = 'Alavanca de Zero: Inativa (>= 0)';
+          branchFlag.style.color = '#64748b';
+        }
+        return;
+      }
+
+      const valA = card.srcA !== null ? analiticaStore[card.srcA] : 0;
+      const valB = card.srcB !== null ? analiticaStore[card.srcB] : 0;
+
+      shaftA.textContent = `V${card.srcA + 1} = ${valA}`;
+      if (shaftB) shaftB.textContent = card.srcB !== null ? `V${card.srcB + 1} = ${valB}` : '---';
+      if (opSign) opSign.textContent = card.op.includes('BRANCH') || card.op.includes('LOOP') ? '?' : card.op;
+
+      if (card.op === '+') {
+        if (coreAction) coreAction.textContent = 'SOMA DENTADA';
+        if (coreSub) coreSub.textContent = 'Transporte decimal mecânico';
+        if (shaftOut) shaftOut.textContent = `V${card.dest + 1} = ${valA + valB}`;
+      } else if (card.op === '-') {
+        if (coreAction) coreAction.textContent = 'SUBTRAÇÃO POR COMPLEMENTO';
+        if (coreSub) coreSub.textContent = 'Giro reverso de engrenagens';
+        if (shaftOut) shaftOut.textContent = `V${card.dest + 1} = ${valA - valB}`;
+      } else if (card.op === '×') {
+        if (coreAction) coreAction.textContent = 'MULTIPLICAÇÃO DE TABUADA';
+        if (coreSub) coreSub.textContent = 'Tambores escalonados de Babbage';
+        if (shaftOut) shaftOut.textContent = `V${card.dest + 1} = ${valA * valB}`;
+      } else if (card.op === '÷') {
+        if (coreAction) coreAction.textContent = 'DIVISÃO MECÂNICA';
+        if (coreSub) coreSub.textContent = 'Subtrações sucessivas do Moinho';
+        const res = valB !== 0 ? Math.floor(valA / valB) : 0;
+        if (shaftOut) shaftOut.textContent = `V${card.dest + 1} = ${res}`;
+      } else if (card.op.includes('BRANCH')) {
+        if (coreAction) coreAction.textContent = 'AVALIAÇÃO DE SALTO';
+        if (coreSub) coreSub.textContent = 'Alavanca mecânica de zero-crossing';
+        const willBranch = valA < 0;
+        if (shaftOut) shaftOut.textContent = willBranch ? 'SALTO ATIVADO!' : 'CONTINUAR DIRETO';
+        if (branchFlag) {
+          branchFlag.textContent = willBranch ? 'Alavanca de Zero: DISPARADA (< 0) -> Salto Ativo' : 'Alavanca de Zero: Inativa (>= 0)';
+          branchFlag.style.color = willBranch ? '#0f172a' : '#64748b';
+        }
+      } else if (card.op.includes('LOOP')) {
+        if (coreAction) coreAction.textContent = 'LAÇO DE REPETIÇÃO (LOOP)';
+        if (coreSub) coreSub.textContent = 'Controle por fita de retorno';
+        const willLoop = valA > 1;
+        if (shaftOut) shaftOut.textContent = willLoop ? 'RETROCEDER CADEIA' : 'FIM DO LAÇO';
+      }
+    }
+
+    function loadAnaliticaProgram(pNum) {
+      if (analiticaRunning) toggleAnaliticaRun();
+      currentAnaliticaProgram = pNum;
+      const prog = analiticaPrograms[pNum];
+      if (!prog) return;
+      analiticaStore = [...prog.storeInit];
+      analiticaCardIndex = 0;
+      analiticaCycle = 0;
+
+      // Update preset buttons
+      for (let i = 1; i <= 7; i++) {
+        const b = document.getElementById(`btn-ana-p${i}`);
+        if (b) {
+          if (i === pNum) {
+            b.className = 'btn-clean active';
+          } else {
+            b.className = 'btn-clean secondary';
+          }
+        }
+      }
+
+      const cycleBadge = document.getElementById('analitica-cycle-badge');
+      if (cycleBadge) cycleBadge.textContent = `MANIVELA: CICLO 0`;
+      const statusText = document.getElementById('analitica-status-text');
+      if (statusText) statusText.textContent = 'ESTADO: PRONTO';
+      const narrText = document.getElementById('analitica-narrative-text');
+      if (narrText) narrText.innerHTML = `<strong>${prog.title}:</strong> ${prog.desc} Gire a manivela com o botão 'Avançar 1 Cartão' para ver o acoplamento do Moinho e do Armazém.`;
+
+      renderAnaliticaCards();
+      renderAnaliticaStore();
+      updateAnaliticaMillDisplay();
+    }
+
+    function stepAnalitica() {
+      const prog = analiticaPrograms[currentAnaliticaProgram];
+      if (!prog) return;
+      if (analiticaCardIndex >= prog.cards.length) {
+        const statusText = document.getElementById('analitica-status-text');
+        if (statusText) statusText.textContent = 'ESTADO: CONCLUÍDO';
+        const narrText = document.getElementById('analitica-narrative-text');
+        if (narrText) narrText.innerHTML = `<strong>Fim do Programa:</strong> Todos os cartões de Jacquard da cadeia foram lidos. O Armazém preserva os valores finais calculados.`;
+        if (analiticaRunning) toggleAnaliticaRun();
+        return;
+      }
+
+      const card = prog.cards[analiticaCardIndex];
+      analiticaCycle++;
+      const cycleBadge = document.getElementById('analitica-cycle-badge');
+      if (cycleBadge) cycleBadge.textContent = `MANIVELA: CICLO ${analiticaCycle}`;
+      const statusText = document.getElementById('analitica-status-text');
+      if (statusText) statusText.textContent = `LENDO CARTÃO #${analiticaCardIndex + 1}`;
+
+      if (card.op === 'HALT') {
+        const narrText = document.getElementById('analitica-narrative-text');
+        if (narrText) narrText.innerHTML = `<strong>${card.label}:</strong> ${card.desc}`;
+        renderAnaliticaStore([], null);
+        updateAnaliticaMillDisplay();
+        analiticaCardIndex++;
+        renderAnaliticaCards();
+        if (statusText) statusText.textContent = 'ESTADO: CONCLUÍDO';
+        if (analiticaRunning) toggleAnaliticaRun();
+        return;
+      }
+
+      const valA = card.srcA !== null ? analiticaStore[card.srcA] : 0;
+      const valB = card.srcB !== null ? analiticaStore[card.srcB] : 0;
+      let result = 0;
+      let reading = [];
+      if (card.srcA !== null) reading.push(card.srcA);
+      if (card.srcB !== null) reading.push(card.srcB);
+
+      if (card.op === '+') {
+        result = valA + valB;
+        analiticaStore[card.dest] = result;
+        renderAnaliticaStore(reading, card.dest);
+        analiticaCardIndex++;
+      } else if (card.op === '-') {
+        result = valA - valB;
+        analiticaStore[card.dest] = result;
+        renderAnaliticaStore(reading, card.dest);
+        analiticaCardIndex++;
+      } else if (card.op === '×') {
+        result = valA * valB;
+        analiticaStore[card.dest] = result;
+        renderAnaliticaStore(reading, card.dest);
+        analiticaCardIndex++;
+      } else if (card.op === '÷') {
+        result = valB !== 0 ? Math.floor(valA / valB) : 0;
+        analiticaStore[card.dest] = result;
+        renderAnaliticaStore(reading, card.dest);
+        analiticaCardIndex++;
+      } else if (card.op === 'BRANCH_LT_0') {
+        renderAnaliticaStore(reading, null);
+        if (valA < 0) {
+          analiticaCardIndex = card.targetCard;
+        } else {
+          analiticaCardIndex++;
+        }
+      } else if (card.op === 'LOOP_GT_1') {
+        renderAnaliticaStore(reading, null);
+        if (valA > 1) {
+          analiticaCardIndex = card.targetCard;
+        } else {
+          analiticaCardIndex++;
+        }
+      }
+
+      const narrText = document.getElementById('analitica-narrative-text');
+      if (narrText) narrText.innerHTML = `<strong>Passo ${analiticaCycle} (Cartão #${analiticaCardIndex}):</strong> ${card.desc}`;
+      renderAnaliticaCards();
+      updateAnaliticaMillDisplay();
+    }
+
+    function toggleAnaliticaRun() {
+      const btn = document.getElementById('btn-ana-run');
+      const statusText = document.getElementById('analitica-status-text');
+      if (analiticaRunning) {
+        analiticaRunning = false;
+        clearInterval(analiticaTimer);
+        if (btn) btn.textContent = 'Executar Cartões';
+        if (statusText) statusText.textContent = 'ESTADO: PAUSADO';
+      } else {
+        analiticaRunning = true;
+        if (btn) btn.textContent = 'Pausar Execução';
+        if (statusText) statusText.textContent = 'ESTADO: EXECUTANDO';
+        analiticaTimer = setInterval(() => {
+          const prog = analiticaPrograms[currentAnaliticaProgram];
+          if (!prog || analiticaCardIndex >= prog.cards.length) {
+            toggleAnaliticaRun();
+          } else {
+            stepAnalitica();
+          }
+        }, 1200);
+      }
+    }
+
+    function resetAnalitica() {
+      loadAnaliticaProgram(currentAnaliticaProgram);
+    }
+
     // Inicialização completa de todos os simuladores
     updateSorobanBoardUI();
     renderAntikythera();
     resetPascaline4();
+    loadAnaliticaProgram(1);
     resetTuringLab();
     resetZuseTape();
     buildColossusTubes();
