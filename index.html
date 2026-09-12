@@ -208,57 +208,48 @@
       align-items: center;
     }
 
+    /* ETIQUETAS SÓBRIAS / REDUÇÃO DE CORES (EDITORIAL NEUTRO) */
     .tag-status.tc-yes,
     .tag-status.vn-yes,
-    .tag-status.impl-real {
-      background: #dcfce7 !important;
-      color: #15803d !important;
-      border: 1px solid #86efac !important;
-    }
-
-    /* ETIQUETAS EM TONS DE CINZA (NEGATIVAS & ANTIGUIDADE) */
-    .tag-status.tc-no,
-    .tag-status.vn-no,
-    .tag-status.impl-ancient {
+    .tag-status.impl-real,
+    .tag-status.brazil {
       background: #f1f5f9 !important;
-      color: #475569 !important;
+      color: #0f172a !important;
       border: 1px solid #cbd5e1 !important;
     }
 
-    /* ETIQUETAS EM TONS DE ÂMBAR UNIFICADO (TEÓRICAS / FUTURO) */
+    .tag-status.tc-no,
+    .tag-status.vn-no,
+    .tag-status.impl-ancient {
+      background: #f8fafc !important;
+      color: #64748b !important;
+      border: 1px solid #e2e8f0 !important;
+    }
+
     .tag-status.tc-theory,
     .tag-status.impl-future,
     .tag-status.impl-abstract {
-      background: #fef3c7 !important;
-      color: #b45309 !important;
-      border: 1px solid #fde68a !important;
+      background: #f1f5f9 !important;
+      color: #334155 !important;
+      border: 1px solid #cbd5e1 !important;
     }
 
-    .realization-box {
-      background: #f8fafc;
-      border-left: 4px solid #3b82f6;
-      border-radius: var(--radius-sm);
+    /* REALIZAÇÃO HISTÓRICA: SÓBRIO E DISCRETO (SEM CORES VIVAS) */
+    .realization-box,
+    .realization-box.real,
+    .realization-box.future,
+    .realization-box.abstract {
+      background: #f8fafc !important;
+      border-left: 3px solid #64748b !important;
+      border-radius: 4px !important;
       padding: 0.85rem 1.15rem;
       margin: 1.1rem 0;
       font-size: 0.9rem;
       line-height: 1.6;
+      color: var(--text-muted);
     }
-    .realization-box.real {
-      border-left-color: #10b981;
-      background: #f0fdf4;
-    }
-    .realization-box.future {
-      border-left-color: #f59e0b;
-      background: #fffdfa;
-    }
-    .realization-box.abstract {
-      border-left-color: #8b5cf6;
-      background: #faf5ff;
-    }
-    .tag-status.brazil {
-      background: #ecfdf5;
-      color: #047857;
-      border: 1px solid #6ee7b7;
+    .realization-box strong {
+      color: var(--text-main) !important;
     }
 
     .slide-title {
@@ -2202,7 +2193,7 @@
 
                 <!-- BOX REALIZAÇÃO HISTÓRICA: PASCALINA -->
         <div class="realization-box real">
-          <strong style="color: #166534; display: block; margin-bottom: 0.25rem;">Realização Histórica: Prático em Vida do Autor (50 Unidades Fabricadas)</strong>
+          <strong style="display: block; margin-bottom: 0.25rem;">Realização Histórica: Prático em Vida do Autor (50 Unidades Fabricadas)</strong>
           Blaise Pascal não ficou apenas no plano teórico. Entre 1642 e 1652, ele supervisionou a construção de cerca de 50 unidades funcionais com mestres relojoeiros franceses, obteve Patente Real (Privilège) do Rei Luís XIV em 1649 e comercializou a máquina. Atualmente, cerca de 9 exemplares originais intactos de época sobrevivem em museus da Europa.
         </div>
 
@@ -2373,7 +2364,7 @@
 
                 <!-- BOX REALIZAÇÃO HISTÓRICA: MÁQUINA DIFERENCIAL -->
         <div class="realization-box future">
-          <strong style="color: #b45309; display: block; margin-bottom: 0.25rem;">Realização Histórica: Inacabado em Vida de Babbage &bull; Construído 144 Anos Depois</strong>
+          <strong style="display: block; margin-bottom: 0.25rem;">Realização Histórica: Inacabado em Vida de Babbage &bull; Construído 144 Anos Depois</strong>
           Charles Babbage conseguiu construir apenas um pequeno fragmento de demonstração (cerca de 1/7 da máquina, com cerca de 2.000 peças) em 1832 com o mecânico Joseph Clement. Devido ao cancelamento do financiamento pelo Parlamento Britânico e atritos com os engenheiros da época, a máquina completa <strong>nunca foi terminada enquanto Babbage viveu</strong>.<br>
           <strong>A Reconstrução do Futuro:</strong> Em 1991, para comemorar o bicentenário de nascimento de Babbage, o Museu de Ciências de Londres (*Science Museum*) construiu a <em>Difference Engine No. 2</em> estritamente a partir dos desenhos originais de Babbage de 1847. A máquina pesa 5 toneladas, possui 8.000 peças de bronze e aço e funciona com precisão absoluta de 31 dígitos, provando que o projeto de Babbage era 100% realizável!
         </div>
@@ -2723,7 +2714,7 @@
         
                 <!-- BOX REALIZAÇÃO HISTÓRICA: ZUSE Z3 -->
         <div class="realization-box real">
-          <strong style="color: #166534; display: block; margin-bottom: 0.25rem;">Realização Histórica: Prático em Vida do Autor (O 1º Funcional do Planeta)</strong>
+          <strong style="display: block; margin-bottom: 0.25rem;">Realização Histórica: Prático em Vida do Autor (O 1º Funcional do Planeta)</strong>
           Konrad Zuse construiu fisicamente o Z3 com as próprias mãos e recursos improvisados em seu apartamento/oficina em Berlim, finalizando-o em 12 de maio de 1941 com 2.600 relés telefônicos e fita de cinema de 35 mm. A máquina foi operada ativamente pela agência aeronáutica alemã (DVL) para cálculos reais de vibração e dinâmica de voo. Destruído em 1943 por bombas aliadas, o próprio Zuse reconstruiu uma réplica perfeita e funcional em 1961 (hoje no Deutsches Museum em Munique).
         </div>
 
