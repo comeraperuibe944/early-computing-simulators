@@ -234,22 +234,33 @@
       border: 1px solid #cbd5e1 !important;
     }
 
-    /* REALIZAÇÃO HISTÓRICA: SÓBRIO E DISCRETO (SEM CORES VIVAS) */
+    /* REALIZAÇÃO HISTÓRICA: TEXTO COMUM TIPO POINT-TEXT SEM PONTINHOS/BORDAS */
     .realization-box,
     .realization-box.real,
     .realization-box.future,
     .realization-box.abstract {
-      background: #f8fafc !important;
-      border-left: 3px solid #64748b !important;
-      border-radius: 4px !important;
-      padding: 0.85rem 1.15rem;
-      margin: 1.1rem 0;
-      font-size: 0.9rem;
-      line-height: 1.6;
-      color: var(--text-muted);
+      background: transparent !important;
+      border: none !important;
+      border-left: none !important;
+      border-radius: 0 !important;
+      padding: 0 !important;
+      margin: 1.25rem 0 !important;
+      font-family: var(--font-main) !important;
+      font-size: 1.05rem !important;
+      font-weight: 500 !important;
+      color: var(--text-main) !important;
+      line-height: 1.6 !important;
+      box-shadow: none !important;
     }
     .realization-box strong {
-      color: var(--text-main) !important;
+      display: block !important;
+      font-family: var(--font-main) !important;
+      font-size: 1.05rem !important;
+      font-weight: 700 !important;
+      color: #000000 !important;
+      text-transform: none !important;
+      letter-spacing: normal !important;
+      margin-bottom: 0.25rem !important;
     }
 
     .slide-title {
@@ -543,28 +554,32 @@
       font-weight: 700;
     }
 
-    /* BOX DE JUSTIFICATIVA */
+    /* CRITÉRIOS HISTÓRICOS: TEXTO COMUM TIPO POINT-TEXT SEM PONTINHOS/BORDAS */
     .reason-box {
-      margin-top: 2rem;
-      padding: 1.25rem 1.5rem;
-      background: #ffffff;
-      border: 1px solid var(--border-subtle);
-      border-left: 4px solid var(--text-main);
-      border-radius: var(--radius-sm);
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.55;
+      margin-top: 1.5rem !important;
+      margin-bottom: 1.25rem !important;
+      padding: 0 !important;
+      background: transparent !important;
+      border: none !important;
+      border-left: none !important;
+      border-radius: 0 !important;
+      font-family: var(--font-main) !important;
+      font-size: 1.05rem !important;
+      font-weight: 500 !important;
+      color: var(--text-main) !important;
+      line-height: 1.6 !important;
+      box-shadow: none !important;
     }
 
     .reason-box strong {
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-main);
-      margin-bottom: 0.35rem;
+      display: block !important;
+      font-family: var(--font-main) !important;
+      font-size: 1.05rem !important;
+      font-weight: 700 !important;
+      color: #000000 !important;
+      text-transform: none !important;
+      letter-spacing: normal !important;
+      margin-bottom: 0.25rem !important;
     }
 
     /* ==========================================================================
