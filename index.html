@@ -22,7 +22,7 @@
 
     :root {
       --bg-body: #ffffff;
-      --bg-surface: #f8fafc;
+      --bg-surface: #ffffff;
       --bg-surface-alt: #f1f5f9;
       --bg-card: #ffffff;
       
@@ -283,19 +283,19 @@
       line-height: 1.5;
     }
 
-    /* CARD LIMPO E ESPAÇOSO */
+    /* CARD LIMPO E ESPAÇOSO (BORDERLESS, FUNDO BRANCO) */
     .clean-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      box-shadow: var(--shadow-card);
-      transition: box-shadow 0.2s ease;
+      background: #ffffff !important;
+      border: none !important;
+      border-radius: 0 !important;
+      padding: 1rem 0 2rem 0;
+      box-shadow: none !important;
+      transition: none;
     }
 
     @media (max-width: 640px) {
       .clean-card {
-        padding: 1.4rem;
+        padding: 0.5rem 0 1.5rem 0;
       }
     }
 
@@ -1701,8 +1701,8 @@
 
     .era-gray-zone .clean-card {
       background: #ffffff !important;
-      border: 1px solid var(--border-subtle) !important;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05) !important;
+      border: none !important;
+      box-shadow: none !important;
     }
 
     .era-gray-zone .interactive-app-card {
