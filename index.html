@@ -5615,117 +5615,100 @@ READY
             O <strong>SISNE Plus</strong> foi o sistema operacional desenvolvido no Brasil pela <strong>Scopus Tecnologia</strong> em cooperação com a <strong>Itautec</strong> durante a vigência da Reserva de Mercado. Compatível 100% com o MS-DOS 3.30 da Microsoft ao nível de interrupções da CPU (INT 21h), ele equipava os computadores compatíveis com o IBM PC/XT (como a linha Scopus Nexus 1600 e Itautec I-7000), sustentando a pioneira automação bancária nacional.
           </p>
 
-          <div class="retro-crt-container" style="background: #0f172a; border-color: #334155;">
-            <div class="crt-monitor-bezel" style="background: #1e293b; border: 2px solid #475569;">
-              <div class="crt-screen-glass sisne-cga" id="sisne-screen" onclick="document.getElementById('sisne-cmd-input').focus(); scrollSisneToBottom();" style="cursor: text; min-height: 310px; max-height: 480px; overflow-y: auto;">
-                <div class="crt-scanlines"></div>
-                <div class="crt-terminal-content" id="sisne-output"></div>
+          <div class="retro-crt-container" style="background: transparent; padding: 1rem; display: flex; flex-direction: column; align-items: center; position: relative;">
+            
+            <div style="width: 100%; max-width: 600px; display: flex; flex-direction: column; align-items: center;">
+              <!-- Monitor Minimalista -->
+              <div id="minimal-monitor" style="width: 100%; background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 8px 8px 0 0; padding: 1rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);">
+                <div id="sisne-screen-container" style="width: 100%; aspect-ratio: 4/3; background: #0f172a; border-radius: 4px; overflow: hidden; position: relative; border: 4px solid #cbd5e1; display: flex; flex-direction: column;">
+                  <div class="crt-scanlines"></div>
+                  
+                  <div class="crt-screen-glass sisne-cga" id="sisne-screen" onclick="document.getElementById('sisne-cmd-input').focus(); scrollSisneToBottom();" style="cursor: text; flex: 1; width: 100%; overflow-y: auto; padding: 1rem; padding-bottom: 0;">
+                    <div class="crt-terminal-content" id="sisne-output"></div>
+                  </div>
+                  
+                  <div id="sisne-input-container" style="display: flex; padding: 0 1rem 1rem 1rem; align-items: center; z-index: 3; background: #0f172a;">
+                    <span id="sisne-prompt-label" style="font-family: var(--font-mono); color: #00ffff; font-weight: 800; font-size: 1.05rem; margin-right: 0.4rem;">A&gt;</span>
+                    <input type="text" id="sisne-cmd-input" class="crt-input-box" style="background: transparent; border: none; color: #f8fafc; font-family: var(--font-mono); font-size: 0.95rem; outline: none; box-shadow: none; flex: 1;" placeholder="Comandos..." onfocus="scrollSisneToBottom()" onkeydown="handleSisneKey(event)">
+                  </div>
+
+                  <!-- Windows 1.0 Iframe -->
+                  <div id="win1-iframe-container" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 5;">
+                    <iframe id="win1-iframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+                  </div>
+                  
+                  <!-- Loading Overlay -->
+                  <div id="loading-overlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #0f172a; color: #38bdf8; font-family: var(--font-mono); flex-direction: column; align-items: center; justify-content: center; z-index: 10;">
+                    <div style="border: 4px solid rgba(56, 189, 248, 0.3); border-left-color: #38bdf8; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin-bottom: 1rem;"></div>
+                    <div>Lendo Unidade A...</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Gabinete Minimalista -->
+              <div id="minimal-gabinete" style="width: 105%; background: #f8fafc; border: 1px solid var(--border-subtle); border-top: none; border-radius: 0 0 8px 8px; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);">
+                <div style="font-family: sans-serif; font-weight: bold; color: #94a3b8; font-size: 1.2rem; letter-spacing: 2px;">SISNE</div>
+                
+                <div id="floppy-drive" style="width: 120px; height: 20px; background: #0f172a; border: 2px solid #334155; border-radius: 2px; position: relative; transition: all 0.3s; display: flex; align-items: center; justify-content: center; cursor: pointer;"
+                     ondragover="event.preventDefault(); this.style.borderColor='#38bdf8'; this.style.boxShadow='0 0 10px rgba(56,189,248,0.5)';"
+                     ondragleave="this.style.borderColor='#334155'; this.style.boxShadow='none';"
+                     ondrop="event.preventDefault(); this.style.borderColor='#334155'; this.style.boxShadow='none'; insertFloppy();"
+                     onclick="insertFloppy();">
+                  <div id="drive-led" style="width: 6px; height: 3px; background: #475569; position: absolute; left: -12px; border-radius: 1px;"></div>
+                  <div style="width: 85%; height: 2px; background: #000;"></div>
+                </div>
               </div>
             </div>
 
-            <!-- Barra de Entrada Interativa SISNE -->
-            <div class="crt-controls-bar">
-              <div class="crt-input-row" style="background: #020617; border: 2px solid #0891b2; border-radius: 6px; padding: 0.4rem 0.75rem; align-items: center;">
-                <span id="sisne-prompt-label" style="font-family: var(--font-mono); color: #00ffff; font-weight: 800; font-size: 1.05rem; margin-right: 0.4rem;">A&gt;</span>
-                <input type="text" id="sisne-cmd-input" class="crt-input-box" style="background: transparent; border: none; color: #f8fafc; font-family: var(--font-mono); font-size: 0.95rem; outline: none; box-shadow: none;" placeholder="Digite comandos MS-DOS / SISNE (ex: DIR, VER, CHEQUE, PLANILHA, MEM, TYPE AUTOEXEC.BAT)..." onfocus="scrollSisneToBottom()" onkeydown="handleSisneKey(event)">
-                <button class="btn-clean" style="background: #0891b2; color: #ffffff; border: none; font-size: 0.8rem; padding: 0.35rem 0.8rem;" onclick="runSisneCommand()">ENTER (Executar)</button>
+            <!-- Disquete -->
+            <div id="floppy-container" style="position: absolute; bottom: 1rem; right: 1rem; display: flex; flex-direction: column; align-items: center;">
+              <div id="floppy-disk" draggable="true" ondragstart="event.dataTransfer.setData('text/plain', 'win1'); this.style.opacity='0.6';" ondragend="this.style.opacity='1';" style="width: 60px; height: 60px; background: #2563eb; border: 2px solid #1d4ed8; border-radius: 3px; cursor: grab; position: relative; box-shadow: 2px 2px 4px rgba(0,0,0,0.1); transition: transform 0.1s;">
+                <div style="position: absolute; top: 0; left: 10px; width: 40px; height: 20px; background: #cbd5e1; border: 1px solid #94a3b8; border-top: none;">
+                  <div style="position: absolute; bottom: 3px; right: 3px; width: 10px; height: 12px; background: #f8fafc; border: 1px solid #94a3b8;"></div>
+                </div>
+                <div style="position: absolute; bottom: 3px; left: 10px; width: 40px; height: 28px; background: #f8fafc; border: 1px solid #cbd5e1; font-family: sans-serif; font-size: 0.45rem; text-align: center; padding-top: 4px; font-weight: bold; color: #1e293b; line-height: 1.1;">
+                  WIN<br>1.0
+                </div>
               </div>
+              <span style="font-size: 0.65rem; color: #64748b; margin-top: 0.4rem; font-weight: bold; user-select: none;">Arraste para o drive</span>
             </div>
-          </div>
 
-          <!-- GUIA DE INSTRUÇÕES HISTÓRICAS PARA O PALESTRANTE -->
-          <div style="background: #f8fafc; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1rem 1.25rem; margin-top: 1rem;">
-            <div style="font-weight: 800; color: var(--text-main); font-size: 0.95rem; margin-bottom: 0.6rem;">
-              Comandos Históricos do SISNE Plus para Apresentação:
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem; font-size: 0.85rem;">
-              
-              <!-- Bloco 1: Disco e Arquivos -->
-              <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 6px; padding: 0.75rem;">
-                <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">1. Gerenciamento de Disco:</strong>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
-                  <code style="font-family: var(--font-mono); background: #f1f5f9; padding: 2px 6px; border-radius: 4px;">DIR</code>
-                  <div style="display: flex; gap: 0.25rem;">
-                    <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="pasteSisneCommand('DIR')">Inserir</button>
-                    <button class="btn-clean" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="runDirectSisneCommand('DIR')">Rodar</button>
-                  </div>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
-                  <code style="font-family: var(--font-mono); background: #f1f5f9; padding: 2px 6px; border-radius: 4px;">CHKDSK</code>
-                  <div style="display: flex; gap: 0.25rem;">
-                    <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="pasteSisneCommand('CHKDSK')">Inserir</button>
-                    <button class="btn-clean" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="runDirectSisneCommand('CHKDSK')">Rodar</button>
-                  </div>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                  <code style="font-family: var(--font-mono); background: #f1f5f9; padding: 2px 6px; border-radius: 4px;">VOL</code>
-                  <div style="display: flex; gap: 0.25rem;">
-                    <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="pasteSisneCommand('VOL')">Inserir</button>
-                    <button class="btn-clean" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="runDirectSisneCommand('VOL')">Rodar</button>
-                  </div>
-                </div>
-              </div>
+            <style>
+              @keyframes spin { 100% { transform: rotate(360deg); } }
+            </style>
 
-              <!-- Bloco 2: Arquivos de Sistema -->
-              <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 6px; padding: 0.75rem;">
-                <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">2. Arquivos de Inicialização:</strong>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
-                  <code style="font-family: var(--font-mono); background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem;">TYPE AUTOEXEC.BAT</code>
-                  <div style="display: flex; gap: 0.25rem;">
-                    <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="pasteSisneCommand('TYPE AUTOEXEC.BAT')">Inserir</button>
-                    <button class="btn-clean" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="runDirectSisneCommand('TYPE AUTOEXEC.BAT')">Rodar</button>
-                  </div>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
-                  <code style="font-family: var(--font-mono); background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem;">TYPE CONFIG.SYS</code>
-                  <div style="display: flex; gap: 0.25rem;">
-                    <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="pasteSisneCommand('TYPE CONFIG.SYS')">Inserir</button>
-                    <button class="btn-clean" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="runDirectSisneCommand('TYPE CONFIG.SYS')">Rodar</button>
-                  </div>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                  <code style="font-family: var(--font-mono); background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem;">TYPE HISTORIA.TXT</code>
-                  <div style="display: flex; gap: 0.25rem;">
-                    <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="pasteSisneCommand('TYPE HISTORIA.TXT')">Inserir</button>
-                    <button class="btn-clean" style="font-size: 0.7rem; padding: 0.2rem 0.4rem;" onclick="runDirectSisneCommand('TYPE HISTORIA.TXT')">Rodar</button>
-                  </div>
-                </div>
-              </div>
+            <script>
+              function insertFloppy() {
+                const diskContainer = document.getElementById('floppy-container');
+                if(!diskContainer || diskContainer.style.display === 'none') return;
+                
+                diskContainer.style.display = 'none';
+                
+                const led = document.getElementById('drive-led');
+                led.style.background = '#ef4444';
+                led.style.boxShadow = '0 0 5px #ef4444';
+                
+                const loading = document.getElementById('loading-overlay');
+                loading.style.display = 'flex';
+                
+                if (window.SimulatorAudio && window.SimulatorAudio.floppySeek) {
+                  window.SimulatorAudio.floppySeek();
+                  setTimeout(() => window.SimulatorAudio.floppySeek(), 1500);
+                  setTimeout(() => window.SimulatorAudio.floppySeek(), 2500);
+                }
 
-              <!-- Bloco 3: Programas Brasileiros dos Anos 80 -->
-              <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 6px; padding: 0.75rem;">
-                <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">3. Programas Históricos Nacionais:</strong>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
-                  <span style="font-size: 0.8rem; color: var(--text-muted);">Automação Bancária (Cheque)</span>
-                  <button class="btn-clean" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;" onclick="runDirectSisneCommand('CHEQUE.EXE')">Rodar Cheque</button>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
-                  <span style="font-size: 0.8rem; color: var(--text-muted);">Planilha Econômica (Cruzado)</span>
-                  <button class="btn-clean" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;" onclick="runDirectSisneCommand('PLANILHA.EXE')">Rodar Planilha</button>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                  <span style="font-size: 0.8rem; color: var(--text-muted);">Diagnóstico Scopus Nexus</span>
-                  <button class="btn-clean secondary" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;" onclick="runDirectSisneCommand('NEXUS.EXE')">Rodar Diag</button>
-                </div>
-              </div>
-
-              <!-- Bloco 4: Ferramentas do Sistema -->
-              <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 6px; padding: 0.75rem;">
-                <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">4. Utilitários do SISNE:</strong>
-                <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
-                  <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;" onclick="runDirectSisneCommand('VER')">VER</button>
-                  <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;" onclick="runDirectSisneCommand('MEM')">MEM</button>
-                  <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;" onclick="runDirectSisneCommand('DATE')">DATE</button>
-                  <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;" onclick="runDirectSisneCommand('TIME')">TIME</button>
-                  <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;" onclick="runDirectSisneCommand('CLS')">CLS</button>
-                  <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;" onclick="runDirectSisneCommand('HELP')">HELP</button>
-                </div>
-                <span style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 0.4rem;">
-                  Você pode digitar qualquer comando clássico do MS-DOS (DIR, COPY, DEL, MD, CD, TYPE).
-                </span>
-              </div>
-
-            </div>
+                setTimeout(() => {
+                  loading.style.display = 'none';
+                  led.style.background = '#475569';
+                  led.style.boxShadow = 'none';
+                  
+                  document.getElementById('sisne-screen').style.display = 'none';
+                  document.getElementById('sisne-input-container').style.display = 'none';
+                  document.getElementById('win1-iframe-container').style.display = 'block';
+                  document.getElementById('win1-iframe').src = 'https://archive.org/embed/win1_01';
+                }, 3500);
+              }
+            </script>
           </div>
         </div>
       </div>
