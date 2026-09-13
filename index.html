@@ -2632,7 +2632,32 @@
       padding-top: 0.35rem;
       margin-top: 0.4rem;
       font-size: 0.78rem;
-      opacity: 0.92;
+    }
+    #sisne-screen {
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(0, 255, 255, 0.5) rgba(0, 0, 0, 0.4);
+    }
+    #sisne-screen::-webkit-scrollbar {
+      width: 8px;
+    }
+    #sisne-screen::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 4px;
+    }
+    #sisne-screen::-webkit-scrollbar-thumb {
+      background: currentColor;
+      opacity: 0.5;
+      border-radius: 4px;
+    }
+    #sisne-screen.sisne-amber {
+      scrollbar-color: rgba(245, 158, 11, 0.5) rgba(0, 0, 0, 0.4);
+    }
+    #sisne-screen.sisne-green {
+      scrollbar-color: rgba(34, 197, 94, 0.5) rgba(0, 0, 0, 0.4);
+    }
+    #sisne-screen.sisne-vga {
+      scrollbar-color: rgba(248, 250, 252, 0.4) rgba(0, 0, 0, 0.4);
     }
     .crt-scanlines {
       position: absolute;
@@ -5592,7 +5617,7 @@ READY
 
           <div class="retro-crt-container" style="background: #0f172a; border-color: #334155;">
             <div class="crt-monitor-bezel" style="background: #1e293b; border: 2px solid #475569;">
-              <div class="crt-screen-glass sisne-cga" id="sisne-screen" onclick="document.getElementById('sisne-cmd-input').focus();" style="cursor: text; min-height: 310px; max-height: 480px; overflow-y: auto;">
+              <div class="crt-screen-glass sisne-cga" id="sisne-screen" onclick="document.getElementById('sisne-cmd-input').focus(); scrollSisneToBottom();" style="cursor: text; min-height: 310px; max-height: 480px; overflow-y: auto;">
                 <div class="crt-scanlines"></div>
                 <div class="crt-terminal-content" id="sisne-output"></div>
               </div>
@@ -5602,7 +5627,7 @@ READY
             <div class="crt-controls-bar">
               <div class="crt-input-row" style="background: #020617; border: 2px solid #0891b2; border-radius: 6px; padding: 0.4rem 0.75rem; align-items: center;">
                 <span id="sisne-prompt-label" style="font-family: var(--font-mono); color: #00ffff; font-weight: 800; font-size: 1.05rem; margin-right: 0.4rem;">A&gt;</span>
-                <input type="text" id="sisne-cmd-input" class="crt-input-box" style="background: transparent; border: none; color: #f8fafc; font-family: var(--font-mono); font-size: 0.95rem; outline: none; box-shadow: none;" placeholder="Digite comandos MS-DOS / SISNE (ex: DIR, VER, CHEQUE, PLANILHA, MEM, TYPE AUTOEXEC.BAT)..." onkeydown="handleSisneKey(event)">
+                <input type="text" id="sisne-cmd-input" class="crt-input-box" style="background: transparent; border: none; color: #f8fafc; font-family: var(--font-mono); font-size: 0.95rem; outline: none; box-shadow: none;" placeholder="Digite comandos MS-DOS / SISNE (ex: DIR, VER, CHEQUE, PLANILHA, MEM, TYPE AUTOEXEC.BAT)..." onfocus="scrollSisneToBottom()" onkeydown="handleSisneKey(event)">
                 <button class="btn-clean" style="background: #0891b2; color: #ffffff; border: none; font-size: 0.8rem; padding: 0.35rem 0.8rem;" onclick="runSisneCommand()">ENTER (Executar)</button>
               </div>
             </div>
@@ -9970,8 +9995,41 @@ READY
 <div style="margin-bottom: 0.5rem; color: currentColor;">&raquo;&raquo;&raquo; A instalação do mouse não foi feita corretamente</div>`;
     }
 
+    let sisneScrollObserver = null;
+    function initSisneAutoScrollObserver() {
+      if (sisneScrollObserver) return;
+      const out = document.getElementById('sisne-output');
+      if (out && window.MutationObserver) {
+        sisneScrollObserver = new MutationObserver(() => {
+          scrollSisneToBottom();
+        });
+        sisneScrollObserver.observe(out, { childList: true, subtree: true, characterData: true });
+      }
+    }
+
+    function scrollSisneToBottom() {
+      const scr = document.getElementById('sisne-screen');
+      if (scr) {
+        scr.scrollTop = scr.scrollHeight;
+        requestAnimationFrame(() => {
+          if (scr) scr.scrollTop = scr.scrollHeight;
+        });
+        setTimeout(() => {
+          if (scr) scr.scrollTop = scr.scrollHeight;
+        }, 25);
+        setTimeout(() => {
+          if (scr) scr.scrollTop = scr.scrollHeight;
+        }, 80);
+      }
+      const out = document.getElementById('sisne-output');
+      if (out) {
+        out.scrollTop = out.scrollHeight;
+      }
+    }
+
     function initSisneSimulator() {
       rebootSisne(false);
+      initSisneAutoScrollObserver();
     }
 
     function updateSisnePromptLabel() {
@@ -9986,6 +10044,7 @@ READY
       if (out) {
         out.innerHTML = `<div><span class="crt-cursor"></span></div>`;
       }
+      scrollSisneToBottom();
       updateSisnePromptLabel();
     }
 
@@ -9996,8 +10055,8 @@ READY
       const out = document.getElementById('sisne-output');
       if (out) {
         out.innerHTML = getSisneBannerHTML() + `<div><span class="crt-cursor"></span></div>`;
-        out.scrollTop = out.scrollHeight;
       }
+      scrollSisneToBottom();
       updateSisnePromptLabel();
       if (playSound && SimulatorAudio) {
         SimulatorAudio.floppySeek();
@@ -10040,7 +10099,7 @@ READY
         res = `<div style="margin-bottom: 0.35rem; line-height: 1.45;">${contentHtml}</div>`;
       }
       out.innerHTML = clean + line + res + `<div><span class="crt-cursor"></span></div>`;
-      out.scrollTop = out.scrollHeight;
+      scrollSisneToBottom();
       updateSisnePromptLabel();
     }
 
@@ -10054,6 +10113,7 @@ READY
         input.value = cmd;
         if (typeof input.focus === 'function') input.focus();
       }
+      scrollSisneToBottom();
     }
 
     function runDirectSisneCommand(cmd) {
@@ -10079,6 +10139,7 @@ READY
           sisneHistIdx++;
           e.target.value = sisneHistory[sisneHistory.length - 1 - sisneHistIdx];
         }
+        scrollSisneToBottom();
       } else if (e.key === 'ArrowDown') {
         if (sisneHistIdx > 0) {
           sisneHistIdx--;
@@ -10087,6 +10148,7 @@ READY
           sisneHistIdx = -1;
           e.target.value = '';
         }
+        scrollSisneToBottom();
       }
     }
 
