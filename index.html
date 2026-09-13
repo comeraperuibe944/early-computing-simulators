@@ -2553,17 +2553,16 @@
     /* SIMULADOR IBM 704: CONSOLE DE OPERACAO & IMPRESSORA IBM 716 (1957) */
     .ibm704-unit {
       margin-top: 1.5rem;
-      background: #111823;
-      border: 2px solid #2d3748;
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      background: #050505;
+      border: none;
+      border-radius: 4px;
       font-family: var(--font-mono);
-      color: #e2e8f0;
+      color: #f8fafc;
       overflow: hidden;
     }
     .ibm704-cabinet-header {
-      background: linear-gradient(180deg, #1f2a3a 0%, #161e2b 100%);
-      border-bottom: 2px solid #0f172a;
+      background: #000000;
+      border: none;
       padding: 0.75rem 1.25rem;
       display: flex;
       justify-content: space-between;
@@ -2577,17 +2576,15 @@
       gap: 0.75rem;
     }
     .ibm704-logo-plate {
-      background: #0b111a;
-      border: 1.5px solid #64748b;
+      background: #141414;
+      border: none;
       padding: 0.2rem 0.6rem;
-      border-radius: 3px;
+      border-radius: 2px;
       font-family: 'Times New Roman', serif;
       font-size: 1.05rem;
       font-weight: 900;
       letter-spacing: 0.2em;
-      color: #f1f5f9;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.8);
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.8);
+      color: #ffffff;
     }
     .ibm704-title-text {
       display: flex;
@@ -2596,19 +2593,18 @@
     .ibm704-title-text .ibm704-model {
       font-size: 0.85rem;
       font-weight: 800;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       color: #ffffff;
       text-transform: uppercase;
     }
     .ibm704-title-text .ibm704-sub {
-      font-size: 0.68rem;
-      color: #94a3b8;
-      letter-spacing: 0.05em;
+      font-size: 0.66rem;
+      color: #777777;
+      letter-spacing: 0.04em;
     }
     .ibm704-display-panel {
-      background: #080c12;
-      border: 2px solid #05070a;
-      box-shadow: inset 0 4px 15px rgba(0,0,0,0.9);
+      background: #0a0a0a;
+      border: none;
       padding: 1rem 1.25rem;
       display: flex;
       flex-direction: column;
@@ -2619,7 +2615,7 @@
       gap: 1.25rem;
       align-items: center;
       padding-bottom: 0.65rem;
-      border-bottom: 1px solid #1e293b;
+      border: none;
       flex-wrap: wrap;
     }
     .ibm704-indicator {
@@ -2629,45 +2625,31 @@
       font-size: 0.68rem;
       letter-spacing: 0.08em;
       font-weight: 700;
-      color: #475569;
+      color: #444444;
       transition: color 0.15s;
     }
     .ibm704-indicator-lamp {
-      width: 12px;
-      height: 12px;
+      width: 11px;
+      height: 11px;
       border-radius: 50%;
-      background: #141b26;
-      border: 1px solid #283548;
-      box-shadow: inset 0 1px 2px rgba(0,0,0,0.8);
+      background: #1a1a1a;
+      border: none;
       transition: background 0.15s, box-shadow 0.15s;
     }
-    .ibm704-indicator.active-amber {
-      color: #fef3c7;
-    }
-    .ibm704-indicator.active-amber .ibm704-indicator-lamp {
-      background: #f59e0b;
-      box-shadow: 0 0 10px #f59e0b, inset 0 0 3px #ffffff;
-    }
-    .ibm704-indicator.active-green {
-      color: #bbf7d0;
-    }
-    .ibm704-indicator.active-green .ibm704-indicator-lamp {
-      background: #22c55e;
-      box-shadow: 0 0 10px #22c55e, inset 0 0 3px #ffffff;
-    }
-    .ibm704-indicator.active-red {
-      color: #fecaca;
-    }
-    .ibm704-indicator.active-red .ibm704-indicator-lamp {
-      background: #ef4444;
-      box-shadow: 0 0 10px #ef4444, inset 0 0 3px #ffffff;
-    }
+    .ibm704-indicator.active,
+    .ibm704-indicator.active-amber,
+    .ibm704-indicator.active-green,
+    .ibm704-indicator.active-red,
     .ibm704-indicator.active-white {
-      color: #f8fafc;
+      color: #ffffff;
     }
+    .ibm704-indicator.active .ibm704-indicator-lamp,
+    .ibm704-indicator.active-amber .ibm704-indicator-lamp,
+    .ibm704-indicator.active-green .ibm704-indicator-lamp,
+    .ibm704-indicator.active-red .ibm704-indicator-lamp,
     .ibm704-indicator.active-white .ibm704-indicator-lamp {
-      background: #e2e8f0;
-      box-shadow: 0 0 10px #e2e8f0, inset 0 0 3px #ffffff;
+      background: #ffffff;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
     }
     .ibm704-reg-row {
       display: flex;
@@ -2677,7 +2659,7 @@
     .ibm704-reg-label {
       font-size: 0.63rem;
       letter-spacing: 0.08em;
-      color: #94a3b8;
+      color: #888888;
       text-transform: uppercase;
       display: flex;
       justify-content: space-between;
@@ -2687,35 +2669,35 @@
       gap: 0.5rem;
       align-items: center;
       flex-wrap: wrap;
-      background: #05080c;
+      background: #000000;
       padding: 0.35rem 0.55rem;
-      border-radius: 4px;
-      border: 1px solid #131b26;
+      border-radius: 3px;
+      border: none;
     }
     .ibm704-octal-group {
       display: flex;
-      gap: 3px;
-      padding: 0 3px;
-      border-right: 1px solid #1e293b;
+      gap: 4px;
+      padding: 0 4px;
+      border: none;
     }
     .ibm704-octal-group:last-child {
-      border-right: none;
+      border: none;
     }
     .ibm704-lamp {
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: #111722;
-      border: 1px solid #202b3d;
+      background: #181818;
+      border: none;
       transition: background 0.05s, box-shadow 0.05s;
     }
     .ibm704-lamp.lit {
-      background: #fbbf24;
-      box-shadow: 0 0 7px #f59e0b, inset 0 0 2px #fff;
+      background: #ffffff;
+      box-shadow: 0 0 7px rgba(255, 255, 255, 0.95);
     }
     .ibm704-control-desk {
-      background: #17202d;
-      border-top: 2px solid #2d3748;
+      background: #0a0a0a;
+      border: none;
       padding: 0.85rem 1.25rem;
       display: flex;
       flex-direction: column;
@@ -2735,20 +2717,20 @@
       flex-wrap: wrap;
     }
     .ibm704-hopper-label {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 700;
-      color: #94a3b8;
+      color: #888888;
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
     .ibm704-deck-select {
-      background: #0b111a;
-      color: #f1f5f9;
-      border: 1px solid #475569;
-      border-radius: 3px;
+      background: #141414;
+      color: #ffffff;
+      border: none;
+      border-radius: 2px;
       padding: 0.4rem 0.65rem;
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       outline: none;
       cursor: pointer;
     }
@@ -2758,58 +2740,60 @@
       gap: 0.5rem;
     }
     .ibm704-btn-load {
-      background: #991b1b;
-      color: #ffffff;
-      border: 2px solid #ef4444;
-      border-radius: 4px;
-      padding: 0.5rem 1.2rem;
+      background: #ffffff;
+      color: #000000;
+      border: none;
+      border-radius: 3px;
+      padding: 0.45rem 1.15rem;
       font-family: var(--font-mono);
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 800;
       letter-spacing: 0.08em;
       cursor: pointer;
-      box-shadow: 0 3px 0 #7f1d1d, 0 4px 10px rgba(0,0,0,0.4);
-      transition: all 0.1s;
+      box-shadow: none;
+      transition: opacity 0.1s;
+    }
+    .ibm704-btn-load:hover {
+      opacity: 0.9;
     }
     .ibm704-btn-load:active {
-      transform: translateY(2px);
-      box-shadow: 0 1px 0 #7f1d1d, 0 2px 5px rgba(0,0,0,0.4);
+      transform: translateY(1px);
     }
     .ibm704-btn-load:disabled {
-      opacity: 0.6;
+      opacity: 0.35;
       cursor: not-allowed;
       transform: none;
     }
     .ibm704-btn-reset {
-      background: #1e293b;
-      color: #cbd5e1;
-      border: 1px solid #475569;
-      border-radius: 4px;
-      padding: 0.5rem 0.85rem;
+      background: #141414;
+      color: #888888;
+      border: none;
+      border-radius: 3px;
+      padding: 0.45rem 0.85rem;
       font-family: var(--font-mono);
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 2px 0 #0f172a;
-      transition: all 0.1s;
+      box-shadow: none;
+      transition: color 0.1s, background 0.1s;
     }
-    .ibm704-btn-reset:active {
-      transform: translateY(1px);
-      box-shadow: 0 1px 0 #0f172a;
+    .ibm704-btn-reset:hover {
+      color: #ffffff;
+      background: #202020;
     }
     .ibm704-switches-bar {
       display: flex;
       align-items: center;
       gap: 1rem;
-      padding: 0.4rem 0.75rem;
-      background: #0d141e;
-      border-radius: 4px;
-      border: 1px solid #1c2738;
+      padding: 0.4rem 0.65rem;
+      background: #000000;
+      border-radius: 3px;
+      border: none;
       flex-wrap: wrap;
     }
     .ibm704-switches-title {
-      font-size: 0.65rem;
-      color: #64748b;
+      font-size: 0.62rem;
+      color: #555555;
       font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
@@ -2824,37 +2808,39 @@
     }
     .ibm704-switch-toggle {
       width: 14px;
-      height: 24px;
-      background: #080d14;
-      border: 1px solid #334155;
+      height: 22px;
+      background: #181818;
+      border: none;
       border-radius: 2px;
       position: relative;
     }
     .ibm704-switch-toggle::after {
       content: '';
       position: absolute;
-      left: 1px;
+      left: 2px;
       bottom: 2px;
       width: 10px;
-      height: 10px;
-      background: #64748b;
+      height: 9px;
+      background: #444444;
       border-radius: 1px;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.5);
       transition: bottom 0.1s ease, background 0.1s;
     }
     .ibm704-switch-item.on .ibm704-switch-toggle::after {
-      bottom: 10px;
-      background: #38bdf8;
-      box-shadow: 0 0 5px #0284c7;
+      bottom: 11px;
+      background: #ffffff;
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.85);
     }
     .ibm704-switch-num {
       font-size: 0.58rem;
-      color: #94a3b8;
+      color: #777777;
       font-weight: 700;
     }
+    .ibm704-switch-item.on .ibm704-switch-num {
+      color: #ffffff;
+    }
     .ibm704-card-editor-toggle {
-      font-size: 0.7rem;
-      color: #94a3b8;
+      font-size: 0.68rem;
+      color: #777777;
       text-decoration: underline;
       cursor: pointer;
       background: none;
@@ -2864,15 +2850,15 @@
       text-align: left;
     }
     .ibm704-card-editor-toggle:hover {
-      color: #f1f5f9;
+      color: #ffffff;
     }
     .ibm704-cards-panel {
       display: none;
       flex-direction: column;
       gap: 0.35rem;
-      background: #0a0f18;
-      border: 1px dashed #334155;
-      border-radius: 4px;
+      background: #000000;
+      border: none;
+      border-radius: 3px;
       padding: 0.65rem;
       margin-top: 0.35rem;
     }
@@ -2880,22 +2866,22 @@
       display: flex;
     }
     .ibm716-printer-enclosure {
-      background: #e2e8f0;
-      border-top: 3px solid #0f172a;
-      padding: 0.9rem 1.25rem 1.25rem;
+      background: #050505;
+      border: none;
+      padding: 0.85rem 1.25rem 1.25rem;
       position: relative;
     }
     .ibm716-header-strip {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
     }
     .ibm716-badge {
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      color: #334155;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #777777;
       text-transform: uppercase;
     }
     .ibm716-paper-roll {
@@ -5544,7 +5530,7 @@
               </div>
             </div>
             <div style="display: flex; gap: 0.6rem; align-items: center;">
-              <span style="font-size: 0.68rem; color: #94a3b8; font-family: var(--font-mono); letter-spacing: 0.05em;">ARQUITETURA 36-BIT VALVULADA</span>
+              <span style="font-size: 0.68rem; color: #777777; font-family: var(--font-mono); letter-spacing: 0.05em;">ARQUITETURA 36-BIT VALVULADA</span>
             </div>
           </div>
 
@@ -5552,7 +5538,7 @@
           <div class="ibm704-display-panel">
             <!-- LINHA DE LAMPADAS INDICADORAS DE ESTADO -->
             <div class="ibm704-status-strip">
-              <div class="ibm704-indicator active-white" id="ibm704-ind-ready">
+              <div class="ibm704-indicator active" id="ibm704-ind-ready">
                 <span class="ibm704-indicator-lamp"></span>
                 <span>READY</span>
               </div>
@@ -5568,7 +5554,7 @@
                 <span class="ibm704-indicator-lamp"></span>
                 <span>HALT</span>
               </div>
-              <div style="margin-left: auto; font-size: 0.63rem; color: #64748b; font-family: var(--font-mono);">
+              <div style="margin-left: auto; font-size: 0.63rem; color: #666666; font-family: var(--font-mono);">
                 NOTACAO OCTAL (GRUPOS DE 3 BITS)
               </div>
             </div>
@@ -5665,12 +5651,12 @@
 
             <!-- PAINEL RETRATIL DOS CARTOES PERFURADOS -->
             <div class="ibm704-cards-panel" id="ibm704-cards-panel">
-              <div style="font-size: 0.62rem; color: #94a3b8; letter-spacing: 0.05em; font-family: var(--font-mono);">
+              <div style="font-size: 0.62rem; color: #777777; letter-spacing: 0.05em; font-family: var(--font-mono);">
                 C----+----1----+----2----+----3----+----4----+----5----+----6----+----7-- (CARTAO PERFURADO 80 COLUNAS)
               </div>
               <textarea id="fortran-source-input"
                         spellcheck="false"
-                        style="width: 100%; height: 130px; background: #080c14; color: #f1f5f9; border: 1px solid #334155; border-radius: 2px; padding: 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; line-height: 1.4; resize: vertical; outline: none; box-sizing: border-box;"></textarea>
+                        style="width: 100%; height: 130px; background: #000000; color: #f8fafc; border: none; border-radius: 2px; padding: 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; line-height: 1.4; resize: vertical; outline: none; box-sizing: border-box;"></textarea>
             </div>
           </div>
 
@@ -5678,7 +5664,7 @@
           <div class="ibm716-printer-enclosure">
             <div class="ibm716-header-strip">
               <div class="ibm716-badge">IMPRESSORA DE LINHA IBM 716 &bull; LISTAGEM CONTINUA (150 LPM)</div>
-              <button type="button" class="btn-clean secondary" style="font-size: 0.65rem; padding: 0.2rem 0.6rem; background: #cbd5e1; color: #1e293b; border: 1px solid #94a3b8; font-family: var(--font-mono);" onclick="clearIbm716Printer()">
+              <button type="button" class="btn-clean secondary" style="font-size: 0.65rem; padding: 0.2rem 0.6rem; background: #141414; color: #888888; border: none; border-radius: 2px; font-family: var(--font-mono);" onclick="clearIbm716Printer()">
                 AVANCAR FOLHA / LIMPAR
               </button>
             </div>
@@ -12209,7 +12195,7 @@ READY
       const indRun = document.getElementById('ibm704-ind-run');
       const indHalt = document.getElementById('ibm704-ind-halt');
 
-      if (indReady) { indReady.className = 'ibm704-indicator active-white active'; }
+      if (indReady) { indReady.className = 'ibm704-indicator active'; }
       if (indRead) { indRead.className = 'ibm704-indicator'; }
       if (indRun) { indRun.className = 'ibm704-indicator'; }
       if (indHalt) { indHalt.className = 'ibm704-indicator'; }
@@ -12262,7 +12248,7 @@ READY
 
       if (indReady) indReady.className = 'ibm704-indicator';
       if (indHalt) indHalt.className = 'ibm704-indicator';
-      if (indRead) indRead.className = 'ibm704-indicator active-amber active';
+      if (indRead) indRead.className = 'ibm704-indicator active';
 
       if (window.SimulatorAudio && SimulatorAudio.mechanicalLatch) {
         SimulatorAudio.mechanicalLatch();
@@ -12288,7 +12274,7 @@ READY
         if (phaseTime === 600) {
           // Fase 2: Execucao da CPU 704
           if (indRead) indRead.className = 'ibm704-indicator';
-          if (indRun) indRun.className = 'ibm704-indicator active-green active';
+          if (indRun) indRun.className = 'ibm704-indicator active';
         }
 
         if (phaseTime >= 1400) {
@@ -12527,7 +12513,7 @@ READY
         printerOut.scrollTop = printerOut.scrollHeight;
 
         if (indRun) indRun.className = 'ibm704-indicator';
-        if (indHalt) indHalt.className = 'ibm704-indicator active-red active';
+        if (indHalt) indHalt.className = 'ibm704-indicator active';
 
         if (window.SimulatorAudio && SimulatorAudio.mechanicalLatch) {
           SimulatorAudio.mechanicalLatch();
@@ -12542,7 +12528,7 @@ READY
       buildIbm704Lamps();
       loadFortranSample('hello');
       const indReady = document.getElementById('ibm704-ind-ready');
-      if (indReady) indReady.className = 'ibm704-indicator active-white active';
+      if (indReady) indReady.className = 'ibm704-indicator active';
     }
 
     // =========================================================================
