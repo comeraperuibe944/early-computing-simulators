@@ -937,12 +937,12 @@
     }
     .eniac-ibm-card {
       position: relative;
-      background: #fbf9ea;
-      border: 1px solid #d6cfb8;
+      background: #ffffff;
+      border: 1px solid var(--border-strong);
       clip-path: polygon(14px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 14px);
       padding: 0.5rem 0.65rem;
       border-radius: 2px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      box-shadow: none;
     }
     .eniac-card-top-title {
       font-size: 0.56rem;
@@ -951,10 +951,10 @@
       font-family: var(--font-mono);
       display: flex;
       justify-content: space-between;
-      border-bottom: 1px solid #e7e0cc;
+      border-bottom: 1px solid var(--border-subtle);
       padding-bottom: 3px;
       margin-bottom: 5px;
-      color: #78716c;
+      color: #64748b;
     }
     .eniac-card-punches-area {
       display: grid;
@@ -963,12 +963,12 @@
     }
     .eniac-card-bottom-info {
       font-size: 0.53rem;
-      color: #78716c;
+      color: #64748b;
       font-family: var(--font-mono);
       display: flex;
       justify-content: space-between;
       margin-top: 5px;
-      border-top: 1px solid #e7e0cc;
+      border-top: 1px solid var(--border-subtle);
       padding-top: 3px;
     }
 
@@ -2555,7 +2555,7 @@
     .retro-crt-container {
       margin: 1.5rem 0;
       background: #e2e8f0;
-      border: 3px solid #cbd5e1;
+      border: none;
       border-radius: 12px;
       padding: 1.25rem;
       box-shadow: 0 4px 15px rgba(0,0,0,0.08);
@@ -4607,7 +4607,7 @@
 
               <!-- OPERAÇÃO ATUAL -->
               <div class="baby-narrative-box" id="eniac-narrative-box" style="margin-bottom: 0;">
-                <div><strong>Operação Atual:</strong> <span id="eniac-step-title" style="color: #15803d; font-weight: 800;">Carregar Parcela 245 no Acumulador 1 (Passo 1 de 4)</span></div>
+                <div><strong>Operação Atual:</strong> <span id="eniac-step-title" style="color: #0f172a; font-weight: 800;">Carregar Parcela 245 no Acumulador 1 (Passo 1 de 4)</span></div>
                 <div id="eniac-step-explanation" style="color: #334155; margin-top: 0.25rem;">Válvulas neon acendem nas posições das décadas 2, 4 e 5.</div>
               </div>
 
@@ -4629,7 +4629,7 @@
                 <div class="eniac-ibm-card" id="eniac-ibm-card">
                   <div class="eniac-card-top-title">
                     <span>IBM FORM 5081 &bull; BRL ABERDEEN</span>
-                    <span id="eniac-card-badge" style="color: #b45309; font-weight: 800;">STANDBY</span>
+                    <span id="eniac-card-badge" style="color: #0f172a; font-weight: 800;">STANDBY</span>
                   </div>
                   <div id="eniac-card-body" style="padding: 0.5rem 0.2rem; min-height: 85px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
                     <!-- Gerado dinamicamente -->
@@ -8058,7 +8058,7 @@ READY
       const expEl = document.getElementById('eniac-step-explanation');
       if (expEl) {
         if (isFinal) {
-          expEl.innerHTML = `${step.explanation} <span style="display: block; margin-top: 0.35rem; color: #15803d; font-weight: 700;">Cálculo finalizado com sucesso! Pressione &lsquo;Resetar&rsquo; ou selecione outro cálculo para iniciar uma nova execução.</span>`;
+          expEl.innerHTML = `${step.explanation} <span style="display: block; margin-top: 0.35rem; color: #0f172a; font-weight: 700;">Cálculo finalizado com sucesso! Pressione &lsquo;Resetar&rsquo; ou selecione outro cálculo para iniciar uma nova execução.</span>`;
         } else {
           expEl.textContent = step.explanation;
         }
@@ -8095,15 +8095,15 @@ READY
       if (cardBadge && cardBody) {
         if (!isFinal) {
           cardBadge.textContent = 'STANDBY';
-          cardBadge.style.color = '#b45309';
+          cardBadge.style.color = '#0f172a';
           cardBody.innerHTML = `
-            <div style="font-size: 0.68rem; color: #78716c; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;">Bandeja da Perfuradora IBM 513</div>
+            <div style="font-size: 0.68rem; color: #64748b; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;">Bandeja da Perfuradora IBM 513</div>
             <div style="font-size: 0.85rem; font-weight: 700; color: #0f172a; margin: 0.35rem 0; font-family: var(--font-mono);">${step.stepTitle}</div>
-            <div style="font-size: 0.72rem; color: #78716c; font-family: var(--font-mono);">Aguardando término do cálculo nos circuitos a vácuo para emitir a perfuração.</div>
+            <div style="font-size: 0.72rem; color: #64748b; font-family: var(--font-mono);">Aguardando término do cálculo nos circuitos a vácuo para emitir a perfuração.</div>
           `;
         } else {
           cardBadge.textContent = 'PERFURADO';
-          cardBadge.style.color = '#15803d';
+          cardBadge.style.color = '#0f172a';
 
           let slotsHtml = '<div style="display: flex; gap: 3px; justify-content: center; margin: 0.4rem 0;">';
           step.digits.forEach((d, idx) => {
@@ -8117,9 +8117,9 @@ READY
           slotsHtml += '</div>';
 
           cardBody.innerHTML = `
-            <div style="font-size: 0.66rem; color: #15803d; font-weight: 800; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;">Cartão Perfurado com Sucesso</div>
+            <div style="font-size: 0.66rem; color: #0f172a; font-weight: 800; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;">Cartão Perfurado com Sucesso</div>
             ${slotsHtml}
-            <div style="font-size: 0.85rem; font-weight: 800; color: #15803d; font-family: var(--font-mono);">${step.mathSummary}</div>
+            <div style="font-size: 0.85rem; font-weight: 800; color: #0f172a; font-family: var(--font-mono);">${step.mathSummary}</div>
           `;
         }
       }
@@ -8138,7 +8138,7 @@ READY
         } else {
           outTitle.textContent = 'Resultado Final do ENIAC:';
           mSum.textContent = step.mathSummary;
-          mSum.style.color = '#15803d';
+          mSum.style.color = '#0f172a';
           outSub.textContent = (eniacCurrentProg === 4)
             ? 'Trajetória calculada em 2,8 s (mais rápido que o voo real do projétil)'
             : 'Resultado estabilizado nos anéis decádicos em 200 µs';
@@ -10951,6 +10951,12 @@ READY
 
       crankSvg.addEventListener('pointerdown', (e) => {
         if (isCrankAnimating) return;
+        const arm = document.getElementById('crank-arm-group');
+        if (arm) arm.style.transition = 'none';
+        const g1 = document.getElementById('mill-gear-1');
+        if (g1) g1.style.transition = 'none';
+        const g2 = document.getElementById('mill-gear-2');
+        if (g2) g2.style.transition = 'none';
         SimulatorAudio.init();
         isCrankDragging = true;
         crankSvg.classList.add('dragging');
@@ -11027,7 +11033,11 @@ READY
       // Mostrador digital de graus
       const degReadout = document.getElementById('crank-deg-readout');
       if (degReadout) {
-        degReadout.textContent = `${Math.round(cycleAccumDeg)}° / 360° (Girando)`;
+        if (cycleAccumDeg === 0) {
+          degReadout.textContent = '0° / 360° (Pronto para girar)';
+        } else {
+          degReadout.textContent = `${Math.round(cycleAccumDeg)}° / 360° (Girando)`;
+        }
       }
     }
 
@@ -11097,8 +11107,39 @@ READY
 
     function resetAnaliticaDisplay() {
       analiticaStepIndex = -1;
+      totalCrankDeg = 0;
       cycleAccumDeg = 0;
-      updateCrankVisuals();
+      lastToothClickIndex = 0;
+      isCrankDragging = false;
+      isCrankAnimating = false;
+
+      const crankSvg = document.getElementById('analitica-crank-svg');
+      if (crankSvg) crankSvg.classList.remove('dragging');
+
+      const arm = document.getElementById('crank-arm-group');
+      if (arm) {
+        arm.style.transition = 'transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1)';
+        arm.style.transform = 'rotate(0deg)';
+        setTimeout(() => { if (arm) arm.style.transition = 'none'; }, 360);
+      }
+
+      const gear1 = document.getElementById('mill-gear-1');
+      const gear2 = document.getElementById('mill-gear-2');
+      if (gear1) {
+        gear1.style.transition = 'transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1)';
+        gear1.style.transform = 'rotate(0deg)';
+        setTimeout(() => { if (gear1) gear1.style.transition = 'none'; }, 360);
+      }
+      if (gear2) {
+        gear2.style.transition = 'transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1)';
+        gear2.style.transform = 'rotate(0deg)';
+        setTimeout(() => { if (gear2) gear2.style.transition = 'none'; }, 360);
+      }
+
+      const arc = document.getElementById('crank-progress-arc');
+      if (arc) {
+        arc.style.strokeDashoffset = '515.2';
+      }
 
       const prog = analiticaPrograms[currentAnaliticaProgram];
       const total = prog.steps.length;
