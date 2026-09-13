@@ -5986,7 +5986,7 @@ READY
                     <div class="crt-scanlines" style="opacity: 0.7;"></div>
                     <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 60%); pointer-events: none; z-index: 4;"></div>
                     
-                    <div class="crt-screen-glass sisne-cga" id="sisne-screen" onclick="document.getElementById('sisne-cmd-input').focus(); scrollSisneToBottom();" style="cursor: text; flex: 1; width: 100%; overflow-y: auto; padding: 1.2rem 1.4rem 0 1.4rem; text-shadow: none; font-family: 'VT323', monospace; font-size: 1.45rem; line-height: 1.25; letter-spacing: 0.5px;">
+                    <div class="crt-screen-glass sisne-cga" id="sisne-screen" onclick="const el=document.getElementById('sisne-cmd-input'); if(el) el.focus({preventScroll:true}); scrollSisneToBottom();" style="cursor: text; flex: 1; width: 100%; overflow-y: auto; padding: 1.2rem 1.4rem 0 1.4rem; text-shadow: none; font-family: 'VT323', monospace; font-size: 1.45rem; line-height: 1.25; letter-spacing: 0.5px;">
                       <div class="crt-terminal-content" id="sisne-output"></div>
                     </div>
                     
@@ -6193,7 +6193,6 @@ READY
 
                 const cmdInput = document.getElementById('sisne-cmd-input');
                 if (cmdInput) {
-                  cmdInput.focus();
                   if (typeof scrollSisneToBottom === 'function') scrollSisneToBottom();
                 }
               }
@@ -10662,7 +10661,7 @@ READY
       const input = document.getElementById('sisne-cmd-input');
       if (input) {
         input.value = cmd;
-        if (typeof input.focus === 'function') input.focus();
+        if (typeof input.focus === 'function') input.focus({ preventScroll: true });
       }
       scrollSisneToBottom();
     }
