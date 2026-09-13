@@ -2550,6 +2550,408 @@
       color: #0f172a;
       font-weight: 700;
     }
+    /* SIMULADOR IBM 704: CONSOLE DE OPERACAO & IMPRESSORA IBM 716 (1957) */
+    .ibm704-unit {
+      margin-top: 1.5rem;
+      background: #111823;
+      border: 2px solid #2d3748;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      font-family: var(--font-mono);
+      color: #e2e8f0;
+      overflow: hidden;
+    }
+    .ibm704-cabinet-header {
+      background: linear-gradient(180deg, #1f2a3a 0%, #161e2b 100%);
+      border-bottom: 2px solid #0f172a;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .ibm704-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .ibm704-logo-plate {
+      background: #0b111a;
+      border: 1.5px solid #64748b;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      font-family: 'Times New Roman', serif;
+      font-size: 1.05rem;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      color: #f1f5f9;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.8);
+    }
+    .ibm704-title-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .ibm704-title-text .ibm704-model {
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+    .ibm704-title-text .ibm704-sub {
+      font-size: 0.68rem;
+      color: #94a3b8;
+      letter-spacing: 0.05em;
+    }
+    .ibm704-display-panel {
+      background: #080c12;
+      border: 2px solid #05070a;
+      box-shadow: inset 0 4px 15px rgba(0,0,0,0.9);
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .ibm704-status-strip {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid #1e293b;
+      flex-wrap: wrap;
+    }
+    .ibm704-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: #475569;
+      transition: color 0.15s;
+    }
+    .ibm704-indicator-lamp {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #141b26;
+      border: 1px solid #283548;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.8);
+      transition: background 0.15s, box-shadow 0.15s;
+    }
+    .ibm704-indicator.active-amber {
+      color: #fef3c7;
+    }
+    .ibm704-indicator.active-amber .ibm704-indicator-lamp {
+      background: #f59e0b;
+      box-shadow: 0 0 10px #f59e0b, inset 0 0 3px #ffffff;
+    }
+    .ibm704-indicator.active-green {
+      color: #bbf7d0;
+    }
+    .ibm704-indicator.active-green .ibm704-indicator-lamp {
+      background: #22c55e;
+      box-shadow: 0 0 10px #22c55e, inset 0 0 3px #ffffff;
+    }
+    .ibm704-indicator.active-red {
+      color: #fecaca;
+    }
+    .ibm704-indicator.active-red .ibm704-indicator-lamp {
+      background: #ef4444;
+      box-shadow: 0 0 10px #ef4444, inset 0 0 3px #ffffff;
+    }
+    .ibm704-indicator.active-white {
+      color: #f8fafc;
+    }
+    .ibm704-indicator.active-white .ibm704-indicator-lamp {
+      background: #e2e8f0;
+      box-shadow: 0 0 10px #e2e8f0, inset 0 0 3px #ffffff;
+    }
+    .ibm704-reg-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .ibm704-reg-label {
+      font-size: 0.63rem;
+      letter-spacing: 0.08em;
+      color: #94a3b8;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+    }
+    .ibm704-lamp-bank {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+      background: #05080c;
+      padding: 0.35rem 0.55rem;
+      border-radius: 4px;
+      border: 1px solid #131b26;
+    }
+    .ibm704-octal-group {
+      display: flex;
+      gap: 3px;
+      padding: 0 3px;
+      border-right: 1px solid #1e293b;
+    }
+    .ibm704-octal-group:last-child {
+      border-right: none;
+    }
+    .ibm704-lamp {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #111722;
+      border: 1px solid #202b3d;
+      transition: background 0.05s, box-shadow 0.05s;
+    }
+    .ibm704-lamp.lit {
+      background: #fbbf24;
+      box-shadow: 0 0 7px #f59e0b, inset 0 0 2px #fff;
+    }
+    .ibm704-control-desk {
+      background: #17202d;
+      border-top: 2px solid #2d3748;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .ibm704-controls-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+    .ibm704-hopper-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .ibm704-hopper-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .ibm704-deck-select {
+      background: #0b111a;
+      color: #f1f5f9;
+      border: 1px solid #475569;
+      border-radius: 3px;
+      padding: 0.4rem 0.65rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      outline: none;
+      cursor: pointer;
+    }
+    .ibm704-btn-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .ibm704-btn-load {
+      background: #991b1b;
+      color: #ffffff;
+      border: 2px solid #ef4444;
+      border-radius: 4px;
+      padding: 0.5rem 1.2rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      box-shadow: 0 3px 0 #7f1d1d, 0 4px 10px rgba(0,0,0,0.4);
+      transition: all 0.1s;
+    }
+    .ibm704-btn-load:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 #7f1d1d, 0 2px 5px rgba(0,0,0,0.4);
+    }
+    .ibm704-btn-load:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .ibm704-btn-reset {
+      background: #1e293b;
+      color: #cbd5e1;
+      border: 1px solid #475569;
+      border-radius: 4px;
+      padding: 0.5rem 0.85rem;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 0 #0f172a;
+      transition: all 0.1s;
+    }
+    .ibm704-btn-reset:active {
+      transform: translateY(1px);
+      box-shadow: 0 1px 0 #0f172a;
+    }
+    .ibm704-switches-bar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.4rem 0.75rem;
+      background: #0d141e;
+      border-radius: 4px;
+      border: 1px solid #1c2738;
+      flex-wrap: wrap;
+    }
+    .ibm704-switches-title {
+      font-size: 0.65rem;
+      color: #64748b;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .ibm704-switch-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .ibm704-switch-toggle {
+      width: 14px;
+      height: 24px;
+      background: #080d14;
+      border: 1px solid #334155;
+      border-radius: 2px;
+      position: relative;
+    }
+    .ibm704-switch-toggle::after {
+      content: '';
+      position: absolute;
+      left: 1px;
+      bottom: 2px;
+      width: 10px;
+      height: 10px;
+      background: #64748b;
+      border-radius: 1px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+      transition: bottom 0.1s ease, background 0.1s;
+    }
+    .ibm704-switch-item.on .ibm704-switch-toggle::after {
+      bottom: 10px;
+      background: #38bdf8;
+      box-shadow: 0 0 5px #0284c7;
+    }
+    .ibm704-switch-num {
+      font-size: 0.58rem;
+      color: #94a3b8;
+      font-weight: 700;
+    }
+    .ibm704-card-editor-toggle {
+      font-size: 0.7rem;
+      color: #94a3b8;
+      text-decoration: underline;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: var(--font-mono);
+      text-align: left;
+    }
+    .ibm704-card-editor-toggle:hover {
+      color: #f1f5f9;
+    }
+    .ibm704-cards-panel {
+      display: none;
+      flex-direction: column;
+      gap: 0.35rem;
+      background: #0a0f18;
+      border: 1px dashed #334155;
+      border-radius: 4px;
+      padding: 0.65rem;
+      margin-top: 0.35rem;
+    }
+    .ibm704-cards-panel.open {
+      display: flex;
+    }
+    .ibm716-printer-enclosure {
+      background: #e2e8f0;
+      border-top: 3px solid #0f172a;
+      padding: 0.9rem 1.25rem 1.25rem;
+      position: relative;
+    }
+    .ibm716-header-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+    .ibm716-badge {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      color: #334155;
+      text-transform: uppercase;
+    }
+    .ibm716-paper-roll {
+      background: #fdfdfc;
+      color: #0f172a;
+      border: 1px solid #cbd5e1;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.06), 0 3px 8px rgba(0,0,0,0.08);
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+    }
+    .ibm716-tractor-strip {
+      width: 20px;
+      flex-shrink: 0;
+      background: #f1f5f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px 0;
+      gap: 16px;
+      border-right: 1px dashed #cbd5e1;
+    }
+    .ibm716-tractor-strip.right {
+      border-right: none;
+      border-left: 1px dashed #cbd5e1;
+    }
+    .ibm716-tractor-hole {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #64748b;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
+      display: inline-block;
+    }
+    .ibm716-paper-content {
+      flex: 1;
+      background: repeating-linear-gradient(
+        180deg,
+        #ffffff 0px,
+        #ffffff 22px,
+        #f4fbf7 22px,
+        #f4fbf7 44px
+      );
+      padding: 0.85rem 1rem;
+      min-height: 180px;
+      max-height: 280px;
+      overflow-y: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      white-space: pre-wrap;
+      color: #0f172a;
+      box-sizing: border-box;
+      margin: 0;
+    }
 
     /* SIMULADOR 5: RETRO TERMINAL BRASILEIRO (PROLÓGICA CP-500 / TK90X BASIC) */
     .retro-crt-container {
@@ -5130,47 +5532,185 @@
           Os anos 1950 representam o salto da computação de laboratório para a indústria corporativa e o nascimento formal da Ciência da Computação como disciplina de algoritmos, estruturas de dados e linguagens formais, liberta da manipulação exclusiva do hardware.
         </div>
 
-        <!-- CONSOLE RETRO FORTRAN I (IBM 704 - 1957) -->
-        <div class="interactive-app-card" style="margin-top: 1.5rem; background: #000000; border: 2px solid #222222; border-radius: 3px; padding: 0.85rem; color: #f8fafc; font-family: 'JetBrains Mono', monospace;">
-          <!-- CABEÇALHO RETRO -->
-          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed #333333; padding-bottom: 0.5rem; margin-bottom: 0.65rem; flex-wrap: wrap; gap: 0.5rem;">
-            <div>
-              <span style="font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #ffffff;">IBM 704 / FORTRAN I COMPILER (1957)</span>
-              <span style="display: block; font-size: 0.65rem; color: #777777;">SISTEMA DE COMPILACAO EM CARTAO PERFURADO &bull; EXECUCAO DIRETA</span>
+        <!-- SIMULADOR IBM 704 & IMPRESSORA DE LINHA IBM 716 (1957) -->
+        <div class="ibm704-unit" id="ibm704-simulator">
+          <!-- CABECALHO DO GABINETE DE ACO -->
+          <div class="ibm704-cabinet-header">
+            <div class="ibm704-badge">
+              <div class="ibm704-logo-plate">IBM</div>
+              <div class="ibm704-title-text">
+                <span class="ibm704-model">704 Electronic Data Processing Machine</span>
+                <span class="ibm704-sub">Console de Operador Principal &bull; Fortran I Compiler (1957)</span>
+              </div>
             </div>
-            <div style="display: flex; gap: 0.3rem; flex-wrap: wrap;">
-              <button type="button" class="btn-clean secondary" style="font-family: var(--font-mono); font-size: 0.68rem; padding: 0.2rem 0.5rem; background: #111111; color: #cccccc; border: 1px solid #333333; border-radius: 2px;" onclick="loadFortranSample('hello')">1. OLÁ MUNDO</button>
-              <button type="button" class="btn-clean secondary" style="font-family: var(--font-mono); font-size: 0.68rem; padding: 0.2rem 0.5rem; background: #111111; color: #cccccc; border: 1px solid #333333; border-radius: 2px;" onclick="loadFortranSample('fib')">2. FIBONACCI</button>
-              <button type="button" class="btn-clean secondary" style="font-family: var(--font-mono); font-size: 0.68rem; padding: 0.2rem 0.5rem; background: #111111; color: #cccccc; border: 1px solid #333333; border-radius: 2px;" onclick="loadFortranSample('fat')">3. FATORIAL</button>
-              <button type="button" class="btn-clean secondary" style="font-family: var(--font-mono); font-size: 0.68rem; padding: 0.2rem 0.5rem; background: #111111; color: #cccccc; border: 1px solid #333333; border-radius: 2px;" onclick="loadFortranSample('raiz')">4. EQUAÇÃO</button>
+            <div style="display: flex; gap: 0.6rem; align-items: center;">
+              <span style="font-size: 0.68rem; color: #94a3b8; font-family: var(--font-mono); letter-spacing: 0.05em;">ARQUITETURA 36-BIT VALVULADA</span>
             </div>
           </div>
 
-          <!-- ÁREA DO CÓDIGO FONTE (CARTÃO / TERMINAL DE ENTRADA) -->
-          <div style="display: flex; flex-direction: column; gap: 0.35rem;">
-            <div style="font-size: 0.62rem; color: #666666; letter-spacing: 0.05em; font-family: var(--font-mono);">
-              C----+----1----+----2----+----3----+----4----+----5----+----6----+----7-- (CARTÃO PERFURADO)
+          <!-- PAINEL SUPERIOR RECESSO COM LAMPADAS NEON EM GRUPOS OCTAIS -->
+          <div class="ibm704-display-panel">
+            <!-- LINHA DE LAMPADAS INDICADORAS DE ESTADO -->
+            <div class="ibm704-status-strip">
+              <div class="ibm704-indicator active-white" id="ibm704-ind-ready">
+                <span class="ibm704-indicator-lamp"></span>
+                <span>READY</span>
+              </div>
+              <div class="ibm704-indicator" id="ibm704-ind-read">
+                <span class="ibm704-indicator-lamp"></span>
+                <span>CARD READ (711)</span>
+              </div>
+              <div class="ibm704-indicator" id="ibm704-ind-run">
+                <span class="ibm704-indicator-lamp"></span>
+                <span>CPU RUN</span>
+              </div>
+              <div class="ibm704-indicator" id="ibm704-ind-halt">
+                <span class="ibm704-indicator-lamp"></span>
+                <span>HALT</span>
+              </div>
+              <div style="margin-left: auto; font-size: 0.63rem; color: #64748b; font-family: var(--font-mono);">
+                NOTACAO OCTAL (GRUPOS DE 3 BITS)
+              </div>
             </div>
-            <textarea id="fortran-source-input"
-                      spellcheck="false"
-                      style="width: 100%; height: 160px; background: #080808; color: #f1f5f9; border: 1px solid #2a2a2a; border-radius: 2px; padding: 0.65rem; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; line-height: 1.45; resize: vertical; outline: none; box-sizing: border-box;"></textarea>
 
-            <!-- BARRA DE CONTROLE -->
-            <div style="display: flex; gap: 0.5rem; align-items: center; margin: 0.25rem 0;">
-              <button type="button" onclick="runFortranInterpreter()" style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; background: #ffffff; color: #000000; border: 1px solid #ffffff; padding: 0.45rem 1.1rem; cursor: pointer; border-radius: 2px;">
-                [ COMPILAR &amp; EXECUTAR ]
-              </button>
-              <button type="button" onclick="clearFortranConsole()" style="font-family: var(--font-mono); font-size: 0.75rem; background: #111111; color: #888888; border: 1px solid #333333; padding: 0.45rem 0.85rem; cursor: pointer; border-radius: 2px;">
-                [ LIMPAR TELA ]
-              </button>
-              <span id="fortran-status-indicator" style="font-size: 0.7rem; color: #888888; margin-left: auto; font-family: var(--font-mono);">PRONTO</span>
+            <!-- REGISTRADOR: INSTRUCTION COUNTER (IC) - 15 BITS -->
+            <div class="ibm704-reg-row">
+              <div class="ibm704-reg-label">
+                <span>INSTRUCTION COUNTER (IC - 15 BITS)</span>
+                <span id="ibm704-ic-octal">OCTAL: 00000</span>
+              </div>
+              <div class="ibm704-lamp-bank" id="ibm704-ic-lamps"></div>
             </div>
 
-            <!-- TELA DE SAÍDA / TELEIMPRESSORA (TELETYPE LISTING) -->
-            <div style="border-top: 1px dashed #333333; padding-top: 0.45rem; margin-top: 0.25rem;">
-              <div style="font-size: 0.63rem; color: #666666; margin-bottom: 0.25rem; font-family: var(--font-mono);">SAÍDA DA TELEIMPRESSORA / LISTAGEM DE COMPILAÇÃO:</div>
-              <pre id="fortran-console-output"
-                   style="width: 100%; min-height: 140px; max-height: 220px; overflow-y: auto; background: #050505; color: #f8fafc; border: 1px solid #1a1a1a; border-radius: 2px; padding: 0.65rem; font-family: 'VT323', 'JetBrains Mono', monospace; font-size: 1.15rem; line-height: 1.25; margin: 0; white-space: pre-wrap; box-sizing: border-box;"></pre>
+            <!-- REGISTRADOR: ACCUMULATOR (AC) - 38 BITS -->
+            <div class="ibm704-reg-row">
+              <div class="ibm704-reg-label">
+                <span>ACCUMULATOR (AC - 38 BITS: S, Q, P, 1-35)</span>
+                <span id="ibm704-ac-octal">OCTAL: 0000 0000 0000</span>
+              </div>
+              <div class="ibm704-lamp-bank" id="ibm704-ac-lamps"></div>
+            </div>
+
+            <!-- REGISTRADOR: MULTIPLIER-QUOTIENT (MQ) - 36 BITS -->
+            <div class="ibm704-reg-row">
+              <div class="ibm704-reg-label">
+                <span>MULTIPLIER-QUOTIENT (MQ - 36 BITS: 1-36)</span>
+                <span id="ibm704-mq-octal">OCTAL: 0000 0000 0000</span>
+              </div>
+              <div class="ibm704-lamp-bank" id="ibm704-mq-lamps"></div>
+            </div>
+          </div>
+
+          <!-- MESA DE CONTROLE INFERIOR (DESK) -->
+          <div class="ibm704-control-desk">
+            <div class="ibm704-controls-row">
+              <!-- SELETOR DE DECK DE CARTOES DA LEITORA IBM 711 -->
+              <div class="ibm704-hopper-group">
+                <label for="ibm704-deck-select" class="ibm704-hopper-label">Leitora IBM 711:</label>
+                <select id="ibm704-deck-select" class="ibm704-deck-select" onchange="loadIbm704SelectedDeck()">
+                  <option value="hello">DECK 1: 1957 OLA MUNDO (PRIMEIRO FORTRAN)</option>
+                  <option value="ballistics">DECK 2: 1958 TRAJETORIA BALISTICA (NASA)</option>
+                  <option value="fib">DECK 3: SEQUENCIA DE FIBONACCI</option>
+                  <option value="fat">DECK 4: FATORIAL E MULTIPLICACAO</option>
+                  <option value="raiz">DECK 5: RESOLUCAO DE EQUACAO</option>
+                </select>
+              </div>
+
+              <!-- BOTOES PRINCIPAIS DO OPERADOR -->
+              <div class="ibm704-btn-group">
+                <button type="button" id="ibm704-btn-load" class="ibm704-btn-load" onclick="triggerIbm704LoadCards()">
+                  LOAD CARDS
+                </button>
+                <button type="button" class="ibm704-btn-reset" onclick="resetIbm704Console()">
+                  RESET
+                </button>
+              </div>
+            </div>
+
+            <!-- CHAVES DE SENTIDO (SENSE SWITCHES 1 A 6) -->
+            <div class="ibm704-switches-bar">
+              <span class="ibm704-switches-title">SENSE SWITCHES:</span>
+              <div class="ibm704-switch-item" id="ibm704-sw-1" onclick="toggleIbm704Switch(1)" title="Chave 1: Diagnostico de registradores da CPU">
+                <span class="ibm704-switch-toggle"></span>
+                <span class="ibm704-switch-num">SW 1</span>
+              </div>
+              <div class="ibm704-switch-item" id="ibm704-sw-2" onclick="toggleIbm704Switch(2)" title="Chave 2: Listagem estendida da teleimpressora">
+                <span class="ibm704-switch-toggle"></span>
+                <span class="ibm704-switch-num">SW 2</span>
+              </div>
+              <div class="ibm704-switch-item" id="ibm704-sw-3" onclick="toggleIbm704Switch(3)" title="Chave 3: Depuracao de compilacao em 1 passo">
+                <span class="ibm704-switch-toggle"></span>
+                <span class="ibm704-switch-num">SW 3</span>
+              </div>
+              <div class="ibm704-switch-item" id="ibm704-sw-4" onclick="toggleIbm704Switch(4)" title="Chave 4: Teste de ponto flutuante AC">
+                <span class="ibm704-switch-toggle"></span>
+                <span class="ibm704-switch-num">SW 4</span>
+              </div>
+              <div class="ibm704-switch-item" id="ibm704-sw-5" onclick="toggleIbm704Switch(5)" title="Chave 5: Tempo de ciclo de memoria de ferrite">
+                <span class="ibm704-switch-toggle"></span>
+                <span class="ibm704-switch-num">SW 5</span>
+              </div>
+              <div class="ibm704-switch-item" id="ibm704-sw-6" onclick="toggleIbm704Switch(6)" title="Chave 6: Eco dos cartoes perfurados lidos">
+                <span class="ibm704-switch-toggle"></span>
+                <span class="ibm704-switch-num">SW 6</span>
+              </div>
+
+              <!-- TOGGLE PARA EXIBIR/EDITAR CARTOES PERFURADOS -->
+              <div style="margin-left: auto;">
+                <button type="button" class="ibm704-card-editor-toggle" onclick="toggleIbm704CardsPanel()">
+                  [+ Inspecionar / Editar Cartoes Perfurados]
+                </button>
+              </div>
+            </div>
+
+            <!-- PAINEL RETRATIL DOS CARTOES PERFURADOS -->
+            <div class="ibm704-cards-panel" id="ibm704-cards-panel">
+              <div style="font-size: 0.62rem; color: #94a3b8; letter-spacing: 0.05em; font-family: var(--font-mono);">
+                C----+----1----+----2----+----3----+----4----+----5----+----6----+----7-- (CARTAO PERFURADO 80 COLUNAS)
+              </div>
+              <textarea id="fortran-source-input"
+                        spellcheck="false"
+                        style="width: 100%; height: 130px; background: #080c14; color: #f1f5f9; border: 1px solid #334155; border-radius: 2px; padding: 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; line-height: 1.4; resize: vertical; outline: none; box-sizing: border-box;"></textarea>
+            </div>
+          </div>
+
+          <!-- IMPRESSORA DE LINHA IBM 716 CONECTADA -->
+          <div class="ibm716-printer-enclosure">
+            <div class="ibm716-header-strip">
+              <div class="ibm716-badge">IMPRESSORA DE LINHA IBM 716 &bull; LISTAGEM CONTINUA (150 LPM)</div>
+              <button type="button" class="btn-clean secondary" style="font-size: 0.65rem; padding: 0.2rem 0.6rem; background: #cbd5e1; color: #1e293b; border: 1px solid #94a3b8; font-family: var(--font-mono);" onclick="clearIbm716Printer()">
+                AVANCAR FOLHA / LIMPAR
+              </button>
+            </div>
+            <div class="ibm716-paper-roll">
+              <!-- FUROS DE TRATOR ESQUERDO -->
+              <div class="ibm716-tractor-strip">
+                <span class="ibm716-tractor-hole"></span>
+                <span class="ibm716-tractor-hole"></span>
+                <span class="ibm716-tractor-hole"></span>
+                <span class="ibm716-tractor-hole"></span>
+                <span class="ibm716-tractor-hole"></span>
+                <span class="ibm716-tractor-hole"></span>
+                <span class="ibm716-tractor-hole"></span>
+                <span class="ibm716-tractor-hole"></span>
+                <span class="ibm716-tractor-hole"></span>
+                <span class="ibm716-tractor-hole"></span>
+              </div>
+              <!-- CONTEUDO DO PAPEL ZEBRADO -->
+              <pre id="ibm716-output" class="ibm716-paper-content">CARREGUE UM DECK DE CARTOES NO ALIMENTADOR IBM 711 E PRESSIONE [LOAD CARDS].</pre>
+              <!-- FUROS DE TRATOR DIREITO -->
+              <div class="ibm716-tractor-strip right">
+                <span class="ibm716-tractor-hole"></span>
+                <span class="ibm716-tractor-hole"></span>
+                <span class="ibm716-tractor-hole"></span>
+                <span class="ibm716-tractor-hole"></span>
+                <span class="ibm716-tractor-hole"></span>
+                <span class="ibm716-tractor-hole"></span>
+                <span class="ibm716-tractor-hole"></span>
+                <span class="ibm716-tractor-hole"></span>
+                <span class="ibm716-tractor-hole"></span>
+                <span class="ibm716-tractor-hole"></span>
+              </div>
             </div>
           </div>
         </div>
@@ -11403,21 +11943,38 @@ READY
     }
 
     // =========================================================================
-    // EMULADOR / COMPILADOR FORTRAN I RETRO (IBM 704 - 1957)
+    // SIMULADOR DO CONSOLE DO OPERADOR IBM 704 & IMPRESSORA IBM 716 (1957)
     // =========================================================================
     const fortranSamples = {
-      hello: `C     PRIMEIRO PROGRAMA FORTRAN I (1957)
+      hello: `C     IBM 704 FORTRAN I (1957) - DECK 1
       PROGRAM HELLO
-      PRINT *, 'OLA, MUNDO CIENTIFICO!'
-      PRINT *, 'FORTRAN: FORMULA TRANSLATION SYSTEM'
-      PRINT *, 'JOHN BACKUS - IBM 704 (1957)'
+      PRINT *, 'IBM 704 ELECTRONIC DATA PROCESSING MACHINE'
+      PRINT *, 'JOHN BACKUS / SISTEMA FORTRAN I (1957)'
+      PRINT *, 'PRIMEIRA LINGUAGEM DE ALTO NIVEL COMPILADA'
       STOP
       END`,
-      fib: `C     SEQUENCIA DE FIBONACCI EM FORTRAN
+      ballistics: `C     TRAJETORIA BALISTICA - NASA LANGLEY (1958)
+      PROGRAM BALISTICA
+      REAL V0, G, T, X, Y
+      INTEGER I
+      V0 = 120.0
+      G = 9.8
+      PRINT *, 'SIMULACAO BALISTICA NA CPU IBM 704:'
+      PRINT *, 'V0 = 120.0 M/S (ANGULO 30 GRAUS), G = 9.8 M/S2'
+      DO I = 1, 6
+        T = I * 2.0
+        X = V0 * 0.8660 * T
+        Y = (V0 * 0.5000 * T) - (0.5 * G * T * T)
+        PRINT *, 'T =', T, 'S | X =', X, 'M | Y =', Y, 'M'
+      END DO
+      STOP
+      END`,
+      fib: `C     SEQUENCIA DE FIBONACCI EM FORTRAN I
       PROGRAM FIB
       INTEGER A, B, C, I
       A = 0
       B = 1
+      PRINT *, 'GERANDO TERMOS DE FIBONACCI:'
       PRINT *, 'TERMO 1 =', A
       PRINT *, 'TERMO 2 =', B
       DO I = 3, 10
@@ -11456,18 +12013,211 @@ READY
       END`
     };
 
+    let ibm704IsRunning = false;
+    let ibm704AnimationTimer = null;
+    const ibm704SenseSwitches = [false, false, false, false, false, false, false];
+    let ibm704IcLamps = [];
+    let ibm704AcLamps = [];
+    let ibm704MqLamps = [];
+
+    function buildIbm704Lamps() {
+      const icContainer = document.getElementById('ibm704-ic-lamps');
+      const acContainer = document.getElementById('ibm704-ac-lamps');
+      const mqContainer = document.getElementById('ibm704-mq-lamps');
+      if (!icContainer || !acContainer || !mqContainer) return;
+
+      icContainer.innerHTML = '';
+      acContainer.innerHTML = '';
+      mqContainer.innerHTML = '';
+      ibm704IcLamps = [];
+      ibm704AcLamps = [];
+      ibm704MqLamps = [];
+
+      // IC: 15 bits em 5 grupos octais de 3 bits
+      for (let g = 0; g < 5; g++) {
+        const groupEl = document.createElement('div');
+        groupEl.className = 'ibm704-octal-group';
+        for (let b = 0; b < 3; b++) {
+          const lamp = document.createElement('span');
+          lamp.className = 'ibm704-lamp';
+          groupEl.appendChild(lamp);
+          ibm704IcLamps.push(lamp);
+        }
+        icContainer.appendChild(groupEl);
+      }
+
+      // AC: 38 bits (Grupo 1: Sign, Q, P + 11 grupos de 3 + 1 grupo de 2)
+      // Grupo de S, Q, P (3 bits)
+      const sqpGroup = document.createElement('div');
+      sqpGroup.className = 'ibm704-octal-group';
+      sqpGroup.title = 'Bits S (Sinal), Q e P de Overflow';
+      for (let b = 0; b < 3; b++) {
+        const lamp = document.createElement('span');
+        lamp.className = 'ibm704-lamp';
+        sqpGroup.appendChild(lamp);
+        ibm704AcLamps.push(lamp);
+      }
+      acContainer.appendChild(sqpGroup);
+
+      // 11 grupos de 3 bits = 33 bits
+      for (let g = 0; g < 11; g++) {
+        const groupEl = document.createElement('div');
+        groupEl.className = 'ibm704-octal-group';
+        for (let b = 0; b < 3; b++) {
+          const lamp = document.createElement('span');
+          lamp.className = 'ibm704-lamp';
+          groupEl.appendChild(lamp);
+          ibm704AcLamps.push(lamp);
+        }
+        acContainer.appendChild(groupEl);
+      }
+
+      // Ultimo grupo de 2 bits (bits 34 e 35)
+      const lastAcGroup = document.createElement('div');
+      lastAcGroup.className = 'ibm704-octal-group';
+      for (let b = 0; b < 2; b++) {
+        const lamp = document.createElement('span');
+        lamp.className = 'ibm704-lamp';
+        lastAcGroup.appendChild(lamp);
+        ibm704AcLamps.push(lamp);
+      }
+      acContainer.appendChild(lastAcGroup);
+
+      // MQ: 36 bits em 12 grupos de 3 bits
+      for (let g = 0; g < 12; g++) {
+        const groupEl = document.createElement('div');
+        groupEl.className = 'ibm704-octal-group';
+        for (let b = 0; b < 3; b++) {
+          const lamp = document.createElement('span');
+          lamp.className = 'ibm704-lamp';
+          groupEl.appendChild(lamp);
+          ibm704MqLamps.push(lamp);
+        }
+        mqContainer.appendChild(groupEl);
+      }
+    }
+
+    function setLampBits(lamps, value, bitCount, octalElId) {
+      const valBig = BigInt(Math.max(0, Math.floor(Math.abs(value))));
+      const binStr = valBig.toString(2).padStart(bitCount, '0').slice(-bitCount);
+      for (let i = 0; i < bitCount; i++) {
+        if (lamps[i]) {
+          if (binStr[i] === '1') {
+            lamps[i].classList.add('lit');
+          } else {
+            lamps[i].classList.remove('lit');
+          }
+        }
+      }
+      if (octalElId) {
+        const el = document.getElementById(octalElId);
+        if (el) {
+          const octStr = valBig.toString(8).toUpperCase();
+          el.textContent = `OCTAL: ${octStr.padStart(Math.ceil(bitCount / 3), '0')}`;
+        }
+      }
+    }
+
+    function randomizeLamps() {
+      ibm704IcLamps.forEach(lamp => {
+        if (Math.random() > 0.5) lamp.classList.add('lit');
+        else lamp.classList.remove('lit');
+      });
+      ibm704AcLamps.forEach(lamp => {
+        if (Math.random() > 0.6) lamp.classList.add('lit');
+        else lamp.classList.remove('lit');
+      });
+      ibm704MqLamps.forEach(lamp => {
+        if (Math.random() > 0.5) lamp.classList.add('lit');
+        else lamp.classList.remove('lit');
+      });
+    }
+
+    function clearLamps() {
+      ibm704IcLamps.forEach(l => l.classList.remove('lit'));
+      ibm704AcLamps.forEach(l => l.classList.remove('lit'));
+      ibm704MqLamps.forEach(l => l.classList.remove('lit'));
+      const icEl = document.getElementById('ibm704-ic-octal');
+      if (icEl) icEl.textContent = 'OCTAL: 00000';
+      const acEl = document.getElementById('ibm704-ac-octal');
+      if (acEl) acEl.textContent = 'OCTAL: 0000 0000 0000';
+      const mqEl = document.getElementById('ibm704-mq-octal');
+      if (mqEl) mqEl.textContent = 'OCTAL: 0000 0000 0000';
+    }
+
+    function toggleIbm704Switch(idx) {
+      ibm704SenseSwitches[idx] = !ibm704SenseSwitches[idx];
+      const el = document.getElementById(`ibm704-sw-${idx}`);
+      if (el) {
+        el.classList.toggle('on', ibm704SenseSwitches[idx]);
+      }
+      if (window.SimulatorAudio && SimulatorAudio.switchToggle) {
+        SimulatorAudio.switchToggle();
+      }
+    }
+
+    function toggleIbm704CardsPanel() {
+      const p = document.getElementById('ibm704-cards-panel');
+      if (p) p.classList.toggle('open');
+    }
+
+    function loadIbm704SelectedDeck() {
+      const sel = document.getElementById('ibm704-deck-select');
+      if (!sel) return;
+      loadFortranSample(sel.value);
+      if (window.SimulatorAudio && SimulatorAudio.teleprinterChack) {
+        SimulatorAudio.teleprinterChack();
+      }
+    }
+
     function loadFortranSample(key) {
       const input = document.getElementById('fortran-source-input');
       if (input && fortranSamples[key]) {
         input.value = fortranSamples[key];
       }
+      const sel = document.getElementById('ibm704-deck-select');
+      if (sel && sel.value !== key && sel.querySelector(`option[value="${key}"]`)) {
+        sel.value = key;
+      }
+    }
+
+    function clearIbm716Printer() {
+      const out = document.getElementById('ibm716-output');
+      if (out) {
+        out.textContent = '*** IMPRESSORA IBM 716: FORMULARIO CONTINUO AVANCADO. AGUARDANDO COMANDO [LOAD CARDS]. ***';
+      }
+      if (window.SimulatorAudio && SimulatorAudio.teleprinterChack) {
+        SimulatorAudio.teleprinterChack();
+      }
     }
 
     function clearFortranConsole() {
-      const out = document.getElementById('fortran-console-output');
-      if (out) out.textContent = '';
-      const st = document.getElementById('fortran-status-indicator');
-      if (st) st.textContent = 'PRONTO';
+      clearIbm716Printer();
+    }
+
+    function resetIbm704Console() {
+      if (ibm704AnimationTimer) {
+        clearInterval(ibm704AnimationTimer);
+        ibm704AnimationTimer = null;
+      }
+      ibm704IsRunning = false;
+      const btnLoad = document.getElementById('ibm704-btn-load');
+      if (btnLoad) btnLoad.disabled = false;
+
+      const indReady = document.getElementById('ibm704-ind-ready');
+      const indRead = document.getElementById('ibm704-ind-read');
+      const indRun = document.getElementById('ibm704-ind-run');
+      const indHalt = document.getElementById('ibm704-ind-halt');
+
+      if (indReady) { indReady.className = 'ibm704-indicator active-white active'; }
+      if (indRead) { indRead.className = 'ibm704-indicator'; }
+      if (indRun) { indRun.className = 'ibm704-indicator'; }
+      if (indHalt) { indHalt.className = 'ibm704-indicator'; }
+
+      clearLamps();
+      if (window.SimulatorAudio && SimulatorAudio.switchToggle) {
+        SimulatorAudio.switchToggle();
+      }
     }
 
     function splitFortranArgs(str) {
@@ -11493,195 +12243,306 @@ READY
     }
 
     function runFortranInterpreter() {
+      triggerIbm704LoadCards();
+    }
+
+    function triggerIbm704LoadCards() {
+      if (ibm704IsRunning) return;
+      ibm704IsRunning = true;
+
+      const btnLoad = document.getElementById('ibm704-btn-load');
+      if (btnLoad) btnLoad.disabled = true;
+
+      const indReady = document.getElementById('ibm704-ind-ready');
+      const indRead = document.getElementById('ibm704-ind-read');
+      const indRun = document.getElementById('ibm704-ind-run');
+      const indHalt = document.getElementById('ibm704-ind-halt');
+      const printerOut = document.getElementById('ibm716-output');
       const srcEl = document.getElementById('fortran-source-input');
-      const outEl = document.getElementById('fortran-console-output');
-      const statEl = document.getElementById('fortran-status-indicator');
-      if (!srcEl || !outEl) return;
 
-      if (SimulatorAudio && SimulatorAudio.teleprinterChack) {
-        SimulatorAudio.teleprinterChack();
+      if (indReady) indReady.className = 'ibm704-indicator';
+      if (indHalt) indHalt.className = 'ibm704-indicator';
+      if (indRead) indRead.className = 'ibm704-indicator active-amber active';
+
+      if (window.SimulatorAudio && SimulatorAudio.mechanicalLatch) {
+        SimulatorAudio.mechanicalLatch();
       }
 
-      if (statEl) statEl.textContent = 'COMPILANDO...';
-
-      const rawLines = srcEl.value.split('\n');
-      const outputLines = [];
-
-      outputLines.push('*** IBM 704 FORTRAN I COMPILER (1957) ***');
-      outputLines.push(`LISTAGEM DO FONTE: ${rawLines.length} CARTAO(OES) PROCESSADO(S)`);
-      outputLines.push('SISTEMA OPERACIONAL: GM-NAA I/O MONITOR');
-      outputLines.push('COMPILACAO EM 1 PASSO... SUCESSO (0 ERROS)');
-      outputLines.push('INICIANDO EXECUCAO DO PROGRAMA OBJETO NA CPU IBM 704:');
-      outputLines.push('--------------------------------------------------');
-
-      const progLines = [];
-      for (let i = 0; i < rawLines.length; i++) {
-        let line = rawLines[i].trim();
-        if (!line) continue;
-        if (/^[Cc*!]/.test(rawLines[i]) || line.startsWith('!')) continue;
-        const bangIdx = line.indexOf('!');
-        if (bangIdx !== -1) line = line.substring(0, bangIdx).trim();
-        if (!line) continue;
-        progLines.push({ text: line, lineNum: i + 1 });
+      if (printerOut) {
+        printerOut.textContent = 'ALIMENTADOR IBM 711: CARREGANDO DECK DE CARTOES PERFURADOS...\n';
       }
 
-      const vars = {};
-      let pc = 0;
-      let steps = 0;
-      const MAX_STEPS = 3000;
-      let stopped = false;
+      // Fase 1: Leitura de Cartoes (600ms com som de reles/leitora e lampadas oscilando)
+      let phaseTime = 0;
+      ibm704AnimationTimer = setInterval(() => {
+        phaseTime += 100;
+        randomizeLamps();
+        if (window.SimulatorAudio) {
+          if (phaseTime % 200 === 0 && SimulatorAudio.relayClack) {
+            SimulatorAudio.relayClack();
+          } else if (SimulatorAudio.teleprinterChack) {
+            SimulatorAudio.teleprinterChack();
+          }
+        }
 
-      function parseCondition(condStr) {
-        let c = condStr.trim();
-        c = c.replace(/\.EQ\./gi, '===');
-        c = c.replace(/\.NE\./gi, '!==');
-        c = c.replace(/\.LE\./gi, '<=');
-        c = c.replace(/\.GE\./gi, '>=');
-        c = c.replace(/\.LT\./gi, '<');
-        c = c.replace(/\.GT\./gi, '>');
-        const keys = Object.keys(vars).sort((a, b) => b.length - a.length);
-        for (const k of keys) {
-          const re = new RegExp('\\b' + k + '\\b', 'gi');
-          c = c.replace(re, vars[k]);
+        if (phaseTime === 600) {
+          // Fase 2: Execucao da CPU 704
+          if (indRead) indRead.className = 'ibm704-indicator';
+          if (indRun) indRun.className = 'ibm704-indicator active-green active';
         }
-        try {
-          return Boolean(Function('"use strict"; return (' + c + ')')());
-        } catch (e) {
-          return false;
-        }
-      }
 
-      function evalExpr(expr) {
-        let e = expr.trim();
-        if (!e) return 0;
-        if ((e.startsWith("'") && e.endsWith("'")) || (e.startsWith('"') && e.endsWith('"'))) {
-          return e.slice(1, -1);
+        if (phaseTime >= 1400) {
+          // Fase 3: Conclusao, listagem na impressora IBM 716 e estado de HALT
+          clearInterval(ibm704AnimationTimer);
+          ibm704AnimationTimer = null;
+          executeFortranJob();
         }
-        e = e.replace(/\bSQRT\s*\(/gi, 'Math.sqrt(');
-        e = e.replace(/\bABS\s*\(/gi, 'Math.abs(');
-        e = e.replace(/\bMOD\s*\(([^,]+),([^)]+)\)/gi, '(($1)%($2))');
-        const keys = Object.keys(vars).sort((a, b) => b.length - a.length);
-        for (const k of keys) {
-          const re = new RegExp('\\b' + k + '\\b', 'gi');
-          e = e.replace(re, vars[k]);
-        }
-        try {
-          const val = Function('"use strict"; return (' + e + ')')();
-          return (typeof val === 'number') ? (Number.isInteger(val) ? val : Number(val.toFixed(4))) : val;
-        } catch (err) {
-          return expr;
-        }
-      }
+      }, 100);
 
-      function executeStatement(stmt) {
-        const s = stmt.trim();
-        if (/^(PROGRAM|SUBROUTINE|FUNCTION)\b/i.test(s)) return;
-        if (/^(INTEGER|REAL|DOUBLE|CHARACTER|LOGICAL|DIMENSION)\b/i.test(s)) return;
-        if (/^(STOP|END\s*PROGRAM|END)\b/i.test(s)) {
-          stopped = true;
+      function executeFortranJob() {
+        if (!srcEl || !printerOut) {
+          resetIbm704Console();
           return;
         }
 
-        const printMatch = s.match(/^(PRINT\s*\*|WRITE\s*\([^)]*\))\s*,?\s*(.*)$/i);
-        if (printMatch) {
-          const argsStr = printMatch[2];
-          if (!argsStr) {
-            outputLines.push('');
+        const rawLines = srcEl.value.split('\n');
+        const outputLines = [];
+
+        const swStates = [];
+        for (let i = 1; i <= 6; i++) {
+          swStates.push(`${i}:${ibm704SenseSwitches[i] ? 'ON' : 'OFF'}`);
+        }
+
+        outputLines.push('================================================================================');
+        outputLines.push('IBM 704 DATA PROCESSING SYSTEM - FORTRAN I COMPILER (1957)');
+        outputLines.push('SISTEMA OPERACIONAL: GM-NAA I/O MONITOR | PROCESSAMENTO BATCH');
+        outputLines.push(`LEITORA DE CARTOES IBM 711-1 | SENSE SWITCHES: [${swStates.join(' ')}]`);
+        outputLines.push('--------------------------------------------------------------------------------');
+        outputLines.push(`LISTAGEM DO DECK FONTE: ${rawLines.length} CARTAO(OES) DE 80 COLUNAS PROCESSADOS`);
+        outputLines.push('FASE 1: ANALISE LEXICA E FORMULA TRANSLATION ......... CONCLUIDA COM SUCESSO');
+        outputLines.push('FASE 2: OTIMIZACAO DE LOOPS DO E REGISTRADORES INDEX . 0 ADVERTENCIAS');
+        outputLines.push('FASE 3: CODIGO OBJETO ALOCADO NA MEMORIA DE NUCLEOS DE FERRITE (36-BIT)');
+        outputLines.push('--------------------------------------------------------------------------------');
+        outputLines.push('SAIDA GERADA PELA CPU IBM 704:');
+
+        const progLines = [];
+        for (let i = 0; i < rawLines.length; i++) {
+          let line = rawLines[i].trim();
+          if (!line) continue;
+          if (/^[Cc*!]/.test(rawLines[i]) || line.startsWith('!')) continue;
+          const bangIdx = line.indexOf('!');
+          if (bangIdx !== -1) line = line.substring(0, bangIdx).trim();
+          if (!line) continue;
+          progLines.push({ text: line, lineNum: i + 1 });
+        }
+
+        const vars = {};
+        let pc = 0;
+        let steps = 0;
+        const MAX_STEPS = 3000;
+        let stopped = false;
+
+        function parseCondition(condStr) {
+          let c = condStr.trim();
+          c = c.replace(/\.EQ\./gi, '===');
+          c = c.replace(/\.NE\./gi, '!==');
+          c = c.replace(/\.LE\./gi, '<=');
+          c = c.replace(/\.GE\./gi, '>=');
+          c = c.replace(/\.LT\./gi, '<');
+          c = c.replace(/\.GT\./gi, '>');
+          const keys = Object.keys(vars).sort((a, b) => b.length - a.length);
+          for (const k of keys) {
+            const re = new RegExp('\\b' + k + '\\b', 'gi');
+            c = c.replace(re, vars[k]);
+          }
+          try {
+            return Boolean(Function('"use strict"; return (' + c + ')')());
+          } catch (e) {
+            return false;
+          }
+        }
+
+        function evalExpr(expr) {
+          let e = expr.trim();
+          if (!e) return 0;
+          if ((e.startsWith("'") && e.endsWith("'")) || (e.startsWith('"') && e.endsWith('"'))) {
+            return e.slice(1, -1);
+          }
+          e = e.replace(/\bSQRT\s*\(/gi, 'Math.sqrt(');
+          e = e.replace(/\bABS\s*\(/gi, 'Math.abs(');
+          e = e.replace(/\bMOD\s*\(([^,]+),([^)]+)\)/gi, '(($1)%($2))');
+          const keys = Object.keys(vars).sort((a, b) => b.length - a.length);
+          for (const k of keys) {
+            const re = new RegExp('\\b' + k + '\\b', 'gi');
+            e = e.replace(re, vars[k]);
+          }
+          try {
+            const val = Function('"use strict"; return (' + e + ')')();
+            return (typeof val === 'number') ? (Number.isInteger(val) ? val : Number(val.toFixed(4))) : val;
+          } catch (err) {
+            return expr;
+          }
+        }
+
+        function executeStatement(stmt) {
+          const s = stmt.trim();
+          if (/^(PROGRAM|SUBROUTINE|FUNCTION)\b/i.test(s)) return;
+          if (/^(INTEGER|REAL|DOUBLE|CHARACTER|LOGICAL|DIMENSION)\b/i.test(s)) return;
+          if (/^(STOP|END\s*PROGRAM|END)\b/i.test(s)) {
+            stopped = true;
             return;
           }
-          const args = splitFortranArgs(argsStr);
-          const vals = args.map(a => {
-            const trimmed = a.trim();
-            if ((trimmed.startsWith("'") && trimmed.endsWith("'")) || (trimmed.startsWith('"') && trimmed.endsWith('"'))) {
-              return trimmed.slice(1, -1);
+
+          const printMatch = s.match(/^(PRINT\s*\*|WRITE\s*\([^)]*\))\s*,?\s*(.*)$/i);
+          if (printMatch) {
+            const argsStr = printMatch[2];
+            if (!argsStr) {
+              outputLines.push('');
+              return;
             }
-            return evalExpr(trimmed);
-          });
-          outputLines.push(vals.join(' '));
-          return;
-        }
-
-        const eqIdx = s.indexOf('=');
-        if (eqIdx !== -1) {
-          const varName = s.substring(0, eqIdx).trim().toUpperCase();
-          const exprPart = s.substring(eqIdx + 1).trim();
-          if (/^[A-Z][A-Z0-9_]*$/i.test(varName)) {
-            vars[varName] = evalExpr(exprPart);
+            const args = splitFortranArgs(argsStr);
+            const vals = args.map(a => {
+              const trimmed = a.trim();
+              if ((trimmed.startsWith("'") && trimmed.endsWith("'")) || (trimmed.startsWith('"') && trimmed.endsWith('"'))) {
+                return trimmed.slice(1, -1);
+              }
+              return evalExpr(trimmed);
+            });
+            outputLines.push('  ' + vals.join(' '));
             return;
           }
-        }
-      }
 
-      const loopStack = [];
-
-      try {
-        while (pc < progLines.length && steps < MAX_STEPS && !stopped) {
-          steps++;
-          const cur = progLines[pc];
-          const s = cur.text;
-
-          const doMatch = s.match(/^DO\s+([A-Z0-9_]+)\s*=\s*([^,]+)\s*,\s*([^,]+)(?:\s*,\s*([^,]+))?$/i);
-          if (doMatch) {
-            const vName = doMatch[1].toUpperCase();
-            const startVal = Number(evalExpr(doMatch[2]));
-            const endVal = Number(evalExpr(doMatch[3]));
-            const stepVal = doMatch[4] ? Number(evalExpr(doMatch[4])) : 1;
-
-            vars[vName] = startVal;
-            loopStack.push({
-              varName: vName,
-              endVal,
-              stepVal,
-              startPc: pc + 1
-            });
-            pc++;
-            continue;
+          const eqIdx = s.indexOf('=');
+          if (eqIdx !== -1) {
+            const varName = s.substring(0, eqIdx).trim().toUpperCase();
+            const exprPart = s.substring(eqIdx + 1).trim();
+            if (/^[A-Z][A-Z0-9_]*$/i.test(varName)) {
+              vars[varName] = evalExpr(exprPart);
+              return;
+            }
           }
+        }
 
-          if (/^(END\s*DO|CONTINUE|\d+\s+CONTINUE)\b/i.test(s)) {
-            if (loopStack.length > 0) {
-              const topLoop = loopStack[loopStack.length - 1];
-              vars[topLoop.varName] += topLoop.stepVal;
-              const continueCond = (topLoop.stepVal > 0)
-                ? (vars[topLoop.varName] <= topLoop.endVal)
-                : (vars[topLoop.varName] >= topLoop.endVal);
+        const loopStack = [];
 
-              if (continueCond) {
-                pc = topLoop.startPc;
-                continue;
-              } else {
-                loopStack.pop();
-                pc++;
-                continue;
+        try {
+          while (pc < progLines.length && steps < MAX_STEPS && !stopped) {
+            steps++;
+            const cur = progLines[pc];
+            const s = cur.text;
+
+            const doMatch = s.match(/^DO\s+([A-Z0-9_]+)\s*=\s*([^,]+)\s*,\s*([^,]+)(?:\s*,\s*([^,]+))?$/i);
+            if (doMatch) {
+              const vName = doMatch[1].toUpperCase();
+              const startVal = Number(evalExpr(doMatch[2]));
+              const endVal = Number(evalExpr(doMatch[3]));
+              const stepVal = doMatch[4] ? Number(evalExpr(doMatch[4])) : 1;
+
+              vars[vName] = startVal;
+              loopStack.push({
+                varName: vName,
+                endVal,
+                stepVal,
+                startPc: pc + 1
+              });
+              pc++;
+              continue;
+            }
+
+            if (/^(END\s*DO|CONTINUE|\d+\s+CONTINUE)\b/i.test(s)) {
+              if (loopStack.length > 0) {
+                const topLoop = loopStack[loopStack.length - 1];
+                vars[topLoop.varName] += topLoop.stepVal;
+                const continueCond = (topLoop.stepVal > 0)
+                  ? (vars[topLoop.varName] <= topLoop.endVal)
+                  : (vars[topLoop.varName] >= topLoop.endVal);
+
+                if (continueCond) {
+                  pc = topLoop.startPc;
+                  continue;
+                } else {
+                  loopStack.pop();
+                  pc++;
+                  continue;
+                }
               }
             }
-          }
 
-          const singleIfMatch = s.match(/^IF\s*\((.*)\)\s*(.*)$/i);
-          if (singleIfMatch && !/^THEN$/i.test(singleIfMatch[2].trim())) {
-            const condResult = parseCondition(singleIfMatch[1]);
-            if (condResult) {
-              executeStatement(singleIfMatch[2]);
+            const singleIfMatch = s.match(/^IF\s*\((.*)\)\s*(.*)$/i);
+            if (singleIfMatch && !/^THEN$/i.test(singleIfMatch[2].trim())) {
+              const condResult = parseCondition(singleIfMatch[1]);
+              if (condResult) {
+                executeStatement(singleIfMatch[2]);
+              }
+              pc++;
+              continue;
             }
+
+            executeStatement(s);
             pc++;
-            continue;
           }
 
-          executeStatement(s);
-          pc++;
+          // Se Sense Switch 1 estiver ativa, imprime dump octal dos registradores
+          let finalAcValue = 0;
+          const varKeys = Object.keys(vars);
+          if (varKeys.length > 0) {
+            const lastVal = vars[varKeys[varKeys.length - 1]];
+            if (typeof lastVal === 'number') finalAcValue = Math.floor(Math.abs(lastVal));
+          } else {
+            finalAcValue = 704;
+          }
+
+          const finalPcVal = Math.min(32767, (pc + 100));
+          const finalMqVal = steps * 3;
+
+          setLampBits(ibm704IcLamps, finalPcVal, 15, 'ibm704-ic-octal');
+          setLampBits(ibm704AcLamps, finalAcValue, 38, 'ibm704-ac-octal');
+          setLampBits(ibm704MqLamps, finalMqVal, 36, 'ibm704-mq-octal');
+
+          if (ibm704SenseSwitches[1]) {
+            outputLines.push('--------------------------------------------------------------------------------');
+            outputLines.push('*** SENSE SWITCH 1 ATIVA: DESPEJO DE REGISTRADORES DA CPU IBM 704 ***');
+            outputLines.push(`INSTRUCTION COUNTER (IC): OCTAL ${finalPcVal.toString(8).padStart(5, '0')}`);
+            outputLines.push(`ACCUMULATOR         (AC): OCTAL ${finalAcValue.toString(8).padStart(12, '0')}`);
+            outputLines.push(`MULTIPLIER-QUOTIENT (MQ): OCTAL ${finalMqVal.toString(8).padStart(12, '0')}`);
+            outputLines.push('INDICADOR DE OVERFLOW: DESATIVADO | MODO PONTO FLUTUANTE: OK');
+          }
+
+          if (ibm704SenseSwitches[2]) {
+            outputLines.push('--------------------------------------------------------------------------------');
+            outputLines.push('*** SENSE SWITCH 2 ATIVA: METRICAS DO SISTEMA IBM 704 ***');
+            outputLines.push(`CICLOS DE MAQUINA EXECUTADOS: ${steps} INSTRUCOES`);
+            outputLines.push(`TEMPO DE CICLO ESTIMADO: ${(steps * 12).toFixed(1)} MICROSSEGUNDOS (40 KIPS)`);
+            outputLines.push(`CONSUMO ENERGETICO: ~60 KVA COM REFRIGERACAO INDUSTRIAL ATIVA`);
+          }
+
+          outputLines.push('--------------------------------------------------------------------------------');
+          outputLines.push(`FIM NORMAL DE TRABALHO: STOP 0 | CPU EM ESTADO HALT.`);
+          outputLines.push('================================================================================');
+        } catch (err) {
+          outputLines.push(`*** ERRO EM TEMPO DE EXECUCAO: ${err.message} ***`);
         }
 
-        outputLines.push('--------------------------------------------------');
-        outputLines.push(`EXECUCAO ENCERRADA NORMALMENTE (STOP 0).`);
-        outputLines.push(`CICLOS DE MAQUINA PROCESSADOS: ${steps}`);
-        if (statEl) statEl.textContent = 'CONCLUIDO (STOP 0)';
-      } catch (err) {
-        outputLines.push(`*** ERRO EM TEMPO DE EXECUCAO: ${err.message} ***`);
-        if (statEl) statEl.textContent = 'ERRO';
-      }
+        printerOut.textContent = outputLines.join('\n');
+        printerOut.scrollTop = printerOut.scrollHeight;
 
-      outEl.textContent = outputLines.join('\n');
-      outEl.scrollTop = outEl.scrollHeight;
+        if (indRun) indRun.className = 'ibm704-indicator';
+        if (indHalt) indHalt.className = 'ibm704-indicator active-red active';
+
+        if (window.SimulatorAudio && SimulatorAudio.mechanicalLatch) {
+          SimulatorAudio.mechanicalLatch();
+        }
+
+        if (btnLoad) btnLoad.disabled = false;
+        ibm704IsRunning = false;
+      }
+    }
+
+    function initIbm704Simulator() {
+      buildIbm704Lamps();
+      loadFortranSample('hello');
+      const indReady = document.getElementById('ibm704-ind-ready');
+      if (indReady) indReady.className = 'ibm704-indicator active-white active';
     }
 
     // =========================================================================
@@ -11713,7 +12574,7 @@ READY
       safeInit('Patinho Feio UI', () => updatePatinhoUI());
       safeInit('Terminal SISNE', () => initSisneSimulator());
       safeInit('Mapa Universidades', () => selectUniversityMap('puc'));
-      safeInit('Fortran Retro', () => loadFortranSample('hello'));
+      safeInit('IBM 704 Console', () => initIbm704Simulator());
     }
 
     if (document.readyState === 'loading') {
