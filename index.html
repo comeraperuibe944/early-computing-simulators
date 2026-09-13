@@ -2552,368 +2552,196 @@
     /* SIMULADOR IBM 704: CONSOLE DE OPERACAO & IMPRESSORA IBM 716 (1957) */
     .ibm704-unit {
       margin-top: 1.5rem;
-      background: #050505;
+      background: #ffffff;
       border: none;
-      border-radius: 4px;
+      border-radius: 0;
       font-family: var(--font-mono);
-      color: #f8fafc;
-      overflow: hidden;
+      color: #0f172a;
+      padding: 0.5rem 0;
     }
     .ibm704-cabinet-header {
-      background: #000000;
+      background: transparent;
       border: none;
-      padding: 0.75rem 1.25rem;
+      padding: 0 0 0.5rem 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-    .ibm704-badge {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .ibm704-logo-plate {
-      background: #141414;
-      border: none;
-      padding: 0.2rem 0.6rem;
-      border-radius: 2px;
-      font-family: 'Times New Roman', serif;
-      font-size: 1.05rem;
-      font-weight: 900;
-      letter-spacing: 0.2em;
-      color: #ffffff;
-    }
-    .ibm704-title-text {
-      display: flex;
-      flex-direction: column;
-    }
-    .ibm704-title-text .ibm704-model {
-      font-size: 0.85rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      color: #ffffff;
-      text-transform: uppercase;
-    }
-    .ibm704-title-text .ibm704-sub {
-      font-size: 0.66rem;
-      color: #777777;
-      letter-spacing: 0.04em;
-    }
-    .ibm704-display-panel {
-      background: #0a0a0a;
-      border: none;
-      padding: 1rem 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.5rem;
     }
     .ibm704-status-strip {
       display: flex;
-      gap: 1.25rem;
+      gap: 0.5rem;
       align-items: center;
-      padding-bottom: 0.65rem;
-      border: none;
-      flex-wrap: wrap;
     }
     .ibm704-indicator {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
-      font-size: 0.68rem;
-      letter-spacing: 0.08em;
-      font-weight: 700;
-      color: #444444;
-      transition: color 0.15s;
     }
     .ibm704-indicator-lamp {
-      width: 11px;
-      height: 11px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      background: #1a1a1a;
-      border: none;
-      transition: background 0.15s, box-shadow 0.15s;
-    }
-    .ibm704-indicator.active,
-    .ibm704-indicator.active-amber,
-    .ibm704-indicator.active-green,
-    .ibm704-indicator.active-red,
-    .ibm704-indicator.active-white {
-      color: #ffffff;
+      background: #e2e8f0;
+      display: inline-block;
+      transition: background 0.15s;
     }
     .ibm704-indicator.active .ibm704-indicator-lamp,
     .ibm704-indicator.active-amber .ibm704-indicator-lamp,
     .ibm704-indicator.active-green .ibm704-indicator-lamp,
     .ibm704-indicator.active-red .ibm704-indicator-lamp,
     .ibm704-indicator.active-white .ibm704-indicator-lamp {
+      background: #0f172a;
+    }
+    .ibm704-display-panel {
       background: #ffffff;
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 0.6rem 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
     }
     .ibm704-reg-row {
       display: flex;
       flex-direction: column;
-      gap: 0.25rem;
+      gap: 0.15rem;
     }
     .ibm704-reg-label {
-      font-size: 0.63rem;
-      letter-spacing: 0.08em;
-      color: #888888;
-      text-transform: uppercase;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #64748b;
       display: flex;
       justify-content: space-between;
     }
     .ibm704-lamp-bank {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.35rem;
       align-items: center;
       flex-wrap: wrap;
-      background: #000000;
-      padding: 0.35rem 0.55rem;
-      border-radius: 3px;
+      background: transparent;
+      padding: 0;
       border: none;
     }
     .ibm704-octal-group {
       display: flex;
-      gap: 4px;
-      padding: 0 4px;
-      border: none;
-    }
-    .ibm704-octal-group:last-child {
+      gap: 3px;
+      padding: 0 1px;
       border: none;
     }
     .ibm704-lamp {
-      width: 10px;
-      height: 10px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background: #181818;
+      background: #e2e8f0;
       border: none;
-      transition: background 0.05s, box-shadow 0.05s;
+      transition: background 0.05s;
     }
     .ibm704-lamp.lit {
-      background: #ffffff;
-      box-shadow: 0 0 7px rgba(255, 255, 255, 0.95);
+      background: #0f172a;
     }
     .ibm704-control-desk {
-      background: #0a0a0a;
+      background: transparent;
       border: none;
-      padding: 0.85rem 1.25rem;
+      padding: 0.6rem 0 0.4rem 0;
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.4rem;
     }
     .ibm704-controls-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 0.85rem;
-    }
-    .ibm704-hopper-group {
-      display: flex;
-      align-items: center;
       gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-    .ibm704-hopper-label {
-      font-size: 0.68rem;
-      font-weight: 700;
-      color: #888888;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
     }
     .ibm704-deck-select {
-      background: #141414;
-      color: #ffffff;
-      border: none;
-      border-radius: 2px;
+      background: #ffffff;
+      color: #0f172a;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
       padding: 0.4rem 0.65rem;
       font-family: var(--font-mono);
-      font-size: 0.74rem;
+      font-size: 0.76rem;
+      font-weight: 600;
       outline: none;
       cursor: pointer;
     }
     .ibm704-btn-group {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
     .ibm704-btn-load {
-      background: #ffffff;
-      color: #000000;
-      border: none;
-      border-radius: 3px;
-      padding: 0.45rem 1.15rem;
+      background: #0f172a;
+      color: #ffffff;
+      border: 1px solid #0f172a;
+      border-radius: 4px;
+      padding: 0.4rem 0.85rem;
       font-family: var(--font-mono);
       font-size: 0.76rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
+      font-weight: 600;
       cursor: pointer;
-      box-shadow: none;
-      transition: opacity 0.1s;
+      transition: background 0.15s, opacity 0.15s;
     }
     .ibm704-btn-load:hover {
-      opacity: 0.9;
-    }
-    .ibm704-btn-load:active {
-      transform: translateY(1px);
+      background: #334155;
     }
     .ibm704-btn-load:disabled {
-      opacity: 0.35;
+      opacity: 0.4;
       cursor: not-allowed;
-      transform: none;
     }
     .ibm704-btn-reset {
-      background: #141414;
-      color: #888888;
-      border: none;
-      border-radius: 3px;
-      padding: 0.45rem 0.85rem;
+      background: #ffffff;
+      color: #475569;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      padding: 0.4rem 0.75rem;
       font-family: var(--font-mono);
-      font-size: 0.74rem;
-      font-weight: 700;
+      font-size: 0.76rem;
+      font-weight: 500;
       cursor: pointer;
-      box-shadow: none;
-      transition: color 0.1s, background 0.1s;
+      transition: background 0.15s, color 0.15s;
     }
     .ibm704-btn-reset:hover {
-      color: #ffffff;
-      background: #202020;
-    }
-    .ibm704-switches-bar {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 0.4rem 0.65rem;
-      background: #000000;
-      border-radius: 3px;
-      border: none;
-      flex-wrap: wrap;
-    }
-    .ibm704-switches-title {
-      font-size: 0.62rem;
-      color: #555555;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-    .ibm704-switch-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3px;
-      cursor: pointer;
-      user-select: none;
-    }
-    .ibm704-switch-toggle {
-      width: 14px;
-      height: 22px;
-      background: #181818;
-      border: none;
-      border-radius: 2px;
-      position: relative;
-    }
-    .ibm704-switch-toggle::after {
-      content: '';
-      position: absolute;
-      left: 2px;
-      bottom: 2px;
-      width: 10px;
-      height: 9px;
-      background: #444444;
-      border-radius: 1px;
-      transition: bottom 0.1s ease, background 0.1s;
-    }
-    .ibm704-switch-item.on .ibm704-switch-toggle::after {
-      bottom: 11px;
-      background: #ffffff;
-      box-shadow: 0 0 5px rgba(255, 255, 255, 0.85);
-    }
-    .ibm704-switch-num {
-      font-size: 0.58rem;
-      color: #777777;
-      font-weight: 700;
-    }
-    .ibm704-switch-item.on .ibm704-switch-num {
-      color: #ffffff;
-    }
-    .ibm704-card-editor-toggle {
-      font-size: 0.68rem;
-      color: #777777;
-      text-decoration: underline;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 0;
-      font-family: var(--font-mono);
-      text-align: left;
-    }
-    .ibm704-card-editor-toggle:hover {
-      color: #ffffff;
-    }
-    .ibm704-cards-panel {
-      display: none;
-      flex-direction: column;
-      gap: 0.35rem;
-      background: #000000;
-      border: none;
-      border-radius: 3px;
-      padding: 0.65rem;
-      margin-top: 0.35rem;
-    }
-    .ibm704-cards-panel.open {
-      display: flex;
+      background: #f8fafc;
+      color: #0f172a;
     }
     .ibm716-printer-enclosure {
-      background: #050505;
+      background: transparent;
       border: none;
-      padding: 0.85rem 1.25rem 1.25rem;
+      padding: 0.4rem 0 0 0;
       position: relative;
     }
-    .ibm716-header-strip {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.5rem;
-    }
-    .ibm716-badge {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      color: #777777;
-      text-transform: uppercase;
-    }
     .ibm716-paper-roll {
-      background: #fdfdfc;
+      background: #ffffff;
       color: #0f172a;
-      border: 1px solid #cbd5e1;
-      box-shadow: inset 0 2px 6px rgba(0,0,0,0.06), 0 3px 8px rgba(0,0,0,0.08);
-      border-radius: 2px;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
       position: relative;
       overflow: hidden;
       display: flex;
     }
     .ibm716-tractor-strip {
-      width: 20px;
+      width: 18px;
       flex-shrink: 0;
-      background: #f1f5f9;
+      background: #f8fafc;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 8px 0;
       gap: 16px;
-      border-right: 1px dashed #cbd5e1;
+      border-right: 1px dashed #e2e8f0;
     }
     .ibm716-tractor-strip.right {
       border-right: none;
-      border-left: 1px dashed #cbd5e1;
+      border-left: 1px dashed #e2e8f0;
     }
     .ibm716-tractor-hole {
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      background: #64748b;
-      box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
+      background: #cbd5e1;
       display: inline-block;
     }
     .ibm716-paper-content {
@@ -2922,15 +2750,15 @@
         180deg,
         #ffffff 0px,
         #ffffff 22px,
-        #f4fbf7 22px,
-        #f4fbf7 44px
+        #f8fafc 22px,
+        #f8fafc 44px
       );
-      padding: 0.85rem 1rem;
-      min-height: 180px;
-      max-height: 280px;
+      padding: 0.75rem 0.85rem;
+      min-height: 120px;
+      max-height: 220px;
       overflow-y: auto;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       line-height: 1.45;
       white-space: pre-wrap;
       color: #0f172a;
@@ -5517,158 +5345,90 @@
           Os anos 1950 representam o salto da computação de laboratório para a indústria corporativa e o nascimento formal da Ciência da Computação como disciplina de algoritmos, estruturas de dados e linguagens formais, liberta da manipulação exclusiva do hardware.
         </div>
 
-        <!-- SIMULADOR IBM 704 & IMPRESSORA DE LINHA IBM 716 (1957) -->
+        <!-- SIMULADOR IBM 704 & IMPRESSORA IBM 716 (1957) -->
         <div class="ibm704-unit" id="ibm704-simulator">
-          <!-- CABECALHO DO GABINETE DE ACO -->
+          <!-- CABECALHO MINIMALISTA -->
           <div class="ibm704-cabinet-header">
-            <div class="ibm704-badge">
-              <div class="ibm704-logo-plate">IBM</div>
-              <div class="ibm704-title-text">
-                <span class="ibm704-model">704 Electronic Data Processing Machine</span>
-                <span class="ibm704-sub">Console de Operador Principal &bull; Fortran I Compiler (1957)</span>
-              </div>
+            <div style="font-weight: 700; font-size: 0.82rem; letter-spacing: 0.05em; color: #0f172a; text-transform: uppercase;">
+              IBM 704 &bull; FORTRAN (1957)
             </div>
-            <div style="display: flex; gap: 0.6rem; align-items: center;">
-              <span style="font-size: 0.68rem; color: #777777; font-family: var(--font-mono); letter-spacing: 0.05em;">ARQUITETURA 36-BIT VALVULADA</span>
+            <!-- INDICADORES COMPACTOS SEM TEXTO -->
+            <div class="ibm704-status-strip">
+              <div class="ibm704-indicator active" id="ibm704-ind-ready" title="Pronto">
+                <span class="ibm704-indicator-lamp"></span>
+              </div>
+              <div class="ibm704-indicator" id="ibm704-ind-read" title="Leitura">
+                <span class="ibm704-indicator-lamp"></span>
+              </div>
+              <div class="ibm704-indicator" id="ibm704-ind-run" title="Execucao">
+                <span class="ibm704-indicator-lamp"></span>
+              </div>
+              <div class="ibm704-indicator" id="ibm704-ind-halt" title="Parada">
+                <span class="ibm704-indicator-lamp"></span>
+              </div>
             </div>
           </div>
 
-          <!-- PAINEL SUPERIOR RECESSO COM LAMPADAS NEON EM GRUPOS OCTAIS -->
+          <!-- PAINEL DE REGISTRADORES LIMPO -->
           <div class="ibm704-display-panel">
-            <!-- LINHA DE LAMPADAS INDICADORAS DE ESTADO -->
-            <div class="ibm704-status-strip">
-              <div class="ibm704-indicator active" id="ibm704-ind-ready">
-                <span class="ibm704-indicator-lamp"></span>
-                <span>READY</span>
-              </div>
-              <div class="ibm704-indicator" id="ibm704-ind-read">
-                <span class="ibm704-indicator-lamp"></span>
-                <span>CARD READ (711)</span>
-              </div>
-              <div class="ibm704-indicator" id="ibm704-ind-run">
-                <span class="ibm704-indicator-lamp"></span>
-                <span>CPU RUN</span>
-              </div>
-              <div class="ibm704-indicator" id="ibm704-ind-halt">
-                <span class="ibm704-indicator-lamp"></span>
-                <span>HALT</span>
-              </div>
-              <div style="margin-left: auto; font-size: 0.63rem; color: #666666; font-family: var(--font-mono);">
-                NOTACAO OCTAL (GRUPOS DE 3 BITS)
-              </div>
-            </div>
-
-            <!-- REGISTRADOR: INSTRUCTION COUNTER (IC) - 15 BITS -->
             <div class="ibm704-reg-row">
               <div class="ibm704-reg-label">
-                <span>INSTRUCTION COUNTER (IC - 15 BITS)</span>
-                <span id="ibm704-ic-octal">OCTAL: 00000</span>
+                <span>IC</span>
+                <span id="ibm704-ic-octal"></span>
               </div>
               <div class="ibm704-lamp-bank" id="ibm704-ic-lamps"></div>
             </div>
 
-            <!-- REGISTRADOR: ACCUMULATOR (AC) - 38 BITS -->
             <div class="ibm704-reg-row">
               <div class="ibm704-reg-label">
-                <span>ACCUMULATOR (AC - 38 BITS: S, Q, P, 1-35)</span>
-                <span id="ibm704-ac-octal">OCTAL: 0000 0000 0000</span>
+                <span>AC</span>
+                <span id="ibm704-ac-octal"></span>
               </div>
               <div class="ibm704-lamp-bank" id="ibm704-ac-lamps"></div>
             </div>
 
-            <!-- REGISTRADOR: MULTIPLIER-QUOTIENT (MQ) - 36 BITS -->
             <div class="ibm704-reg-row">
               <div class="ibm704-reg-label">
-                <span>MULTIPLIER-QUOTIENT (MQ - 36 BITS: 1-36)</span>
-                <span id="ibm704-mq-octal">OCTAL: 0000 0000 0000</span>
+                <span>MQ</span>
+                <span id="ibm704-mq-octal"></span>
               </div>
               <div class="ibm704-lamp-bank" id="ibm704-mq-lamps"></div>
             </div>
           </div>
 
-          <!-- MESA DE CONTROLE INFERIOR (DESK) -->
+          <!-- CONTROLES MINIMALISTAS -->
           <div class="ibm704-control-desk">
             <div class="ibm704-controls-row">
-              <!-- SELETOR DE DECK DE CARTOES DA LEITORA IBM 711 -->
-              <div class="ibm704-hopper-group">
-                <label for="ibm704-deck-select" class="ibm704-hopper-label">Leitora IBM 711:</label>
-                <select id="ibm704-deck-select" class="ibm704-deck-select" onchange="loadIbm704SelectedDeck()">
-                  <option value="hello">DECK 1: 1957 OLA MUNDO (PRIMEIRO FORTRAN)</option>
-                  <option value="ballistics">DECK 2: 1958 TRAJETORIA BALISTICA (NASA)</option>
-                  <option value="fib">DECK 3: SEQUENCIA DE FIBONACCI</option>
-                  <option value="fat">DECK 4: FATORIAL E MULTIPLICACAO</option>
-                  <option value="raiz">DECK 5: RESOLUCAO DE EQUACAO</option>
-                </select>
-              </div>
+              <select id="ibm704-deck-select" class="ibm704-deck-select" onchange="loadIbm704SelectedDeck()">
+                <option value="hello">Ola Mundo (1957)</option>
+                <option value="ballistics">Balistica NASA (1958)</option>
+                <option value="fib">Fibonacci</option>
+                <option value="fat">Fatorial</option>
+                <option value="raiz">Equacao 2 Grau</option>
+              </select>
 
-              <!-- BOTOES PRINCIPAIS DO OPERADOR -->
               <div class="ibm704-btn-group">
                 <button type="button" id="ibm704-btn-load" class="ibm704-btn-load" onclick="triggerIbm704LoadCards()">
-                  LOAD CARDS
+                  Executar
                 </button>
                 <button type="button" class="ibm704-btn-reset" onclick="resetIbm704Console()">
-                  RESET
+                  Reset
                 </button>
               </div>
             </div>
 
-            <!-- CHAVES DE SENTIDO (SENSE SWITCHES 1 A 6) -->
-            <div class="ibm704-switches-bar">
-              <span class="ibm704-switches-title">SENSE SWITCHES:</span>
-              <div class="ibm704-switch-item" id="ibm704-sw-1" onclick="toggleIbm704Switch(1)" title="Chave 1: Diagnostico de registradores da CPU">
-                <span class="ibm704-switch-toggle"></span>
-                <span class="ibm704-switch-num">SW 1</span>
-              </div>
-              <div class="ibm704-switch-item" id="ibm704-sw-2" onclick="toggleIbm704Switch(2)" title="Chave 2: Listagem estendida da teleimpressora">
-                <span class="ibm704-switch-toggle"></span>
-                <span class="ibm704-switch-num">SW 2</span>
-              </div>
-              <div class="ibm704-switch-item" id="ibm704-sw-3" onclick="toggleIbm704Switch(3)" title="Chave 3: Depuracao de compilacao em 1 passo">
-                <span class="ibm704-switch-toggle"></span>
-                <span class="ibm704-switch-num">SW 3</span>
-              </div>
-              <div class="ibm704-switch-item" id="ibm704-sw-4" onclick="toggleIbm704Switch(4)" title="Chave 4: Teste de ponto flutuante AC">
-                <span class="ibm704-switch-toggle"></span>
-                <span class="ibm704-switch-num">SW 4</span>
-              </div>
-              <div class="ibm704-switch-item" id="ibm704-sw-5" onclick="toggleIbm704Switch(5)" title="Chave 5: Tempo de ciclo de memoria de ferrite">
-                <span class="ibm704-switch-toggle"></span>
-                <span class="ibm704-switch-num">SW 5</span>
-              </div>
-              <div class="ibm704-switch-item" id="ibm704-sw-6" onclick="toggleIbm704Switch(6)" title="Chave 6: Eco dos cartoes perfurados lidos">
-                <span class="ibm704-switch-toggle"></span>
-                <span class="ibm704-switch-num">SW 6</span>
-              </div>
-
-              <!-- TOGGLE PARA EXIBIR/EDITAR CARTOES PERFURADOS -->
-              <div style="margin-left: auto;">
-                <button type="button" class="ibm704-card-editor-toggle" onclick="toggleIbm704CardsPanel()">
-                  [+ Inspecionar / Editar Cartoes Perfurados]
-                </button>
-              </div>
-            </div>
-
-            <!-- PAINEL RETRATIL DOS CARTOES PERFURADOS -->
-            <div class="ibm704-cards-panel" id="ibm704-cards-panel">
-              <div style="font-size: 0.62rem; color: #777777; letter-spacing: 0.05em; font-family: var(--font-mono);">
-                C----+----1----+----2----+----3----+----4----+----5----+----6----+----7-- (CARTAO PERFURADO 80 COLUNAS)
-              </div>
+            <!-- EDITOR OPCIONAL COLAPSADO -->
+            <details style="font-size: 0.72rem; color: #64748b; margin-top: 0.25rem;">
+              <summary style="cursor: pointer; user-select: none;">Editar codigo</summary>
               <textarea id="fortran-source-input"
                         spellcheck="false"
-                        style="width: 100%; height: 130px; background: #000000; color: #f8fafc; border: none; border-radius: 2px; padding: 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; line-height: 1.4; resize: vertical; outline: none; box-sizing: border-box;"></textarea>
-            </div>
+                        style="width: 100%; height: 100px; background: #ffffff; color: #0f172a; border: 1px solid #e2e8f0; border-radius: 4px; padding: 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; line-height: 1.4; resize: vertical; outline: none; box-sizing: border-box; margin-top: 0.35rem;"></textarea>
+            </details>
           </div>
 
-          <!-- IMPRESSORA DE LINHA IBM 716 CONECTADA -->
+          <!-- IMPRESSORA IBM 716 -->
           <div class="ibm716-printer-enclosure">
-            <div class="ibm716-header-strip">
-              <div class="ibm716-badge">IMPRESSORA DE LINHA IBM 716 &bull; LISTAGEM CONTINUA (150 LPM)</div>
-              <button type="button" class="btn-clean secondary" style="font-size: 0.65rem; padding: 0.2rem 0.6rem; background: #141414; color: #888888; border: none; border-radius: 2px; font-family: var(--font-mono);" onclick="clearIbm716Printer()">
-                AVANCAR FOLHA / LIMPAR
-              </button>
-            </div>
             <div class="ibm716-paper-roll">
-              <!-- FUROS DE TRATOR ESQUERDO -->
               <div class="ibm716-tractor-strip">
                 <span class="ibm716-tractor-hole"></span>
                 <span class="ibm716-tractor-hole"></span>
@@ -5678,15 +5438,9 @@
                 <span class="ibm716-tractor-hole"></span>
                 <span class="ibm716-tractor-hole"></span>
                 <span class="ibm716-tractor-hole"></span>
-                <span class="ibm716-tractor-hole"></span>
-                <span class="ibm716-tractor-hole"></span>
               </div>
-              <!-- CONTEUDO DO PAPEL ZEBRADO -->
-              <pre id="ibm716-output" class="ibm716-paper-content">CARREGUE UM DECK DE CARTOES NO ALIMENTADOR IBM 711 E PRESSIONE [LOAD CARDS].</pre>
-              <!-- FUROS DE TRATOR DIREITO -->
+              <pre id="ibm716-output" class="ibm716-paper-content">Aguardando execucao...</pre>
               <div class="ibm716-tractor-strip right">
-                <span class="ibm716-tractor-hole"></span>
-                <span class="ibm716-tractor-hole"></span>
                 <span class="ibm716-tractor-hole"></span>
                 <span class="ibm716-tractor-hole"></span>
                 <span class="ibm716-tractor-hole"></span>
@@ -12098,7 +11852,7 @@ READY
         const el = document.getElementById(octalElId);
         if (el) {
           const octStr = valBig.toString(8).toUpperCase();
-          el.textContent = `OCTAL: ${octStr.padStart(Math.ceil(bitCount / 3), '0')}`;
+          el.textContent = octStr.padStart(Math.ceil(bitCount / 3), '0');
         }
       }
     }
@@ -12123,11 +11877,11 @@ READY
       ibm704AcLamps.forEach(l => l.classList.remove('lit'));
       ibm704MqLamps.forEach(l => l.classList.remove('lit'));
       const icEl = document.getElementById('ibm704-ic-octal');
-      if (icEl) icEl.textContent = 'OCTAL: 00000';
+      if (icEl) icEl.textContent = '';
       const acEl = document.getElementById('ibm704-ac-octal');
-      if (acEl) acEl.textContent = 'OCTAL: 0000 0000 0000';
+      if (acEl) acEl.textContent = '';
       const mqEl = document.getElementById('ibm704-mq-octal');
-      if (mqEl) mqEl.textContent = 'OCTAL: 0000 0000 0000';
+      if (mqEl) mqEl.textContent = '';
     }
 
     function toggleIbm704Switch(idx) {
@@ -12254,7 +12008,7 @@ READY
       }
 
       if (printerOut) {
-        printerOut.textContent = 'ALIMENTADOR IBM 711: CARREGANDO DECK DE CARTOES PERFURADOS...\n';
+        printerOut.textContent = 'Executando...\n';
       }
 
       // Fase 1: Leitura de Cartoes (600ms com som de reles/leitora e lampadas oscilando)
@@ -12292,23 +12046,6 @@ READY
 
         const rawLines = srcEl.value.split('\n');
         const outputLines = [];
-
-        const swStates = [];
-        for (let i = 1; i <= 6; i++) {
-          swStates.push(`${i}:${ibm704SenseSwitches[i] ? 'ON' : 'OFF'}`);
-        }
-
-        outputLines.push('================================================================================');
-        outputLines.push('IBM 704 DATA PROCESSING SYSTEM - FORTRAN I COMPILER (1957)');
-        outputLines.push('SISTEMA OPERACIONAL: GM-NAA I/O MONITOR | PROCESSAMENTO BATCH');
-        outputLines.push(`LEITORA DE CARTOES IBM 711-1 | SENSE SWITCHES: [${swStates.join(' ')}]`);
-        outputLines.push('--------------------------------------------------------------------------------');
-        outputLines.push(`LISTAGEM DO DECK FONTE: ${rawLines.length} CARTAO(OES) DE 80 COLUNAS PROCESSADOS`);
-        outputLines.push('FASE 1: ANALISE LEXICA E FORMULA TRANSLATION ......... CONCLUIDA COM SUCESSO');
-        outputLines.push('FASE 2: OTIMIZACAO DE LOOPS DO E REGISTRADORES INDEX . 0 ADVERTENCIAS');
-        outputLines.push('FASE 3: CODIGO OBJETO ALOCADO NA MEMORIA DE NUCLEOS DE FERRITE (36-BIT)');
-        outputLines.push('--------------------------------------------------------------------------------');
-        outputLines.push('SAIDA GERADA PELA CPU IBM 704:');
 
         const progLines = [];
         for (let i = 0; i < rawLines.length; i++) {
@@ -12393,7 +12130,7 @@ READY
               }
               return evalExpr(trimmed);
             });
-            outputLines.push('  ' + vals.join(' '));
+            outputLines.push(vals.join(' '));
             return;
           }
 
@@ -12467,7 +12204,6 @@ READY
             pc++;
           }
 
-          // Se Sense Switch 1 estiver ativa, imprime dump octal dos registradores
           let finalAcValue = 0;
           const varKeys = Object.keys(vars);
           if (varKeys.length > 0) {
@@ -12484,28 +12220,11 @@ READY
           setLampBits(ibm704AcLamps, finalAcValue, 38, 'ibm704-ac-octal');
           setLampBits(ibm704MqLamps, finalMqVal, 36, 'ibm704-mq-octal');
 
-          if (ibm704SenseSwitches[1]) {
-            outputLines.push('--------------------------------------------------------------------------------');
-            outputLines.push('*** SENSE SWITCH 1 ATIVA: DESPEJO DE REGISTRADORES DA CPU IBM 704 ***');
-            outputLines.push(`INSTRUCTION COUNTER (IC): OCTAL ${finalPcVal.toString(8).padStart(5, '0')}`);
-            outputLines.push(`ACCUMULATOR         (AC): OCTAL ${finalAcValue.toString(8).padStart(12, '0')}`);
-            outputLines.push(`MULTIPLIER-QUOTIENT (MQ): OCTAL ${finalMqVal.toString(8).padStart(12, '0')}`);
-            outputLines.push('INDICADOR DE OVERFLOW: DESATIVADO | MODO PONTO FLUTUANTE: OK');
+          if (outputLines.length === 0) {
+            outputLines.push('(Concluido sem saida)');
           }
-
-          if (ibm704SenseSwitches[2]) {
-            outputLines.push('--------------------------------------------------------------------------------');
-            outputLines.push('*** SENSE SWITCH 2 ATIVA: METRICAS DO SISTEMA IBM 704 ***');
-            outputLines.push(`CICLOS DE MAQUINA EXECUTADOS: ${steps} INSTRUCOES`);
-            outputLines.push(`TEMPO DE CICLO ESTIMADO: ${(steps * 12).toFixed(1)} MICROSSEGUNDOS (40 KIPS)`);
-            outputLines.push(`CONSUMO ENERGETICO: ~60 KVA COM REFRIGERACAO INDUSTRIAL ATIVA`);
-          }
-
-          outputLines.push('--------------------------------------------------------------------------------');
-          outputLines.push(`FIM NORMAL DE TRABALHO: STOP 0 | CPU EM ESTADO HALT.`);
-          outputLines.push('================================================================================');
         } catch (err) {
-          outputLines.push(`*** ERRO EM TEMPO DE EXECUCAO: ${err.message} ***`);
+          outputLines.push(`ERRO: ${err.message}`);
         }
 
         printerOut.textContent = outputLines.join('\n');
