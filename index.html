@@ -5641,11 +5641,17 @@ READY
                     </div>
 
                     <!-- Emulador Windows 1.0 -->
-                    <div id="win1-iframe-container" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 5; flex-direction: column; align-items: center; justify-content: center;">
-                      <iframe id="win1-iframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+                    <div id="win1-iframe-container" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 5; overflow: hidden;">
+                      <div id="win1-iframe-scaler" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; transform-origin: center center;">
+                        <iframe id="win1-iframe" src="" style="width: 640px; height: 400px; border: none; background: #000; display: block;" scrolling="no" allow="fullscreen"></iframe>
+                      </div>
+                      <!-- Botao discreto para ejetar disquete e retornar ao prompt do SISNE DOS -->
+                      <button type="button" id="win1-eject-btn" onclick="ejectWindowsFloppy()" style="position: absolute; top: 14px; right: 14px; z-index: 8; background: rgba(20, 20, 20, 0.85); border: 1px solid rgba(255, 255, 255, 0.3); color: #f1f5f9; font-family: 'VT323', monospace; font-size: 1.15rem; padding: 4px 10px; border-radius: 4px; cursor: pointer; backdrop-filter: blur(4px); box-shadow: 0 2px 8px rgba(0,0,0,0.6); transition: background 0.2s;" onmouseover="this.style.background='rgba(185, 28, 28, 0.9)'" onmouseout="this.style.background='rgba(20, 20, 20, 0.85)'" title="Ejetar o disquete e voltar ao SISNE Plus">
+                        Ejetar Disquete (Voltar ao DOS)
+                      </button>
                       <!-- Overlay scanlines sobre o iframe para manter o efeito CRT -->
-                      <div class="crt-scanlines" style="opacity: 0.5; z-index: 6; pointer-events: none;"></div>
-                      <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-shadow: inset 0 0 60px rgba(0,0,0,0.8); pointer-events: none; z-index: 7;"></div>
+                      <div class="crt-scanlines" style="opacity: 0.45; z-index: 6; pointer-events: none;"></div>
+                      <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-shadow: inset 0 0 70px rgba(0,0,0,0.85); pointer-events: none; z-index: 7;"></div>
                     </div>
                     
                     <!-- Loading Overlay -->
@@ -5733,6 +5739,49 @@ READY
             </style>
 
             <script>
+              function updateWin1Layout() {
+                const container = document.getElementById('sisne-screen-container');
+                const scaler = document.getElementById('win1-iframe-scaler');
+                if (!container || !scaler) return;
+                const w = container.clientWidth;
+                const h = container.clientHeight;
+                if (!w || !h) return;
+
+                // Resolucao nativa do DOSBox Windows 1.0 (EGA/VGA 640x400)
+                const baseW = 640;
+                const baseH = 400;
+                // Escala proporcional com margem de respiro interna na moldura do CRT
+                const scale = Math.min((w * 0.94) / baseW, (h * 0.94) / baseH);
+                scaler.style.transform = `translate(-50%, -50%) scale(${scale})`;
+              }
+
+              function ejectWindowsFloppy() {
+                const win1Container = document.getElementById('win1-iframe-container');
+                if (win1Container) win1Container.style.display = 'none';
+                const iframe = document.getElementById('win1-iframe');
+                if (iframe) iframe.src = '';
+
+                const sisneScreen = document.getElementById('sisne-screen');
+                if (sisneScreen) sisneScreen.style.display = 'block';
+                const sisneInput = document.getElementById('sisne-input-container');
+                if (sisneInput) sisneInput.style.display = 'flex';
+
+                const diskContainer = document.getElementById('floppy-container');
+                if (diskContainer) diskContainer.style.display = 'flex';
+
+                const led = document.getElementById('drive-led');
+                if (led) {
+                  led.style.background = '#57534e';
+                  led.style.boxShadow = 'none';
+                }
+
+                const cmdInput = document.getElementById('sisne-cmd-input');
+                if (cmdInput) {
+                  cmdInput.focus();
+                  if (typeof scrollSisneToBottom === 'function') scrollSisneToBottom();
+                }
+              }
+
               function insertFloppy() {
                 const diskContainer = document.getElementById('floppy-container');
                 if(!diskContainer || diskContainer.style.display === 'none') return;
@@ -5759,10 +5808,21 @@ READY
                   
                   document.getElementById('sisne-screen').style.display = 'none';
                   document.getElementById('sisne-input-container').style.display = 'none';
-                  document.getElementById('win1-iframe-container').style.display = 'block';
+                  const win1Container = document.getElementById('win1-iframe-container');
+                  win1Container.style.display = 'block';
+                  updateWin1Layout();
                   // Link corrigido para o emulador do Windows 1
                   document.getElementById('win1-iframe').src = 'https://archive.org/embed/windows-1-0';
                 }, 3500);
+              }
+
+              window.addEventListener('resize', updateWin1Layout);
+              window.addEventListener('load', updateWin1Layout);
+              if (window.ResizeObserver) {
+                const crtElem = document.getElementById('sisne-screen-container');
+                if (crtElem) {
+                  new ResizeObserver(updateWin1Layout).observe(crtElem);
+                }
               }
             </script>
           </div>
@@ -10000,13 +10060,14 @@ READY
       'CHEQUE.EXE': { size: 32768, date: '19-04-89', time: ' 3:30p', type: 'bin' },
       'PLANILHA.EXE': { size: 48120, date: '19-04-89', time: ' 3:30p', type: 'bin' },
       'NEXUS.EXE': { size: 18432, date: '19-04-89', time: ' 3:30p', type: 'bin' },
+      'WIN.COM': { size: 9840, date: '19-04-89', time: ' 1:01p', type: 'bin' },
       'HISTORIA.TXT': {
         size: 1540, date: '19-04-89', time: ' 3:30p', type: 'txt',
         content: 'SISTEMA OPERACIONAL SCOPUS SISNE PLUS (1982-1989)\r\n--------------------------------------------------\r\nDesenvolvido pela Scopus Tecnologia (fundada em 1975 por engenheiros da Poli-USP)\r\ne produzido em conjunto com a Itautec durante a vigencia da Reserva de Mercado.\r\nO SISNE alcancou 100% de compatibilidade com o MS-DOS 3.30 da Microsoft ao nivel\r\nde chamadas de interrupcao de software (INT 21h), permitindo que empresas e bancos\r\nbradileiros executassem Lotus 1-2-3, dBASE III, WordStar e toda a suite corporativa.'
       },
       'README.DOC': {
-        size: 850, date: '19-04-89', time: ' 3:30p', type: 'txt',
-        content: 'GUIA DO SISNE PLUS PARA O SEMINARIO:\r\nComandos recomendados para demonstrar na apresentacao:\r\n- DIR (lista os 14 arquivos do disco flexivel de 360 KB)\r\n- VER (exibe versao Scopus/Itautec SISNE Plus 3.30 R05)\r\n- TYPE AUTOEXEC.BAT ou TYPE CONFIG.SYS\r\n- CHKDSK (status do disco e memoria)\r\n- MEM (analise da memoria convencional de 640 KB e EMS Scopus)\r\n- CHEQUE.EXE (simulador de automacao bancaria de 1986)\r\n- PLANILHA.EXE (planilha de custos e inflacao do Plano Cruzado)\r\n- NEXUS.EXE (diagnostico de hardware do microcomputador nacional)\r\n- BASICA (interpretador BASIC integrado, digite SYSTEM para sair)\r\n- CLS (limpa tela)'
+        size: 920, date: '19-04-89', time: ' 3:30p', type: 'txt',
+        content: 'GUIA DO SISNE PLUS PARA O SEMINARIO:\r\nComandos recomendados para demonstrar na apresentacao:\r\n- DIR (lista os arquivos do disco flexivel de 360 KB)\r\n- VER (exibe versao Scopus/Itautec SISNE Plus 3.30 R05)\r\n- TYPE AUTOEXEC.BAT ou TYPE CONFIG.SYS\r\n- CHKDSK (status do disco e memoria)\r\n- MEM (analise da memoria convencional de 640 KB e EMS Scopus)\r\n- WIN ou WIN.COM (inicia o ambiente grafico Microsoft Windows 1.01)\r\n- CHEQUE.EXE (simulador de automacao bancaria de 1986)\r\n- PLANILHA.EXE (planilha de custos e inflacao do Plano Cruzado)\r\n- NEXUS.EXE (diagnostico de hardware do microcomputador nacional)\r\n- BASICA (interpretador BASIC integrado, digite SYSTEM para sair)\r\n- CLS (limpa tela)'
       }
     };
 
@@ -10087,6 +10148,9 @@ READY
     }
 
     function rebootSisne(playSound = true) {
+      if (typeof ejectWindowsFloppy === 'function') {
+        ejectWindowsFloppy();
+      }
       sisneInBasic = false;
       sisneDrive = 'A';
       sisnePath = '\\';
@@ -10494,6 +10558,14 @@ READY
           break;
         }
 
+        case 'WIN':
+        case 'WIN.COM':
+        case 'WINDOWS': {
+          appendSisneOutput('Carregando Microsoft Windows 1.01 a partir da unidade A...', cmd);
+          insertFloppy();
+          break;
+        }
+
         case 'REBOOT':
         case 'BOOT':
         case 'RESET': {
@@ -10510,6 +10582,7 @@ READY
                        `TYPE <arq>   Exibe o conteudo de um arquivo de texto\n` +
                        `MEM          Exibe o mapa de memoria convencional e expandida\n` +
                        `CHKDSK       Verifica o espaco alocado no disco e memoria\n` +
+                       `WIN          Inicia o ambiente grafico Microsoft Windows 1.01\n` +
                        `CHEQUE.EXE   Executa o sistema Scopus de automacao bancaria (1986)\n` +
                        `PLANILHA.EXE Executa a planilha de calculo financeiro nacional\n` +
                        `NEXUS.EXE    Executa o diagnostico de hardware do Scopus Nexus 1600\n` +
