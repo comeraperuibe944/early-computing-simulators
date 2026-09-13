@@ -2594,10 +2594,10 @@
     }
     /* Estilos do SISNE Plus: CGA Ciano Autêntico, Âmbar, Verde, P&B VGA */
     .crt-screen-glass.sisne-cga {
-      background: #020617;
-      color: #00ffff;
-      text-shadow: 0 0 5px rgba(0, 255, 255, 0.4);
-      border: 2px solid #0891b2;
+      background: #000000;
+      color: #a8a8a8;
+      text-shadow: none;
+      border: 2px solid #00a8a8;
     }
     .crt-screen-glass.sisne-amber {
       background: #150a02;
@@ -2605,17 +2605,26 @@
       text-shadow: 0 0 6px rgba(245, 158, 11, 0.55);
       border: 2px solid #78350f;
     }
+    .crt-screen-glass.sisne-amber img.sisne-banner-img {
+      filter: sepia(1) saturate(5) hue-rotate(345deg);
+    }
     .crt-screen-glass.sisne-green {
       background: #041407;
       color: #22c55e;
       text-shadow: 0 0 6px rgba(34, 197, 94, 0.55);
       border: 2px solid #064e1c;
     }
+    .crt-screen-glass.sisne-green img.sisne-banner-img {
+      filter: sepia(1) saturate(5) hue-rotate(75deg);
+    }
     .crt-screen-glass.sisne-vga {
       background: #000000;
       color: #f8fafc;
       text-shadow: none;
       border: 2px solid #475569;
+    }
+    .crt-screen-glass.sisne-vga img.sisne-banner-img {
+      filter: grayscale(1);
     }
     .sisne-banner-box {
       border: 1.5px solid currentColor;
@@ -5443,7 +5452,7 @@
             <div class="media-caption">Gradiente MSX Expert (1985): computador pessoal da linha padrão MSX fabricado no Brasil, com excelente subsistema de som, gráficos avançados e cartuchos de expansão.</div>
           </div>
           <div class="media-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Scopus_e_Itautec_sistema_operacional_SISNE_Plus_V3.30_R05_720x400.png" alt="Scopus SISNE Plus MS-DOS Brasileiro">
+            <img src="sisne_plus_boot_720x400.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/5/5d/Scopus_e_Itautec_sistema_operacional_SISNE_Plus_V3.30_R05_720x400.png'" alt="Scopus SISNE Plus MS-DOS Brasileiro">
             <div class="media-caption">Scopus e Itautec SISNE Plus: sistema operacional nacional 100% compatível com MS-DOS, desenvolvido no Brasil durante a vigência da Reserva de Mercado.</div>
           </div>
         </div>
@@ -5631,13 +5640,13 @@ READY
                     <div class="crt-scanlines" style="opacity: 0.7;"></div>
                     <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 60%); pointer-events: none; z-index: 4;"></div>
                     
-                    <div class="crt-screen-glass sisne-cga" id="sisne-screen" onclick="document.getElementById('sisne-cmd-input').focus(); scrollSisneToBottom();" style="cursor: text; flex: 1; width: 100%; overflow-y: auto; padding: 2rem; padding-bottom: 0; text-shadow: 0 0 4px rgba(255,255,255,0.4); font-size: 1.5rem; line-height: 1.2;">
+                    <div class="crt-screen-glass sisne-cga" id="sisne-screen" onclick="document.getElementById('sisne-cmd-input').focus(); scrollSisneToBottom();" style="cursor: text; flex: 1; width: 100%; overflow-y: auto; padding: 1.2rem 1.4rem 0 1.4rem; text-shadow: none; font-size: 1.45rem; line-height: 1.2;">
                       <div class="crt-terminal-content" id="sisne-output"></div>
                     </div>
                     
-                    <div id="sisne-input-container" style="display: flex; padding: 0 2rem 2rem 2rem; align-items: center; z-index: 3; background: transparent; text-shadow: 0 0 4px rgba(255,255,255,0.4);">
-                      <span id="sisne-prompt-label" style="color: #00ffff; font-weight: 400; font-size: 1.6rem; margin-right: 0.5rem; text-shadow: 0 0 4px rgba(0,255,255,0.5);">A►</span>
-                      <input type="text" id="sisne-cmd-input" class="crt-input-box" style="background: transparent; border: none; color: #f8fafc; font-family: 'VT323', monospace; font-size: 1.5rem; outline: none; box-shadow: none; flex: 1; text-shadow: 0 0 4px rgba(255,255,255,0.4);" placeholder="Comandos..." onfocus="scrollSisneToBottom()" onkeydown="handleSisneKey(event)">
+                    <div id="sisne-input-container" style="display: flex; padding: 0 1.4rem 1.2rem 1.4rem; align-items: center; z-index: 3; background: transparent; text-shadow: none;">
+                      <span id="sisne-prompt-label" style="color: #a8a8a8; font-weight: 400; font-size: 1.55rem; margin-right: 0.4rem; text-shadow: none; font-family: 'VT323', monospace;">A►</span>
+                      <input type="text" id="sisne-cmd-input" class="crt-input-box" style="background: transparent; border: none; color: #f8fafc; font-family: 'VT323', monospace; font-size: 1.55rem; outline: none; box-shadow: none; flex: 1; text-shadow: none;" placeholder="Comandos..." onfocus="scrollSisneToBottom()" onkeydown="handleSisneKey(event)">
                     </div>
 
                     <!-- Emulador Windows 1.0 -->
@@ -10071,27 +10080,15 @@ READY
       }
     };
 
-    function getSisneBannerHTML() {
-      return `<div style="border: 2px solid #00ffff; padding: 2rem 1rem 0 1rem; margin-bottom: 1rem; color: #00ffff; font-family: 'VT323', monospace;">
-  <div style="text-align: center; margin-bottom: 1rem; font-size: 2.8rem; color: transparent; -webkit-text-stroke: 1px #00ffff; letter-spacing: 4px; text-transform: lowercase;">sistema operacional</div>
-  
-  <div style="text-align: center; display: flex; justify-content: center; align-items: flex-end; margin-bottom: 1.5rem; line-height: 0.8;">
-    <span style="font-size: 7rem; font-weight: bold; color: #00ffff; text-shadow: -1px -1px 0 #00ffff, 1px -1px 0 #00ffff, -1px 1px 0 #00ffff, 1px 1px 0 #00ffff, 6px 6px 0 #000, 7px 7px 0 #00ffff, 8px 8px 0 #00ffff, 6px 8px 0 #00ffff, 8px 6px 0 #00ffff; letter-spacing: 2px;">SISNE</span>
-    <span style="font-size: 3rem; color: transparent; -webkit-text-stroke: 1px #00ffff; margin-left: 1rem; margin-bottom: 0.5rem; letter-spacing: 2px;">PLUS</span>
-  </div>
+    const SISNE_BANNER_BASE64 = "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";
 
-  <div style="text-align: center; margin-bottom: 0.5rem; font-size: 1.2rem; color: #d4d4d4;">
-    Os direitos de propriedade estão reservados a Scopus e Itautec.
+    function getSisneBannerHTML() {
+      return `<div class="sisne-banner-container" style="width: 100%; max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+  <img src="sisne_banner.png" onerror="this.src='data:image/png;base64,${SISNE_BANNER_BASE64}'" class="sisne-banner-img" alt="Scopus e Itautec SISNE Plus V3.30 R05" style="width: 100%; height: auto; max-width: 720px; aspect-ratio: 720/352; display: block; image-rendering: pixelated; image-rendering: -moz-crisp-edges; image-rendering: crisp-edges; border-radius: 2px;" />
+  <div style="width: 100%; color: #a8a8a8; font-family: 'VT323', monospace; font-size: 1.4rem; margin-top: 0.5rem; margin-bottom: 0.4rem; text-shadow: none; letter-spacing: 0.5px; line-height: 1.2;">
+    &raquo;&raquo;&raquo; A instalação do mouse não foi feita corretamente
   </div>
-  
-  <div style="display: flex; justify-content: space-between; background: #d4d4d4; color: #000; padding: 0.2rem 1rem; font-size: 1.2rem; font-weight: bold; margin: 0 -1rem;">
-    <span style="flex: 1; text-align: center; border-right: 2px solid #000;">17:25:30</span>
-    <span style="flex: 2; text-align: center; border-right: 2px solid #000;">SISNE PLUS &nbsp;3.30 &nbsp;R05</span>
-    <span style="flex: 1; text-align: center; border-right: 2px solid #000;">19/ABR/2020</span>
-    <span style="flex: 1; text-align: center;">DOMINGO</span>
-  </div>
-</div>
-<div style="margin-bottom: 1rem; color: #d4d4d4; font-size: 1.2rem; font-family: 'VT323', monospace;">&raquo;&raquo;&raquo; A instalação do mouse não foi feita corretamente</div>`;
+</div>`;
     }
 
     let sisneScrollObserver = null;
