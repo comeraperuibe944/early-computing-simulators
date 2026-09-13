@@ -5623,28 +5623,25 @@ READY
                 <!-- Manchas de envelhecimento (amarelado) -->
                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px 8px 0 0; background: radial-gradient(circle at 80% 20%, rgba(200, 185, 140, 0.4) 0%, transparent 40%), radial-gradient(circle at 10% 80%, rgba(210, 190, 130, 0.3) 0%, transparent 50%); pointer-events: none;"></div>
                 
-                <!-- Base / Pescoço do Monitor -->
-                <div style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); width: 160px; height: 25px; background: #b8b19e; border-radius: 4px; box-shadow: inset 0 -5px 10px rgba(0,0,0,0.2); z-index: -1;"></div>
-                
                 <!-- Borda interna (Bezel) -->
                 <div style="background: #b5af9c; padding: 2rem; border-radius: 16px; border-bottom: 5px solid #dfd8c7; border-top: 5px solid #8e8876; border-right: 5px solid #d1c8b2; border-left: 5px solid #9c9684; box-shadow: inset 3px 3px 12px rgba(0,0,0,0.5); position: relative;">
                   <!-- Tela -->
-                  <div id="sisne-screen-container" style="width: 100%; aspect-ratio: 4/3; background: #050505; border-radius: 30px; overflow: hidden; position: relative; border: 8px solid #111; display: flex; flex-direction: column; box-shadow: inset 0 0 80px rgba(0,0,0,1);">
+                  <div id="sisne-screen-container" style="width: 100%; aspect-ratio: 4/3; background: #050505; border-radius: 30px; overflow: hidden; position: relative; border: 8px solid #111; display: flex; flex-direction: column; box-shadow: inset 0 0 80px rgba(0,0,0,1); font-family: 'VT323', monospace;">
                     <!-- CRT Scanlines and Glow -->
                     <div class="crt-scanlines" style="opacity: 0.7;"></div>
                     <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 60%); pointer-events: none; z-index: 4;"></div>
                     
-                    <div class="crt-screen-glass sisne-cga" id="sisne-screen" onclick="document.getElementById('sisne-cmd-input').focus(); scrollSisneToBottom();" style="cursor: text; flex: 1; width: 100%; overflow-y: auto; padding: 2rem; padding-bottom: 0; text-shadow: 0 0 4px rgba(255,255,255,0.4); font-size: 1.1rem;">
+                    <div class="crt-screen-glass sisne-cga" id="sisne-screen" onclick="document.getElementById('sisne-cmd-input').focus(); scrollSisneToBottom();" style="cursor: text; flex: 1; width: 100%; overflow-y: auto; padding: 2rem; padding-bottom: 0; text-shadow: 0 0 4px rgba(255,255,255,0.4); font-size: 1.5rem; line-height: 1.2;">
                       <div class="crt-terminal-content" id="sisne-output"></div>
                     </div>
                     
                     <div id="sisne-input-container" style="display: flex; padding: 0 2rem 2rem 2rem; align-items: center; z-index: 3; background: transparent; text-shadow: 0 0 4px rgba(255,255,255,0.4);">
-                      <span id="sisne-prompt-label" style="font-family: var(--font-mono); color: #00ffff; font-weight: 800; font-size: 1.2rem; margin-right: 0.5rem; text-shadow: 0 0 4px rgba(0,255,255,0.5);">A&gt;</span>
-                      <input type="text" id="sisne-cmd-input" class="crt-input-box" style="background: transparent; border: none; color: #f8fafc; font-family: var(--font-mono); font-size: 1.1rem; outline: none; box-shadow: none; flex: 1; text-shadow: 0 0 4px rgba(255,255,255,0.4);" placeholder="Comandos..." onfocus="scrollSisneToBottom()" onkeydown="handleSisneKey(event)">
+                      <span id="sisne-prompt-label" style="color: #00ffff; font-weight: 400; font-size: 1.6rem; margin-right: 0.5rem; text-shadow: 0 0 4px rgba(0,255,255,0.5);">A►</span>
+                      <input type="text" id="sisne-cmd-input" class="crt-input-box" style="background: transparent; border: none; color: #f8fafc; font-family: 'VT323', monospace; font-size: 1.5rem; outline: none; box-shadow: none; flex: 1; text-shadow: 0 0 4px rgba(255,255,255,0.4);" placeholder="Comandos..." onfocus="scrollSisneToBottom()" onkeydown="handleSisneKey(event)">
                     </div>
 
                     <!-- Emulador Windows 1.0 -->
-                    <div id="win1-iframe-container" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 5;">
+                    <div id="win1-iframe-container" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 5; flex-direction: column; align-items: center; justify-content: center;">
                       <iframe id="win1-iframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
                       <!-- Overlay scanlines sobre o iframe para manter o efeito CRT -->
                       <div class="crt-scanlines" style="opacity: 0.5; z-index: 6; pointer-events: none;"></div>
@@ -5652,15 +5649,15 @@ READY
                     </div>
                     
                     <!-- Loading Overlay -->
-                    <div id="loading-overlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #000; color: #fff; font-family: var(--font-mono); font-size: 1.3rem; flex-direction: column; padding: 2.5rem; z-index: 10; justify-content: flex-start; align-items: flex-start; text-shadow: 0 0 4px rgba(255,255,255,0.5);">
-                      <div style="margin-top: 1.5rem;">Lendo Unidade A... <span class="blink" style="display:inline-block; width:12px; height:1.4rem; background:#fff; vertical-align: bottom; box-shadow: 0 0 5px #fff;"></span></div>
+                    <div id="loading-overlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #000; color: #fff; font-size: 1.8rem; flex-direction: column; padding: 2.5rem; z-index: 10; justify-content: flex-start; align-items: flex-start; text-shadow: 0 0 4px rgba(255,255,255,0.5);">
+                      <div style="margin-top: 1.5rem;">Lendo Unidade A... <span class="blink" style="display:inline-block; width:12px; height:1.6rem; background:#fff; vertical-align: bottom; box-shadow: 0 0 5px #fff;"></span></div>
                     </div>
                   </div>
                 </div>
               </div>
 
               <!-- Gabinete Horizontal Bege Maior e Envelhecido -->
-              <div id="classic-gabinete" style="width: 100%; background: linear-gradient(to bottom, #e0d8c8 0%, #d4caa8 100%); border: 4px solid #c2bba8; border-radius: 4px; padding: 2rem 2.5rem; display: flex; box-shadow: 0 15px 25px -5px rgba(0,0,0,0.4); position: relative; margin-top: 20px; min-height: 180px;">
+              <div id="classic-gabinete" style="width: 100%; background: linear-gradient(to bottom, #e0d8c8 0%, #d4caa8 100%); border: 4px solid #c2bba8; border-radius: 4px; padding: 3rem 2.5rem; display: flex; box-shadow: 0 15px 25px -5px rgba(0,0,0,0.4); position: relative; margin-top: -5px; min-height: 240px; z-index: 1;">
                 <!-- Manchas de velhice gabinete -->
                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 2px; background: radial-gradient(circle at 15% 50%, rgba(190, 175, 120, 0.45) 0%, transparent 60%), radial-gradient(circle at 85% 60%, rgba(180, 160, 100, 0.35) 0%, transparent 50%); pointer-events: none;"></div>
                 
@@ -5670,16 +5667,16 @@ READY
                   
                   <div style="display: flex; gap: 1.5rem; align-items: flex-end;">
                     <!-- Botão Power Maior -->
-                    <div style="width: 40px; height: 50px; background: #dc2626; border: 3px solid #991b1b; border-radius: 4px; box-shadow: inset -2px -2px 5px rgba(0,0,0,0.3), 3px 3px 6px rgba(0,0,0,0.5);"></div>
+                    <div style="width: 45px; height: 55px; background: #dc2626; border: 3px solid #991b1b; border-radius: 4px; box-shadow: inset -2px -2px 5px rgba(0,0,0,0.3), 3px 3px 6px rgba(0,0,0,0.5);"></div>
                     <!-- LEDs -->
-                    <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 5px;">
+                    <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 5px;">
                       <div style="display: flex; align-items: center; gap: 8px;">
-                        <div style="width: 12px; height: 12px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px #22c55e;"></div>
-                        <div style="font-size: 0.7rem; font-weight: bold; color: #6a6358;">PWR</div>
+                        <div style="width: 14px; height: 14px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px #22c55e;"></div>
+                        <div style="font-size: 0.75rem; font-weight: bold; color: #6a6358;">PWR</div>
                       </div>
                       <div style="display: flex; align-items: center; gap: 8px;">
-                        <div style="width: 12px; height: 12px; border-radius: 50%; background: #eab308;"></div>
-                        <div style="font-size: 0.7rem; font-weight: bold; color: #6a6358;">HDD</div>
+                        <div style="width: 14px; height: 14px; border-radius: 50%; background: #eab308;"></div>
+                        <div style="font-size: 0.75rem; font-weight: bold; color: #6a6358;">TURBO</div>
                       </div>
                     </div>
                   </div>
@@ -5688,7 +5685,7 @@ READY
                 <!-- Lado Direito - Drives -->
                 <div style="flex: 1; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; padding-left: 2.5rem; z-index: 1;">
                   <!-- Drive de Disquete 5.25" -->
-                  <div id="floppy-drive" style="width: 220px; height: 55px; background: #1c1917; border: 4px solid #292524; border-radius: 3px; position: relative; transition: all 0.3s; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: inset 3px 3px 10px rgba(0,0,0,0.8), 1px 1px 2px rgba(255,255,255,0.2);"
+                  <div id="floppy-drive" style="width: 240px; height: 60px; background: #1c1917; border: 4px solid #292524; border-radius: 3px; position: relative; transition: all 0.3s; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: inset 3px 3px 10px rgba(0,0,0,0.8), 1px 1px 2px rgba(255,255,255,0.2);"
                        ondragover="event.preventDefault(); this.style.borderColor='#38bdf8'; this.style.boxShadow='0 0 12px rgba(56,189,248,0.6)';"
                        ondragleave="this.style.borderColor='#292524'; this.style.boxShadow='inset 3px 3px 10px rgba(0,0,0,0.8), 1px 1px 2px rgba(255,255,255,0.2)';"
                        ondrop="event.preventDefault(); this.style.borderColor='#292524'; this.style.boxShadow='inset 3px 3px 10px rgba(0,0,0,0.8), 1px 1px 2px rgba(255,255,255,0.2)'; insertFloppy();"
@@ -5698,13 +5695,13 @@ READY
                     <div style="width: 90%; height: 5px; background: #000000; border-radius: 2px; box-shadow: inset 0 2px 5px rgba(0,0,0,1);"></div>
                     
                     <!-- LED do Drive -->
-                    <div id="drive-led" style="width: 14px; height: 6px; background: #57534e; position: absolute; bottom: 8px; right: 16px; border-radius: 1px;"></div>
+                    <div id="drive-led" style="width: 16px; height: 6px; background: #57534e; position: absolute; bottom: 8px; right: 16px; border-radius: 1px;"></div>
                     
                     <!-- Trinco (Latch) do 5.25 -->
-                    <div style="width: 35px; height: 12px; background: #292524; border: 2px solid #44403c; position: absolute; top: 21px; left: 50%; transform: translateX(-50%); box-shadow: 1px 1px 2px rgba(0,0,0,0.5);"></div>
+                    <div style="width: 40px; height: 14px; background: #292524; border: 2px solid #44403c; position: absolute; top: 23px; left: 50%; transform: translateX(-50%); box-shadow: 1px 1px 2px rgba(0,0,0,0.5);"></div>
                   </div>
                   <!-- Drive Falso Abaixo -->
-                  <div style="width: 220px; height: 55px; background: #dcd3b6; border: 3px solid #bbaea0; border-radius: 3px; margin-top: 12px; box-shadow: inset 2px 2px 5px rgba(0,0,0,0.15);"></div>
+                  <div style="width: 240px; height: 60px; background: #dcd3b6; border: 3px solid #bbaea0; border-radius: 3px; margin-top: 15px; box-shadow: inset 2px 2px 5px rgba(0,0,0,0.15);"></div>
                 </div>
               </div>
             </div>
@@ -5730,6 +5727,7 @@ READY
             </div>
 
             <style>
+              @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
               @keyframes blink-anim { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
               .blink { animation: blink-anim 1s infinite; }
             </style>
@@ -10013,27 +10011,26 @@ READY
     };
 
     function getSisneBannerHTML() {
-      return `<div class="sisne-banner-box">
-  <div style="text-align: center; margin-bottom: 0.35rem; letter-spacing: 2px;">sistema operacional</div>
-  <pre style="font-family: inherit; font-size: 0.78rem; line-height: 1.15; margin: 0 auto; text-align: center; color: currentColor;">
-     _____ _____ _____ _   _ ______ 
-    / ____|_   _/ ____| \\ | |  ____|
-   | (___   | || (___ |  \\| | |__   
-    \\___ \\  | | \\___ \\| . ' |  __|  
-    ____) |_| |_____) | |\\  | |____  PLUS
-   |_____/|_____|_____/|_| \\_|______|
-  </pre>
-  <div style="text-align: center; margin-top: 0.4rem; font-size: 0.78rem;">
+      return `<div style="border: 2px solid #00ffff; padding: 2rem 1rem 0 1rem; margin-bottom: 1rem; color: #00ffff; font-family: 'VT323', monospace;">
+  <div style="text-align: center; margin-bottom: 1rem; font-size: 2.8rem; color: transparent; -webkit-text-stroke: 1px #00ffff; letter-spacing: 4px; text-transform: lowercase;">sistema operacional</div>
+  
+  <div style="text-align: center; display: flex; justify-content: center; align-items: flex-end; margin-bottom: 1.5rem; line-height: 0.8;">
+    <span style="font-size: 7rem; font-weight: bold; color: #00ffff; text-shadow: -1px -1px 0 #00ffff, 1px -1px 0 #00ffff, -1px 1px 0 #00ffff, 1px 1px 0 #00ffff, 6px 6px 0 #000, 7px 7px 0 #00ffff, 8px 8px 0 #00ffff, 6px 8px 0 #00ffff, 8px 6px 0 #00ffff; letter-spacing: 2px;">SISNE</span>
+    <span style="font-size: 3rem; color: transparent; -webkit-text-stroke: 1px #00ffff; margin-left: 1rem; margin-bottom: 0.5rem; letter-spacing: 2px;">PLUS</span>
+  </div>
+
+  <div style="text-align: center; margin-bottom: 0.5rem; font-size: 1.2rem; color: #d4d4d4;">
     Os direitos de propriedade estão reservados a Scopus e Itautec.
   </div>
-  <div class="sisne-status-bar">
-    <span>17:25:30</span>
-    <span>SISNE PLUS &nbsp;3.30 &nbsp;R05</span>
-    <span>19/ABR/1989</span>
-    <span>DOMINGO</span>
+  
+  <div style="display: flex; justify-content: space-between; background: #d4d4d4; color: #000; padding: 0.2rem 1rem; font-size: 1.2rem; font-weight: bold; margin: 0 -1rem;">
+    <span style="flex: 1; text-align: center; border-right: 2px solid #000;">17:25:30</span>
+    <span style="flex: 2; text-align: center; border-right: 2px solid #000;">SISNE PLUS &nbsp;3.30 &nbsp;R05</span>
+    <span style="flex: 1; text-align: center; border-right: 2px solid #000;">19/ABR/2020</span>
+    <span style="flex: 1; text-align: center;">DOMINGO</span>
   </div>
 </div>
-<div style="margin-bottom: 0.5rem; color: currentColor;">&raquo;&raquo;&raquo; A instalação do mouse não foi feita corretamente</div>`;
+<div style="margin-bottom: 1rem; color: #d4d4d4; font-size: 1.2rem; font-family: 'VT323', monospace;">&raquo;&raquo;&raquo; A instalação do mouse não foi feita corretamente</div>`;
     }
 
     let sisneScrollObserver = null;
@@ -10076,7 +10073,7 @@ READY
     function updateSisnePromptLabel() {
       const lbl = document.getElementById('sisne-prompt-label');
       if (lbl) {
-        lbl.textContent = sisneInBasic ? 'Ok' : `${sisneDrive}:\\${sisnePath === '\\' ? '' : sisnePath.slice(1)}>`;
+        lbl.textContent = sisneInBasic ? 'Ok' : `${sisneDrive}:\\${sisnePath === '\\' ? '' : sisnePath.slice(1)}►`;
       }
     }
 
