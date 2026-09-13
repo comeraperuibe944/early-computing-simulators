@@ -2646,27 +2646,26 @@
       scroll-behavior: smooth;
       scrollbar-width: thin;
       scrollbar-color: rgba(0, 255, 255, 0.5) rgba(0, 0, 0, 0.4);
-      font-family: 'VT323', monospace !important;
-      font-size: 1.45rem;
-      line-height: 1.25;
-      letter-spacing: 0.5px;
     }
     #sisne-screen,
-    #sisne-screen pre,
-    #sisne-screen code,
+    #sisne-screen *,
     #sisne-output,
-    #sisne-output pre,
     #sisne-output *,
-    .sisne-pre {
+    #sisne-output pre,
+    #sisne-screen pre,
+    .sisne-pre,
+    #sisne-input-container,
+    #sisne-input-container *,
+    #sisne-prompt-label,
+    #sisne-cmd-input {
       font-family: 'VT323', monospace !important;
-      letter-spacing: 0.5px;
+      font-size: 1.45rem !important;
+      line-height: 1.25 !important;
+      letter-spacing: 0.5px !important;
+      font-weight: 400 !important;
     }
     .sisne-pre {
       margin: 0;
-      font-family: 'VT323', monospace !important;
-      font-size: 1.45rem;
-      line-height: 1.25;
-      letter-spacing: 0.5px;
       white-space: pre-wrap;
       word-break: break-all;
     }
@@ -5668,8 +5667,8 @@ READY
                     </div>
                     
                     <div id="sisne-input-container" style="display: flex; padding: 0 1.4rem 1.2rem 1.4rem; align-items: center; z-index: 3; background: transparent; text-shadow: none;">
-                      <span id="sisne-prompt-label" style="color: #a8a8a8; font-weight: 400; font-size: 1.55rem; margin-right: 0.4rem; text-shadow: none; font-family: 'VT323', monospace;">A►</span>
-                      <input type="text" id="sisne-cmd-input" class="crt-input-box" style="background: transparent; border: none; color: #f8fafc; font-family: 'VT323', monospace; font-size: 1.55rem; outline: none; box-shadow: none; flex: 1; text-shadow: none;" placeholder="Comandos..." onfocus="scrollSisneToBottom()" onkeydown="handleSisneKey(event)">
+                      <span id="sisne-prompt-label" style="color: #a8a8a8; font-weight: 400; font-size: 1.45rem; margin-right: 0.4rem; text-shadow: none; font-family: 'VT323', monospace; line-height: 1.25;">A►</span>
+                      <input type="text" id="sisne-cmd-input" class="crt-input-box" style="background: transparent; border: none; color: #f8fafc; font-family: 'VT323', monospace; font-size: 1.45rem; line-height: 1.25; outline: none; box-shadow: none; flex: 1; text-shadow: none; letter-spacing: 0.5px;" placeholder="Comandos..." onfocus="scrollSisneToBottom()" onkeydown="handleSisneKey(event)">
                     </div>
 
                     <!-- Emulador Windows 1.0 -->
@@ -5677,10 +5676,6 @@ READY
                       <div id="win1-iframe-scaler" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; transform-origin: center center;">
                         <iframe id="win1-iframe" src="" style="width: 640px; height: 400px; border: none; background: #000; display: block;" scrolling="no" allow="fullscreen"></iframe>
                       </div>
-                      <!-- Botao discreto para ejetar disquete e retornar ao prompt do SISNE DOS -->
-                      <button type="button" id="win1-eject-btn" onclick="ejectWindowsFloppy()" style="position: absolute; top: 14px; right: 14px; z-index: 8; background: rgba(20, 20, 20, 0.85); border: 1px solid rgba(255, 255, 255, 0.3); color: #f1f5f9; font-family: 'VT323', monospace; font-size: 1.15rem; padding: 4px 10px; border-radius: 4px; cursor: pointer; backdrop-filter: blur(4px); box-shadow: 0 2px 8px rgba(0,0,0,0.6); transition: background 0.2s;" onmouseover="this.style.background='rgba(185, 28, 28, 0.9)'" onmouseout="this.style.background='rgba(20, 20, 20, 0.85)'" title="Ejetar o disquete e voltar ao SISNE Plus">
-                        Ejetar Disquete (Voltar ao DOS)
-                      </button>
                       <!-- Overlay scanlines sobre o iframe para manter o efeito CRT -->
                       <div class="crt-scanlines" style="opacity: 0.45; z-index: 6; pointer-events: none;"></div>
                       <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-shadow: inset 0 0 70px rgba(0,0,0,0.85); pointer-events: none; z-index: 7;"></div>
@@ -5694,8 +5689,12 @@ READY
                 </div>
               </div>
 
-              <!-- Gabinete Horizontal Bege Maior e Envelhecido -->
-              <div id="classic-gabinete" style="width: 100%; background: linear-gradient(to bottom, #e0d8c8 0%, #d4caa8 100%); border: 4px solid #c2bba8; border-radius: 4px; padding: 3rem 2.5rem; display: flex; box-shadow: 0 15px 25px -5px rgba(0,0,0,0.4), 0 -4px 10px rgba(0,0,0,0.25); position: relative; margin-top: -6px; min-height: 240px; z-index: 4;">
+              <!-- Gabinete Horizontal Bege Maior e Envelhecido com Zona Expandida de Drop -->
+              <div id="classic-gabinete"
+                   ondragover="if(event.dataTransfer && event.dataTransfer.types.includes('text/plain')){ event.preventDefault(); highlightDrive(true); }"
+                   ondragleave="highlightDrive(false);"
+                   ondrop="event.preventDefault(); highlightDrive(false); insertFloppy();"
+                   style="width: 100%; background: linear-gradient(to bottom, #e0d8c8 0%, #d4caa8 100%); border: 4px solid #c2bba8; border-radius: 4px; padding: 3rem 2.5rem; display: flex; box-shadow: 0 15px 25px -5px rgba(0,0,0,0.4), 0 -4px 10px rgba(0,0,0,0.25); position: relative; margin-top: -6px; min-height: 240px; z-index: 4;">
                 <!-- Manchas de velhice gabinete -->
                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 2px; background: radial-gradient(circle at 15% 50%, rgba(190, 175, 120, 0.45) 0%, transparent 60%), radial-gradient(circle at 85% 60%, rgba(180, 160, 100, 0.35) 0%, transparent 50%); pointer-events: none;"></div>
                 
@@ -5720,48 +5719,90 @@ READY
                   </div>
                 </div>
                 
-                <!-- Lado Direito - Drives -->
-                <div style="flex: 1; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; padding-left: 2.5rem; z-index: 1;">
-                  <!-- Drive de Disquete 5.25" -->
-                  <div id="floppy-drive" style="width: 240px; height: 60px; background: #1c1917; border: 4px solid #292524; border-radius: 3px; position: relative; transition: all 0.3s; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: inset 3px 3px 10px rgba(0,0,0,0.8), 1px 1px 2px rgba(255,255,255,0.2);"
-                       ondragover="event.preventDefault(); this.style.borderColor='#38bdf8'; this.style.boxShadow='0 0 12px rgba(56,189,248,0.6)';"
-                       ondragleave="this.style.borderColor='#292524'; this.style.boxShadow='inset 3px 3px 10px rgba(0,0,0,0.8), 1px 1px 2px rgba(255,255,255,0.2)';"
-                       ondrop="event.preventDefault(); this.style.borderColor='#292524'; this.style.boxShadow='inset 3px 3px 10px rgba(0,0,0,0.8), 1px 1px 2px rgba(255,255,255,0.2)'; insertFloppy();"
-                       onclick="insertFloppy();">
+                <!-- Lado Direito - Compartimento Expandido de Drives 5.25" com Hitbox Ampla -->
+                <div id="drive-bay-container"
+                     ondragover="event.preventDefault(); highlightDrive(true);"
+                     ondragleave="highlightDrive(false);"
+                     ondrop="event.preventDefault(); highlightDrive(false); insertFloppy();"
+                     onclick="toggleFloppyDrive();"
+                     style="flex: 1; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; padding-left: 2.5rem; z-index: 1; cursor: pointer;"
+                     title="Compartimento de Drives 5¼ - Clique ou arraste o disquete para inserir ou ejetar">
+                  <!-- Drive de Disquete 5.25" Principal (Unidade A:) -->
+                  <div id="floppy-drive"
+                       ondragover="event.preventDefault(); highlightDrive(true);"
+                       ondragleave="highlightDrive(false);"
+                       ondrop="event.preventDefault(); highlightDrive(false); insertFloppy();"
+                       onclick="event.stopPropagation(); toggleFloppyDrive();"
+                       style="width: 250px; height: 68px; background: #1c1917; border: 4px solid #292524; border-radius: 4px; position: relative; transition: all 0.25s; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: inset 3px 3px 10px rgba(0,0,0,0.8), 1px 1px 2px rgba(255,255,255,0.2);"
+                       title="Drive A: (5¼ polegadas) - Clique ou arraste o disquete para cá">
                     
-                    <!-- Fenda do drive -->
-                    <div style="width: 90%; height: 5px; background: #000000; border-radius: 2px; box-shadow: inset 0 2px 5px rgba(0,0,0,1);"></div>
+                    <!-- Fenda do drive ampliada -->
+                    <div style="width: 92%; height: 6px; background: #000000; border-radius: 2px; box-shadow: inset 0 2px 5px rgba(0,0,0,1);"></div>
                     
                     <!-- LED do Drive -->
-                    <div id="drive-led" style="width: 16px; height: 6px; background: #57534e; position: absolute; bottom: 8px; right: 16px; border-radius: 1px;"></div>
+                    <div id="drive-led" style="width: 18px; height: 7px; background: #57534e; position: absolute; bottom: 8px; right: 16px; border-radius: 1px; transition: background 0.3s, box-shadow 0.3s;"></div>
                     
-                    <!-- Trinco (Latch) do 5.25 -->
-                    <div style="width: 40px; height: 14px; background: #292524; border: 2px solid #44403c; position: absolute; top: 23px; left: 50%; transform: translateX(-50%); box-shadow: 1px 1px 2px rgba(0,0,0,0.5);"></div>
+                    <!-- Trinco rotativo (Latch) do 5.25 -->
+                    <div style="width: 44px; height: 16px; background: #292524; border: 2px solid #44403c; border-radius: 2px; position: absolute; top: 25px; left: 50%; transform: translateX(-50%); box-shadow: 1px 1px 3px rgba(0,0,0,0.6);"></div>
                   </div>
-                  <!-- Drive Falso Abaixo -->
-                  <div style="width: 240px; height: 60px; background: #dcd3b6; border: 3px solid #bbaea0; border-radius: 3px; margin-top: 15px; box-shadow: inset 2px 2px 5px rgba(0,0,0,0.15);"></div>
+                  <!-- Drive B: Falso / Cego Abaixo -->
+                  <div style="width: 250px; height: 68px; background: #dcd3b6; border: 3px solid #bbaea0; border-radius: 4px; margin-top: 14px; box-shadow: inset 2px 2px 5px rgba(0,0,0,0.15);"></div>
                 </div>
               </div>
             </div>
 
-            <!-- Disquete Arrastável (Clássico preto 5.25) -->
-            <div id="floppy-container" style="position: absolute; bottom: 3rem; right: 2rem; display: flex; flex-direction: column; align-items: center; z-index: 20;">
-              <div id="floppy-disk" draggable="true" ondragstart="event.dataTransfer.setData('text/plain', 'win1'); this.style.opacity='0.6';" ondragend="this.style.opacity='1';" style="width: 100px; height: 100px; background: #1c1917; border: 1px solid #000; border-radius: 2px; cursor: grab; position: relative; box-shadow: 3px 3px 6px rgba(0,0,0,0.3); transition: transform 0.1s;">
-                <!-- Label do disco -->
-                <div style="position: absolute; top: 12px; left: 15px; width: 70px; height: 40px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 2px;">
-                  <div style="width: 100%; height: 10px; background: #3b82f6; border-bottom: 1px solid #2563eb;"></div>
-                  <div style="font-family: 'Times New Roman', serif; font-size: 0.75rem; text-align: center; padding-top: 4px; font-weight: bold; color: #1e293b; line-height: 1.1;">
-                    WINDOWS<br>v1.01
+            <!-- Area da Bancada / Acessorios Retro -->
+            <div style="width: 100%; max-width: 950px; display: flex; justify-content: flex-end; align-items: center; margin-top: 1.5rem; padding-right: 1.5rem; z-index: 10;">
+              <div id="floppy-container" onclick="insertFloppy()" style="display: flex; flex-direction: column; align-items: center; cursor: pointer;" title="Clique ou arraste para o drive de disquetes">
+                <div id="floppy-disk" draggable="true"
+                     ondragstart="event.dataTransfer.setData('text/plain', 'win1'); this.style.opacity='0.65';"
+                     ondragend="this.style.opacity='1'; highlightDrive(false);"
+                     style="width: 220px; height: 220px; background: #18181b; border: 2px solid #09090b; border-radius: 4px; cursor: grab; position: relative; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5), 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.15s ease, box-shadow 0.15s ease;"
+                     onmouseover="this.style.transform='translateY(-4px) scale(1.02)'; this.style.boxShadow='0 15px 30px rgba(0,0,0,0.5)';"
+                     onmouseout="this.style.transform='none'; this.style.boxShadow='0 10px 25px -5px rgba(0,0,0,0.5), 0 4px 10px rgba(0,0,0,0.3)';">
+                  
+                  <!-- Label do disco com faixa azul e tipografia detalhada -->
+                  <div style="position: absolute; top: 16px; left: 28px; width: 164px; height: 86px; background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); overflow: hidden; display: flex; flex-direction: column;">
+                    <div style="width: 100%; height: 16px; background: #2563eb; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 0.65rem; font-weight: 800; letter-spacing: 1px; font-family: sans-serif;">
+                      MICROSOFT
+                    </div>
+                    <div style="padding: 6px 8px; text-align: center; color: #0f172a; font-family: 'Times New Roman', serif;">
+                      <div style="font-size: 1.15rem; font-weight: 900; line-height: 1.1; letter-spacing: 0.5px;">
+                        WINDOWS v1.01
+                      </div>
+                      <div style="font-size: 0.7rem; color: #475569; font-weight: 600; margin-top: 4px; font-family: sans-serif;">
+                        Disco 1 - Setup (Instalação)
+                      </div>
+                      <div style="font-size: 0.65rem; color: #64748b; margin-top: 3px; font-family: 'VT323', monospace; letter-spacing: 0.5px;">
+                        SISNE / MS-DOS 3.30
+                      </div>
+                    </div>
                   </div>
+
+                  <!-- Entalhe de protecao contra gravacao (Write Protect Notch) -->
+                  <div style="position: absolute; top: 38px; right: -2px; width: 8px; height: 22px; background: #f8fafc; border-left: 2px solid #09090b; border-radius: 2px 0 0 2px;"></div>
+
+                  <!-- Furo de indexacao / sincronismo (Index Hole) -->
+                  <div style="position: absolute; top: 136px; left: 62px; width: 10px; height: 10px; border-radius: 50%; background: #09090b; border: 1px solid #3f3f46;"></div>
+
+                  <!-- Furo central do cubo (Center Spindle Hub com anel de reforco) -->
+                  <div style="position: absolute; top: 118px; left: 86px; width: 48px; height: 48px; border-radius: 50%; background: #f1f5f9; border: 3px solid #94a3b8; box-shadow: inset 0 2px 5px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;">
+                    <div style="width: 24px; height: 24px; border-radius: 50%; background: #09090b;"></div>
+                  </div>
+
+                  <!-- Fenda oval de leitura das cabecas (Head Access Slot com superficie magnetica) -->
+                  <div style="position: bottom: 8px; left: 98px; width: 24px; height: 46px; border-radius: 12px; background: radial-gradient(ellipse at center, #3d2b1f 0%, #1c140e 100%); border: 1.5px solid #09090b; box-shadow: inset 0 2px 4px rgba(0,0,0,0.9); position: absolute;"></div>
+
+                  <!-- Ranhuras de alivio inferiores nos cantos da capa -->
+                  <div style="position: absolute; bottom: -2px; left: 24px; width: 8px; height: 8px; background: #09090b; border-radius: 2px 2px 0 0;"></div>
+                  <div style="position: absolute; bottom: -2px; right: 24px; width: 8px; height: 8px; background: #09090b; border-radius: 2px 2px 0 0;"></div>
                 </div>
-                <!-- Furo central do 5.25 -->
-                <div style="position: absolute; bottom: 15px; left: 40px; width: 22px; height: 22px; border-radius: 50%; background: #f8fafc; border: 1px solid #000; box-shadow: inset 1px 1px 3px rgba(0,0,0,0.2);">
-                  <div style="position: absolute; top: 5px; left: 5px; width: 10px; height: 10px; border-radius: 50%; background: #1c1917;"></div>
+
+                <!-- Indicador de acao de alta visibilidade e grande hitbox -->
+                <div style="font-size: 0.92rem; color: #0f172a; margin-top: 0.75rem; font-weight: 700; user-select: none; background: #ffffff; border: 1.5px solid #94a3b8; padding: 6px 14px; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 6px;">
+                  Clique ou arraste para o drive
                 </div>
-                <!-- Entalhe de proteção contra gravação -->
-                <div style="position: absolute; top: 28px; right: -1px; width: 5px; height: 14px; background: #fff; border-left: 1px solid #000;"></div>
               </div>
-              <span style="font-size: 0.9rem; color: #64748b; margin-top: 0.5rem; font-weight: bold; user-select: none; background: #fff; padding: 4px 8px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">Arraste para o drive</span>
             </div>
 
             <style>
@@ -5846,6 +5887,27 @@ READY
                   // Link corrigido para o emulador do Windows 1
                   document.getElementById('win1-iframe').src = 'https://archive.org/embed/windows-1-0';
                 }, 3500);
+              }
+
+              function highlightDrive(active) {
+                const drive = document.getElementById('floppy-drive');
+                if (!drive) return;
+                if (active) {
+                  drive.style.borderColor = '#38bdf8';
+                  drive.style.boxShadow = '0 0 20px rgba(56,189,248,0.8), inset 0 0 15px rgba(56,189,248,0.4)';
+                } else {
+                  drive.style.borderColor = '#292524';
+                  drive.style.boxShadow = 'inset 3px 3px 10px rgba(0,0,0,0.8), 1px 1px 2px rgba(255,255,255,0.2)';
+                }
+              }
+
+              function toggleFloppyDrive() {
+                const win1Container = document.getElementById('win1-iframe-container');
+                if (win1Container && win1Container.style.display !== 'none') {
+                  ejectWindowsFloppy();
+                } else {
+                  insertFloppy();
+                }
               }
 
               window.addEventListener('resize', updateWin1Layout);
@@ -10103,12 +10165,12 @@ READY
       }
     };
 
-    const SISNE_BANNER_BASE64 = "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";
+    const SISNE_BANNER_BASE64 = "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";
 
     function getSisneBannerHTML() {
       return `<div class="sisne-banner-container" style="width: 100%; max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
   <img src="sisne_banner.png" onerror="this.src='data:image/png;base64,${SISNE_BANNER_BASE64}'" class="sisne-banner-img" alt="Scopus e Itautec SISNE Plus V3.30 R05" style="width: 100%; height: auto; max-width: 720px; aspect-ratio: 720/352; display: block; image-rendering: pixelated; image-rendering: -moz-crisp-edges; image-rendering: crisp-edges; border-radius: 2px;" />
-  <div style="width: 100%; color: #a8a8a8; font-family: 'VT323', monospace; font-size: 1.4rem; margin-top: 0.5rem; margin-bottom: 0.4rem; text-shadow: none; letter-spacing: 0.5px; line-height: 1.2;">
+  <div style="width: 100%; color: #a8a8a8; font-family: 'VT323', monospace; font-size: 1.45rem; margin-top: 0.5rem; margin-bottom: 0.4rem; text-shadow: none; letter-spacing: 0.5px; line-height: 1.25; font-weight: 400;">
     &raquo;&raquo;&raquo; A instalação do mouse não foi feita corretamente
   </div>
 </div>`;
@@ -10154,7 +10216,7 @@ READY
     function updateSisnePromptLabel() {
       const lbl = document.getElementById('sisne-prompt-label');
       if (lbl) {
-        lbl.textContent = sisneInBasic ? 'Ok' : `${sisneDrive}:\\${sisnePath === '\\' ? '' : sisnePath.slice(1)}►`;
+        lbl.textContent = sisneInBasic ? 'Ok' : (sisnePath === '\\' ? `${sisneDrive}►` : `${sisneDrive}:${sisnePath}►`);
       }
     }
 
@@ -10182,6 +10244,9 @@ READY
       updateSisnePromptLabel();
       if (playSound && SimulatorAudio) {
         SimulatorAudio.floppySeek();
+        setTimeout(() => {
+          if (SimulatorAudio.floppySeek) SimulatorAudio.floppySeek();
+        }, 300);
         setTimeout(() => {
           if (SimulatorAudio.pcBeep) SimulatorAudio.pcBeep(880, 0.12);
         }, 180);
@@ -10213,12 +10278,12 @@ READY
       const clean = out.innerHTML.replace('<span class="crt-cursor"></span>', '');
       let line = '';
       if (commandExecuted !== null && commandExecuted !== undefined) {
-        const prompt = sisneInBasic ? '' : `${sisneDrive}:\\${sisnePath === '\\' ? '' : sisnePath.slice(1)}> `;
-        line = `<div style="margin-top: 0.35rem; color: currentColor; font-family: 'VT323', monospace; font-size: 1.45rem; line-height: 1.25; letter-spacing: 0.5px;"><strong>${prompt}${escapeSisneHtml(commandExecuted)}</strong></div>`;
+        const prompt = sisneInBasic ? '' : (sisnePath === '\\' ? `${sisneDrive}► ` : `${sisneDrive}:${sisnePath}► `);
+        line = `<div style="margin-top: 0.35rem; color: currentColor; font-family: 'VT323', monospace; font-size: 1.45rem; line-height: 1.25; letter-spacing: 0.5px; font-weight: 400;">${prompt}${escapeSisneHtml(commandExecuted)}</div>`;
       }
       let res = '';
       if (contentHtml) {
-        res = `<div style="margin-bottom: 0.35rem; line-height: 1.25; font-family: 'VT323', monospace; font-size: 1.45rem; letter-spacing: 0.5px;">${contentHtml}</div>`;
+        res = `<div style="margin-bottom: 0.35rem; line-height: 1.25; font-family: 'VT323', monospace; font-size: 1.45rem; letter-spacing: 0.5px; font-weight: 400;">${contentHtml}</div>`;
       }
       out.innerHTML = clean + line + res + `<div><span class="crt-cursor"></span></div>`;
       scrollSisneToBottom();
