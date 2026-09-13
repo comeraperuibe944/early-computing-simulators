@@ -2651,6 +2651,61 @@
       height: 0;
     }
 
+    /* Cortina Transparente de Inicializacao sob Demanda (Estilo Scratch) */
+    .crt-play-curtain {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(15, 23, 42, 0.45) 0%, rgba(2, 6, 23, 0.72) 100%);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1000;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    .crt-play-curtain.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .crt-play-circle {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.55);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.4);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .crt-play-circle svg {
+      margin-left: 4px;
+      fill: #ffffff;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+      transition: transform 0.2s ease;
+    }
+
+    .crt-play-curtain:hover .crt-play-circle {
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.3);
+      border-color: #ffffff;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.65), 0 0 20px rgba(255, 255, 255, 0.35);
+    }
+
+    .crt-play-curtain:hover .crt-play-circle svg {
+      transform: scale(1.05);
+    }
+
     /* Reflexo de Curvatura do Vidro Convexo */
     .crt-convex-reflection {
       position: absolute;
@@ -5916,7 +5971,8 @@ READY
                 <div class="crt-iframe-scaler" id="crt-iframe-scaler">
                   <iframe
                     id="win95-emulator-iframe"
-                    src="https://copy.sh/v86/?profile=windows95"
+                    src=""
+                    data-src="https://copy.sh/v86/?profile=windows95"
                     scrolling="no"
                     webkitallowfullscreen="true"
                     mozallowfullscreen="true"
@@ -5924,6 +5980,15 @@ READY
                     allow="autoplay; fullscreen; gamepad; cross-origin-isolated"
                     title="Emulacao Real do Microsoft Windows 95 (x86)">
                   </iframe>
+                </div>
+
+                <!-- Cortina Transparente de Inicializacao sob Demanda (Estilo Scratch) -->
+                <div class="crt-play-curtain" id="crt-play-curtain" onclick="startWin95Emulation()">
+                  <div class="crt-play-circle" title="Iniciar">
+                    <svg viewBox="0 0 24 24" width="34" height="34" fill="currentColor">
+                      <polygon points="7,4 19,12 7,20"></polygon>
+                    </svg>
+                  </div>
                 </div>
 
               </div>
@@ -10754,8 +10819,39 @@ READY
       }
     }
 
+    // Inicializacao sob Demanda do Windows 95 (Cortina estilo Scratch)
+    let isWin95Started = false;
+
+    function startWin95Emulation() {
+      if (isWin95Started) return;
+      isWin95Started = true;
+      const curtain = document.getElementById('crt-play-curtain');
+      const iframe = document.getElementById('win95-emulator-iframe');
+      if (curtain) {
+        curtain.classList.add('hidden');
+      }
+      if (iframe) {
+        const targetSrc = currentW95Engine === 'dosbox'
+          ? 'https://archive.org/embed/win95_in_dosbox'
+          : 'https://copy.sh/v86/?profile=windows95';
+        iframe.src = targetSrc;
+      }
+      const led = document.getElementById('led-power');
+      if (led) {
+        led.classList.remove('off');
+        led.classList.add('blink');
+        setTimeout(() => led.classList.remove('blink'), 1600);
+      }
+      playWin95BootSound();
+      setTimeout(updateWin95IframeScale, 80);
+    }
+
     // Reiniciar Sistema (Reset da Maquina Virtual x86)
     function restartWindows95() {
+      if (!isWin95Started) {
+        startWin95Emulation();
+        return;
+      }
       const ledPower = document.getElementById('led-power');
       if (ledPower) {
         ledPower.classList.add('blink');
@@ -10829,9 +10925,11 @@ READY
         }
         if (iframe) {
           iframe.style.visibility = 'visible';
-          const s = iframe.src;
-          iframe.src = 'about:blank';
-          setTimeout(() => { iframe.src = s; }, 150);
+          if (isWin95Started && iframe.src && iframe.src !== 'about:blank') {
+            const s = iframe.src;
+            iframe.src = 'about:blank';
+            setTimeout(() => { iframe.src = s; }, 150);
+          }
         }
         playWin95BootSound();
       }
@@ -10947,13 +11045,17 @@ READY
       }
 
       if (engine === 'dosbox') {
-        iframe.src = 'https://archive.org/embed/win95_in_dosbox';
         if (btnDosbox) btnDosbox.classList.add('active');
         if (btnV86) btnV86.classList.remove('active');
+        if (isWin95Started) {
+          iframe.src = 'https://archive.org/embed/win95_in_dosbox';
+        }
       } else if (engine === 'v86') {
-        iframe.src = 'https://copy.sh/v86/?profile=windows95';
         if (btnDosbox) btnDosbox.classList.remove('active');
         if (btnV86) btnV86.classList.add('active');
+        if (isWin95Started) {
+          iframe.src = 'https://copy.sh/v86/?profile=windows95';
+        }
       }
       setTimeout(updateWin95IframeScale, 60);
     }
