@@ -5479,10 +5479,10 @@
           </div>
         </div>
 
-        <!-- SIMULADOR: TERMINAL RETRÔ BRASILEIRO (PROLÓGICA CP-500 / TK90X BASIC) -->
+        <!-- SIMULADOR: CONSOLE BASIC BRASILEIRO (PROLÓGICA CP-500 / TK90X) -->
         <div class="interactive-app-card">
           <div class="app-header-clean">
-            <span class="app-tag">Simulador Prático: Terminal Retrô Brasileiro - Console BASIC Prológica CP-500 / TK90X (1982)</span>
+            <span class="app-tag">Simulador Prático: Console BASIC Prológica CP-500 / TK90X (1982)</span>
             <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
               <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(1)">1. Loop Brasil 1982</button>
               <button class="btn-clean secondary" style="font-size: 0.75rem; padding: 0.3rem 0.7rem;" onclick="loadRetroBasicProg(2)">2. Inflação &amp; Cruzeiros</button>
@@ -5704,11 +5704,21 @@ READY
                   
                   <div style="display: flex; gap: 1.5rem; align-items: flex-end;">
                     <!-- Botão Power Maior -->
-                    <div style="width: 45px; height: 55px; background: #dc2626; border: 3px solid #991b1b; border-radius: 4px; box-shadow: inset -2px -2px 5px rgba(0,0,0,0.3), 3px 3px 6px rgba(0,0,0,0.5);"></div>
+                    <button id="cabinet-power-btn"
+                            type="button"
+                            onclick="handleCabinetPower();"
+                            title="Botão Power / Reiniciar (Retorna ao DOS e ejeta o disquete)"
+                            style="width: 45px; height: 55px; background: #dc2626; border: 3px solid #991b1b; border-radius: 4px; box-shadow: inset -2px -2px 5px rgba(0,0,0,0.3), 3px 3px 6px rgba(0,0,0,0.5); cursor: pointer; outline: none; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; transition: transform 0.08s ease, box-shadow 0.08s ease;"
+                            onmousedown="this.style.transform='translateY(2px)'; this.style.boxShadow='inset 2px 2px 5px rgba(0,0,0,0.6)';"
+                            onmouseup="this.style.transform='none'; this.style.boxShadow='inset -2px -2px 5px rgba(0,0,0,0.3), 3px 3px 6px rgba(0,0,0,0.5)';"
+                            onmouseleave="this.style.transform='none'; this.style.boxShadow='inset -2px -2px 5px rgba(0,0,0,0.3), 3px 3px 6px rgba(0,0,0,0.5)';">
+                      <div style="width: 70%; height: 2px; background: #f87171; opacity: 0.85; margin-bottom: 3px;"></div>
+                      <span style="color: #ffffff; font-family: sans-serif; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.5px; user-select: none;">PWR</span>
+                    </button>
                     <!-- LEDs -->
                     <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 5px;">
                       <div style="display: flex; align-items: center; gap: 8px;">
-                        <div style="width: 14px; height: 14px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px #22c55e;"></div>
+                        <div id="cabinet-pwr-led" style="width: 14px; height: 14px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px #22c55e; transition: all 0.2s;"></div>
                         <div style="font-size: 0.75rem; font-weight: bold; color: #6a6358;">PWR</div>
                       </div>
                       <div style="display: flex; align-items: center; gap: 8px;">
@@ -5828,7 +5838,16 @@ READY
                 scaler.style.transform = `translate(-50%, -50%) scale(${scale})`;
               }
 
+              let floppyLoadTimeout = null;
+
               function ejectWindowsFloppy() {
+                if (floppyLoadTimeout) {
+                  clearTimeout(floppyLoadTimeout);
+                  floppyLoadTimeout = null;
+                }
+                const loading = document.getElementById('loading-overlay');
+                if (loading) loading.style.display = 'none';
+
                 const win1Container = document.getElementById('win1-iframe-container');
                 if (win1Container) win1Container.style.display = 'none';
                 const iframe = document.getElementById('win1-iframe');
@@ -5855,6 +5874,26 @@ READY
                 }
               }
 
+              function handleCabinetPower() {
+                const pwrLed = document.getElementById('cabinet-pwr-led');
+                if (pwrLed) {
+                  pwrLed.style.background = '#15803d';
+                  pwrLed.style.boxShadow = 'none';
+                  setTimeout(() => {
+                    pwrLed.style.background = '#22c55e';
+                    pwrLed.style.boxShadow = '0 0 8px #22c55e';
+                  }, 250);
+                }
+                if (window.SimulatorAudio && window.SimulatorAudio.mechanicalKey) {
+                  window.SimulatorAudio.mechanicalKey();
+                }
+                if (typeof rebootSisne === 'function') {
+                  rebootSisne(true);
+                } else if (typeof ejectWindowsFloppy === 'function') {
+                  ejectWindowsFloppy();
+                }
+              }
+
               function insertFloppy() {
                 const diskContainer = document.getElementById('floppy-container');
                 if(!diskContainer || diskContainer.style.display === 'none') return;
@@ -5874,7 +5913,7 @@ READY
                   setTimeout(() => window.SimulatorAudio.floppySeek(), 2500);
                 }
 
-                setTimeout(() => {
+                floppyLoadTimeout = setTimeout(() => {
                   loading.style.display = 'none';
                   led.style.background = '#57534e';
                   led.style.boxShadow = 'none';
@@ -5886,6 +5925,7 @@ READY
                   updateWin1Layout();
                   // Link corrigido para o emulador do Windows 1
                   document.getElementById('win1-iframe').src = 'https://archive.org/embed/windows-1-0';
+                  floppyLoadTimeout = null;
                 }, 3500);
               }
 
@@ -9612,7 +9652,7 @@ READY
     }
 
     // =========================================================================
-    // 10. SIMULADOR: TERMINAL RETRÔ BRASILEIRO (CP-500 / TK90X BASIC) - INTERPRETADOR REAL
+    // 10. SIMULADOR: CONSOLE BASIC BRASILEIRO (CP-500 / TK90X) - INTERPRETADOR REAL
     let crtIsAmber = false;
     let basicProgram = {
       10: 'PRINT "PROLOGICA CP-500 - FABRICADO NO BRASIL (1982)"',
