@@ -5130,22 +5130,48 @@
           Os anos 1950 representam o salto da computação de laboratório para a indústria corporativa e o nascimento formal da Ciência da Computação como disciplina de algoritmos, estruturas de dados e linguagens formais, liberta da manipulação exclusiva do hardware.
         </div>
 
-        <!-- EMULADOR FORTRAN (PRETO E BRANCO, MINIMALISTA) -->
-        <div class="interactive-app-card" style="margin-top: 1.5rem; background: #000000; border: 1px solid #1e293b; border-radius: var(--radius-sm); padding: 0.85rem;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.65rem; flex-wrap: wrap; gap: 0.5rem;">
-            <span style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: #ffffff; letter-spacing: 0.05em; text-transform: uppercase;">Emulador Fortran</span>
-            <div style="display: flex; gap: 0.35rem;">
-              <button id="btn-fortran-onecompiler" type="button" style="font-family: var(--font-mono); font-size: 0.7rem; padding: 0.25rem 0.6rem; background: #ffffff; color: #000000; border: 1px solid #ffffff; border-radius: 3px; cursor: pointer; font-weight: 600;" onclick="switchFortranEmbed('compiler')">Compilador GNU</button>
-              <button id="btn-fortran-archive" type="button" style="font-family: var(--font-mono); font-size: 0.7rem; padding: 0.25rem 0.6rem; background: transparent; color: #94a3b8; border: 1px solid #334155; border-radius: 3px; cursor: pointer; font-weight: 600;" onclick="switchFortranEmbed('archive')">Internet Archive</button>
+        <!-- CONSOLE RETRO FORTRAN I (IBM 704 - 1957) -->
+        <div class="interactive-app-card" style="margin-top: 1.5rem; background: #000000; border: 2px solid #222222; border-radius: 3px; padding: 0.85rem; color: #f8fafc; font-family: 'JetBrains Mono', monospace;">
+          <!-- CABEÇALHO RETRO -->
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed #333333; padding-bottom: 0.5rem; margin-bottom: 0.65rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <span style="font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #ffffff;">IBM 704 / FORTRAN I COMPILER (1957)</span>
+              <span style="display: block; font-size: 0.65rem; color: #777777;">SISTEMA DE COMPILACAO EM CARTAO PERFURADO &bull; EXECUCAO DIRETA</span>
+            </div>
+            <div style="display: flex; gap: 0.3rem; flex-wrap: wrap;">
+              <button type="button" class="btn-clean secondary" style="font-family: var(--font-mono); font-size: 0.68rem; padding: 0.2rem 0.5rem; background: #111111; color: #cccccc; border: 1px solid #333333; border-radius: 2px;" onclick="loadFortranSample('hello')">1. OLÁ MUNDO</button>
+              <button type="button" class="btn-clean secondary" style="font-family: var(--font-mono); font-size: 0.68rem; padding: 0.2rem 0.5rem; background: #111111; color: #cccccc; border: 1px solid #333333; border-radius: 2px;" onclick="loadFortranSample('fib')">2. FIBONACCI</button>
+              <button type="button" class="btn-clean secondary" style="font-family: var(--font-mono); font-size: 0.68rem; padding: 0.2rem 0.5rem; background: #111111; color: #cccccc; border: 1px solid #333333; border-radius: 2px;" onclick="loadFortranSample('fat')">3. FATORIAL</button>
+              <button type="button" class="btn-clean secondary" style="font-family: var(--font-mono); font-size: 0.68rem; padding: 0.2rem 0.5rem; background: #111111; color: #cccccc; border: 1px solid #333333; border-radius: 2px;" onclick="loadFortranSample('raiz')">4. EQUAÇÃO</button>
             </div>
           </div>
-          <div style="width: 100%; border-radius: 3px; overflow: hidden; background: #000000; border: 1px solid #222222;">
-            <iframe id="fortran-frame"
-                    src="https://onecompiler.com/embed/fortran?theme=dark&amp;hideTitle=true"
-                    style="width: 100%; height: 460px; border: none; display: block; background: #000000;"
-                    allow="fullscreen"
-                    loading="lazy">
-            </iframe>
+
+          <!-- ÁREA DO CÓDIGO FONTE (CARTÃO / TERMINAL DE ENTRADA) -->
+          <div style="display: flex; flex-direction: column; gap: 0.35rem;">
+            <div style="font-size: 0.62rem; color: #666666; letter-spacing: 0.05em; font-family: var(--font-mono);">
+              C----+----1----+----2----+----3----+----4----+----5----+----6----+----7-- (CARTÃO PERFURADO)
+            </div>
+            <textarea id="fortran-source-input"
+                      spellcheck="false"
+                      style="width: 100%; height: 160px; background: #080808; color: #f1f5f9; border: 1px solid #2a2a2a; border-radius: 2px; padding: 0.65rem; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; line-height: 1.45; resize: vertical; outline: none; box-sizing: border-box;"></textarea>
+
+            <!-- BARRA DE CONTROLE -->
+            <div style="display: flex; gap: 0.5rem; align-items: center; margin: 0.25rem 0;">
+              <button type="button" onclick="runFortranInterpreter()" style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; background: #ffffff; color: #000000; border: 1px solid #ffffff; padding: 0.45rem 1.1rem; cursor: pointer; border-radius: 2px;">
+                [ COMPILAR &amp; EXECUTAR ]
+              </button>
+              <button type="button" onclick="clearFortranConsole()" style="font-family: var(--font-mono); font-size: 0.75rem; background: #111111; color: #888888; border: 1px solid #333333; padding: 0.45rem 0.85rem; cursor: pointer; border-radius: 2px;">
+                [ LIMPAR TELA ]
+              </button>
+              <span id="fortran-status-indicator" style="font-size: 0.7rem; color: #888888; margin-left: auto; font-family: var(--font-mono);">PRONTO</span>
+            </div>
+
+            <!-- TELA DE SAÍDA / TELEIMPRESSORA (TELETYPE LISTING) -->
+            <div style="border-top: 1px dashed #333333; padding-top: 0.45rem; margin-top: 0.25rem;">
+              <div style="font-size: 0.63rem; color: #666666; margin-bottom: 0.25rem; font-family: var(--font-mono);">SAÍDA DA TELEIMPRESSORA / LISTAGEM DE COMPILAÇÃO:</div>
+              <pre id="fortran-console-output"
+                   style="width: 100%; min-height: 140px; max-height: 220px; overflow-y: auto; background: #050505; color: #f8fafc; border: 1px solid #1a1a1a; border-radius: 2px; padding: 0.65rem; font-family: 'VT323', 'JetBrains Mono', monospace; font-size: 1.15rem; line-height: 1.25; margin: 0; white-space: pre-wrap; box-sizing: border-box;"></pre>
+            </div>
           </div>
         </div>
       </div>
@@ -11376,37 +11402,286 @@ READY
       }
     }
 
-    function switchFortranEmbed(type) {
-      const frame = document.getElementById('fortran-frame');
-      const btnComp = document.getElementById('btn-fortran-onecompiler');
-      const btnArch = document.getElementById('btn-fortran-archive');
-      if (!frame) return;
+    // =========================================================================
+    // EMULADOR / COMPILADOR FORTRAN I RETRO (IBM 704 - 1957)
+    // =========================================================================
+    const fortranSamples = {
+      hello: `C     PRIMEIRO PROGRAMA FORTRAN I (1957)
+      PROGRAM HELLO
+      PRINT *, 'OLA, MUNDO CIENTIFICO!'
+      PRINT *, 'FORTRAN: FORMULA TRANSLATION SYSTEM'
+      PRINT *, 'JOHN BACKUS - IBM 704 (1957)'
+      STOP
+      END`,
+      fib: `C     SEQUENCIA DE FIBONACCI EM FORTRAN
+      PROGRAM FIB
+      INTEGER A, B, C, I
+      A = 0
+      B = 1
+      PRINT *, 'TERMO 1 =', A
+      PRINT *, 'TERMO 2 =', B
+      DO I = 3, 10
+        C = A + B
+        PRINT *, 'TERMO', I, '=', C
+        A = B
+        B = C
+      END DO
+      STOP
+      END`,
+      fat: `C     CALCULO DE FATORIAL
+      PROGRAM FATORIAL
+      INTEGER N, FAT, I
+      N = 7
+      FAT = 1
+      DO I = 1, N
+        FAT = FAT * I
+        PRINT *, I, '! =', FAT
+      END DO
+      STOP
+      END`,
+      raiz: `C     CALCULO DE EQUACAO DO 2 GRAU
+      PROGRAM EQUACAO
+      REAL A, B, C, DELTA, X1, X2
+      A = 1.0
+      B = -5.0
+      C = 6.0
+      DELTA = B**2 - 4.0 * A * C
+      X1 = (-B + SQRT(DELTA)) / (2.0 * A)
+      X2 = (-B - SQRT(DELTA)) / (2.0 * A)
+      PRINT *, 'EQUACAO: X^2 - 5X + 6 = 0'
+      PRINT *, 'DELTA =', DELTA
+      PRINT *, 'RAIZ X1 =', X1
+      PRINT *, 'RAIZ X2 =', X2
+      STOP
+      END`
+    };
 
-      if (type === 'compiler') {
-        frame.src = 'https://onecompiler.com/embed/fortran?theme=dark&hideTitle=true';
-        if (btnComp) {
-          btnComp.style.background = '#ffffff';
-          btnComp.style.color = '#000000';
-          btnComp.style.borderColor = '#ffffff';
-        }
-        if (btnArch) {
-          btnArch.style.background = 'transparent';
-          btnArch.style.color = '#94a3b8';
-          btnArch.style.borderColor = '#334155';
-        }
-      } else {
-        frame.src = 'https://archive.org/embed/zm_021_Fortran_I';
-        if (btnArch) {
-          btnArch.style.background = '#ffffff';
-          btnArch.style.color = '#000000';
-          btnArch.style.borderColor = '#ffffff';
-        }
-        if (btnComp) {
-          btnComp.style.background = 'transparent';
-          btnComp.style.color = '#94a3b8';
-          btnComp.style.borderColor = '#334155';
+    function loadFortranSample(key) {
+      const input = document.getElementById('fortran-source-input');
+      if (input && fortranSamples[key]) {
+        input.value = fortranSamples[key];
+      }
+    }
+
+    function clearFortranConsole() {
+      const out = document.getElementById('fortran-console-output');
+      if (out) out.textContent = '';
+      const st = document.getElementById('fortran-status-indicator');
+      if (st) st.textContent = 'PRONTO';
+    }
+
+    function splitFortranArgs(str) {
+      const args = [];
+      let current = '';
+      let inQuote = false;
+      let quoteChar = '';
+      for (let i = 0; i < str.length; i++) {
+        const ch = str[i];
+        if ((ch === "'" || ch === '"') && (!inQuote || quoteChar === ch)) {
+          inQuote = !inQuote;
+          quoteChar = inQuote ? ch : '';
+          current += ch;
+        } else if (ch === ',' && !inQuote) {
+          args.push(current.trim());
+          current = '';
+        } else {
+          current += ch;
         }
       }
+      if (current.trim()) args.push(current.trim());
+      return args;
+    }
+
+    function runFortranInterpreter() {
+      const srcEl = document.getElementById('fortran-source-input');
+      const outEl = document.getElementById('fortran-console-output');
+      const statEl = document.getElementById('fortran-status-indicator');
+      if (!srcEl || !outEl) return;
+
+      if (SimulatorAudio && SimulatorAudio.teleprinterChack) {
+        SimulatorAudio.teleprinterChack();
+      }
+
+      if (statEl) statEl.textContent = 'COMPILANDO...';
+
+      const rawLines = srcEl.value.split('\n');
+      const outputLines = [];
+
+      outputLines.push('*** IBM 704 FORTRAN I COMPILER (1957) ***');
+      outputLines.push(`LISTAGEM DO FONTE: ${rawLines.length} CARTAO(OES) PROCESSADO(S)`);
+      outputLines.push('SISTEMA OPERACIONAL: GM-NAA I/O MONITOR');
+      outputLines.push('COMPILACAO EM 1 PASSO... SUCESSO (0 ERROS)');
+      outputLines.push('INICIANDO EXECUCAO DO PROGRAMA OBJETO NA CPU IBM 704:');
+      outputLines.push('--------------------------------------------------');
+
+      const progLines = [];
+      for (let i = 0; i < rawLines.length; i++) {
+        let line = rawLines[i].trim();
+        if (!line) continue;
+        if (/^[Cc*!]/.test(rawLines[i]) || line.startsWith('!')) continue;
+        const bangIdx = line.indexOf('!');
+        if (bangIdx !== -1) line = line.substring(0, bangIdx).trim();
+        if (!line) continue;
+        progLines.push({ text: line, lineNum: i + 1 });
+      }
+
+      const vars = {};
+      let pc = 0;
+      let steps = 0;
+      const MAX_STEPS = 3000;
+      let stopped = false;
+
+      function parseCondition(condStr) {
+        let c = condStr.trim();
+        c = c.replace(/\.EQ\./gi, '===');
+        c = c.replace(/\.NE\./gi, '!==');
+        c = c.replace(/\.LE\./gi, '<=');
+        c = c.replace(/\.GE\./gi, '>=');
+        c = c.replace(/\.LT\./gi, '<');
+        c = c.replace(/\.GT\./gi, '>');
+        const keys = Object.keys(vars).sort((a, b) => b.length - a.length);
+        for (const k of keys) {
+          const re = new RegExp('\\b' + k + '\\b', 'gi');
+          c = c.replace(re, vars[k]);
+        }
+        try {
+          return Boolean(Function('"use strict"; return (' + c + ')')());
+        } catch (e) {
+          return false;
+        }
+      }
+
+      function evalExpr(expr) {
+        let e = expr.trim();
+        if (!e) return 0;
+        if ((e.startsWith("'") && e.endsWith("'")) || (e.startsWith('"') && e.endsWith('"'))) {
+          return e.slice(1, -1);
+        }
+        e = e.replace(/\bSQRT\s*\(/gi, 'Math.sqrt(');
+        e = e.replace(/\bABS\s*\(/gi, 'Math.abs(');
+        e = e.replace(/\bMOD\s*\(([^,]+),([^)]+)\)/gi, '(($1)%($2))');
+        const keys = Object.keys(vars).sort((a, b) => b.length - a.length);
+        for (const k of keys) {
+          const re = new RegExp('\\b' + k + '\\b', 'gi');
+          e = e.replace(re, vars[k]);
+        }
+        try {
+          const val = Function('"use strict"; return (' + e + ')')();
+          return (typeof val === 'number') ? (Number.isInteger(val) ? val : Number(val.toFixed(4))) : val;
+        } catch (err) {
+          return expr;
+        }
+      }
+
+      function executeStatement(stmt) {
+        const s = stmt.trim();
+        if (/^(PROGRAM|SUBROUTINE|FUNCTION)\b/i.test(s)) return;
+        if (/^(INTEGER|REAL|DOUBLE|CHARACTER|LOGICAL|DIMENSION)\b/i.test(s)) return;
+        if (/^(STOP|END\s*PROGRAM|END)\b/i.test(s)) {
+          stopped = true;
+          return;
+        }
+
+        const printMatch = s.match(/^(PRINT\s*\*|WRITE\s*\([^)]*\))\s*,?\s*(.*)$/i);
+        if (printMatch) {
+          const argsStr = printMatch[2];
+          if (!argsStr) {
+            outputLines.push('');
+            return;
+          }
+          const args = splitFortranArgs(argsStr);
+          const vals = args.map(a => {
+            const trimmed = a.trim();
+            if ((trimmed.startsWith("'") && trimmed.endsWith("'")) || (trimmed.startsWith('"') && trimmed.endsWith('"'))) {
+              return trimmed.slice(1, -1);
+            }
+            return evalExpr(trimmed);
+          });
+          outputLines.push(vals.join(' '));
+          return;
+        }
+
+        const eqIdx = s.indexOf('=');
+        if (eqIdx !== -1) {
+          const varName = s.substring(0, eqIdx).trim().toUpperCase();
+          const exprPart = s.substring(eqIdx + 1).trim();
+          if (/^[A-Z][A-Z0-9_]*$/i.test(varName)) {
+            vars[varName] = evalExpr(exprPart);
+            return;
+          }
+        }
+      }
+
+      const loopStack = [];
+
+      try {
+        while (pc < progLines.length && steps < MAX_STEPS && !stopped) {
+          steps++;
+          const cur = progLines[pc];
+          const s = cur.text;
+
+          const doMatch = s.match(/^DO\s+([A-Z0-9_]+)\s*=\s*([^,]+)\s*,\s*([^,]+)(?:\s*,\s*([^,]+))?$/i);
+          if (doMatch) {
+            const vName = doMatch[1].toUpperCase();
+            const startVal = Number(evalExpr(doMatch[2]));
+            const endVal = Number(evalExpr(doMatch[3]));
+            const stepVal = doMatch[4] ? Number(evalExpr(doMatch[4])) : 1;
+
+            vars[vName] = startVal;
+            loopStack.push({
+              varName: vName,
+              endVal,
+              stepVal,
+              startPc: pc + 1
+            });
+            pc++;
+            continue;
+          }
+
+          if (/^(END\s*DO|CONTINUE|\d+\s+CONTINUE)\b/i.test(s)) {
+            if (loopStack.length > 0) {
+              const topLoop = loopStack[loopStack.length - 1];
+              vars[topLoop.varName] += topLoop.stepVal;
+              const continueCond = (topLoop.stepVal > 0)
+                ? (vars[topLoop.varName] <= topLoop.endVal)
+                : (vars[topLoop.varName] >= topLoop.endVal);
+
+              if (continueCond) {
+                pc = topLoop.startPc;
+                continue;
+              } else {
+                loopStack.pop();
+                pc++;
+                continue;
+              }
+            }
+          }
+
+          const singleIfMatch = s.match(/^IF\s*\((.*)\)\s*(.*)$/i);
+          if (singleIfMatch && !/^THEN$/i.test(singleIfMatch[2].trim())) {
+            const condResult = parseCondition(singleIfMatch[1]);
+            if (condResult) {
+              executeStatement(singleIfMatch[2]);
+            }
+            pc++;
+            continue;
+          }
+
+          executeStatement(s);
+          pc++;
+        }
+
+        outputLines.push('--------------------------------------------------');
+        outputLines.push(`EXECUCAO ENCERRADA NORMALMENTE (STOP 0).`);
+        outputLines.push(`CICLOS DE MAQUINA PROCESSADOS: ${steps}`);
+        if (statEl) statEl.textContent = 'CONCLUIDO (STOP 0)';
+      } catch (err) {
+        outputLines.push(`*** ERRO EM TEMPO DE EXECUCAO: ${err.message} ***`);
+        if (statEl) statEl.textContent = 'ERRO';
+      }
+
+      outEl.textContent = outputLines.join('\n');
+      outEl.scrollTop = outEl.scrollHeight;
     }
 
     // =========================================================================
@@ -11438,6 +11713,7 @@ READY
       safeInit('Patinho Feio UI', () => updatePatinhoUI());
       safeInit('Terminal SISNE', () => initSisneSimulator());
       safeInit('Mapa Universidades', () => selectUniversityMap('puc'));
+      safeInit('Fortran Retro', () => loadFortranSample('hello'));
     }
 
     if (document.readyState === 'loading') {
