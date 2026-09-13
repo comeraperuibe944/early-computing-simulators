@@ -982,7 +982,7 @@
       box-shadow: none;
     }
 
-    /* SIMULADOR 5: MANCHESTER BABY CRT (WILLIAMS-KILBURN 1948) */
+    /* SIMULADOR 5: ESTACAO INTEGRADA MANCHESTER MARK 1 & ALAN TURING (1949-1951) */
     .baby-emulator-wrap {
       background: #ffffff;
       border: 1px solid var(--border-subtle);
@@ -991,12 +991,19 @@
       margin: 1.25rem 0;
     }
 
+    .mark1-program-selector {
+      display: flex;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+
     .baby-legend-grid {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 0.75rem;
+      gap: 0.65rem;
       background: #f8fafc;
       border: 1px solid var(--border-subtle);
       border-radius: 4px;
@@ -1031,6 +1038,28 @@
       box-shadow: 0 0 8px #22c55e;
     }
 
+    .legend-bline-symbol {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      background: #38bdf8;
+      box-shadow: 0 0 6px #38bdf8;
+    }
+
+    .mark1-stage-split {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 0.85rem;
+      margin-bottom: 0.85rem;
+    }
+
+    @media (max-width: 980px) {
+      .mark1-stage-split {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .crt-scope-chassis {
       position: relative;
       background: #020617;
@@ -1038,9 +1067,10 @@
       border-radius: 6px;
       box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.9), 0 4px 16px rgba(15, 23, 42, 0.12);
       padding: 0.4rem;
-      margin: 0 auto 0.85rem auto;
-      max-width: 680px;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .crt-scope-chassis::before {
@@ -1057,24 +1087,228 @@
       display: block;
       width: 100%;
       height: auto;
-      max-height: 380px;
       background: #020c06;
       border-radius: 4px;
       cursor: crosshair;
       image-rendering: pixelated;
     }
 
-    .crt-regs-telemetry {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.5rem;
-      margin-bottom: 0.65rem;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
+    .mark1-subview-tabs {
+      display: flex;
+      gap: 0.35rem;
+      background: #f1f5f9;
+      padding: 0.25rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+      border: 1px solid var(--border-subtle);
     }
 
-    @media (max-width: 640px) {
-      .crt-regs-telemetry {
+    .mark1-tab-btn {
+      flex: 1;
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      padding: 0.35rem 0.5rem;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: all 0.15s ease;
+      text-align: center;
+    }
+
+    .mark1-tab-btn.active {
+      background: #0f172a;
+      color: #ffffff;
+    }
+
+    .mark1-aux-stage {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 0.65rem;
+      display: flex;
+      flex-direction: column;
+      min-height: 280px;
+    }
+
+    /* TELEIMPRESSORA CREED 7B & FITA PERFURADA */
+    .mark1-tape-box {
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 0.45rem 0.65rem;
+      margin-bottom: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+    }
+
+    .mark1-tape-label {
+      font-size: 0.64rem;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.35rem;
+    }
+
+    .mark1-tape-holes-row {
+      display: flex;
+      gap: 0.4rem;
+      overflow-x: auto;
+      padding: 0.35rem 0.2rem;
+      background: #e2e8f0;
+      border-radius: 3px;
+      border: 1px dashed #cbd5e1;
+    }
+
+    .mark1-tape-frame {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      background: #fef08a;
+      padding: 4px 3px;
+      border-radius: 2px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      min-width: 18px;
+    }
+
+    .mark1-tape-hole {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #475569;
+    }
+
+    .mark1-tape-hole.punched {
+      background: #0f172a;
+      box-shadow: inset 0 0 2px #000000;
+    }
+
+    .mark1-tape-sprocket {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: #94a3b8;
+    }
+
+    .mark1-tape-char {
+      font-size: 0.6rem;
+      font-weight: 800;
+      color: #713f12;
+      margin-top: 2px;
+    }
+
+    .mark1-teleprinter-paper {
+      background: #fefce8;
+      border: 1px solid #fef08a;
+      border-radius: 4px;
+      padding: 0.65rem;
+      flex: 1;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.8rem;
+      line-height: 1.4;
+      color: #1c1917;
+      overflow-y: auto;
+      max-height: 220px;
+      white-space: pre-wrap;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    /* TAMBOR MAGNETICO */
+    .mark1-drum-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+      flex: 1;
+    }
+
+    #mark1-drum-canvas {
+      display: block;
+      width: 100%;
+      max-width: 300px;
+      height: 170px;
+      background: #0b1320;
+      border-radius: 4px;
+      border: 1px solid #1e293b;
+    }
+
+    .mark1-drum-stats {
+      width: 100%;
+      margin-top: 0.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+    }
+
+    /* MINI-TABULEIRO TUROCHAMP */
+    .mark1-chess-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      flex: 1;
+    }
+
+    .mark1-chess-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 42px);
+      grid-template-rows: repeat(4, 42px);
+      border: 2px solid #0f172a;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .mark1-chess-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      user-select: none;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .mark1-chess-cell.white { background: #f8fafc; color: #0f172a; }
+    .mark1-chess-cell.black { background: #cbd5e1; color: #0f172a; }
+    .mark1-chess-cell.highlight { background: #86efac !important; }
+    .mark1-chess-cell.target { background: #fca5a5 !important; }
+
+    .mark1-chess-metrics {
+      width: 100%;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      background: #f8fafc;
+      padding: 0.45rem;
+      border-radius: 4px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    /* TELEMETRIA DE REGISTRADORES HISTORICOS COM B-LINES */
+    .mark1-regs-telemetry {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.4rem;
+      margin-bottom: 0.65rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+    }
+
+    @media (max-width: 900px) {
+      .mark1-regs-telemetry {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .mark1-regs-telemetry {
         grid-template-columns: repeat(2, 1fr);
       }
     }
@@ -1083,14 +1317,19 @@
       background: #f8fafc;
       border: 1px solid var(--border-subtle);
       border-radius: 4px;
-      padding: 0.4rem 0.6rem;
+      padding: 0.4rem 0.55rem;
       display: flex;
       flex-direction: column;
       gap: 0.1rem;
     }
 
+    .telemetry-pill.highlight-bline {
+      border-color: #38bdf8;
+      background: #f0f9ff;
+    }
+
     .telemetry-label {
-      font-size: 0.62rem;
+      font-size: 0.6rem;
       font-weight: 700;
       color: #64748b;
       text-transform: uppercase;
@@ -1098,9 +1337,12 @@
     }
 
     .telemetry-value {
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       font-weight: 800;
       color: #0f172a;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .baby-inspect-bar {
@@ -1136,6 +1378,18 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 0.5rem;
+    }
+
+    .speed-btn.turbo {
+      background: #fef08a;
+      color: #713f12;
+      border-color: #facc15;
+      font-weight: 800;
+    }
+
+    .speed-btn.turbo.active {
+      background: #eab308;
+      color: #ffffff;
     }
 
     /* SIMULADOR 6: PATINHO FEIO (USP 1972) CONSOLE */
@@ -4751,24 +5005,24 @@
           </div>
         </div>
 
-        <!-- SIMULADOR 5: MANCHESTER BABY CRT INTERATIVO (WILLIAMS-KILBURN 1948) -->
+        <!-- SIMULADOR 5: MANCHESTER BABY CRT & MANCHESTER MARK 1 COM ALAN TURING (1948-1951) -->
         <div class="interactive-app-card">
           <div class="app-header-clean">
-            <span class="app-tag">Emulador Interativo: Memória Williams-Kilburn CRT (SSEM 1948)</span>
-            <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+            <span class="app-tag">Estação Científica Integrada: Manchester Mark 1 &amp; Alan Turing (1949-1951)</span>
+            <div class="mark1-program-selector">
               <button class="btn-clean active" id="btn-bprog-0" onclick="loadBabyProgram(0)">1. Divisor 262.144 (Kilburn 1948)</button>
-              <button class="btn-clean secondary" id="btn-bprog-1" onclick="loadBabyProgram(1)">2. Soma de Gauss (1 a 5 = 15)</button>
-              <button class="btn-clean secondary" id="btn-bprog-2" onclick="loadBabyProgram(2)">3. Fatorial (4! = 24)</button>
-              <button class="btn-clean secondary" id="btn-bprog-3" onclick="loadBabyProgram(3)">4. Fibonacci (1 a 5 = 5)</button>
-              <button class="btn-clean secondary" id="btn-bprog-4" onclick="loadBabyProgram(4)">5. Potências de 2 (1 a 16)</button>
-              <button class="btn-clean secondary" id="btn-bprog-5" onclick="loadBabyProgram(5)">6. Comparador Max(45, 28)</button>
-              <button class="btn-clean secondary" id="btn-bprog-6" onclick="loadBabyProgram(6)">7. Laço Contagem (5 a 0)</button>
-              <button class="btn-clean secondary" id="btn-bprog-7" onclick="loadBabyProgram(7)">8. Teste Grade CRT</button>
-              <button class="btn-clean secondary" id="btn-bprog-8" onclick="loadBabyProgram(8)">9. Desenho Livre na RAM</button>
+              <button class="btn-clean secondary" id="btn-bprog-1" onclick="loadBabyProgram(1)">2. Morfogênese de Turing (1952)</button>
+              <button class="btn-clean secondary" id="btn-bprog-2" onclick="loadBabyProgram(2)">3. Cartas de Amor (Strachey 1952)</button>
+              <button class="btn-clean secondary" id="btn-bprog-3" onclick="loadBabyProgram(3)">4. Xadrez Turochamp (Turing 1948)</button>
+              <button class="btn-clean secondary" id="btn-bprog-4" onclick="loadBabyProgram(4)">5. Zeros Zeta Riemann (Turing 1950)</button>
+              <button class="btn-clean secondary" id="btn-bprog-5" onclick="loadBabyProgram(5)">6. Revolução B-lines (Índices 1949)</button>
+              <button class="btn-clean secondary" id="btn-bprog-6" onclick="loadBabyProgram(6)">7. Música no Hooter (1951)</button>
+              <button class="btn-clean secondary" id="btn-bprog-7" onclick="loadBabyProgram(7)">8. Paginação Tambor Magnético</button>
+              <button class="btn-clean secondary" id="btn-bprog-8" onclick="loadBabyProgram(8)">9. Terminal Base-32 &amp; Desenho</button>
             </div>
           </div>
 
-          <!-- LEGENDA DIDÁTICA DO FUNCIONAMENTO DO TUBO CRT -->
+          <!-- LEGENDA DIDÁTICA DO HARDWARE MANCHESTER -->
           <div class="baby-legend-grid">
             <div class="baby-legend-item">
               <span class="legend-dot-symbol"></span>
@@ -4776,24 +5030,71 @@
             </div>
             <div class="baby-legend-item">
               <span class="legend-dash-symbol"></span>
-              <span><strong>Traço (1):</strong> Carga defletida (pulso na placa capacitiva)</span>
+              <span><strong>Traço (1):</strong> Carga defletida capacitiva</span>
+            </div>
+            <div class="baby-legend-item">
+              <span class="legend-bline-symbol"></span>
+              <span><strong>B-line:</strong> Registrador de Índice (Deslocamento dinâmico)</span>
             </div>
             <div class="baby-legend-item">
               <span style="color: #15803d; font-weight: 800;">Feixe de Varredura:</span>
               <span>Regeneração capacitiva contínua (refresh)</span>
             </div>
             <div class="baby-legend-item" style="color: #0f172a; font-weight: 700;">
-              <span>Dica: Clique no tubo para ligar/desligar bits!</span>
+              <span>Dica: Clique no tubo para ligar/desligar bits na RAM!</span>
             </div>
           </div>
 
-          <!-- CHASSI DO OSCILOSCÓPIO CRT -->
-          <div class="crt-scope-chassis">
-            <canvas id="crt-canvas-clean" width="640" height="384" title="Clique em qualquer célula para alternar o bit (0 / 1)"></canvas>
+          <!-- PALCO PRINCIPAL DIVIDIDO: CRT WILLIAMS + MÓDULOS AUXILIARES -->
+          <div class="mark1-stage-split">
+            <!-- CHASSI DO OSCILOSCÓPIO CRT PRINCIPAL (WILLIAMS TUBE) -->
+            <div class="crt-scope-chassis">
+              <canvas id="crt-canvas-clean" width="640" height="384" title="Clique em qualquer célula para alternar o bit (0 / 1)"></canvas>
+            </div>
+
+            <!-- ESTAÇÃO AUXILIAR: TELEIMPRESSORA, TAMBOR MAGNÉTICO E PAINEL CIENTÍFICO -->
+            <div class="mark1-aux-stage">
+              <div class="mark1-subview-tabs">
+                <button class="mark1-tab-btn active" id="tab-btn-tele" onclick="setMark1AuxTab('tele')">Teleimpressora Creed</button>
+                <button class="mark1-tab-btn" id="tab-btn-drum" onclick="setMark1AuxTab('drum')">Tambor Magnético</button>
+                <button class="mark1-tab-btn" id="tab-btn-spec" onclick="setMark1AuxTab('spec')">Painel Científico</button>
+              </div>
+
+              <!-- ABA 1: TELEIMPRESSORA CREED 7B & FITA PERFURADA -->
+              <div id="mark1-panel-tele" style="display: flex; flex-direction: column; flex: 1;">
+                <div class="mark1-tape-box">
+                  <div class="mark1-tape-label">Fita Perfurada Baudot / Base-32 de Turing (5 Furos):</div>
+                  <div class="mark1-tape-holes-row" id="mark1-tape-stream">
+                    <!-- Fita perfurada gerada dinamicamente -->
+                  </div>
+                </div>
+                <div class="mark1-teleprinter-paper" id="mark1-teleprinter-out">Aguardando saída do Manchester Mark 1...</div>
+              </div>
+
+              <!-- ABA 2: TAMBOR MAGNÉTICO ROTATIVO (32 TRILHAS) -->
+              <div id="mark1-panel-drum" style="display: none; flex-direction: column; flex: 1;">
+                <div class="mark1-drum-container">
+                  <canvas id="mark1-drum-canvas" width="300" height="170"></canvas>
+                  <div class="mark1-drum-stats">
+                    <div><span>Trilha Ativa: </span><strong id="drum-track-val">Trilha 04 / 32</strong></div>
+                    <div><span>Velocidade: </span><strong>3.000 RPM</strong></div>
+                    <div><span>Setor Sincronizado: </span><strong id="drum-sector-val">Setor 12</strong></div>
+                    <div><span>Transferência: </span><strong id="drum-trans-val" style="color: #15803d;">STANDBY</strong></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ABA 3: PAINEL CIENTÍFICO ESPECIAL (XADREZ / MORFOGÊNESE / ZETA / MÚSICA) -->
+              <div id="mark1-panel-spec" style="display: none; flex-direction: column; flex: 1;">
+                <div id="mark1-spec-content" style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                  <!-- Conteúdo científico específico injetado dinamicamente -->
+                </div>
+              </div>
+            </div>
           </div>
 
-          <!-- TELEMETRIA DE REGISTRADORES HISTÓRICOS -->
-          <div class="crt-regs-telemetry">
+          <!-- TELEMETRIA DE REGISTRADORES HISTÓRICOS COM AS B-LINES -->
+          <div class="mark1-regs-telemetry">
             <div class="telemetry-pill">
               <span class="telemetry-label">Contador (CI / PC)</span>
               <span class="telemetry-value" id="crt-ci-readout">00</span>
@@ -4803,19 +5104,27 @@
               <span class="telemetry-value" id="crt-inst-readout" style="color: #15803d;">LDN 18</span>
             </div>
             <div class="telemetry-pill">
-              <span class="telemetry-label">Acumulador (A)</span>
+              <span class="telemetry-label">Acumulador (A / 40b)</span>
               <span class="telemetry-value" id="crt-acc-readout">0 (0x0000)</span>
             </div>
+            <div class="telemetry-pill highlight-bline">
+              <span class="telemetry-label">B-line B0 (Índice)</span>
+              <span class="telemetry-value" id="crt-b0-readout" style="color: #0284c7;">0</span>
+            </div>
+            <div class="telemetry-pill highlight-bline">
+              <span class="telemetry-label">B-line B1 (Índice)</span>
+              <span class="telemetry-value" id="crt-b1-readout" style="color: #0284c7;">0</span>
+            </div>
             <div class="telemetry-pill">
-              <span class="telemetry-label">Ciclo / Estado</span>
-              <span class="telemetry-value" id="crt-state-readout" style="color: #0f172a;">AÇÃO (Executar)</span>
+              <span class="telemetry-label">Hooter / Estado</span>
+              <span class="telemetry-value" id="crt-state-readout" style="color: #0f172a;">PRONTO</span>
             </div>
           </div>
 
           <!-- BARRA DE INSPEÇÃO DINÂMICA DA MEMÓRIA -->
           <div class="baby-inspect-bar" id="baby-inspect-bar">
             <div><strong>Linha Selecionada:</strong> <span id="crt-inspect-line">Linha 00</span> &bull; <span id="crt-inspect-mnemonic">JMP 0</span></div>
-            <div style="color: #64748b;">Binário (32 bits): <span id="crt-inspect-bin" style="color: #0f172a; font-weight: 700;">00000000...</span></div>
+            <div style="color: #64748b;">Notação Turing Base-32: <span id="crt-inspect-turing" style="color: #0f172a; font-weight: 700;">/</span> &bull; Binário: <span id="crt-inspect-bin" style="color: #0f172a; font-weight: 700;">00000000...</span></div>
           </div>
 
           <!-- EXPLICAÇÃO NARRATIVA DO PASSO -->
@@ -4828,14 +5137,17 @@
             <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center;">
               <button class="btn-clean" id="btn-baby-step-action" onclick="stepBabySimulator()">Passo Único (Step)</button>
               <button class="btn-clean secondary" id="btn-baby-run-action" onclick="toggleBabyRun()">Executar Ciclo</button>
-              <button class="btn-clean secondary" onclick="resetBabySimulator()">Recarregar Programa</button>
+              <button class="btn-clean secondary" id="btn-baby-turbo-action" onclick="setBabySpeed(10)">Modo Turbo (10&times;)</button>
+              <button class="btn-clean secondary" onclick="resetBabySimulator()">Recarregar Experiência</button>
               <button class="btn-clean secondary" onclick="clearBabyRAM()">Limpar Tubo (Desenho)</button>
             </div>
             <div style="display: flex; align-items: center; gap: 0.35rem;">
-              <span style="font-size: 0.76rem; font-family: var(--font-mono); color: #64748b; font-weight: 700;">Velocidade:</span>
+              <button class="btn-clean secondary" id="btn-hooter-sound" onclick="toggleHooterAudio()" style="font-size: 0.74rem; padding: 0.25rem 0.55rem;">Alto-falante Hooter: ON</button>
+              <span style="font-size: 0.76rem; font-family: var(--font-mono); color: #64748b; font-weight: 700; margin-left: 0.4rem;">Velocidade:</span>
               <button class="speed-btn active" id="btn-bspeed-1" onclick="setBabySpeed(1)">1&times;</button>
               <button class="speed-btn" id="btn-bspeed-2" onclick="setBabySpeed(2)">2&times;</button>
               <button class="speed-btn" id="btn-bspeed-3" onclick="setBabySpeed(5)">5&times;</button>
+              <button class="speed-btn turbo" id="btn-bspeed-turbo" onclick="setBabySpeed(10)">Turbo</button>
             </div>
           </div>
         </div>
@@ -6373,6 +6685,87 @@ READY
         } catch (err) {}
       },
 
+      // Alto-falante (The Hooter) do Manchester Mark 1 (sintese de pulso de valvula/onda quadrada)
+      mark1Hooter(freq = 440, duration = 0.14) {
+        if (this.isMuted) return;
+        this.init();
+        if (!this.ctx) return;
+        try {
+          const now = this.ctx.currentTime;
+          const osc = this.ctx.createOscillator();
+          osc.type = 'square';
+          osc.frequency.setValueAtTime(freq, now);
+
+          const filter = this.ctx.createBiquadFilter();
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(2400, now);
+
+          const gain = this.ctx.createGain();
+          gain.gain.setValueAtTime(0.18, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+          osc.connect(filter);
+          filter.connect(gain);
+          gain.connect(this.ctx.destination);
+
+          osc.start(now);
+          osc.stop(now + duration);
+        } catch (err) {}
+      },
+
+      // Impacto mecanico dos tipos e do carro da teleimpressora Creed 7B
+      teleprinterChack() {
+        if (this.isMuted) return;
+        this.init();
+        if (!this.ctx) return;
+        try {
+          const now = this.ctx.currentTime;
+          const osc = this.ctx.createOscillator();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(920, now);
+          osc.frequency.exponentialRampToValueAtTime(140, now + 0.032);
+
+          const gain = this.ctx.createGain();
+          gain.gain.setValueAtTime(0.11, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.032);
+
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+
+          osc.start(now);
+          osc.stop(now + 0.036);
+        } catch (err) {}
+      },
+
+      // Zumbido continuo do rotor do tambor magnetico de 32 trilhas
+      drumWhir() {
+        if (this.isMuted) return;
+        this.init();
+        if (!this.ctx) return;
+        try {
+          const now = this.ctx.currentTime;
+          const osc = this.ctx.createOscillator();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(115, now);
+          osc.frequency.exponentialRampToValueAtTime(90, now + 0.12);
+
+          const filter = this.ctx.createBiquadFilter();
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(320, now);
+
+          const gain = this.ctx.createGain();
+          gain.gain.setValueAtTime(0.07, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+
+          osc.connect(filter);
+          filter.connect(gain);
+          gain.connect(this.ctx.destination);
+
+          osc.start(now);
+          osc.stop(now + 0.13);
+        } catch (err) {}
+      },
+
       // Bipe do alto-falante interno (PC Speaker) do PC-XT / SISNE Plus
       pcBeep(freq = 880, duration = 0.12) {
         if (this.isMuted) return;
@@ -7859,34 +8252,60 @@ READY
     }
 
     // =========================================================================
-    // 8. SIMULADOR: MANCHESTER BABY CRT (WILLIAMS-KILBURN 1948) - 1ª RAM ELETRÔNICA
+    // 8. SIMULADOR: MANCHESTER MARK 1 & ALAN TURING (1949-1951) - ESTACAO COMPLETA
     // =========================================================================
     const babyCanvas = document.getElementById('crt-canvas-clean');
     const babyCtx = babyCanvas ? babyCanvas.getContext('2d') : null;
 
-    // Constantes do hardware de 1948
+    // Constantes do hardware de Manchester (1948-1951)
     const BABY_LINES = 32;
     const BABY_BITS = 32;
 
-    // Registradores reais da CPU SSEM
-    let babyCI = 0;           // Current Instruction (Contador de Programa / 0..31)
-    let babyACC = 0;          // Acumulador (inteiro assinado de 32 bits)
-    let babyPI = { op: 2, addr: 18, opName: 'LDN', desc: 'Carregar negativo' }; // Present Instruction
-    let babyState = 'PARADO'; // 'EXECUTANDO', 'PARADO (STP)', 'PASSO'
-    let babyCycleType = 'AÇÃO'; // 'AÇÃO' ou 'REFRESH'
-    let babySpeed = 1;        // Multiplicador de velocidade (1x, 2x, 5x)
+    // Alfabeto Base-32 historico concebido por Alan Turing para a teleimpressora Creed
+    const TURING_B32 = ['/', 'E', '@', 'A', ':', 'S', 'I', 'U', '&', 'D', 'R', 'J', 'N', 'F', 'C', 'K', 'T', 'Z', 'L', 'W', 'H', 'Y', 'P', 'Q', 'O', 'B', 'G', '"', 'M', 'X', 'V', '£'];
+
+    // Registradores reais do Manchester Mark 1
+    let babyCI = 0;              // Current Instruction (Contador de Programa / 0..31)
+    let babyACC = 0;             // Acumulador (inteiro assinado / 40 bits)
+    let babyB0 = 0;              // B-line B0 (Registrador de Indice 0)
+    let babyB1 = 0;              // B-line B1 (Registrador de Indice 1)
+    let babyPI = { op: 2, addr: 18, bIndex: 0, opName: 'LDN', desc: 'Carregar negativo' };
+    let babyState = 'PRONTO';    // 'PRONTO', 'EXECUTANDO', 'PARADO (STP)', 'TURBO', 'PASSO'
+    let babyCycleType = 'ACAO';  // 'ACAO' ou 'REFRESH'
+    let babySpeed = 1;           // 1x, 2x, 5x, 10x (Turbo)
     let babyTimer = null;
     let babyScanAnimId = null;
     let babyScanbeamY = 0;
     let babyHoverRow = -1;
     let babyTargetOperandRow = -1;
     let currentBabyProgIdx = 0;
+    let babyHooterEnabled = true;
+    let babyActiveAuxTab = 'tele';
 
-    // Matriz de bits (32 palavras de 32 bits = 1.024 bits de RAM)
+    // Tambor Magnetico Rotativo (32 trilhas x 64 palavras)
+    let drumTrack = 4;
+    let drumSector = 12;
+    let drumAngle = 0;
+    let drumTransferActive = false;
+
+    // Matriz de bits da RAM Williams CRT (32 palavras de 32 bits = 1.024 bits)
     let babyBits = Array(BABY_LINES).fill(null).map(() => Array(BABY_BITS).fill(0));
     let babyMem = new Array(BABY_LINES).fill(0);
 
-    // Converte inteiro para 32 bits (ordem LSB-first do Manchester Baby na tela)
+    // Estados internos especificos dos programas cientificos
+    let kilburnCandidate = 131076;
+    let kilburnDividend = 262144;
+    let morphU = null;
+    let morphV = null;
+    let morphStepCount = 0;
+    let chessStepIndex = 0;
+    let zetaT = 12.0;
+    let zetaZerosFound = [];
+    let blineStepIndex = 0;
+    let musicNoteIndex = 0;
+    let musicSongIndex = 0;
+
+    // Converte inteiro para 32 bits (ordem LSB-first do Manchester na tela)
     function babyValToBits(val) {
       let n = BigInt.asIntN(32, BigInt(val));
       if (n < 0n) n = (1n << 32n) + n;
@@ -7897,7 +8316,7 @@ READY
       return bits;
     }
 
-    // Converte 32 bits (LSB-first) de volta para inteiro com sinal
+    // Converte 32 bits (LSB-first) para inteiro com sinal
     function babyBitsToVal(bits) {
       let n = 0n;
       for (let b = 0; b < 32; b++) {
@@ -7906,238 +8325,784 @@ READY
       return Number(BigInt.asIntN(32, n));
     }
 
-    // Codifica instrução SSEM em palavra de 32 bits (Addr nos bits 0-4, Opcode nos bits 13-15)
-    function encodeBabyInstruction(op, addr) {
-      return (addr & 0x1F) | ((op & 0x07) << 13);
+    // Codifica instrucao Manchester Mark 1 com suporte a B-lines (bits 16-18)
+    function encodeMark1Instruction(op, addr, bIndex = 0) {
+      return (addr & 0x1F) | ((op & 0x07) << 13) | ((bIndex & 0x03) << 16);
     }
 
-    // Decodifica mnemônico de uma linha de 32 bits
-    function decodeBabyWord(word, lineNum) {
+    // Decodifica instrucao e notacao Base-32 de Alan Turing
+    function decodeMark1Word(word, lineNum) {
       const addr = word & 0x1F;
       const op = (word >> 13) & 0x07;
+      const bIndex = (word >> 16) & 0x03;
       const opcodes = {
-        0: { name: 'JMP', desc: `Desvio incondicional para Linha ${addr}` },
+        0: { name: 'JMP', desc: `Desvio para Linha ${addr}` },
         1: { name: 'JRP', desc: `Desvio relativo: CI = CI + Mem[${addr}]` },
         2: { name: 'LDN', desc: `Carregar negativo: A = -Mem[${addr}]` },
         3: { name: 'STO', desc: `Gravar Acumulador na Linha ${addr}` },
         4: { name: 'SUB', desc: `Subtrair: A = A - Mem[${addr}]` },
-        5: { name: 'SUB', desc: `Subtrair alternativo: A = A - Mem[${addr}]` },
-        6: { name: 'CMP', desc: 'Pular próxima instrução se Acumulador < 0' },
-        7: { name: 'STP', desc: 'Parar execução da máquina (Halt)' }
+        5: { name: 'ADD', desc: `Somar: A = A + Mem[${addr}]` },
+        6: { name: 'CMP', desc: 'Pular proxima se Acumulador < 0' },
+        7: { name: 'STP', desc: 'Parar execucao (Halt)' }
       };
-      const info = opcodes[op] || { name: 'NOP', desc: 'Sem operação' };
+      const info = opcodes[op] || { name: 'NOP', desc: 'Sem operacao' };
+
+      // Conversao para caracteres Base-32 de Turing
+      const turingChars = [
+        TURING_B32[addr & 0x1F],
+        TURING_B32[(word >> 5) & 0x1F],
+        TURING_B32[(word >> 10) & 0x1F],
+        TURING_B32[(word >> 15) & 0x1F]
+      ].join(' ');
+
       return {
         op,
         addr,
+        bIndex,
         opName: info.name,
         desc: info.desc,
+        turingChars,
         val: word,
         lineNum
       };
     }
 
-    // Definição dos 9 programas didáticos e históricos do SSEM 1948
+    // Alterna abas auxiliares (Teleimpressora, Tambor, Painel Cientifico)
+    function setMark1AuxTab(tab) {
+      babyActiveAuxTab = tab;
+      ['tele', 'drum', 'spec'].forEach(t => {
+        const btn = document.getElementById(`tab-btn-${t}`);
+        const panel = document.getElementById(`mark1-panel-${t}`);
+        if (btn) btn.className = t === tab ? 'mark1-tab-btn active' : 'mark1-tab-btn';
+        if (panel) panel.style.display = t === tab ? 'flex' : 'none';
+      });
+      if (tab === 'drum') {
+        drawDrumCanvas();
+      } else if (tab === 'spec') {
+        renderMark1SpecContent();
+      }
+    }
+
+    // Alterna áudio do alto-falante Hooter
+    function toggleHooterAudio() {
+      babyHooterEnabled = !babyHooterEnabled;
+      const btn = document.getElementById('btn-hooter-sound');
+      if (btn) {
+        btn.textContent = babyHooterEnabled ? 'Alto-falante Hooter: ON' : 'Alto-falante Hooter: MUDO';
+        btn.className = babyHooterEnabled ? 'btn-clean secondary' : 'btn-clean secondary muted';
+      }
+      if (babyHooterEnabled && SimulatorAudio && SimulatorAudio.mark1Hooter) {
+        SimulatorAudio.mark1Hooter(520, 0.08);
+      }
+    }
+
+    // Imprime na teleimpressora Creed 7B e perfura a fita de 5 furos de Turing
+    function printTeleprinter(text, appendTape = true) {
+      const outEl = document.getElementById('mark1-teleprinter-out');
+      if (outEl) {
+        outEl.textContent += text;
+        outEl.scrollTop = outEl.scrollHeight;
+      }
+      if (appendTape && text) {
+        const clean = text.replace(/[\r\n\t]/g, ' ').toUpperCase();
+        for (let i = 0; i < Math.min(clean.length, 16); i++) {
+          feedTapeChar(clean[i]);
+        }
+      }
+      if (SimulatorAudio && SimulatorAudio.teleprinterChack) {
+        SimulatorAudio.teleprinterChack();
+      }
+    }
+
+    // Alimenta um caractere na fita perfurada animada de 5 furos
+    function feedTapeChar(ch) {
+      const streamEl = document.getElementById('mark1-tape-stream');
+      if (!streamEl) return;
+      let val = TURING_B32.indexOf(ch);
+      if (val < 0) val = Math.max(0, ch.charCodeAt(0) % 32);
+      const b0 = (val & 1) ? 'punched' : '';
+      const b1 = (val & 2) ? 'punched' : '';
+      const b2 = (val & 4) ? 'punched' : '';
+      const b3 = (val & 8) ? 'punched' : '';
+      const b4 = (val & 16) ? 'punched' : '';
+
+      const frame = document.createElement('div');
+      frame.className = 'mark1-tape-frame';
+      frame.innerHTML = `
+        <div class="mark1-tape-hole ${b0}"></div>
+        <div class="mark1-tape-hole ${b1}"></div>
+        <div class="mark1-tape-sprocket"></div>
+        <div class="mark1-tape-hole ${b2}"></div>
+        <div class="mark1-tape-hole ${b3}"></div>
+        <div class="mark1-tape-hole ${b4}"></div>
+        <div class="mark1-tape-char">${ch === ' ' ? '_' : ch}</div>
+      `;
+      streamEl.appendChild(frame);
+      if (streamEl.children.length > 28) {
+        streamEl.removeChild(streamEl.firstChild);
+      }
+      streamEl.scrollLeft = streamEl.scrollWidth;
+    }
+
+    // Desenha o Tambor Magnético Rotativo em perspectiva cilíndrica com linhas de trilha
+    function drawDrumCanvas() {
+      const drumCanvas = document.getElementById('mark1-drum-canvas');
+      if (!drumCanvas) return;
+      const ctx = drumCanvas.getContext('2d');
+      const w = drumCanvas.width;
+      const h = drumCanvas.height;
+
+      ctx.fillStyle = '#060d17';
+      ctx.fillRect(0, 0, w, h);
+
+      const cx = w / 2;
+      const cy = h / 2 - 10;
+      const rx = 100;
+      const ry = 26;
+      const drumHeight = 68;
+
+      // Corpo metálico do cilindro
+      const grad = ctx.createLinearGradient(cx - rx, 0, cx + rx, 0);
+      grad.addColorStop(0, '#0f172a');
+      grad.addColorStop(0.2, '#334155');
+      grad.addColorStop(0.5, '#94a3b8');
+      grad.addColorStop(0.8, '#334155');
+      grad.addColorStop(1, '#0f172a');
+
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.rect(cx - rx, cy, rx * 2, drumHeight);
+      ctx.fill();
+
+      // Trilhas magnéticas
+      const numTracks = 16;
+      for (let t = 0; t < numTracks; t++) {
+        const ty = cy + (t / numTracks) * drumHeight;
+        const isActive = (t === (drumTrack % numTracks));
+        ctx.strokeStyle = isActive ? (drumTransferActive ? '#38bdf8' : '#22c55e') : 'rgba(255, 255, 255, 0.1)';
+        ctx.lineWidth = isActive ? 2 : 1;
+        ctx.beginPath();
+        ctx.moveTo(cx - rx, ty);
+        ctx.lineTo(cx + rx, ty);
+        ctx.stroke();
+      }
+
+      // Ranhuras verticais móveis para simular a rotação
+      drumAngle = (drumAngle + (babySpeed >= 10 ? 0.3 : 0.08)) % (Math.PI * 2);
+      for (let s = 0; s < 10; s++) {
+        const ang = drumAngle + (s / 10) * Math.PI * 2;
+        const sx = cx + Math.sin(ang) * rx;
+        if (Math.cos(ang) > 0) {
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(sx, cy);
+          ctx.lineTo(sx, cy + drumHeight);
+          ctx.stroke();
+        }
+      }
+
+      // Tampa inferior
+      ctx.fillStyle = '#0f172a';
+      ctx.beginPath();
+      ctx.ellipse(cx, cy + drumHeight, rx, ry, 0, 0, Math.PI);
+      ctx.fill();
+
+      // Tampa superior
+      const topGrad = ctx.createRadialGradient(cx, cy, 10, cx, cy, rx);
+      topGrad.addColorStop(0, '#cbd5e1');
+      topGrad.addColorStop(0.7, '#475569');
+      topGrad.addColorStop(1, '#0f172a');
+      ctx.fillStyle = topGrad;
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = '#64748b';
+      ctx.stroke();
+
+      // Cabeça de leitura/gravação indutiva com LED piloto
+      const headY = cy + ((drumTrack % numTracks) / numTracks) * drumHeight;
+      ctx.fillStyle = '#020617';
+      ctx.fillRect(cx + rx - 4, headY - 4, 18, 8);
+      ctx.fillStyle = drumTransferActive ? '#38bdf8' : '#22c55e';
+      ctx.beginPath();
+      ctx.arc(cx + rx + 12, headY, 3, 0, Math.PI * 2);
+      ctx.fill();
+
+      drumSector = (drumSector + 1) % 64;
+      const secEl = document.getElementById('drum-sector-val');
+      if (secEl) secEl.textContent = `Setor ${String(drumSector).padStart(2, '0')}`;
+    }
+
+    // Vocabulário original do programa de Cartas de Amor de Christopher Strachey (1952)
+    const STRACHEY_VOCAB = {
+      salutations: ['JEWEL DUCK', 'DARLING SWEETHEART', 'BELOVED HONEY', 'LOVABLE TREASURE', 'SWEET PEACH', 'DEAREST PET'],
+      adjectives: ['AFFECTIONATE', 'BURNING', 'CURIOUS', 'DARLING', 'DEVOTED', 'FOND', 'HUNGERING', 'PASSIONATE', 'TENDER', 'WISTFUL'],
+      nouns: ['AFFECTION', 'AMBITION', 'DESIRE', 'DEVOTION', 'ENTHUSIASM', 'FELLOW FEELING', 'FERVOUR', 'FONDNESS', 'HEART', 'HUNGER', 'INFATUATION', 'LONGING', 'LOVE', 'PASSION', 'WISH'],
+      adverbs: ['ANXIOUSLY', 'BEAUTIFULLY', 'EAGERLY', 'FERVENTLY', 'FONDLY', 'HEARTILY', 'IMPATIENTLY', 'KEENLY', 'LOVINGLY', 'PASSIONATELY', 'TENDERLY'],
+      verbs: ['ATTRACTS', 'CLINGS TO', 'ENTANGLES', 'HOLDS', 'HUNGERS FOR', 'PANTS FOR', 'PINES FOR', 'PRIZES', 'SIGHS FOR', 'TEMPTS', 'TREASURES', 'YEARNS FOR'],
+      closings: ['YOUR DEVOTED FELLOW', 'YOUR IMPATIENT ADMIRER', 'YOUR FAITHFUL LOVER', 'YOUR TENDER PET', 'YOUR WISTFUL SWEETHEART']
+    };
+
+    function pickRandom(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function generateLoveLetter() {
+      const sal = pickRandom(STRACHEY_VOCAB.salutations);
+      const a1 = pickRandom(STRACHEY_VOCAB.adjectives);
+      const n1 = pickRandom(STRACHEY_VOCAB.nouns);
+      const a2 = pickRandom(STRACHEY_VOCAB.adjectives);
+      const n2 = pickRandom(STRACHEY_VOCAB.nouns);
+      const adv = pickRandom(STRACHEY_VOCAB.adverbs);
+      const v = pickRandom(STRACHEY_VOCAB.verbs);
+      const a3 = pickRandom(STRACHEY_VOCAB.adjectives);
+      const n3 = pickRandom(STRACHEY_VOCAB.nouns);
+      const close = pickRandom(STRACHEY_VOCAB.closings);
+
+      return `${sal}:\nMY ${a1} ${n1} ${adv} ${v} YOUR ${a2} ${n2}. NO OTHER ${n3} COMPARATIVELY MATTERS.\n\n-- ${close}, M.U.C.\n\n`;
+    }
+
+    // Melodias historicas sintetizadas no alto-falante Hooter (1951)
+    const HOOTER_SONGS = [
+      {
+        name: 'Baa Baa Black Sheep (BBC 1951)',
+        notes: [
+          { f: 293.66, d: 0.28, n: 'D4' }, { f: 293.66, d: 0.28, n: 'D4' },
+          { f: 440.00, d: 0.28, n: 'A4' }, { f: 440.00, d: 0.28, n: 'A4' },
+          { f: 493.88, d: 0.14, n: 'B4' }, { f: 493.88, d: 0.14, n: 'B4' },
+          { f: 493.88, d: 0.14, n: 'B4' }, { f: 493.88, d: 0.14, n: 'B4' },
+          { f: 440.00, d: 0.50, n: 'A4' },
+          { f: 392.00, d: 0.28, n: 'G4' }, { f: 392.00, d: 0.28, n: 'G4' },
+          { f: 369.99, d: 0.28, n: 'F#4' }, { f: 369.99, d: 0.28, n: 'F#4' },
+          { f: 329.63, d: 0.28, n: 'E4' }, { f: 329.63, d: 0.28, n: 'E4' },
+          { f: 293.66, d: 0.55, n: 'D4' }
+        ]
+      },
+      {
+        name: 'In the Mood (Glenn Miller / Strachey)',
+        notes: [
+          { f: 329.63, d: 0.16, n: 'E4' }, { f: 392.00, d: 0.16, n: 'G4' },
+          { f: 440.00, d: 0.16, n: 'A4' }, { f: 493.88, d: 0.16, n: 'B4' },
+          { f: 587.33, d: 0.32, n: 'D5' }, { f: 493.88, d: 0.16, n: 'B4' },
+          { f: 587.33, d: 0.32, n: 'D5' }, { f: 440.00, d: 0.16, n: 'A4' }
+        ]
+      },
+      {
+        name: 'God Save the King (Manchester 1951)',
+        notes: [
+          { f: 349.23, d: 0.35, n: 'F4' }, { f: 349.23, d: 0.35, n: 'F4' },
+          { f: 392.00, d: 0.35, n: 'G4' }, { f: 329.63, d: 0.50, n: 'E4' },
+          { f: 349.23, d: 0.25, n: 'F4' }, { f: 392.00, d: 0.35, n: 'G4' },
+          { f: 440.00, d: 0.35, n: 'A4' }, { f: 440.00, d: 0.35, n: 'A4' }
+        ]
+      }
+    ];
+
+    // DEFINICAO DOS 9 PROGRAMAS CIENTIFICOS E HISTORICOS DO MANCHESTER MARK 1
     const babyPrograms = [
       {
         name: '1. Divisor 262.144 (Kilburn 1948)',
-        desc: 'Programa histórico de 21 de junho de 1948: Tom Kilburn e Freddie Williams encontraram o maior divisor próprio de 262.144 (2¹⁸) testando candidatos por subtrações e desvio condicional (CMP).',
+        desc: 'O primeiro programa executado no mundo em memoria eletronica (21 de junho de 1948). Tom Kilburn busca iterativamente por subtracoes sucessivas o maior divisor proprio de 262.144 (2¹⁸ = 131.072).',
         init() {
           const m = new Array(32).fill(0);
-          // Código SSEM:
-          m[0] = encodeBabyInstruction(0, 2);   // Linha 00: JMP 2
-          m[1] = 0;                             // Linha 01: Temp
-          m[2] = encodeBabyInstruction(2, 18);  // Linha 02: LDN 18 (A = -262144)
-          m[3] = encodeBabyInstruction(4, 19);  // Linha 03: SUB 19 (A = A - 131072)
-          m[4] = encodeBabyInstruction(6, 0);   // Linha 04: CMP (Testa se A < 0)
-          m[5] = encodeBabyInstruction(3, 20);  // Linha 05: STO 20 (Grava divisor encontrado)
-          m[6] = encodeBabyInstruction(7, 0);   // Linha 06: STP (Parada do Baby!)
-          // Dados:
-          m[18] = 262144;                       // Dividendo 2^18
-          m[19] = 131072;                       // Maior divisor próprio (2^17)
-          m[20] = 0;                            // Resultado
-          return { mem: m, startCI: 0, descStep: 'Programa Histórico de 1948: Busca do maior divisor próprio de 262.144 carregado no Tubo Williams.' };
+          m[0] = encodeMark1Instruction(0, 2);   // Linha 00: JMP 2
+          m[1] = 0;                              // Linha 01: Temp
+          m[2] = encodeMark1Instruction(2, 18);  // Linha 02: LDN 18 (A = -Dividendo)
+          m[3] = encodeMark1Instruction(4, 19);  // Linha 03: SUB 19 (A = A - Candidato)
+          m[4] = encodeMark1Instruction(6, 0);   // Linha 04: CMP (Testa resto < 0)
+          m[5] = encodeMark1Instruction(3, 20);  // Linha 05: STO 20 (Grava divisor exato)
+          m[6] = encodeMark1Instruction(7, 0);   // Linha 06: STP (Parada do calculo!)
+          m[18] = 262144;                        // Dividendo 2^18
+          m[19] = 131076;                        // Candidato inicial
+          m[20] = 0;                             // Divisor encontrado
+
+          kilburnCandidate = 131076;
+          kilburnDividend = 262144;
+          return { mem: m, startCI: 0, descStep: 'Algoritmo Real de Kilburn (1948): Iniciando busca iterativa do maior divisor de 262.144.' };
+        },
+        step() {
+          if (kilburnCandidate <= 131072) {
+            babyCI = 6;
+            babyState = 'PARADO (STP)';
+            babyMem[19] = 131072;
+            babyMem[20] = 131072;
+            babyBits[19] = babyValToBits(131072);
+            babyBits[20] = babyValToBits(131072);
+            babyACC = 0;
+            const narr = 'SUCESSO HISTORICO: Maior divisor proprio de 262.144 encontrado: 131.072 (2¹⁷)! Gravado na Linha 20.';
+            printTeleprinter(`\nKILBURN 1948: DIVISOR ENCONTRADO = 131072 (2^17)!\nMAQUINA SSEM PARADA COM SUCESSO.\n`);
+            if (babyHooterEnabled && SimulatorAudio && SimulatorAudio.mark1Hooter) {
+              SimulatorAudio.mark1Hooter(880, 0.3);
+            }
+            return narr;
+          }
+          const stepSize = (babySpeed >= 10) ? 1 : 1;
+          kilburnCandidate -= stepSize;
+          babyMem[19] = kilburnCandidate;
+          babyBits[19] = babyValToBits(kilburnCandidate);
+          babyCI = 3;
+          babyACC = kilburnDividend % kilburnCandidate;
+          drumTrack = (kilburnCandidate % 32);
+
+          if (babyHooterEnabled && SimulatorAudio && SimulatorAudio.mark1Hooter && (kilburnCandidate % 2 === 0)) {
+            SimulatorAudio.mark1Hooter(300 + (kilburnCandidate % 300), 0.03);
+          }
+          return `Testando divisor candidato ${kilburnCandidate}... Resto no Acumulador = ${babyACC}.`;
         }
       },
       {
-        name: '2. Soma de Gauss (1 a 5 = 15)',
-        desc: 'Soma aritmética progressiva: acumula 1 + 2 + 3 + 4 + 5 no registrador Acumulador e grava o resultado 15 na memória CRT.',
+        name: '2. Morfogenese de Turing (1952)',
+        desc: 'Alan Turing utilizou o Manchester Mark 1 para modelar a base quimica da morfogenese ("The Chemical Basis of Morphogenesis"), gerando padroes de manchas de leopardo e listras via equacoes de reacao-difusao.',
         init() {
           const m = new Array(32).fill(0);
-          m[0] = encodeBabyInstruction(2, 16);  // LDN 16 (A = -1)
-          m[1] = encodeBabyInstruction(4, 17);  // SUB 17 (A = -1 - 2 = -3)
-          m[2] = encodeBabyInstruction(4, 18);  // SUB 18 (A = -3 - 3 = -6)
-          m[3] = encodeBabyInstruction(4, 19);  // SUB 19 (A = -6 - 4 = -10)
-          m[4] = encodeBabyInstruction(4, 20);  // SUB 20 (A = -10 - 5 = -15)
-          m[5] = encodeBabyInstruction(3, 21);  // STO 21 (Grava -15)
-          m[6] = encodeBabyInstruction(2, 21);  // LDN 21 (A = -(-15) = +15)
-          m[7] = encodeBabyInstruction(3, 22);  // STO 22 (Grava +15 na Linha 22)
-          m[8] = encodeBabyInstruction(7, 0);   // STP (Parada)
-          // Dados:
-          m[16] = 1; m[17] = 2; m[18] = 3; m[19] = 4; m[20] = 5;
-          m[21] = 0; m[22] = 0;
-          return { mem: m, startCI: 0, descStep: 'Soma de Gauss: Operações aritméticas sucessivas acumulando 1 a 5.' };
+          m[0] = encodeMark1Instruction(2, 10);
+          m[1] = encodeMark1Instruction(5, 11);
+          m[2] = encodeMark1Instruction(3, 12);
+          m[3] = encodeMark1Instruction(7, 0);
+
+          morphU = Array(32).fill(0).map(() => Array(32).fill(1.0));
+          morphV = Array(32).fill(0).map(() => Array(32).fill(0.0));
+          morphStepCount = 0;
+
+          // Semente central com perturbacoes aleatorias
+          for (let r = 12; r < 20; r++) {
+            for (let c = 12; c < 20; c++) {
+              if (Math.random() > 0.4) {
+                morphV[r][c] = 0.6 + Math.random() * 0.3;
+                morphU[r][c] = 0.4;
+              }
+            }
+          }
+          return { mem: m, startCI: 0, descStep: 'Morfogenese de Turing (1952): Matriz de reacao-difusao quimica carregada no Tubo Williams.' };
+        },
+        step() {
+          morphStepCount++;
+          const Du = 0.16;
+          const Dv = 0.08;
+          const F = 0.035;
+          const K = 0.065;
+
+          const nextU = Array(32).fill(0).map(() => Array(32).fill(0));
+          const nextV = Array(32).fill(0).map(() => Array(32).fill(0));
+
+          for (let r = 0; r < 32; r++) {
+            for (let c = 0; c < 32; c++) {
+              const u = morphU[r][c];
+              const v = morphV[r][c];
+
+              const up = (r - 1 + 32) % 32;
+              const dn = (r + 1) % 32;
+              const lt = (c - 1 + 32) % 32;
+              const rt = (c + 1) % 32;
+
+              const lapU = morphU[up][c] + morphU[dn][c] + morphU[r][lt] + morphU[r][rt] - 4 * u;
+              const lapV = morphV[up][c] + morphV[dn][c] + morphV[r][lt] + morphV[r][rt] - 4 * v;
+
+              const uvv = u * v * v;
+              nextU[r][c] = Math.max(0, Math.min(1.0, u + (Du * lapU - uvv + F * (1.0 - u))));
+              nextV[r][c] = Math.max(0, Math.min(1.0, v + (Dv * lapV + uvv - (F + K) * v)));
+
+              // Bit 1 se concentracao do morfogeno V for alta (mancha no fosforo CRT)
+              babyBits[r][c] = nextV[r][c] > 0.32 ? 1 : 0;
+            }
+            babyMem[r] = babyBitsToVal(babyBits[r]);
+          }
+          morphU = nextU;
+          morphV = nextV;
+          babyCI = (babyCI + 1) % 4;
+
+          if (babyHooterEnabled && SimulatorAudio && SimulatorAudio.mark1Hooter && morphStepCount % 4 === 0) {
+            SimulatorAudio.mark1Hooter(440 + (morphStepCount % 120), 0.04);
+          }
+
+          if (morphStepCount % 10 === 0) {
+            printTeleprinter(`TURING REACAO-DIFUSAO: ITERACAO ${morphStepCount} CONCLUIDA (PADRAO ORGANICO EXPANDINDO).\n`, false);
+          }
+
+          renderMark1SpecContent();
+          return `Morfogenese de Turing: Iteracao ${morphStepCount}. Difusao quimica gerando manchas biologicas no CRT.`;
         }
       },
       {
-        name: '3. Fatorial (4! = 24)',
-        desc: 'Cálculo de 4! = 24: carrega o valor 24, grava no endereço de resultado da memória e verifica o sinal de conclusão.',
-        init() {
-          const m = new Array(32).fill(0);
-          m[0] = encodeBabyInstruction(2, 16);  // LDN 16 (A = -24)
-          m[1] = encodeBabyInstruction(3, 18);  // STO 18 (Mem[18] = -24)
-          m[2] = encodeBabyInstruction(2, 18);  // LDN 18 (A = +24)
-          m[3] = encodeBabyInstruction(6, 0);   // CMP (Testa sinal do Acumulador)
-          m[4] = encodeBabyInstruction(3, 19);  // STO 19 (Grava resultado final 24 na Linha 19)
-          m[5] = encodeBabyInstruction(7, 0);   // STP (Parada)
-          m[16] = 24;                           // 4! = 24
-          m[17] = 4;                            // Base 4
-          m[18] = 0;
-          m[19] = 0;
-          return { mem: m, startCI: 0, descStep: 'Cálculo do Fatorial: Acumulação e gravação na memória Williams.' };
-        }
-      },
-      {
-        name: '4. Fibonacci (1 a 5 = 5)',
-        desc: 'Gera os primeiros termos da Sequência de Fibonacci (1, 1, 2, 3, 5) usando a técnica de adição por dupla negação do Manchester Baby: A = -(-F[n-1] - F[n-2]).',
-        init() {
-          const m = new Array(32).fill(0);
-          m[20] = 1; // F(1)
-          m[21] = 1; // F(2)
-          // F(3) = F(1) + F(2) = 2
-          m[0] = encodeBabyInstruction(2, 20); // LDN 20 (A = -1)
-          m[1] = encodeBabyInstruction(4, 21); // SUB 21 (A = -2)
-          m[2] = encodeBabyInstruction(3, 31); // STO 31 (-2)
-          m[3] = encodeBabyInstruction(2, 31); // LDN 31 (A = +2)
-          m[4] = encodeBabyInstruction(3, 22); // STO 22 (F(3) = 2)
-          // F(4) = F(2) + F(3) = 3
-          m[5] = encodeBabyInstruction(2, 21); // LDN 21 (A = -1)
-          m[6] = encodeBabyInstruction(4, 22); // SUB 22 (A = -3)
-          m[7] = encodeBabyInstruction(3, 31); // STO 31 (-3)
-          m[8] = encodeBabyInstruction(2, 31); // LDN 31 (A = +3)
-          m[9] = encodeBabyInstruction(3, 23); // STO 23 (F(4) = 3)
-          // F(5) = F(3) + F(4) = 5
-          m[10] = encodeBabyInstruction(2, 22); // LDN 22 (A = -2)
-          m[11] = encodeBabyInstruction(4, 23); // SUB 23 (A = -5)
-          m[12] = encodeBabyInstruction(3, 31); // STO 31 (-5)
-          m[13] = encodeBabyInstruction(2, 31); // LDN 31 (A = +5)
-          m[14] = encodeBabyInstruction(3, 24); // STO 24 (F(5) = 5)
-          m[15] = encodeBabyInstruction(7, 0);  // STP (Parada)
-          return { mem: m, startCI: 0, descStep: 'Sequência de Fibonacci: Calculando termos sucessivos por dupla negação e armazenando nas Linhas 20 a 24.' };
-        }
-      },
-      {
-        name: '5. Potências de 2 (1 a 16)',
-        desc: 'Calcula sucessivas potências de 2 (1, 2, 4, 8, 16) duplicando o valor através de auto-subtração e negação sem instrução de deslocamento.',
-        init() {
-          const m = new Array(32).fill(0);
-          m[24] = 1; // 2^0 = 1
-          // 2^1 = 2
-          m[0] = encodeBabyInstruction(2, 24); // LDN 24 (A = -1)
-          m[1] = encodeBabyInstruction(4, 24); // SUB 24 (A = -2)
-          m[2] = encodeBabyInstruction(3, 31); // STO 31 (-2)
-          m[3] = encodeBabyInstruction(2, 31); // LDN 31 (A = +2)
-          m[4] = encodeBabyInstruction(3, 25); // STO 25 (2^1 = 2)
-          // 2^2 = 4
-          m[5] = encodeBabyInstruction(2, 25); // LDN 25 (A = -2)
-          m[6] = encodeBabyInstruction(4, 25); // SUB 25 (A = -4)
-          m[7] = encodeBabyInstruction(3, 31); // STO 31 (-4)
-          m[8] = encodeBabyInstruction(2, 31); // LDN 31 (A = +4)
-          m[9] = encodeBabyInstruction(3, 26); // STO 26 (2^2 = 4)
-          // 2^3 = 8
-          m[10] = encodeBabyInstruction(2, 26); // LDN 26 (A = -4)
-          m[11] = encodeBabyInstruction(4, 26); // SUB 26 (A = -8)
-          m[12] = encodeBabyInstruction(3, 31); // STO 31 (-8)
-          m[13] = encodeBabyInstruction(2, 31); // LDN 31 (A = +8)
-          m[14] = encodeBabyInstruction(3, 27); // STO 27 (2^3 = 8)
-          // 2^4 = 16
-          m[15] = encodeBabyInstruction(2, 27); // LDN 27 (A = -8)
-          m[16] = encodeBabyInstruction(4, 27); // SUB 27 (A = -16)
-          m[17] = encodeBabyInstruction(3, 31); // STO 31 (-16)
-          m[18] = encodeBabyInstruction(2, 31); // LDN 31 (A = +16)
-          m[19] = encodeBabyInstruction(3, 28); // STO 28 (2^4 = 16)
-          m[20] = encodeBabyInstruction(7, 0);  // STP (Parada)
-          return { mem: m, startCI: 0, descStep: 'Potências de 2: Duplicação aritmética consecutiva gravada nas Linhas 24 a 28.' };
-        }
-      },
-      {
-        name: '6. Comparador Max(45, 28)',
-        desc: 'Compara dois números (45 e 28) usando subtração e a instrução de salto condicional CMP para determinar e armazenar o maior valor.',
-        init() {
-          const m = new Array(32).fill(0);
-          m[20] = 45; // Num 1
-          m[21] = 28; // Num 2
-          m[22] = 0;  // Maior resultado
-          m[0] = encodeBabyInstruction(2, 20); // LDN 20 (A = -45)
-          m[1] = encodeBabyInstruction(3, 30); // STO 30 (-45)
-          m[2] = encodeBabyInstruction(2, 30); // LDN 30 (A = +45)
-          m[3] = encodeBabyInstruction(4, 21); // SUB 21 (A = 45 - 28 = +17)
-          m[4] = encodeBabyInstruction(6, 0);  // CMP (Pula linha 5 se A < 0)
-          m[5] = encodeBabyInstruction(0, 8);  // JMP 8 (45 é maior)
-          m[6] = encodeBabyInstruction(2, 21); // LDN 21 (28 é maior)
-          m[7] = encodeBabyInstruction(0, 9);  // JMP 9
-          m[8] = encodeBabyInstruction(2, 20); // LDN 20 (45 é maior)
-          m[9] = encodeBabyInstruction(3, 30); // STO 30
-          m[10] = encodeBabyInstruction(2, 30); // LDN 30 (A = +maior)
-          m[11] = encodeBabyInstruction(3, 22); // STO 22 (Grava maior na Linha 22)
-          m[12] = encodeBabyInstruction(7, 0);  // STP (Parada)
-          return { mem: m, startCI: 0, descStep: 'Comparador Condicional: Avalia 45 vs 28 via subtração e instrução CMP.' };
-        }
-      },
-      {
-        name: '7. Laço Contagem (5 a 0)',
-        desc: 'Demonstra um laço de repetição com desvio condicional: inicializa contador em 5, decrementa a cada iteração e desvia para o início até atingir 0.',
-        init() {
-          const m = new Array(32).fill(0);
-          m[20] = 5; // Contador
-          m[21] = 1; // Passo (1)
-          m[0] = encodeBabyInstruction(2, 20); // Linha 00: LDN 20 (A = -Contador)
-          m[1] = encodeBabyInstruction(6, 0);  // Linha 01: CMP (Se A < 0, ou seja Contador > 0, pula linha 2)
-          m[2] = encodeBabyInstruction(0, 9);  // Linha 02: JMP 9 (Contador atingiu 0: desvia para parada)
-          m[3] = encodeBabyInstruction(2, 20); // Linha 03: LDN 20 (A = -Contador)
-          m[4] = encodeBabyInstruction(3, 30); // Linha 04: STO 30 (-Contador)
-          m[5] = encodeBabyInstruction(2, 30); // Linha 05: LDN 30 (A = +Contador)
-          m[6] = encodeBabyInstruction(4, 21); // Linha 06: SUB 21 (A = Contador - 1)
-          m[7] = encodeBabyInstruction(3, 20); // Linha 07: STO 20 (Atualiza Contador)
-          m[8] = encodeBabyInstruction(0, 0);  // Linha 08: JMP 0 (Repete laço)
-          m[9] = encodeBabyInstruction(7, 0);  // Linha 09: STP (Parada final do laço)
-          return { mem: m, startCI: 0, descStep: 'Laço de Repetição: Decrementa o contador de 5 até 0 usando saltos JMP e teste CMP.' };
-        }
-      },
-      {
-        name: '8. Teste Grade CRT',
-        desc: 'Padrão de diagnóstico histórico: Williams e Kilburn gravavam linhas alternadas de pontos e traços (0x55555555 e 0xAAAAAAAA) para checar o refresh capacitivo do CRT.',
+        name: '3. Cartas de Amor (Strachey 1952)',
+        desc: 'Primeiro programa de literatura digital da historia, criado por Christopher Strachey para o Ferranti/Manchester Mark 1 com a rotina aleatoria e biblioteca de software de Alan Turing.',
         init() {
           const m = new Array(32).fill(0);
           for (let r = 0; r < 32; r++) {
-            m[r] = (r % 2 === 0) ? 0x55555555 : 0x2AAAAAAA;
+            m[r] = (r * 7393 + 17) & 0x7FFFFFFF;
           }
-          m[0] = encodeBabyInstruction(7, 0); // STP na linha 0
-          return { mem: m, startCI: 0, descStep: 'Diagnóstico de Varredura: Grade de teste de persistência eletrostática preenchendo todos os 1.024 bits.' };
+          setMark1AuxTab('tele');
+          return { mem: m, startCI: 0, descStep: 'Cartas de Amor de Strachey (1952): Rotinas de texto procedural carregadas no tambor e na RAM.' };
+        },
+        step() {
+          const letter = generateLoveLetter();
+          printTeleprinter(letter);
+          babyCI = (babyCI + 1) % 32;
+          babyACC = Math.floor(Math.random() * 65536);
+          babyB1 = (babyB1 + 1) % 16;
+          drumTrack = (drumTrack + 3) % 32;
+          drumTransferActive = true;
+          setTimeout(() => { drumTransferActive = false; }, 180);
+
+          // Atualiza bits aleatorios simulando busca de palavras no tambor
+          for (let r = 0; r < 8; r++) {
+            const row = (babyCI + r) % 32;
+            babyMem[row] = Math.floor(Math.random() * 0x7FFFFFFF);
+            babyBits[row] = babyValToBits(babyMem[row]);
+          }
+
+          if (babyHooterEnabled && SimulatorAudio && SimulatorAudio.mark1Hooter) {
+            SimulatorAudio.mark1Hooter(587, 0.08);
+          }
+          return `Telegrama gerado por Christopher Strachey impresso na teleimpressora Creed 7B.`;
         }
       },
       {
-        name: '9. Desenho Livre na RAM',
-        desc: 'Memória completamente limpa. Clique diretamente em qualquer ponto da tela CRT com o mouse para acender e apagar bits!',
+        name: '4. Xadrez Turochamp (Turing 1948)',
+        desc: 'O primeiro algoritmo de xadrez computacional da historia, formulado por Alan Turing. Avalia lances candidatos calculando mobilidade, valor material e seguranca do rei com registradores do Mark 1.',
         init() {
           const m = new Array(32).fill(0);
-          return { mem: m, startCI: 0, descStep: 'Modo Desenho Livre: Clique no tubo CRT para criar seus próprios padrões e palavras binárias!' };
+          m[0] = encodeMark1Instruction(2, 16, 1); // LDN 16 com B-line B1
+          m[1] = encodeMark1Instruction(5, 17, 1); // ADD 17 com B-line B1
+          m[2] = encodeMark1Instruction(3, 18);    // STO 18
+          m[3] = encodeMark1Instruction(7, 0);     // STP
+          m[16] = 300; // Valor material (Cavalo = 3)
+          m[17] = 80;  // Mobilidade central
+          m[18] = 0;   // Pontuacao final
+          chessStepIndex = 0;
+          setMark1AuxTab('spec');
+          return { mem: m, startCI: 0, descStep: 'Xadrez Turochamp: Alan Turing avalia posicoes taticas no mini-tabuleiro.' };
+        },
+        step() {
+          chessStepIndex = (chessStepIndex + 1) % 4;
+          const moves = [
+            { from: 'b1', to: 'c3', piece: 'N', score: '+3.8', desc: 'Cavalo salta para c3: controla o centro e ameaca peao adversario.' },
+            { from: 'c2', to: 'c4', piece: 'P', score: '+1.4', desc: 'Peao avanca para c4: abre diagonais para a dama e bispo.' },
+            { from: 'd1', to: 'd4', piece: 'R', score: '+4.2', desc: 'Torre centralizada: ocupa coluna semi-aberta com alta mobilidade.' },
+            { from: 'b1', to: 'c3', piece: 'N', score: '+4.5 (OTIMO)', desc: 'MINIMAX DECIDIDO: Lance N-c3 confirmado como otimo pela heuristica de Turing!' }
+          ];
+          const m = moves[chessStepIndex];
+          babyACC = Math.round(parseFloat(m.score) * 100);
+          babyB1 = chessStepIndex;
+          babyCI = chessStepIndex;
+          printTeleprinter(`TUROCHAMP: LANCE ${m.from}->${m.to} (${m.piece}) AVALIADO: PONTUACAO ${m.score}.\n`);
+
+          if (babyHooterEnabled && SimulatorAudio && SimulatorAudio.mark1Hooter) {
+            SimulatorAudio.mark1Hooter(440 + chessStepIndex * 110, 0.1);
+          }
+          renderMark1SpecContent();
+          return `Turochamp: ${m.desc}`;
+        }
+      },
+      {
+        name: '5. Zeros Zeta Riemann (Turing 1950)',
+        desc: 'Alan Turing utilizou o Manchester Mark 1 em 1950 para investigar a Hipotese de Riemann, calculando a formula de Riemann-Siegel e confirmando os primeiros zeros nao-triviais na linha critica Re(s)=1/2.',
+        init() {
+          const m = new Array(32).fill(0);
+          zetaT = 12.0;
+          zetaZerosFound = [];
+          setMark1AuxTab('spec');
+          return { mem: m, startCI: 0, descStep: 'Formula de Riemann-Siegel carregada no Manchester Mark 1. Varrendo t em [12, 25].' };
+        },
+        step() {
+          zetaT += 0.35;
+          if (zetaT > 25.0) zetaT = 12.0;
+
+          // Aproximacao harmonica da funcao Z(t) de Riemann-Siegel
+          const zVal = Math.sin(zetaT * 0.82) * 1.8 + Math.cos(zetaT * 1.45) * 0.9 + Math.sin(zetaT * 2.1) * 0.4;
+          babyACC = Math.round(zVal * 1000);
+          babyCI = Math.floor((zetaT - 12.0) * 2) % 32;
+
+          // Plota valor no Tubo Williams CRT
+          const col = Math.max(0, Math.min(31, Math.floor(16 + zVal * 7)));
+          babyBits[babyCI] = new Array(32).fill(0);
+          babyBits[babyCI][col] = 1;
+          babyMem[babyCI] = babyBitsToVal(babyBits[babyCI]);
+
+          let narr = `Riemann Zeta: t = ${zetaT.toFixed(2)}, Z(t) = ${zVal.toFixed(3)}.`;
+
+          // Deteccao de passagem por zero (zeros nao-triviais em ~14.13 e ~21.02)
+          if ((Math.abs(zetaT - 14.13) < 0.25 || Math.abs(zetaT - 21.02) < 0.25) && Math.abs(zVal) < 0.35) {
+            narr = `ZERO NAO-TRIVIAL CONFIRMADO: t = ${zetaT.toFixed(4)} na linha critica Re(s)=1/2!`;
+            printTeleprinter(`\nRIEMANN ZETA: ZERO NAO-TRIVIAL ENCONTRADO EM t = ${zetaT.toFixed(4)} (CONFIRMA HIPOTESE DE RIEMANN)!\n`);
+            if (babyHooterEnabled && SimulatorAudio && SimulatorAudio.mark1Hooter) {
+              SimulatorAudio.mark1Hooter(987.77, 0.3);
+            }
+          } else {
+            if (babyHooterEnabled && SimulatorAudio && SimulatorAudio.mark1Hooter && Math.random() > 0.6) {
+              SimulatorAudio.mark1Hooter(350 + Math.abs(babyACC) % 400, 0.03);
+            }
+          }
+
+          renderMark1SpecContent();
+          return narr;
+        }
+      },
+      {
+        name: '6. Revolucao B-lines (Indices 1949)',
+        desc: 'Demonstracao da maior inovacao de arquitetura de processadores do Mark 1: o Registrador de Indice (B-line), que permite percorrer vetores na memoria sem automodificar o codigo de instrucao na RAM.',
+        init() {
+          const m = new Array(32).fill(0);
+          // Dados do vetor na memoria
+          m[20] = 12; m[21] = 25; m[22] = 38; m[23] = 41; m[24] = 55;
+          // Codigo que usa B-line 1 como indice:
+          m[0] = encodeMark1Instruction(2, 20, 1); // LDN Mem[20 + B1]
+          m[1] = encodeMark1Instruction(5, 20, 1); // ADD Mem[20 + B1]
+          m[2] = encodeMark1Instruction(3, 25);    // STO Soma
+          m[3] = encodeMark1Instruction(7, 0);     // STP
+          blineStepIndex = 0;
+          babyB1 = 0;
+          babyACC = 0;
+          return { mem: m, startCI: 0, descStep: 'Revolucao das B-lines: Vetor [12, 25, 38, 41, 55] armazenado nas Linhas 20 a 24.' };
+        },
+        step() {
+          const vector = [12, 25, 38, 41, 55];
+          if (blineStepIndex < vector.length) {
+            babyB1 = blineStepIndex;
+            const targetAddr = 20 + babyB1;
+            babyACC += vector[blineStepIndex];
+            babyCI = 1;
+            babyTargetOperandRow = targetAddr;
+            blineStepIndex++;
+
+            const narr = `B-line B1 = ${babyB1}: Endereco efetivo corrigido para Linha ${targetAddr} (sem tocar na instrucao!). Acumulador = ${babyACC}.`;
+            printTeleprinter(`B-LINE: B1 = ${babyB1} -> ENDERECO ${targetAddr} -> VALOR ${vector[babyB1]} SOMADO. TOTAL = ${babyACC}.\n`);
+
+            if (babyHooterEnabled && SimulatorAudio && SimulatorAudio.mark1Hooter) {
+              SimulatorAudio.mark1Hooter(500 + babyB1 * 100, 0.08);
+            }
+            return narr;
+          } else {
+            babyCI = 3;
+            babyState = 'PARADO (STP)';
+            babyMem[25] = babyACC;
+            babyBits[25] = babyValToBits(babyACC);
+            printTeleprinter(`\nB-LINE SUCESSO: SOMA DO VETOR FINALIZADA = ${babyACC} GRAVADA NA LINHA 25.\n`);
+            return `Soma do vetor finalizada com sucesso: ${babyACC}. Demonstrado o principio universal de indexacao de ponteiros das CPUs modernas!`;
+          }
+        }
+      },
+      {
+        name: '7. Musica no Hooter (1951)',
+        desc: 'O primeiro computador a tocar musica gerada por software na historia humana, programado por Christopher Strachey e Alan Turing no alto-falante Hooter e gravado pela BBC em 1951.',
+        init() {
+          const m = new Array(32).fill(0);
+          musicNoteIndex = 0;
+          musicSongIndex = 0;
+          setMark1AuxTab('spec');
+          return { mem: m, startCI: 0, descStep: 'Sintetizador Hooter (1951): Partitura de Baa Baa Black Sheep carregada nos registradores.' };
+        },
+        step() {
+          const song = HOOTER_SONGS[musicSongIndex];
+          const note = song.notes[musicNoteIndex];
+
+          babyCI = musicNoteIndex % 32;
+          babyACC = Math.round(note.f);
+          babyTargetOperandRow = (musicNoteIndex * 2) % 32;
+
+          // Modula o feixe CRT em sincronia com a frequencia da nota musical
+          babyBits[babyCI] = new Array(32).fill(0);
+          const activeCols = Math.floor((note.f - 200) / 20) % 32;
+          for (let c = 0; c < 32; c += 2) {
+            babyBits[babyCI][(c + activeCols) % 32] = 1;
+          }
+          babyMem[babyCI] = babyBitsToVal(babyBits[babyCI]);
+
+          if (babyHooterEnabled && SimulatorAudio && SimulatorAudio.mark1Hooter) {
+            SimulatorAudio.mark1Hooter(note.f, note.d);
+          }
+
+          printTeleprinter(`HOOTER: NOTA ${note.n} (${note.f.toFixed(1)} Hz)\n`, false);
+
+          musicNoteIndex++;
+          if (musicNoteIndex >= song.notes.length) {
+            musicNoteIndex = 0;
+            musicSongIndex = (musicSongIndex + 1) % HOOTER_SONGS.length;
+          }
+
+          renderMark1SpecContent();
+          return `Musica no Hooter: Tocando "${song.name}" - Nota ${note.n} (${note.f.toFixed(1)} Hz).`;
+        }
+      },
+      {
+        name: '8. Paginacao Tambor Magnetico',
+        desc: 'O Manchester Mark 1 introduziu a primeira hierarquia de memoria com disco/tambor secundario rotativo (32 trilhas) e transferencia de paginas de 64 palavras para os Tubos Williams CRT.',
+        init() {
+          const m = new Array(32).fill(0);
+          drumTrack = 7;
+          drumSector = 0;
+          drumTransferActive = false;
+          setMark1AuxTab('drum');
+          return { mem: m, startCI: 0, descStep: 'Paginacao de Memoria: Transferindo Trilha 07 do Tambor para a Pagina 1 da RAM Williams.' };
+        },
+        step() {
+          drumTransferActive = true;
+          drumTrack = (drumTrack + 1) % 32;
+          drumSector = (drumSector + 4) % 64;
+
+          const trackValEl = document.getElementById('drum-track-val');
+          if (trackValEl) trackValEl.textContent = `Trilha ${String(drumTrack).padStart(2, '0')} / 32`;
+
+          const transValEl = document.getElementById('drum-trans-val');
+          if (transValEl) {
+            transValEl.textContent = 'TRANSFERINDO...';
+            transValEl.style.color = '#0284c7';
+          }
+
+          // Preenche linhas da RAM CRT com blocos de dados magneticos
+          for (let r = 0; r < 32; r++) {
+            babyMem[r] = (r * 1337 + drumTrack * 53) & 0x7FFFFFFF;
+            babyBits[r] = babyValToBits(babyMem[r]);
+          }
+
+          if (SimulatorAudio && SimulatorAudio.drumWhir) {
+            SimulatorAudio.drumWhir();
+          }
+
+          printTeleprinter(`PAGING MARK 1: TRILHA ${drumTrack} DO TAMBOR -> RAM CRT (1.024 BITS TRANSFERIDOS EM 30 MS).\n`);
+
+          setTimeout(() => {
+            drumTransferActive = false;
+            if (transValEl) {
+              transValEl.textContent = 'CONCLUIDO';
+              transValEl.style.color = '#15803d';
+            }
+          }, 250);
+
+          babyCI = (babyCI + 1) % 32;
+          return `Paginacao Magnetica: Bloco da Trilha ${drumTrack} transferido com sucesso para a RAM fosforica Williams CRT.`;
+        }
+      },
+      {
+        name: '9. Terminal Base-32 & Desenho',
+        desc: 'Modo livre para interacao direta com os tubos eletrostaticos. Clique em qualquer celula para alternar bits e inspecione a traducao para o alfabeto Base-32 de Alan Turing.',
+        init() {
+          const m = new Array(32).fill(0);
+          setMark1AuxTab('tele');
+          return { mem: m, startCI: 0, descStep: 'Modo Livre: Clique na tela CRT para acender pontos/tracos e conferir na teleimpressora.' };
+        },
+        step() {
+          babyCI = (babyCI + 1) % 32;
+          const word = babyMem[babyCI];
+          const inst = decodeMark1Word(word, babyCI);
+          printTeleprinter(`LINHA ${babyCI}: TURING [${inst.turingChars}] | BINARIO: ${babyBits[babyCI].slice(0, 10).join('')}...\n`);
+          if (SimulatorAudio && SimulatorAudio.crtPulse) {
+            SimulatorAudio.crtPulse(1300);
+          }
+          return `Inspecionando Linha ${babyCI}: Codificacao Turing Base-32: ${inst.turingChars}.`;
         }
       }
     ];
 
-    // Carrega programa selecionado
+    // Renderiza conteudo dinamico do Painel Cientifico Especial
+    function renderMark1SpecContent() {
+      const container = document.getElementById('mark1-spec-content');
+      if (!container) return;
+
+      if (currentBabyProgIdx === 1) {
+        // Morfogenese
+        container.innerHTML = `
+          <div style="width: 100%; font-family: var(--font-mono); font-size: 0.76rem; color: #334155;">
+            <div style="font-weight: 800; color: #0f172a; margin-bottom: 0.35rem; font-size: 0.82rem;">Simulacao de Morfogenese (Turing 1952)</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; background: #f8fafc; padding: 0.5rem; border-radius: 4px; border: 1px solid var(--border-subtle); margin-bottom: 0.5rem;">
+              <div><span>Difusao Ativador (Du): </span><strong>0.16</strong></div>
+              <div><span>Difusao Inibidor (Dv): </span><strong>0.08</strong></div>
+              <div><span>Alimentacao (F): </span><strong>0.035</strong></div>
+              <div><span>Morte (K): </span><strong>0.065</strong></div>
+            </div>
+            <div style="color: #15803d; font-weight: 700;">Padrao: Manchas de Leopardo (Instabilidade de Turing)</div>
+            <div style="color: #64748b; font-size: 0.7rem; margin-top: 0.35rem;">As celulas verdes no Tubo Williams CRT representam concentracoes elevadas do morfogeno V.</div>
+          </div>
+        `;
+      } else if (currentBabyProgIdx === 3) {
+        // Xadrez Turochamp
+        const cells = [
+          ['r', '.', 'k', '.'],
+          ['.', 'p', '.', 'p'],
+          ['.', '.', 'N', '.'],
+          ['R', '.', 'K', '.']
+        ];
+        const pieceSymbols = { 'K': 'R', 'R': 'T', 'N': 'C', 'P': 'P', 'k': 'r', 'r': 't', 'p': 'p' };
+        let gridHtml = '';
+        for (let r = 0; r < 4; r++) {
+          for (let c = 0; c < 4; c++) {
+            const p = cells[r][c];
+            const isWhite = (r + c) % 2 === 0;
+            const isHighlight = (r === 2 && c === 2);
+            gridHtml += `<div class="mark1-chess-cell ${isWhite ? 'white' : 'black'} ${isHighlight ? 'highlight' : ''}">${pieceSymbols[p] || ''}</div>`;
+          }
+        }
+        container.innerHTML = `
+          <div class="mark1-chess-container">
+            <div style="font-weight: 800; font-family: var(--font-mono); font-size: 0.8rem; color: #0f172a;">Turochamp (Mini-Tabuleiro 4x4 de Turing)</div>
+            <div class="mark1-chess-grid">${gridHtml}</div>
+            <div class="mark1-chess-metrics">
+              <div><strong>Heuristica:</strong> Material + Mobilidade Central</div>
+              <div><strong>Melhor Lance:</strong> <span style="color: #15803d; font-weight: 800;">N-c3 (Cavalo)</span> | Pontuacao: <strong>+4.5</strong></div>
+            </div>
+          </div>
+        `;
+      } else if (currentBabyProgIdx === 4) {
+        // Zeta de Riemann
+        container.innerHTML = `
+          <div style="width: 100%; font-family: var(--font-mono); font-size: 0.76rem; color: #334155;">
+            <div style="font-weight: 800; color: #0f172a; margin-bottom: 0.35rem; font-size: 0.82rem;">Investigacao da Hipotese de Riemann (Turing 1950)</div>
+            <div style="background: #f8fafc; padding: 0.5rem; border-radius: 4px; border: 1px solid var(--border-subtle); margin-bottom: 0.5rem;">
+              <div>Formula de Riemann-Siegel: <strong>Z(t) = e^{iθ(t)} ζ(1/2 + it)</strong></div>
+              <div style="margin-top: 0.25rem;">Valor Atual: <strong>t = ${zetaT.toFixed(3)}</strong> | Amplitude: <strong>${(babyACC / 1000).toFixed(3)}</strong></div>
+            </div>
+            <div style="color: #0284c7; font-weight: 700;">Zeros Nao-Triviais Detectados na Linha Critica:</div>
+            <div style="font-size: 0.72rem; color: #0f172a; margin-top: 0.25rem;">&bull; 1º Zero: <strong>t₁ = 14.1347</strong> | 2º Zero: <strong>t₂ = 21.0220</strong></div>
+          </div>
+        `;
+      } else if (currentBabyProgIdx === 6) {
+        // Musica no Hooter
+        const song = HOOTER_SONGS[musicSongIndex];
+        const note = song.notes[musicNoteIndex] || song.notes[0];
+        container.innerHTML = `
+          <div style="width: 100%; font-family: var(--font-mono); font-size: 0.76rem; color: #334155;">
+            <div style="font-weight: 800; color: #0f172a; margin-bottom: 0.35rem; font-size: 0.82rem;">Alto-falante Hooter: Primeira Musica Digital (1951)</div>
+            <div style="background: #f8fafc; padding: 0.5rem; border-radius: 4px; border: 1px solid var(--border-subtle); margin-bottom: 0.5rem;">
+              <div>Melodia Atual: <strong>${song.name}</strong></div>
+              <div>Nota Tocando: <span style="font-size: 1.1rem; color: #15803d; font-weight: 800;">${note.n}</span> (${note.f.toFixed(1)} Hz)</div>
+              <div>Duracao do Pulso: <strong>${note.d}s</strong></div>
+            </div>
+            <div style="color: #64748b; font-size: 0.7rem;">Gravada oficialmente pela unidade movel da BBC na Universidade de Manchester no outono de 1951.</div>
+          </div>
+        `;
+      } else {
+        container.innerHTML = `
+          <div style="text-align: center; color: #64748b; font-family: var(--font-mono); font-size: 0.76rem; padding: 1rem;">
+            Selecione uma experiencia cientifica (Morfogenese, Xadrez Turochamp, Zeta de Riemann ou Musica) para visualizar telemetria especializada.
+          </div>
+        `;
+      }
+    }
+
+    // Carrega o programa selecionado pelo usuario
     function loadBabyProgram(idx) {
       clearInterval(babyTimer);
       babyTimer = null;
       currentBabyProgIdx = idx;
       babyPrograms.forEach((_, i) => {
         const b = document.getElementById(`btn-bprog-${i}`);
-        if (b) b.className = i === idx ? 'btn-clean active' : 'btn-clean secondary';
+        if (b) b.className = (i === idx) ? 'btn-clean active' : 'btn-clean secondary';
       });
+
+      // Configura aba padrao ideal conforme a natureza do programa
+      if (idx === 1 || idx === 3 || idx === 4 || idx === 6) {
+        setMark1AuxTab('spec');
+      } else if (idx === 7) {
+        setMark1AuxTab('drum');
+      } else {
+        setMark1AuxTab('tele');
+      }
+
       resetBabySimulator();
     }
 
-    // Inicializa ou reinicializa a simulação com o programa atual
+    // Reinicializa a memoria e registradores para a experiencia atual
     function resetBabySimulator() {
       clearInterval(babyTimer);
       babyTimer = null;
@@ -8154,15 +9119,18 @@ READY
 
       babyCI = setup.startCI;
       babyACC = 0;
-      babyState = 'PARADO';
-      babyCycleType = 'AÇÃO';
+      babyB0 = 0;
+      babyB1 = 0;
+      babyState = 'PRONTO';
+      babyCycleType = 'ACAO';
       babyTargetOperandRow = -1;
 
       updateBabyTelemetry(setup.descStep);
       drawBabyCRT();
+      drawDrumCanvas();
     }
 
-    // Zera toda a RAM para o usuário desenhar livremente
+    // Zera toda a RAM para o usuario desenhar livremente
     function clearBabyRAM() {
       clearInterval(babyTimer);
       babyTimer = null;
@@ -8175,88 +9143,101 @@ READY
       }
       babyCI = 0;
       babyACC = 0;
+      babyB0 = 0;
+      babyB1 = 0;
       babyState = 'MODO DESENHO';
       babyCycleType = 'REFRESH';
       babyTargetOperandRow = -1;
 
-      updateBabyTelemetry('Tubo CRT limpo. Clique em qualquer linha ou coluna para alternar bits (0 = ponto, 1 = traço).');
+      updateBabyTelemetry('Tubo Williams limpo. Clique em qualquer celula para alternar pontos e tracos eletrostaticos.');
       drawBabyCRT();
     }
 
-    // Executa exatamente 1 instrução da máquina Manchester Baby
+    // Executa exatamente 1 ciclo do Manchester Mark 1
     function stepBabySimulator() {
-      if (SimulatorAudio && SimulatorAudio.crtPulse) {
-        SimulatorAudio.crtPulse(1200);
-      }
+      const prog = babyPrograms[currentBabyProgIdx];
+      let narr = '';
 
-      // Lê a linha apontada por CI
-      const word = babyMem[babyCI];
-      const inst = decodeBabyWord(word, babyCI);
-      babyPI = inst;
-      babyTargetOperandRow = inst.addr;
+      if (prog && prog.step) {
+        narr = prog.step();
+      } else {
+        // Execucao padrao de maquina
+        const word = babyMem[babyCI];
+        const inst = decodeMark1Word(word, babyCI);
+        babyPI = inst;
+        babyTargetOperandRow = inst.addr;
 
-      let narr = `Linha ${String(babyCI).padStart(2, '0')}: ${inst.opName} ${inst.addr}. `;
-      let advanceCI = true;
+        narr = `Linha ${String(babyCI).padStart(2, '0')}: ${inst.opName} ${inst.addr}. `;
+        let advanceCI = true;
 
-      switch (inst.op) {
-        case 0: // JMP S
-          babyCI = inst.addr;
-          narr += `Desvio incondicional: próximo ciclo lerá a Linha ${inst.addr}.`;
-          advanceCI = false;
-          break;
-        case 1: // JRP S
-          babyCI = (babyCI + babyMem[inst.addr]) & 0x1F;
-          narr += `Desvio relativo: CI somado ao valor de Mem[${inst.addr}].`;
-          advanceCI = false;
-          break;
-        case 2: // LDN S (A = -Mem[S])
-          babyACC = -babyMem[inst.addr];
-          narr += `Carregou valor negativo de Mem[${inst.addr}] (${babyMem[inst.addr]}) no Acumulador = ${babyACC}.`;
-          break;
-        case 3: // STO S (Mem[S] = A)
-          babyMem[inst.addr] = babyACC;
-          babyBits[inst.addr] = babyValToBits(babyACC);
-          narr += `Gravou Acumulador (${babyACC}) na Linha ${inst.addr} da memória Williams CRT.`;
-          break;
-        case 4: // SUB S
-        case 5:
-          babyACC = (babyACC - babyMem[inst.addr]);
-          narr += `Subtraiu Mem[${inst.addr}] (${babyMem[inst.addr]}) do Acumulador: novo A = ${babyACC}.`;
-          break;
-        case 6: // CMP (Se A < 0, pula próxima instrução)
-          if (babyACC < 0) {
-            babyCI = (babyCI + 2) & 0x1F;
+        switch (inst.op) {
+          case 0: // JMP
+            babyCI = inst.addr;
             advanceCI = false;
-            narr += `Acumulador é negativo (${babyACC} < 0): pulou a próxima instrução!`;
-          } else {
-            narr += `Acumulador é não-negativo (${babyACC} >= 0): não houve salto condicional.`;
-          }
-          break;
-        case 7: // STP (Stop)
-          babyState = 'PARADO (STP)';
-          narr += `Instrução de parada STP alcançada! Cálculo finalizado com sucesso no Tubo Williams-Kilburn.`;
-          if (babyTimer) {
-            clearInterval(babyTimer);
-            babyTimer = null;
-            const btn = document.getElementById('btn-baby-run-action');
-            if (btn) btn.textContent = 'Executar Ciclo';
-          }
-          advanceCI = false;
-          break;
-        default:
-          narr += `Instrução desconhecida executada.`;
+            narr += `Desvio incondicional para Linha ${inst.addr}.`;
+            break;
+          case 1: // JRP
+            babyCI = (babyCI + babyMem[inst.addr]) & 0x1F;
+            advanceCI = false;
+            narr += `Desvio relativo somando Mem[${inst.addr}].`;
+            break;
+          case 2: // LDN
+            babyACC = -babyMem[inst.addr];
+            narr += `Carregou valor negativo de Mem[${inst.addr}] no Acumulador = ${babyACC}.`;
+            break;
+          case 3: // STO
+            babyMem[inst.addr] = babyACC;
+            babyBits[inst.addr] = babyValToBits(babyACC);
+            narr += `Gravou Acumulador (${babyACC}) na Linha ${inst.addr} da memoria Williams.`;
+            break;
+          case 4: // SUB
+            babyACC -= babyMem[inst.addr];
+            narr += `Subtraiu Mem[${inst.addr}]: novo Acumulador = ${babyACC}.`;
+            break;
+          case 5: // ADD
+            babyACC += babyMem[inst.addr];
+            narr += `Somou Mem[${inst.addr}]: novo Acumulador = ${babyACC}.`;
+            break;
+          case 6: // CMP
+            if (babyACC < 0) {
+              babyCI = (babyCI + 2) & 0x1F;
+              advanceCI = false;
+              narr += `Acumulador negativo (${babyACC} < 0): pulou a proxima instrucao!`;
+            } else {
+              narr += `Acumulador nao-negativo (${babyACC} >= 0): fluxo linear mantido.`;
+            }
+            break;
+          case 7: // STP
+            babyState = 'PARADO (STP)';
+            narr += `Instrucao de parada STP alcancada no Manchester Mark 1!`;
+            if (babyTimer) {
+              clearInterval(babyTimer);
+              babyTimer = null;
+              const btn = document.getElementById('btn-baby-run-action');
+              if (btn) btn.textContent = 'Executar Ciclo';
+            }
+            advanceCI = false;
+            break;
+          default:
+            narr += 'Instrucao executada.';
+        }
+
+        if (advanceCI) {
+          babyCI = (babyCI + 1) & 0x1F;
+        }
       }
 
-      if (advanceCI) {
-        babyCI = (babyCI + 1) & 0x1F;
+      if (SimulatorAudio && SimulatorAudio.crtPulse && currentBabyProgIdx !== 6) {
+        SimulatorAudio.crtPulse(1150);
       }
 
-      babyCycleType = (babyCycleType === 'AÇÃO') ? 'REFRESH' : 'AÇÃO';
+      babyCycleType = (babyCycleType === 'ACAO') ? 'REFRESH' : 'ACAO';
       updateBabyTelemetry(narr);
       drawBabyCRT();
+      drawDrumCanvas();
     }
 
-    // Alterna execução contínua
+    // Alterna execucao continua
     function toggleBabyRun() {
       const btn = document.getElementById('btn-baby-run-action');
       if (babyTimer) {
@@ -8264,11 +9245,11 @@ READY
         babyTimer = null;
         babyState = 'PAUSADO';
         if (btn) btn.textContent = 'Executar Ciclo';
-        updateBabyTelemetry('Execução pausada pelo usuário.');
+        updateBabyTelemetry('Execucao pausada pelo operador.');
       } else {
-        babyState = 'EXECUTANDO';
+        babyState = babySpeed >= 10 ? 'TURBO' : 'EXECUTANDO';
         if (btn) btn.textContent = 'Pausar';
-        const delay = babySpeed === 1 ? 500 : (babySpeed === 2 ? 260 : 110);
+        const delay = babySpeed === 1 ? 480 : (babySpeed === 2 ? 240 : (babySpeed === 5 ? 100 : 25));
         babyTimer = setInterval(() => {
           stepBabySimulator();
         }, delay);
@@ -8276,30 +9257,35 @@ READY
       drawBabyCRT();
     }
 
-    // Ajusta a velocidade de execução
+    // Ajusta velocidade (1x, 2x, 5x, 10x Turbo)
     function setBabySpeed(s) {
       babySpeed = s;
       [1, 2, 5].forEach(val => {
         const btn = document.getElementById(`btn-bspeed-${val === 5 ? 3 : val}`);
-        if (btn) btn.className = val === s ? 'speed-btn active' : 'speed-btn';
+        if (btn) btn.className = (val === s && s < 10) ? 'speed-btn active' : 'speed-btn';
       });
+      const turboBtn = document.getElementById('btn-bspeed-turbo');
+      if (turboBtn) {
+        turboBtn.className = (s >= 10) ? 'speed-btn turbo active' : 'speed-btn turbo';
+      }
+
       if (babyTimer) {
         clearInterval(babyTimer);
-        const delay = babySpeed === 1 ? 500 : (babySpeed === 2 ? 260 : 110);
+        const delay = babySpeed === 1 ? 480 : (babySpeed === 2 ? 240 : (babySpeed === 5 ? 100 : 25));
         babyTimer = setInterval(() => {
           stepBabySimulator();
         }, delay);
       }
     }
 
-    // Atualiza os mostradores de telemetria
+    // Atualiza os registradores de telemetria
     function updateBabyTelemetry(narrative) {
       const ciEl = document.getElementById('crt-ci-readout');
       if (ciEl) ciEl.textContent = String(babyCI).padStart(2, '0');
 
       const instEl = document.getElementById('crt-inst-readout');
       if (instEl) {
-        const inst = decodeBabyWord(babyMem[babyCI], babyCI);
+        const inst = decodeMark1Word(babyMem[babyCI], babyCI);
         instEl.textContent = `${inst.opName} ${String(inst.addr).padStart(2, '0')}`;
       }
 
@@ -8309,10 +9295,16 @@ READY
         accEl.textContent = `${babyACC} (${hex})`;
       }
 
+      const b0El = document.getElementById('crt-b0-readout');
+      if (b0El) b0El.textContent = String(babyB0);
+
+      const b1El = document.getElementById('crt-b1-readout');
+      if (b1El) b1El.textContent = String(babyB1);
+
       const stateEl = document.getElementById('crt-state-readout');
       if (stateEl) {
-        stateEl.textContent = babyState === 'EXECUTANDO' ? 'AÇÃO (Executando)' : (babyState === 'PARADO (STP)' ? 'PARADO (STP)' : 'PRONTO');
-        stateEl.style.color = babyState === 'EXECUTANDO' ? '#15803d' : '#0f172a';
+        stateEl.textContent = babyState === 'EXECUTANDO' ? 'EXECUTANDO' : (babyState === 'TURBO' ? 'TURBO 10x' : (babyState === 'PARADO (STP)' ? 'PARADO (STP)' : 'PRONTO'));
+        stateEl.style.color = (babyState === 'EXECUTANDO' || babyState === 'TURBO') ? '#15803d' : '#0f172a';
       }
 
       const narrEl = document.getElementById('baby-narrative-box');
@@ -8323,11 +9315,11 @@ READY
       updateBabyInspector(babyHoverRow >= 0 ? babyHoverRow : babyCI);
     }
 
-    // Atualiza a barra de inspeção de linha
+    // Atualiza a barra de inspecao dinamica
     function updateBabyInspector(row) {
       const r = Math.max(0, Math.min(31, row));
       const word = babyMem[r] || 0;
-      const inst = decodeBabyWord(word, r);
+      const inst = decodeMark1Word(word, r);
 
       const lineEl = document.getElementById('crt-inspect-line');
       if (lineEl) lineEl.textContent = `Linha ${String(r).padStart(2, '0')}`;
@@ -8337,13 +9329,18 @@ READY
         mnemEl.textContent = `${inst.opName} ${inst.addr} (${inst.desc}) | Valor: ${word}`;
       }
 
+      const turingEl = document.getElementById('crt-inspect-turing');
+      if (turingEl) {
+        turingEl.textContent = inst.turingChars;
+      }
+
       const binEl = document.getElementById('crt-inspect-bin');
       if (binEl && babyBits[r]) {
         binEl.textContent = babyBits[r].join('');
       }
     }
 
-    // Renderização em alta definição do Tubo Williams CRT
+    // Renderizacao em alta definicao do Tubo Williams CRT
     function drawBabyCRT() {
       if (!babyCtx || !babyCanvas) return;
 
@@ -8354,7 +9351,7 @@ READY
       const cellW = usableW / BABY_BITS;
       const cellH = h / BABY_LINES;
 
-      // Fundo fosfórico profundo
+      // Fundo de vidro fosforico profundo
       babyCtx.fillStyle = '#020b05';
       babyCtx.fillRect(0, 0, w, h);
 
@@ -8368,19 +9365,19 @@ READY
         babyCtx.stroke();
       }
 
-      // Destaque da Linha Ativa de Instrução (CI)
+      // Destaque da Linha Ativa (CI)
       const ciY = babyCI * cellH;
-      babyCtx.fillStyle = 'rgba(34, 197, 94, 0.2)';
+      babyCtx.fillStyle = 'rgba(34, 197, 94, 0.22)';
       babyCtx.fillRect(0, ciY, w, cellH);
 
-      // Destaque da Linha de Operando (se houver alvo na memória)
+      // Destaque de Operando (se houver alvo na memoria)
       if (babyTargetOperandRow >= 0 && babyTargetOperandRow !== babyCI) {
         const opY = babyTargetOperandRow * cellH;
-        babyCtx.fillStyle = 'rgba(56, 189, 248, 0.16)';
+        babyCtx.fillStyle = 'rgba(56, 189, 248, 0.18)';
         babyCtx.fillRect(0, opY, w, cellH);
       }
 
-      // Destaque da Linha Hover (mouse)
+      // Destaque Hover do mouse
       if (babyHoverRow >= 0 && babyHoverRow !== babyCI) {
         const hY = babyHoverRow * cellH;
         babyCtx.fillStyle = 'rgba(255, 255, 255, 0.08)';
@@ -8392,7 +9389,6 @@ READY
         const y = r * cellH;
         const cy = y + cellH / 2;
 
-        // Número da Linha no canto esquerdo
         babyCtx.font = '10px "JetBrains Mono", monospace';
         if (r === babyCI) {
           babyCtx.fillStyle = '#4ade80';
@@ -8405,20 +9401,19 @@ READY
           babyCtx.fillText(` ${String(r).padStart(2, '0')}`, 6, cy + 3.5);
         }
 
-        // Renderiza os 32 bits da linha
         for (let c = 0; c < BABY_BITS; c++) {
           const cx = leftGutter + c * cellW + cellW / 2;
           const bit = babyBits[r][c];
 
           if (bit === 1) {
-            // Traço (Dash - Carga Defletida com Brilho Fosfórico)
+            // Traco (Dash - carga defletida capacitiva)
             babyCtx.shadowColor = '#4ade80';
             babyCtx.shadowBlur = 6;
             babyCtx.fillStyle = '#86efac';
             babyCtx.fillRect(cx - 5, cy - 2, 10, 4);
             babyCtx.shadowBlur = 0;
           } else {
-            // Ponto (Dot - Carga Focada)
+            // Ponto (Dot - carga focada)
             babyCtx.fillStyle = '#15803d';
             babyCtx.beginPath();
             babyCtx.arc(cx, cy, 1.8, 0, Math.PI * 2);
@@ -8430,11 +9425,11 @@ READY
       // Feixe de Varredura Regenerativa (Scanbeam Refresh Line)
       babyCtx.fillStyle = 'rgba(74, 222, 128, 0.15)';
       babyCtx.fillRect(0, babyScanbeamY, w, 3);
-      babyCtx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+      babyCtx.fillStyle = 'rgba(255, 255, 255, 0.45)';
       babyCtx.fillRect(0, babyScanbeamY + 1, w, 1);
     }
 
-    // Animação contínua da varredura capacitiva
+    // Animacao continua da varredura capacitiva
     function loopBabyScanbeam() {
       if (babyCanvas) {
         babyScanbeamY = (babyScanbeamY + 2.2) % babyCanvas.height;
@@ -8443,7 +9438,7 @@ READY
       babyScanAnimId = requestAnimationFrame(loopBabyScanbeam);
     }
 
-    // Configuração dos eventos de mouse/toque no canvas
+    // Eventos de interacao no canvas CRT
     function setupBabyCanvasEvents() {
       if (!babyCanvas) return;
 
@@ -8495,11 +9490,12 @@ READY
     function runBabyCleanApp() { toggleBabyRun(); }
     function resetBabyCleanApp() { resetBabySimulator(); }
 
-    // Inicialização do simulador
+    // Inicializacao do simulador Manchester Mark 1
     function initBabySimulator() {
       if (!babyCanvas) return;
       setupBabyCanvasEvents();
       loadBabyProgram(0);
+      drawDrumCanvas();
       if (!babyScanAnimId) {
         loopBabyScanbeam();
       }
