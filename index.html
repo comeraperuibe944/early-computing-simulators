@@ -4749,13 +4749,13 @@
 
               <!-- OPERAÇÃO ATUAL -->
               <div class="baby-narrative-box" id="eniac-narrative-box" style="margin-bottom: 0;">
-                <div><strong>Operação Atual:</strong> <span id="eniac-step-title" style="color: #15803d; font-weight: 800;">Carregar Parcela 245 no Acumulador 1</span></div>
-                <div id="eniac-step-explanation" style="color: #334155; margin-top: 0.25rem;">As lâmpadas neon dos 3 últimos dígitos acendem nos valores 2, 4 e 5.</div>
+                <div><strong>Operação Atual:</strong> <span id="eniac-step-title" style="color: #15803d; font-weight: 800;">Carregar Parcela 245 no Acumulador 1 (Passo 1 de 4)</span></div>
+                <div id="eniac-step-explanation" style="color: #334155; margin-top: 0.25rem;">Válvulas neon acendem nas posições das décadas 2, 4 e 5.</div>
               </div>
 
               <!-- CONTROLES ESSENCIAIS: PRÓXIMO PASSO E RESETAR -->
               <div style="display: flex; gap: 0.5rem; align-items: center;">
-                <button class="btn-clean" id="btn-eniac-step-action" onclick="stepEniacSimulator()" style="padding: 0.55rem 1.35rem; font-size: 0.9rem; font-weight: 800;">Próximo Passo</button>
+                <button class="btn-clean" id="btn-eniac-step-action" onclick="stepEniacSimulator()" style="padding: 0.55rem 1.35rem; font-size: 0.9rem; font-weight: 800;">Próximo Passo (2/4)</button>
                 <button class="btn-clean secondary" onclick="resetEniacSimulator()" style="padding: 0.55rem 1rem; font-size: 0.9rem;">Resetar</button>
               </div>
             </div>
@@ -4767,31 +4767,31 @@
               </div>
 
               <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 0.85rem; background: #ffffff;">
-                <!-- CARTÃO PERFURADO IBM 80 COLUNAS VINTAGE -->
+                <!-- CARTÃO PERFURADO IBM FORM 5081 -->
                 <div class="eniac-ibm-card" id="eniac-ibm-card">
                   <div class="eniac-card-top-title">
-                    <span>IBM 5081 &bull; BALLISTIC RESEARCH LAB</span>
-                    <span>ENIAC OUT</span>
+                    <span>IBM FORM 5081 &bull; BRL ABERDEEN</span>
+                    <span id="eniac-card-badge" style="color: #b45309; font-weight: 800;">STANDBY</span>
                   </div>
-                  <div class="eniac-card-punches-area" id="eniac-card-punches">
-                    <!-- Gerado dinamicamente com furos retangulares para os 10 dígitos -->
+                  <div id="eniac-card-body" style="padding: 0.5rem 0.2rem; min-height: 85px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                    <!-- Gerado dinamicamente -->
                   </div>
                   <div class="eniac-card-bottom-info">
                     <span>ORDNANCE DEPT. U.S. ARMY</span>
-                    <span>COL 01-10</span>
+                    <span id="eniac-card-step-ind">ETAPA 1 DE 4</span>
                   </div>
                 </div>
 
-                <!-- RESULTADO CONSOLIDADO -->
+                <!-- RESULTADO / STATUS CONSOLIDADO -->
                 <div style="background: #f8fafc; border: 1px solid var(--border-subtle); border-radius: 4px; padding: 0.65rem 0.85rem; margin-top: 0.65rem;">
-                  <div style="font-size: 0.68rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;">
-                    Resultado do Cálculo:
+                  <div id="eniac-out-title" style="font-size: 0.68rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;">
+                    Status do Cálculo:
                   </div>
-                  <div id="eniac-math-summary" style="font-family: var(--font-mono); font-size: 1.1rem; color: #0f172a; font-weight: 800; margin-top: 0.15rem;">
-                    245 + 138 = 383
+                  <div id="eniac-math-summary" style="font-family: var(--font-mono); font-size: 1.05rem; color: #64748b; font-weight: 800; margin-top: 0.15rem;">
+                    Processando nos acumuladores...
                   </div>
-                  <div style="font-size: 0.72rem; color: #64748b; margin-top: 0.2rem;">
-                    Perfurado em leitora IBM / Ciclo de 200 µs
+                  <div id="eniac-out-sub" style="font-size: 0.72rem; color: #64748b; margin-top: 0.2rem;">
+                    Aguardando pulso final para emissão de resultado.
                   </div>
                 </div>
               </div>
@@ -8093,76 +8093,115 @@ READY
       }
     }
 
-    function renderEniacIbmCard(digits) {
-      const container = document.getElementById('eniac-card-punches');
-      if (!container) return;
-      container.innerHTML = '';
-      digits = digits || [0,0,0,0,0,0,0,0,0,0];
-
-      for (let col = 0; col < 10; col++) {
-        const val = digits[col] !== undefined ? digits[col] : 0;
-        const colDiv = document.createElement('div');
-        colDiv.style.display = 'flex';
-        colDiv.style.flexDirection = 'column';
-        colDiv.style.gap = '1px';
-        colDiv.style.alignItems = 'center';
-
-        for (let row = 0; row <= 9; row++) {
-          const slot = document.createElement('div');
-          if (row === val) {
-            slot.style.width = '100%';
-            slot.style.height = '8px';
-            slot.style.background = '#0f172a';
-            slot.style.borderRadius = '1px';
-            slot.title = `Coluna ${col + 1}: Digito ${row} perfurado`;
-          } else {
-            slot.style.width = '100%';
-            slot.style.height = '8px';
-            slot.style.display = 'flex';
-            slot.style.alignItems = 'center';
-            slot.style.justifyContent = 'center';
-            slot.style.fontSize = '0.5rem';
-            slot.style.color = '#a8a29e';
-            slot.style.fontFamily = 'var(--font-mono)';
-            slot.textContent = row;
-          }
-          colDiv.appendChild(slot);
-        }
-        container.appendChild(colDiv);
-      }
-    }
-
     function renderEniacFrame() {
       const prog = eniacPrograms[eniacCurrentProg] || eniacPrograms[1];
+      const totalSteps = prog.steps.length;
       const step = prog.steps[eniacCurrentStep] || prog.steps[0];
+      const isFinal = (eniacCurrentStep === totalSteps - 1);
 
+      // 1. Operacao Atual com contador explicito de passos
       const sTitle = document.getElementById('eniac-step-title');
-      if (sTitle) sTitle.textContent = step.stepTitle;
+      if (sTitle) {
+        sTitle.textContent = `${step.stepTitle} (Passo ${eniacCurrentStep + 1} de ${totalSteps})`;
+      }
 
-      const mSum = document.getElementById('eniac-math-summary');
-      if (mSum) mSum.textContent = step.mathSummary;
+      const expEl = document.getElementById('eniac-step-explanation');
+      if (expEl) {
+        if (isFinal) {
+          expEl.innerHTML = `${step.explanation} <span style="display: block; margin-top: 0.35rem; color: #15803d; font-weight: 700;">Cálculo finalizado com sucesso! Pressione &lsquo;Resetar&rsquo; ou selecione outro cálculo para iniciar uma nova execução.</span>`;
+        } else {
+          expEl.textContent = step.explanation;
+        }
+      }
 
+      // 2. Acumulador Decadico
       const accDec = document.getElementById('eniac-accum-decimal');
       if (accDec) accDec.textContent = step.decimalDisplay;
 
-      const expEl = document.getElementById('eniac-step-explanation');
-      if (expEl) expEl.textContent = step.explanation;
-
-      // Renderiza as 10 colunas neon do acumulador
       renderEniacDecadeColumns(step.digits);
 
-      // Renderiza os furos retangulares do cartao IBM
-      renderEniacIbmCard(step.digits);
+      // 3. Botao Proximo Passo com parada definitiva no fim do calculo
+      const stepBtn = document.getElementById('btn-eniac-step-action');
+      if (stepBtn) {
+        if (isFinal) {
+          stepBtn.textContent = 'Cálculo Concluído';
+          stepBtn.disabled = true;
+          stepBtn.style.opacity = '0.55';
+          stepBtn.style.cursor = 'not-allowed';
+        } else {
+          stepBtn.textContent = `Próximo Passo (${eniacCurrentStep + 2}/${totalSteps})`;
+          stepBtn.disabled = false;
+          stepBtn.style.opacity = '1';
+          stepBtn.style.cursor = 'pointer';
+        }
+      }
+
+      // 4. Cartao de Saida IBM: standby durante calculo, perfurado somente no final
+      const cardBadge = document.getElementById('eniac-card-badge');
+      const cardBody = document.getElementById('eniac-card-body');
+      const cardStepInd = document.getElementById('eniac-card-step-ind');
+      if (cardStepInd) cardStepInd.textContent = `ETAPA ${eniacCurrentStep + 1} DE ${totalSteps}`;
+
+      if (cardBadge && cardBody) {
+        if (!isFinal) {
+          cardBadge.textContent = 'STANDBY';
+          cardBadge.style.color = '#b45309';
+          cardBody.innerHTML = `
+            <div style="font-size: 0.68rem; color: #78716c; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;">Bandeja da Perfuradora IBM 513</div>
+            <div style="font-size: 0.85rem; font-weight: 700; color: #0f172a; margin: 0.35rem 0; font-family: var(--font-mono);">${step.stepTitle}</div>
+            <div style="font-size: 0.72rem; color: #78716c; font-family: var(--font-mono);">Aguardando término do cálculo nos circuitos a vácuo para emitir a perfuração.</div>
+          `;
+        } else {
+          cardBadge.textContent = 'PERFURADO';
+          cardBadge.style.color = '#15803d';
+
+          let slotsHtml = '<div style="display: flex; gap: 3px; justify-content: center; margin: 0.4rem 0;">';
+          step.digits.forEach((d, idx) => {
+            slotsHtml += `
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 1px; width: 14px;">
+                <div style="width: 10px; height: 6px; background: #0f172a; border-radius: 1px;" title="Furo na coluna ${idx + 1}"></div>
+                <span style="font-size: 0.65rem; font-weight: 800; font-family: var(--font-mono); color: #0f172a;">${d}</span>
+              </div>
+            `;
+          });
+          slotsHtml += '</div>';
+
+          cardBody.innerHTML = `
+            <div style="font-size: 0.66rem; color: #15803d; font-weight: 800; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;">Cartão Perfurado com Sucesso</div>
+            ${slotsHtml}
+            <div style="font-size: 0.85rem; font-weight: 800; color: #15803d; font-family: var(--font-mono);">${step.mathSummary}</div>
+          `;
+        }
+      }
+
+      // 5. Box de Resultado Consolidado: status em andamento vs resultado oficial
+      const outTitle = document.getElementById('eniac-out-title');
+      const mSum = document.getElementById('eniac-math-summary');
+      const outSub = document.getElementById('eniac-out-sub');
+
+      if (outTitle && mSum && outSub) {
+        if (!isFinal) {
+          outTitle.textContent = 'Status do Cálculo:';
+          mSum.textContent = 'Processando nos acumuladores...';
+          mSum.style.color = '#64748b';
+          outSub.textContent = `Operação em andamento (${eniacCurrentStep + 1}/${totalSteps})`;
+        } else {
+          outTitle.textContent = 'Resultado Final do ENIAC:';
+          mSum.textContent = step.mathSummary;
+          mSum.style.color = '#15803d';
+          outSub.textContent = (eniacCurrentProg === 4)
+            ? 'Trajetória calculada em 2,8 s (mais rápido que o voo real do projétil)'
+            : 'Resultado estabilizado nos anéis decádicos em 200 µs';
+        }
+      }
     }
 
     function stepEniacSimulator() {
       const prog = eniacPrograms[eniacCurrentProg] || eniacPrograms[1];
       if (eniacCurrentStep < prog.steps.length - 1) {
         eniacCurrentStep++;
-      } else {
-        eniacCurrentStep = 0;
+        renderEniacFrame();
       }
-      renderEniacFrame();
     }
 
     // Stub para compatibilidade com chamadas externas
