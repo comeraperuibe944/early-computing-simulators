@@ -8,7 +8,7 @@
   <!-- Tipografia Moderna, Limpa e Robusta -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;0,800;1,400&family=VT323&display=swap" rel="stylesheet">
 
   <style>
     /* ==========================================================================
@@ -2646,6 +2646,29 @@
       scroll-behavior: smooth;
       scrollbar-width: thin;
       scrollbar-color: rgba(0, 255, 255, 0.5) rgba(0, 0, 0, 0.4);
+      font-family: 'VT323', monospace !important;
+      font-size: 1.45rem;
+      line-height: 1.25;
+      letter-spacing: 0.5px;
+    }
+    #sisne-screen,
+    #sisne-screen pre,
+    #sisne-screen code,
+    #sisne-output,
+    #sisne-output pre,
+    #sisne-output *,
+    .sisne-pre {
+      font-family: 'VT323', monospace !important;
+      letter-spacing: 0.5px;
+    }
+    .sisne-pre {
+      margin: 0;
+      font-family: 'VT323', monospace !important;
+      font-size: 1.45rem;
+      line-height: 1.25;
+      letter-spacing: 0.5px;
+      white-space: pre-wrap;
+      word-break: break-all;
     }
     #sisne-screen::-webkit-scrollbar {
       width: 8px;
@@ -5640,7 +5663,7 @@ READY
                     <div class="crt-scanlines" style="opacity: 0.7;"></div>
                     <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 60%); pointer-events: none; z-index: 4;"></div>
                     
-                    <div class="crt-screen-glass sisne-cga" id="sisne-screen" onclick="document.getElementById('sisne-cmd-input').focus(); scrollSisneToBottom();" style="cursor: text; flex: 1; width: 100%; overflow-y: auto; padding: 1.2rem 1.4rem 0 1.4rem; text-shadow: none; font-size: 1.45rem; line-height: 1.2;">
+                    <div class="crt-screen-glass sisne-cga" id="sisne-screen" onclick="document.getElementById('sisne-cmd-input').focus(); scrollSisneToBottom();" style="cursor: text; flex: 1; width: 100%; overflow-y: auto; padding: 1.2rem 1.4rem 0 1.4rem; text-shadow: none; font-family: 'VT323', monospace; font-size: 1.45rem; line-height: 1.25; letter-spacing: 0.5px;">
                       <div class="crt-terminal-content" id="sisne-output"></div>
                     </div>
                     
@@ -10191,11 +10214,11 @@ READY
       let line = '';
       if (commandExecuted !== null && commandExecuted !== undefined) {
         const prompt = sisneInBasic ? '' : `${sisneDrive}:\\${sisnePath === '\\' ? '' : sisnePath.slice(1)}> `;
-        line = `<div style="margin-top: 0.35rem; color: currentColor;"><strong>${prompt}${escapeSisneHtml(commandExecuted)}</strong></div>`;
+        line = `<div style="margin-top: 0.35rem; color: currentColor; font-family: 'VT323', monospace; font-size: 1.45rem; line-height: 1.25; letter-spacing: 0.5px;"><strong>${prompt}${escapeSisneHtml(commandExecuted)}</strong></div>`;
       }
       let res = '';
       if (contentHtml) {
-        res = `<div style="margin-bottom: 0.35rem; line-height: 1.45;">${contentHtml}</div>`;
+        res = `<div style="margin-bottom: 0.35rem; line-height: 1.25; font-family: 'VT323', monospace; font-size: 1.45rem; letter-spacing: 0.5px;">${contentHtml}</div>`;
       }
       out.innerHTML = clean + line + res + `<div><span class="crt-cursor"></span></div>`;
       scrollSisneToBottom();
@@ -10321,7 +10344,7 @@ READY
                       list + '\n' +
                       `        14 arquivo(s)     248061 bytes\n` +
                       `                          114435 bytes livres`;
-          appendSisneOutput(`<pre style="margin:0; font-family:inherit;">${escapeSisneHtml(out)}</pre>`, cmd);
+          appendSisneOutput(`<pre class="sisne-pre" style="margin:0; font-family:'VT323', monospace; font-size:1.45rem; line-height:1.25; letter-spacing:0.5px;">${escapeSisneHtml(out)}</pre>`, cmd);
           break;
         }
 
@@ -10329,7 +10352,7 @@ READY
           const out = `Scopus / Itautec SISNE Plus Versão 3.30 Revisão 05\n` +
                       `100% Compatível com MS-DOS Versão 3.30\n` +
                       `(C) Copyright Scopus Tecnologia S/A & Itautec Informática 1982-1989.`;
-          appendSisneOutput(`<pre style="margin:0; font-family:inherit;">${escapeSisneHtml(out)}</pre>`, cmd);
+          appendSisneOutput(`<pre class="sisne-pre" style="margin:0; font-family:'VT323', monospace; font-size:1.45rem; line-height:1.25; letter-spacing:0.5px;">${escapeSisneHtml(out)}</pre>`, cmd);
           break;
         }
 
@@ -10339,7 +10362,7 @@ READY
                       `       583.680 bytes livres para programas executáveis (570 KB)\n\n` +
                       `     1.048.576 bytes de memória expandida EMS total (Scopus Nexus)\n` +
                       `     1.048.576 bytes de memória expandida EMS livre`;
-          appendSisneOutput(`<pre style="margin:0; font-family:inherit;">${escapeSisneHtml(out)}</pre>`, cmd);
+          appendSisneOutput(`<pre class="sisne-pre" style="margin:0; font-family:'VT323', monospace; font-size:1.45rem; line-height:1.25; letter-spacing:0.5px;">${escapeSisneHtml(out)}</pre>`, cmd);
           break;
         }
 
@@ -10353,7 +10376,7 @@ READY
                       `       223 unidades de alocação disponíveis no disco\n\n` +
                       `   655.360 bytes de memória total\n` +
                       `   583.680 bytes livres`;
-          appendSisneOutput(`<pre style="margin:0; font-family:inherit;">${escapeSisneHtml(out)}</pre>`, cmd);
+          appendSisneOutput(`<pre class="sisne-pre" style="margin:0; font-family:'VT323', monospace; font-size:1.45rem; line-height:1.25; letter-spacing:0.5px;">${escapeSisneHtml(out)}</pre>`, cmd);
           break;
         }
 
@@ -10367,7 +10390,7 @@ READY
             if (file.type === 'bin') {
               appendSisneOutput(`[Arquivo executável binário ${arg1} - utilize o nome do arquivo para executá-lo]`, cmd);
             } else {
-              appendSisneOutput(`<pre style="margin:0; font-family:inherit;">${escapeSisneHtml(file.content)}</pre>`, cmd);
+              appendSisneOutput(`<pre class="sisne-pre" style="margin:0; font-family:'VT323', monospace; font-size:1.45rem; line-height:1.25; letter-spacing:0.5px;">${escapeSisneHtml(file.content)}</pre>`, cmd);
             }
           } else {
             appendSisneOutput(`Arquivo não encontrado - ${arg1}`, cmd);
@@ -10390,7 +10413,7 @@ READY
                       `<00103458< 0100128459> 84729100012500000;\n` +
                       `========================================================================\n` +
                       `[OK] Cheque autenticado e impresso na impressora de bancada Scopus.`;
-          appendSisneOutput(`<pre style="margin:0; font-family:inherit; color:#38bdf8;">${escapeSisneHtml(out)}</pre>`, cmd);
+          appendSisneOutput(`<pre class="sisne-pre" style="margin:0; font-family:'VT323', monospace; font-size:1.45rem; line-height:1.25; letter-spacing:0.5px; color:#38bdf8;">${escapeSisneHtml(out)}</pre>`, cmd);
           if (SimulatorAudio && SimulatorAudio.pcBeep) {
             SimulatorAudio.pcBeep(1046, 0.1);
           }
@@ -10411,7 +10434,7 @@ READY
                       `  05  | Dólar Oficial / Paralelo      | Cz$ 13,8 / 21,5| NCz$ 1,2 / 2,4\n` +
                       `------+-------------------------------+----------------+---------------\n` +
                       `TOTAL DO INVESTIMENTO EM INFORMÁTICA NACIONAL: APROVADO PELA SEI.`;
-          appendSisneOutput(`<pre style="margin:0; font-family:inherit; color:#fde047;">${escapeSisneHtml(out)}</pre>`, cmd);
+          appendSisneOutput(`<pre class="sisne-pre" style="margin:0; font-family:'VT323', monospace; font-size:1.45rem; line-height:1.25; letter-spacing:0.5px; color:#fde047;">${escapeSisneHtml(out)}</pre>`, cmd);
           break;
         }
 
@@ -10431,7 +10454,7 @@ READY
                       `* BIOS: Scopus BIOS XT V2.4 (Desenvolvida no Brasil - Engenharia Poli-USP)\n` +
                       `========================================================================\n` +
                       `Status dos Testes: TODOS OS CIRCUITOS FUNCIONANDO EM CONFORMIDADE COM A SEI.`;
-          appendSisneOutput(`<pre style="margin:0; font-family:inherit; color:#4ade80;">${escapeSisneHtml(out)}</pre>`, cmd);
+          appendSisneOutput(`<pre class="sisne-pre" style="margin:0; font-family:'VT323', monospace; font-size:1.45rem; line-height:1.25; letter-spacing:0.5px; color:#4ade80;">${escapeSisneHtml(out)}</pre>`, cmd);
           break;
         }
 
@@ -10444,7 +10467,7 @@ READY
                       `(C) Copyright Scopus Tecnologia S/A 1982-1988\n` +
                       `61440 Bytes Livres\n` +
                       `Digite PRINT [expressao] ou digite SYSTEM para voltar ao SISNE Plus.`;
-          appendSisneOutput(`<pre style="margin:0; font-family:inherit;">${escapeSisneHtml(out)}</pre>`, cmd);
+          appendSisneOutput(`<pre class="sisne-pre" style="margin:0; font-family:'VT323', monospace; font-size:1.45rem; line-height:1.25; letter-spacing:0.5px;">${escapeSisneHtml(out)}</pre>`, cmd);
           if (SimulatorAudio && SimulatorAudio.pcBeep) SimulatorAudio.pcBeep(980, 0.1);
           break;
         }
@@ -10588,7 +10611,7 @@ READY
                        `CLS          Limpa a tela do terminal\n` +
                        `BANNER       Exibe a tela original de abertura do SISNE Plus\n` +
                        `REBOOT       Reinicia o sistema operacional`;
-          appendSisneOutput(`<pre style="margin:0; font-family:inherit;">${escapeSisneHtml(help)}</pre>`, cmd);
+          appendSisneOutput(`<pre class="sisne-pre" style="margin:0; font-family:'VT323', monospace; font-size:1.45rem; line-height:1.25; letter-spacing:0.5px;">${escapeSisneHtml(help)}</pre>`, cmd);
           break;
         }
 
