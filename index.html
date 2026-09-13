@@ -5129,6 +5129,25 @@
           <strong>Critérios: Turing-Complete: Sim | Von Neumann: Sim</strong>
           Os anos 1950 representam o salto da computação de laboratório para a indústria corporativa e o nascimento formal da Ciência da Computação como disciplina de algoritmos, estruturas de dados e linguagens formais, liberta da manipulação exclusiva do hardware.
         </div>
+
+        <!-- EMULADOR FORTRAN (PRETO E BRANCO, MINIMALISTA) -->
+        <div class="interactive-app-card" style="margin-top: 1.5rem; background: #000000; border: 1px solid #1e293b; border-radius: var(--radius-sm); padding: 0.85rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.65rem; flex-wrap: wrap; gap: 0.5rem;">
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: #ffffff; letter-spacing: 0.05em; text-transform: uppercase;">Emulador Fortran</span>
+            <div style="display: flex; gap: 0.35rem;">
+              <button id="btn-fortran-onecompiler" type="button" style="font-family: var(--font-mono); font-size: 0.7rem; padding: 0.25rem 0.6rem; background: #ffffff; color: #000000; border: 1px solid #ffffff; border-radius: 3px; cursor: pointer; font-weight: 600;" onclick="switchFortranEmbed('compiler')">Compilador GNU</button>
+              <button id="btn-fortran-archive" type="button" style="font-family: var(--font-mono); font-size: 0.7rem; padding: 0.25rem 0.6rem; background: transparent; color: #94a3b8; border: 1px solid #334155; border-radius: 3px; cursor: pointer; font-weight: 600;" onclick="switchFortranEmbed('archive')">Internet Archive</button>
+            </div>
+          </div>
+          <div style="width: 100%; border-radius: 3px; overflow: hidden; background: #000000; border: 1px solid #222222;">
+            <iframe id="fortran-frame"
+                    src="https://onecompiler.com/embed/fortran?theme=dark&amp;hideTitle=true"
+                    style="width: 100%; height: 460px; border: none; display: block; background: #000000;"
+                    allow="fullscreen"
+                    loading="lazy">
+            </iframe>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -11313,6 +11332,39 @@ READY
       const gmapsLink = document.getElementById('uni-google-maps-link');
       if (gmapsLink && data.gmapsUrl) {
         gmapsLink.href = data.gmapsUrl;
+      }
+    }
+
+    function switchFortranEmbed(type) {
+      const frame = document.getElementById('fortran-frame');
+      const btnComp = document.getElementById('btn-fortran-onecompiler');
+      const btnArch = document.getElementById('btn-fortran-archive');
+      if (!frame) return;
+
+      if (type === 'compiler') {
+        frame.src = 'https://onecompiler.com/embed/fortran?theme=dark&hideTitle=true';
+        if (btnComp) {
+          btnComp.style.background = '#ffffff';
+          btnComp.style.color = '#000000';
+          btnComp.style.borderColor = '#ffffff';
+        }
+        if (btnArch) {
+          btnArch.style.background = 'transparent';
+          btnArch.style.color = '#94a3b8';
+          btnArch.style.borderColor = '#334155';
+        }
+      } else {
+        frame.src = 'https://archive.org/embed/zm_021_Fortran_I';
+        if (btnArch) {
+          btnArch.style.background = '#ffffff';
+          btnArch.style.color = '#000000';
+          btnArch.style.borderColor = '#ffffff';
+        }
+        if (btnComp) {
+          btnComp.style.background = 'transparent';
+          btnComp.style.color = '#94a3b8';
+          btnComp.style.borderColor = '#334155';
+        }
       }
     }
 
