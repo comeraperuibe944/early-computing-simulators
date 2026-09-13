@@ -2523,6 +2523,203 @@
       object-position: center 20% !important;
     }
 
+    /* ==========================================================================
+       MAPA INTERATIVO: UNIVERSIDADES PIONEIRAS DA COMPUTAÇÃO NO BRASIL
+       ========================================================================== */
+    .uni-map-container {
+      margin: 2rem 0 1.5rem 0;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.8rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .uni-map-header {
+      margin-bottom: 1.25rem;
+    }
+
+    .uni-map-header .sim-pill {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      margin-bottom: 8px;
+    }
+
+    .uni-map-header .sim-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .uni-map-header .sim-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .uni-map-nav {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin-bottom: 1.25rem;
+    }
+
+    .uni-nav-btn {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .uni-nav-btn:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .uni-nav-btn.active {
+      background: #ecfdf5;
+      border-color: #10b981;
+      box-shadow: 0 0 0 1px #10b981;
+    }
+
+    .uni-nav-btn strong {
+      font-size: 0.92rem;
+      color: #0f172a;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .uni-nav-btn.active strong {
+      color: #065f46;
+    }
+
+    .uni-nav-btn span {
+      font-size: 0.76rem;
+      color: #64748b;
+    }
+
+    .uni-nav-btn.active span {
+      color: #047857;
+      font-weight: 500;
+    }
+
+    .uni-info-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #10b981;
+      border-radius: var(--radius-sm);
+      padding: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .uni-info-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .uni-info-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .uni-info-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      background: #0f766e;
+      color: #ffffff;
+    }
+
+    .uni-info-desc {
+      font-size: 0.88rem;
+      color: #334155;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .uni-info-address {
+      font-size: 0.8rem;
+      color: #64748b;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .uni-viewport {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #e2e8f0;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+    }
+
+    .uni-viewport iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .uni-map-footer-bar {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 0.8rem;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .uni-coords-label {
+      font-size: 0.8rem;
+      color: #64748b;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .btn-gmaps {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #1a73e8;
+      color: #ffffff !important;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.15s ease, transform 0.15s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-gmaps:hover {
+      background: #1557b0;
+      color: #ffffff !important;
+      transform: translateY(-1px);
+    }
 
   </style>
 
@@ -3624,7 +3821,7 @@
             <div class="media-caption">David Hilbert (1900/1928): formulou o Entscheidungsproblem (Problema da Decisão), desafio matemático que impulsionou o nascimento da Ciência da Computação.</div>
           </div>
           <div class="media-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Alonzo_Church.jpg" alt="Alonzo Church">
+            <img src="https://upload.wikimedia.org/wikipedia/en/a/a6/Alonzo_Church.jpg" alt="Alonzo Church">
             <div class="media-caption">Alonzo Church (1936): criador do Cálculo Lambda e coautor da Tese de Church-Turing, estabelecendo com Turing a definição matemática do que é computável.</div>
           </div>
           <div class="media-frame">
@@ -4781,11 +4978,11 @@
             <div class="media-caption">UNIVAC I (1951): primeiro computador comercial produzido em série nos EUA (Eckert &amp; Mauchly / Remington Rand), pioneiro no uso de fitas magnéticas metálicas UNISERVO.</div>
           </div>
           <div class="media-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Whirlwind_core_memory.jpg" alt="Memória de Núcleos de Ferrite do Whirlwind">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Project_Whirlwind_-_core_memory%2C_circa_1951_-_detail_1.JPG" alt="Memória de Núcleos de Ferrite do Whirlwind">
             <div class="media-caption">Whirlwind I (MIT, 1951): introduziu a memória de núcleos magnéticos de ferrite (Jay Forrester), substituindo as frágeis válvulas de mercúrio e viabilizando o tempo real.</div>
           </div>
           <div class="media-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/IBM_650_RAMAC_at_TAMU.jpg" alt="Computador IBM 650">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/IBM_650_at_Texas_A%26M.jpg" alt="Computador IBM 650">
             <div class="media-caption">IBM 650 (1953): o primeiro computador fabricado em massa na história (quase 2.000 unidades vendidas), democratizando a computação em universidades e empresas.</div>
           </div>
         </div>
@@ -4974,6 +5171,71 @@
             <div><span>1ª Graduação (Bacharelado)</span><strong>UNICAMP (Agosto de 1969)</strong></div>
             <div><span>Sociedade Científica</span><strong>SBC - Sociedade Brasileira de Computação (1978)</strong></div>
             <div><span>Teoria da Computação</span><strong>Autômatos e Álgebra Tropical (Imre Simon / USP)</strong></div>
+          </div>
+        </div>
+
+        <!-- MAPA INTERATIVO: OS PIONEIROS DA COMPUTAÇÃO ACADÊMICA NO BRASIL -->
+        <div class="uni-map-container">
+          <div class="uni-map-header">
+            <span class="sim-pill">Geografia Acadêmica Nacional</span>
+            <h3 class="sim-title">Mapa das Universidades Pioneiras da Ciência da Computação</h3>
+            <p class="sim-desc">
+              Explore a localização dos centros universitários que inauguraram o ensino e a pesquisa em computação no país. Alterne entre as instituições para visualizar os campi históricos e rotas integradas.
+            </p>
+          </div>
+
+          <!-- Seletor de Universidades -->
+          <div class="uni-map-nav">
+            <button class="uni-nav-btn active" id="btn-uni-puc" onclick="selectUniversityMap('puc')">
+              <strong>PUC-Rio (1967)</strong>
+              <span>1º Mestrado • Gávea, Rio de Janeiro</span>
+            </button>
+            <button class="uni-nav-btn" id="btn-uni-unicamp" onclick="selectUniversityMap('unicamp')">
+              <strong>UNICAMP (1969)</strong>
+              <span>1º Bacharelado • Barão Geraldo, Campinas</span>
+            </button>
+            <button class="uni-nav-btn" id="btn-uni-usp" onclick="selectUniversityMap('usp')">
+              <strong>USP (1972)</strong>
+              <span>IME &amp; Poli (Patinho Feio) • São Paulo</span>
+            </button>
+            <button class="uni-nav-btn" id="btn-uni-triangle" onclick="selectUniversityMap('triangle')">
+              <strong>Triângulo Histórico</strong>
+              <span>Eixo Rio - Campinas - São Paulo</span>
+            </button>
+          </div>
+
+          <!-- Card de Detalhes da Instituição Ativa -->
+          <div class="uni-info-card" id="uni-info-card">
+            <div class="uni-info-header">
+              <span class="uni-info-title">PUC-Rio • Pontifícia Universidade Católica do Rio de Janeiro</span>
+              <span class="uni-info-badge">1967: 1ª Pós-Graduação (Mestrado) da América Latina</span>
+            </div>
+            <p class="uni-info-desc">Inaugurado em 1967 pelo Departamento de Informática (DI) sob a liderança dos professores Denis Coutinho e Carlos Alberto dos Santos. Utilizou os computadores Burroughs B-205 e IBM 7044, formando a primeira geração de mestres que fundou cursos de computação por todo o Brasil.</p>
+            <div class="uni-info-address">Departamento de Informática (DI) • Rua Marquês de São Vicente, 225 - Gávea, Rio de Janeiro - RJ</div>
+          </div>
+
+          <!-- Viewport do Mapa Interativo -->
+          <div class="uni-viewport">
+            <iframe id="uni-map-iframe"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=-43.238,-22.983,-43.228,-22.975&amp;layer=mapnik&amp;marker=-22.9791,-43.2332"
+                    loading="lazy"
+                    title="Mapa da Instituição Universitária">
+            </iframe>
+          </div>
+
+          <!-- Rodapé com Coordenadas e Botão Direto para o Google Maps -->
+          <div class="uni-map-footer-bar">
+            <span class="uni-coords-label" id="uni-map-coords">Coordenadas: 22° 58' 45" S, 43° 14' 00" W</span>
+            <a id="uni-google-maps-link"
+               href="https://www.google.com/maps/search/?api=1&amp;query=PUC-Rio+Departamento+de+Informatica"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn-gmaps">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+              Abrir no Google Maps (Satélite &amp; 3D)
+            </a>
           </div>
         </div>
 
@@ -10177,6 +10439,84 @@ READY
     }
 
     // =========================================================================
+    // MAPA INTERATIVO: UNIVERSIDADES PIONEIRAS DA COMPUTAÇÃO NO BRASIL
+    // =========================================================================
+    const BrasilUniversidadesData = {
+      puc: {
+        title: 'PUC-Rio • Pontifícia Universidade Católica do Rio de Janeiro',
+        badge: '1967: 1ª Pós-Graduação (Mestrado) da América Latina',
+        desc: 'Inaugurado em 1967 pelo Departamento de Informática (DI) sob a liderança dos professores Denis Coutinho e Carlos Alberto dos Santos. Utilizou os computadores Burroughs B-205 e IBM 7044, formando a primeira geração de mestres que fundou cursos de computação por todo o Brasil.',
+        address: 'Departamento de Informática (DI) • Rua Marquês de São Vicente, 225 - Gávea, Rio de Janeiro - RJ',
+        coords: '22° 58\' 45" S, 43° 14\' 00" W',
+        osmUrl: 'https://www.openstreetmap.org/export/embed.html?bbox=-43.238,-22.983,-43.228,-22.975&layer=mapnik&marker=-22.9791,-43.2332',
+        gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=PUC-Rio+Departamento+de+Informatica'
+      },
+      unicamp: {
+        title: 'UNICAMP • Universidade Estadual de Campinas',
+        badge: 'Agosto de 1969: 1º Bacharelado da América Latina',
+        desc: 'Criou em agosto de 1969 o primeiro curso de graduação (Bacharelado) em Ciência da Computação do Brasil e da América Latina. O currículo pioneiro formulado pelo prof. Darcy Damião e pelo reitor Zeferino Vaz estruturou o ensino formal de algoritmos, estruturas de dados e compiladores.',
+        address: 'Instituto de Computação (IC) • Av. Albert Einstein, 1251 - Cidade Universitária, Barão Geraldo, Campinas - SP',
+        coords: '22° 49\' 06" S, 47° 03\' 53" W',
+        osmUrl: 'https://www.openstreetmap.org/export/embed.html?bbox=-47.070,-22.823,-47.058,-22.813&layer=mapnik&marker=-22.8184,-47.0647',
+        gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Instituto+de+Computacao+UNICAMP+Campinas'
+      },
+      usp: {
+        title: 'USP • Universidade de São Paulo',
+        badge: '1972: Bacharelado IME-USP & Patinho Feio Poli-USP',
+        desc: 'Criou em 1972 o Bacharelado em Ciência da Computação no IME-USP, integrando a pesquisa de Imre Simon e o Centro de Cálculo Numérico. Simultaneamente, a Escola Politécnica (Poli-USP) projetava e soldava o Patinho Feio, primeiro computador geral nacional.',
+        address: 'IME-USP & Poli-USP • Cidade Universitária, Butantã, São Paulo - SP',
+        coords: '23° 33\' 33" S, 46° 43\' 53" W',
+        osmUrl: 'https://www.openstreetmap.org/export/embed.html?bbox=-46.738,-23.565,-46.724,-23.553&layer=mapnik&marker=-23.5591,-46.7314',
+        gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=IME+USP+Instituto+de+Matematica+e+Estatistica'
+      },
+      triangle: {
+        title: 'Triângulo Histórico da Computação (RJ - Campinas - SP)',
+        badge: 'Visão Regional Integrada • 1967 - 1978',
+        desc: 'O eixo Rio-Campinas-São Paulo concentrou a gênese acadêmica e científica da computação brasileira: da pós-graduação pioneira da PUC-Rio (1967) à graduação da UNICAMP (1969), à pesquisa da USP com o Patinho Feio (1972) e à fundação da SBC (1978).',
+        address: 'Eixo Rio de Janeiro (Gávea) - Campinas (Barão Geraldo) - São Paulo (Butantã)',
+        coords: 'Região Sudeste do Brasil',
+        osmUrl: 'https://www.openstreetmap.org/export/embed.html?bbox=-47.4,-23.8,-43.0,-22.5&layer=mapnik',
+        gmapsUrl: 'https://www.google.com/maps/dir/PUC-Rio/IME-USP/UNICAMP'
+      }
+    };
+
+    function selectUniversityMap(key) {
+      const data = BrasilUniversidadesData[key];
+      if (!data) return;
+
+      document.querySelectorAll('.uni-nav-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById(`btn-uni-${key}`);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const infoCard = document.getElementById('uni-info-card');
+      if (infoCard) {
+        infoCard.innerHTML = `
+          <div class="uni-info-header">
+            <span class="uni-info-title">${data.title}</span>
+            <span class="uni-info-badge">${data.badge}</span>
+          </div>
+          <p class="uni-info-desc">${data.desc}</p>
+          <div class="uni-info-address">${data.address}</div>
+        `;
+      }
+
+      const iframe = document.getElementById('uni-map-iframe');
+      if (iframe) {
+        iframe.src = data.osmUrl;
+      }
+
+      const coordsEl = document.getElementById('uni-map-coords');
+      if (coordsEl) {
+        coordsEl.textContent = `Coordenadas: ${data.coords}`;
+      }
+
+      const gmapsLink = document.getElementById('uni-google-maps-link');
+      if (gmapsLink) {
+        gmapsLink.href = data.gmapsUrl;
+      }
+    }
+
+    // =========================================================================
     // INICIALIZACAO RESILIENTE E SEGURA DE TODOS OS SIMULADORES INTERATIVOS
     // =========================================================================
 
@@ -10204,6 +10544,7 @@ READY
       safeInit('Patinho Feio Console', () => buildPatinhoClean());
       safeInit('Patinho Feio UI', () => updatePatinhoUI());
       safeInit('Terminal SISNE', () => initSisneSimulator());
+      safeInit('Mapa Universidades', () => selectUniversityMap('puc'));
     }
 
     if (document.readyState === 'loading') {
