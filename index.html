@@ -2588,7 +2588,7 @@
       position: relative;
       width: 100%;
       aspect-ratio: 4 / 3;
-      max-height: 620px;
+      max-height: 660px;
       background: #000000;
       border: 15px solid #1a1c22;
       border-radius: 38px / 32px;
@@ -2752,6 +2752,7 @@
       display: flex;
       gap: 5px;
       align-items: center;
+      flex-wrap: wrap;
     }
 
     .crt-tactile-btn {
@@ -5964,6 +5965,12 @@ READY
                     </button>
                     <button class="crt-tactile-btn active" id="btn-crt-fit" onclick="toggleW95FitMode()" title="Alternar Ajuste da Tela (Enquadramento Completo com Botoes de Disquete / Foco CRT)">
                       AJUSTE
+                    </button>
+                    <button class="crt-tactile-btn" onclick="adjustW95VPos(-16)" title="Subir Posicao Vertical da Imagem (V-POS ▲)">
+                      ▲ V-POS
+                    </button>
+                    <button class="crt-tactile-btn" onclick="adjustW95VPos(16)" title="Descer Posicao Vertical da Imagem (V-POS ▼)">
+                      ▼ V-POS
                     </button>
                     <button class="crt-tactile-btn" onclick="playWin95BootSound()" title="Tocar Som de Inicializacao (Brian Eno - 1995)">
                       AUDIO
@@ -10833,6 +10840,20 @@ READY
     // Alternar Motor de Emulacao Real (v86 JIT vs DOSBox)
     let currentW95Engine = 'v86';
     let currentW95FitMode = 'fit'; // Padrao: 'fit' (Enquadramento Completo: Botoes de Disquete + Tela + Barra de Tarefas 100% visiveis)
+    let w95VPosOffset = 0; // Offset vertical para ajuste fino do usuario
+
+    function adjustW95VPos(delta) {
+      w95VPosOffset += delta;
+      if (w95VPosOffset < -180) w95VPosOffset = -180;
+      if (w95VPosOffset > 180) w95VPosOffset = 180;
+      if (SimulatorAudio && SimulatorAudio.sautoirClick) SimulatorAudio.sautoirClick();
+      updateWin95IframeScale();
+    }
+
+    function resetW95VPos() {
+      w95VPosOffset = 0;
+      updateWin95IframeScale();
+    }
 
     function updateWin95IframeScale() {
       const viewport = document.getElementById('crt-tube-viewport');
@@ -10843,9 +10864,9 @@ READY
       const vh = viewport.clientHeight;
       if (vw <= 0 || vh <= 0) return;
 
-      // Margem de seguranca de 12px para que o vidro curvo e o chanfro do CRT nao cortem os cantos da barra de tarefas
-      const safeW = Math.max(100, vw - 12);
-      const safeH = Math.max(100, vh - 12);
+      // Margem de seguranca para que o vidro curvo e o chanfro do CRT nao cortem os cantos da barra de tarefas
+      const safeW = Math.max(100, vw - 16);
+      const safeH = Math.max(100, vh - 22);
 
       if (currentW95Engine === 'v86') {
         // Altura virtual superdimensionada (2000px) elimina overflow vertical no iframe, impedindo que runtime_infos suba
@@ -10854,30 +10875,31 @@ READY
         if (currentW95FitMode === 'fit') {
           // Modo Enquadramento Completo (Padrao):
           // Exibe a barra de botoes superiores (Insert floppy, Insert CD, etc.)
-          // e 100% da tela do Windows 95 COM A BARRA DE TAREFAS INTACTA no rodape,
-          // cortando com precisao a div runtime_infos que fica abaixo de 756px
-          const baseW = 820;
-          const baseH = 756;
+          // e 100% da tela do Windows 95 COM A BARRA DE TAREFAS INTACTA E TOTALMENTE VISIVEL,
+          // baseW = 860 e baseH = 835 garantem altura suficiente para acomodar a barra de tarefas
+          // mesmo com resolucoes SVGA 800x600 e quebras de botoes na interface v86
+          const baseW = 860;
+          const baseH = 835;
           const scale = Math.min(safeW / baseW, safeH / baseH);
           iframe.style.width = `${baseW}px`;
           iframe.style.transform = `scale(${scale})`;
           iframe.style.transformOrigin = '0 0';
           const left = (vw - baseW * scale) / 2;
-          const top = (vh - baseH * scale) / 2;
+          const top = Math.max(4, (vh - baseH * scale) / 2) + (w95VPosOffset * scale);
           iframe.style.left = `${left}px`;
           iframe.style.top = `${top}px`;
         } else {
           // Modo Foco CRT Puro:
-          // Oculta a barra de ferramentas superior deslocando 140px acima da moldura
+          // Oculta a barra de ferramentas superior deslocando 165px acima da moldura
           // e enquadra perfeitamente a tela do Windows 95 mantendo a BARRA DE TAREFAS 100% visivel
           const baseW = 800;
           const baseH = 600;
           const scale = Math.min(safeW / baseW, safeH / baseH);
-          iframe.style.width = '820px';
+          iframe.style.width = '840px';
           iframe.style.transform = `scale(${scale})`;
           iframe.style.transformOrigin = '0 0';
-          const left = ((vw - baseW * scale) / 2) - (10 * scale);
-          const top = ((vh - baseH * scale) / 2) - (140 * scale);
+          const left = ((vw - baseW * scale) / 2) - (15 * scale);
+          const top = ((vh - baseH * scale) / 2) - (165 * scale) + (w95VPosOffset * scale);
           iframe.style.left = `${left}px`;
           iframe.style.top = `${top}px`;
         }
@@ -10891,7 +10913,7 @@ READY
         iframe.style.transform = `scale(${scale})`;
         iframe.style.transformOrigin = '0 0';
         iframe.style.left = `${(vw - baseW * scale) / 2}px`;
-        iframe.style.top = `${(vh - baseH * scale) / 2}px`;
+        iframe.style.top = `${(vh - baseH * scale) / 2 + (w95VPosOffset * scale)}px`;
       }
     }
 
