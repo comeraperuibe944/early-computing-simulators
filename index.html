@@ -5005,10 +5005,10 @@
           </div>
         </div>
 
-        <!-- SIMULADOR 5: MANCHESTER BABY CRT & MANCHESTER MARK 1 COM ALAN TURING (1948-1951) -->
+        <!-- SIMULADOR 5: MANCHESTER MARK 1 COM ALAN TURING (1949-1951) -->
         <div class="interactive-app-card">
           <div class="app-header-clean">
-            <span class="app-tag">Estação Científica Integrada: Manchester Mark 1 &amp; Alan Turing (1949-1951)</span>
+            <span class="app-tag">Simulador Manchester Mark 1 &amp; Alan Turing</span>
             <div class="mark1-program-selector">
               <button class="btn-clean active" id="btn-bprog-0" onclick="loadBabyProgram(0)">1. Divisor 262.144 (Kilburn 1948)</button>
               <button class="btn-clean secondary" id="btn-bprog-1" onclick="loadBabyProgram(1)">2. Morfogênese de Turing (1952)</button>
@@ -5017,53 +5017,43 @@
               <button class="btn-clean secondary" id="btn-bprog-4" onclick="loadBabyProgram(4)">5. Zeros Zeta Riemann (Turing 1950)</button>
               <button class="btn-clean secondary" id="btn-bprog-5" onclick="loadBabyProgram(5)">6. Revolução B-lines (Índices 1949)</button>
               <button class="btn-clean secondary" id="btn-bprog-6" onclick="loadBabyProgram(6)">7. Música no Hooter (1951)</button>
-              <button class="btn-clean secondary" id="btn-bprog-7" onclick="loadBabyProgram(7)">8. Paginação Tambor Magnético</button>
+              <button class="btn-clean secondary" id="btn-bprog-7" onclick="loadBabyProgram(7)">8. Paginação de Memória</button>
               <button class="btn-clean secondary" id="btn-bprog-8" onclick="loadBabyProgram(8)">9. Terminal Base-32 &amp; Desenho</button>
             </div>
           </div>
 
-          <!-- LEGENDA DIDÁTICA DO HARDWARE MANCHESTER -->
-          <div class="baby-legend-grid">
-            <div class="baby-legend-item">
-              <span class="legend-dot-symbol"></span>
-              <span><strong>Ponto (0):</strong> Carga eletrostática estática</span>
-            </div>
-            <div class="baby-legend-item">
-              <span class="legend-dash-symbol"></span>
-              <span><strong>Traço (1):</strong> Carga defletida capacitiva</span>
-            </div>
-            <div class="baby-legend-item">
-              <span class="legend-bline-symbol"></span>
-              <span><strong>B-line:</strong> Registrador de Índice (Deslocamento dinâmico)</span>
-            </div>
-            <div class="baby-legend-item">
-              <span style="color: #15803d; font-weight: 800;">Feixe de Varredura:</span>
-              <span>Regeneração capacitiva contínua (refresh)</span>
-            </div>
-            <div class="baby-legend-item" style="color: #0f172a; font-weight: 700;">
-              <span>Dica: Clique no tubo para ligar/desligar bits na RAM!</span>
-            </div>
-          </div>
-
-          <!-- PALCO PRINCIPAL DIVIDIDO: CRT WILLIAMS + MÓDULOS AUXILIARES -->
+          <!-- PALCO PRINCIPAL: CRT WILLIAMS + OUTPUTS (TELEIMPRESSORA / PAINEL CIENTÍFICO) -->
           <div class="mark1-stage-split">
-            <!-- CHASSI DO OSCILOSCÓPIO CRT PRINCIPAL (WILLIAMS TUBE) -->
-            <div class="crt-scope-chassis">
-              <canvas id="crt-canvas-clean" width="640" height="384" title="Clique em qualquer célula para alternar o bit (0 / 1)"></canvas>
+            <!-- COLUNA ESQUERDA: MONITOR CRT + INSTRUÇÃO ATUAL + PRÓXIMO PASSO & RESETAR -->
+            <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+              <div class="crt-scope-chassis">
+                <canvas id="crt-canvas-clean" width="640" height="384" title="Monitor CRT Williams-Kilburn"></canvas>
+              </div>
+
+              <!-- INSTRUÇÃO ATUAL -->
+              <div class="baby-narrative-box" id="baby-narrative-box" style="margin-bottom: 0;">
+                <div><strong>Instrução Atual:</strong> <span id="crt-inst-readout" style="color: #15803d; font-weight: 800;">LDN 18</span></div>
+                <div id="baby-narrative-text" style="color: #334155; margin-top: 0.25rem;">Tom Kilburn carrega os dados para iniciar o cálculo.</div>
+              </div>
+
+              <!-- CONTROLES ESSENCIAIS: PRÓXIMO PASSO E RESETAR -->
+              <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <button class="btn-clean" id="btn-baby-step-action" onclick="stepBabySimulator()" style="padding: 0.55rem 1.35rem; font-size: 0.9rem; font-weight: 800;">Próximo Passo</button>
+                <button class="btn-clean secondary" onclick="resetBabySimulator()" style="padding: 0.55rem 1rem; font-size: 0.9rem;">Resetar</button>
+              </div>
             </div>
 
-            <!-- ESTAÇÃO AUXILIAR: TELEIMPRESSORA, TAMBOR MAGNÉTICO E PAINEL CIENTÍFICO -->
+            <!-- COLUNA DIREITA: OUTPUTS (PAINEL CIENTÍFICO E TELEIMPRESSORA) -->
             <div class="mark1-aux-stage">
               <div class="mark1-subview-tabs">
                 <button class="mark1-tab-btn active" id="tab-btn-tele" onclick="setMark1AuxTab('tele')">Teleimpressora Creed</button>
-                <button class="mark1-tab-btn" id="tab-btn-drum" onclick="setMark1AuxTab('drum')">Tambor Magnético</button>
                 <button class="mark1-tab-btn" id="tab-btn-spec" onclick="setMark1AuxTab('spec')">Painel Científico</button>
               </div>
 
-              <!-- ABA 1: TELEIMPRESSORA CREED 7B & FITA PERFURADA -->
+              <!-- OUTPUT 1: TELEIMPRESSORA CREED 7B & FITA PERFURADA -->
               <div id="mark1-panel-tele" style="display: flex; flex-direction: column; flex: 1;">
                 <div class="mark1-tape-box">
-                  <div class="mark1-tape-label">Fita Perfurada Baudot / Base-32 de Turing (5 Furos):</div>
+                  <div class="mark1-tape-label">Fita Perfurada Baudot / Base-32 de Turing:</div>
                   <div class="mark1-tape-holes-row" id="mark1-tape-stream">
                     <!-- Fita perfurada gerada dinamicamente -->
                   </div>
@@ -5071,83 +5061,12 @@
                 <div class="mark1-teleprinter-paper" id="mark1-teleprinter-out">Aguardando saída do Manchester Mark 1...</div>
               </div>
 
-              <!-- ABA 2: TAMBOR MAGNÉTICO ROTATIVO (32 TRILHAS) -->
-              <div id="mark1-panel-drum" style="display: none; flex-direction: column; flex: 1;">
-                <div class="mark1-drum-container">
-                  <canvas id="mark1-drum-canvas" width="300" height="170"></canvas>
-                  <div class="mark1-drum-stats">
-                    <div><span>Trilha Ativa: </span><strong id="drum-track-val">Trilha 04 / 32</strong></div>
-                    <div><span>Velocidade: </span><strong>3.000 RPM</strong></div>
-                    <div><span>Setor Sincronizado: </span><strong id="drum-sector-val">Setor 12</strong></div>
-                    <div><span>Transferência: </span><strong id="drum-trans-val" style="color: #15803d;">STANDBY</strong></div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- ABA 3: PAINEL CIENTÍFICO ESPECIAL (XADREZ / MORFOGÊNESE / ZETA / MÚSICA) -->
+              <!-- OUTPUT 2: PAINEL CIENTÍFICO ESPECIAL (XADREZ / MORFOGÊNESE / ZETA / MÚSICA) -->
               <div id="mark1-panel-spec" style="display: none; flex-direction: column; flex: 1;">
                 <div id="mark1-spec-content" style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;">
                   <!-- Conteúdo científico específico injetado dinamicamente -->
                 </div>
               </div>
-            </div>
-          </div>
-
-          <!-- TELEMETRIA DE REGISTRADORES HISTÓRICOS COM AS B-LINES -->
-          <div class="mark1-regs-telemetry">
-            <div class="telemetry-pill">
-              <span class="telemetry-label">Contador (CI / PC)</span>
-              <span class="telemetry-value" id="crt-ci-readout">00</span>
-            </div>
-            <div class="telemetry-pill">
-              <span class="telemetry-label">Instrução Atual (PI)</span>
-              <span class="telemetry-value" id="crt-inst-readout" style="color: #15803d;">LDN 18</span>
-            </div>
-            <div class="telemetry-pill">
-              <span class="telemetry-label">Acumulador (A / 40b)</span>
-              <span class="telemetry-value" id="crt-acc-readout">0 (0x0000)</span>
-            </div>
-            <div class="telemetry-pill highlight-bline">
-              <span class="telemetry-label">B-line B0 (Índice)</span>
-              <span class="telemetry-value" id="crt-b0-readout" style="color: #0284c7;">0</span>
-            </div>
-            <div class="telemetry-pill highlight-bline">
-              <span class="telemetry-label">B-line B1 (Índice)</span>
-              <span class="telemetry-value" id="crt-b1-readout" style="color: #0284c7;">0</span>
-            </div>
-            <div class="telemetry-pill">
-              <span class="telemetry-label">Hooter / Estado</span>
-              <span class="telemetry-value" id="crt-state-readout" style="color: #0f172a;">PRONTO</span>
-            </div>
-          </div>
-
-          <!-- BARRA DE INSPEÇÃO DINÂMICA DA MEMÓRIA -->
-          <div class="baby-inspect-bar" id="baby-inspect-bar">
-            <div><strong>Linha Selecionada:</strong> <span id="crt-inspect-line">Linha 00</span> &bull; <span id="crt-inspect-mnemonic">JMP 0</span></div>
-            <div style="color: #64748b;">Notação Turing Base-32: <span id="crt-inspect-turing" style="color: #0f172a; font-weight: 700;">/</span> &bull; Binário: <span id="crt-inspect-bin" style="color: #0f172a; font-weight: 700;">00000000...</span></div>
-          </div>
-
-          <!-- EXPLICAÇÃO NARRATIVA DO PASSO -->
-          <div class="baby-narrative-box" id="baby-narrative-box">
-            <strong>Programa Histórico de 1948:</strong> Tom Kilburn inicializa os registradores na memória Williams CRT para iniciar o laço de busca do maior divisor de 262.144 (2<sup>18</sup>).
-          </div>
-
-          <!-- BARRA DE CONTROLES E VELOCIDADE -->
-          <div class="baby-controls-row">
-            <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center;">
-              <button class="btn-clean" id="btn-baby-step-action" onclick="stepBabySimulator()">Passo Único (Step)</button>
-              <button class="btn-clean secondary" id="btn-baby-run-action" onclick="toggleBabyRun()">Executar Ciclo</button>
-              <button class="btn-clean secondary" id="btn-baby-turbo-action" onclick="setBabySpeed(10)">Modo Turbo (10&times;)</button>
-              <button class="btn-clean secondary" onclick="resetBabySimulator()">Recarregar Experiência</button>
-              <button class="btn-clean secondary" onclick="clearBabyRAM()">Limpar Tubo (Desenho)</button>
-            </div>
-            <div style="display: flex; align-items: center; gap: 0.35rem;">
-              <button class="btn-clean secondary" id="btn-hooter-sound" onclick="toggleHooterAudio()" style="font-size: 0.74rem; padding: 0.25rem 0.55rem;">Alto-falante Hooter: ON</button>
-              <span style="font-size: 0.76rem; font-family: var(--font-mono); color: #64748b; font-weight: 700; margin-left: 0.4rem;">Velocidade:</span>
-              <button class="speed-btn active" id="btn-bspeed-1" onclick="setBabySpeed(1)">1&times;</button>
-              <button class="speed-btn" id="btn-bspeed-2" onclick="setBabySpeed(2)">2&times;</button>
-              <button class="speed-btn" id="btn-bspeed-3" onclick="setBabySpeed(5)">5&times;</button>
-              <button class="speed-btn turbo" id="btn-bspeed-turbo" onclick="setBabySpeed(10)">Turbo</button>
             </div>
           </div>
         </div>
@@ -8367,18 +8286,16 @@ READY
       };
     }
 
-    // Alterna abas auxiliares (Teleimpressora, Tambor, Painel Cientifico)
+    // Alterna abas auxiliares (Teleimpressora Creed e Painel Cientifico)
     function setMark1AuxTab(tab) {
       babyActiveAuxTab = tab;
-      ['tele', 'drum', 'spec'].forEach(t => {
+      ['tele', 'spec'].forEach(t => {
         const btn = document.getElementById(`tab-btn-${t}`);
         const panel = document.getElementById(`mark1-panel-${t}`);
-        if (btn) btn.className = t === tab ? 'mark1-tab-btn active' : 'mark1-tab-btn';
-        if (panel) panel.style.display = t === tab ? 'flex' : 'none';
+        if (btn) btn.className = (t === tab) ? 'mark1-tab-btn active' : 'mark1-tab-btn';
+        if (panel) panel.style.display = (t === tab) ? 'flex' : 'none';
       });
-      if (tab === 'drum') {
-        drawDrumCanvas();
-      } else if (tab === 'spec') {
+      if (tab === 'spec') {
         renderMark1SpecContent();
       }
     }
@@ -9093,8 +9010,6 @@ READY
       // Configura aba padrao ideal conforme a natureza do programa
       if (idx === 1 || idx === 3 || idx === 4 || idx === 6) {
         setMark1AuxTab('spec');
-      } else if (idx === 7) {
-        setMark1AuxTab('drum');
       } else {
         setMark1AuxTab('tele');
       }
@@ -9106,8 +9021,6 @@ READY
     function resetBabySimulator() {
       clearInterval(babyTimer);
       babyTimer = null;
-      const runBtn = document.getElementById('btn-baby-run-action');
-      if (runBtn) runBtn.textContent = 'Executar Ciclo';
 
       const prog = babyPrograms[currentBabyProgIdx] || babyPrograms[0];
       const setup = prog.init();
@@ -9127,16 +9040,10 @@ READY
 
       updateBabyTelemetry(setup.descStep);
       drawBabyCRT();
-      drawDrumCanvas();
     }
 
     // Zera toda a RAM para o usuario desenhar livremente
     function clearBabyRAM() {
-      clearInterval(babyTimer);
-      babyTimer = null;
-      const runBtn = document.getElementById('btn-baby-run-action');
-      if (runBtn) runBtn.textContent = 'Executar Ciclo';
-
       babyMem = new Array(BABY_LINES).fill(0);
       for (let r = 0; r < BABY_LINES; r++) {
         babyBits[r] = new Array(BABY_BITS).fill(0);
@@ -9149,7 +9056,7 @@ READY
       babyCycleType = 'REFRESH';
       babyTargetOperandRow = -1;
 
-      updateBabyTelemetry('Tubo Williams limpo. Clique em qualquer celula para alternar pontos e tracos eletrostaticos.');
+      updateBabyTelemetry('Tubo Williams limpo.');
       drawBabyCRT();
     }
 
@@ -9183,39 +9090,33 @@ READY
             break;
           case 2: // LDN
             babyACC = -babyMem[inst.addr];
-            narr += `Carregou valor negativo de Mem[${inst.addr}] no Acumulador = ${babyACC}.`;
+            narr += `Carregou valor negativo de Mem[${inst.addr}] no Acumulador.`;
             break;
           case 3: // STO
             babyMem[inst.addr] = babyACC;
             babyBits[inst.addr] = babyValToBits(babyACC);
-            narr += `Gravou Acumulador (${babyACC}) na Linha ${inst.addr} da memoria Williams.`;
+            narr += `Gravou valor na Linha ${inst.addr} da memoria Williams.`;
             break;
           case 4: // SUB
             babyACC -= babyMem[inst.addr];
-            narr += `Subtraiu Mem[${inst.addr}]: novo Acumulador = ${babyACC}.`;
+            narr += `Subtraiu Mem[${inst.addr}].`;
             break;
           case 5: // ADD
             babyACC += babyMem[inst.addr];
-            narr += `Somou Mem[${inst.addr}]: novo Acumulador = ${babyACC}.`;
+            narr += `Somou Mem[${inst.addr}].`;
             break;
           case 6: // CMP
             if (babyACC < 0) {
               babyCI = (babyCI + 2) & 0x1F;
               advanceCI = false;
-              narr += `Acumulador negativo (${babyACC} < 0): pulou a proxima instrucao!`;
+              narr += `Acumulador negativo: pulou a proxima instrucao!`;
             } else {
-              narr += `Acumulador nao-negativo (${babyACC} >= 0): fluxo linear mantido.`;
+              narr += `Acumulador nao-negativo: fluxo linear mantido.`;
             }
             break;
           case 7: // STP
             babyState = 'PARADO (STP)';
             narr += `Instrucao de parada STP alcancada no Manchester Mark 1!`;
-            if (babyTimer) {
-              clearInterval(babyTimer);
-              babyTimer = null;
-              const btn = document.getElementById('btn-baby-run-action');
-              if (btn) btn.textContent = 'Executar Ciclo';
-            }
             advanceCI = false;
             break;
           default:
@@ -9234,111 +9135,28 @@ READY
       babyCycleType = (babyCycleType === 'ACAO') ? 'REFRESH' : 'ACAO';
       updateBabyTelemetry(narr);
       drawBabyCRT();
-      drawDrumCanvas();
     }
 
-    // Alterna execucao continua
-    function toggleBabyRun() {
-      const btn = document.getElementById('btn-baby-run-action');
-      if (babyTimer) {
-        clearInterval(babyTimer);
-        babyTimer = null;
-        babyState = 'PAUSADO';
-        if (btn) btn.textContent = 'Executar Ciclo';
-        updateBabyTelemetry('Execucao pausada pelo operador.');
-      } else {
-        babyState = babySpeed >= 10 ? 'TURBO' : 'EXECUTANDO';
-        if (btn) btn.textContent = 'Pausar';
-        const delay = babySpeed === 1 ? 480 : (babySpeed === 2 ? 240 : (babySpeed === 5 ? 100 : 25));
-        babyTimer = setInterval(() => {
-          stepBabySimulator();
-        }, delay);
-      }
-      drawBabyCRT();
-    }
+    // Stubs para compatibilidade com chamadas externas
+    function toggleBabyRun() {}
+    function setBabySpeed() {}
 
-    // Ajusta velocidade (1x, 2x, 5x, 10x Turbo)
-    function setBabySpeed(s) {
-      babySpeed = s;
-      [1, 2, 5].forEach(val => {
-        const btn = document.getElementById(`btn-bspeed-${val === 5 ? 3 : val}`);
-        if (btn) btn.className = (val === s && s < 10) ? 'speed-btn active' : 'speed-btn';
-      });
-      const turboBtn = document.getElementById('btn-bspeed-turbo');
-      if (turboBtn) {
-        turboBtn.className = (s >= 10) ? 'speed-btn turbo active' : 'speed-btn turbo';
-      }
-
-      if (babyTimer) {
-        clearInterval(babyTimer);
-        const delay = babySpeed === 1 ? 480 : (babySpeed === 2 ? 240 : (babySpeed === 5 ? 100 : 25));
-        babyTimer = setInterval(() => {
-          stepBabySimulator();
-        }, delay);
-      }
-    }
-
-    // Atualiza os registradores de telemetria
+    // Atualiza a telemetria essencial (Instrucao Atual e Texto do Passo)
     function updateBabyTelemetry(narrative) {
-      const ciEl = document.getElementById('crt-ci-readout');
-      if (ciEl) ciEl.textContent = String(babyCI).padStart(2, '0');
-
       const instEl = document.getElementById('crt-inst-readout');
       if (instEl) {
         const inst = decodeMark1Word(babyMem[babyCI], babyCI);
         instEl.textContent = `${inst.opName} ${String(inst.addr).padStart(2, '0')}`;
       }
 
-      const accEl = document.getElementById('crt-acc-readout');
-      if (accEl) {
-        const hex = '0x' + (babyACC >>> 0).toString(16).toUpperCase().padStart(8, '0');
-        accEl.textContent = `${babyACC} (${hex})`;
-      }
-
-      const b0El = document.getElementById('crt-b0-readout');
-      if (b0El) b0El.textContent = String(babyB0);
-
-      const b1El = document.getElementById('crt-b1-readout');
-      if (b1El) b1El.textContent = String(babyB1);
-
-      const stateEl = document.getElementById('crt-state-readout');
-      if (stateEl) {
-        stateEl.textContent = babyState === 'EXECUTANDO' ? 'EXECUTANDO' : (babyState === 'TURBO' ? 'TURBO 10x' : (babyState === 'PARADO (STP)' ? 'PARADO (STP)' : 'PRONTO'));
-        stateEl.style.color = (babyState === 'EXECUTANDO' || babyState === 'TURBO') ? '#15803d' : '#0f172a';
-      }
-
-      const narrEl = document.getElementById('baby-narrative-box');
+      const narrEl = document.getElementById('baby-narrative-text');
       if (narrEl && narrative) {
-        narrEl.innerHTML = `<strong>Status do Ciclo:</strong> ${narrative}`;
-      }
-
-      updateBabyInspector(babyHoverRow >= 0 ? babyHoverRow : babyCI);
-    }
-
-    // Atualiza a barra de inspecao dinamica
-    function updateBabyInspector(row) {
-      const r = Math.max(0, Math.min(31, row));
-      const word = babyMem[r] || 0;
-      const inst = decodeMark1Word(word, r);
-
-      const lineEl = document.getElementById('crt-inspect-line');
-      if (lineEl) lineEl.textContent = `Linha ${String(r).padStart(2, '0')}`;
-
-      const mnemEl = document.getElementById('crt-inspect-mnemonic');
-      if (mnemEl) {
-        mnemEl.textContent = `${inst.opName} ${inst.addr} (${inst.desc}) | Valor: ${word}`;
-      }
-
-      const turingEl = document.getElementById('crt-inspect-turing');
-      if (turingEl) {
-        turingEl.textContent = inst.turingChars;
-      }
-
-      const binEl = document.getElementById('crt-inspect-bin');
-      if (binEl && babyBits[r]) {
-        binEl.textContent = babyBits[r].join('');
+        narrEl.textContent = narrative;
       }
     }
+
+    // Inspecao de linha simplificada
+    function updateBabyInspector() {}
 
     // Renderizacao em alta definicao do Tubo Williams CRT
     function drawBabyCRT() {
