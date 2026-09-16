@@ -335,7 +335,7 @@
       transform: translateY(-1px);
     }
 
-    /* MODAL LIGHTBOX PARA TELA CHEIA E ZOOM (SUPER SIMPLES, PRETO E BRANCO, SEM GRADIENTES) */
+    /* MODAL LIGHTBOX PARA TELA CHEIA E ZOOM (SUPER SIMPLES, PRETO E BRANCO, SEM BORDAS, SEM GRADIENTES) */
     .image-lightbox-modal {
       position: fixed;
       inset: 0;
@@ -346,6 +346,18 @@
       opacity: 0;
       transition: opacity 0.15s ease;
       user-select: none;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    .image-lightbox-modal,
+    .image-lightbox-modal *,
+    .image-lightbox-modal div,
+    .image-lightbox-modal button,
+    .image-lightbox-modal img {
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
     }
 
     .image-lightbox-modal.active {
@@ -356,19 +368,20 @@
     .lightbox-backdrop {
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.94);
+      background: rgba(0, 0, 0, 0.95);
+      border: none;
     }
 
     .lightbox-container {
       position: relative;
       z-index: 2;
-      width: 96vw;
-      height: 94vh;
+      width: 100vw;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       background: #000000;
-      border: 1px solid #333333;
-      border-radius: 4px;
+      border: none !important;
+      border-radius: 0;
       overflow: hidden;
       box-shadow: none;
     }
@@ -377,9 +390,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.65rem 1rem;
+      padding: 0.75rem 1.25rem;
       background: #000000;
-      border-bottom: 1px solid #262626;
+      border: none;
+      border-bottom: none;
       color: #ffffff;
       gap: 1rem;
       flex-wrap: wrap;
@@ -387,7 +401,7 @@
 
     .lightbox-title {
       font-family: var(--font-mono);
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
@@ -396,12 +410,14 @@
       overflow: hidden;
       text-overflow: ellipsis;
       max-width: 45vw;
+      border: none;
     }
 
     .lightbox-actions {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.45rem;
+      border: none;
     }
 
     .lightbox-btn {
@@ -409,31 +425,31 @@
       font-size: 0.72rem;
       font-weight: 700;
       padding: 0.35rem 0.65rem;
-      border-radius: 3px;
-      background: #000000;
+      border-radius: 4px;
+      background: #171717;
       color: #ffffff;
-      border: 1px solid #404040;
+      border: none !important;
       cursor: pointer;
-      transition: background 0.12s, color 0.12s, border-color 0.12s;
+      transition: background 0.12s, color 0.12s;
     }
 
     .lightbox-btn:hover {
       background: #ffffff;
       color: #000000;
-      border-color: #ffffff;
+      border: none !important;
     }
 
     .lightbox-btn-close {
       background: #ffffff;
       color: #000000;
-      border: 1px solid #ffffff;
+      border: none !important;
       font-weight: 800;
     }
 
     .lightbox-btn-close:hover {
-      background: #000000;
-      color: #ffffff;
-      border-color: #ffffff;
+      background: #d4d4d4;
+      color: #000000;
+      border: none !important;
     }
 
     .lightbox-stage {
@@ -445,6 +461,7 @@
       justify-content: center;
       cursor: grab;
       background: #000000;
+      border: none;
     }
 
     .lightbox-stage.dragging {
@@ -452,8 +469,8 @@
     }
 
     .lightbox-img {
-      max-width: 90%;
-      max-height: 85%;
+      max-width: 92%;
+      max-height: 88%;
       object-fit: contain;
       transform-origin: center center;
       transition: transform 0.1s ease-out;
@@ -461,15 +478,17 @@
       pointer-events: none;
       box-shadow: none;
       border-radius: 0;
+      border: none !important;
     }
 
     .lightbox-caption-bar {
-      padding: 0.65rem 1rem;
+      padding: 0.75rem 1.25rem;
       background: #000000;
-      border-top: 1px solid #262626;
+      border: none;
+      border-top: none;
       color: #a3a3a3;
       font-family: var(--font-sans);
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       line-height: 1.4;
       text-align: center;
       max-height: 80px;
