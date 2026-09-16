@@ -335,7 +335,7 @@
       transform: translateY(-1px);
     }
 
-    /* MODAL LIGHTBOX PARA TELA CHEIA E ZOOM */
+    /* MODAL LIGHTBOX PARA TELA CHEIA E ZOOM (SUPER SIMPLES, PRETO E BRANCO, SEM GRADIENTES) */
     .image-lightbox-modal {
       position: fixed;
       inset: 0;
@@ -344,7 +344,7 @@
       align-items: center;
       justify-content: center;
       opacity: 0;
-      transition: opacity 0.2s ease;
+      transition: opacity 0.15s ease;
       user-select: none;
     }
 
@@ -356,9 +356,7 @@
     .lightbox-backdrop {
       position: absolute;
       inset: 0;
-      background: rgba(15, 23, 42, 0.92);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.94);
     }
 
     .lightbox-container {
@@ -368,28 +366,32 @@
       height: 94vh;
       display: flex;
       flex-direction: column;
-      background: #090d16;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 12px;
+      background: #000000;
+      border: 1px solid #333333;
+      border-radius: 4px;
       overflow: hidden;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      box-shadow: none;
     }
 
     .lightbox-toolbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.75rem 1.25rem;
-      background: rgba(15, 23, 42, 0.95);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      color: #f8fafc;
+      padding: 0.65rem 1rem;
+      background: #000000;
+      border-bottom: 1px solid #262626;
+      color: #ffffff;
       gap: 1rem;
       flex-wrap: wrap;
     }
 
     .lightbox-title {
-      font-size: 0.92rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
       font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #ffffff;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -399,35 +401,39 @@
     .lightbox-actions {
       display: flex;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.4rem;
     }
 
     .lightbox-btn {
       font-family: var(--font-mono);
-      font-size: 0.76rem;
-      font-weight: 600;
-      padding: 0.38rem 0.8rem;
-      border-radius: 4px;
-      background: rgba(255, 255, 255, 0.1);
-      color: #f8fafc;
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.35rem 0.65rem;
+      border-radius: 3px;
+      background: #000000;
+      color: #ffffff;
+      border: 1px solid #404040;
       cursor: pointer;
-      transition: background 0.15s, border-color 0.15s;
+      transition: background 0.12s, color 0.12s, border-color 0.12s;
     }
 
     .lightbox-btn:hover {
-      background: rgba(255, 255, 255, 0.22);
-      border-color: rgba(255, 255, 255, 0.4);
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
     }
 
     .lightbox-btn-close {
-      background: #b91c1c;
-      border-color: #ef4444;
-      font-weight: 700;
+      background: #ffffff;
+      color: #000000;
+      border: 1px solid #ffffff;
+      font-weight: 800;
     }
 
     .lightbox-btn-close:hover {
-      background: #dc2626;
+      background: #000000;
+      color: #ffffff;
+      border-color: #ffffff;
     }
 
     .lightbox-stage {
@@ -438,7 +444,7 @@
       align-items: center;
       justify-content: center;
       cursor: grab;
-      background: radial-gradient(circle, #1e293b 0%, #090d16 100%);
+      background: #000000;
     }
 
     .lightbox-stage.dragging {
@@ -453,29 +459,41 @@
       transition: transform 0.1s ease-out;
       will-change: transform;
       pointer-events: none;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-      border-radius: 4px;
+      box-shadow: none;
+      border-radius: 0;
     }
 
     .lightbox-caption-bar {
-      padding: 0.75rem 1.25rem;
-      background: rgba(15, 23, 42, 0.95);
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: #cbd5e1;
-      font-size: 0.85rem;
-      line-height: 1.5;
+      padding: 0.65rem 1rem;
+      background: #000000;
+      border-top: 1px solid #262626;
+      color: #a3a3a3;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      line-height: 1.4;
       text-align: center;
-      max-height: 85px;
+      max-height: 80px;
       overflow-y: auto;
     }
 
-    .media-frame img, .clean-card img:not(.floating-qr-img) {
+    .media-frame img,
+    .clean-card img,
+    .hero-slide img,
+    .table-slide-card img,
+    .slide-block img,
+    .floating-qr-img,
+    .floating-qr-card {
       cursor: zoom-in;
-      transition: filter 0.15s ease;
+      transition: opacity 0.15s ease;
     }
 
-    .media-frame img:hover, .clean-card img:not(.floating-qr-img):hover {
-      filter: brightness(1.04);
+    .media-frame img:hover,
+    .clean-card img:hover,
+    .hero-slide img:hover,
+    .table-slide-card img:hover,
+    .slide-block img:hover,
+    .floating-qr-img:hover {
+      opacity: 0.92;
     }
 
     @media (max-width: 1200px) {
@@ -3511,8 +3529,8 @@
 
     <!-- Bloco Retrátil do QR Code -->
     <div class="sidebar-qr-box" id="sidebarQrWrapper">
-      <div class="floating-qr-card">
-        <img src="simuladores_qrcode.svg" alt="QR Code dos Simuladores" class="floating-qr-img" width="220" height="220">
+      <div class="floating-qr-card" title="Clique para abrir o QR Code em tela cheia">
+        <img src="simuladores_qrcode.svg" alt="QR Code dos Simuladores" class="floating-qr-img" width="220" height="220" title="Clique para abrir o QR Code em tela cheia">
         <div class="floating-qr-info">
           <span class="floating-qr-url">comeraperuibe944.github.io/early-computing-simulators</span>
         </div>
@@ -13188,12 +13206,28 @@ READY
         });
 
         document.addEventListener('click', (e) => {
-          const img = e.target.closest('.media-frame img, .clean-card img, .hero-slide img, .table-slide-card img, .slide-block img');
-          if (img && !img.classList.contains('floating-qr-img') && !img.closest('.floating-qr-sidebar')) {
-            const frame = img.closest('.media-frame') || img.parentElement;
-            const captionEl = frame ? frame.querySelector('.media-caption') : null;
-            const captionText = captionEl ? captionEl.textContent.trim() : (img.alt || 'Imagem Histórica');
-            this.open(img.src, img.alt || 'Visualização Detalhada', captionText);
+          const qrCard = e.target.closest('.floating-qr-card');
+          if (qrCard && !e.target.closest('button')) {
+            const qrImg = qrCard.querySelector('img');
+            if (qrImg) {
+              e.preventDefault();
+              this.open(qrImg.src, 'QR Code: Simuladores Interativos', 'comeraperuibe944.github.io/early-computing-simulators');
+              return;
+            }
+          }
+
+          const img = e.target.closest('.media-frame img, .clean-card img, .hero-slide img, .table-slide-card img, .slide-block img, .floating-qr-img');
+          if (img) {
+            if (e.target.closest('button, a')) return;
+            e.preventDefault();
+            const isQr = img.classList.contains('floating-qr-img') || img.closest('.sidebar-qr-box');
+            const frame = img.closest('.media-frame, .floating-qr-card') || img.parentElement;
+            const captionEl = frame ? frame.querySelector('.media-caption, .floating-qr-info') : null;
+            const captionText = isQr
+              ? 'comeraperuibe944.github.io/early-computing-simulators'
+              : (captionEl ? captionEl.textContent.trim() : (img.alt || ''));
+            const titleText = isQr ? 'QR Code: Simuladores Interativos' : (img.alt || 'Visualização');
+            this.open(img.src, titleText, captionText);
           }
         });
       },
@@ -13202,8 +13236,16 @@ READY
         if (!this.modal || !this.img) return;
         this.img.src = src;
         this.img.alt = altText || '';
-        if (this.title) this.title.textContent = altText || 'Visualização em Tela Cheia';
-        if (this.caption) this.caption.textContent = captionText || '';
+        if (this.title) this.title.textContent = altText || 'Visualização';
+        if (this.caption) {
+          if (captionText && captionText.trim()) {
+            this.caption.textContent = captionText.trim();
+            this.caption.style.display = 'block';
+          } else {
+            this.caption.textContent = '';
+            this.caption.style.display = 'none';
+          }
+        }
         this.scale = 1;
         this.panX = 0;
         this.panY = 0;
