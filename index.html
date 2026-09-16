@@ -308,31 +308,40 @@
       border: none;
     }
 
-    /* Botão Flutuante para reabrir Sumário quando recolhido ou mobile */
+    /* Botão Flutuante para reabrir Sumário quando recolhido ou mobile (Redondo, Branco, Sem Bordas) */
     .sidebar-floating-toggle-btn {
       position: fixed;
-      left: 16px;
+      left: 18px;
       top: 18px;
       z-index: 9999;
-      background: #0f172a;
-      color: #ffffff;
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 0.5rem 0.9rem;
-      border-radius: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ffffff;
+      color: #0f172a;
+      border: none !important;
+      outline: none !important;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
       cursor: pointer;
       display: none;
       align-items: center;
-      gap: 6px;
-      transition: background 0.15s, transform 0.1s;
+      justify-content: center;
+      padding: 0;
+      transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     .sidebar-floating-toggle-btn:hover {
-      background: #1e293b;
-      transform: translateY(-1px);
+      background: #f1f5f9;
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.16);
+    }
+
+    .sidebar-floating-toggle-btn svg {
+      display: block;
+      width: 20px;
+      height: 20px;
+      stroke: #0f172a;
+      transition: stroke 0.15s ease;
     }
 
     /* MODAL LIGHTBOX PARA TELA CHEIA E ZOOM (SUPER SIMPLES, PRETO E BRANCO, SEM BORDAS, SEM GRADIENTES) */
@@ -3530,9 +3539,13 @@
 </head>
 <body>
 
-  <!-- BOTÃO FLUTUANTE PARA REABRIR O SUMÁRIO (Telas Menores ou quando Recolhido) -->
-  <button class="sidebar-floating-toggle-btn" id="sidebarFloatingToggleBtn" onclick="toggleSidebarCollapse()" title="Abrir Sumário do Seminário">
-    Sumário
+  <!-- BOTÃO FLUTUANTE PARA REABRIR O SUMÁRIO (ÍCONE SANDUÍCHE, REDONDO E BRANCO) -->
+  <button class="sidebar-floating-toggle-btn" id="sidebarFloatingToggleBtn" onclick="toggleSidebarCollapse()" title="Abrir Sumário do Seminário" aria-label="Abrir Sumário">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
   </button>
 
   <!-- BARRA LATERAL MULTIFUNCIONAL: SUMÁRIO E QR CODE RETRÁTIL -->
