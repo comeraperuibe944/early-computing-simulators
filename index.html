@@ -3033,12 +3033,10 @@
        ========================================================================= */
     .era-wave-wrapper {
       position: relative;
-      left: 50%;
-      transform: translateX(-50%);
       width: 100vw;
+      margin-left: calc(-1 * (max(450px, calc(50vw - 320px)) + 1.5rem));
       overflow: hidden;
       line-height: 0;
-      margin: 0;
       padding: 0;
       pointer-events: none;
       box-sizing: border-box;
@@ -3092,20 +3090,31 @@
 
     .era-gray-zone {
       position: relative;
-      left: 50%;
-      transform: translateX(-50%);
       width: 100vw;
+      margin-left: calc(-1 * (max(450px, calc(50vw - 320px)) + 1.5rem));
       background-color: #f8fafc;
       padding: 2rem 0 3rem 0;
       box-sizing: border-box;
-      margin: 0;
     }
 
     .era-gray-inner {
       max-width: 1080px;
-      margin: 0 auto;
+      margin-left: calc(max(450px, calc(50vw - 320px)) + 1.5rem);
+      margin-right: auto;
       padding: 0 1.5rem;
       box-sizing: border-box;
+    }
+
+    @media (max-width: 1200px) {
+      .era-wave-wrapper,
+      .era-gray-zone {
+        margin-left: -1.25rem;
+        width: 100vw;
+      }
+      .era-gray-inner {
+        margin: 0 auto;
+        padding: 0 1.25rem;
+      }
     }
 
     .era-gray-zone .slide-block {
