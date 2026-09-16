@@ -95,7 +95,7 @@
       margin-right: auto;
     }
 
-    /* BARRA LATERAL FIXA COM SUMÁRIO E QR CODE */
+    /* BARRA LATERAL FIXA COM SUMÁRIO E QR CODE (SEM SOMBRAS E SEM BORDAS) */
     .floating-qr-sidebar {
       position: fixed;
       left: clamp(12px, 1.8vw, 32px);
@@ -107,12 +107,26 @@
       flex-direction: column;
       background: #ffffff;
       border-radius: 16px;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.07);
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
       transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
       overflow: hidden;
       user-select: auto;
       pointer-events: auto;
+    }
+
+    .floating-qr-sidebar,
+    .floating-qr-sidebar *,
+    .floating-qr-sidebar div,
+    .floating-qr-sidebar nav,
+    .floating-qr-sidebar a,
+    .floating-qr-sidebar button,
+    .floating-qr-sidebar img,
+    .floating-qr-sidebar span {
+      box-shadow: none !important;
+      border: none !important;
+      outline: none !important;
     }
 
     .floating-qr-sidebar.collapsed {
@@ -127,7 +141,7 @@
       justify-content: space-between;
       padding: 0.85rem 1rem;
       background: #f8fafc;
-      border-bottom: 1px solid var(--border-subtle);
+      border: none;
       gap: 0.5rem;
     }
 
@@ -154,18 +168,18 @@
       font-weight: 700;
       padding: 0.3rem 0.6rem;
       border-radius: 4px;
-      background: #ffffff;
+      background: #f1f5f9;
       color: var(--text-muted);
-      border: 1px solid var(--border-subtle);
+      border: none;
       cursor: pointer;
-      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      transition: background 0.15s, color 0.15s;
       white-space: nowrap;
     }
 
     .sidebar-mini-btn:hover {
       background: #0f172a;
       color: #ffffff;
-      border-color: #0f172a;
+      border: none;
     }
 
     /* Área do QR Code Retrátil */
@@ -175,7 +189,7 @@
       align-items: center;
       padding: 0.85rem 1rem 0.75rem;
       background: #ffffff;
-      border-bottom: 1px solid var(--border-subtle);
+      border: none;
       transition: max-height 0.35s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease, padding 0.35s ease;
       overflow: hidden;
       max-height: 480px;
@@ -187,7 +201,7 @@
       opacity: 0 !important;
       padding-top: 0 !important;
       padding-bottom: 0 !important;
-      border-bottom: none !important;
+      border: none !important;
     }
 
     .floating-qr-card {
@@ -251,20 +265,21 @@
       font-size: 0.78rem;
       font-weight: 600;
       color: var(--text-muted);
-      border-left: 2px solid transparent;
-      transition: background 0.12s, color 0.12s, border-left-color 0.12s;
+      border: none;
+      transition: background 0.12s, color 0.12s;
     }
 
     .sidebar-toc-item:hover {
       background: #f1f5f9;
       color: var(--text-main);
+      border: none;
     }
 
     .sidebar-toc-item.active {
       background: #eef2ff;
       color: #1e1b4b;
       font-weight: 700;
-      border-left-color: #4f46e5;
+      border: none;
     }
 
     .sidebar-toc-badge {
@@ -275,22 +290,22 @@
       border-radius: 4px;
       background: #f1f5f9;
       color: #475569;
-      border: 1px solid #e2e8f0;
+      border: none;
       min-width: 24px;
       text-align: center;
-      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+      transition: background 0.15s ease, color 0.15s ease;
     }
 
     .sidebar-toc-item:hover .sidebar-toc-badge {
       background: #e2e8f0;
       color: #1e293b;
-      border-color: #cbd5e1;
+      border: none;
     }
 
     .sidebar-toc-item.active .sidebar-toc-badge {
       background: #e0e7ff;
       color: #4338ca;
-      border-color: #c7d2fe;
+      border: none;
     }
 
     /* Botão Flutuante para reabrir Sumário quando recolhido ou mobile */
