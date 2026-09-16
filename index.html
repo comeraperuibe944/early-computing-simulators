@@ -81,11 +81,85 @@
 
     
 
-    /* Container de Apresentação Centralizado e Farto */
+    /* Container de Apresentação Deslocado para a Direita */
     .presentation-container {
       max-width: 1080px;
-      margin: 0 auto;
+      margin-left: max(320px, calc(50vw - 380px));
+      margin-right: auto;
       padding: 4rem 1.5rem 10rem;
+    }
+
+    /* Floating QR Code suave na esquerda, centralizado verticalmente */
+    .floating-qr-sidebar {
+      position: fixed;
+      left: clamp(12px, 2.5vw, 36px);
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #ffffff;
+      padding: 1.25rem;
+      border-radius: 20px;
+      border: 1.5px solid var(--border-subtle);
+      box-shadow: 0 14px 40px -10px rgba(15, 23, 42, 0.18), 0 2px 10px rgba(15, 23, 42, 0.06);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+      will-change: transform;
+      user-select: none;
+      pointer-events: auto;
+    }
+
+    .floating-qr-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .floating-qr-img {
+      width: clamp(200px, 17vw, 270px);
+      height: clamp(200px, 17vw, 270px);
+      border-radius: 12px;
+      display: block;
+      image-rendering: crisp-edges;
+    }
+
+    .floating-qr-info {
+      margin-top: 0.85rem;
+      text-align: center;
+      max-width: clamp(200px, 17vw, 270px);
+    }
+
+    .floating-qr-title {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-main);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: block;
+    }
+
+    .floating-qr-url {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-light);
+      word-break: break-all;
+      margin-top: 0.25rem;
+      display: block;
+    }
+
+    @media (max-width: 1100px) {
+      .presentation-container {
+        margin: 0 auto;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+      }
+      .floating-qr-sidebar {
+        display: none;
+      }
     }
 
     /* HERO LIMPO */
@@ -3069,6 +3143,17 @@
 
 </head>
 <body>
+
+  <!-- QR Code Flutuante para Acesso dos Participantes -->
+  <aside class="floating-qr-sidebar" id="floatingQrSidebar" aria-label="QR Code para simuladores">
+    <a href="https://comeraperuibe944.github.io/early-computing-simulators" target="_blank" rel="noopener noreferrer" class="floating-qr-card" title="Acessar simuladores interativos">
+      <img src="simuladores_qrcode.svg" alt="QR Code: Simuladores da História da Computação" class="floating-qr-img" width="260" height="260">
+      <div class="floating-qr-info">
+        <span class="floating-qr-title">Simuladores Interativos</span>
+        <span class="floating-qr-url">comeraperuibe944.github.io/early-computing-simulators</span>
+      </div>
+    </a>
+  </aside>
 
   <!-- Barra de Leitura Discreta -->
 
