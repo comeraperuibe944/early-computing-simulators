@@ -748,6 +748,17 @@
       transition: none;
     }
 
+    .clean-card,
+    .clean-card div {
+      border: none !important;
+      border-top: none !important;
+      border-bottom: none !important;
+      border-left: none !important;
+      border-right: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+    }
+
     @media (max-width: 640px) {
       .clean-card {
         padding: 0.75rem 1rem 1.5rem 1rem;
@@ -2118,16 +2129,18 @@
 
     .duo-split-card {
       background: #ffffff;
-      border: 1px solid var(--border-subtle);
+      border: none !important;
       border-radius: var(--radius-md);
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      box-shadow: none !important;
     }
 
     .duo-split-header {
       padding: 1.1rem 1.25rem 0.85rem 1.25rem;
-      border-bottom: 1px solid var(--border-subtle);
+      border: none !important;
+      border-bottom: none !important;
       background: #f8fafc;
     }
 
