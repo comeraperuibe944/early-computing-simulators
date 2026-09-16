@@ -104,7 +104,7 @@
       border-radius: 28px;
       border: 2px solid var(--border-subtle);
       box-shadow: none;
-      transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
       will-change: transform;
       user-select: none;
       pointer-events: none;
@@ -12368,10 +12368,10 @@ READY
       let resetTimer = null;
 
       function update() {
-        currentOffset += (targetOffset - currentOffset) * 0.12;
+        currentOffset += (targetOffset - currentOffset) * 0.08;
         qrEl.style.setProperty('--qr-float-offset', `${currentOffset.toFixed(2)}px`);
 
-        if (Math.abs(targetOffset - currentOffset) > 0.1 || Math.abs(currentOffset) > 0.1) {
+        if (Math.abs(targetOffset - currentOffset) > 0.05 || Math.abs(currentOffset) > 0.05) {
           requestAnimationFrame(update);
         } else {
           isTicking = false;
@@ -12385,13 +12385,13 @@ READY
         const delta = currentScrollY - lastScrollY;
         lastScrollY = currentScrollY;
 
-        // Quando o usuário rola para baixo (delta > 0), o elemento flutua levemente para cima (< 0) e vice-versa
-        targetOffset = Math.max(-45, Math.min(45, -delta * 0.6));
+        // Efeito sutil: deslocamento suave de no máximo +/-14px
+        targetOffset = Math.max(-14, Math.min(14, -delta * 0.25));
 
         clearTimeout(resetTimer);
         resetTimer = setTimeout(() => {
           targetOffset = 0;
-        }, 60);
+        }, 50);
 
         if (!isTicking) {
           isTicking = true;
