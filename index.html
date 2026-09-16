@@ -84,30 +84,110 @@
     /* Container de Apresentação Deslocado para a Direita */
     .presentation-container {
       max-width: 1080px;
-      margin-left: max(450px, calc(50vw - 320px));
+      margin-left: max(430px, calc(50vw - 340px));
       margin-right: auto;
       padding: 4rem 1.5rem 10rem;
+      transition: margin-left 0.35s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    /* Floating QR Code suave na esquerda, centralizado verticalmente e muito grande */
+    body.sidebar-collapsed .presentation-container {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* BARRA LATERAL FIXA COM SUMÁRIO E QR CODE */
     .floating-qr-sidebar {
       position: fixed;
-      left: clamp(16px, 2.5vw, 44px);
-      top: 50%;
-      transform: translateY(-50%) translateY(var(--qr-float-offset, 0px));
+      left: clamp(12px, 1.8vw, 32px);
+      top: 24px;
+      bottom: 24px;
+      width: clamp(310px, 23vw, 380px);
       z-index: 1000;
       display: flex;
       flex-direction: column;
-      align-items: center;
       background: #ffffff;
-      padding: 1.5rem;
-      border-radius: 28px;
-      border: 2px solid var(--border-subtle);
-      box-shadow: none;
-      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-      will-change: transform;
-      user-select: none;
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.07);
+      transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+      overflow: hidden;
+      user-select: auto;
+      pointer-events: auto;
+    }
+
+    .floating-qr-sidebar.collapsed {
+      transform: translateX(calc(-100% - 40px)) !important;
       pointer-events: none;
+    }
+
+    /* Cabeçalho do Sumário Lateral */
+    .sidebar-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1rem;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border-subtle);
+      gap: 0.5rem;
+    }
+
+    .sidebar-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sidebar-ctrl-btns {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .sidebar-mini-btn {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      background: #ffffff;
+      color: var(--text-muted);
+      border: 1px solid var(--border-subtle);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+
+    .sidebar-mini-btn:hover {
+      background: #0f172a;
+      color: #ffffff;
+      border-color: #0f172a;
+    }
+
+    /* Área do QR Code Retrátil */
+    .sidebar-qr-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.85rem 1rem 0.75rem;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-subtle);
+      transition: max-height 0.35s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease, padding 0.35s ease;
+      overflow: hidden;
+      max-height: 480px;
+      opacity: 1;
+    }
+
+    .sidebar-qr-box.collapsed {
+      max-height: 0 !important;
+      opacity: 0 !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      border-bottom: none !important;
     }
 
     .floating-qr-card {
@@ -116,31 +196,263 @@
       align-items: center;
       text-decoration: none;
       color: inherit;
-      pointer-events: none;
-      cursor: default;
     }
 
     .floating-qr-img {
-      width: clamp(280px, 23vw, 390px);
-      height: clamp(280px, 23vw, 390px);
-      border-radius: 16px;
+      width: clamp(180px, 14vw, 230px);
+      height: clamp(180px, 14vw, 230px);
+      border-radius: 12px;
       display: block;
       image-rendering: crisp-edges;
     }
 
     .floating-qr-info {
-      margin-top: 0.85rem;
+      margin-top: 0.5rem;
       text-align: center;
-      max-width: clamp(280px, 23vw, 390px);
+      max-width: 250px;
     }
 
     .floating-qr-url {
       font-family: var(--font-mono);
-      font-size: clamp(0.72rem, 0.95vw, 0.86rem);
+      font-size: 0.72rem;
       font-weight: 600;
       color: var(--text-light);
       word-break: break-all;
       display: block;
+    }
+
+    /* Lista Scrollável do Sumário */
+    .sidebar-toc-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0.6rem 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .sidebar-toc-list::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .sidebar-toc-list::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+
+    .sidebar-toc-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.45rem 0.7rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-left: 2px solid transparent;
+      transition: background 0.12s, color 0.12s, border-left-color 0.12s;
+    }
+
+    .sidebar-toc-item:hover {
+      background: #f1f5f9;
+      color: var(--text-main);
+    }
+
+    .sidebar-toc-item.active {
+      background: #e2e8f0;
+      color: #0f172a;
+      font-weight: 700;
+      border-left-color: #0f172a;
+    }
+
+    .sidebar-toc-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      background: var(--bg-surface-alt);
+      color: var(--text-light);
+      border: 1px solid var(--border-subtle);
+      min-width: 22px;
+      text-align: center;
+    }
+
+    .sidebar-toc-item.active .sidebar-toc-badge {
+      background: #0f172a;
+      color: #ffffff;
+      border-color: #0f172a;
+    }
+
+    /* Botão Flutuante para reabrir Sumário quando recolhido ou mobile */
+    .sidebar-floating-toggle-btn {
+      position: fixed;
+      left: 16px;
+      top: 18px;
+      z-index: 9999;
+      background: #0f172a;
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.5rem 0.9rem;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    .sidebar-floating-toggle-btn:hover {
+      background: #1e293b;
+      transform: translateY(-1px);
+    }
+
+    /* MODAL LIGHTBOX PARA TELA CHEIA E ZOOM */
+    .image-lightbox-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      user-select: none;
+    }
+
+    .image-lightbox-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .lightbox-container {
+      position: relative;
+      z-index: 2;
+      width: 96vw;
+      height: 94vh;
+      display: flex;
+      flex-direction: column;
+      background: #090d16;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    .lightbox-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1.25rem;
+      background: rgba(15, 23, 42, 0.95);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      color: #f8fafc;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .lightbox-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 45vw;
+    }
+
+    .lightbox-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .lightbox-btn {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 0.38rem 0.8rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #f8fafc;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .lightbox-btn:hover {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .lightbox-btn-close {
+      background: #b91c1c;
+      border-color: #ef4444;
+      font-weight: 700;
+    }
+
+    .lightbox-btn-close:hover {
+      background: #dc2626;
+    }
+
+    .lightbox-stage {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: grab;
+      background: radial-gradient(circle, #1e293b 0%, #090d16 100%);
+    }
+
+    .lightbox-stage.dragging {
+      cursor: grabbing;
+    }
+
+    .lightbox-img {
+      max-width: 90%;
+      max-height: 85%;
+      object-fit: contain;
+      transform-origin: center center;
+      transition: transform 0.1s ease-out;
+      will-change: transform;
+      pointer-events: none;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      border-radius: 4px;
+    }
+
+    .lightbox-caption-bar {
+      padding: 0.75rem 1.25rem;
+      background: rgba(15, 23, 42, 0.95);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #cbd5e1;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      text-align: center;
+      max-height: 85px;
+      overflow-y: auto;
+    }
+
+    .media-frame img, .clean-card img:not(.floating-qr-img) {
+      cursor: zoom-in;
+      transition: filter 0.15s ease;
+    }
+
+    .media-frame img:hover, .clean-card img:not(.floating-qr-img):hover {
+      filter: brightness(1.04);
     }
 
     @media (max-width: 1200px) {
@@ -150,7 +462,14 @@
         padding-right: 1.25rem;
       }
       .floating-qr-sidebar {
-        display: none !important;
+        transform: translateX(calc(-100% - 40px));
+        width: min(340px, 85vw);
+      }
+      .floating-qr-sidebar.mobile-open {
+        transform: translateX(0) !important;
+      }
+      .sidebar-floating-toggle-btn {
+        display: flex;
       }
     }
 
@@ -3145,14 +3464,139 @@
 </head>
 <body>
 
-  <!-- QR Code Flutuante para Acesso dos Participantes -->
-  <aside class="floating-qr-sidebar" id="floatingQrSidebar" aria-label="QR Code para simuladores">
-    <div class="floating-qr-card">
-      <img src="simuladores_qrcode.svg" alt="QR Code" class="floating-qr-img" width="360" height="360">
-      <div class="floating-qr-info">
-        <span class="floating-qr-url">comeraperuibe944.github.io/early-computing-simulators</span>
+  <!-- BOTÃO FLUTUANTE PARA REABRIR O SUMÁRIO (Telas Menores ou quando Recolhido) -->
+  <button class="sidebar-floating-toggle-btn" id="sidebarFloatingToggleBtn" onclick="toggleSidebarCollapse()" title="Abrir Sumário do Seminário">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    Sumário
+  </button>
+
+  <!-- BARRA LATERAL MULTIFUNCIONAL: SUMÁRIO E QR CODE RETRÁTIL -->
+  <aside class="floating-qr-sidebar" id="floatingQrSidebar" aria-label="Navegação do Seminário e QR Code">
+    <!-- Cabeçalho com Ações de Controle -->
+    <div class="sidebar-top-bar">
+      <div class="sidebar-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Sumário
+      </div>
+      <div class="sidebar-ctrl-btns">
+        <button id="btnToggleQrCode" class="sidebar-mini-btn" onclick="toggleSidebarQr()" title="Ocultar ou exibir o QR Code">Ocultar QR</button>
+        <button id="btnCollapseSidebar" class="sidebar-mini-btn" onclick="toggleSidebarCollapse()" title="Recolher Sumário">Recolher</button>
       </div>
     </div>
+
+    <!-- Bloco Retrátil do QR Code -->
+    <div class="sidebar-qr-box" id="sidebarQrWrapper">
+      <div class="floating-qr-card">
+        <img src="simuladores_qrcode.svg" alt="QR Code dos Simuladores" class="floating-qr-img" width="220" height="220">
+        <div class="floating-qr-info">
+          <span class="floating-qr-url">comeraperuibe944.github.io/early-computing-simulators</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lista de Links de Navegação Rápida (Sumário Interativo) -->
+    <nav class="sidebar-toc-list" id="sidebarTocList" aria-label="Índice de Seções">
+      <a href="#slide-hero" class="sidebar-toc-item" data-target="slide-hero">
+        <span class="sidebar-toc-badge">00</span>
+        <span>Abertura &amp; Hero</span>
+      </a>
+      <a href="#slide-conceito" class="sidebar-toc-item" data-target="slide-conceito">
+        <span class="sidebar-toc-badge">01</span>
+        <span>O que é uma Computadora?</span>
+      </a>
+      <a href="#slide-tags-guide" class="sidebar-toc-item" data-target="slide-tags-guide">
+        <span class="sidebar-toc-badge">TAGS</span>
+        <span>Guia: Turing &amp; Von Neumann</span>
+      </a>
+      <a href="#slide-era1" class="sidebar-toc-item" data-target="slide-era1">
+        <span class="sidebar-toc-badge">02</span>
+        <span>Instrumentos Ancestrais</span>
+      </a>
+      <a href="#slide-anticitera" class="sidebar-toc-item" data-target="slide-anticitera">
+        <span class="sidebar-toc-badge">03</span>
+        <span>Mecanismo de Anticítera</span>
+      </a>
+      <a href="#slide-pascalina" class="sidebar-toc-item" data-target="slide-pascalina">
+        <span class="sidebar-toc-badge">04</span>
+        <span>A Pascalina (1642)</span>
+      </a>
+      <a href="#slide-leibniz" class="sidebar-toc-item" data-target="slide-leibniz">
+        <span class="sidebar-toc-badge">05</span>
+        <span>Stepped Reckoner (Leibniz)</span>
+      </a>
+      <a href="#didactic-transition-banner" class="sidebar-toc-item" data-target="didactic-transition-banner">
+        <span class="sidebar-toc-badge">&bull;</span>
+        <span>Transição: Máquinas Universais</span>
+      </a>
+      <a href="#slide-analitica" class="sidebar-toc-item" data-target="slide-analitica">
+        <span class="sidebar-toc-badge">06</span>
+        <span>Babbage &amp; Ada Lovelace</span>
+      </a>
+      <a href="#slide-turing" class="sidebar-toc-item" data-target="slide-turing">
+        <span class="sidebar-toc-badge">07</span>
+        <span>Alan Turing &amp; Hilbert (1936)</span>
+      </a>
+      <a href="#slide-z3" class="sidebar-toc-item" data-target="slide-z3">
+        <span class="sidebar-toc-badge">08</span>
+        <span>Konrad Zuse Z3 (1941)</span>
+      </a>
+      <a href="#slide-abc" class="sidebar-toc-item" data-target="slide-abc">
+        <span class="sidebar-toc-badge">09</span>
+        <span>Atanasoff-Berry (ABC)</span>
+      </a>
+      <a href="#slide-mark1" class="sidebar-toc-item" data-target="slide-mark1">
+        <span class="sidebar-toc-badge">10</span>
+        <span>Harvard Mark I (Aiken &amp; Hopper)</span>
+      </a>
+      <a href="#slide-colossus" class="sidebar-toc-item" data-target="slide-colossus">
+        <span class="sidebar-toc-badge">11</span>
+        <span>Colossus Mk I &amp; II (1944)</span>
+      </a>
+      <a href="#slide-eniac" class="sidebar-toc-item" data-target="slide-eniac">
+        <span class="sidebar-toc-badge">12</span>
+        <span>ENIAC &amp; Programadoras (1945)</span>
+      </a>
+      <a href="#slide-baby" class="sidebar-toc-item" data-target="slide-baby">
+        <span class="sidebar-toc-badge">13</span>
+        <span>Manchester Baby &amp; Mark 1</span>
+      </a>
+      <a href="#slide-edsac" class="sidebar-toc-item" data-target="slide-edsac">
+        <span class="sidebar-toc-badge">14</span>
+        <span>EDSAC &amp; Pilot ACE (Turing)</span>
+      </a>
+      <a href="#slide-von-neumann" class="sidebar-toc-item" data-target="slide-von-neumann">
+        <span class="sidebar-toc-badge">15</span>
+        <span>Von Neumann &amp; Computador IAS</span>
+      </a>
+      <a href="#slide-mainframes" class="sidebar-toc-item" data-target="slide-mainframes">
+        <span class="sidebar-toc-badge">16</span>
+        <span>IBM 704 &amp; Era dos Mainframes</span>
+      </a>
+      <a href="#brasil-transition-banner" class="sidebar-toc-item" data-target="brasil-transition-banner">
+        <span class="sidebar-toc-badge">BR</span>
+        <span>Divisor: Computação no Brasil</span>
+      </a>
+      <a href="#slide-brasil-academico" class="sidebar-toc-item" data-target="slide-brasil-academico">
+        <span class="sidebar-toc-badge">17</span>
+        <span>Ciência Acadêmica no Brasil</span>
+      </a>
+      <a href="#slide-patinho-feio" class="sidebar-toc-item" data-target="slide-patinho-feio">
+        <span class="sidebar-toc-badge">18</span>
+        <span>O Patinho Feio (USP 1972)</span>
+      </a>
+      <a href="#slide-cobra-reserva" class="sidebar-toc-item" data-target="slide-cobra-reserva">
+        <span class="sidebar-toc-badge">19</span>
+        <span>COBRA &amp; Reserva de Mercado</span>
+      </a>
+      <a href="#slide-tabelas" class="sidebar-toc-item" data-target="slide-tabelas">
+        <span class="sidebar-toc-badge">20</span>
+        <span>Tabelas Comparativas</span>
+      </a>
+      <a href="#slide-conclusao" class="sidebar-toc-item" data-target="slide-conclusao">
+        <span class="sidebar-toc-badge">FIM</span>
+        <span>Conclusão do Seminário</span>
+      </a>
+    </nav>
   </aside>
 
   <!-- Barra de Leitura Discreta -->
@@ -3162,7 +3606,7 @@
     <!-- ==========================================================================
          HERO / ABERTURA DO SEMINÁRIO
          ========================================================================== -->
-    <header class="hero-slide">
+    <header class="hero-slide" id="slide-hero">
       <span class="hero-pill-badge">Seminário Acadêmico de Ciência da Computação</span>
 
       <h1 class="hero-main-title">
@@ -3212,7 +3656,7 @@
     <!-- ==========================================================================
          CONCEITO FUNDAMENTAL
          ========================================================================== -->
-    <section class="slide-block">
+    <section class="slide-block" id="slide-conceito">
       <div class="slide-header">
         <div class="year-display">FUNDAMENTO CONCEITUAL</div>
         <h2 class="slide-title">O que é uma "Computadora"?</h2>
@@ -3255,9 +3699,57 @@
       </div>
     </section>
 
+    <!-- ==========================================================================
+         GUIA CONCEITUAL: INTERPRETAÇÃO DAS TAGS (TURING & VON NEUMANN)
+         ========================================================================== -->
+    <section class="slide-block" id="slide-tags-guide">
+      <div class="slide-header">
+        <div class="year-display">CHAVE DE LEITURA &amp; CRITÉRIOS</div>
+        <h2 class="slide-title">Guia de Leitura: Como Interpretar as Tags</h2>
+        <p class="slide-subtitle">Entenda em poucos pontos as definições de Turing-Completeness e Arquitetura Von Neumann presentes em cada cabeçalho histórico.</p>
+      </div>
+
+      <div class="clean-card">
+        <div class="talking-points">
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>1. O que significa "Turing-Complete"? (Poder Computacional Universal)</strong><br>
+              Um dispositivo é classificado como <strong>Turing-Complete</strong> quando possui capacidade de executar <strong>qualquer algoritmo concebível</strong>, contanto que disponha de tempo de processamento e memória suficientes. O conceito fundamenta-se no modelo matemático proposto por Alan Turing em 1936.<br>
+              &bull; <strong>Requisitos fundamentais:</strong> Controle condicional de fluxo (decisão lógica <em>se/então</em>), repetição arbitrária (<em>loops</em>) e capacidade irrestrita de ler e reescrever valores na memória.<br>
+              &bull; <strong>Como interpretar nas tags:</strong><br>
+              &nbsp;&nbsp;• <span class="tag-status tc-yes" style="margin: 2px 4px;">Turing-Complete: Sim</span> &rarr; Máquina computacionalmente universal, programável para qualquer algoritmo.<br>
+              &nbsp;&nbsp;• <span class="tag-status tc-no" style="margin: 2px 4px;">Turing-Complete: Não</span> &rarr; Máquina de propósito específico ou restrito (apenas tabulação, soma mecânica ou equações sem desvios condicionais).<br>
+              &nbsp;&nbsp;• <span class="tag-status tc-theory" style="margin: 2px 4px;">Turing-Complete: Sim (Teoria)</span> &rarr; Projeto teoricamente universal formulado em projeto ou modelo matemático, mas que não chegou a ser integralmente construído no período (ex.: Máquina Analítica de Babbage).
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>2. O que significa "Von Neumann"? (Programa Armazenado / Stored-Program)</strong><br>
+              Diz respeito à <strong>organização física e lógica do hardware</strong> proposta no relatório do EDVAC (1945) por John von Neumann, J. Presper Eckert e John Mauchly. Define o computador em que <strong>as instruções do programa e os dados de trabalho residem juntos no mesmo espaço de memória interna (RAM)</strong>.<br>
+              &bull; <strong>O marco revolucionário:</strong> Em computadores não-Von Neumann antigos, reprogramar uma nova tarefa exigia trocar manualmente centenas de cabos em painéis (como no ENIAC original de 1945) ou rodar fitas perfuradas mecânicas puramente sequenciais. Em uma máquina Von Neumann, a reprogramação é instantânea por software, e o próprio programa pode gerar ou alterar dados e códigos na memória.<br>
+              &bull; <strong>Como interpretar nas tags:</strong><br>
+              &nbsp;&nbsp;• <span class="tag-status vn-yes" style="margin: 2px 4px;">Von Neumann: Sim</span> &rarr; Memória única compartilhada entre dados e instruções; processador com ULA, Unidade de Controle e registradores.<br>
+              &nbsp;&nbsp;• <span class="tag-status vn-no" style="margin: 2px 4px;">Von Neumann: Não</span> &rarr; Programação externa manual (cabos, plugboards, fitas estritas de papel) ou mecanismos mecânicos fixos.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>3. Síntese Didática em Duas Perguntas:</strong><br>
+              &bull; <em>Turing responde:</em> <strong>O QUE</strong> a máquina consegue calcular? (Qualquer função computável universal).<br>
+              &bull; <em>Von Neumann responde:</em> <strong>COMO</strong> o hardware é estruturado na prática? (Instruções e dados convivendo na mesma memória eletrônica).
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ERA 1: PRIMEIROS INSTRUMENTOS ANCESTRAIS (~35.000 a.C. - Séc. XV) -->
-    <section class="slide-block">
+    <section class="slide-block" id="slide-era1">
       <div class="slide-header">
         <div class="year-display">
           <span>~35.000 a.C. - Séc. XV</span>
@@ -3442,7 +3934,7 @@
 
 
     <!-- ERA 2A: O MECANISMO DE ANTICÍTERA (~150 a.C.) -->
-    <section class="slide-block">
+    <section class="slide-block" id="slide-anticitera">
       <div class="slide-header">
         <div class="year-display">
           <span>~150 a.C.</span>
@@ -3610,7 +4102,7 @@
 
 
     <!-- ERA 2B: A PASCALINA DE BLAISE PASCAL (1642) -->
-    <section class="slide-block">
+    <section class="slide-block" id="slide-pascalina">
       <div class="slide-header">
         <div class="year-display">
           <span>1642</span>
@@ -3714,7 +4206,7 @@
 
 
     <!-- ERA 2C: GOTTFRIED WILHELM LEIBNIZ (1673 - 1703) -->
-    <section class="slide-block">
+    <section class="slide-block" id="slide-leibniz">
       <div class="slide-header">
         <div class="year-display">
           <span>1673 - 1703</span>
@@ -4179,7 +4671,7 @@
     <div class="era-gray-zone">
       <div class="era-gray-inner">
     <!-- ERA 4: O SALTO TEÓRICO: HILBERT (1900) & ALAN TURING (1936) -->
-    <section class="slide-block">
+    <section class="slide-block" id="slide-turing">
       <div class="slide-header">
         <div class="year-display">
           <span>1900 - 1936</span>
@@ -4194,7 +4686,7 @@
       </div>
 
       <div class="clean-card">
-        <!-- GALERIA DE RETRATOS DE ALAN TURING: JOVEM TEÓRICO (1930s) E PIONEIRO FRS (1951) -->
+        <!-- GALERIA DE RETRATOS DE ALAN TURING: JOVEM TEÓRICO (1930s), PIONEIRO FRS (1951) E MEME POPULAR -->
         <div class="media-gallery-grid" style="margin: 1.5rem 0 2rem 0;">
           <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/Alan_Turing_az_1930-as_%C3%A9vekben.jpg" alt="Alan Turing nos anos 1930" class="turing-portrait" style="height: 280px; object-fit: cover; object-position: center 15%;">
@@ -4203,6 +4695,10 @@
           <div class="media-frame">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Alan_Turing_%281951%29_%28crop%29.jpg" alt="Alan Turing em 1951" class="turing-portrait" style="height: 280px; object-fit: cover; object-position: center 20%;">
             <div class="media-caption">Alan Turing eleito Fellow da Royal Society (FRS) em 1951: retratado no auge de suas contribuições práticas aos computadores físicos (Pilot ACE no NPL e software do Manchester Mark 1).</div>
+          </div>
+          <div class="media-frame">
+            <img src="meme_turing.jpg" alt="Meme Popular de Alan Turing: Você usa computador?" class="turing-portrait" style="height: 280px; object-fit: contain; background: #ffffff;">
+            <div class="media-caption">Cultura Digital &amp; Memes: "Você usa computador? Agradeça a esse ateu e homossexual, Alan Turing (1912-1954)". Meme brasileiro que popularizou a memória de Turing entre novas gerações.</div>
           </div>
         </div>
 
@@ -4335,7 +4831,7 @@
 
 
     <!-- ERA 5A: KONRAD ZUSE E O Z3 (1941) -->
-    <section class="slide-block">
+    <section class="slide-block" id="slide-z3">
       <div class="slide-header">
         <div class="year-display">
           <span>1941</span>
@@ -4515,7 +5011,7 @@
     <div id="group-specialized-ww2">
 
     <!-- ERA 5B: ATANASOFF-BERRY COMPUTER (ABC, 1937-1942) -->
-    <section class="slide-block">
+    <section class="slide-block" id="slide-abc">
       <div class="slide-header">
         <div class="year-display">
           <span>1937 - 1942</span>
@@ -4584,7 +5080,7 @@
 
 
     <!-- ERA 5C: HARVARD MARK I & GRACE HOPPER (1944) -->
-    <section class="slide-block">
+    <section class="slide-block" id="slide-mark1">
       <div class="slide-header">
         <div class="year-display">
           <span>1944</span>
@@ -4663,7 +5159,7 @@
 
 
     <!-- ERA 5D: COLOSSUS MARK I E II (1943-1944) -->
-    <section class="slide-block">
+    <section class="slide-block" id="slide-colossus">
       <div class="slide-header">
         <div class="year-display">
           <span>1943 - 1944</span>
@@ -4811,7 +5307,7 @@
     </div> <!-- FIM #group-specialized-ww2 -->
 
     <!-- ERA 6: GERAÇÃO ELETRÔNICA SEM PROGRAMA ARMAZENADO (1945 - 1946) -->
-    <section class="slide-block">
+    <section class="slide-block" id="slide-eniac">
       <div class="slide-header">
         <div class="year-display">
           <span>1945 - 1946</span>
@@ -4993,7 +5489,7 @@
     <div class="era-gray-zone">
       <div class="era-gray-inner">
     <!-- ERA 7A: JOHN VON NEUMANN & O FIRST DRAFT (1945) -->
-    <section class="slide-block">
+    <section class="slide-block" id="slide-von-neumann">
       <div class="slide-header">
         <div class="year-display">
           <span>1945</span>
@@ -5084,7 +5580,7 @@
 
 
     <!-- ERA 7B: MANCHESTER BABY (1948) & MANCHESTER MARK 1 COM ALAN TURING (1949-1951) -->
-    <section class="slide-block">
+    <section class="slide-block" id="slide-baby">
       <div class="slide-header">
         <div class="year-display">
           <span>1948 - 1951</span>
@@ -5257,7 +5753,7 @@
 
 
     <!-- ERA 7C: EDSAC (1949) & PILOT ACE COM ALAN TURING (1950) -->
-    <section class="slide-block">
+    <section class="slide-block" id="slide-edsac">
       <div class="slide-header">
         <div class="year-display">
           <span>1949 - 1950</span>
@@ -5355,7 +5851,7 @@
 
 
     <!-- ERA 7D: A CONSOLIDAÇÃO DA COMPUTAÇÃO COMERCIAL & O INÍCIO DO SOFTWARE CIENTÍFICO (1951 - 1958) -->
-    <section class="slide-block">
+    <section class="slide-block" id="slide-mainframes">
       <div class="slide-header">
         <div class="year-display">
           <span>1951 - 1958</span>
@@ -5542,8 +6038,19 @@
     </section>
 
 
+    <!-- BANNER DE TRANSIÇÃO: A HISTÓRIA DA COMPUTAÇÃO & PIONEIRISMO NO BRASIL -->
+    <div class="didactic-transition-banner" id="brasil-transition-banner" style="margin: 4.5rem auto 3.5rem auto;">
+      <div class="didactic-divider-line"></div>
+      <span class="didactic-banner-badge" style="background: #15803d; color: #ffffff;">Pioneirismo Nacional</span>
+      <h2 class="didactic-banner-title">História da Computação &amp; Ciência Acadêmica no Brasil</h2>
+      <p class="didactic-banner-desc">
+        Após a consolidação dos primeiros computadores eletrônicos e da arquitetura universal de programa armazenado no cenário mundial, o Brasil iniciou sua própria trajetória pioneira: da formação acadêmica e pesquisa de ponta na PUC-Rio, UNICAMP, USP e fundação da SBC, passando pelo feito de engenharia nacional do Patinho Feio (1972), até os desafios industriais e tecnológicos da Reserva de Mercado.
+      </p>
+      <div class="didactic-divider-line"></div>
+    </div>
+
     <!-- ERA 8A: O NASCIMENTO DA CIÊNCIA DA COMPUTAÇÃO ACADÊMICA NO BRASIL (1967 - 1978) -->
-    <section class="slide-block">
+    <section class="slide-block" id="slide-brasil-academico">
       <div class="slide-header">
         <div class="year-display">
           <span>1967 - 1978</span>
@@ -5633,7 +6140,7 @@
 
 
     <!-- ERA 8B: O PATINHO FEIO (POLI-USP, 1972) -->
-    <section class="slide-block">
+    <section class="slide-block" id="slide-patinho-feio">
       <div class="slide-header">
         <div class="year-display">
           <span>24 de Julho de 1972</span>
@@ -5793,7 +6300,7 @@
 
 
     <!-- ERA 8C: O PROJETO G-10, A COBRA (1974) E A RESERVA DE MERCADO (1984) -->
-    <section class="slide-block">
+    <section class="slide-block" id="slide-cobra-reserva">
       <div class="slide-header">
         <div class="year-display">
           <span>1974 - 1984</span>
@@ -6373,7 +6880,7 @@ READY
     </section>
 
     <!-- ERA 9: MATRIZ COMPARATIVA & CRITÉRIOS HISTÓRICOS FINAIS -->
-    <section class="slide-block">
+    <section class="slide-block" id="slide-tabelas">
       <div class="slide-header">
         <div class="year-display">MATRIZ COMPARATIVA GERAL</div>
         <h2 class="slide-title">A Grande Transição: Comparação Sistemática</h2>
@@ -6689,6 +7196,49 @@ READY
           </tbody>
         </table>
       </div>
+
+    <!-- ==========================================================================
+         SÍNTESE & CONCLUSÃO DO SEMINÁRIO
+         ========================================================================== -->
+    <section class="slide-block" id="slide-conclusao" style="margin-top: 3.5rem;">
+      <div class="slide-header">
+        <div class="year-display">SÍNTESE &amp; CONCLUSÃO</div>
+        <h2 class="slide-title">Conclusão: Da Matéria Mecânica à Universalidade do Software</h2>
+        <p class="slide-subtitle">Os pilares conceituais, os avanços de hardware e as lições históricas que consolidaram a Ciência da Computação.</p>
+      </div>
+
+      <div class="clean-card">
+        <div class="talking-points">
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>1. A Grande Ruptura Epistemológica (Turing &amp; Von Neumann):</strong> O verdadeiro salto histórico da computação não foi apenas a substituição de engrenagens de bronze por relés e válvulas a vácuo, mas a descoberta matemática de que <strong>instruções de código e dados numéricos compartilham a mesma essência simbólica</strong>. Ao formalizar a Máquina Universal (Turing, 1936) e estruturar a arquitetura física de programa armazenado na mesma memória (Von Neumann, 1945), a humanidade libertou a computação da rigidez da matéria física, permitindo que uma única máquina assuma infinitas identidades lógicas guiadas unicamente pelo software.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>2. A Relação Indissociável entre Teoria e Engenharia Prática:</strong> A linha do tempo deste seminário demonstra com clareza que ideias geniais sem viabilidade de construção física (como a Máquina Analítica de Babbage e Lovelace) aguardaram um século por materiais e componentes adequados, enquanto esforços puramente empíricos sem abstração universal (como o Harvard Mark I e o ENIAC pré-EDVAC) esbarraram em limitações severas de reprogramação manual. O nascimento da Ciência da Computação como campo autônomo do saber ocorreu justamente no ponto de convergência entre o rigor da lógica formal e a engenharia de semicondutores e memórias de acesso aleatório.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>3. As Lições Históricas da Computação no Brasil:</strong> A trajetória brasileira evidencia dois ensinamentos complementares de imenso valor formativo. No plano acadêmico e de recursos humanos, o país provou excelência científica internacional desde os anos 1960 — com a PUC-Rio, UNICAMP, USP e a criação da SBC em 1978 —, gerando teses de impacto mundial e projetando do zero computadores de arquitetura própria como o Patinho Feio (1972) e o sistema operacional SOX. Por outro lado, o desfecho da Reserva de Mercado revelou que a microeletrônica de ponta não subsiste isolada: a ausência de fundições de semicondutores (wafer fabs) consolidou um modelo dependente de cadeias globais de suprimentos (CKD/SKD), ensinando que a soberania tecnológica moderna reside na capacidade de inovar em software, arquitetura de sistemas e algoritmos de alto valor agregado.
+            </div>
+          </div>
+
+          <div class="point-item">
+            <div class="point-bullet"></div>
+            <div class="point-text">
+              <strong>4. Reflexão Final:</strong> A Ciência da Computação não estuda computadores, assim como a astronomia não estuda telescópios. O computador eletrônico foi o instrumento que permitiu à humanidade explorar o universo infinito da complexidade algorítmica. Dos primeiros riscos rituais no Osso de Ishango até os modernos supercomputadores e redes neurais, a jornada da computação é, em essência, a externalização da própria inteligência humana.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- RODAPÉ DISCRETO -->
     <footer class="simple-footer">
@@ -12363,51 +12913,252 @@ READY
       safeInit('Terminal SISNE', () => initSisneSimulator());
       safeInit('Mapa Universidades', () => selectUniversityMap('puc'));
       safeInit('IBM 704 Console', () => initIbm704Simulator());
+      safeInit('Lightbox Zoom', () => Lightbox.init());
+      safeInit('Sumario ScrollSpy', () => setupTocScrollSpy());
     }
 
-    /* Efeito de inércia elástica suave do QR Code ao rolar a página */
-    (function initFloatingQrScrollPhysics() {
-      const qrEl = document.getElementById('floatingQrSidebar');
-      if (!qrEl) return;
+    // =========================================================================
+    // BARRA LATERAL: CONTROLE DO SUMÁRIO E QR CODE RETRÁTIL
+    // =========================================================================
+    let isSidebarQrVisible = true;
+    let isSidebarCollapsed = false;
 
-      let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
-      let targetOffset = 0;
-      let currentOffset = 0;
-      let isTicking = false;
-      let resetTimer = null;
-
-      function update() {
-        currentOffset += (targetOffset - currentOffset) * 0.08;
-        qrEl.style.setProperty('--qr-float-offset', `${currentOffset.toFixed(2)}px`);
-
-        if (Math.abs(targetOffset - currentOffset) > 0.05 || Math.abs(currentOffset) > 0.05) {
-          requestAnimationFrame(update);
+    function toggleSidebarQr() {
+      isSidebarQrVisible = !isSidebarQrVisible;
+      const qrWrapper = document.getElementById('sidebarQrWrapper');
+      const btnToggle = document.getElementById('btnToggleQrCode');
+      if (qrWrapper) {
+        if (isSidebarQrVisible) {
+          qrWrapper.classList.remove('collapsed');
+          if (btnToggle) btnToggle.textContent = 'Ocultar QR';
         } else {
-          isTicking = false;
-          currentOffset = 0;
-          qrEl.style.setProperty('--qr-float-offset', '0px');
+          qrWrapper.classList.add('collapsed');
+          if (btnToggle) btnToggle.textContent = 'Exibir QR';
         }
       }
+    }
+
+    function toggleSidebarCollapse() {
+      isSidebarCollapsed = !isSidebarCollapsed;
+      const sidebar = document.getElementById('floatingQrSidebar');
+      const floatingBtn = document.getElementById('sidebarFloatingToggleBtn');
+      
+      if (isSidebarCollapsed) {
+        if (sidebar) {
+          sidebar.classList.add('collapsed');
+          sidebar.classList.remove('mobile-open');
+        }
+        if (floatingBtn) floatingBtn.style.display = 'flex';
+        document.body.classList.add('sidebar-collapsed');
+      } else {
+        if (sidebar) {
+          sidebar.classList.remove('collapsed');
+          sidebar.classList.add('mobile-open');
+        }
+        if (floatingBtn && window.innerWidth > 1200) floatingBtn.style.display = 'none';
+        document.body.classList.remove('sidebar-collapsed');
+      }
+    }
+
+    function setupTocScrollSpy() {
+      const tocLinks = document.querySelectorAll('.sidebar-toc-item');
+      if (!tocLinks.length) return;
+
+      const items = Array.from(tocLinks).map(link => {
+        const targetId = link.getAttribute('data-target') || (link.getAttribute('href') || '').replace('#', '');
+        return {
+          link: link,
+          element: document.getElementById(targetId)
+        };
+      }).filter(item => item.element !== null);
 
       window.addEventListener('scroll', () => {
-        const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
-        const delta = currentScrollY - lastScrollY;
-        lastScrollY = currentScrollY;
+        const scrollPos = (window.pageYOffset || document.documentElement.scrollTop) + 200;
+        let currentItem = null;
 
-        // Efeito sutil: deslocamento suave de no máximo +/-14px
-        targetOffset = Math.max(-14, Math.min(14, -delta * 0.25));
+        for (let i = 0; i < items.length; i++) {
+          if (items[i].element.offsetTop <= scrollPos) {
+            currentItem = items[i];
+          }
+        }
 
-        clearTimeout(resetTimer);
-        resetTimer = setTimeout(() => {
-          targetOffset = 0;
-        }, 50);
-
-        if (!isTicking) {
-          isTicking = true;
-          requestAnimationFrame(update);
+        tocLinks.forEach(l => l.classList.remove('active'));
+        if (currentItem) {
+          currentItem.link.classList.add('active');
+          const list = document.getElementById('sidebarTocList');
+          if (list && currentItem.link) {
+            const linkTop = currentItem.link.offsetTop;
+            const listScroll = list.scrollTop;
+            const listHeight = list.clientHeight;
+            if (linkTop < listScroll || linkTop > listScroll + listHeight - 40) {
+              list.scrollTo({ top: linkTop - 60, behavior: 'smooth' });
+            }
+          }
         }
       }, { passive: true });
-    })();
+
+      tocLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 1200) {
+            const sidebar = document.getElementById('floatingQrSidebar');
+            if (sidebar) sidebar.classList.remove('mobile-open');
+          }
+        });
+      });
+    }
+
+    // =========================================================================
+    // MODAL LIGHTBOX COM ZOOM E ARRASTE DE IMAGEM
+    // =========================================================================
+    const Lightbox = {
+      modal: null,
+      img: null,
+      title: null,
+      caption: null,
+      stage: null,
+      isOpen: false,
+      scale: 1,
+      minScale: 0.5,
+      maxScale: 6,
+      panX: 0,
+      panY: 0,
+      isDragging: false,
+      startX: 0,
+      startY: 0,
+
+      init() {
+        this.modal = document.getElementById('imageLightboxModal');
+        this.img = document.getElementById('lightboxImg');
+        this.title = document.getElementById('lightboxTitle');
+        this.caption = document.getElementById('lightboxCaption');
+        this.stage = document.getElementById('lightboxStage');
+        if (!this.modal || !this.img || !this.stage) return;
+
+        this.stage.addEventListener('mousedown', (e) => this.onMouseDown(e));
+        window.addEventListener('mousemove', (e) => this.onMouseMove(e));
+        window.addEventListener('mouseup', () => this.onMouseUp());
+
+        this.stage.addEventListener('wheel', (e) => {
+          e.preventDefault();
+          const delta = e.deltaY < 0 ? 0.25 : -0.25;
+          this.zoom(delta);
+        }, { passive: false });
+
+        this.stage.addEventListener('dblclick', () => {
+          if (this.scale > 1.2) {
+            this.reset();
+          } else {
+            this.scale = 2.5;
+            this.updateTransform();
+          }
+        });
+
+        window.addEventListener('keydown', (e) => {
+          if (!this.isOpen) return;
+          if (e.key === 'Escape') this.close();
+          if (e.key === '+' || e.key === '=') this.zoom(0.3);
+          if (e.key === '-') this.zoom(-0.3);
+          if (e.key === '0') this.reset();
+        });
+
+        document.addEventListener('click', (e) => {
+          const img = e.target.closest('.media-frame img, .clean-card img, .hero-slide img, .table-slide-card img, .slide-block img');
+          if (img && !img.classList.contains('floating-qr-img') && !img.closest('.floating-qr-sidebar')) {
+            const frame = img.closest('.media-frame') || img.parentElement;
+            const captionEl = frame ? frame.querySelector('.media-caption') : null;
+            const captionText = captionEl ? captionEl.textContent.trim() : (img.alt || 'Imagem Histórica');
+            this.open(img.src, img.alt || 'Visualização Detalhada', captionText);
+          }
+        });
+      },
+
+      open(src, altText, captionText) {
+        if (!this.modal || !this.img) return;
+        this.img.src = src;
+        this.img.alt = altText || '';
+        if (this.title) this.title.textContent = altText || 'Visualização em Tela Cheia';
+        if (this.caption) this.caption.textContent = captionText || '';
+        this.scale = 1;
+        this.panX = 0;
+        this.panY = 0;
+        this.updateTransform();
+        this.modal.classList.add('active');
+        this.modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        this.isOpen = true;
+      },
+
+      close() {
+        if (!this.modal) return;
+        this.modal.classList.remove('active');
+        this.modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        this.isOpen = false;
+        if (document.fullscreenElement) {
+          document.exitFullscreen().catch(() => {});
+        }
+      },
+
+      zoom(amount) {
+        const newScale = Math.min(this.maxScale, Math.max(this.minScale, this.scale + amount));
+        if (newScale === this.scale) return;
+        this.scale = newScale;
+        if (this.scale <= 1) {
+          this.panX = 0;
+          this.panY = 0;
+        }
+        this.updateTransform();
+      },
+
+      reset() {
+        this.scale = 1;
+        this.panX = 0;
+        this.panY = 0;
+        this.updateTransform();
+      },
+
+      toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          if (this.modal.requestFullscreen) {
+            this.modal.requestFullscreen().catch(() => {});
+          }
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen().catch(() => {});
+          }
+        }
+      },
+
+      onMouseDown(e) {
+        if (!this.isOpen || this.scale <= 1) return;
+        this.isDragging = true;
+        this.startX = e.clientX - this.panX;
+        this.startY = e.clientY - this.panY;
+        if (this.stage) this.stage.classList.add('dragging');
+      },
+
+      onMouseMove(e) {
+        if (!this.isDragging) return;
+        this.panX = e.clientX - this.startX;
+        this.panY = e.clientY - this.startY;
+        this.updateTransform();
+      },
+
+      onMouseUp() {
+        this.isDragging = false;
+        if (this.stage) this.stage.classList.remove('dragging');
+      },
+
+      updateTransform() {
+        if (!this.img) return;
+        this.img.style.transform = `translate(${this.panX}px, ${this.panY}px) scale(${this.scale})`;
+      }
+    };
+
+    function closeImageLightbox() { Lightbox.close(); }
+    function zoomLightboxImage(amt) { Lightbox.zoom(amt); }
+    function resetLightboxZoom() { Lightbox.reset(); }
+    function toggleLightboxFullscreen() { Lightbox.toggleFullscreen(); }
 
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', runAllSimulatorInits);
@@ -12415,5 +13166,26 @@ READY
       runAllSimulatorInits();
     }
   </script>
+
+  <!-- MODAL LIGHTBOX PARA IMAGENS EM TELA CHEIA COM ZOOM -->
+  <div class="image-lightbox-modal" id="imageLightboxModal" aria-hidden="true" role="dialog" aria-label="Visualizador de imagem em tela cheia">
+    <div class="lightbox-backdrop" onclick="closeImageLightbox()"></div>
+    <div class="lightbox-container">
+      <div class="lightbox-toolbar">
+        <div class="lightbox-title" id="lightboxTitle">Visualização de Imagem</div>
+        <div class="lightbox-actions">
+          <button class="lightbox-btn" onclick="zoomLightboxImage(0.3)" title="Aumentar Zoom (+)">Zoom +</button>
+          <button class="lightbox-btn" onclick="zoomLightboxImage(-0.3)" title="Diminuir Zoom (-)">Zoom -</button>
+          <button class="lightbox-btn" onclick="resetLightboxZoom()" title="Tamanho Padrão (100%)">100%</button>
+          <button class="lightbox-btn" onclick="toggleLightboxFullscreen()" title="Tela Cheia do Navegador">Tela Cheia</button>
+          <button class="lightbox-btn lightbox-btn-close" onclick="closeImageLightbox()" title="Fechar (ESC)">Fechar [X]</button>
+        </div>
+      </div>
+      <div class="lightbox-stage" id="lightboxStage">
+        <img src="" alt="" class="lightbox-img" id="lightboxImg">
+      </div>
+      <div class="lightbox-caption-bar" id="lightboxCaption"></div>
+    </div>
+  </div>
 </body>
 </html>
