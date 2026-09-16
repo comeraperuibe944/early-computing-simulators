@@ -3555,10 +3555,10 @@
   </style>
 
 </head>
-<body>
+<body class="sidebar-collapsed">
 
   <!-- BOTÃO FLUTUANTE PARA REABRIR O SUMÁRIO (ÍCONE SANDUÍCHE, REDONDO E BRANCO) -->
-  <button class="sidebar-floating-toggle-btn" id="sidebarFloatingToggleBtn" onclick="toggleSidebarCollapse()" title="Abrir Sumário do Seminário" aria-label="Abrir Sumário">
+  <button class="sidebar-floating-toggle-btn" id="sidebarFloatingToggleBtn" onclick="toggleSidebarCollapse()" title="Abrir Sumário do Seminário" aria-label="Abrir Sumário" style="display: flex;">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <line x1="3" y1="6" x2="21" y2="6"></line>
       <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -3567,7 +3567,7 @@
   </button>
 
   <!-- BARRA LATERAL MULTIFUNCIONAL: SUMÁRIO E QR CODE RETRÁTIL -->
-  <aside class="floating-qr-sidebar" id="floatingQrSidebar" aria-label="Navegação do Seminário e QR Code">
+  <aside class="floating-qr-sidebar collapsed" id="floatingQrSidebar" aria-label="Navegação do Seminário e QR Code">
     <!-- Cabeçalho com Ações de Controle -->
     <div class="sidebar-top-bar">
       <div class="sidebar-title">Sumário</div>
@@ -3700,8 +3700,6 @@
          HERO / ABERTURA DO SEMINÁRIO
          ========================================================================== -->
     <header class="hero-slide" id="slide-hero">
-      <span class="hero-pill-badge">Seminário Acadêmico de Ciência da Computação</span>
-
       <h1 class="hero-main-title">
         Primeiros Computadores &amp;<br>
         <span>Início da Ciência da Computação</span>
@@ -13014,7 +13012,7 @@ READY
     // BARRA LATERAL: CONTROLE DO SUMÁRIO E QR CODE RETRÁTIL
     // =========================================================================
     let isSidebarQrVisible = true;
-    let isSidebarCollapsed = false;
+    let isSidebarCollapsed = true;
 
     function toggleSidebarQr() {
       isSidebarQrVisible = !isSidebarQrVisible;
