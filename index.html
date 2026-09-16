@@ -260,29 +260,36 @@
     }
 
     .sidebar-toc-item.active {
-      background: #e2e8f0;
-      color: #0f172a;
+      background: #eef2ff;
+      color: #1e1b4b;
       font-weight: 700;
-      border-left-color: #0f172a;
+      border-left-color: #4f46e5;
     }
 
     .sidebar-toc-badge {
       font-family: var(--font-mono);
       font-size: 0.68rem;
       font-weight: 700;
-      padding: 0.1rem 0.35rem;
-      border-radius: 3px;
-      background: var(--bg-surface-alt);
-      color: var(--text-light);
-      border: 1px solid var(--border-subtle);
-      min-width: 22px;
+      padding: 0.12rem 0.42rem;
+      border-radius: 4px;
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #e2e8f0;
+      min-width: 24px;
       text-align: center;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .sidebar-toc-item:hover .sidebar-toc-badge {
+      background: #e2e8f0;
+      color: #1e293b;
+      border-color: #cbd5e1;
     }
 
     .sidebar-toc-item.active .sidebar-toc-badge {
-      background: #0f172a;
-      color: #ffffff;
-      border-color: #0f172a;
+      background: #e0e7ff;
+      color: #4338ca;
+      border-color: #c7d2fe;
     }
 
     /* Botão Flutuante para reabrir Sumário quando recolhido ou mobile */
@@ -464,9 +471,15 @@
       .floating-qr-sidebar {
         transform: translateX(calc(-100% - 40px));
         width: min(340px, 85vw);
+        box-shadow: none !important;
+        border: none !important;
+        outline: none !important;
       }
       .floating-qr-sidebar.mobile-open {
         transform: translateX(0) !important;
+        box-shadow: none !important;
+        border: none !important;
+        outline: none !important;
       }
       .sidebar-floating-toggle-btn {
         display: flex;
@@ -3466,7 +3479,6 @@
 
   <!-- BOTÃO FLUTUANTE PARA REABRIR O SUMÁRIO (Telas Menores ou quando Recolhido) -->
   <button class="sidebar-floating-toggle-btn" id="sidebarFloatingToggleBtn" onclick="toggleSidebarCollapse()" title="Abrir Sumário do Seminário">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     Sumário
   </button>
 
@@ -3474,10 +3486,7 @@
   <aside class="floating-qr-sidebar" id="floatingQrSidebar" aria-label="Navegação do Seminário e QR Code">
     <!-- Cabeçalho com Ações de Controle -->
     <div class="sidebar-top-bar">
-      <div class="sidebar-title">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-        Sumário
-      </div>
+      <div class="sidebar-title">Sumário</div>
       <div class="sidebar-ctrl-btns">
         <button id="btnToggleQrCode" class="sidebar-mini-btn" onclick="toggleSidebarQr()" title="Ocultar ou exibir o QR Code">Ocultar QR</button>
         <button id="btnCollapseSidebar" class="sidebar-mini-btn" onclick="toggleSidebarCollapse()" title="Recolher Sumário">Recolher</button>
@@ -12271,6 +12280,7 @@ READY
           caption.innerHTML = 'Modo Cronológico Ativo: <strong>Linha do tempo linear</strong> estrita por anos de concepção (35.000 a.C. até 1984).';
         }
       }
+      window.dispatchEvent(new Event('scroll'));
     }
 
     // =========================================================================
@@ -12964,41 +12974,100 @@ READY
       const tocLinks = document.querySelectorAll('.sidebar-toc-item');
       if (!tocLinks.length) return;
 
-      const items = Array.from(tocLinks).map(link => {
+      const linkMap = new Map();
+      tocLinks.forEach(link => {
         const targetId = link.getAttribute('data-target') || (link.getAttribute('href') || '').replace('#', '');
-        return {
-          link: link,
-          element: document.getElementById(targetId)
-        };
-      }).filter(item => item.element !== null);
+        const el = document.getElementById(targetId);
+        if (el) {
+          linkMap.set(el, link);
+        }
+      });
 
-      window.addEventListener('scroll', () => {
-        const scrollPos = (window.pageYOffset || document.documentElement.scrollTop) + 200;
-        let currentItem = null;
+      let ticking = false;
+      let lastActiveLink = null;
 
-        for (let i = 0; i < items.length; i++) {
-          if (items[i].element.offsetTop <= scrollPos) {
-            currentItem = items[i];
+      function updateActive() {
+        ticking = false;
+        const viewportAnchor = Math.min(window.innerHeight * 0.35, 240);
+        let activeEl = null;
+        let minDistance = Infinity;
+
+        linkMap.forEach((link, el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= viewportAnchor && rect.bottom > viewportAnchor) {
+            activeEl = el;
+          } else if (rect.top <= viewportAnchor) {
+            const dist = viewportAnchor - rect.top;
+            if (dist < minDistance && !activeEl) {
+              minDistance = dist;
+              activeEl = el;
+            }
           }
+        });
+
+        if (window.pageYOffset < 150) {
+          const heroEl = document.getElementById('slide-hero');
+          if (heroEl) activeEl = heroEl;
         }
 
-        tocLinks.forEach(l => l.classList.remove('active'));
-        if (currentItem) {
-          currentItem.link.classList.add('active');
+        const scrollBottom = window.innerHeight + (window.pageYOffset || document.documentElement.scrollTop);
+        if (scrollBottom >= document.documentElement.scrollHeight - 50) {
+          const conclusaoEl = document.getElementById('slide-conclusao') || document.getElementById('slide-tabelas');
+          if (conclusaoEl) activeEl = conclusaoEl;
+        }
+
+        const currentLink = activeEl ? linkMap.get(activeEl) : null;
+        if (currentLink && currentLink !== lastActiveLink) {
+          tocLinks.forEach(l => l.classList.remove('active'));
+          currentLink.classList.add('active');
+          lastActiveLink = currentLink;
+
           const list = document.getElementById('sidebarTocList');
-          if (list && currentItem.link) {
-            const linkTop = currentItem.link.offsetTop;
+          if (list) {
+            const itemTop = currentLink.offsetTop;
+            const itemHeight = currentLink.offsetHeight;
             const listScroll = list.scrollTop;
             const listHeight = list.clientHeight;
-            if (linkTop < listScroll || linkTop > listScroll + listHeight - 40) {
-              list.scrollTo({ top: linkTop - 60, behavior: 'smooth' });
+
+            if (itemTop < listScroll + 30 || itemTop + itemHeight > listScroll + listHeight - 30) {
+              list.scrollTo({
+                top: Math.max(0, itemTop - (listHeight / 2) + (itemHeight / 2)),
+                behavior: 'smooth'
+              });
             }
           }
         }
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(updateActive);
+          ticking = true;
+        }
       }, { passive: true });
 
+      updateActive();
+
       tocLinks.forEach(link => {
-        link.addEventListener('click', () => {
+        link.addEventListener('click', (e) => {
+          const targetId = link.getAttribute('data-target') || (link.getAttribute('href') || '').replace('#', '');
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            const headerOffset = 24;
+            const elementPosition = targetEl.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+
+            tocLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            lastActiveLink = link;
+          }
+
           if (window.innerWidth <= 1200) {
             const sidebar = document.getElementById('floatingQrSidebar');
             if (sidebar) sidebar.classList.remove('mobile-open');
