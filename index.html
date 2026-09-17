@@ -12397,7 +12397,62 @@ READY
           caption.innerHTML = 'Modo Cronológico Ativo: <strong>Linha do tempo linear</strong> estrita por anos de concepção (35.000 a.C. até 1984).';
         }
       }
+      syncSidebarOrder(mode);
       window.dispatchEvent(new Event('scroll'));
+    }
+
+    function syncSidebarOrder(mode) {
+      const list = document.getElementById('sidebarTocList');
+      if (!list) return;
+
+      const didacticaOrder = [
+        'slide-hero', 'slide-conceito', 'slide-tags-guide',
+        'slide-era1', 'slide-anticitera', 'slide-pascalina', 'slide-leibniz',
+        'slide-abc', 'slide-mark1', 'slide-colossus',
+        'didactic-transition-banner',
+        'slide-analitica', 'slide-turing', 'slide-z3',
+        'slide-eniac', 'slide-von-neumann', 'slide-baby', 'slide-edsac', 'slide-mainframes',
+        'brasil-transition-banner', 'slide-brasil-academico', 'slide-patinho-feio', 'slide-cobra-reserva',
+        'slide-tabelas', 'slide-conclusao'
+      ];
+
+      const cronologicaOrder = [
+        'slide-hero', 'slide-conceito', 'slide-tags-guide',
+        'slide-era1', 'slide-anticitera', 'slide-pascalina', 'slide-leibniz',
+        'slide-analitica', 'slide-turing', 'slide-z3',
+        'slide-abc', 'slide-mark1', 'slide-colossus',
+        'slide-eniac', 'slide-von-neumann', 'slide-baby', 'slide-edsac', 'slide-mainframes',
+        'brasil-transition-banner', 'slide-brasil-academico', 'slide-patinho-feio', 'slide-cobra-reserva',
+        'slide-tabelas', 'slide-conclusao'
+      ];
+
+      const targetOrder = (mode === 'didatica') ? didacticaOrder : cronologicaOrder;
+      const itemsMap = {};
+      list.querySelectorAll('.sidebar-toc-item').forEach(item => {
+        const id = item.getAttribute('data-target') || (item.getAttribute('href') || '').replace('#', '');
+        itemsMap[id] = item;
+      });
+
+      let badgeNum = 1;
+      targetOrder.forEach(id => {
+        const item = itemsMap[id];
+        if (item) {
+          item.style.display = 'flex';
+          const badge = item.querySelector('.sidebar-toc-badge');
+          if (badge) {
+            badge.textContent = String(badgeNum++).padStart(2, '0');
+          }
+          list.appendChild(item);
+        }
+      });
+
+      if (mode === 'cronologica' && itemsMap['didactic-transition-banner']) {
+        itemsMap['didactic-transition-banner'].style.display = 'none';
+      }
+
+      if (typeof setupTocScrollSpy === 'function') {
+        setupTocScrollSpy();
+      }
     }
 
     // =========================================================================
@@ -13200,9 +13255,7 @@ READY
 
             // Se for o banner didático e estiver oculto no modo cronológico, ativa o modo didático
             if (targetId === 'didactic-transition-banner' && getComputedStyle(targetEl).display === 'none') {
-              if (typeof applyOrder === 'function') {
-                applyOrder('didatica');
-              }
+              setPresentationOrder('didatica');
             }
 
             const headerOffset = 24;
