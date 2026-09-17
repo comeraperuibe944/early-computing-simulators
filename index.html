@@ -656,6 +656,76 @@
       align-items: center;
     }
 
+    
+    /* ==========================================================================
+       IDENTIFICACAO DOS APRESENTADORES E BOLINHAS (DIVISAO DO SEMINARIO)
+       ========================================================================== */
+    .presenter-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .dot-nathan { background-color: #ea580c !important; }
+    .dot-fabio { background-color: #16a34a !important; }
+    .dot-juan { background-color: #ca8a04 !important; }
+    .dot-verissimo { background-color: #dc2626 !important; }
+    .dot-alice { background-color: #2563eb !important; }
+    .dot-joaovitor { background-color: #9333ea !important; }
+
+    .tag-presenter {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      padding: 0.35rem 0.85rem;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+    }
+
+    .presenter-nathan { background: #fff7ed !important; color: #c2410c !important; }
+    .presenter-fabio { background: #f0fdf4 !important; color: #15803d !important; }
+    .presenter-juan { background: #fefce8 !important; color: #a16207 !important; }
+    .presenter-verissimo { background: #fef2f2 !important; color: #b91c1c !important; }
+    .presenter-alice { background: #eff6ff !important; color: #1d4ed8 !important; }
+    .presenter-joaovitor { background: #faf5ff !important; color: #7e22ce !important; }
+
+    .sidebar-toc-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+      margin-right: 3px;
+    }
+
+    .sidebar-toc-title {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .sidebar-toc-name {
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      font-weight: 700;
+      padding: 0.12rem 0.4rem;
+      border-radius: 3px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-left: auto;
+      border: none !important;
+    }
+
     .tag-status {
       font-family: var(--font-mono);
       font-size: 0.75rem;
@@ -3588,106 +3658,157 @@
     </div>
 
     <!-- Lista de Links de Navegação Rápida (Sumário Interativo) -->
+        <!-- Lista de Links de Navegação Rápida (Sumário Interativo com Bolinhas dos Apresentadores) -->
     <nav class="sidebar-toc-list" id="sidebarTocList" aria-label="Índice de Seções">
       <a href="#slide-hero" class="sidebar-toc-item" data-target="slide-hero">
         <span class="sidebar-toc-badge">01</span>
-        <span>Abertura &amp; Hero</span>
+        <span class="sidebar-toc-dot dot-nathan" title="Apresentador: Nathan"></span>
+        <span class="sidebar-toc-title">Abertura &amp; Hero</span>
+        <span class="sidebar-toc-name presenter-nathan">Nathan</span>
       </a>
       <a href="#slide-conceito" class="sidebar-toc-item" data-target="slide-conceito">
         <span class="sidebar-toc-badge">02</span>
-        <span>O que é uma Computadora?</span>
+        <span class="sidebar-toc-dot dot-nathan" title="Apresentador: Nathan"></span>
+        <span class="sidebar-toc-title">O que é uma Computadora?</span>
+        <span class="sidebar-toc-name presenter-nathan">Nathan</span>
       </a>
       <a href="#slide-tags-guide" class="sidebar-toc-item" data-target="slide-tags-guide">
         <span class="sidebar-toc-badge">03</span>
-        <span>Guia: Turing &amp; Von Neumann</span>
+        <span class="sidebar-toc-dot dot-nathan" title="Apresentador: Nathan"></span>
+        <span class="sidebar-toc-title">Guia: Turing &amp; Von Neumann</span>
+        <span class="sidebar-toc-name presenter-nathan">Nathan</span>
       </a>
       <a href="#slide-era1" class="sidebar-toc-item" data-target="slide-era1">
         <span class="sidebar-toc-badge">04</span>
-        <span>Instrumentos Ancestrais</span>
+        <span class="sidebar-toc-dot dot-fabio" title="Apresentador: Fabio"></span>
+        <span class="sidebar-toc-title">Instrumentos Ancestrais</span>
+        <span class="sidebar-toc-name presenter-fabio">Fabio</span>
       </a>
       <a href="#slide-anticitera" class="sidebar-toc-item" data-target="slide-anticitera">
         <span class="sidebar-toc-badge">05</span>
-        <span>Mecanismo de Anticítera</span>
+        <span class="sidebar-toc-dot dot-fabio" title="Apresentador: Fabio"></span>
+        <span class="sidebar-toc-title">Mecanismo de Anticítera</span>
+        <span class="sidebar-toc-name presenter-fabio">Fabio</span>
       </a>
       <a href="#slide-pascalina" class="sidebar-toc-item" data-target="slide-pascalina">
         <span class="sidebar-toc-badge">06</span>
-        <span>A Pascalina (1642)</span>
+        <span class="sidebar-toc-dot dot-fabio" title="Apresentador: Fabio"></span>
+        <span class="sidebar-toc-title">A Pascalina (1642)</span>
+        <span class="sidebar-toc-name presenter-fabio">Fabio</span>
       </a>
       <a href="#slide-leibniz" class="sidebar-toc-item" data-target="slide-leibniz">
         <span class="sidebar-toc-badge">07</span>
-        <span>Stepped Reckoner (Leibniz)</span>
-      </a>
-      <a href="#didactic-transition-banner" class="sidebar-toc-item" data-target="didactic-transition-banner">
-        <span class="sidebar-toc-badge">08</span>
-        <span>Transição: Máquinas Universais</span>
-      </a>
-      <a href="#slide-analitica" class="sidebar-toc-item" data-target="slide-analitica">
-        <span class="sidebar-toc-badge">09</span>
-        <span>Babbage &amp; Ada Lovelace</span>
-      </a>
-      <a href="#slide-turing" class="sidebar-toc-item" data-target="slide-turing">
-        <span class="sidebar-toc-badge">10</span>
-        <span>Alan Turing &amp; Hilbert (1936)</span>
-      </a>
-      <a href="#slide-z3" class="sidebar-toc-item" data-target="slide-z3">
-        <span class="sidebar-toc-badge">11</span>
-        <span>Konrad Zuse Z3 (1941)</span>
+        <span class="sidebar-toc-dot dot-juan" title="Apresentador: Juan"></span>
+        <span class="sidebar-toc-title">Stepped Reckoner (Leibniz)</span>
+        <span class="sidebar-toc-name presenter-juan">Juan</span>
       </a>
       <a href="#slide-abc" class="sidebar-toc-item" data-target="slide-abc">
-        <span class="sidebar-toc-badge">12</span>
-        <span>Atanasoff-Berry (ABC)</span>
+        <span class="sidebar-toc-badge">08</span>
+        <span class="sidebar-toc-dot dot-juan" title="Apresentador: Juan"></span>
+        <span class="sidebar-toc-title">Atanasoff-Berry (ABC)</span>
+        <span class="sidebar-toc-name presenter-juan">Juan</span>
       </a>
       <a href="#slide-mark1" class="sidebar-toc-item" data-target="slide-mark1">
-        <span class="sidebar-toc-badge">13</span>
-        <span>Harvard Mark I (Aiken &amp; Hopper)</span>
+        <span class="sidebar-toc-badge">09</span>
+        <span class="sidebar-toc-dot dot-juan" title="Apresentador: Juan"></span>
+        <span class="sidebar-toc-title">Harvard Mark I (Aiken &amp; Hopper)</span>
+        <span class="sidebar-toc-name presenter-juan">Juan</span>
       </a>
       <a href="#slide-colossus" class="sidebar-toc-item" data-target="slide-colossus">
+        <span class="sidebar-toc-badge">10</span>
+        <span class="sidebar-toc-dot dot-fabio" title="Apresentador: Fabio"></span>
+        <span class="sidebar-toc-title">Colossus Mk I &amp; II (1944)</span>
+        <span class="sidebar-toc-name presenter-fabio">Fabio</span>
+      </a>
+      <a href="#didactic-transition-banner" class="sidebar-toc-item" data-target="didactic-transition-banner">
+        <span class="sidebar-toc-badge">11</span>
+        <span class="sidebar-toc-dot dot-nathan" title="Apresentador: Nathan"></span>
+        <span class="sidebar-toc-title">Transição: Máquinas Universais</span>
+        <span class="sidebar-toc-name presenter-nathan">Nathan</span>
+      </a>
+      <a href="#slide-analitica" class="sidebar-toc-item" data-target="slide-analitica">
+        <span class="sidebar-toc-badge">12</span>
+        <span class="sidebar-toc-dot dot-nathan" title="Apresentador: Nathan"></span>
+        <span class="sidebar-toc-title">Babbage &amp; Ada Lovelace</span>
+        <span class="sidebar-toc-name presenter-nathan">Nathan</span>
+      </a>
+      <a href="#slide-turing" class="sidebar-toc-item" data-target="slide-turing">
+        <span class="sidebar-toc-badge">13</span>
+        <span class="sidebar-toc-dot dot-verissimo" title="Apresentador: Veríssimo"></span>
+        <span class="sidebar-toc-title">Alan Turing &amp; Hilbert (1936)</span>
+        <span class="sidebar-toc-name presenter-verissimo">Veríssimo</span>
+      </a>
+      <a href="#slide-z3" class="sidebar-toc-item" data-target="slide-z3">
         <span class="sidebar-toc-badge">14</span>
-        <span>Colossus Mk I &amp; II (1944)</span>
+        <span class="sidebar-toc-dot dot-verissimo" title="Apresentador: Veríssimo"></span>
+        <span class="sidebar-toc-title">Konrad Zuse Z3 (1941)</span>
+        <span class="sidebar-toc-name presenter-verissimo">Veríssimo</span>
       </a>
       <a href="#slide-eniac" class="sidebar-toc-item" data-target="slide-eniac">
         <span class="sidebar-toc-badge">15</span>
-        <span>ENIAC &amp; Programadoras (1945)</span>
-      </a>
-      <a href="#slide-baby" class="sidebar-toc-item" data-target="slide-baby">
-        <span class="sidebar-toc-badge">16</span>
-        <span>Manchester Baby &amp; Mark 1</span>
-      </a>
-      <a href="#slide-edsac" class="sidebar-toc-item" data-target="slide-edsac">
-        <span class="sidebar-toc-badge">17</span>
-        <span>EDSAC &amp; Pilot ACE (Turing)</span>
+        <span class="sidebar-toc-dot dot-verissimo" title="Apresentador: Veríssimo"></span>
+        <span class="sidebar-toc-title">ENIAC &amp; Programadoras (1945)</span>
+        <span class="sidebar-toc-name presenter-verissimo">Veríssimo</span>
       </a>
       <a href="#slide-von-neumann" class="sidebar-toc-item" data-target="slide-von-neumann">
+        <span class="sidebar-toc-badge">16</span>
+        <span class="sidebar-toc-dot dot-verissimo" title="Apresentador: Veríssimo"></span>
+        <span class="sidebar-toc-title">Von Neumann &amp; EDVAC/IAS</span>
+        <span class="sidebar-toc-name presenter-verissimo">Veríssimo</span>
+      </a>
+      <a href="#slide-baby" class="sidebar-toc-item" data-target="slide-baby">
+        <span class="sidebar-toc-badge">17</span>
+        <span class="sidebar-toc-dot dot-alice" title="Apresentador: Alice"></span>
+        <span class="sidebar-toc-title">Manchester Baby &amp; Mark 1</span>
+        <span class="sidebar-toc-name presenter-alice">Alice</span>
+      </a>
+      <a href="#slide-edsac" class="sidebar-toc-item" data-target="slide-edsac">
         <span class="sidebar-toc-badge">18</span>
-        <span>Von Neumann &amp; Computador IAS</span>
+        <span class="sidebar-toc-dot dot-alice" title="Apresentador: Alice"></span>
+        <span class="sidebar-toc-title">EDSAC &amp; Pilot ACE (Turing)</span>
+        <span class="sidebar-toc-name presenter-alice">Alice</span>
       </a>
       <a href="#slide-mainframes" class="sidebar-toc-item" data-target="slide-mainframes">
         <span class="sidebar-toc-badge">19</span>
-        <span>IBM 704 &amp; Era dos Mainframes</span>
+        <span class="sidebar-toc-dot dot-alice" title="Apresentador: Alice"></span>
+        <span class="sidebar-toc-title">IBM 704 &amp; Era dos Mainframes</span>
+        <span class="sidebar-toc-name presenter-alice">Alice</span>
       </a>
       <a href="#brasil-transition-banner" class="sidebar-toc-item" data-target="brasil-transition-banner">
         <span class="sidebar-toc-badge">20</span>
-        <span>Divisor: Computação no Brasil</span>
+        <span class="sidebar-toc-dot dot-joaovitor" title="Apresentador: João Vitor"></span>
+        <span class="sidebar-toc-title">Divisor: Computação no Brasil</span>
+        <span class="sidebar-toc-name presenter-joaovitor">João Vitor</span>
       </a>
       <a href="#slide-brasil-academico" class="sidebar-toc-item" data-target="slide-brasil-academico">
         <span class="sidebar-toc-badge">21</span>
-        <span>Ciência Acadêmica no Brasil</span>
+        <span class="sidebar-toc-dot dot-joaovitor" title="Apresentador: João Vitor"></span>
+        <span class="sidebar-toc-title">Ciência Acadêmica no Brasil</span>
+        <span class="sidebar-toc-name presenter-joaovitor">João Vitor</span>
       </a>
       <a href="#slide-patinho-feio" class="sidebar-toc-item" data-target="slide-patinho-feio">
         <span class="sidebar-toc-badge">22</span>
-        <span>O Patinho Feio (USP 1972)</span>
+        <span class="sidebar-toc-dot dot-joaovitor" title="Apresentador: João Vitor"></span>
+        <span class="sidebar-toc-title">O Patinho Feio (USP 1972)</span>
+        <span class="sidebar-toc-name presenter-joaovitor">João Vitor</span>
       </a>
       <a href="#slide-cobra-reserva" class="sidebar-toc-item" data-target="slide-cobra-reserva">
         <span class="sidebar-toc-badge">23</span>
-        <span>COBRA &amp; Reserva de Mercado</span>
+        <span class="sidebar-toc-dot dot-joaovitor" title="Apresentador: João Vitor"></span>
+        <span class="sidebar-toc-title">COBRA &amp; Reserva de Mercado</span>
+        <span class="sidebar-toc-name presenter-joaovitor">João Vitor</span>
       </a>
       <a href="#slide-tabelas" class="sidebar-toc-item" data-target="slide-tabelas">
         <span class="sidebar-toc-badge">24</span>
-        <span>Tabelas Comparativas</span>
+        <span class="sidebar-toc-dot dot-nathan" title="Apresentador: Nathan"></span>
+        <span class="sidebar-toc-title">Tabelas Comparativas</span>
+        <span class="sidebar-toc-name presenter-nathan">Nathan</span>
       </a>
       <a href="#slide-conclusao" class="sidebar-toc-item" data-target="slide-conclusao">
         <span class="sidebar-toc-badge">25</span>
-        <span>Conclusão do Seminário</span>
+        <span class="sidebar-toc-dot dot-nathan" title="Apresentador: Nathan"></span>
+        <span class="sidebar-toc-title">Conclusão do Seminário</span>
+        <span class="sidebar-toc-name presenter-nathan">Nathan</span>
       </a>
     </nav>
   </aside>
@@ -3727,6 +3848,40 @@
           <strong>Cronologia Estrita &amp; Simuladores</strong>
         </div>
       </div>
+    
+      <!-- LEGENDA DOS APRESENTADORES E ROTACAO DE TOPICOS -->
+      <div class="team-roster-box" style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: #f8fafc; border-radius: 6px;">
+        <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-light); margin-bottom: 0.85rem;">
+          Ordem de Apresentacao &amp; Escala da Equipe (30 a 50 min)
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.55rem;">
+          <span class="tag-presenter presenter-nathan"><span class="presenter-dot dot-nathan"></span> Nathan (Laranja)</span>
+          <span class="tag-presenter presenter-fabio"><span class="presenter-dot dot-fabio"></span> Fabio (Verde)</span>
+          <span class="tag-presenter presenter-juan"><span class="presenter-dot dot-juan"></span> Juan (Amarelo)</span>
+          <span class="tag-presenter presenter-verissimo"><span class="presenter-dot dot-verissimo"></span> Verissimo (Vermelho)</span>
+          <span class="tag-presenter presenter-alice"><span class="presenter-dot dot-alice"></span> Alice (Azul)</span>
+          <span class="tag-presenter presenter-joaovitor"><span class="presenter-dot dot-joaovitor"></span> Joao Vitor (Roxo)</span>
+        </div>
+      </div>
+
+      <!-- ORIENTACOES DO SEMINARIO: OBJETIVOS, RECORTES E CONTEXTO HISTORICO-SOCIAL -->
+      <div class="guidelines-box" style="margin-top: 1.25rem; padding: 1.25rem 1.5rem; background: #f8fafc; border-radius: 6px;">
+        <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-light); margin-bottom: 0.65rem;">
+          Objetivos &amp; Recorte Metodologico
+        </div>
+        <div style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
+          <p style="margin-bottom: 0.5rem;">
+            <strong>Objetivo do Seminario:</strong> Investigar o salto ontologico do calculo mecanico fixo para a computacao universal de programa armazenado, mapeando os marcos teoricos globais e a genese da computacao cientifica e industrial brasileira.
+          </p>
+          <p style="margin-bottom: 0.5rem;">
+            <strong>Recorte Historico e Critico:</strong> Superacao da narrativa puramente triunfalista ou linear ingênua. Os avancos tecnologicos sao explicitamente articulados aos seus contextos politicos, economicos e militares: a Segunda Guerra Mundial (Bletchley Park e tabelas balisticas), a Guerra Fria (financiamento aeroespacial e de semicondutores) e as tensoes geopoliticas da Ditadura Militar brasileira (autonomia cientifica e Reserva de Mercado).
+          </p>
+          <p style="margin: 0;">
+            <strong>Diretrizes de Apresentacao:</strong> Duracao total planejada entre 30 e 50 minutos. Apresentacao pautada na apropriacao conceitual e sintese critica (evitando a leitura passiva de telas), com uso de recursos mnemônicos e demonstracao interativa com os simuladores e emuladores do projeto.
+          </p>
+        </div>
+      </div>
+
     </header>
 
     <!-- BARRA DE CONTROLE: SELETOR DE MODO (ORDEM CRONOLÓGICA VS. ORDEM DIDÁTICA) -->
@@ -3749,7 +3904,7 @@
          ========================================================================== -->
     <section class="slide-block" id="slide-conceito">
       <div class="slide-header">
-        <div class="year-display">FUNDAMENTO CONCEITUAL</div>
+        <div class="year-display"><span>FUNDAMENTO CONCEITUAL</span><div class="status-badges-group"><span class="tag-presenter presenter-nathan"><span class="presenter-dot dot-nathan"></span> Nathan</span></div></div>
         <h2 class="slide-title">O que é uma "Computadora"?</h2>
         <p class="slide-subtitle">A grande evolução ontológica dividida em três estágios essenciais.</p>
       </div>
@@ -3795,7 +3950,7 @@
          ========================================================================== -->
     <section class="slide-block" id="slide-tags-guide">
       <div class="slide-header">
-        <div class="year-display">CHAVE DE LEITURA &amp; CRITÉRIOS</div>
+        <div class="year-display"><span>CHAVE DE LEITURA &amp; CRITÉRIOS</span><div class="status-badges-group"><span class="tag-presenter presenter-nathan"><span class="presenter-dot dot-nathan"></span> Nathan</span></div></div>
         <h2 class="slide-title">Guia de Leitura: Como Interpretar as Tags</h2>
         <p class="slide-subtitle">Entenda em poucos pontos as definições de Turing-Completeness e Arquitetura Von Neumann presentes em cada cabeçalho histórico.</p>
       </div>
@@ -3845,6 +4000,7 @@
         <div class="year-display">
           <span>~35.000 a.C. - Séc. XV</span>
           <div class="status-badges-group">
+            <span class="tag-presenter presenter-fabio"><span class="presenter-dot dot-fabio"></span> Fabio</span>
             <span class="tag-status tc-no">Turing-Complete: Não</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
             <span class="tag-status impl-ancient">Construção: Prático na Antiguidade</span>
@@ -4030,6 +4186,7 @@
         <div class="year-display">
           <span>~150 a.C.</span>
           <div class="status-badges-group">
+            <span class="tag-presenter presenter-fabio"><span class="presenter-dot dot-fabio"></span> Fabio</span>
             <span class="tag-status tc-no">Turing-Complete: Não</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
             <span class="tag-status impl-ancient">Construção: Prático na Antiguidade</span>
@@ -4198,6 +4355,7 @@
         <div class="year-display">
           <span>1642</span>
           <div class="status-badges-group">
+            <span class="tag-presenter presenter-fabio"><span class="presenter-dot dot-fabio"></span> Fabio</span>
             <span class="tag-status tc-no">Turing-Complete: Não</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
             <span class="tag-status impl-real">Construção: Prático em Vida</span>
@@ -4302,6 +4460,7 @@
         <div class="year-display">
           <span>1673 - 1703</span>
           <div class="status-badges-group">
+            <span class="tag-presenter presenter-juan"><span class="presenter-dot dot-juan"></span> Juan</span>
             <span class="tag-status tc-no">Turing-Complete: Não</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
             <span class="tag-status impl-real">Construção: Prático em Vida</span>
@@ -4360,6 +4519,7 @@
     <!-- BANNER DE TRANSIÇÃO DIDÁTICA (EXIBIDO APENAS NO MODO DIDÁTICO) -->
     <div class="didactic-transition-banner" id="didactic-transition-banner" style="display: none;">
       <div class="didactic-divider-line"></div>
+      <div style="margin-bottom: 0.65rem;"><span class="tag-presenter presenter-nathan"><span class="presenter-dot dot-nathan"></span> Transição: Nathan</span></div>
       <h2 class="didactic-banner-title">História das Máquinas Universais &amp; Computadores Programáveis</h2>
       <p class="didactic-banner-desc">
         Aqui finaliza a linhagem das máquinas dedicadas e especializadas (Anticítera, Pascalina, Leibniz, ABC, Harvard Mark I e Colossus).
@@ -4377,6 +4537,7 @@
         <div class="year-display">
           <span>1837 - 1843</span>
           <div class="status-badges-group">
+            <span class="tag-presenter presenter-nathan"><span class="presenter-dot dot-nathan"></span> Nathan</span>
             <span class="tag-status tc-theory">Turing-Complete: Sim (Teoria)</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
             <span class="tag-status impl-future">Construção: Teórico em Vida (Modelos no Science Museum)</span>
@@ -4767,6 +4928,7 @@
         <div class="year-display">
           <span>1900 - 1936</span>
           <div class="status-badges-group">
+            <span class="tag-presenter presenter-verissimo"><span class="presenter-dot dot-verissimo"></span> Veríssimo</span>
             <span class="tag-status tc-yes">Turing-Complete: Sim (Definição Original)</span>
             <span class="tag-status vn-yes">Von Neumann: Inspiração Conceitual Teórica</span>
             <span class="tag-status impl-real">Construção: Prático em Vida (Pilot ACE &amp; Manchester Mark 1)</span>
@@ -4927,6 +5089,7 @@
         <div class="year-display">
           <span>1941</span>
           <div class="status-badges-group">
+            <span class="tag-presenter presenter-verissimo"><span class="presenter-dot dot-verissimo"></span> Veríssimo</span>
             <span class="tag-status tc-yes">Turing-Complete: Sim (Teoricamente)</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
             <span class="tag-status impl-real">Construção: Prático em Vida</span>
@@ -5107,6 +5270,7 @@
         <div class="year-display">
           <span>1937 - 1942</span>
           <div class="status-badges-group">
+            <span class="tag-presenter presenter-juan"><span class="presenter-dot dot-juan"></span> Juan</span>
             <span class="tag-status tc-no">Turing-Complete: Não</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
             <span class="tag-status impl-real">Construção: Prático em Vida</span>
@@ -5176,6 +5340,7 @@
         <div class="year-display">
           <span>1944</span>
           <div class="status-badges-group">
+            <span class="tag-presenter presenter-juan"><span class="presenter-dot dot-juan"></span> Juan</span>
             <span class="tag-status tc-no">Turing-Complete: Não (Sequencial em Fita)</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
             <span class="tag-status impl-real">Construção: Prático em Vida (IBM ASCC - Harvard)</span>
@@ -5255,6 +5420,7 @@
         <div class="year-display">
           <span>1943 - 1944</span>
           <div class="status-badges-group">
+            <span class="tag-presenter presenter-fabio"><span class="presenter-dot dot-fabio"></span> Fabio</span>
             <span class="tag-status tc-no">Turing-Complete: Não</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
             <span class="tag-status impl-real">Construção: Prático em Vida (10 Máquinas Ativas)</span>
@@ -5403,6 +5569,7 @@
         <div class="year-display">
           <span>1945 - 1946</span>
           <div class="status-badges-group">
+            <span class="tag-presenter presenter-verissimo"><span class="presenter-dot dot-verissimo"></span> Veríssimo</span>
             <span class="tag-status tc-yes">Turing-Complete: Sim</span>
             <span class="tag-status vn-no">Von Neumann: Não</span>
             <span class="tag-status impl-real">Construção: Prático em Vida</span>
@@ -5585,6 +5752,7 @@
         <div class="year-display">
           <span>1945</span>
           <div class="status-badges-group">
+            <span class="tag-presenter presenter-verissimo"><span class="presenter-dot dot-verissimo"></span> Veríssimo</span>
             <span class="tag-status tc-yes">Turing-Complete: Sim</span>
             <span class="tag-status vn-yes">Von Neumann: Sim</span>
             <span class="tag-status impl-real">Construção: Prático em Vida (Computador IAS &amp; EDVAC)</span>
@@ -5676,6 +5844,7 @@
         <div class="year-display">
           <span>1948 - 1951</span>
           <div class="status-badges-group">
+            <span class="tag-presenter presenter-alice"><span class="presenter-dot dot-alice"></span> Alice</span>
             <span class="tag-status tc-yes">Turing-Complete: Sim</span>
             <span class="tag-status vn-yes">Von Neumann: Sim (1º Operacional do Mundo)</span>
             <span class="tag-status impl-real">Construção: Prático em Vida</span>
@@ -5849,6 +6018,7 @@
         <div class="year-display">
           <span>1949 - 1950</span>
           <div class="status-badges-group">
+            <span class="tag-presenter presenter-alice"><span class="presenter-dot dot-alice"></span> Alice</span>
             <span class="tag-status tc-yes">Turing-Complete: Sim</span>
             <span class="tag-status vn-yes">Von Neumann: Sim</span>
             <span class="tag-status impl-real">Construção: Prático em Vida</span>
@@ -5947,6 +6117,7 @@
         <div class="year-display">
           <span>1951 - 1958</span>
           <div class="status-badges-group">
+            <span class="tag-presenter presenter-alice"><span class="presenter-dot dot-alice"></span> Alice</span>
             <span class="tag-status tc-yes">Turing-Complete: Sim</span>
             <span class="tag-status vn-yes">Von Neumann: Sim</span>
             <span class="tag-status impl-real">Construção: Prático em Escala Industrial</span>
@@ -6132,6 +6303,7 @@
     <!-- BANNER DE TRANSIÇÃO: A HISTÓRIA DA COMPUTAÇÃO & PIONEIRISMO NO BRASIL -->
     <div class="didactic-transition-banner" id="brasil-transition-banner" style="margin: 4.5rem auto 3.5rem auto;">
       <div class="didactic-divider-line"></div>
+      <div style="margin-bottom: 0.65rem;"><span class="tag-presenter presenter-joaovitor"><span class="presenter-dot dot-joaovitor"></span> Divisor Nacional: João Vitor</span></div>
       <h2 class="didactic-banner-title">História da Computação &amp; Ciência Acadêmica no Brasil</h2>
       <p class="didactic-banner-desc">
         Após a consolidação dos primeiros computadores eletrônicos e da arquitetura universal de programa armazenado no cenário mundial, o Brasil iniciou sua própria trajetória pioneira: da formação acadêmica e pesquisa de ponta na PUC-Rio, UNICAMP, USP e fundação da SBC, passando pelo feito de engenharia nacional do Patinho Feio (1972), até os desafios industriais e tecnológicos da Reserva de Mercado.
@@ -6145,6 +6317,7 @@
         <div class="year-display">
           <span>1967 - 1978</span>
           <div class="status-badges-group">
+            <span class="tag-presenter presenter-joaovitor"><span class="presenter-dot dot-joaovitor"></span> João Vitor</span>
             <span class="tag-status brazil">Ciência da Computação Acadêmica BR</span>
             <span class="tag-status tc-yes">Primeiros Cursos Universitários</span>
             <span class="tag-status vn-yes">Fundação da SBC (1978)</span>
@@ -6235,6 +6408,7 @@
         <div class="year-display">
           <span>24 de Julho de 1972</span>
           <div class="status-badges-group">
+            <span class="tag-presenter presenter-joaovitor"><span class="presenter-dot dot-joaovitor"></span> João Vitor</span>
             <span class="tag-status brazil">1º Computador 100% Brasileiro</span>
             <span class="tag-status tc-yes">Turing-Complete: Sim</span>
             <span class="tag-status vn-yes">Von Neumann: Sim</span>
@@ -6395,6 +6569,7 @@
         <div class="year-display">
           <span>1974 - 1984</span>
           <div class="status-badges-group">
+            <span class="tag-presenter presenter-joaovitor"><span class="presenter-dot dot-joaovitor"></span> João Vitor</span>
             <span class="tag-status brazil">Indústria Nacional</span>
             <span class="tag-status tc-yes">Turing-Complete: Sim</span>
             <span class="tag-status vn-yes">Von Neumann: Sim</span>
@@ -6972,7 +7147,7 @@ READY
     <!-- ERA 9: MATRIZ COMPARATIVA & CRITÉRIOS HISTÓRICOS FINAIS -->
     <section class="slide-block" id="slide-tabelas">
       <div class="slide-header">
-        <div class="year-display">MATRIZ COMPARATIVA GERAL</div>
+        <div class="year-display"><span>MATRIZ COMPARATIVA GERAL</span><div class="status-badges-group"><span class="tag-presenter presenter-nathan"><span class="presenter-dot dot-nathan"></span> Nathan</span></div></div>
         <h2 class="slide-title">A Grande Transição: Comparação Sistemática</h2>
         <p class="slide-subtitle">O panorama completo dos marcos da computação desde a Antiguidade e Babbage até os pioneiros computadores e a ciência acadêmica no Brasil.</p>
       </div>
@@ -7292,7 +7467,7 @@ READY
          ========================================================================== -->
     <section class="slide-block" id="slide-conclusao" style="margin-top: 3.5rem;">
       <div class="slide-header">
-        <div class="year-display">SÍNTESE &amp; CONCLUSÃO</div>
+        <div class="year-display"><span>SÍNTESE &amp; CONCLUSÃO</span><div class="status-badges-group"><span class="tag-presenter presenter-nathan"><span class="presenter-dot dot-nathan"></span> Nathan</span></div></div>
         <h2 class="slide-title">Conclusão: Da Matéria Mecânica à Universalidade do Software</h2>
         <p class="slide-subtitle">Os pilares conceituais, os avanços de hardware e as lições históricas que consolidaram a Ciência da Computação.</p>
       </div>
@@ -7327,6 +7502,23 @@ READY
             </div>
           </div>
         </div>
+      </div>
+    
+      <!-- BIBLIOGRAFIA CONSULTADA DO SEMINARIO -->
+      <div class="clean-card" style="margin-top: 1.5rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-light); margin-bottom: 0.85rem;">
+          Bibliografia &amp; Fontes Consultadas
+        </div>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; color: var(--text-muted); line-height: 1.75;">
+          <li style="margin-bottom: 0.45rem;">• <strong>Turing, A. M. (1936).</strong> <em>On Computable Numbers, with an Application to the Entscheidungsproblem</em>. Proceedings of the London Mathematical Society, Series 2, 42, 230-265.</li>
+          <li style="margin-bottom: 0.45rem;">• <strong>Von Neumann, J. (1945).</strong> <em>First Draft of a Report on the EDVAC</em>. Moore School of Electrical Engineering, University of Pennsylvania.</li>
+          <li style="margin-bottom: 0.45rem;">• <strong>Lovelace, A. A. &amp; Menabrea, L. F. (1843).</strong> <em>Sketch of the Analytical Engine Invented by Charles Babbage, with Notes by the Translator</em>. Scientific Memoirs, 3, 666-731.</li>
+          <li style="margin-bottom: 0.45rem;">• <strong>Ceruzzi, P. E. (2003).</strong> <em>A History of Modern Computing</em> (2ª ed.). Cambridge, MA: The MIT Press.</li>
+          <li style="margin-bottom: 0.45rem;">• <strong>Campbell-Kelly, M., Aspray, W., Ensmenger, N., &amp; Yost, J. R. (2014).</strong> <em>Computer: A History of the Information Machine</em> (3ª ed.). Boulder: Westview Press.</li>
+          <li style="margin-bottom: 0.45rem;">• <strong>Dagnino, R. &amp; Novaes, H. T. (2006).</strong> <em>A Política de Informática no Brasil e a Reserva de Mercado: Lições de Desenvolvimento Tecnológico</em>. Revista Brasileira de Inovação, 5(1), 115-144.</li>
+          <li style="margin-bottom: 0.45rem;">• <strong>Marinho, N. &amp; Silva, F. (1972).</strong> <em>Documentação Técnica do Computador Patinho Feio</em>. Laboratório de Sistemas Digitais (LSD), Escola Politécnica da USP.</li>
+          <li style="margin-bottom: 0.45rem;">• <strong>Hodges, A. (1983).</strong> <em>Alan Turing: The Enigma</em>. London: Burnett Books.</li>
+        </ul>
       </div>
     </section>
 
@@ -12361,8 +12553,60 @@ READY
           caption.innerHTML = 'Modo Cronológico Ativo: <strong>Linha do tempo linear</strong> estrita por anos de concepção (35.000 a.C. até 1984).';
         }
       }
+      syncSidebarOrder(mode);
       window.dispatchEvent(new Event('scroll'));
     }
+
+    function syncSidebarOrder(mode) {
+      const list = document.getElementById('sidebarTocList');
+      if (!list) return;
+
+      const didacticaOrder = [
+        'slide-hero', 'slide-conceito', 'slide-tags-guide',
+        'slide-era1', 'slide-anticitera', 'slide-pascalina', 'slide-leibniz',
+        'slide-abc', 'slide-mark1', 'slide-colossus',
+        'didactic-transition-banner',
+        'slide-analitica', 'slide-turing', 'slide-z3',
+        'slide-eniac', 'slide-von-neumann', 'slide-baby', 'slide-edsac', 'slide-mainframes',
+        'brasil-transition-banner', 'slide-brasil-academico', 'slide-patinho-feio', 'slide-cobra-reserva',
+        'slide-tabelas', 'slide-conclusao'
+      ];
+
+      const cronologicaOrder = [
+        'slide-hero', 'slide-conceito', 'slide-tags-guide',
+        'slide-era1', 'slide-anticitera', 'slide-pascalina', 'slide-leibniz',
+        'slide-analitica', 'slide-turing', 'slide-z3',
+        'slide-abc', 'slide-mark1', 'slide-colossus',
+        'slide-eniac', 'slide-von-neumann', 'slide-baby', 'slide-edsac', 'slide-mainframes',
+        'brasil-transition-banner', 'slide-brasil-academico', 'slide-patinho-feio', 'slide-cobra-reserva',
+        'slide-tabelas', 'slide-conclusao'
+      ];
+
+      const targetOrder = (mode === 'didatica') ? didacticaOrder : cronologicaOrder;
+      const itemsMap = {};
+      list.querySelectorAll('.sidebar-toc-item').forEach(item => {
+        const id = item.getAttribute('data-target') || (item.getAttribute('href') || '').replace('#', '');
+        itemsMap[id] = item;
+      });
+
+      let badgeNum = 1;
+      targetOrder.forEach(id => {
+        const item = itemsMap[id];
+        if (item) {
+          item.style.display = 'flex';
+          const badge = item.querySelector('.sidebar-toc-badge');
+          if (badge) {
+            badge.textContent = String(badgeNum++).padStart(2, '0');
+          }
+          list.appendChild(item);
+        }
+      });
+
+      if (mode === 'cronologica' && itemsMap['didactic-transition-banner']) {
+        itemsMap['didactic-transition-banner'].style.display = 'none';
+      }
+    }
+
 
     // =========================================================================
     // MAPA: UNIVERSIDADES PIONEIRAS DA COMPUTACAO NO BRASIL
